@@ -2,3 +2,10 @@ tmp/
 ./git/
 ./java/
 ./web/
+git/
+java/
+web/
+../git/
+../java/
+../web/
+
