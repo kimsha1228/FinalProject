@@ -6,6 +6,7 @@ public class MyInfoApp {
 		int age=20;
 		String dep="Department of Computer Engineering";
 		System.out.println(name+"\n"+age+" years old\n"+dep);
+		System.out.println(name+"\n"+age+" years old\n"+dep);
 	}
 }
 /* 2
