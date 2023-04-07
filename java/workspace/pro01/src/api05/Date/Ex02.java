@@ -1,5 +1,6 @@
 package api05.Date;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -43,6 +44,14 @@ public class Ex02 {
 		Date c=b.getTime();
 		SimpleDateFormat sdf1=new SimpleDateFormat("yyyy-MM-dd a hh:mm:ss");
 		System.out.println(sdf1.format(c));
+		
+		//방법3
+		java.sql.Date sDate=new java.sql.Date(System.currentTimeMillis());
+		System.out.println(sDate);
+		
+		//방법4
+		Timestamp ts=new Timestamp(System.currentTimeMillis());
+		System.out.println(ts);
 	}
 
 }

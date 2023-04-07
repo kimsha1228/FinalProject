@@ -18,6 +18,10 @@ public class MainStart {
 		sub(a);
 		sub(b);
 		sub(c);
+		
+		System.out.println(new Test().name);
+		System.out.println(Test.id);
+		
 	}
 
 	public static void sub(Phone phone) {
