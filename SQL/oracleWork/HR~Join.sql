@@ -162,6 +162,7 @@ order by e1.employee_id; --ANSI식
 select e1.employee_id,e1.first_name, d.department_name
 from employees e1, departments d
 where e1.department_id(+)  = d.department_id;
+
 select e1.employee_id,e1.first_name, d.department_name
 from employees e1 right join departments d
 on e1.department_id  = d.department_id;
@@ -184,3 +185,113 @@ NVL(e1.first_name,'사원없음') AS 이름, --사원이 널이면 사원없음을 출력
 NVL(d.department_name,'부서없음') AS 부서명 --부서명이 없으면 부서없음을 출력
 from employees e1 full join departments d
 using (department_id);
+
+--NATURAL JOIN
+SELECT employee_id,department_name
+from employees natural join departments;
+
+--1.사원 테이블과 부서 테이블을 조인하여 모든 사원ID,사원이름,급여,부서명을
+--출력하라. (부서명 내림차순 정렬)
+SELECT e.employee_id as 사원ID, 
+e.first_name as 사원이름, 
+e.salary as 급여,
+d.department_name as 부서명
+FROM employees e FULL join departments d
+using (department_id)
+ORDER BY 부서명 DESC;
+
+--해답
+--SELECT e.employee_id 사원ID, e.first_name 사원이름,
+--e.salary 급여, d.department_name 부서명
+--FROM employees e LEFT OUTER JOIN departments d
+--USING(department_id) order by d.department_name desc;
+
+--2. 사원 테이블과 부서 테이블을 조인하여 직업ID가 ‘IT_PROG‘ 인 사원들의
+--사원이름, 직업ID,부서명, 위치ID를 출력하세요.
+SELECT 
+    e.first_name as 사원이름,
+    e.job_id as 직업ID,
+    d.department_name as 부서명,
+    d.location_id as 위치ID
+FROM 
+employees e join departments d
+using (department_id)
+WHERE e.job_id='IT_PROG';
+
+--해답
+--SELECT e.first_name 사원이름, e.job_id 직업ID, d.department_name 부서명,
+--d.location_id 위치ID
+--FROM employees e INNER JOIN departments d
+--ON e.department_id=d.department_id AND job_id='IT_PROG';
+
+--3. 부서 테이블과 사원 테이블에서 사번, 사원명, 업무, 급여 , 부서명을
+--검색하시오. 단, 업무명이 '%Manager' 이며 급여가 8000 이상인
+--사원에 대하여 사번을 기준으로 오름차순 정렬할 것.
+SELECT 
+    e.employee_id as 사번,
+    e.first_name as 사원명,
+    j.job_title as 업무,
+    e.salary as 급여,
+    d.department_name as 부서명
+FROM departments d 
+    JOIN employees e
+        USING (department_id)
+    JOIN jobs j
+        USING (job_id)
+WHERE 
+    e.salary >= 8000  AND j.job_title LIKE '%Manager'
+ORDER BY 사번 ASC;        
+
+--해답
+--select e.employee_id 사번, e.first_name 사원명,j.job_title 업무명,
+--e.salary 급여, d.department_name 부서명
+--from employees e JOIN departments d ON e.department_id = d.department_id
+--JOIN jobs j ON j.job_id = e.job_id AND job_title LIKE '%Manager' AND
+--e.salary>=8000
+--order by e.employee_id asc;
+
+
+--JAVA JDBC 연동계정
+CREATE TABLE TEST
+(
+  NUM NUMBER NOT NULL 
+, NAME VARCHAR2(20) NOT NULL 
+, AGE NUMBER NOT NULL 
+, CONSTRAINT TEST__PK PRIMARY KEY 
+  (
+    NUM 
+  )
+  ENABLE 
+);
+-------------------------------------------------------------------------------
+
+--Data Insert
+--INSERT INTO 테이블(칼럼명들) VALUES(값들);--기본뼈대
+INSERT INTO TEST(NUM,NAME,AGE) VALUES(1,'kim1',11);
+INSERT INTO TEST(NUM,NAME,AGE) VALUES(2,'kim1',11);
+--INSERT INTO TEST_TABLE(NUM,NAME,AGE) VALUES(3,'',11); --공간에 아무것도 안 넣어도 NULL로 인식해서 오류
+INSERT INTO TEST(NUM,NAME,AGE) VALUES(3,'kim3',11);
+INSERT INTO TEST(NUM,NAME,AGE) VALUES(4,'kim4',44);
+
+Select * from test;
+
+Select * from test where num=1;
+
+---------------------------------------------------------------------------------
+--1.사원 테이블과 부서 테이블을 조인하여 모든 사원ID,사원이름,급여,부서명을
+--출력하라. (부서명 내림차순 정렬) 을 이클립스에서 실행하라
+
+Select e.employee_id , e.first_name, e.last_name, e.salary, e.hire_date ,d.department_name
+From employees e left outer join departments d
+on (e.department_id=d.department_id)
+order by e.employee_id desc;
+
+select count(*) as cnt from employees;
+
+--emp job join?
+
+Select e.employee_id , e.first_name, e.last_name, e.salary, e.hire_date ,j.job_title
+From employees e join jobs j
+on (e.job_id=j.job_id)
+order by e.employee_id desc;
+

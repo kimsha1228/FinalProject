@@ -50,7 +50,7 @@ public class Ex01 {
 		
 		//커스텀 자료형 가져와서 해쉬셋으로 집어넣어보기
 		HashSet<Data> dataSet=new HashSet<Data>();
-		dataSet.add(new Data(1, 2));
+		dataSet.add(new Data(11, 22));
 		dataSet.add(new Data(11, 22));
 		dataSet.add(new Data(100, 200));
 		System.out.println(dataSet.toString());
