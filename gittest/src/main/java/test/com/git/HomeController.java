@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 
-	log.info("merge test");
+	log.info("merge test 아 왜 안 돼");
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
