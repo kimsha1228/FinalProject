@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * Handles requests for the application home page.
  */
+@sl4fj
 @Controller
 public class HomeController {
-	
+
+	log.info("merge test 아 왜 안 돼");
+	log.info("아아아아아아아아아아 어떻게 하는 겨");
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
