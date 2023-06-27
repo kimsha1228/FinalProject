@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test.com.git.activity">
+	<select id="ACT_SELECT_ALL" resultType="test.com.git.activity.model.ActivityVO">
+		select * from ACTIVITY order by num desc
+	</select>
+	
+	<select id="ACT_SELECT_ONE" resultType="test.com.git.activity.model.ActivityVO">
+		select * from ACTIVITY where num = #{num}
+	</select>
+	
+	
+	<select id="ACT_SEARCH_LIST_TITLE" resultType="test.com.git.activity.model.ActivityVO">
+		select * from ACTIVITY where title like #{searchWord}
+	</select>
+	
+	<select id="ACT_SEARCH_LIST_PRODUCER" resultType="test.com.git.activity.model.ActivityVO">
+		select * from ACTIVITY where producer like #{searchWord} 
+	</select>
+	
+	
+	
+	<insert id="ACT_INSERT" parameterType="test.com.git.activity.model.ActivityVO">
+		INSERT INTO "ACTIVITY" ("ID", "ACT_NAME", "CONTENT", "RATE", "VCOUNT", "TAG", "ADD", "PRICE", "SELLER_ID", "DEST_ID")
+		VALUES (SEQ_ACTIVITY.nextval, 'City Tour', 'Explore the city and its famous landmarks on a guided tour.', 0, 50, 'Sightseeing, Culture', 'Seoul', 1, 'seller01', 1);
+	</insert>
+	
+	<update id="ACT_UPDATE" parameterType="test.com.git.activity.model.ActivityVO">
+		update ACTIVITY set title=#{title} , price=#{price} , 
+				producer=#{producer} , save_name=#{save_name}
+		where num = #{num}
+	</update>
+	
+	<delete id="ACT_DELETE">
+		delete from ACTIVITY where id = #{id}
+	</delete>
+	
+</mapper>
