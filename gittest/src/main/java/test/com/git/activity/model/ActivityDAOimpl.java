@@ -28,7 +28,7 @@ public class ActivityDAOimpl implements ActivityDAO {
 
 	@Override
 	public int update(ActivityVO vo) {
-		return 0;
+		return sqlSession.update("ACT_UPDATE",vo);
 	}
 
 	@Override

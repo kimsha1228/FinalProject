@@ -88,17 +88,37 @@ public class ActivityController {
 	}
 
 	@RequestMapping(value = "/updateAct.do", method = RequestMethod.GET)
-	public String updateAct() {
-		return "test/Activity_test";
+	public String updateAct(ActivityVO vo, Model model) {
+		log.info("/updateAct.do...{}", vo);
+
+		ActivityVO vo2 = service.selectOne(vo);
+
+		model.addAttribute("vo2", vo2);
+		
+		return "activity/updateAct";
 	}
 
-	@RequestMapping(value = "/updateActOk.do", method = RequestMethod.GET)
-	public String updateActOK() {
-		return "test/Activity_test";
+	@RequestMapping(value = "/updateActOk.do", method = RequestMethod.POST)
+	public String updateActOk(ActivityVO vo) {
+		log.info("/updateActOk.do...{}", vo);
+
+		int result = service.update(vo);
+
+		// TODO: 파일 업데이트가 되려나 ACT_ID가 필요하므로 여기는 나중에
+		
+		
+		
+		
+		
+		if (result == 1) {
+			return "redirect:selectOneAct.do?id="+vo.getId();
+		} else {
+			return "redirect:updateAct.do?id="+vo.getId();
+		}
 	}
 
 	@RequestMapping(value = "/deleteActOk.do", method = RequestMethod.GET)
-	public String deleteActOK() {
+	public String deleteActOk() {
 		return "test/Activity_test";
 	}
 
