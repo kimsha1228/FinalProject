@@ -48,8 +48,8 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="5"><a href="updateACT.do?id=${param.id}">상품수정</a>
-					<a href="deleteACTOK.do?id=${param.id}">상품삭제</a></td>
+				<td colspan="5"><a href="updateAct.do?id=${param.id}">상품수정</a>
+					<a href="deleteActOK.do?id=${param.id}">상품삭제</a></td>
 			</tr>
 		</tfoot>
 	</table>

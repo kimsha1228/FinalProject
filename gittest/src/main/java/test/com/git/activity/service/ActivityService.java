@@ -29,5 +29,9 @@ public class ActivityService {
 	public ActivityVO selectOne(ActivityVO vo) {
 		return dao.selectOne(vo);
 	}
+
+	public int update(ActivityVO vo) {
+		return dao.update(vo);
+	}
 	
 }
