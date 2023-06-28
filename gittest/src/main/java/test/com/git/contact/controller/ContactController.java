@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -18,19 +19,21 @@ public class ContactController {
 	ContactService service;
 	
 	@RequestMapping(value = "/c_selectAll.do", method = RequestMethod.GET)
-	public String c_selectAll() {
+	public String c_selectAll(Model model) {
 		log.info("/c_selectAll.do");
 		
 		List<ContactVO> vos = service.selectAll();
+		model.addAttribute("vos", vos);
 		
 		return "contact/selectAll";
 	}
 	
 	@RequestMapping(value = "/c_selectOne.do", method = RequestMethod.GET)
-	public String c_selectOne(ContactVO vo) {
+	public String c_selectOne(ContactVO vo, Model model) {
 		log.info("/c_selectOne.do....{}", vo);
 		
 		ContactVO vo2 = service.selectOne(vo);
+		model.addAttribute("vo2", vo2);
 		
 		return "contact/selectOne";
 	}

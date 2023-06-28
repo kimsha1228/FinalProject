@@ -12,11 +12,11 @@ public class ContactVO {
 	public int num;
 	public String title;
 	public String content;
-	public Date date;
-	public String attachImg;
+	public Date con_date;
+	public String attach_img;
 	public MultipartFile file;
-	public String userId;
-	public String sellerId;
-	public int actNum;
-	public String actName;
+	public String user_id;
+	public String seller_id;
+	public int act_id;
+	public String act_name;
 }
