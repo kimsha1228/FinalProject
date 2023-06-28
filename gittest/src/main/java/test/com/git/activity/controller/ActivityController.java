@@ -25,10 +25,10 @@ public class ActivityController {
 		return "activity/insertAct";
 	}
 
-	@RequestMapping(value = "/insertActOk.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/insertActOk.do", method = RequestMethod.POST)
 	public String insertActOK(ActivityVO vo) {
 		log.info("insertActOK에서 온 데이터:{}",vo);
-		return "test/Activity_test";
+		return "activity/insertAct";
 	}
 
 	@RequestMapping(value = "/updateAct.do", method = RequestMethod.GET)
