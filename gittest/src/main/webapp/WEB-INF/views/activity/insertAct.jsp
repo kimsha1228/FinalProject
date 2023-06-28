@@ -14,11 +14,10 @@
 		<table>
 			<tr>
 				<td>
-					<label for="destID">여행지명:</label>
+					<label for="dest_id">여행지명:</label>
 				</td>
 				<td>
-
-					<select id="destID" name="destID">
+					<select id="dest_id" name="dest_id">
 						  <option value="1">서울</option>
 						  <option value="2">제주</option>
 						  <option value="3" selected>경기도</option>
@@ -26,8 +25,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td><label for="actName">상품 이름:</label></td>
-				<td><input type="text" id="actName" name="actName"
+				<td><label for="act_name">상품 이름:</label></td>
+				<td><input type="text" id="act_name" name="act_name"
 					value="에버랜드 종일 자유이용권"></td>
 			</tr>
 			<tr>
@@ -52,11 +51,11 @@
 				</td>
 			</tr>
 			<tr>
-				<td>작성자는 seller01이라 가정<input type="hidden" id="sellerId"
-					name="sellerId" value="seller01"></td>
+				<td>작성자는 seller01이라 가정<input type="hidden" id="seller_id"
+					name="seller_id" value="seller01"></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" class="myButton"></td>
+				<td colspan="2"><input type="submit" class="act_button"></td>
 			</tr>
 		</table>
 	</form>
