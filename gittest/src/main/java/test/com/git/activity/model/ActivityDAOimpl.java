@@ -1,6 +1,8 @@
 package test.com.git.activity.model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +42,9 @@ public class ActivityDAOimpl implements ActivityDAO {
 	}
 
 	@Override
-	public List<ActivityVO> selectAll(ActivityVO vo) {
-		return null;
+	public List<ActivityVO> selectAll(String seller_id) {
+		log.info("selectAll..{}",seller_id);
+		return sqlSession.selectList("ACT_SELECT_ALL",seller_id);
 	}
 
 	@Override
@@ -54,9 +57,15 @@ public class ActivityDAOimpl implements ActivityDAO {
 		return null;
 	}
 
+
 	@Override
-	public List<ActivityVO> searchList(String searchKey, String searchWord) {
-		return null;
+	public List<ActivityVO> searchList(String seller_id, String searchKey, String searchWord) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("searchWord", "%"+searchWord+"%");
+		map.put("searchKey", searchKey);
+		map.put("seller_id", seller_id);
+		log.info(map.toString());
+		return sqlSession.selectList("ACT_SEARCH_LIST", map);
 	}
 
 }

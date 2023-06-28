@@ -1,6 +1,7 @@
 package test.com.git.activity.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.ServletContext;
@@ -49,6 +50,12 @@ public class ActivityController {
 		log.info("insertActOK로 온 데이터:{}", vo);
 		log.info("file의 갯수 1이면 파일이 있을수도 없을수도 있음:{}", vo.getFile().size());
 
+		int result = service.insert(vo);
+		if(result==1) {
+			log.info("Insert쿼리 성공!");
+		}else {
+			log.info("Insert쿼리 실패..");
+		}
 		
 //		//파일이 없으면 default.png를 대신 image테이블에 넣을 예정
 //		if (vo.getFile().get(0).getSize()==0) {
@@ -72,12 +79,6 @@ public class ActivityController {
 //				//TODO: ACT_ID가 필요하므로 여기는 나중엔
 //			}
 //		}
-		int result = service.insert(vo);
-		if(result==1) {
-			log.info("Insert쿼리 성공!");
-		}else {
-			log.info("Insert쿼리 실패..");
-		}
 
 		if (result == 1) {
 			return "redirect:selectAllAct.do";
@@ -103,8 +104,14 @@ public class ActivityController {
 	}
 
 	@RequestMapping(value = "/selectAllAct.do", method = RequestMethod.GET)
-	public String selectAllAct(Locale locale, Model model) {
-		return "test/Activity_test";
+	public String selectAllAct(String seller_id, Model model) {
+		log.info("/selectAllAct.do..{}님의 찾을 상품목록을 찾습니다",seller_id);
+
+		List<ActivityVO> vos = service.selectAll(seller_id);
+
+		model.addAttribute("vos", vos);
+
+		return "activity/selectAllAct";
 	}
 
 	@RequestMapping(value = "/selectOneAct.do", method = RequestMethod.GET)

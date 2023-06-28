@@ -5,7 +5,8 @@
 
 <mapper namespace="test.com.git.activity">
 	<select id="ACT_SELECT_ALL" resultType="test.com.git.activity.model.ActivityVO">
-		select * from ACTIVITY order by num desc
+		select * from ACTIVITY
+		where seller_id = #{seller_id} order by id desc
 	</select>
 	
 	<select id="ACT_SELECT_ONE" resultType="test.com.git.activity.model.ActivityVO">
@@ -13,15 +14,9 @@
 	</select>
 	
 	
-	<select id="ACT_SEARCH_LIST_TITLE" resultType="test.com.git.activity.model.ActivityVO">
-		select * from ACTIVITY where title like #{searchWord}
+	<select id="ACT_SEARCH_LIST" resultType="test.com.git.activity.model.ActivityVO">
+		select * from ACTIVITY where seller_id = #{seller_id} and ${searchKey} like #{searchWord}
 	</select>
-	
-	<select id="ACT_SEARCH_LIST_PRODUCER" resultType="test.com.git.activity.model.ActivityVO">
-		select * from ACTIVITY where producer like #{searchWord} 
-	</select>
-	
-	
 	
 	<insert id="ACT_INSERT" parameterType="test.com.git.activity.model.ActivityVO">
 		INSERT INTO ACTIVITY ("ID", "ACT_NAME", "CONTENT", "RATE", "VCOUNT", "TAG", "ADD", "PRICE", "SELLER_ID", "DEST_ID")
