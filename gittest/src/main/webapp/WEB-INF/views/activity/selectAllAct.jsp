@@ -7,7 +7,7 @@
 <title>상품목록</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/selectAllAct.js"></script>
+<script type="text/javascript" src="resources/js/activity/selectAllAct.js"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>

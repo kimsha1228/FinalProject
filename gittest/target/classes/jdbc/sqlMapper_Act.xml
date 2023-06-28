@@ -10,7 +10,7 @@
 	</select>
 	
 	<select id="ACT_SELECT_ONE" resultType="test.com.git.activity.model.ActivityVO">
-		select * from ACTIVITY where num = #{num}
+		select * from ACTIVITY where id = #{id}
 	</select>
 	
 	

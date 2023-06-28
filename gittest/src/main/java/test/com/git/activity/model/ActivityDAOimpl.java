@@ -54,7 +54,7 @@ public class ActivityDAOimpl implements ActivityDAO {
 
 	@Override
 	public ActivityVO selectOne(ActivityVO vo) {
-		return null;
+		return sqlSession.selectOne("ACT_SELECT_ONE", vo);
 	}
 
 

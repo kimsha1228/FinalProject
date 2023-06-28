@@ -1,7 +1,6 @@
 package test.com.git.activity.controller;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.ServletContext;
@@ -22,17 +21,17 @@ import test.com.git.image.service.ImageService;
 @Slf4j
 @Controller
 public class ActivityController {
-	
+
 	@ExceptionHandler(DuplicateKeyException.class)
 	public String insertActOK_exception() {
 		log.info("제목이 중복된다 DuplicateKeyException");
 		return "activity/insertAct";
 	}
-		
+
 	@Autowired
 	ActivityService service;
-	
-	//이미지 테이블 업로드용 서비스
+
+	// 이미지 테이블 업로드용 서비스
 	@Autowired
 	ImageService imgService;
 
@@ -44,20 +43,20 @@ public class ActivityController {
 		log.info("insertAct.jsp로 이동");
 		return "activity/insertAct";
 	}
-	
+
 	@RequestMapping(value = "/insertActOk.do", method = RequestMethod.POST)
 	public String insertActOK(ActivityVO vo) throws IllegalStateException, IOException {
 		log.info("insertActOK로 온 데이터:{}", vo);
 		log.info("file의 갯수 1이면 파일이 있을수도 없을수도 있음:{}", vo.getFile().size());
 
 		int result = service.insert(vo);
-		if(result==1) {
+		if (result == 1) {
 			log.info("Insert쿼리 성공!");
-		}else {
+		} else {
 			log.info("Insert쿼리 실패..");
 		}
-		
-		//TODO: ACT_ID가 필요하므로 여기는 나중에
+
+		// TODO: ACT_ID가 필요하므로 여기는 나중에
 //		//파일이 없으면 default.png를 대신 image테이블에 넣을 예정
 //		if (vo.getFile().get(0).getSize()==0) {
 //			log.info("파일이 비었어");
@@ -105,18 +104,20 @@ public class ActivityController {
 
 	@RequestMapping(value = "/selectAllAct.do", method = RequestMethod.GET)
 	public String selectAllAct(String seller_id, Model model) {
-		log.info("/selectAllAct.do..{}님의 찾을 상품목록을 찾습니다",seller_id);
-
-//		List<ActivityVO> vos = service.selectAll(seller_id);
-//		log.info("{}",vos);
-//		model.addAttribute("vos", vos);
+		log.info("/selectAllAct.do..{}님의 찾을 상품목록을 찾습니다", seller_id);
 
 		return "activity/selectAllAct";
 	}
 
 	@RequestMapping(value = "/selectOneAct.do", method = RequestMethod.GET)
-	public String selectOneAct(Locale locale, Model model) {
-		return "test/Activity_test";
+	public String selectOneAct(ActivityVO vo, Model model) {
+		log.info("/m_selectOne.do...{}", vo);
+
+		ActivityVO vo2 = service.selectOne(vo);
+
+		model.addAttribute("vo2", vo2);
+
+		return "activity/selectOneAct";
 	}
 
 	@RequestMapping(value = "/selectAllUserAct.do", method = RequestMethod.GET)
@@ -127,11 +128,6 @@ public class ActivityController {
 	@RequestMapping(value = "/selectOneUserAct.do", method = RequestMethod.GET)
 	public String selectOneUserAct(Locale locale, Model model) {
 		// vcountUpAct도 필요
-		return "test/Activity_test";
-	}
-
-	@RequestMapping(value = "/searchAct.do", method = RequestMethod.GET)
-	public String searchAct(Locale locale, Model model) {
 		return "test/Activity_test";
 	}
 

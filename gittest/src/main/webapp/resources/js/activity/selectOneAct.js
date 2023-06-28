@@ -1,9 +1,10 @@
 window.onload = function(){
+	console.log('');
 	//2. jquery AJAX
 	$.ajax({
 		url:"jsonSelectAllAct.do",
 		//추후 세션의 user_id로 변경 될 예정
-		data:{seller_id:'${param.seller_id}'},
+		data:{seller_id:'seller01'},
 		dataType:'json',
 		success:function(response){
 			console.log('ajax...success:',response);
@@ -13,18 +14,18 @@ window.onload = function(){
 				tag_vos+=`
 				<tr>
  					<td>				
- 						<a href="selectOneAct.do?id=\${vo.id}">\${vo.id}</a>
+ 						<a href="selectOneAct.do?id=${vo.id}">${vo.id}</a>
  					</td>
- 					<td>\${vo.act_name}</td>
- 					<td>\${vo.content}</td>
- 					<td>\${vo.rate}</td>
- 					<td>\${vo.vcount}</td>
- 					<td>\${vo.tag}</td>
- 					<td>\${vo.add}</td>
- 					<td>\${vo.price}</td>
- 					<td>\${vo.act_date}</td>
- 					<td>\${vo.seller_id}</td>
- 					<td>\${vo.dest_id}</td>
+ 					<td>${vo.act_name}</td>
+ 					<td>${vo.content}</td>
+ 					<td>${vo.rate}</td>
+ 					<td>${vo.vcount}</td>
+ 					<td>${vo.tag}</td>
+ 					<td>${vo.add}</td>
+ 					<td>${vo.price}</td>
+ 					<td>${vo.act_date}</td>
+ 					<td>${vo.seller_id}</td>
+ 					<td>${vo.dest_id}</td>
  				</tr>
 				`;
 			}
@@ -39,12 +40,13 @@ window.onload = function(){
 };//end onload
 
 function searchList(){
+	
 	console.log("searchList()...",$('#searchKey').val(),$('#searchWord').val());
 	
 	$.ajax({
 		url:"jsonSearchAct.do",
 		data:{
-			seller_id:'${param.seller_id}',
+			seller_id:'seller01',
 			searchKey:$('#searchKey').val(),
 			searchWord:$('#searchWord').val(),
 			},
@@ -60,18 +62,18 @@ function searchList(){
 				tag_vos+=`
 					<tr>
  					<td>				
- 						<a href="selectOneAct.do?id=\${vo.id}">\${vo.id}</a>
+ 						<a href="selectOneAct.do?id=${vo.id}">${vo.id}</a>
  					</td>
- 					<td>\${vo.act_name}</td>
- 					<td>\${vo.content}</td>
- 					<td>\${vo.rate}</td>
- 					<td>\${vo.vcount}</td>
- 					<td>\${vo.tag}</td>
- 					<td>\${vo.add}</td>
- 					<td>\${vo.price}</td>
- 					<td>\${vo.act_date}</td>
- 					<td>\${vo.seller_id}</td>
- 					<td>\${vo.dest_id}</td>
+ 					<td>${vo.act_name}</td>
+ 					<td>${vo.content}</td>
+ 					<td>${vo.rate}</td>
+ 					<td>${vo.vcount}</td>
+ 					<td>${vo.tag}</td>
+ 					<td>${vo.add}</td>
+ 					<td>${vo.price}</td>
+ 					<td>${vo.act_date}</td>
+ 					<td>${vo.seller_id}</td>
+ 					<td>${vo.dest_id}</td>
  				</tr>
 				`;
 			}

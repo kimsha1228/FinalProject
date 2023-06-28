@@ -25,5 +25,9 @@ public class ActivityService {
 	public List<ActivityVO> searchAct(String seller_id, String searchKey, String searchWord) {
 		return dao.searchList(seller_id,searchKey, searchWord);
 	}
+
+	public ActivityVO selectOne(ActivityVO vo) {
+		return dao.selectOne(vo);
+	}
 	
 }
