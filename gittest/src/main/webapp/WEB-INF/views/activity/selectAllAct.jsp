@@ -7,58 +7,16 @@
 <title>상품목록</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="text/javascript">
-
-$(function(){
-	$.ajax({
-// 		url : "mongo_findAll.do",
-		url : "mongo_findAll_doc.do",
-		data:{},
-		method:'GET',
-		dataType:'json',
-		success : function(arr) {
-			console.log('ajax...success:', arr);
-			let vos = ``;
-			$.each(arr,function(index,vo){
-				console.log(index,vo);
-// 				let regdate = new Date(vo._id.date).toLocaleString();
-// 				vos += `
-// 					<tr>
-// 						<td><a href="mongo_selectOne.do?mid=\${vo._id}">\${index+1}</a></td>
-// 						<td>\${vo.id}</td>
-// 						<td>\${vo.pw}</td>
-// 						<td>\${vo.name}</td>
-// 						<td>\${vo.tel}</td>
-// 						<td>\${regdate}</td>
-// 					</tr>
-// 				`;
-				
-			});
-			$('#vos').html(vos);
-		},
-		error:function(xhr,status,error){
-			console.log('xhr.status:', xhr.status);
-		}
-	});//end $.ajax()...
-	
-	
-});
-
-</script>
+<script type="text/javascript" src="resources/js/selectAllAct.js"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>상품목록(seller01이라 가정)</h1>
 	
-	<div style="padding:5px">
-		<form action="searchAct.do">
-			<select name="searchKey" id="searchKey">
-				<option value="act_name">act_name</option>
-			</select>
-			<input type="text" name="searchWord" id="searchWord" value="에버랜드">
-			<input type="submit" value="검색">
-		</form>
-	</div>
+	<label for="searchWord">상품 이름</label>
+	<input type="hidden" name="searchKey" id="searchKey" value="act_name">
+	<input type="text" name="searchWord" id="searchWord">
+	<button class="myButton" onclick="searchList()" >검색</button>
 
 	<table>
 	<thead>

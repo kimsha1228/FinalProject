@@ -28,7 +28,7 @@ public class ActivityController {
 		log.info("제목이 중복된다 DuplicateKeyException");
 		return "activity/insertAct";
 	}
-	
+		
 	@Autowired
 	ActivityService service;
 	
@@ -57,6 +57,7 @@ public class ActivityController {
 			log.info("Insert쿼리 실패..");
 		}
 		
+		//TODO: ACT_ID가 필요하므로 여기는 나중에
 //		//파일이 없으면 default.png를 대신 image테이블에 넣을 예정
 //		if (vo.getFile().get(0).getSize()==0) {
 //			log.info("파일이 비었어");
@@ -76,7 +77,6 @@ public class ActivityController {
 //				vos.transferTo(f);
 //				
 //				ImageVO imageVO = new ImageVO();
-//				//TODO: ACT_ID가 필요하므로 여기는 나중엔
 //			}
 //		}
 
@@ -107,9 +107,9 @@ public class ActivityController {
 	public String selectAllAct(String seller_id, Model model) {
 		log.info("/selectAllAct.do..{}님의 찾을 상품목록을 찾습니다",seller_id);
 
-		List<ActivityVO> vos = service.selectAll(seller_id);
-
-		model.addAttribute("vos", vos);
+//		List<ActivityVO> vos = service.selectAll(seller_id);
+//		log.info("{}",vos);
+//		model.addAttribute("vos", vos);
 
 		return "activity/selectAllAct";
 	}
