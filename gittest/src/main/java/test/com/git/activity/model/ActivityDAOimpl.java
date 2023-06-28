@@ -21,7 +21,7 @@ public class ActivityDAOimpl implements ActivityDAO {
 	
 	@Override
 	public int insert(ActivityVO vo) {
-		return 0;
+		return sqlSession.insert("ACT_INSERT",vo);
 	}
 
 	@Override

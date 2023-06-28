@@ -24,8 +24,8 @@
 	
 	
 	<insert id="ACT_INSERT" parameterType="test.com.git.activity.model.ActivityVO">
-		INSERT INTO "ACTIVITY" ("ID", "ACT_NAME", "CONTENT", "RATE", "VCOUNT", "TAG", "ADD", "PRICE", "SELLER_ID", "DEST_ID")
-		VALUES (SEQ_ACTIVITY.nextval, 'City Tour', 'Explore the city and its famous landmarks on a guided tour.', 0, 50, 'Sightseeing, Culture', 'Seoul', 1, 'seller01', 1);
+		INSERT INTO ACTIVITY ("ID", "ACT_NAME", "CONTENT", "RATE", "VCOUNT", "TAG", "ADD", "PRICE", "SELLER_ID", "DEST_ID")
+		VALUES (SEQ_ACTIVITY.nextval, #{act_name}, #{content}, 0, 0, #{tag}, #{add}, #{price}, #{seller_id}, #{dest_id})
 	</insert>
 	
 	<update id="ACT_UPDATE" parameterType="test.com.git.activity.model.ActivityVO">
