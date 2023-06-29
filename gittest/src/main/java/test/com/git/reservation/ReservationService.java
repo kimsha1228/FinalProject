@@ -1,7 +1,5 @@
 package test.com.git.reservation;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,15 +13,7 @@ public class ReservationService {
 	ReservationDAO dao;
 
 	public ReservationService() {
-		log.info("MovieService()...");
-	}
-
-	public List<ReservationVO> selectAll() {
-		return dao.selectAll();
-	}
-
-	public ReservationVO selectOne(ReservationVO vo) {
-		return dao.selectOne(vo);
+		log.info("ReservationService()...");
 	}
 
 	public int insert(ReservationVO vo) {
@@ -34,12 +24,4 @@ public class ReservationService {
 		return dao.update(vo);
 	}
 
-	public int delete(ReservationVO vo) {
-		return dao.delete(vo);
-	}
-
-
-	public List<ReservationVO> searchList(String searchKey, String searchWord) {
-		return dao.searchList(searchKey,searchWord);
-	}
 }

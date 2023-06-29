@@ -1,22 +1,19 @@
 package test.com.git.reservation;
 
-import java.sql.Date;
-
-import org.springframework.web.multipart.MultipartFile;
-
 import lombok.Data;
 
 @Data
 public class ReservationVO {
 
-	private int num;
-	private int price;
-	private int quantity;
-	private int price_final;
-	private int isCommented;
-	private int isCanceled;
+	private int id;
 	private int act_id;
+	private String res_date;
+	private int quantity;
+	private int price;
+	private int price_total;
+	private int price_final;
+	private int iscommented;
+	private int iscanceled;
 	private String user_id;
-	private Date date;
 	
 }

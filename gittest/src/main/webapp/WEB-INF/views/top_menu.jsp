@@ -3,5 +3,5 @@
 <ul>
 	<li><a href="home.do">HOME</a></li>
 
-	<li><a href="rest_api.do">REST_API</a></li>
+	<li><a href="reservation_api.do">reservation test</a></li>
 </ul>
