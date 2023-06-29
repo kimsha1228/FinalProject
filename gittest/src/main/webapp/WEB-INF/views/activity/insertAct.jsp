@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>insert</title>
+<title>상품 작성</title>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>액티비티 작성</h1>
+	<h1>상품 작성</h1>
 
 	<form action="insertActOk.do" method="post" enctype="multipart/form-data">
 		<table>
@@ -54,8 +54,9 @@
 				<input type="file" name="file" multiple id="multiplefiles"></td>
 			</tr>
 			<tr>
-				<td>작성자는 seller01이라 가정<input type="hidden" id="seller_id"
-					name="seller_id" value="seller01"></td>
+				<td>작성자는 현재 ${user_id}
+					<input type="hidden" id="seller_id" name="seller_id" value="${user_id}">
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" class="act_button"></td>

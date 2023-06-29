@@ -4,20 +4,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품목록</title>
+<title>홈 상품 검색</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script>
-	let user_id = '<%= session.getAttribute("user_id") %>';
-	console.log("현재 로그인 되어있는 아이디:",user_id);
-</script>
-<script type="text/javascript" src="resources/js/activity/selectAllAct.js"></script>
+<script type="text/javascript" src="resources/js/activity/searchActHome.js"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>상품목록</h1>
+	<h1>홈 상품 검색</h1>
 	
-	<label for="searchWord">상품 이름</label>
+	<p id="searchresult"></p>
+
+	<label for="searchWord">상품 검색</label>
 	<input type="hidden" name="searchKey" id="searchKey" value="act_name">
 	<input type="text" name="searchWord" id="searchWord">
 	<button class="myButton" onclick="searchList()" >검색</button>

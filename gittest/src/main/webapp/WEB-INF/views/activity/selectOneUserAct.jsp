@@ -7,12 +7,19 @@
 <title>상품 정보</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/activity/selectOneAct.js"></script>
+<script>
+	let user_id = '<%= session.getAttribute("user_id") %>';
+	console.log("현재 로그인 되어있는 아이디:",user_id);
+</script>
+<script type="text/javascript" src="resources/js/activity/selectOneUserAct.js"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>상품 정보</h1>
 
+	<span id="imageList">
+    	
+    </span>
 	<table>
 		<thead>
 			<tr>
@@ -43,16 +50,18 @@
 				<td>${vo2.seller_id}</td>
 				<td>${vo2.dest_id}</td>
 			</tr>
+			<tr>
+				<td><button onclick="copyLink()">공유</button></td>
+				<td><button onclick="addWish('${user_id}')">♥</button></td>
+			</tr>
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="5"><a href="updateAct.do?id=${param.id}">상품수정</a>
-					<a href="deleteActOk.do?id=${param.id}">상품삭제</a></td>
 			</tr>
 		</tfoot>
 	</table>
-	    <ul id="imageList">
-    	
-    </ul>
+	<div id="OneComment">
+	뭔가 댓글이 여기에 출력됨
+	</div>
 </body>
 </html>
