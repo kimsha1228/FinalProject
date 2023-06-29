@@ -18,20 +18,11 @@ public class ImageService {
 		return dao.insert(vo);
 	}
 	
-	public int deleteCom(ImageVO vo) {
-		return dao.deleteCom(vo);
-	}
-	
-	public int deleteAct(ImageVO vo) {
-		return dao.deleteAct(vo);
+	public int delete(ImageVO vo) {
+		return dao.delete(vo);
 	}
 
-	public List<ImageVO> selectAllCom(ImageVO vo) {
-		return dao.selectAllCom(vo);
+	public List<ImageVO> selectAll(ImageVO vo) {
+		return dao.selectAll(vo);
 	}
-	
-	public List<ImageVO> selectAllAct(ImageVO vo) {
-		return dao.selectAllAct(vo);
-	}
-	
 }
