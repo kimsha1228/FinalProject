@@ -4,7 +4,6 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 import java.util.Locale;
 
 import javax.imageio.ImageIO;
@@ -18,7 +17,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.filter.Log4jNestedDiagnosticContextFilter;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.extern.slf4j.Slf4j;
@@ -237,8 +235,10 @@ public class ActivityController {
 	}
 
 	@RequestMapping(value = "/searchActHome.do", method = RequestMethod.GET)
-	public String searchActHome(Locale locale, Model model) {
-		return "test/Activity_test";
+	public String searchActHome() {
+		log.info("/searchActHome.do..");
+
+		return "activity/searchActHome";
 	}
 
 }

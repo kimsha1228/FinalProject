@@ -77,7 +77,11 @@ public class ActivityDAOimpl implements ActivityDAO {
 		map.put("searchKey", searchKey);
 		map.put("seller_id", seller_id);
 		log.info(map.toString());
-		return sqlSession.selectList("ACT_SEARCH_LIST", map);
+		if(map.get(seller_id) != null) {
+			return sqlSession.selectList("ACT_SEARCH_LIST", map);
+		}else {
+			return sqlSession.selectList("ACT_SEARCH_LIST_USER", map);
+		}
 	}
 
 }

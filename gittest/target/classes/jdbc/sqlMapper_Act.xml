@@ -22,6 +22,10 @@
 		select * from ACTIVITY where seller_id = #{seller_id} and ${searchKey} like #{searchWord}
 	</select>
 	
+	<select id="ACT_SEARCH_LIST_USER" resultType="test.com.git.activity.model.ActivityVO">
+		select * from ACTIVITY where ${searchKey} like #{searchWord}
+	</select>
+	
 	<insert id="ACT_INSERT" parameterType="test.com.git.activity.model.ActivityVO">
 		INSERT INTO ACTIVITY ("ID", "ACT_NAME", "CONTENT", "RATE", "VCOUNT", "TAG", "ADD", "PRICE", "SELLER_ID", "DEST_ID")
 		VALUES (SEQ_ACTIVITY.nextval, #{act_name}, #{content}, 0, 0, #{tag}, #{add}, #{price}, #{seller_id}, #{dest_id})
