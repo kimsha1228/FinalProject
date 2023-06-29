@@ -23,11 +23,14 @@ public class ActivityDAOimpl implements ActivityDAO {
 	
 	@Override
 	public int insert(ActivityVO vo) {
+		log.info("insert! {}",vo);
 		return sqlSession.insert("ACT_INSERT",vo);
 	}
 
 	@Override
 	public int update(ActivityVO vo) {
+		log.info("update! {}",vo);
+
 		return sqlSession.update("ACT_UPDATE",vo);
 	}
 
@@ -38,7 +41,9 @@ public class ActivityDAOimpl implements ActivityDAO {
 
 	@Override
 	public int delete(ActivityVO vo) {
-		return 0;
+		log.info("delete! {}",vo);
+
+		return sqlSession.delete("ACT_DELETE",vo);
 	}
 
 	@Override
@@ -54,7 +59,14 @@ public class ActivityDAOimpl implements ActivityDAO {
 
 	@Override
 	public ActivityVO selectOne(ActivityVO vo) {
-		return sqlSession.selectOne("ACT_SELECT_ONE", vo);
+		log.info("selectOne.. {}",vo);
+		if(vo.getId()!=0) {
+			//selectAllAct에서 넘어온 데이터용
+			return sqlSession.selectOne("ACT_SELECT_ONE", vo);
+		} else {			
+			//insertActOk후 imageVO에 넣을 act_id를 가져오기 위함
+			return sqlSession.selectOne("ACT_SELECT_ONE_BY_ACT_NAME", vo);
+		}
 	}
 
 

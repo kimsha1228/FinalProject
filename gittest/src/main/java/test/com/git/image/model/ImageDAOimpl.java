@@ -22,7 +22,13 @@ public class ImageDAOimpl implements ImageDAO {
 	@Override
 	public int insert(ImageVO vo) {
 		log.info("insert image!:{}",vo);
-		return sqlSession.insert("IMAGE_INSERT",vo);
+		
+		//comment_id가 0이 아니면 상품삽입이고 아니면 후기사진 삽입임
+		if(vo.getComment_id()==0) {
+			return sqlSession.insert("IMAGE_INSERT_ACT",vo);
+		}else {
+			return sqlSession.insert("IMAGE_INSERT_COM",vo);
+		}
 	}
 
 	@Override

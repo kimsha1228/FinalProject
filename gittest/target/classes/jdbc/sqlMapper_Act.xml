@@ -13,6 +13,10 @@
 		select * from ACTIVITY where id = #{id}
 	</select>
 	
+	<select id="ACT_SELECT_ONE_BY_ACT_NAME" resultType="test.com.git.activity.model.ActivityVO">
+		select * from ACTIVITY 
+		where seller_id = #{seller_id} and act_name = #{act_name}
+	</select>
 	
 	<select id="ACT_SEARCH_LIST" resultType="test.com.git.activity.model.ActivityVO">
 		select * from ACTIVITY where seller_id = #{seller_id} and ${searchKey} like #{searchWord}
