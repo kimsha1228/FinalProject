@@ -50,16 +50,15 @@
 				<td><input type="text" id="add" name="add"
 					value="${vo2.add}"></td>
 			</tr>
-			<!-- 여기도 이미지 관련 처리 필요 -->
 			<tr id="multiplefiles">
 				<td>
 				<input type="file" name="file" multiple id="multiplefiles"></td>
 			</tr>
 			<tr>
-				<td>작성자는 히든<input type="hidden" id="seller_id"
-					name="seller_id" value="${vo2.seller_id}">
-					<input type="hidden" id="id"
-					name="id" value="${vo2.id}"></td>
+				<td>작성자는 현재 ${vo2.seller_id}
+					<input type="hidden" id="seller_id" name="seller_id" value="${vo2.seller_id}">
+					<input type="hidden" id="id" name="id" value="${vo2.id}">
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" class="act_button"></td>
