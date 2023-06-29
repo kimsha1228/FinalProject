@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>insert</title>
+<title>상품 작성</title>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>액티비티 작성</h1>
+	<h1>상품 작성</h1>
 
 	<form action="insertActOk.do" method="post" enctype="multipart/form-data">
 		<table>
