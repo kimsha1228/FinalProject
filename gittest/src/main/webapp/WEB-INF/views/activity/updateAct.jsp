@@ -7,9 +7,6 @@
 <title>상품 업데이트</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script>
-	let act_id = ${vo2.id};
-</script>
 <script type="text/javascript" src="resources/js/activity/updateAct.js"></script>
 </head>
 <body>

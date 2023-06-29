@@ -214,7 +214,7 @@ public class ActivityController {
 
 	@RequestMapping(value = "/selectOneAct.do", method = RequestMethod.GET)
 	public String selectOneAct(ActivityVO vo, Model model) {
-		log.info("/m_selectOne.do...{}", vo);
+		log.info("/selectOneAct.do...{}", vo);
 
 		ActivityVO vo2 = service.selectOne(vo);
 
@@ -229,9 +229,16 @@ public class ActivityController {
 	}
 
 	@RequestMapping(value = "/selectOneUserAct.do", method = RequestMethod.GET)
-	public String selectOneUserAct(Locale locale, Model model) {
-		// vcountUpAct도 필요
-		return "test/Activity_test";
+	public String selectOneUserAct(ActivityVO vo, Model model) {
+		log.info("/selectOneUserAct.do...{}", vo);
+
+		ActivityVO vo2 = service.selectOne(vo);
+
+		model.addAttribute("vo2", vo2);
+
+		//TODO vcountUpAct도 필요
+		
+		return "activity/selectOneUserAct";
 	}
 
 	@RequestMapping(value = "/searchActHome.do", method = RequestMethod.GET)

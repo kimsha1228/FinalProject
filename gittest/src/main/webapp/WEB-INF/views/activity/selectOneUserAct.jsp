@@ -7,15 +7,15 @@
 <title>상품 정보</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script>
-	let act_id = ${param.id};
-</script>
-<script type="text/javascript" src="resources/js/activity/selectOneAct.js"></script>
+<script type="text/javascript" src="resources/js/activity/selectOneUserAct.js"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>상품 정보</h1>
 
+	<span id="imageList">
+    	
+    </span>
 	<table>
 		<thead>
 			<tr>
@@ -49,13 +49,8 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="5"><a href="updateAct.do?id=${param.id}">상품수정</a>
-					<a href="deleteActOk.do?id=${param.id}">상품삭제</a></td>
 			</tr>
 		</tfoot>
 	</table>
-	    <ul id="imageList">
-    	
-    </ul>
 </body>
 </html>
