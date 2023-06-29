@@ -1,10 +1,9 @@
 window.onload = function(){
-	console.log('');
 	//2. jquery AJAX
 	$.ajax({
 		url:"jsonSelectAllAct.do",
-		//추후 세션의 user_id로 변경 될 예정
-		data:{seller_id:'seller01'},
+		//세션에서 아이디를 가져온다!
+		data:{seller_id:user_id},
 		dataType:'json',
 		success:function(response){
 			console.log('ajax...success:',response);

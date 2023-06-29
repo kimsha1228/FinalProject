@@ -22,29 +22,35 @@ public class ImageDAOimpl implements ImageDAO {
 	@Override
 	public int insert(ImageVO vo) {
 		log.info("insert image!:{}",vo);
-		return sqlSession.insert("IMAGE_INSERT",vo);
+		
+		//comment_id가 0이 아니면 상품삽입이고 아니면 후기사진 삽입임
+		if(vo.getComment_id()==0) {
+			return sqlSession.insert("IMAGE_INSERT_ACT",vo);
+		}else {
+			return sqlSession.insert("IMAGE_INSERT_COM",vo);
+		}
+	}
+	@Override
+	public int delete(ImageVO vo) {
+		log.info("delete image!:{}",vo);
+		
+		//comment_id가 0이 아니면 상품사진삭제이고 아니면 후기사진 삭제임
+		if(vo.getComment_id()==0) {
+			return sqlSession.insert("IMAGE_DELETE_ACT",vo);
+		}else {
+			return sqlSession.insert("IMAGE_DELETE_COM",vo);
+		}
 	}
 
 	@Override
-	public int deleteCom(ImageVO vo) {
-		log.info("delete image of comment!:{}",vo);
-		return sqlSession.delete("IMAGE_DELETE_COM",vo);
+	public List<ImageVO> selectAll(ImageVO vo) {
+		log.info("selectAll image!:{}",vo);
+		
+		//comment_id가 0이 아니면 상품사진삭제이고 아니면 후기사진 삭제임
+		if(vo.getComment_id()==0) {
+			return sqlSession.selectList("IMAGE_SELECT_ALL_ACT",vo);
+		}else {
+			return sqlSession.selectList("IMAGE_SELECT_ALL_COM",vo);
+		}
 	}
-	@Override
-	public int deleteAct(ImageVO vo) {
-		log.info("delete image of Activity!:{}",vo);
-		return sqlSession.delete("IMAGE_DELETE_ACT",vo);
-	}
-
-	@Override
-	public List<ImageVO> selectAllCom(ImageVO vo) {
-		log.info("select image for comment:{}",vo);
-		return sqlSession.selectList("IMAGE_SELECT_ALL_COM",vo);
-	}
-	@Override
-	public List<ImageVO> selectAllAct(ImageVO vo) {
-		log.info("select image for Activity:{}",vo);
-		return sqlSession.selectList("IMAGE_SELECT_ALL_ACT",vo);
-	}
-
 }

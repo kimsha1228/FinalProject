@@ -33,5 +33,9 @@ public class ActivityService {
 	public int update(ActivityVO vo) {
 		return dao.update(vo);
 	}
+
+	public int delete(ActivityVO vo) {
+		return dao.delete(vo);
+	}
 	
 }

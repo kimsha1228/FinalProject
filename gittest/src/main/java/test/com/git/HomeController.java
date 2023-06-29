@@ -4,6 +4,9 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +18,9 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class HomeController {
 
+	@Autowired
+	HttpSession session;
+	
 	@RequestMapping(value = {"/","/home.do"}, method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		log.info("merge test 아 왜 안 돼");
@@ -34,6 +40,10 @@ public class HomeController {
 	@RequestMapping(value = "/Activity_test.do", method = RequestMethod.GET)
 	public String Activity_test(Locale locale, Model model) {
 		log.info("Activity 테스트용 jsp로 이동");
+		
+		//임시 로그인용 변수
+		session.setAttribute("user_id", "seller01");
+		
 		return "test/Activity_test";
 	}
 	

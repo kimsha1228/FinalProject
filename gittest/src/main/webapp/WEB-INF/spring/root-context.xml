@@ -39,6 +39,7 @@
 			<list>
 				<value>classpath:jdbc/sqlMapper_movie.xml</value>
 				<value>classpath:jdbc/sqlMapper_Act.xml</value>
+				<value>classpath:jdbc/sqlMapper_image.xml</value>
 			</list>
 		</property>
 	</bean>
