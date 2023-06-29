@@ -9,7 +9,7 @@
 		select * from comments order by id desc
 	</select>
 	
-	<select id="COMMENTS_SELECT_ONE" parameterType="int" resultType="test.com.git.comments.model.CommentsVO">
+	<select id="COMMENTS_SELECT_ONE" resultType="test.com.git.comments.model.CommentsVO">
 		select * from comments where id = #{id}
 	</select>
 	
