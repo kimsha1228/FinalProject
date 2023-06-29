@@ -52,7 +52,7 @@
 			</tr>
 			<tr>
 				<td><button onclick="copyLink()">공유</button></td>
-				<td><button onclick="addWish()">♥</button></td>
+				<td><button onclick="addWish('${user_id}')">♥</button></td>
 			</tr>
 		</tbody>
 		<tfoot>
@@ -60,5 +60,8 @@
 			</tr>
 		</tfoot>
 	</table>
+	<div id="OneComment">
+	뭔가 댓글이 여기에 출력됨
+	</div>
 </body>
 </html>
