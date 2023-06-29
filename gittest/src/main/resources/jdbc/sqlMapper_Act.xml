@@ -38,6 +38,11 @@
 		where ID = #{id}
 	</update>
 	
+	<update id="ACT_VCOUNTUP" parameterType="test.com.git.activity.model.ActivityVO">
+		update ACTIVITY set vcount=vcount+1
+		where ID = #{id}
+	</update>
+	
 	<delete id="ACT_DELETE">
 		delete from ACTIVITY where id = #{id}
 	</delete>

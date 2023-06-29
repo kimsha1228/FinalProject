@@ -232,12 +232,13 @@ public class ActivityController {
 	public String selectOneUserAct(ActivityVO vo, Model model) {
 		log.info("/selectOneUserAct.do...{}", vo);
 
+		service.vcountUp(vo);
+
 		ActivityVO vo2 = service.selectOne(vo);
 
 		model.addAttribute("vo2", vo2);
 
-		//TODO vcountUpAct도 필요
-		
+
 		return "activity/selectOneUserAct";
 	}
 

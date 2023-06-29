@@ -36,7 +36,7 @@ public class ActivityDAOimpl implements ActivityDAO {
 
 	@Override
 	public void updateVcount(ActivityVO vo) {
-
+		sqlSession.update("ACT_VCOUNTUP",vo);
 	}
 
 	@Override

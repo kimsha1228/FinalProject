@@ -37,5 +37,9 @@ public class ActivityService {
 	public int delete(ActivityVO vo) {
 		return dao.delete(vo);
 	}
+
+	public void vcountUp(ActivityVO vo) {
+		dao.updateVcount(vo);
+	}
 	
 }
