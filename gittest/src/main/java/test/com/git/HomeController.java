@@ -41,8 +41,8 @@ public class HomeController {
 	public String Activity_test(Locale locale, Model model) {
 		log.info("Activity 테스트용 jsp로 이동");
 		
-		//임시 로그인용 변수
-		session.setAttribute("user_id", "seller01");
+		//임시 로그인용 변수 추후 변경하거나 삭제할 예정
+		session.setAttribute("user_id", "seller02");
 		
 		return "test/Activity_test";
 	}

@@ -21,7 +21,7 @@ public class ImageDAOimpl implements ImageDAO {
 
 	@Override
 	public int insert(ImageVO vo) {
-		log.info("insert image!:{}",vo);
+		log.info("insert image into com_id:{} or act_id:{}",vo.getComment_id(),vo.getAct_id());
 		
 		//comment_id가 0이 아니면 상품삽입이고 아니면 후기사진 삽입임
 		if(vo.getComment_id()==0) {
@@ -32,7 +32,7 @@ public class ImageDAOimpl implements ImageDAO {
 	}
 	@Override
 	public int delete(ImageVO vo) {
-		log.info("delete image!:{}",vo);
+		log.info("delete image from com_id:{} or act_id:{}",vo.getComment_id(),vo.getAct_id());
 		
 		//comment_id가 0이 아니면 상품사진삭제이고 아니면 후기사진 삭제임
 		if(vo.getComment_id()==0) {
@@ -44,9 +44,9 @@ public class ImageDAOimpl implements ImageDAO {
 
 	@Override
 	public List<ImageVO> selectAll(ImageVO vo) {
-		log.info("selectAll image!:{}",vo);
+		log.info("select image for com_id:{} or act_id:{}",vo.getComment_id(),vo.getAct_id());
 		
-		//comment_id가 0이 아니면 상품사진삭제이고 아니면 후기사진 삭제임
+		//comment_id가 0이 아니면 상품사진선택이고 아니면 후기사진 선택임
 		if(vo.getComment_id()==0) {
 			return sqlSession.selectList("IMAGE_SELECT_ALL_ACT",vo);
 		}else {

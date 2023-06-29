@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Locale;
 
 import javax.imageio.ImageIO;
@@ -69,7 +70,13 @@ public class ActivityController {
 			
 			// 파일이 없으면 default.png를 대신 image테이블에 넣을 예정
 			if (vo.getFile().get(0).getSize() == 0) {
-				log.info("파일이 비었어");
+				log.info("파일이 비어있어서 default.png 삽입");
+				//이미지를 서버에 저장
+				ImageVO imageVO = new ImageVO();
+				imageVO.setName("default.png");
+				imageVO.setAct_id(vo2.getId());
+				
+				imgService.insert(imageVO);
 			} else {
 				// 파일의 갯수만큼 반복!
 				for (MultipartFile vos : vo.getFile()) {
@@ -173,9 +180,12 @@ public class ActivityController {
 		log.info("/m_selectOne.do...{}", vo);
 
 		ActivityVO vo2 = service.selectOne(vo);
-
+		ImageVO imgvo = new ImageVO();
+		imgvo.setAct_id(vo.getId());
+		List<ImageVO> imagevos = imgService.selectAll(imgvo);
+		
 		model.addAttribute("vo2", vo2);
-
+		
 		return "activity/selectOneAct";
 	}
 

@@ -15,7 +15,7 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>상품목록(seller01이라 가정)</h1>
+	<h1>상품목록</h1>
 	
 	<label for="searchWord">상품 이름</label>
 	<input type="hidden" name="searchKey" id="searchKey" value="act_name">
