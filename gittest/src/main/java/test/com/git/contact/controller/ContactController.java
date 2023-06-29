@@ -18,9 +18,9 @@ public class ContactController {
 	@Autowired
 	ContactService service;
 	
-	@RequestMapping(value = "/c_selectAll.do", method = RequestMethod.GET)
-	public String c_selectAll(Model model) {
-		log.info("/c_selectAll.do");
+	@RequestMapping(value = "/contact_selectAll.do", method = RequestMethod.GET)
+	public String contact_selectAll(Model model) {
+		log.info("/contact_selectAll.do");
 		
 		List<ContactVO> vos = service.selectAll();
 		model.addAttribute("vos", vos);
@@ -28,9 +28,9 @@ public class ContactController {
 		return "contact/selectAll";
 	}
 	
-	@RequestMapping(value = "/c_selectOne.do", method = RequestMethod.GET)
-	public String c_selectOne(ContactVO vo, Model model) {
-		log.info("/c_selectOne.do....{}", vo);
+	@RequestMapping(value = "/contact_selectOne.do", method = RequestMethod.GET)
+	public String contact_selectOne(ContactVO vo, Model model) {
+		log.info("/contact_selectOne.do....{}", vo);
 		
 		ContactVO vo2 = service.selectOne(vo);
 		model.addAttribute("vo2", vo2);
@@ -38,37 +38,37 @@ public class ContactController {
 		return "contact/selectOne";
 	}
 	
-	@RequestMapping(value = "/c_insert.do", method = RequestMethod.GET)
-		public String c_insert() {
-		log.info("/c_insert.do...");	
+	@RequestMapping(value = "/contact_insert.do", method = RequestMethod.GET)
+		public String contact_insert() {
+		log.info("/contact_insert.do...");	
 		
 		return "contact/insert";
 	}
 	
-	@RequestMapping(value = "/c_insertOK.do", method = RequestMethod.POST)
-	public String c_insertOK(ContactVO vo) {
-		log.info("/c_insertOK.do....");
+	@RequestMapping(value = "/contact_insertOK.do", method = RequestMethod.POST)
+	public String contact_insertOK(ContactVO vo) {
+		log.info("/contact_insertOK.do....");
 		
 		int result = service.insert(vo);
 		log.info("result...{}", result);
 		
 		if(result==1) {
-			return "redirect:c_selectAll.do";
+			return "redirect:contact_selectAll.do";
 		}else {
-			return "redirect:c_insert.do";
+			return "redirect:contact_insert.do";
 		}
 	}
-	@RequestMapping(value = "/deleteOK.do", method = RequestMethod.POST)
-	public String c_deleteOK(ContactVO vo) {
-		log.info("/c_deleteOK.do....{}", vo);
+	@RequestMapping(value = "/contact_deleteOK.do", method = RequestMethod.POST)
+	public String contact_deleteOK(ContactVO vo) {
+		log.info("/contact_deleteOK.do....{}", vo);
 		
 		int result = service.delete(vo);
 		log.info("result...{}", result);
 		
 		if(result==1) {
-			return "redirect:c_selectAll.do";
+			return "redirect:contact_selectAll.do";
 		}else {
-			return "redirect:c_selectOne.do?num="+vo.getNum();
+			return "redirect:contact_selectOne.do?num="+vo.getNum();
 		}
 	}
 	
