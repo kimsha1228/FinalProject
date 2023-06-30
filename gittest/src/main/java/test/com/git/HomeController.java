@@ -25,10 +25,8 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = {"/","/home.do"}, method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		log.info("merge test 아 왜 안 돼");
-		log.info("아아아아아아아아아아 어떻게 하는 겨");
 		logger.info("hihihi hello{}.", locale);
 		
 		Date date = new Date();

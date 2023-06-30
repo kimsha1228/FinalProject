@@ -72,7 +72,7 @@ $(function(){
 	function userCouponSelectAll(){
 		$.ajax({
 	 		url : "userCouponSelectAll.do",
-	 		data:{id:$('#user_id').val()},
+	 		data:{user_id:$('#user_id').val()},
 	 		method:'GET',
 	 		dataType:'json', 
 	 		success : function(vos) {

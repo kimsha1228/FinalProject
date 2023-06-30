@@ -39,6 +39,7 @@
 			<list>
 				<value>classpath:jdbc/sqlMapper_reservation.xml</value>
 				<value>classpath:jdbc/sqlMapper_users.xml</value>
+				<value>classpath:jdbc/sqlMapper_usercoupon.xml</value>
 				<value>classpath:jdbc/sqlMapper_activity.xml</value>
 			</list>
 		</property>
