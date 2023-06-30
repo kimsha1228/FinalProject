@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="balgil.com.trip.usercoupon">
+	<select id="USERCOUPON_SELECTALL" resultType="balgil.com.trip.usercoupon.model.UserCouponVO">
+		select c.code, c.name, c.expire, c.rate, c.amount from coupon c join user_coupon u 
+		on c.code = u.couponcode where user_id = #{user_id} and isused = 0
+	</select>
+</mapper>

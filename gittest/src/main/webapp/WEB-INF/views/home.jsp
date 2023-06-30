@@ -9,7 +9,11 @@
 </head>
 <body>
 	<jsp:include page="top_menu.jsp"></jsp:include>
+<<<<<<< HEAD
 	<h1>충돌 해결 완료했어 ${user_id}</h1>
+=======
+	<h1>${user_id}</h1>
+>>>>>>> refs/heads/seoha
 	<h1>${message}</h1>
 
 	<P>The time on the server is ${serverTime}.</P>

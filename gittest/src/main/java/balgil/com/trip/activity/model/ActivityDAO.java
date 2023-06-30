@@ -1,5 +1,6 @@
 package balgil.com.trip.activity.model;
 
+<<<<<<< HEAD
 import java.util.List;
 
 public interface ActivityDAO {
@@ -12,4 +13,10 @@ public interface ActivityDAO {
 	public ActivityVO selectOne(ActivityVO vo);
 	public List<ActivityVO> searchList(String seller_id, String searchKey, String searchWord);
 	public List<ActivityVO> selectRecommended();
+=======
+public interface ActivityDAO {
+
+	ActivityVO selectOne(ActivityVO vo);
+
+>>>>>>> refs/heads/seoha
 }
