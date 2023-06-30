@@ -23,8 +23,6 @@ public class HomeController {
 	
 	@RequestMapping(value = {"/","/home.do"}, method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		log.info("merge test 아 왜 안 돼");
-		log.info("아아아아아아아아아아 어떻게 하는 겨");
 		log.info("hihihi hello{}.", locale);
 		
 		Date date = new Date();
