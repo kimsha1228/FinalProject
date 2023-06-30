@@ -3,8 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="test.com.git.users">
-	<select id="USERS_SELECTONE" resultType="test.com.git.users.UsersVO">
+<mapper namespace="balgil.com.trip.users">
+	<select id="USERS_SELECTONE" resultType="balgil.com.trip.users.UsersVO">
 		select * from users where id = #{id}
 	</select>
 </mapper>

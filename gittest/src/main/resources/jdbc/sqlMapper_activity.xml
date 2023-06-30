@@ -3,8 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="test.com.git.activity">
-	<select id="ACTIVITY_SELECTONE" resultType="test.com.git.activity.ActivityVO">
+<mapper namespace="balgil.com.trip.activity">
+	<select id="ACTIVITY_SELECTONE" resultType="balgil.com.trip.activity.ActivityVO">
 		select * from activity where id = #{id}
 	</select>
 </mapper>
