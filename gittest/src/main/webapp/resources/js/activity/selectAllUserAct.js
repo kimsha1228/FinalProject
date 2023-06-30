@@ -30,6 +30,13 @@ window.onload = function(){
 			console.log('xhr.status:',xhr.status);
 	 	}
 	});//end ajax
+	
+	//테이블을 간단하게 페이징 해주는 api
+	$('#tableContainer table').DataTable({
+		//뭔가 옵션같은것들
+		
+	});
+	
 };//end onload
 
 function searchList(){
@@ -91,3 +98,6 @@ function addWish(user_id,id){
 		}
 	});//end $.ajax()...
 }
+
+//이하 페이징처리
+//end 페이징
