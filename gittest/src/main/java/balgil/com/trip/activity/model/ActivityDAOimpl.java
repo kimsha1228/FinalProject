@@ -90,8 +90,4 @@ public class ActivityDAOimpl implements ActivityDAO {
 			return sqlSession.selectList("ACT_SEARCH_LIST_USER", map);
 		}
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> refs/heads/master
