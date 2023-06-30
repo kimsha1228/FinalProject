@@ -9,6 +9,14 @@
 		where seller_id = #{seller_id} order by id desc
 	</select>
 	
+	<select id="ACT_SELECT_ALL_USER" resultType="test.com.git.activity.model.ActivityVO">
+		select * from ACTIVITY order by id desc
+	</select>
+	
+	<select id="ACT_SELECT_RECOMMENDED" resultType="test.com.git.activity.model.ActivityVO">
+		select * from ACTIVITY where tag = '추천'
+	</select>
+	
 	<select id="ACT_SELECT_ONE" resultType="test.com.git.activity.model.ActivityVO">
 		select * from ACTIVITY where id = #{id}
 	</select>

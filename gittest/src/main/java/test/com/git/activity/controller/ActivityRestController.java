@@ -27,6 +27,13 @@ public class ActivityRestController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value = "/jsonSelectRecommendedAct.do", method = RequestMethod.GET)
+	public List<ActivityVO> jsonSelectRecommendedAct() {
+		log.info("jsonSelectRecommendedAct.do..{}");
+		return service.selectRecommended();
+	}
+	
+	@ResponseBody
 	@RequestMapping(value = "/jsonSearchAct.do", method = RequestMethod.GET)
 	public List<ActivityVO> jsonSearchAct(String seller_id, String searchKey, String searchWord) {
 		log.info("jsonSearchAct.do..");

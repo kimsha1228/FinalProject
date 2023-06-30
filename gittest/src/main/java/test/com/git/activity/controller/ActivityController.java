@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Locale;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
@@ -224,8 +224,14 @@ public class ActivityController {
 	}
 
 	@RequestMapping(value = "/selectAllUserAct.do", method = RequestMethod.GET)
-	public String selectAllUserAct(Locale locale, Model model) {
-		return "test/Activity_test";
+	public String selectAllUserAct(Model model) {
+		log.info("/selectAllUserAct.do...");
+		
+		List<ActivityVO> vos = service.selectAll();
+
+		model.addAttribute("vos", vos);
+		
+		return "activity/selectAllUserAct";
 	}
 
 	@RequestMapping(value = "/selectOneUserAct.do", method = RequestMethod.GET)

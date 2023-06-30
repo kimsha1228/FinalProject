@@ -53,10 +53,15 @@ public class ActivityDAOimpl implements ActivityDAO {
 	}
 
 	@Override
-	public List<ActivityVO> selectAllUser(ActivityVO vo) {
-		return null;
+	public List<ActivityVO> selectAllUser() {
+		return sqlSession.selectList("ACT_SELECT_ALL_USER");
 	}
 
+	@Override
+	public List<ActivityVO> selectRecommended() {
+		return sqlSession.selectList("ACT_SELECT_RECOMMENDED");
+	}
+	
 	@Override
 	public ActivityVO selectOne(ActivityVO vo) {
 		log.info("selectOne.. {}",vo);
@@ -77,11 +82,12 @@ public class ActivityDAOimpl implements ActivityDAO {
 		map.put("searchKey", searchKey);
 		map.put("seller_id", seller_id);
 		log.info(map.toString());
-		if(map.get(seller_id) != null) {
+		
+		//셀러 아이디가 비어있으면 유저가 찾는것
+		if(map.get("seller_id") != null) {
 			return sqlSession.selectList("ACT_SEARCH_LIST", map);
 		}else {
 			return sqlSession.selectList("ACT_SEARCH_LIST_USER", map);
 		}
 	}
-
 }

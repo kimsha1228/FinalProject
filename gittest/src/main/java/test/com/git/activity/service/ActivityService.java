@@ -18,6 +18,11 @@ public class ActivityService {
 		return dao.insert(vo);
 	}
 
+	//인자가 없으면 selectAllUserAct.do에 쓰일 selectAll임
+	public List<ActivityVO> selectAll() {
+		return dao.selectAllUser();
+	}
+	
 	public List<ActivityVO> selectAll(String seller_id) {
 		return dao.selectAll(seller_id);
 	}
@@ -40,6 +45,10 @@ public class ActivityService {
 
 	public void vcountUp(ActivityVO vo) {
 		dao.updateVcount(vo);
+	}
+
+	public List<ActivityVO> selectRecommended() {
+		return dao.selectRecommended();
 	}
 	
 }

@@ -8,7 +8,8 @@ public interface ActivityDAO {
 	public void updateVcount(ActivityVO vo);
 	public int delete(ActivityVO vo);
 	public List<ActivityVO> selectAll(String seller_id);
-	public List<ActivityVO> selectAllUser(ActivityVO vo);
+	public List<ActivityVO> selectAllUser();
 	public ActivityVO selectOne(ActivityVO vo);
 	public List<ActivityVO> searchList(String seller_id, String searchKey, String searchWord);
+	public List<ActivityVO> selectRecommended();
 }
