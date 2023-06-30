@@ -256,15 +256,6 @@ public class ActivityController {
 		return "activity/searchActHome";
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/jsonActSelectOne.do", method = RequestMethod.GET)
-	public ActivityVO jsonActSelectOne(ActivityVO vo) {
-		log.info("ActSelectOne.do...{}", vo);
-		
-		ActivityVO vo2 = service.selectOne(vo);
-		log.info("vo2: {}", vo2);
-		
-		return vo2;
-	}
+	
 }
 
