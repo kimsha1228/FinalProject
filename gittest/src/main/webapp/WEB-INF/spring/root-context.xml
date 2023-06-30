@@ -38,7 +38,6 @@
 		<property name="mapperLocations">
 			<list>
 				<value>classpath:jdbc/sqlMapper_movie.xml</value>
-				<value>classpath:jdbc/sqlMapper_Act.xml</value>
 				<value>classpath:jdbc/sqlMapper_image.xml</value>
 				<value>classpath:jdbc/sqlMapper_reservation.xml</value>
 				<value>classpath:jdbc/sqlMapper_users.xml</value>

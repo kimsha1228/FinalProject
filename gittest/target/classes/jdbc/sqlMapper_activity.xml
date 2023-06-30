@@ -4,7 +4,58 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="balgil.com.trip.activity">
+<select id="ACT_SELECT_ALL" resultType="balgil.com.trip.activity.model.ActivityVO">
+		select * from ACTIVITY
+		where seller_id = #{seller_id} order by id desc
+	</select>
+	
+	<select id="ACT_SELECT_ALL_USER" resultType="balgil.com.trip.activity.model.ActivityVO">
+		select * from ACTIVITY order by id desc
+	</select>
+	
+	<select id="ACT_SELECT_RECOMMENDED" resultType="balgil.com.trip.activity.model.ActivityVO">
+		select * from ACTIVITY where tag = '추천'
+	</select>
+	
+	<select id="ACT_SELECT_ONE" resultType="balgil.com.trip.activity.model.ActivityVO">
+		select * from ACTIVITY where id = #{id}
+	</select>
+	
 	<select id="ACTIVITY_SELECTONE" resultType="balgil.com.trip.activity.model.ActivityVO">
 		select * from activity where id = #{id}
 	</select>
+	
+	<select id="ACT_SELECT_ONE_BY_ACT_NAME" resultType="balgil.com.trip.activity.model.ActivityVO">
+		select * from ACTIVITY 
+		where seller_id = #{seller_id} and act_name = #{act_name}
+	</select>
+	
+	<select id="ACT_SEARCH_LIST" resultType="balgil.com.trip.activity.model.ActivityVO">
+		select * from ACTIVITY where seller_id = #{seller_id} and ${searchKey} like #{searchWord}
+	</select>
+	
+	<select id="ACT_SEARCH_LIST_USER" resultType="balgil.com.trip.activity.model.ActivityVO">
+		select * from ACTIVITY where ${searchKey} like #{searchWord}
+	</select>
+	
+	<insert id="ACT_INSERT" parameterType="balgil.com.trip.activity.model.ActivityVO">
+		INSERT INTO ACTIVITY ("ID", "ACT_NAME", "CONTENT", "RATE", "VCOUNT", "TAG", "ADD", "PRICE", "SELLER_ID", "DEST_ID")
+		VALUES (SEQ_ACTIVITY.nextval, #{act_name}, #{content}, 0, 0, #{tag}, #{add}, #{price}, #{seller_id}, #{dest_id})
+	</insert>
+	
+	<update id="ACT_UPDATE" parameterType="balgil.com.trip.activity.model.ActivityVO">
+		update ACTIVITY set ACT_NAME=#{act_name} , CONTENT=#{content} , 
+				TAG=#{tag} , "ADD"=#{add}, DEST_ID=#{dest_id},
+				PRICE=#{price}, ACT_DATE=SYSDATE
+		where ID = #{id}
+	</update>
+	
+	<update id="ACT_VCOUNTUP" parameterType="balgil.com.trip.activity.model.ActivityVO">
+		update ACTIVITY set vcount=vcount+1
+		where ID = #{id}
+	</update>
+	
+	<delete id="ACT_DELETE">
+		delete from ACTIVITY where id = #{id}
+	</delete>
 </mapper>
