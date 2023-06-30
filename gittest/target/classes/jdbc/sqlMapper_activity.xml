@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="balgil.com.trip.activity">
-	<select id="ACTIVITY_SELECTONE" resultType="balgil.com.trip.activity.ActivityVO">
+	<select id="ACTIVITY_SELECTONE" resultType="balgil.com.trip.activity.model.ActivityVO">
 		select * from activity where id = #{id}
 	</select>
 </mapper>
