@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="test.com.git.contact.model.ContactDAO">
+<mapper namespace="balgil.com.trip.contact.model.ContactDAO">
 
-    <insert id="CONTACT_INSERT" parameterType="test.com.git.contact.model.ContactVO">
+    <insert id="CONTACT_INSERT" parameterType="balgil.com.trip.contact.model.ContactVO">
         insert into contact (id, title, content, con_date, attach_img, user_id, seller_id, act_id, act_name)
         values (#{num}, #{title}, #{content}, #{con_date}, #{attach_img}, #{user_id}, #{seller_id}, #{act_id}, #{act_name})
     </insert>
 
-    <select id="CONTACT_SELECT_ALL" resultType="test.com.git.contact.model.ContactVO">
+    <select id="CONTACT_SELECT_ALL" resultType="balgil.com.trip.contact.model.ContactVO">
         select id, title, content, con_date, attach_img, user_id, seller_id, act_id, act_name 
         from contact
     </select>
     
-    <select id="CONTACT_SELECT_ALL_USER" resultType="test.com.git.contact.model.ContactVO">
+    <select id="CONTACT_SELECT_ALL_USER" resultType="balgil.com.trip.contact.model.ContactVO">
         select id, title, content, con_date, attach_img, user_id, seller_id, act_id, act_name 
         from contact
         where user_id = #{user_id}
     </select>
 
-    <select id="CONTACT_SELECT_ONE" resultType="test.com.git.contact.model.ContactVO" parameterType="test.com.git.contact.model.ContactVO">
+    <select id="CONTACT_SELECT_ONE" resultType="balgil.com.trip.contact.model.ContactVO" parameterType="balgil.com.trip.contact.model.ContactVO">
         select id, title, content, con_date, attach_img, user_id, seller_id, act_id, act_name 
         from contact
         where id = #{num}
     </select>
     
-    <select id="CONTACT_SELECT_ONE_USER" resultType="test.com.git.contact.model.ContactVO" parameterType="test.com.git.contact.model.ContactVO">
+    <select id="CONTACT_SELECT_ONE_USER" resultType="balgil.com.trip.contact.model.ContactVO" parameterType="balgil.com.trip.contact.model.ContactVO">
         select id, title, content, con_date, attach_img, user_id, seller_id, act_id, act_name 
         from contact
         where id = #{num} and user_id = #{user_id}
     </select>
 
-    <delete id="CONTACT_DELETE" parameterType="test.com.git.contact.model.ContactVO">
+    <delete id="CONTACT_DELETE" parameterType="balgil.com.trip.contact.model.ContactVO">
         delete from contact 
         where id = #{num}
     </delete>
 
-    <insert id="CONTACT_INSERT_OK" parameterType="test.com.git.contact.model.ContactVO">
+    <insert id="CONTACT_INSERT_OK" parameterType="balgil.com.trip.contact.model.ContactVO">
         insert into contact (id, title, content, con_date, attach_img, user_id, seller_id, act_id, act_name)
         values (#{num}, #{title}, #{content}, #{con_date}, #{attach_img}, #{user_id}, #{seller_id}, #{act_id}, #{act_name})
     </insert>

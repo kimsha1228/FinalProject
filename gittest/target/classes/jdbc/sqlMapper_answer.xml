@@ -4,21 +4,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="test.com.git.answer">
-	<select id="ANSWER_SELECT_ALL" resultType="test.com.git.answer.model.AnswerVO">
+<mapper namespace="balgil.com.trip.answer">
+	<select id="ANSWER_SELECT_ALL" resultType="balgil.com.trip.answer.model.AnswerVO">
 		select * from answer order by id desc
 	</select>
 	
-	<select id="ANSWER_SELECT_ONE" resultType="test.com.git.answer.model.AnswerVO">
+	<select id="ANSWER_SELECT_ONE" resultType="balgil.com.trip.answer.model.AnswerVO">
 		select * from answer where id = #{id}
 	</select>
 	
-	<insert id="ANSWER_INSERT" parameterType="test.com.git.answer.model.AnswerVO">
+	<insert id="ANSWER_INSERT" parameterType="balgil.com.trip.answer.model.AnswerVO">
 		insert into answer (id, content, ans_date, contact_id, seller_id)
 		values (#{id}, #{content}, #{ans_date}, #{contact_id}, #{seller_id})
 	</insert>
 	
-	<update id="ANSWER_UPDATE" parameterType="test.com.git.answer.model.AnswerVO">
+	<update id="ANSWER_UPDATE" parameterType="balgil.com.trip.answer.model.AnswerVO">
 		update answer set content = #{content}, ans_date = #{ans_date},
 		contact_id = #{contact_id}, seller_id = #{seller_id}
 		where id = #{id}

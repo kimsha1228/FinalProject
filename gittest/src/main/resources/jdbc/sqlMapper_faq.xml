@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="test.com.git.faq.model.FaqDAO">
+<mapper namespace="balgil.com.trip.faq.model.FaqDAO">
 
-    <insert id="FAQ_INSERT" parameterType="test.com.git.faq.model.FaqVO">
+    <insert id="FAQ_INSERT" parameterType="balgil.com.trip.faq.model.FaqVO">
         insert into faq (id, title, content, faq_date) 
         values (#{id}, #{title}, #{content}, #{faq_date})
     </insert>
 
-    <update id="FAQ_UPDATE" parameterType="test.com.git.faq.model.FaqVO">
+    <update id="FAQ_UPDATE" parameterType="balgil.com.trip.faq.model.FaqVO">
         update faq 
         set title = #{title}, content = #{content}, faq_date = #{faq_date}
         where id = #{id}
     </update>
 
-    <delete id="FAQ_DELETE" parameterType="test.com.git.faq.model.FaqVO">
+    <delete id="FAQ_DELETE" parameterType="balgil.com.trip.faq.model.FaqVO">
         delete from faq 
         where id = #{id}
     </delete>
 
-    <select id="FAQ_SELECT_ALL" resultType="test.com.git.faq.model.FaqVO">
+    <select id="FAQ_SELECT_ALL" resultType="balgil.com.trip.faq.model.FaqVO">
         select id, title, content, faq_date 
         from faq
     </select>
 
-    <select id="FAQ_SELECT_ONE" resultType="test.com.git.faq.model.FaqVO" parameterType="test.com.git.faq.model.FaqVO">
+    <select id="FAQ_SELECT_ONE" resultType="balgil.com.trip.faq.model.FaqVO" parameterType="balgil.com.trip.faq.model.FaqVO">
         select id, title, content, faq_date 
         from faq
         where id = #{id}
     </select>
 
-    <select id="FAQ_SEARCH_LIST" resultType="test.com.git.faq.model.FaqVO" parameterType="map">
+    <select id="FAQ_SEARCH_LIST" resultType="balgil.com.trip.faq.model.FaqVO" parameterType="map">
         select id, title, content, faq_date 
         from faq
         where ${searchKey} like concat('%', #{searchWord}, '%')
