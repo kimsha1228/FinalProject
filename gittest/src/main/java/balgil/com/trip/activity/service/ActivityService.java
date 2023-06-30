@@ -50,4 +50,8 @@ public class ActivityService {
 	public List<ActivityVO> selectRecommended() {
 		return dao.selectRecommended();
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> refs/heads/master
