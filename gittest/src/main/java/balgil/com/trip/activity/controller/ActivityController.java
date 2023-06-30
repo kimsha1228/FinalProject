@@ -17,7 +17,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import balgil.com.trip.activity.model.ActivityVO;
@@ -256,15 +255,6 @@ public class ActivityController {
 		return "activity/searchActHome";
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/jsonActSelectOne.do", method = RequestMethod.GET)
-	public ActivityVO jsonActSelectOne(ActivityVO vo) {
-		log.info("ActSelectOne.do...{}", vo);
-		
-		ActivityVO vo2 = service.selectOne(vo);
-		log.info("vo2: {}", vo2);
-		
-		return vo2;
-	}
+	
 }
 
