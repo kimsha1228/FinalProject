@@ -77,6 +77,17 @@ $(function(){
 	 		dataType:'json', 
 	 		success : function(vos) {
 	 			console.log('userCouponSelectAll', vos)
+	 			
+	 			let coupon = '';
+
+	 			$.each(vos, function(index, vo){
+		 			coupon += `
+		 				<option value="\${vo.couponcode}">\${vo.name}</option>
+					`;
+				});
+				
+	 			$("#user_coupon").html(coupon);
+	 			
 	 		},
 	 		error:function(xhr,status,error){
 	 			console.log('xhr.status:', xhr.status);
@@ -84,8 +95,7 @@ $(function(){
 	 	});//end $.ajax()...
 	}//end userCouponSelectList
 	
-	
-	
+	//포인트도 갖다 주기.........................
 	
 </script>
 </head>
@@ -109,32 +119,36 @@ $(function(){
 			<tr>	
 				<td><input type="hidden" name="quantity" id = "quantity" value="${param.quantity}">수량: ${param.quantity}</td>
 			</tr>
-			<tr>	
-				<td><input type="hidden" name="price" id = "price" value="${param.price*param.quantity}">금액: ${param.price*param.quantity}</td>
+			<tr>
+<!-- 				<td>금액</td>	 -->
+				<td><input type="hidden" name="price" id = "price" value="${param.price}">금액: ${param.price}</td>
 			</tr>
 			<tr>	
 <%-- 				<td><input type="hidden" name="price_total" id = "price_total" value="${param.price*param.quantity}">총 금액: ${param.price*param.quantity}</td> --%>
-				<td><input type="hidden" name="price_final" id = "price_final" value="${param.price*param.quantity}">총 금액: ${param.price*param.quantity}</td>
 			</tr>
 			<tr>	
-				<td><input type="submit" value="예약하기"></td>
+<!-- 				<td><input type="submit" value="예약하기"></td> -->
 			<tr>	
-<!-- 더미 테스트 -->
-<!-- 			<tr> -->
-<!-- 				<td><input type="hidden" name="act_id" id = "act_id" value="8">상품명: <span id="act_name"></span></td> -->
-<!-- 				<td><input type="hidden" name="res_date" id = "res_date" value="2023-12-28">예약일: 2023-12-28</td> -->
-<%-- 				<td><input type="hidden" name="quantity" id = "quantity" value="${param.quantity}">수량: ${param.quantity}</td> --%>
-<%-- 				<td><input type="hidden" name="price" id = "price" value="${param.price}">가격: ${param.price}</td> --%>
-<%-- 				<td><input type="hidden" name="price_final" id = "price_final" value="">총 금액: ${param.price*param.quantity}</td>	<!-- 총 금액에 ${'#quantity'}.val()*${'#price'}.val() 이 값을 넣고 싶은데...--> --%>
-<!-- 			</tr> -->
 		</tbody>
 	</table>
 <!--  	<button onclick="res_total()">결제하기</button> -->
 </form>
 
-<table>
+<table border="1">
 
-	<tbody id="user_coupon"></tbody>
+	<tbody>
+		<tr>
+			<td>
+				<input type="hidden" name="price_final" id = "price_final" value="${param.price*param.quantity}">총 금액: ${param.price*param.quantity}
+			</td>
+			</tr>
+			<tr>
+			<td>쿠폰:
+				<select name="coupon" id="user_coupon">
+				</select>
+			</td>
+		</tr>
+	</tbody>
 
 </table>
 
