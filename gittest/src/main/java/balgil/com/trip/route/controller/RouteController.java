@@ -1,4 +1,4 @@
-package balgil.com.trip.controller;
+package balgil.com.trip.route.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
