@@ -3,21 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="test.com.git.image">
-	<select id="IMAGE_SELECT_ALL_COM" resultType="test.com.git.image.model.ImageVO">
+<mapper namespace="balgil.com.trip.image">
+	<select id="IMAGE_SELECT_ALL_COM" resultType="balgil.com.trip.image.model.ImageVO">
 		select * from image where comm_id = #{comm_id} order by id
 	</select>
 	
-	<select id="IMAGE_SELECT_ALL_ACT" resultType="test.com.git.image.model.ImageVO">
+	<select id="IMAGE_SELECT_ALL_ACT" resultType="balgil.com.trip.image.model.ImageVO">
 		select * from image where act_id = #{act_id} order by id
 	</select>
 	
-	<insert id="IMAGE_INSERT_COM" parameterType="test.com.git.image.model.ImageVO">
+	<insert id="IMAGE_INSERT_COM" parameterType="balgil.com.trip.image.model.ImageVO">
 		INSERT INTO image ("ID", "NAME", "COMMENT_ID")
 		VALUES (SEQ_IMAGE.nextval, #{name}, #{comment_id})
 	</insert>
 	
-	<insert id="IMAGE_INSERT_ACT" parameterType="test.com.git.image.model.ImageVO">
+	<insert id="IMAGE_INSERT_ACT" parameterType="balgil.com.trip.image.model.ImageVO">
 		INSERT INTO image ("ID", "NAME", "ACT_ID")
 		VALUES (SEQ_IMAGE.nextval, #{name}, #{act_id})
 	</insert>
