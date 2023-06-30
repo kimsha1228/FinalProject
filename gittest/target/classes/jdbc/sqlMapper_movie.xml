@@ -3,32 +3,32 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="test.com.git.movie">
-	<select id="MV_SELECT_ALL" resultType="test.com.git.movie.MovieVO">
+<mapper namespace="balgil.com.trip.movie">
+	<select id="MV_SELECT_ALL" resultType="balgil.com.trip.movie.MovieVO">
 		select * from movie order by num desc
 	</select>
 	
-	<select id="MV_SELECT_ONE" resultType="test.com.git.movie.MovieVO">
+	<select id="MV_SELECT_ONE" resultType="balgil.com.trip.movie.MovieVO">
 		select * from movie where num = #{num}
 	</select>
 	
 	
-	<select id="MV_SEARCH_LIST_TITLE" resultType="test.com.git.movie.MovieVO">
+	<select id="MV_SEARCH_LIST_TITLE" resultType="balgil.com.trip.movie.MovieVO">
 		select * from movie where title like #{searchWord}
 	</select>
 	
-	<select id="MV_SEARCH_LIST_PRODUCER" resultType="test.com.git.movie.MovieVO">
+	<select id="MV_SEARCH_LIST_PRODUCER" resultType="balgil.com.trip.movie.MovieVO">
 		select * from movie where producer like #{searchWord} 
 	</select>
 	
 	
 	
-	<insert id="MV_INSERT" parameterType="test.com.git.movie.MovieVO">
+	<insert id="MV_INSERT" parameterType="balgil.com.trip.movie.MovieVO">
 		insert into movie(num,title,price,producer,save_name) 
 		values(seq_movie.nextval,#{title},#{price},#{producer},#{save_name})
 	</insert>
 	
-	<update id="MV_UPDATE" parameterType="test.com.git.movie.MovieVO">
+	<update id="MV_UPDATE" parameterType="balgil.com.trip.movie.MovieVO">
 		update movie set title=#{title} , price=#{price} , 
 				producer=#{producer} , save_name=#{save_name}
 		where num = #{num}
