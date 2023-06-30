@@ -12,6 +12,7 @@ $(function(){
 	console.log("onload...");
 	usersSelectOne();
 	actSelectOne();
+	userCouponSelectAll();
 
 });//end onload...
 
@@ -68,6 +69,24 @@ $(function(){
 	 	});//end $.ajax()...
 	}//end userSelectOne
 	
+	function userCouponSelectAll(){
+		$.ajax({
+	 		url : "userCouponSelectAll.do",
+	 		data:{id:$('#user_id').val()},
+	 		method:'GET',
+	 		dataType:'json', 
+	 		success : function(vos) {
+	 			console.log('userCouponSelectAll', vos)
+	 		},
+	 		error:function(xhr,status,error){
+	 			console.log('xhr.status:', xhr.status);
+	 		}
+	 	});//end $.ajax()...
+	}//end userCouponSelectList
+	
+	
+	
+	
 </script>
 </head>
 <body>
@@ -91,7 +110,7 @@ $(function(){
 				<td><input type="hidden" name="quantity" id = "quantity" value="${param.quantity}">수량: ${param.quantity}</td>
 			</tr>
 			<tr>	
-				<td><input type="hidden" name="price" id = "price" value="${param.price}">가격: ${param.price}</td>
+				<td><input type="hidden" name="price" id = "price" value="${param.price*param.quantity}">금액: ${param.price*param.quantity}</td>
 			</tr>
 			<tr>	
 <%-- 				<td><input type="hidden" name="price_total" id = "price_total" value="${param.price*param.quantity}">총 금액: ${param.price*param.quantity}</td> --%>
@@ -115,7 +134,7 @@ $(function(){
 
 <table>
 
-	<tbody></tbody>
+	<tbody id="user_coupon"></tbody>
 
 </table>
 

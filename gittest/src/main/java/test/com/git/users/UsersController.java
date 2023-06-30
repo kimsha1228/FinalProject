@@ -18,6 +18,23 @@ public class UsersController {
 	@Autowired
 	UsersService service;
 	
+	@RequestMapping(value = "/myPage.do", method = RequestMethod.GET)
+	public String u_insert() {
+		log.info("/myPage.do");
+		
+		return "users/myPage";
+		
+	}//end u_insert
+	
+	@RequestMapping(value = "/myInfo.do", method = RequestMethod.GET)
+	public String u_selectAll() {
+		log.info("/myInfo.do");
+		
+		return "users/myInfo";
+		
+	}//end u_selectAll
+	
+	
 	@ResponseBody
 	@RequestMapping(value = "/jsonUsersSelectOne.do", method = RequestMethod.GET)
 	public UsersVO jsonUsersSelectOne(UsersVO vo) {
@@ -27,6 +44,6 @@ public class UsersController {
 		log.info("vo2: {}", vo2);
 		
 		return vo2;
-	}
+	}//end jsonUserSelectOne - sha
 	
 }
