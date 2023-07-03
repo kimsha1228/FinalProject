@@ -12,4 +12,5 @@
 	<li><a href="selectOneUserRoute.do">selectOneUserRoute.do</a></li>
 	<li><a href="searchRoute.do">searchRoute.do</a></li>
 	<li><a href="likeUpRoute.do">likeUpRoute.do</a></li>
+	<li><a href="jsonSelectAllRoute.do?seller_id=seller02">jsonSelectAllRoute.do</a></li>
 </ul>
