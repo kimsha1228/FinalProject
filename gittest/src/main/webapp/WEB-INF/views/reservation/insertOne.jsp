@@ -79,14 +79,21 @@ $(function(){
 	 			console.log('userCouponSelectAll', vos)
 	 			
 	 			let coupon = '';
+	 			
+	 			let discount = '';
 
 	 			$.each(vos, function(index, vo){
 		 			coupon += `
 		 				<option value="\${vo.couponcode}">\${vo.name}</option>
 					`;
+	 			
+					if(vo.)
+	 			
+	 			
 				});
-				
+					
 	 			$("#user_coupon").html(coupon);
+				
 	 			
 	 		},
 	 		error:function(xhr,status,error){
