@@ -6,41 +6,35 @@ import org.springframework.stereotype.Service;
 
 import balgil.com.trip.cart.model.CartDAO;
 import balgil.com.trip.cart.model.CartVO;
+import balgil.com.trip.reservation.model.ReservationVO;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class CartService {
 
     @Autowired
-    private CartDAO cartDAO;
+    CartDAO dao;
+    
+    public CartService() {
+		log.info("CartService()...");
+	}
 
-    public List<CartVO> selectAllCart(CartVO vo) {
-    	return cartDAO.selectAll(vo);
-    }
-//    public List<CartVO> selectAllCart(CartVO cart, String userId) {
-//        return cartDAO.selectAll(cart, userId);
-//    }
+	public int insert(CartVO vo) {
+		return dao.insert(vo);
+	}
 
-    public void insertOneCart(CartVO cart) {
-        //
-    }
+	public int delete(CartVO vo) {
+		return dao.delete(vo);
+	}
 
-    public void insertManyCart(CartVO cart) {
-        // 
-    }
+	public List<CartVO> selectAllCart(CartVO vo) {
+		// TODO Auto-generated method stub
+		return dao.selectAll(vo);
+	}
 
-    public void deleteOneCart(int productNum) {
-        // 
-    }
-
-    public void deleteManyCart(int[] productNums) {
-        // 
-    }
-
-    public void insertOneReservation(CartVO cart) {
-        //
-    }
-
-    public void insertManyReservation(CartVO cart) {
-        // 
-    }
+	
+	//insertOneCart, insertManyCart ,deleteOneCart, deleteManyCart
+   
+   
 }

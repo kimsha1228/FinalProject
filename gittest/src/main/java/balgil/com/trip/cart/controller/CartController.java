@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import balgil.com.trip.cart.model.CartVO;
 import balgil.com.trip.cart.service.CartService;
@@ -14,72 +16,36 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class CartController {
-    
-	
-	
+
     @Autowired
-    private CartService cartService;
-    
-    @ResponseBody
-    @RequestMapping("/carttest.do")
-    public List<CartVO> selectAllCart(CartVO vo) {
-        
-    	List<CartVO> cartList = cartService.selectAllCart(vo);
-    	log.info("cartlist:{}",cartList);
-    	
-        return cartList;
-    }
-    
-    
-    
-    
-   /* @RequestMapping("/user/selectAllCart.do")
-    public String selectAllCart(@RequestParam("id") String userId, Model model) {
-        List<CartVO> cartList = cartService.selectAllCart(userId);
+    CartService cartService;
+
+    @RequestMapping(value = "/selectAllCart.do", method = RequestMethod.GET)
+    public String selectAllCart(CartVO vo, Model model) {
+        log.info("/selectAllCart.do...{}", vo);
+        List<CartVO> cartList = cartService.selectAllCart(vo);
         model.addAttribute("cartList", cartList);
-
-        List<Activity> activityList = cartService.getActivityList();
-        model.addAttribute("activityList", activityList);
-
-        return "cart/cartList";
+        return "cart_list";
     }
 
-
-
-    @RequestMapping("/user/insertOneCart.do")
-    public String insertOneCart(CartVO cart, RedirectAttributes redirectAttributes) {
-        cartService.insertOneCart(cart);
-        redirectAttributes.addFlashAttribute("message", "상품을 장바구니에 추가하였습니다.");
-        return "redirect:/user/selectAllCart.do?id=" + cart.getUser_id();
-    }f
-
-    @RequestMapping("/user/insertManyCart.do")
-    public String insertManyCart(CartVO cart, RedirectAttributes redirectAttributes) {
-        cartService.insertManyCart(cart);
-        redirectAttributes.addFlashAttribute("message", "상품을 장바구니에 추가하였습니다.");
-        return "redirect:/user/selectAllCart.do?id=" + cart.getUser_id();
+    @RequestMapping(value = "/insertOneCart.do", method = RequestMethod.GET)
+    public String insertOneCart(CartVO vo) {
+        log.info("/insertOneCart.do...{}", vo);
+        int result = cartService.insert(vo);
+        log.info("result: {}", result);
+        return "cart.insertOne";
     }
 
-    @RequestMapping("/user/deleteManyCart.do")
-    public String deleteManyCart(@RequestParam("selectedItems") int[] productNums, @RequestParam("id") String userId,
-            RedirectAttributes redirectAttributes) {
-        cartService.deleteManyCart(productNums);
-        redirectAttributes.addFlashAttribute("message", "선택한 상품을 장바구니에서 삭제하였습니다.");
-        return "redirect:/user/selectAllCart.do?id=" + userId;
+    @RequestMapping(value = "/deleteCart.do", method = RequestMethod.GET)
+    public String deleteCart(CartVO vo) {
+        log.info("/deleteCart.do...{}", vo);
+        int result = cartService.delete(vo);
+        log.info("result: {}", result);
+        return "cart.insert";
     }
-
-
-    @RequestMapping("/user/deleteOneCart.do")
-    public String deleteOneCart(@RequestParam("num") int productNum, @RequestParam("id") String userId,
-            RedirectAttributes redirectAttributes) {
-        cartService.deleteOneCart(productNum);
-        redirectAttributes.addFlashAttribute("message", "상품을 장바구니에서 삭제하였습니다.");
-        return "redirect:/user/selectAllCart.do?id=" + userId;
-    }
-*/
-
-
-    
 
     
 }
+
+    
+
