@@ -17,10 +17,28 @@ window.onload = function(){
  					</td>
  					<td>${vo.route_name}</td>
  					<td>${vo.summary}</td>
- 					<td>${vo.routes}</td>
- 					<td>${vo.rate}</td>
+ 					<td>
+ 				`;
+ 				
+ 				//루트들 삽입하는 부분
+ 				if (vo.act_name1 != null) 
+				tag_vos += `${vo.act_name1} → `;
+ 				if (vo.act_name2 != null) 
+				tag_vos += `${vo.act_name2} → `;
+ 				if (vo.act_name3 != null) 
+				tag_vos += `${vo.act_name3} → `;
+ 				if (vo.act_name4 != null) 
+				tag_vos += `${vo.act_name4} → `;
+ 				if (vo.act_name5 != null) 
+				tag_vos += `${vo.act_name5} → `;
+ 				
+ 				// 마지막 화살표 날리기
+ 				tag_vos = tag_vos.substring(0, tag_vos.length - 3);
+ 				
+ 				
+ 				tag_vos+=`
+ 				</td>
  					<td>${vo.seller_id}</td>
- 					<td>${vo.dest_id}</td>
  				</tr>
 				`;
 			}
@@ -47,28 +65,40 @@ function searchRoute(){
 			},
 		method:'GET',
 		dataType:'json',
-		success:function(response){
+				success:function(response){
 			console.log('ajax...success:',response);
-			console.log(response.length);
 			let tag_vos='';
-			//루프돌리는방법1
 			for(let i in response){
 				let vo = response[i];
 				tag_vos+=`
-					<tr>
+				<tr>
  					<td>				
- 						<a href="selectOneAct.do?id=${vo.id}">${vo.id}</a>
+ 						<a href="selectOneRoute.do?id=${vo.id}">${vo.id}</a>
  					</td>
- 					<td>${vo.act_name}</td>
- 					<td>${vo.content}</td>
- 					<td>${vo.rate}</td>
- 					<td>${vo.vcount}</td>
- 					<td>${vo.tag}</td>
- 					<td>${vo.add}</td>
- 					<td>${vo.price}</td>
- 					<td>${vo.act_date}</td>
+ 					<td>${vo.route_name}</td>
+ 					<td>${vo.summary}</td>
+ 					<td>
+ 				`;
+ 				
+ 				//루트들 삽입하는 부분
+ 				if (vo.act_name1 != null) 
+				tag_vos += `${vo.act_name1} → `;
+ 				if (vo.act_name2 != null) 
+				tag_vos += `${vo.act_name2} → `;
+ 				if (vo.act_name3 != null) 
+				tag_vos += `${vo.act_name3} → `;
+ 				if (vo.act_name4 != null) 
+				tag_vos += `${vo.act_name4} → `;
+ 				if (vo.act_name5 != null) 
+				tag_vos += `${vo.act_name5} → `;
+ 				
+ 				// 마지막 화살표 날리기
+ 				tag_vos = tag_vos.substring(0, tag_vos.length - 3);
+ 				
+ 				
+ 				tag_vos+=`
+ 				</td>
  					<td>${vo.seller_id}</td>
- 					<td>${vo.dest_id}</td>
  				</tr>
 				`;
 			}

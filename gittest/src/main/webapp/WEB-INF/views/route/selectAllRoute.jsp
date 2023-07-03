@@ -11,7 +11,7 @@
 	let user_id = '<%= session.getAttribute("user_id") %>';
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 </script>
-<script type="text/javascript" src="resources/js/activity/selectAllRoute.js?ver=1"></script>
+<script type="text/javascript" src="resources/js/route/selectAllRoute.js?ver=1"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -29,9 +29,7 @@
 			<th>route_name</th>
 			<th>summary</th>
 			<th>routes</th>
-			<th>rate</th>
 			<th>seller_id</th>
-			<th>dest_id</th>
 		</tr>
 	</thead>
 	<tbody id="vos">

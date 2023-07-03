@@ -26,15 +26,15 @@ public class RouteRestController {
 		return service.selectAll(vo);
 	}
 	
-//	@ResponseBody
-//	@RequestMapping(value = "/jsonSearchRoute.do", method = RequestMethod.GET)
-//	public List<RouteVO> jsonSearchRoute(String seller_id, String searchKey, String searchWord) {
-//		log.info("jsonSearchRoute.do..");
-//		log.info("유저:{}",seller_id);
-//		log.info("키:{}",searchKey);
-//		log.info("워드:{}",searchWord);
-//		return service.searchRoute(seller_id,searchKey,searchWord);
-//	}
+	@ResponseBody
+	@RequestMapping(value = "/searchRoute.do", method = RequestMethod.GET)
+	public List<RouteVO> searchRoute(String seller_id, String searchKey, String searchWord) {
+		log.info("searchRoute.do..");
+		log.info("유저:{}",seller_id);
+		log.info("키:{}",searchKey);
+		log.info("워드:{}",searchWord);
+		return service.searchRoute(seller_id,searchKey,searchWord);
+	}
 	
 //	@ResponseBody
 //	@RequestMapping(value = "/jsonSelectOneRoute.do", method = RequestMethod.GET)

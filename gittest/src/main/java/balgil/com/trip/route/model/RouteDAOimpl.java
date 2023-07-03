@@ -1,6 +1,8 @@
 package balgil.com.trip.route.model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +47,19 @@ public class RouteDAOimpl implements RouteDAO {
 	}
 
 	@Override
-	public List<RouteVO> searchList(String searchKey, String searchWord) {
-		return null;
+	public List<RouteVO> searchList(String seller_id, String searchKey, String searchWord) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("searchWord", "%"+searchWord+"%");
+		map.put("searchKey", searchKey);
+		map.put("seller_id", seller_id);
+		log.info(map.toString());
+		
+		//셀러 아이디가 비어있으면 유저가 찾는것
+		if(map.get("seller_id") != null) {
+			return sqlSession.selectList("ROUTE_SEARCH_LIST", map);
+		}else {
+			return sqlSession.selectList("ROUTE_SEARCH_LIST_USER", map);
+		}
 	}
 
 	@Override

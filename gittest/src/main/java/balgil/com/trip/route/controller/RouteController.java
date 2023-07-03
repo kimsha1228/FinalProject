@@ -99,8 +99,8 @@ public class RouteController {
 
 	@RequestMapping(value = "/selectAllRoute.do", method = RequestMethod.GET)
 	public String selectAllRoute() {
-
-		return "test/Route_test";
+		log.info("selectAllRoute.do..");
+		return "route/selectAllRoute";
 	}
 
 	@RequestMapping(value = "/selectOneRoute.do", method = RequestMethod.GET)
@@ -112,12 +112,6 @@ public class RouteController {
 	@RequestMapping(value = "/selectOneUserRoute.do", method = RequestMethod.GET)
 	public String selectOneUserRoute() {
 		// vcountUpRoute는 여기에 들어감
-		return "test/Route_test";
-	}
-
-	@RequestMapping(value = "/searchRoute.do", method = RequestMethod.GET)
-	public String searchRoute() {
-
 		return "test/Route_test";
 	}
 

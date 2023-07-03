@@ -44,6 +44,32 @@
 			r.seller_id = #{seller_id}
 	</select>
 	
+	<select id="ROUTE_SEARCH_LIST" resultMap="RouteVOResultMap">
+		SELECT
+			r.id,
+			r.route_name,
+			r.img,
+			r.summary,
+			r.seller_id,
+			d."NAME" as 여행지,
+			a1.act_name as 루트1,
+			a2.act_name as 루트2,
+			a3.act_name as 루트3,
+			a4.act_name as 루트4,
+			a5.act_name as 루트5
+		FROM
+			route r
+			INNER JOIN destination d ON d.id = r.dest_id
+			LEFT JOIN activity a1 ON a1.id = r.RT1
+			LEFT JOIN activity a2 ON a2.id = r.RT2
+			LEFT JOIN activity a3 ON a3.id = r.RT3
+			LEFT JOIN activity a4 ON a4.id = r.RT4
+			LEFT JOIN activity a5 ON a5.id = r.RT5
+		WHERE
+			r.seller_id = #{seller_id} AND
+			r.${searchKey} like #{searchWord}
+	</select>
+	
 	<!-- 
 	설명은 밑 링크 참조
 	https://github.com/kimsha1228/FinalProject/wiki/MyBatis-%EC%97%90%EC%84%9C-foreach-%ED%99%9C%EC%9A%A9 -->
