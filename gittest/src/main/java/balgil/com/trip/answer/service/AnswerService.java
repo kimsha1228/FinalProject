@@ -31,12 +31,22 @@ public class AnswerService {
 		return dao.delete(vo);
 	}
 	
-	public List<AnswerVO> selectALL(){
+	public List<AnswerVO> selectAll(){
 		return dao.selectAll();
 	}
 	
 	public AnswerVO selectOne(AnswerVO vo) {
 		return dao.selectOne(vo);
 	}
+	
+    public List<AnswerVO> jsonSelectAllAnswer(AnswerVO vo) {
+        log.info("jsonSelectAllAnswer.do..{}", vo);
+        
+        if (vo == null) {
+            return dao.selectAll();
+        } else {
+            return dao.selectAll(vo);
+        }
+    }
 
 }

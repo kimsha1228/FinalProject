@@ -22,7 +22,8 @@ public class AnswerController {
 	public String answer_selectAll() {
 		log.info("/answer_selectAll.do");
 		
-		List<AnswerVO> vos = service.selectALL();
+		List<AnswerVO> vos = service.selectAll();
+		
 		
 		return "answer/selectAll";
 	}
