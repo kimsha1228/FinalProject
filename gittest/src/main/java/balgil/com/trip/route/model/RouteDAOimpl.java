@@ -21,7 +21,7 @@ public class RouteDAOimpl implements RouteDAO {
 
 	@Override
 	public int insert(RouteVO vo) {
-		return 0;
+		return sqlSession.insert("ROUTE_INSERT",vo);
 	}
 
 	@Override

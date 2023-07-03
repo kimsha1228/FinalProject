@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="balgil.com.trip.route">
+	<select id="ROUTE_SELECT_ALL" resultType="balgil.com.trip.route.model.RouteVO">
+		select * from ROUTE
+		where seller_id = #{seller_id} order by id desc
+	</select>
+	
+	<insert id="ROUTE_INSERT" parameterType="balgil.com.trip.route.model.RouteVO">
+		INSERT INTO ROUTE ("ID", "ROUTE_NAME", "CONTENT", "IMG", "SUMMARY", "SELLER_ID", "DEST_ID","RT1","RT2","RT3","RT4","RT5")
+		values (seq_route.nextval, #{route_name}, #{content}, #{img}, #{summary}, #{seller_id}, #{dest_id}, #{rts[0]}, #{rts[1]}, #{rts[2]}, #{rts[3]}, #{rt[4]})
+	</insert>
+	
+	<update id="ROUTE_UPDATE" parameterType="balgil.com.trip.route.model.RouteVO">
+		update ROUTE set ACT_NAME=#{act_name} , CONTENT=#{content} , 
+				TAG=#{tag} , "ADD"=#{add}, DEST_ID=#{dest_id},
+				PRICE=#{price}, ACT_DATE=SYSDATE
+		where ID = #{id}
+	</update>
+	
+	<update id="ROUTE_VCOUNTUP" parameterType="balgil.com.trip.route.model.RouteVO">
+		update ROUTE set vcount=vcount+1
+		where ID = #{id}
+	</update>
+	
+	<delete id="ROUTE_DELETE">
+		delete from ROUTE where id = #{id}
+	</delete>
+</mapper>

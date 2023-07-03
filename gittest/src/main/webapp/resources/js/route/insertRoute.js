@@ -3,6 +3,8 @@ selectDest(1);
 };//end onload
 
 function selectDest(value){
+
+	//셀러아이디와 선택된 여행지 아이디 기준으로 검색
 	$.ajax({
 		url:"jsonSelectAllAct.do",
 		data:{
@@ -24,10 +26,10 @@ function selectDest(value){
 			}
 			tag_vos+='</select>';
 	
-	      $('#rts').html(tag_vos);
+	    	$('#rts').html(tag_vos);
 		  
-		  //만약 추후 jquery multiselect 플러그인을 바꿀거면 여기를 바꾸면 됨
-	      $('#multiselect').multiSelect();
+			//만약 추후 jquery multiselect 플러그인을 바꿀거면 여기를 바꾸면 됨
+	    	$('#multiselect').multiSelect();
 	      
 		},
 	 	error:function(xhr,status,error){
