@@ -45,7 +45,31 @@ $(function(){
 	 				</tr>
 	  				`;
 				
+	  			let point = '';
+	  			if(vo2.point===0) $("#pointbox").hide();
+	  			point += `<div>보유 포인트: <span id="user_point">\${vo2.point}</span>원<div>`;
+	  			point += `<input type="number" id="using_point" value="">`;
+	  			
+	  			$("#using_point").on("propertychange change keyup paste input", function(){
+				
+					const maxPoint = vo2.point;	
+					
+					let inputValue = parseInt($(this).val());	
+					
+					if(inputValue < 0){
+						$(this).val(0);
+					} else if(inputValue > maxPoint){
+						$(this).val(maxPoint);
+					}	
+					
+				});
+					  			
+	  			
+	  			
+	  			
+	  				
 	 			$("#vo2").html(tag_vo2);
+	 			$("#point").html(point);
 	 		},
 	 		error:function(xhr,status,error){
 	 			console.log('xhr.status:', xhr.status);
@@ -79,27 +103,54 @@ $(function(){
 	 			console.log('userCouponSelectAll', vos)
 	 			
 	 			let coupon = '';
-	 			
+				
 	 			let discount = '';
 
-	 			$.each(vos, function(index, vo){
-		 			coupon += `
-		 				<option value="\${vo.couponcode}">\${vo.name}</option>
-					`;
-	 			
-					if(vo.)
-	 			
-	 			
-				});
+	 			if(vos==0){
+					coupon += `보유한 쿠폰이 없습니다`;
+				} else{
+		 			coupon += `<select class="coupon-select">`;
+		 			coupon += `<option selected disabled>쿠폰을 선택해주세요</option>`;
+		 			coupon += `<option value="0">쿠폰 사용 안함</option>`;
+		 			
+	 				$.each(vos, function(index, vo){
+ 						coupon += `<option value="\${vo.couponcode}">\${vo.name} 할인율: \${vo.rate}%</option>`;
+					});
+		 			coupon += "</select>";
+		 			
+		 			discount += `<div>쿠폰 할인 금액: <span id="discountPrice">0</span>원</div>`;
+				}
 					
-	 			$("#user_coupon").html(coupon);
-				
+	 			$("#coupon").html(coupon);
+	 			$("#discount").html(discount);
 	 			
 	 		},
 	 		error:function(xhr,status,error){
 	 			console.log('xhr.status:', xhr.status);
 	 		}
 	 	});//end $.ajax()...
+	 	
+	 	let originalPrice = $("#price_total").val();
+	 	
+		$("#coupon").change(function(){
+			
+			
+			if($(".coupon-select option:selected").val()=='0'){
+// 				$("#discount").hide();
+				let discount_final = $("#price_total").val();
+				$("#discount_final").html(discount_final);
+				$("#price_final").val(discount_final);
+			} else {
+				$("#discount").show();
+			 	let discountRate = $(".coupon-select option:selected").text().slice(-3,-1).trim();
+				let discountPrice = Math.floor(originalPrice*(discountRate/100)/10)*10;
+				let finalPrice = originalPrice-discountPrice;
+				let couponNo = $("select").val();
+				$("#discountPrice").html("<span style=\"color:blue;\">"+discountPrice+"</span>");
+				$("#discount_final").html(finalPrice+"원");
+// 				$("input[name=price_final]").val(finalPrice);
+			}
+		})	 
 	}//end userCouponSelectList
 	
 	//포인트도 갖다 주기.........................
@@ -127,11 +178,13 @@ $(function(){
 				<td><input type="hidden" name="quantity" id = "quantity" value="${param.quantity}">수량: ${param.quantity}</td>
 			</tr>
 			<tr>
-<!-- 				<td>금액</td>	 -->
 				<td><input type="hidden" name="price" id = "price" value="${param.price}">금액: ${param.price}</td>
 			</tr>
 			<tr>	
-<%-- 				<td><input type="hidden" name="price_total" id = "price_total" value="${param.price*param.quantity}">총 금액: ${param.price*param.quantity}</td> --%>
+				<td><input type="hidden" name="price_final" id = "price_final" value=""></td>
+			</tr>
+			<tr>	
+				<td id="discount_method"></td>
 			</tr>
 			<tr>	
 <!-- 				<td><input type="submit" value="예약하기"></td> -->
@@ -146,15 +199,27 @@ $(function(){
 	<tbody>
 		<tr>
 			<td>
-				<input type="hidden" name="price_final" id = "price_final" value="${param.price*param.quantity}">총 금액: ${param.price*param.quantity}
-			</td>
-			</tr>
-			<tr>
-			<td>쿠폰:
-				<select name="coupon" id="user_coupon">
-				</select>
+				<input type="hidden" name="price_total" id = "price_total" value="${param.price*param.quantity}">총 금액: ${param.price*param.quantity}
 			</td>
 		</tr>
+		<tr><!-- 쿠폰 select -->
+			<td id="coupon">
+				
+			</td>
+		</tr>
+		<tr><!-- 쿠폰 할인 금액 -->
+			<td id="discount">
+			</td>
+		</tr>
+		<tr id="pointbox"><!-- 포인트 사용 금액 -->
+			<td id="point">
+			</td>
+		</tr>
+		<tr> <!-- 최종 결제 금액 -->
+			<td>최종 결제 금액: <span id="discount_final"></span>
+			</td>
+		</tr>
+		
 	</tbody>
 
 </table>

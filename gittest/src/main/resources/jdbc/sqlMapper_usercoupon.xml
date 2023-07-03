@@ -5,7 +5,7 @@
 
 <mapper namespace="balgil.com.trip.usercoupon">
 	<select id="USERCOUPON_SELECTALL" resultType="balgil.com.trip.usercoupon.model.UserCouponVO">
-		select c.code, c.name, c.expire, c.rate, c.amount from coupon c join user_coupon u 
+		select c.code, c.name, c.expire, c.rate from coupon c join user_coupon u 
 		on c.code = u.couponcode where user_id = #{user_id} and isused = 0
 	</select>
 </mapper>
