@@ -18,10 +18,6 @@ public class RouteVO {
 	private int vcount;
 	private int dest_id;
 	private String seller_id;
-	private int rt1;
-	private int rt2;
-	private int rt3;
-	private int rt4;
-	private int rt5;
+	private int[] rts;
 	private MultipartFile file;
 }

@@ -18,7 +18,7 @@ public class RouteController {
 	@RequestMapping(value = "/insertRoute.do", method = RequestMethod.GET)
 	public String insertRoute() {
 		log.info("insertRoute.jsp로 이동");
-		return "test/Route_test";
+		return "route/insertRoute";
 	}
 
 	@RequestMapping(value = "/insertRouteOk.do", method = RequestMethod.GET)
