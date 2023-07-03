@@ -10,6 +10,7 @@ import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -104,9 +105,17 @@ public class RouteController {
 	}
 
 	@RequestMapping(value = "/selectOneRoute.do", method = RequestMethod.GET)
-	public String selectOneRoute() {
+	public String selectOneRoute(RouteVO vo,Model model) {
+		log.info("/selectOneRoute.do...{}", vo);
 
-		return "test/Route_test";
+		RouteVO vo2 = service.selectOne(vo);
+
+		log.info("after select..{}", vo2);
+		
+		model.addAttribute("vo2", vo2);
+		
+		//vcountup
+		return "route/selectOneRoute";
 	}
 
 	@RequestMapping(value = "/selectOneUserRoute.do", method = RequestMethod.GET)

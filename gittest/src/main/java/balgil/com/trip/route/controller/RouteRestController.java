@@ -21,8 +21,8 @@ public class RouteRestController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/jsonSelectAllRoute.do", method = RequestMethod.GET)
-	public List<RouteVO> jsonSelectAllAct(RouteVO vo) {
-		log.info("jsonSelectAllAct.do..{}",vo);
+	public List<RouteVO> jsonSelectAllRoute(RouteVO vo) {
+		log.info("jsonSelectAllRoute.do..{}",vo);
 		return service.selectAll(vo);
 	}
 	

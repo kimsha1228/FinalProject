@@ -10,10 +10,11 @@
 	  <result property="route_name" column="route_name" />
 	  <result property="img" column="img" />
 	  <result property="summary" column="summary" />
+	  <result property="content" column="CONTENT" />
 	  <result property="seller_id" column="seller_id" />
 	  <result property="dest_name" column="여행지" />
 	  <result property="act_name1" column="루트1" />
-	  <result property="act_name2" column="루트1" />
+	  <result property="act_name2" column="루트2" />
 	  <result property="act_name3" column="루트3" />
 	  <result property="act_name4" column="루트4" />
 	  <result property="act_name5" column="루트5" />
@@ -69,7 +70,31 @@
 			r.seller_id = #{seller_id} AND
 			r.${searchKey} like #{searchWord}
 	</select>
-	
+	<select id="ROUTE_SELECT_ONE" resultMap="RouteVOResultMap">
+		SELECT
+			r.id,
+			r.route_name,
+			r.img,
+			r.summary,
+			r."CONTENT",
+			r.seller_id,
+			d."NAME" as 여행지,
+			a1.act_name as 루트1,
+			a2.act_name as 루트2,
+			a3.act_name as 루트3,
+			a4.act_name as 루트4,
+			a5.act_name as 루트5
+		FROM
+			route r
+			INNER JOIN destination d ON d.id = r.dest_id
+			LEFT JOIN activity a1 ON a1.id = r.RT1
+			LEFT JOIN activity a2 ON a2.id = r.RT2
+			LEFT JOIN activity a3 ON a3.id = r.RT3
+			LEFT JOIN activity a4 ON a4.id = r.RT4
+			LEFT JOIN activity a5 ON a5.id = r.RT5
+		WHERE
+			r.id = #{id}
+	</select>
 	<!-- 
 	설명은 밑 링크 참조
 	https://github.com/kimsha1228/FinalProject/wiki/MyBatis-%EC%97%90%EC%84%9C-foreach-%ED%99%9C%EC%9A%A9 -->

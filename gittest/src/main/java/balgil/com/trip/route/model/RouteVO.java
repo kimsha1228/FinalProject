@@ -17,7 +17,7 @@ public class RouteVO {
 	private int likes;
 	private int vcount;
 	private int dest_id;
-	//jsonSelectAllRoute에만 쓰임
+	//jsonSelectAllRoute에 쓰임
 	private String dest_name;
 	private String act_name1;
 	private String act_name2;

@@ -43,7 +43,7 @@ public class RouteDAOimpl implements RouteDAO {
 
 	@Override
 	public RouteVO selectOne(RouteVO vo) {
-		return null;
+		return sqlSession.selectOne("ROUTE_SELECT_ONE", vo);
 	}
 
 	@Override

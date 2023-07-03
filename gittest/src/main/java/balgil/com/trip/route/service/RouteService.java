@@ -25,5 +25,9 @@ public class RouteService {
 	public List<RouteVO> searchRoute(String seller_id, String searchKey, String searchWord) {
 		return dao.searchList(seller_id, searchKey, searchWord);
 	}
+
+	public RouteVO selectOne(RouteVO vo) {
+		return dao.selectOne(vo);
+	}
 	
 }
