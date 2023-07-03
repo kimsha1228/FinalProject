@@ -37,7 +37,6 @@ public class RouteController {
 	public String insertRouteOk(RouteVO vo) throws IllegalStateException, IOException {
 		log.info("insertRouteOk..{}",vo);
 		
-//		int result = service.insert(vo);
 
 		//로컬 이미지 생성
 		String getOriginalFilename = vo.getFile().getOriginalFilename();
@@ -69,12 +68,15 @@ public class RouteController {
 
 		} // end else
 		
-//		if (result == 1) {
-//			return "redirect:selectAllRoute.do";
-//		} else {
-//			return "redirect:insertRoute.do";
-//		}
-		return "route/insertRoute";
+		int result = service.insert(vo);
+		
+		log.info("루트 삽입결과:{}",result);
+		
+		if (result == 1) {
+			return "redirect:selectAllRoute.do";
+		} else {
+			return "redirect:insertRoute.do";
+		}
 	}
 
 	@RequestMapping(value = "/updateRoute.do", method = RequestMethod.GET)

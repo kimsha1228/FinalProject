@@ -9,10 +9,22 @@
 		where seller_id = #{seller_id} order by id desc
 	</select>
 	
+	<!-- 
+	설명은 밑 링크 참조
+	https://github.com/kimsha1228/FinalProject/wiki/MyBatis-%EC%97%90%EC%84%9C-foreach-%ED%99%9C%EC%9A%A9 -->
 	<insert id="ROUTE_INSERT" parameterType="balgil.com.trip.route.model.RouteVO">
-		INSERT INTO ROUTE ("ID", "ROUTE_NAME", "CONTENT", "IMG", "SUMMARY", "SELLER_ID", "DEST_ID","RT1","RT2","RT3","RT4","RT5")
-		values (seq_route.nextval, #{route_name}, #{content}, #{img}, #{summary}, #{seller_id}, #{dest_id}, #{rts[0]}, #{rts[1]}, #{rts[2]}, #{rts[3]}, #{rt[4]})
+	  INSERT INTO "ROUTE" ("ID", "ROUTE_NAME", "CONTENT", "IMG", "SUMMARY", "SELLER_ID", "DEST_ID"
+		  <foreach item="rt" index="index" open=", " separator=", " close="" collection="rts">
+		    "RT${index + 1}"
+		  </foreach>
+	  )
+	  VALUES (SEQ_ROUTE.nextval, #{route_name}, #{content}, #{img}, #{summary}, #{seller_id}, #{dest_id}
+		  <foreach item="rt" index="index" open=", " separator=", " close="" collection="rts">
+		    #{rt}
+		  </foreach>
+	  )
 	</insert>
+	
 	
 	<update id="ROUTE_UPDATE" parameterType="balgil.com.trip.route.model.RouteVO">
 		update ROUTE set ACT_NAME=#{act_name} , CONTENT=#{content} , 
