@@ -48,14 +48,15 @@ $(function(){
 	  			let point = '';
 	  			if(vo2.point===0) $("#pointbox").hide();
 	  			point += `<div>보유 포인트: <span id="user_point">\${vo2.point}</span>원<div>`;
-	  			point += `<input type="number" id="using_point" value="">`;
-	  			
-	  			$("#using_point").on("propertychange change keyup paste input", function(){
-				
-					const maxPoint = vo2.point;	
-					
+// 	  			point += `<input type="number" id="using_point" value="">`;
+
+	 			$("#vo2").html(tag_vo2);
+	 			$("#having_point").html(point);
+
+	 			$(".using_point_input").on("propertychange change keyup paste input", function(){
+	 				console.log("using_point_input...keyup",`\${vo2.point}`,$(this).val());
+	 				const maxPoint = parseInt(`\${vo2.point}`);
 					let inputValue = parseInt($(this).val());	
-					
 					if(inputValue < 0){
 						$(this).val(0);
 					} else if(inputValue > maxPoint){
@@ -64,12 +65,34 @@ $(function(){
 					
 				});
 					  			
-	  			
-	  			
-	  			
+	 			$(".using_point_input_btn").on("click", function(){
+	 				console.log("using_point_input_btn...",`\${vo2.point}`);
+
+	 				const maxPoint = parseInt(`\${vo2.point}`);	
+ 					console.log("maxPoint...",maxPoint);
+	 				
+	 				let state = $(this).data("state");	
+	 				
+	 				if(state == 'N'){
+	 					console.log("n동작");
+	 					/* 모두사용 */
+	 					//값 변경
+	 					$(".using_point_input").val(maxPoint);
+	 					//글 변경
+	 					$(".using_point_input_btn_Y").css("display", "inline-block");
+	 					$(".using_point_input_btn_N").css("display", "none");
+	 				} else if(state == 'Y'){
+	 					console.log("y동작");
+	 					/* 취소 */
+	 					//값 변경
+	 					$(".using_point_input").val(0);
+	 					//글 변경
+	 					$(".using_point_input_btn_Y").css("display", "none");
+	 					$(".using_point_input_btn_N").css("display", "inline-block");		
+	 				}	
+	 				
+	 			});	  			
 	  				
-	 			$("#vo2").html(tag_vo2);
-	 			$("#point").html(point);
 	 		},
 	 		error:function(xhr,status,error){
 	 			console.log('xhr.status:', xhr.status);
@@ -112,9 +135,8 @@ $(function(){
 		 			coupon += `<select class="coupon-select">`;
 		 			coupon += `<option selected disabled>쿠폰을 선택해주세요</option>`;
 		 			coupon += `<option value="0">쿠폰 사용 안함</option>`;
-		 			
 	 				$.each(vos, function(index, vo){
- 						coupon += `<option value="\${vo.couponcode}">\${vo.name} 할인율: \${vo.rate}%</option>`;
+ 						coupon += `<option value="\${vo.couponcode}">\${vo.name}</option>`;
 					});
 		 			coupon += "</select>";
 		 			
@@ -142,7 +164,7 @@ $(function(){
 				$("#price_final").val(discount_final);
 			} else {
 				$("#discount").show();
-			 	let discountRate = $(".coupon-select option:selected").text().slice(-3,-1).trim();
+			 	let discountRate = $(".coupon-select option:selected").text().slice(0,1).trim();
 				let discountPrice = Math.floor(originalPrice*(discountRate/100)/10)*10;
 				let finalPrice = originalPrice-discountPrice;
 				let couponNo = $("select").val();
@@ -182,6 +204,7 @@ $(function(){
 			</tr>
 			<tr>	
 				<td><input type="hidden" name="price_final" id = "price_final" value=""></td>
+				<td><input type="hidden" name="point" id = "point" value=""></td>
 			</tr>
 			<tr>	
 				<td id="discount_method"></td>
@@ -212,7 +235,15 @@ $(function(){
 			</td>
 		</tr>
 		<tr id="pointbox"><!-- 포인트 사용 금액 -->
-			<td id="point">
+			<td id="having_point">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input class="using_point_input" value="">원 
+				<a class="using_point_input_btn using_point_input_btn_N" data-state="N">모두사용</a>
+				<a class="using_point_input_btn using_point_input_btn_Y" data-state="Y" style="display: none;">사용취소</a>
+				
 			</td>
 		</tr>
 		<tr> <!-- 최종 결제 금액 -->
