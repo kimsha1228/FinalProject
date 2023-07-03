@@ -20,7 +20,6 @@ public class CartController {
     @Autowired
     private CartService cartService;
     
-    
     @ResponseBody
     @RequestMapping("/carttest.do")
     public List<CartVO> selectAllCart(CartVO vo) {
