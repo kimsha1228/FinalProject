@@ -43,12 +43,14 @@ $(function(){
  						<td>이메일</td>
 	 					<td>\${vo2.email}</td>
 	 				</tr>
-	  				`;
+	  				<tr>
+	  					<td colspan="2">예약자 정보는 <a href="myInfo.do">내 정보 관리</a>에서 변경하세요</td>
+	  				</tr>
+	 				`;
 				
 	  			let point = '';
 	  			if(vo2.point===0) $("#pointbox").hide();
 	  			point += `<div>보유 포인트: <span id="user_point">\${vo2.point}</span>원<div>`;
-// 	  			point += `<input type="number" id="using_point" value="">`;
 
 	 			$("#vo2").html(tag_vo2);
 	 			$("#having_point").html(point);
@@ -91,6 +93,8 @@ $(function(){
 	 					$(".using_point_input_btn_N").css("display", "inline-block");		
 	 				}	
 	 				
+	 				setFinalPriceInfo();
+	 				
 	 			});	  			
 	  				
 	 		},
@@ -120,6 +124,7 @@ $(function(){
 		$.ajax({
 	 		url : "userCouponSelectAll.do",
 	 		data:{user_id:$('#user_id').val()},
+// 	 		data:{user_id:'seller01'},
 	 		method:'GET',
 	 		dataType:'json', 
 	 		success : function(vos) {
@@ -130,8 +135,10 @@ $(function(){
 	 			let discount = '';
 
 	 			if(vos==0){
+					$("#discount").hide();
 					coupon += `보유한 쿠폰이 없습니다`;
 				} else{
+					$("#discount").show();
 		 			coupon += `<select class="coupon-select">`;
 		 			coupon += `<option selected disabled>쿠폰을 선택해주세요</option>`;
 		 			coupon += `<option value="0">쿠폰 사용 안함</option>`;
@@ -140,7 +147,9 @@ $(function(){
 					});
 		 			coupon += "</select>";
 		 			
-		 			discount += `<div>쿠폰 할인 금액: <span id="discountPrice">0</span>원</div>`;
+		 			discount += `<div>쿠폰 할인 금액: <span id="discountPrice">0</span>원</div>
+		 				<input type="hidden" class="discount_price" value="0">
+		 			`;
 				}
 					
 	 			$("#coupon").html(coupon);
@@ -156,26 +165,34 @@ $(function(){
 	 	
 		$("#coupon").change(function(){
 			
-			
 			if($(".coupon-select option:selected").val()=='0'){
-// 				$("#discount").hide();
-				let discount_final = $("#price_total").val();
-				$("#discount_final").html(discount_final);
-				$("#price_final").val(discount_final);
-			} else {
-				$("#discount").show();
+				let couponPrice = 0;
+				$("#discountPrice").html("<span style=\"color:blue;\">"+couponPrice+"</span>");
+				$(".discount_price").val(couponPrice);
+			}else {
 			 	let discountRate = $(".coupon-select option:selected").text().slice(0,1).trim();
-				let discountPrice = Math.floor(originalPrice*(discountRate/100)/10)*10;
-				let finalPrice = originalPrice-discountPrice;
+				let couponPrice = Math.floor(originalPrice*(discountRate/100));
+				let finalPrice = originalPrice-couponPrice;
 				let couponNo = $("select").val();
-				$("#discountPrice").html("<span style=\"color:blue;\">"+discountPrice+"</span>");
+				$("#discountPrice").html("<span style=\"color:blue;\">"+couponPrice+"</span>");
+				$(".discount_price").val(couponPrice);
 				$("#discount_final").html(finalPrice+"원");
-// 				$("input[name=price_final]").val(finalPrice);
 			}
+			setFinalPriceInfo();
+			
 		})	 
 	}//end userCouponSelectList
 	
-	//포인트도 갖다 주기.........................
+	function setFinalPriceInfo(){
+		let totalPrice = parseInt($("#price_total").val());
+		let pointPrice = parseInt($(".using_point_input").val());
+		let discountPrice = parseInt($(".discount_price").val());
+		let finalPrice = totalPrice-pointPrice-discountPrice;
+		console.log(totalPrice, pointPrice, discountPrice);
+		
+		$("#price_final").val(finalPrice);
+		
+	}
 	
 </script>
 </head>
@@ -203,21 +220,17 @@ $(function(){
 				<td><input type="hidden" name="price" id = "price" value="${param.price}">금액: ${param.price}</td>
 			</tr>
 			<tr>	
-				<td><input type="hidden" name="price_final" id = "price_final" value=""></td>
-				<td><input type="hidden" name="point" id = "point" value=""></td>
+				<td><input type="hidden" name="price_final" id = "price_final" value="${param.price*param.quantity}">총 금액: ${param.price*param.quantity}</td>
 			</tr>
 			<tr>	
-				<td id="discount_method"></td>
-			</tr>
-			<tr>	
-<!-- 				<td><input type="submit" value="예약하기"></td> -->
-			<tr>	
+				<td><input type="submit" value="예약하기"></td>
+			<tr>
 		</tbody>
 	</table>
-<!--  	<button onclick="res_total()">결제하기</button> -->
 </form>
 
-<table border="1">
+
+<table border="1"><!-- 여기를 다른 페이지로 빼야하나...? -->
 
 	<tbody>
 		<tr>
@@ -233,6 +246,7 @@ $(function(){
 		<tr><!-- 쿠폰 할인 금액 -->
 			<td id="discount">
 			</td>
+			
 		</tr>
 		<tr id="pointbox"><!-- 포인트 사용 금액 -->
 			<td id="having_point">
@@ -240,21 +254,19 @@ $(function(){
 		</tr>
 		<tr>
 			<td>
-				<input class="using_point_input" value="">원 
+				<input type="text" name="point" class="using_point_input" value="0">원 
 				<a class="using_point_input_btn using_point_input_btn_N" data-state="N">모두사용</a>
 				<a class="using_point_input_btn using_point_input_btn_Y" data-state="Y" style="display: none;">사용취소</a>
 				
 			</td>
 		</tr>
 		<tr> <!-- 최종 결제 금액 -->
-			<td>최종 결제 금액: <span id="discount_final"></span>
+			<td>최종 결제 금액: <input type="text" id="price_final" value="${param.price*param.quantity}" readonly>
 			</td>
 		</tr>
 		
 	</tbody>
-
 </table>
-
 
 </body>
 </html>
