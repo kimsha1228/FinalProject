@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>루트 작성</title>
-<link rel="stylesheet" href="resources/css/multi-select.css">
+<link rel="stylesheet" href="resources/css/multi-select2.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/route/multi-select.js"></script>
+<script type="text/javascript" src="resources/js/route/multi-select2.js"></script>
 <script>
 	let user_id = '<%= session.getAttribute("user_id") %>';
 	console.log("현재 로그인 되어있는 아이디:",user_id);

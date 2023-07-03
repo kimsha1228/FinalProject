@@ -1,5 +1,7 @@
 package balgil.com.trip.route.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,10 @@ public class RouteService {
 
 	public int insert(RouteVO vo) {
 		return dao.insert(vo);
+	}
+
+	public List<RouteVO> selectAll(RouteVO vo) {
+		return dao.selectAll(vo);
 	}
 	
 }

@@ -29,7 +29,17 @@ function selectDest(value){
 	    	$('#rts').html(tag_vos);
 		  
 			//만약 추후 jquery multiselect 플러그인을 바꿀거면 여기를 바꾸면 됨
-	    	$('#multiselect').multiSelect();
+	    	$('#multiselect').multiSelect({
+	    		keepOrder: true,
+	    		
+	    		//역시 스택오버플로우입니다 
+	    		// https://stackoverflow.com/questions/13243417/jquery-multiselect-selected-data-order
+	    		afterSelect: function(value){
+			        $('#multiselect option[value="'+value+'"]').remove();
+			        $('#multiselect').append($("<option></option>").attr("value",value).attr('selected', 'selected'));
+			    },
+	    	});//end multiSelect
+	    	
 	      
 		},
 	 	error:function(xhr,status,error){

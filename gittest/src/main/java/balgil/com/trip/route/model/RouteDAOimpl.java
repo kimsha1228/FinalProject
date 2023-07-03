@@ -36,7 +36,7 @@ public class RouteDAOimpl implements RouteDAO {
 
 	@Override
 	public List<RouteVO> selectAll(RouteVO vo) {
-		return null;
+		return sqlSession.selectList("ROUTE_SELECT_ALL",vo);
 	}
 
 	@Override
