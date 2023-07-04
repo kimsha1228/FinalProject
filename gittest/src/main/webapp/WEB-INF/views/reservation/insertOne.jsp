@@ -71,6 +71,8 @@ $(function(){
 						if(inputValue > maxPoint){
 							$(this).val(maxPoint);
 						}
+					}else if(inputValue = ""){
+						$(this).val(0);
 					}
 					setFinalPriceInfo();
 					
@@ -268,7 +270,7 @@ $(function(){
 			<!-- 포인트 사용 금액 -->
 			<tr id = "point_use">
 				<td>
-					<input type="text" name="point" class="point" value="0">원 
+					<input type="number" name="point" class="point" value="0">원 
 					<a class="using_point_input_btn using_point_input_btn_N" data-state="N">모두사용</a>
 					<a class="using_point_input_btn using_point_input_btn_Y" data-state="Y" style="display: none;">사용취소</a>
 					
