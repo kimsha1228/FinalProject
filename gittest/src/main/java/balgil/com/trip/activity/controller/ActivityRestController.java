@@ -21,9 +21,9 @@ public class ActivityRestController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/jsonSelectAllAct.do", method = RequestMethod.GET)
-	public List<ActivityVO> jsonSelectAllAct(String seller_id) {
-		log.info("jsonSelectAllAct.do..{}",seller_id);
-		return service.selectAll(seller_id);
+	public List<ActivityVO> jsonSelectAllAct(ActivityVO vo) {
+		log.info("jsonSelectAllAct.do..{}",vo);
+		return service.selectAll(vo);
 	}
 	
 	@ResponseBody

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="balgil.com.trip.route">
+
+	<!-- 조인결과 대입용 resultMap -->
+	<resultMap id="RouteVOResultMap" type="balgil.com.trip.route.model.RouteVO">
+	  <id property="id" column="id" />
+	  <result property="route_name" column="route_name" />
+	  <result property="img" column="img" />
+	  <result property="summary" column="summary" />
+	  <result property="content" column="CONTENT" />
+	  <result property="seller_id" column="seller_id" />
+	  <result property="dest_id" column="dest_id" />
+	  <result property="date" column="route_date" />
+	  <result property="dest_name" column="여행지" />
+	  <result property="act_name1" column="루트1" />
+	  <result property="act_name2" column="루트2" />
+	  <result property="act_name3" column="루트3" />
+	  <result property="act_name4" column="루트4" />
+	  <result property="act_name5" column="루트5" />
+	  <result property="act_id1" column="rt1" />
+	  <result property="act_id2" column="rt2" />
+	  <result property="act_id3" column="rt3" />
+	  <result property="act_id4" column="rt4" />
+	  <result property="act_id5" column="rt5" />
+	</resultMap>
+
+	<select id="ROUTE_SELECT_ALL" resultMap="RouteVOResultMap">
+		SELECT
+			r.id,
+			r.route_name,
+			r.img,
+			r.summary,
+			r.seller_id,
+			r.dest_id,
+			r.route_date,
+			r.vcount,
+			r.likes,
+			d."NAME" as 여행지,
+			r.rt1,
+			a1.act_name as 루트1,
+			r.rt2,
+			a2.act_name as 루트2,
+			r.rt3,
+			a3.act_name as 루트3,
+			r.rt4,
+			a4.act_name as 루트4,
+			r.rt5,
+			a5.act_name as 루트5
+		FROM
+			route r
+			INNER JOIN destination d ON d.id = r.dest_id
+			LEFT JOIN activity a1 ON a1.id = r.RT1
+			LEFT JOIN activity a2 ON a2.id = r.RT2
+			LEFT JOIN activity a3 ON a3.id = r.RT3
+			LEFT JOIN activity a4 ON a4.id = r.RT4
+			LEFT JOIN activity a5 ON a5.id = r.RT5
+		WHERE
+		<!-- seller_id냐 dest_id냐 취사선택 -->
+		<choose>
+			<!-- selectAllRoute에서 쓰임 -->
+			<when test="seller_id != null">
+				r.seller_id = #{seller_id}
+			</when>
+			
+			<!-- selectOneDestRoute에서 쓰임 -->
+			<otherwise>
+				r.dest_id = #{dest_id}
+			</otherwise>
+		</choose>
+		ORDER BY r.id
+	</select>
+	
+	<select id="ROUTE_SEARCH_LIST" resultMap="RouteVOResultMap">
+		SELECT
+			r.id,
+			r.route_name,
+			r.img,
+			r.summary,
+			r.seller_id,
+			d."NAME" as 여행지,
+			r.rt1,
+			a1.act_name as 루트1,
+			r.rt2,
+			a2.act_name as 루트2,
+			r.rt3,
+			a3.act_name as 루트3,
+			r.rt4,
+			a4.act_name as 루트4,
+			r.rt5,
+			a5.act_name as 루트5
+		FROM
+			route r
+			INNER JOIN destination d ON d.id = r.dest_id
+			LEFT JOIN activity a1 ON a1.id = r.RT1
+			LEFT JOIN activity a2 ON a2.id = r.RT2
+			LEFT JOIN activity a3 ON a3.id = r.RT3
+			LEFT JOIN activity a4 ON a4.id = r.RT4
+			LEFT JOIN activity a5 ON a5.id = r.RT5
+		WHERE
+			r.seller_id = #{seller_id} AND
+			r.${searchKey} like #{searchWord}
+		ORDER BY r.id
+	</select>
+	<select id="ROUTE_SELECT_ONE" resultMap="RouteVOResultMap">
+		SELECT
+			r.id,
+			r.route_name,
+			r.img,
+			r.summary,
+			r."CONTENT",
+			r.route_date,
+			r.seller_id,
+			r.dest_id,
+			d."NAME" as 여행지,
+			r.rt1,
+			a1.act_name as 루트1,
+			r.rt2,
+			a2.act_name as 루트2,
+			r.rt3,
+			a3.act_name as 루트3,
+			r.rt4,
+			a4.act_name as 루트4,
+			r.rt5,
+			a5.act_name as 루트5
+		FROM
+			route r
+			INNER JOIN destination d ON d.id = r.dest_id
+			LEFT JOIN activity a1 ON a1.id = r.RT1
+			LEFT JOIN activity a2 ON a2.id = r.RT2
+			LEFT JOIN activity a3 ON a3.id = r.RT3
+			LEFT JOIN activity a4 ON a4.id = r.RT4
+			LEFT JOIN activity a5 ON a5.id = r.RT5
+		WHERE
+			r.id = #{id}
+		ORDER BY r.id
+	</select>
+	<!-- 
+	설명은 밑 링크 참조
+	https://github.com/kimsha1228/FinalProject/wiki/MyBatis-%EC%97%90%EC%84%9C-foreach-%ED%99%9C%EC%9A%A9 -->
+	<insert id="ROUTE_INSERT" parameterType="balgil.com.trip.route.model.RouteVO">
+	  INSERT INTO "ROUTE" ("ID", "ROUTE_NAME", "CONTENT", "IMG", "SUMMARY", "SELLER_ID", "DEST_ID"
+		  <foreach item="rt" index="index" open=", " separator=", " close="" collection="rts">
+		    "RT${index + 1}"
+		  </foreach>
+	  )
+	  VALUES (SEQ_ROUTE.nextval, #{route_name}, #{content}, #{img}, #{summary}, #{seller_id}, #{dest_id}
+		  <foreach item="rt" index="index" open=", " separator=", " close="" collection="rts">
+		    #{rt}
+		  </foreach>
+	  )
+	</insert>
+	<update id="ROUTE_BEFORE_UPDATE" parameterType="balgil.com.trip.route.model.RouteVO">
+		  update ROUTE set RT1=null,RT2=null,RT3=null,RT4=null,RT5=null
+		  where ID = #{id}
+	</update>
+	<update id="ROUTE_UPDATE" parameterType="balgil.com.trip.route.model.RouteVO">
+		  update ROUTE set ROUTE_NAME=#{route_name},SUMMARY=#{summary},
+		  CONTENT=#{content},
+		 
+		  <!-- 이미지가 있다면 변경하고 아니면 놔둠 -->
+		  <if test="img != null">
+		  	IMG=#{img}, 		  
+		  </if>
+		  
+		  DEST_ID=#{dest_id},ROUTE_DATE=SYSDATE
+		  
+		  <!-- 선택한 옵션들만 집어넣게 -->
+		  <foreach item="rt" index="index" open=", " separator=", " close="" collection="rts">
+		    "RT${index + 1}"=${rt}
+		  </foreach>
+		  where ID = #{id}
+	</update>
+	
+	<update id="ROUTE_VCOUNTUP" parameterType="balgil.com.trip.route.model.RouteVO">
+		update ROUTE set vcount=vcount+1
+		where ID = #{id}
+	</update>
+	
+	<delete id="ROUTE_DELETE">
+		delete from ROUTE where id = #{id}
+	</delete>
+</mapper>

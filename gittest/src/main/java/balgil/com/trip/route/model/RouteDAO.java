@@ -10,5 +10,5 @@ public interface RouteDAO {
 	public void updateLikeUp(RouteVO vo);
 	public List<RouteVO> selectAll(RouteVO vo);
 	public RouteVO selectOne(RouteVO vo);
-	public List<RouteVO> searchList(String searchKey, String searchWord);
+	public List<RouteVO> searchList(String seller_id, String searchKey, String searchWord);
 }

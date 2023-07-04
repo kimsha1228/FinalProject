@@ -23,8 +23,8 @@ public class ActivityService {
 		return dao.selectAllUser();
 	}
 	
-	public List<ActivityVO> selectAll(String seller_id) {
-		return dao.selectAll(seller_id);
+	public List<ActivityVO> selectAll(ActivityVO vo) {
+		return dao.selectAll(vo);
 	}
 
 	public List<ActivityVO> searchAct(String seller_id, String searchKey, String searchWord) {

@@ -47,9 +47,16 @@ public class ActivityDAOimpl implements ActivityDAO {
 	}
 
 	@Override
-	public List<ActivityVO> selectAll(String seller_id) {
-		log.info("selectAll..{}",seller_id);
-		return sqlSession.selectList("ACT_SELECT_ALL",seller_id);
+	public List<ActivityVO> selectAll(ActivityVO vo) {
+		log.info("selectAll..{}",vo);
+		
+		//둘다 값이 있다면 셀러아이디가 가지고 있는 특정 여행지명의 상품들을 가져온다
+		//아닐경우 셀러아이디의 모든 상품
+		if (!(vo.getSeller_id().isEmpty()) && vo.getDest_id()!=0) {
+			return sqlSession.selectList("ACT_SELECT_ALL_DEST",vo);
+		} else {
+			return sqlSession.selectList("ACT_SELECT_ALL",vo);
+		}
 	}
 
 	@Override

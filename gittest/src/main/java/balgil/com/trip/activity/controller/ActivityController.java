@@ -17,7 +17,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import balgil.com.trip.activity.model.ActivityVO;
@@ -198,6 +197,8 @@ public class ActivityController {
 
 		int result = service.delete(vo);
 
+		log.info("삭제 성공여부:{}", result);
+		
 		if (result == 1) {
 			return "redirect:selectAllAct.do?seller_id=" + vo.getSeller_id();
 		} else {

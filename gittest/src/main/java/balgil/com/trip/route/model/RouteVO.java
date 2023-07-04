@@ -9,19 +9,28 @@ import lombok.Data;
 @Data
 public class RouteVO {
 	private int id;
-	private String routeName;
+	private String route_name;
 	private String content;
 	private String img;
 	private String summary;
 	private Date date;
 	private int likes;
 	private int vcount;
-	private int destID;
-	private String sellerId;
-	private int rt1;
-	private int rt2;
-	private int rt3;
-	private int rt4;
-	private int rt5;
+	private int dest_id;
+	//jsonSelectAll이나 selectOneUserRoute등에 쓰임
+	private String dest_name;
+	private int act_id1;
+	private int act_id2;
+	private int act_id3;
+	private int act_id4;
+	private int act_id5;
+	private String act_name1;
+	private String act_name2;
+	private String act_name3;
+	private String act_name4;
+	private String act_name5;
+	//
+	private String seller_id;
+	private int[] rts;
 	private MultipartFile file;
 }
