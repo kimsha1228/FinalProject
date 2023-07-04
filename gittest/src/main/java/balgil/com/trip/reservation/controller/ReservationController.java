@@ -54,20 +54,20 @@ public class ReservationController {
 ////		}
 //	}
 	
-//	@RequestMapping(value = "/insertOneReservation.do", method = RequestMethod.GET)
-//	public String insertOneReservation(ReservationVO vo) {
-//		log.info("/insertOneReservation.do...{}", vo);
+	@RequestMapping(value = "/insertOneReservation.do", method = RequestMethod.GET)
+	public String insertOneReservation(ReservationVO vo) {
+		log.info("/insertOneReservation.do...{}", vo);
+		
+		int result = service.insert(vo);
+		log.info("result : {}", result);
 //		
-//		int result = service.insert(vo);
-//		log.info("result : {}", result);
-////		
-//		return "reservation/insertOne"; //나중에 바꾸기
-////		if (result == 1) {
-////			return "redirect:reservation_api.do";
-////		} else {
-////			return "redirect:reservationInsert.do";
-////		}
-//	}
+		return "home"; //나중에 바꾸기
+//		if (result == 1) {
+//			return "redirect:reservation_api.do";
+//		} else {
+//			return "redirect:reservationInsert.do";
+//		}
+	}
 	
 	@RequestMapping(value = "/cancelReservation.do", method = RequestMethod.GET)
 	public String cancelReservation(ReservationVO vo) {

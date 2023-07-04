@@ -40,6 +40,7 @@
 				<value>classpath:jdbc/sqlMapper_cart.xml</value>
 				<value>classpath:jdbc/sqlMapper_image.xml</value>
 				<value>classpath:jdbc/sqlMapper_reservation.xml</value>
+				<value>classpath:jdbc/sqlMapper_payment.xml</value>
 				<value>classpath:jdbc/sqlMapper_usercoupon.xml</value>
 				<value>classpath:jdbc/sqlMapper_users.xml</value>
 				<value>classpath:jdbc/sqlMapper_activity.xml</value>

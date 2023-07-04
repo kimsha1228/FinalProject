@@ -1,5 +1,8 @@
 package balgil.com.trip.payment.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,10 +25,24 @@ public class PaymentController {
 		log.info("/insertPayment.do");
 		log.info("vo: {}", vo);
 		
-//		int result = service.insert(vo);
-//		log.info("result : {}", result);
+		String res_id = "";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmssSSS");
+        Calendar dateTime = Calendar.getInstance();
+        res_id = sdf.format(dateTime.getTime());
+        res_id = res_id+"_"+(int)(Math.random()*10000);
+        
+//        log.info(res_id);
+		vo.setRes_id(res_id);
 		
-		return "reservation/insertOne"; // 나중에 연결
+		int result = service.insert(vo);
+		log.info("result : {}", result);
+		if(result==1) {
+			return "redirect:insertOneReservation.do?id="+vo.getRes_id()+"&quantity="+vo.getQuantity()+
+					"&price="+vo.getPrice()+"&res_date="+vo.getRes_date()+"&price_final="+vo.getPrice_final()+
+					"&act_id="+vo.getAct_id()+"&user_id="+vo.getUser_id();
+		}else {
+			return "home"; // 나중에 리다이렉트
+		}
 	}
 
 	@ResponseBody
