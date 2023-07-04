@@ -30,11 +30,10 @@ public class PointHistoryDAOimpl implements PointHistoryDAO {
 	}
 
 //	@Override
-//	public List<PointHistoryVO> selectList(PointHistoryVO vo) {
-//		log.info("selectList()...{}", vo);
-//
-//		List<PointHistoryVO> vos = sqlSession.selectList("COUPON_SELECTLIST", vo);
-//
+//	public List<PointHistoryVO> selectAll(PointHistoryVO vo) {
+//		
+//		List<PointHistoryVO> vos = sqlSession.selectList("POINTHISTORY_SELECTLIST", vo);
+//		
 //		return vos;
 //	}
 
