@@ -40,10 +40,15 @@
 			r.vcount,
 			r.likes,
 			d."NAME" as 여행지,
+			r.rt1,
 			a1.act_name as 루트1,
+			r.rt2,
 			a2.act_name as 루트2,
+			r.rt3,
 			a3.act_name as 루트3,
+			r.rt4,
 			a4.act_name as 루트4,
+			r.rt5,
 			a5.act_name as 루트5
 		FROM
 			route r
@@ -77,10 +82,15 @@
 			r.summary,
 			r.seller_id,
 			d."NAME" as 여행지,
+			r.rt1,
 			a1.act_name as 루트1,
+			r.rt2,
 			a2.act_name as 루트2,
+			r.rt3,
 			a3.act_name as 루트3,
+			r.rt4,
 			a4.act_name as 루트4,
+			r.rt5,
 			a5.act_name as 루트5
 		FROM
 			route r
