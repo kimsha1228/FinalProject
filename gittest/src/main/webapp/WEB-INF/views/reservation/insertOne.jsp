@@ -55,8 +55,8 @@ $(function(){
 	 			$("#vo2").html(tag_vo2);
 	 			$("#having_point").html(point);
 
-	 			$(".using_point_input").on("propertychange change keyup paste input", function(){
-	 				console.log("using_point_input...keyup",`\${vo2.point}`,$(this).val());
+	 			$(".point").on("propertychange change keyup paste input", function(){
+	 				console.log("point...keyup",`\${vo2.point}`,$(this).val());
 	 				const maxPoint = parseInt(`\${vo2.point}`);
 					let inputValue = parseInt($(this).val());	
 					if(inputValue < 0){
@@ -79,7 +79,7 @@ $(function(){
 	 					console.log("n동작");
 	 					/* 모두사용 */
 	 					//값 변경
-	 					$(".using_point_input").val(maxPoint);
+	 					$(".point").val(maxPoint);
 	 					//글 변경
 	 					$(".using_point_input_btn_Y").css("display", "inline-block");
 	 					$(".using_point_input_btn_N").css("display", "none");
@@ -87,7 +87,7 @@ $(function(){
 	 					console.log("y동작");
 	 					/* 취소 */
 	 					//값 변경
-	 					$(".using_point_input").val(0);
+	 					$(".point").val(0);
 	 					//글 변경
 	 					$(".using_point_input_btn_Y").css("display", "none");
 	 					$(".using_point_input_btn_N").css("display", "inline-block");		
@@ -148,7 +148,7 @@ $(function(){
 		 			coupon += "</select>";
 		 			
 		 			discount += `<div>쿠폰 할인 금액: <span id="discountPrice">0</span>원</div>
-		 				<input type="hidden" class="discount_price" value="0">
+		 				<input type="hidden" name="coupon" class="coupon" value="0">
 		 			`;
 				}
 					
@@ -168,14 +168,14 @@ $(function(){
 			if($(".coupon-select option:selected").val()=='0'){
 				let couponPrice = 0;
 				$("#discountPrice").html("<span style=\"color:blue;\">"+couponPrice+"</span>");
-				$(".discount_price").val(couponPrice);
+				$(".coupon").val(couponPrice);
 			}else {
 			 	let discountRate = $(".coupon-select option:selected").text().slice(0,1).trim();
 				let couponPrice = Math.floor(originalPrice*(discountRate/100));
 				let finalPrice = originalPrice-couponPrice;
 				let couponNo = $("select").val();
 				$("#discountPrice").html("<span style=\"color:blue;\">"+couponPrice+"</span>");
-				$(".discount_price").val(couponPrice);
+				$(".coupon").val(couponPrice);
 				$("#discount_final").html(finalPrice+"원");
 			}
 			setFinalPriceInfo();
@@ -185,8 +185,8 @@ $(function(){
 	
 	function setFinalPriceInfo(){
 		let totalPrice = parseInt($("#price_total").val());
-		let pointPrice = parseInt($(".using_point_input").val());
-		let discountPrice = parseInt($(".discount_price").val());
+		let pointPrice = parseInt($(".point").val());
+		let discountPrice = parseInt($(".coupon").val());
 		let finalPrice = totalPrice-pointPrice-discountPrice;
 		console.log(totalPrice, pointPrice, discountPrice);
 		
@@ -201,9 +201,10 @@ $(function(){
 		<tbody id="vo2"></tbody> <!-- 이 부분에 유저 정보 얻어오기 -->
 	</table>
 	
-<form action="InsertOneReservation.do" Method="get">
-	<table>
-		<tbody><!-- 이 부분이 상품 페이지에서 넘어와야할 부분... -->
+<form action="insertPayment.do" method="get">
+	<table border="1">
+		<tbody>
+			<!-- 상품 페이지에서 넘어올 부분 -->
 			<tr>
 				<td><input type="hidden" name="user_id" id = "user_id" value="john123">${user_id}</td><!-- 세션 연결되면 유저아이디 입력 -->
 			</tr>
@@ -220,53 +221,47 @@ $(function(){
 				<td><input type="hidden" name="price" id = "price" value="${param.price}">금액: ${param.price}</td>
 			</tr>
 			<tr>	
-				<td><input type="hidden" name="price_final" id = "price_final" value="${param.price*param.quantity}">총 금액: ${param.price*param.quantity}</td>
+				<td><input type="hidden" name="price_total" id = "price_total" value="${param.price*param.quantity}">총 금액: ${param.price*param.quantity}</td>
+			</tr>
+			
+			<!-- 쿠폰 select -->
+			<tr>
+				<td id="coupon">
+				</td>
+			</tr>
+			<!-- 쿠폰 할인 금액 -->
+			<tr>
+				<td id="discount">
+				</td>
+				
+			</tr>
+			<!-- 포인트 보유 금액 -->
+			<tr id="pointbox">
+				<td id="having_point">
+				</td>
+			</tr>
+			<!-- 포인트 사용 금액 -->
+			<tr>
+				<td>
+					<input type="text" name="point" class="point" value="0">원 
+					<a class="using_point_input_btn using_point_input_btn_N" data-state="N">모두사용</a>
+					<a class="using_point_input_btn using_point_input_btn_Y" data-state="Y" style="display: none;">사용취소</a>
+					
+				</td>
+			</tr>
+			<!-- 최종 결제 금액 -->
+			<tr> 
+				<td>최종 결제 금액: <input type="text" name="price_final" id="price_final" value="${param.price*param.quantity}" readonly>
+				</td>
 			</tr>
 			<tr>	
 				<td><input type="submit" value="예약하기"></td>
-			<tr>
+			</tr>
+			
 		</tbody>
 	</table>
 </form>
 
-
-<table border="1"><!-- 여기를 다른 페이지로 빼야하나...? -->
-
-	<tbody>
-		<tr>
-			<td>
-				<input type="hidden" name="price_total" id = "price_total" value="${param.price*param.quantity}">총 금액: ${param.price*param.quantity}
-			</td>
-		</tr>
-		<tr><!-- 쿠폰 select -->
-			<td id="coupon">
-				
-			</td>
-		</tr>
-		<tr><!-- 쿠폰 할인 금액 -->
-			<td id="discount">
-			</td>
-			
-		</tr>
-		<tr id="pointbox"><!-- 포인트 사용 금액 -->
-			<td id="having_point">
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<input type="text" name="point" class="using_point_input" value="0">원 
-				<a class="using_point_input_btn using_point_input_btn_N" data-state="N">모두사용</a>
-				<a class="using_point_input_btn using_point_input_btn_Y" data-state="Y" style="display: none;">사용취소</a>
-				
-			</td>
-		</tr>
-		<tr> <!-- 최종 결제 금액 -->
-			<td>최종 결제 금액: <input type="text" id="price_final" value="${param.price*param.quantity}" readonly>
-			</td>
-		</tr>
-		
-	</tbody>
-</table>
 
 </body>
 </html>

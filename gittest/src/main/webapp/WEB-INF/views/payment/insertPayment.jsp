@@ -10,8 +10,9 @@
 
 $(function(){
 	console.log("onload...");
-// 	usersSelectOne();
-// 	actSelectOne();
+	usersSelectOne();
+	actSelectOne();
+	userCouponSelectAll();
 
 });//end onload...
 
@@ -20,31 +21,60 @@ $(function(){
 	console.log('usersSelectOne()...');
 		$.ajax({
 	 		url : "jsonUsersSelectOne.do",
-	 		data:{id:1},
+	 		data:{id:1},	//이 부분 세션 받아서 {user_id:{user_id}}로 바꿔줘야함 Mapper변경 잊지 말자
 	 		method:'GET',
 	 		dataType:'json', 
 	 		success : function(vo2) {
 				console.log(vo2);
 				
-	  			let tag_vo2 =  `
-	  				<tr>
-	 					<td colspan="2">예약자 정보</td>
-	 				</tr>
-	 				<tr>
-	 					<td>여권상 영문명</td>
-	 					<td>\${vo2.eng_name}</td>
-	 				</tr>
-	 				<tr>
-	 					<td>전화번호</td>
- 						<td>\${vo2.region} \${vo2.tel}</td>
-	 				</tr>
-	 				<tr>
- 						<td>이메일</td>
-	 					<td>\${vo2.email}</td>
-	 				</tr>
-	  				`;
-				
-	 			$("#vo2").html(tag_vo2);
+	  			let point = '';
+	  			if(vo2.point===0) $("#pointbox").hide();
+	  			point += `<div>보유 포인트: <span id="user_point">\${vo2.point}</span>원<div>`;
+
+	 			$("#having_point").html(point);
+
+	 			$(".using_point_input").on("propertychange change keyup paste input", function(){
+	 				console.log("using_point_input...keyup",`\${vo2.point}`,$(this).val());
+	 				const maxPoint = parseInt(`\${vo2.point}`);
+					let inputValue = parseInt($(this).val());	
+					if(inputValue < 0){
+						$(this).val(0);
+					} else if(inputValue > maxPoint){
+						$(this).val(maxPoint);
+					}	
+					
+				});
+					  			
+	 			$(".using_point_input_btn").on("click", function(){
+	 				console.log("using_point_input_btn...",`\${vo2.point}`);
+
+	 				const maxPoint = parseInt(`\${vo2.point}`);	
+ 					console.log("maxPoint...",maxPoint);
+	 				
+	 				let state = $(this).data("state");	
+	 				
+	 				if(state == 'N'){
+	 					console.log("n동작");
+	 					/* 모두사용 */
+	 					//값 변경
+	 					$(".using_point_input").val(maxPoint);
+	 					//글 변경
+	 					$(".using_point_input_btn_Y").css("display", "inline-block");
+	 					$(".using_point_input_btn_N").css("display", "none");
+	 				} else if(state == 'Y'){
+	 					console.log("y동작");
+	 					/* 취소 */
+	 					//값 변경
+	 					$(".using_point_input").val(0);
+	 					//글 변경
+	 					$(".using_point_input_btn_Y").css("display", "none");
+	 					$(".using_point_input_btn_N").css("display", "inline-block");		
+	 				}	
+	 				
+	 				setFinalPriceInfo();
+	 				
+	 			});	  			
+	  				
 	 		},
 	 		error:function(xhr,status,error){
 	 			console.log('xhr.status:', xhr.status);
@@ -68,12 +98,87 @@ $(function(){
 	 	});//end $.ajax()...
 	}//end userSelectOne
 	
+	function userCouponSelectAll(){
+		$.ajax({
+	 		url : "userCouponSelectAll.do",
+	 		data:{user_id:$('#user_id').val()},
+// 	 		data:{user_id:'seller01'},
+	 		method:'GET',
+	 		dataType:'json', 
+	 		success : function(vos) {
+	 			console.log('userCouponSelectAll', vos)
+	 			
+	 			let coupon = '';
+				
+	 			let discount = '';
+
+	 			if(vos==0){
+					$("#discount").hide();
+					coupon += `보유한 쿠폰이 없습니다`;
+				} else{
+					$("#discount").show();
+		 			coupon += `<select class="coupon-select">`;
+		 			coupon += `<option selected disabled>쿠폰을 선택해주세요</option>`;
+		 			coupon += `<option value="0">쿠폰 사용 안함</option>`;
+	 				$.each(vos, function(index, vo){
+ 						coupon += `<option value="\${vo.couponcode}">\${vo.name}</option>`;
+					});
+		 			coupon += "</select>";
+		 			
+		 			discount += `<div>쿠폰 할인 금액: <span id="discountPrice">0</span>원</div>
+		 				<input type="hidden" class="discount_price" value="0">
+		 			`;
+				}
+					
+	 			$("#coupon").html(coupon);
+	 			$("#discount").html(discount);
+	 			
+	 		},
+	 		error:function(xhr,status,error){
+	 			console.log('xhr.status:', xhr.status);
+	 		}
+	 	});//end $.ajax()...
+	 	
+	 	let originalPrice = $("#price_total").val();
+	 	
+		$("#coupon").change(function(){
+			
+			if($(".coupon-select option:selected").val()=='0'){
+				let couponPrice = 0;
+				$("#discountPrice").html("<span style=\"color:blue;\">"+couponPrice+"</span>");
+				$(".discount_price").val(couponPrice);
+			}else {
+			 	let discountRate = $(".coupon-select option:selected").text().slice(0,1).trim();
+				let couponPrice = Math.floor(originalPrice*(discountRate/100));
+				let finalPrice = originalPrice-couponPrice;
+				let couponNo = $("select").val();
+				$("#discountPrice").html("<span style=\"color:blue;\">"+couponPrice+"</span>");
+				$(".discount_price").val(couponPrice);
+				$("#discount_final").html(finalPrice+"원");
+			}
+			setFinalPriceInfo();
+			
+		})	 
+	}//end userCouponSelectList
+	
+	function setFinalPriceInfo(){
+		let totalPrice = parseInt($("#price_total").val());
+		let pointPrice = parseInt($(".using_point_input").val());
+		let discountPrice = parseInt($(".discount_price").val());
+		let finalPrice = totalPrice-pointPrice-discountPrice;
+		console.log(totalPrice, pointPrice, discountPrice);
+		
+		$("#price_final").val(finalPrice);
+		
+	}
+	
 </script>
 </head>
 <body>
 	<table border="1">
 		<tbody id="vo2"></tbody> <!-- 이 부분에 유저 정보 얻어오기 -->
 	</table>
+	
 <form action="InsertOneReservation.do" Method="get">
 	<table>
 		<tbody><!-- 이 부분이 상품 페이지에서 넘어와야할 부분... -->
@@ -89,27 +194,49 @@ $(function(){
 			<tr>	
 				<td><input type="hidden" name="quantity" id = "quantity" value="${param.quantity}">수량: ${param.quantity}</td>
 			</tr>
-			<tr>	
-				<td><input type="hidden" name="price" id = "price" value="${param.price}">가격: ${param.price}</td>
+			<tr>
+				<td><input type="hidden" name="price" id = "price" value="${param.price}">금액: ${param.price}</td>
 			</tr>
 			<tr>	
-<%-- 				<td><input type="hidden" name="price_total" id = "price_total" value="${param.price*param.quantity}">총 금액: ${param.price*param.quantity}</td> --%>
-				<td><input type="hidden" name="price_final" id = "price_final" value="${param.price*param.quantity}">총 금액: ${param.price*param.quantity}</td>
+				<td><input type="hidden" name="price_total" id = "price_total" value="${param.price*param.quantity}">총 금액: ${param.price*param.quantity}</td>
 			</tr>
 			<tr>	
 				<td><input type="submit" value="예약하기"></td>
-			<tr>	
-<!-- 더미 테스트 -->
+			</tr>
+
 <!-- 			<tr> -->
-<!-- 				<td><input type="hidden" name="act_id" id = "act_id" value="8">상품명: <span id="act_name"></span></td> -->
-<!-- 				<td><input type="hidden" name="res_date" id = "res_date" value="2023-12-28">예약일: 2023-12-28</td> -->
-<%-- 				<td><input type="hidden" name="quantity" id = "quantity" value="${param.quantity}">수량: ${param.quantity}</td> --%>
-<%-- 				<td><input type="hidden" name="price" id = "price" value="${param.price}">가격: ${param.price}</td> --%>
-<%-- 				<td><input type="hidden" name="price_final" id = "price_final" value="">총 금액: ${param.price*param.quantity}</td>	<!-- 총 금액에 ${'#quantity'}.val()*${'#price'}.val() 이 값을 넣고 싶은데...--> --%>
+<!-- 				<td> -->
+<%-- 					<input type="hidden" name="price_total" id = "price_total" value="${param.price*param.quantity}">총 금액: ${param.price*param.quantity} --%>
+<!-- 				</td> -->
 <!-- 			</tr> -->
+			<tr><!-- 쿠폰 select -->
+				<td id="coupon">
+					
+				</td>
+			</tr>
+			<tr><!-- 쿠폰 할인 금액 -->
+				<td id="discount">
+				</td>
+				
+			</tr>
+			<tr id="pointbox"><!-- 포인트 사용 금액 -->
+				<td id="having_point">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="text" name="point" class="using_point_input" value="0">원 
+					<a class="using_point_input_btn using_point_input_btn_N" data-state="N">모두사용</a>
+					<a class="using_point_input_btn using_point_input_btn_Y" data-state="Y" style="display: none;">사용취소</a>
+					
+				</td>
+			</tr>
+			<tr> <!-- 최종 결제 금액 -->
+				<td>최종 결제 금액: <input type="text" id="price_final" value="${param.price*param.quantity}" readonly>
+				</td>
+			</tr>
 		</tbody>
 	</table>
-<!--  	<button onclick="res_total()">결제하기</button> -->
 </form>
 
 

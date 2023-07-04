@@ -20,11 +20,12 @@ public class PaymentController {
 	@RequestMapping(value = "/insertPayment.do", method = RequestMethod.GET)
 	public String insertPayment(PaymentVO vo) {
 		log.info("/insertPayment.do");
+		log.info("vo: {}", vo);
 		
-		int result = service.insert(vo);
-		log.info("result : {}", result);
+//		int result = service.insert(vo);
+//		log.info("result : {}", result);
 		
-		return "reservation/insert"; // 나중에 연결
+		return "reservation/insertOne"; // 나중에 연결
 	}
 
 	@ResponseBody
