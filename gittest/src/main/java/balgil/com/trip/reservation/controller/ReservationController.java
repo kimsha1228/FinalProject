@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import balgil.com.trip.reservation.model.ReservationVO;
 import balgil.com.trip.reservation.service.ReservationService;
+import balgil.com.trip.usercoupon.service.UserCouponService;
+import balgil.com.trip.users.service.UsersService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -14,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ReservationController {
 
 	@Autowired
-	ReservationService service;
+	ReservationService service; 
 	
 	@RequestMapping(value = "/reservation_api.do", method = RequestMethod.GET)
 	public String reservation_api() {
@@ -30,38 +32,38 @@ public class ReservationController {
 		return "reservation/insertOne";
 	}
 
-	@RequestMapping(value = "/InsertManyReservation.do", method = RequestMethod.GET)
-	public String InsertManyReservation(String datas) {
-		log.info("/InsertManyReservation.do...{}", datas);
-		
-		String[] arr = datas.split(":");//2,10000,2023-07-30
-		for (int i = 0; i < arr.length; i++) {
-			ReservationVO vo = new ReservationVO();
-			vo.setQuantity(Integer.parseInt(arr[i].split(",")[0]));//"2"
-			vo.setPrice(Integer.parseInt(arr[i].split(",")[1]));//"10000"
-			vo.setRes_date(arr[i].split(",")[2]);//"2023-07-30"
-			log.info("vo...{}", vo);
-//			int result = service.insert(vo);
-//			log.info("result : {}", result);
-		}
-		
+//	@RequestMapping(value = "/insertManyReservation.do", method = RequestMethod.GET)
+//	public String insertManyReservation(String datas) {
+//		log.info("/insertManyReservation.do...{}", datas);
 //		
-		return "reservation/insertOne";//나중에 바꾸기
-//		if (result == 1) {
-//			return "redirect:reservation_api.do";
-//		} else {
-//			return "redirect:reservationInsert.do";
+//		String[] arr = datas.split(":");//2,10000,2023-07-30
+//		for (int i = 0; i < arr.length; i++) {
+//			ReservationVO vo = new ReservationVO();
+//			vo.setQuantity(Integer.parseInt(arr[i].split(",")[0]));//"2"
+//			vo.setPrice(Integer.parseInt(arr[i].split(",")[1]));//"10000"
+//			vo.setRes_date(arr[i].split(",")[2]);//"2023-07-30"
+//			log.info("vo...{}", vo);
+////			int result = service.insert(vo);
+////			log.info("result : {}", result);
 //		}
-	}
+//		
+////		
+//		return "reservation/insertOne";//나중에 바꾸기
+////		if (result == 1) {
+////			return "redirect:reservation_api.do";
+////		} else {
+////			return "redirect:reservationInsert.do";
+////		}
+//	}
 	
-	@RequestMapping(value = "/InsertOneReservation.do", method = RequestMethod.GET)
-	public String InsertOneReservation(ReservationVO vo) {
-		log.info("/InsertOneReservation.do...{}", vo);
+	@RequestMapping(value = "/insertOneReservation.do", method = RequestMethod.GET)
+	public String insertOneReservation(ReservationVO vo) {
+		log.info("/insertOneReservation.do...{}", vo);
 		
 		int result = service.insert(vo);
 		log.info("result : {}", result);
-//		
-		return "reservation/insertOne"; //나중에 바꾸기
+		
+		return "home";
 //		if (result == 1) {
 //			return "redirect:reservation_api.do";
 //		} else {
