@@ -139,17 +139,18 @@ $(function(){
 					coupon += `보유한 쿠폰이 없습니다`;
 				} else{
 					$("#discount").show();
-		 			coupon += `<select class="coupon-select">`;
+		 			coupon += `<select id="coupon-select">`;
 		 			coupon += `<option selected disabled>쿠폰을 선택해주세요</option>`;
 		 			coupon += `<option value="0">쿠폰 사용 안함</option>`;
 	 				$.each(vos, function(index, vo){
- 						coupon += `<option value="\${vo.couponcode}">\${vo.name}</option>`;
+ 						coupon += `<option value="\${vo.code}">\${vo.name} </option>`;
 					});
 		 			coupon += "</select>";
 		 			
 		 			discount += `<div>쿠폰 할인 금액: <span id="discountPrice">0</span>원</div>
-		 				<input type="hidden" name="coupon" class="coupon" value="0">
-		 			`;
+		 				<div><input type="hidden" name="coupon" class="coupon" value="0"></div>
+		 				<div><input type="hidden" name="code" class="code" value=""></div>
+		 				`;
 				}
 					
 	 			$("#coupon").html(coupon);
@@ -165,18 +166,19 @@ $(function(){
 	 	
 		$("#coupon").change(function(){
 			
-			if($(".coupon-select option:selected").val()=='0'){
+			if($("#coupon-select option:selected").val()=='0'){
 				let couponPrice = 0;
 				$("#discountPrice").html("<span style=\"color:blue;\">"+couponPrice+"</span>");
 				$(".coupon").val(couponPrice);
 			}else {
-			 	let discountRate = $(".coupon-select option:selected").text().slice(0,1).trim();
+			 	let discountRate = $("#coupon-select option:selected").text().slice(0,1).trim();
 				let couponPrice = Math.floor(originalPrice*(discountRate/100));
 				let finalPrice = originalPrice-couponPrice;
-				let couponNo = $("select").val();
+				let couponCode = $("select").val();
+				console.log(couponCode);
 				$("#discountPrice").html("<span style=\"color:blue;\">"+couponPrice+"</span>");
 				$(".coupon").val(couponPrice);
-				$("#discount_final").html(finalPrice+"원");
+				$(".code").val(couponCode);
 			}
 			setFinalPriceInfo();
 			
@@ -201,7 +203,7 @@ $(function(){
 		<tbody id="vo2"></tbody> <!-- 이 부분에 유저 정보 얻어오기 -->
 	</table>
 	
-<form action="insertPayment.do" method="get">
+<form action="insertPaymentOne.do" method="get">
 	<table border="1">
 		<tbody>
 			<!-- 상품 페이지에서 넘어올 부분 -->
@@ -261,7 +263,6 @@ $(function(){
 		</tbody>
 	</table>
 </form>
-
 
 </body>
 </html>

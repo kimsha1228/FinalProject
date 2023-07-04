@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import balgil.com.trip.payment.model.PaymentVO;
 import balgil.com.trip.payment.service.PaymentService;
+import balgil.com.trip.usercoupon.service.UserCouponService;
+import balgil.com.trip.users.service.UsersService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -19,10 +21,17 @@ public class PaymentController {
 
 	@Autowired
 	PaymentService service;
+
+	@Autowired
+	UsersService u_service; 
 	
-	@RequestMapping(value = "/insertPayment.do", method = RequestMethod.GET)
-	public String insertPayment(PaymentVO vo) {
-		log.info("/insertPayment.do");
+	@Autowired
+	UserCouponService uc_service; 
+
+	
+	@RequestMapping(value = "/insertPaymentOne.do", method = RequestMethod.GET)
+	public String insertPaymentOne(PaymentVO vo) {
+		log.info("/insertPaymentOne.do");
 		log.info("vo: {}", vo);
 		
 		String res_id = "";
@@ -36,12 +45,22 @@ public class PaymentController {
 		
 		int result = service.insert(vo);
 		log.info("result : {}", result);
+		
 		if(result==1) {
-			return "redirect:insertOneReservation.do?id="+vo.getRes_id()+"&quantity="+vo.getQuantity()+
-					"&price="+vo.getPrice()+"&res_date="+vo.getRes_date()+"&price_final="+vo.getPrice_final()+
-					"&act_id="+vo.getAct_id()+"&user_id="+vo.getUser_id();
+			
+			int result_user = u_service.point(vo.getUser_id(), vo.getPoint());
+			int result_userCoupon = uc_service.update(vo.getUser_id(), vo.getCode());
+//			int result_couponHistory = 
+			
+			if(result_user==1 && result_userCoupon==1) {
+				return "redirect:insertOneReservation.do?id="+vo.getRes_id()+"&quantity="+vo.getQuantity()+
+						"&price="+vo.getPrice()+"&res_date="+vo.getRes_date()+"&price_final="+vo.getPrice_final()+
+						"&act_id="+vo.getAct_id()+"&user_id="+vo.getUser_id();
+			}else {
+				return "home"; // 나중에 리다이렉트
+			}
 		}else {
-			return "home"; // 나중에 리다이렉트
+			return "reservation/insertOne"; // 나중에 리다이렉트
 		}
 	}
 

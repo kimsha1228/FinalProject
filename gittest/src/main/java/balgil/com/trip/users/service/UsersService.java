@@ -22,4 +22,8 @@ public class UsersService {
 		return dao.selectOne(vo);
 	}
 
+	public int point(String user_id, String point) {
+		return dao.update(user_id, point);
+	}
+
 }

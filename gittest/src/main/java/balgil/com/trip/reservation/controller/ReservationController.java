@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import balgil.com.trip.reservation.model.ReservationVO;
 import balgil.com.trip.reservation.service.ReservationService;
+import balgil.com.trip.usercoupon.service.UserCouponService;
+import balgil.com.trip.users.service.UsersService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -60,8 +62,8 @@ public class ReservationController {
 		
 		int result = service.insert(vo);
 		log.info("result : {}", result);
-//		
-		return "home"; //나중에 바꾸기
+		
+		return "home"; //나중에 바꾸기 예약완료되면 포인트 -, 쿠폰 사용됨으로 바꾸기
 //		if (result == 1) {
 //			return "redirect:reservation_api.do";
 //		} else {

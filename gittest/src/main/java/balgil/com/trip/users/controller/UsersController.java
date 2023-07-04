@@ -40,7 +40,7 @@ public class UsersController {
 	@ResponseBody
 	@RequestMapping(value = "/jsonUsersSelectOne.do", method = RequestMethod.GET)
 	public UsersVO jsonUsersSelectOne(UsersVO vo) {
-		log.info("jsonUserSelectOne.do...연습하는 중  ㅇㅇㅇㅇㅇㅇㅇ....{}", vo);
+		log.info("jsonUserSelectOne.do...{}", vo);
 		
 		UsersVO vo2 = service.selectOne(vo);
 		log.info("vo2: {}", vo2);

@@ -8,4 +8,8 @@
 		select c.code, c.name, c.expire, c.rate from coupon c join user_coupon u 
 		on c.code = u.couponcode where user_id = #{user_id} and isused = 0
 	</select>
+	
+	<update id="USERCOUPON_UPDATE">
+		update user_coupon set isused = 1 where user_id = #{user_id} and couponcode = #{couponcode} 
+	</update>
 </mapper>

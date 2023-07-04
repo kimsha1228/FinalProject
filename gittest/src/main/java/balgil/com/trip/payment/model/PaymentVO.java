@@ -18,5 +18,6 @@ public class PaymentVO {
 	private String res_date;
 	private int quantity;
 	private int price;
+	private String code;
 	
 }
