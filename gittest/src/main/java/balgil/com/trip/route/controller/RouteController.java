@@ -136,9 +136,18 @@ public class RouteController {
 	}
 
 	@RequestMapping(value = "/deleteRouteOk.do", method = RequestMethod.GET)
-	public String deleteRouteOk() {
+	public String deleteRouteOk(RouteVO vo) {
+		log.info("deleteRouteOk.do..{}", vo);
+		
+		int result = service.delete(vo);
 
-		return "test/Route_test";
+		log.info("삭제 성공여부:{}", result);
+
+		if (result == 1) {
+			return "redirect:selectAllRoute.do?seller_id=" + vo.getSeller_id();
+		} else {
+			return "redirect:selectOneRoute.do?id=" + vo.getId();
+		}
 	}
 
 	@RequestMapping(value = "/selectAllRoute.do", method = RequestMethod.GET)
@@ -157,14 +166,26 @@ public class RouteController {
 
 		model.addAttribute("vo2", vo2);
 
-		// vcountup
 		return "route/selectOneRoute";
 	}
 
+	@RequestMapping(value = "/selectOneDestRoute.do", method = RequestMethod.GET)
+	public String selectOneDestRoute(RouteVO vo) {
+		log.info("selectOneDestRoute.do..{}",vo.getDest_id());
+		return "route/selectOneDestRoute";
+	}
+	
 	@RequestMapping(value = "/selectOneUserRoute.do", method = RequestMethod.GET)
-	public String selectOneUserRoute() {
-		// vcountUpRoute는 여기에 들어감
-		return "test/Route_test";
+	public String selectOneUserRoute(RouteVO vo,Model model) {
+		log.info("/selectOneUserRoute.do...{}", vo);
+
+		RouteVO vo2 = service.selectOne(vo);
+
+		log.info("After Select...{}", vo2);
+
+		model.addAttribute("vo2", vo2);
+
+		return "route/selectOneUserRoute";
 	}
 
 	@RequestMapping(value = "/likeUpRoute.do", method = RequestMethod.GET)

@@ -197,6 +197,8 @@ public class ActivityController {
 
 		int result = service.delete(vo);
 
+		log.info("삭제 성공여부:{}", result);
+		
 		if (result == 1) {
 			return "redirect:selectAllAct.do?seller_id=" + vo.getSeller_id();
 		} else {

@@ -33,5 +33,9 @@ public class RouteService {
 	public int update(RouteVO vo) {
 		return dao.update(vo);
 	}
+
+	public int delete(RouteVO vo) {
+		return dao.delete(vo);
+	}
 	
 }
