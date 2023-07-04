@@ -28,7 +28,10 @@ public class RouteDAOimpl implements RouteDAO {
 
 	@Override
 	public int update(RouteVO vo) {
-		return 0;
+		//RT1~RT5를 NULL로 만들어 주는 작업을 함
+		sqlSession.update("ROUTE_BEFORE_UPDATE",vo);
+		
+		return sqlSession.update("ROUTE_UPDATE",vo);
 	}
 
 	@Override

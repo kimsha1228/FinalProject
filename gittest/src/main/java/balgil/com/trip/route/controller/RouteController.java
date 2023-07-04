@@ -27,7 +27,7 @@ public class RouteController {
 
 	@Autowired
 	ServletContext sContext;
-	
+
 	@RequestMapping(value = "/insertRoute.do", method = RequestMethod.GET)
 	public String insertRoute() {
 		log.info("insertRoute.jsp로 이동");
@@ -36,10 +36,9 @@ public class RouteController {
 
 	@RequestMapping(value = "/insertRouteOk.do", method = RequestMethod.POST)
 	public String insertRouteOk(RouteVO vo) throws IllegalStateException, IOException {
-		log.info("insertRouteOk..{}",vo);
-		
+		log.info("insertRouteOk..{}", vo);
 
-		//로컬 이미지 생성
+		// 로컬 이미지 생성
 		String getOriginalFilename = vo.getFile().getOriginalFilename();
 		int fileNameLength = vo.getFile().getOriginalFilename().length();
 		log.info("getOriginalFilename:{}", getOriginalFilename);
@@ -68,11 +67,11 @@ public class RouteController {
 			ImageIO.write(thumb_buffer_img, formatName, thumb_file);
 
 		} // end else
-		
+
 		int result = service.insert(vo);
-		
-		log.info("루트 삽입결과:{}",result);
-		
+
+		log.info("루트 삽입결과:{}", result);
+
 		if (result == 1) {
 			return "redirect:selectAllRoute.do";
 		} else {
@@ -81,15 +80,59 @@ public class RouteController {
 	}
 
 	@RequestMapping(value = "/updateRoute.do", method = RequestMethod.GET)
-	public String updateRoute() {
+	public String updateRoute(RouteVO vo, Model model) {
+		log.info("/selectOneRoute.do...{}", vo);
 
-		return "test/Route_test";
+		RouteVO vo2 = service.selectOne(vo);
+
+		log.info("after select..{}", vo2);
+
+		model.addAttribute("vo2", vo2);
+
+		return "route/updateRoute";
 	}
 
-	@RequestMapping(value = "/updateRouteOk.do", method = RequestMethod.GET)
-	public String updateRouteOk() {
+	@RequestMapping(value = "/updateRouteOk.do", method = RequestMethod.POST)
+	public String updateRouteOk(RouteVO vo) throws IllegalStateException, IOException {
+		log.info("/updateActOk.do...{}", vo);
 
-		return "test/Route_test";
+		// TODO: 추후 로컬 파일도 삭제하게 해야함
+		String getOriginalFilename = vo.getFile().getOriginalFilename();
+		int fileNameLength = vo.getFile().getOriginalFilename().length();
+		log.info("getOriginalFilename:{}", getOriginalFilename);
+		log.info("fileNameLength:{}", fileNameLength);
+
+		// 업로드 한 파일이 없으면 사진에 변경은 없음
+		if (getOriginalFilename.length() != 0) {
+			vo.setImg(getOriginalFilename);
+			// 웹 어플리케이션이 갖는 실제 경로: 이미지를 업로드할 대상 경로를 찾아서 파일저장.
+			String realPath = sContext.getRealPath("resources/uploadimg");
+			log.info("realPath : {}", realPath);
+
+			File f = new File(realPath + "\\" + vo.getImg());
+			vo.getFile().transferTo(f);
+
+			//// create thumbnail image/////////
+			BufferedImage original_buffer_img = ImageIO.read(f);
+			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
+			Graphics2D graphic = thumb_buffer_img.createGraphics();
+			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
+
+			File thumb_file = new File(realPath + "/thumb_" + vo.getImg());
+			String formatName = vo.getImg().substring(vo.getImg().lastIndexOf(".") + 1);
+			log.info("formatName : {}", formatName);
+			ImageIO.write(thumb_buffer_img, formatName, thumb_file);
+		} // end else
+
+		int result = service.update(vo);
+
+		log.info("수정 성공여부:{}", result);
+
+		if (result == 1) {
+			return "redirect:selectOneRoute.do?id=" + vo.getId();
+		} else {
+			return "redirect:updateRoute.do?id=" + vo.getId();
+		}
 	}
 
 	@RequestMapping(value = "/deleteRouteOk.do", method = RequestMethod.GET)
@@ -105,16 +148,16 @@ public class RouteController {
 	}
 
 	@RequestMapping(value = "/selectOneRoute.do", method = RequestMethod.GET)
-	public String selectOneRoute(RouteVO vo,Model model) {
+	public String selectOneRoute(RouteVO vo, Model model) {
 		log.info("/selectOneRoute.do...{}", vo);
 
 		RouteVO vo2 = service.selectOne(vo);
 
 		log.info("after select..{}", vo2);
-		
+
 		model.addAttribute("vo2", vo2);
-		
-		//vcountup
+
+		// vcountup
 		return "route/selectOneRoute";
 	}
 

@@ -12,6 +12,7 @@
 	  <result property="summary" column="summary" />
 	  <result property="content" column="CONTENT" />
 	  <result property="seller_id" column="seller_id" />
+	  <result property="dest_id" column="dest_id" />
 	  <result property="dest_name" column="여행지" />
 	  <result property="act_name1" column="루트1" />
 	  <result property="act_name2" column="루트2" />
@@ -78,6 +79,7 @@
 			r.summary,
 			r."CONTENT",
 			r.seller_id,
+			r.dest_id,
 			d."NAME" as 여행지,
 			a1.act_name as 루트1,
 			a2.act_name as 루트2,
@@ -110,12 +112,26 @@
 		  </foreach>
 	  )
 	</insert>
-
+	<update id="ROUTE_BEFORE_UPDATE" parameterType="balgil.com.trip.route.model.RouteVO">
+		  update ROUTE set RT1=null,RT2=null,RT3=null,RT4=null,RT5=null
+		  where ID = #{id}
+	</update>
 	<update id="ROUTE_UPDATE" parameterType="balgil.com.trip.route.model.RouteVO">
-		update ROUTE set ACT_NAME=#{act_name} , CONTENT=#{content} , 
-				TAG=#{tag} , "ADD"=#{add}, DEST_ID=#{dest_id},
-				PRICE=#{price}, ACT_DATE=SYSDATE
-		where ID = #{id}
+		  update ROUTE set ROUTE_NAME=#{route_name},SUMMARY=#{summary},
+		  CONTENT=#{content},
+		 
+		  <!-- 이미지가 있다면 변경하고 아니면 놔둠 -->
+		  <if test="img != null">
+		  	IMG=#{img}, 		  
+		  </if>
+		  
+		  DEST_ID=#{dest_id},ROUTE_DATE=SYSDATE
+		  
+		  <!-- 선택한 옵션들만 집어넣게 -->
+		  <foreach item="rt" index="index" open=", " separator=", " close="" collection="rts">
+		    "RT${index + 1}"=${rt}
+		  </foreach>
+		  where ID = #{id}
 	</update>
 	
 	<update id="ROUTE_VCOUNTUP" parameterType="balgil.com.trip.route.model.RouteVO">

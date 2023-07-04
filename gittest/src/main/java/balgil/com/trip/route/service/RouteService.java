@@ -29,5 +29,9 @@ public class RouteService {
 	public RouteVO selectOne(RouteVO vo) {
 		return dao.selectOne(vo);
 	}
+
+	public int update(RouteVO vo) {
+		return dao.update(vo);
+	}
 	
 }
