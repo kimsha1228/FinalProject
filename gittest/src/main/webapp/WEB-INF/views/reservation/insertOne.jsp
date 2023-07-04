@@ -49,7 +49,10 @@ $(function(){
 	 				`;
 				
 	  			let point = '';
-	  			if(vo2.point===0) $("#pointbox").hide();
+	  			
+	  			if(vo2.point===0) {
+	  				$("#point_use").hide();
+	  			}
 	  			point += `<div>보유 포인트: <span id="user_point">\${vo2.point}</span>원<div>`;
 
 	 			$("#vo2").html(tag_vo2);
@@ -58,12 +61,18 @@ $(function(){
 	 			$(".point").on("propertychange change keyup paste input", function(){
 	 				console.log("point...keyup",`\${vo2.point}`,$(this).val());
 	 				const maxPoint = parseInt(`\${vo2.point}`);
+	 				const maxPrice = parseInt(${param.price*param.quantity}-$(".coupon").val());
+// 	 				console.log("maxPrice",maxPrice);
 					let inputValue = parseInt($(this).val());	
 					if(inputValue < 0){
 						$(this).val(0);
-					} else if(inputValue > maxPoint){
-						$(this).val(maxPoint);
-					}	
+					} else if(inputValue > maxPrice){
+						$(this).val(maxPrice);
+						if(inputValue > maxPoint){
+							$(this).val(maxPoint);
+						}
+					}
+					setFinalPriceInfo();
 					
 				});
 					  			
@@ -71,7 +80,8 @@ $(function(){
 	 				console.log("using_point_input_btn...",`\${vo2.point}`);
 
 	 				const maxPoint = parseInt(`\${vo2.point}`);	
- 					console.log("maxPoint...",maxPoint);
+	 				const maxPrice = parseInt(${param.price*param.quantity}-$(".coupon").val());
+ 					console.log("maxPoint...",maxPoint, maxPrice);
 	 				
 	 				let state = $(this).data("state");	
 	 				
@@ -79,7 +89,12 @@ $(function(){
 	 					console.log("n동작");
 	 					/* 모두사용 */
 	 					//값 변경
-	 					$(".point").val(maxPoint);
+	 					if(maxPoint>maxPrice){
+		 					$(".point").val(maxPrice);
+	 					} else{
+		 					$(".point").val(maxPoint);
+	 					}
+	 					
 	 					//글 변경
 	 					$(".using_point_input_btn_Y").css("display", "inline-block");
 	 					$(".using_point_input_btn_N").css("display", "none");
@@ -192,7 +207,15 @@ $(function(){
 		let finalPrice = totalPrice-pointPrice-discountPrice;
 		console.log(totalPrice, pointPrice, discountPrice);
 		
-		$("#price_final").val(finalPrice);
+		if(finalPrice<0) {
+			$(".point").val(0);
+			$("#price_final").val(totalPrice);
+			
+			alert ("쿠폰과 포인트를 다시 설정해주십시오");
+		}else{
+			$("#price_final").val(finalPrice);
+			
+		}
 		
 	}
 	
@@ -228,22 +251,22 @@ $(function(){
 			
 			<!-- 쿠폰 select -->
 			<tr>
-				<td id="coupon">
+				<td id = "coupon">
 				</td>
 			</tr>
 			<!-- 쿠폰 할인 금액 -->
 			<tr>
-				<td id="discount">
+				<td id = "discount">
 				</td>
 				
 			</tr>
 			<!-- 포인트 보유 금액 -->
-			<tr id="pointbox">
+			<tr id = "pointbox">
 				<td id="having_point">
 				</td>
 			</tr>
 			<!-- 포인트 사용 금액 -->
-			<tr>
+			<tr id = "point_use">
 				<td>
 					<input type="text" name="point" class="point" value="0">원 
 					<a class="using_point_input_btn using_point_input_btn_N" data-state="N">모두사용</a>

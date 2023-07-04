@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import balgil.com.trip.payment.model.PaymentVO;
 import balgil.com.trip.payment.service.PaymentService;
+import balgil.com.trip.pointhistory.service.PointHistoryService;
 import balgil.com.trip.usercoupon.service.UserCouponService;
 import balgil.com.trip.users.service.UsersService;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +29,8 @@ public class PaymentController {
 	@Autowired
 	UserCouponService uc_service; 
 
+	@Autowired
+	PointHistoryService p_service; 
 	
 	@RequestMapping(value = "/insertPaymentOne.do", method = RequestMethod.GET)
 	public String insertPaymentOne(PaymentVO vo) {
@@ -49,10 +52,10 @@ public class PaymentController {
 		if(result==1) {
 			
 			int result_user = u_service.point(vo.getUser_id(), vo.getPoint());
+			int result_pointHistory = p_service.useInsert(vo.getUser_id(), vo.getPoint());
 			int result_userCoupon = uc_service.update(vo.getUser_id(), vo.getCode());
-//			int result_couponHistory = 
 			
-			if(result_user==1 && result_userCoupon==1) {
+			if(result_user==1 && result_userCoupon==1 && result_pointHistory==1) {
 				return "redirect:insertOneReservation.do?id="+vo.getRes_id()+"&quantity="+vo.getQuantity()+
 						"&price="+vo.getPrice()+"&res_date="+vo.getRes_date()+"&price_final="+vo.getPrice_final()+
 						"&act_id="+vo.getAct_id()+"&user_id="+vo.getUser_id();

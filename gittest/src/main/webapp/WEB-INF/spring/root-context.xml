@@ -44,6 +44,7 @@
 				<value>classpath:jdbc/sqlMapper_usercoupon.xml</value>
 				<value>classpath:jdbc/sqlMapper_users.xml</value>
 				<value>classpath:jdbc/sqlMapper_activity.xml</value>
+				<value>classpath:jdbc/sqlMapper_pointhistory.xml</value>
 			</list>
 		</property>
 	</bean>
