@@ -1,5 +1,7 @@
 package balgil.com.trip.reservation.model;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -29,6 +31,13 @@ public class ReservationDAOimpl implements ReservationDAO {
 		log.info("update()...{}", vo);
 
 		return sqlSession.update("RESERVATION_UPDATE", vo);
+	}
+
+	@Override
+	public List<ReservationVO> selectAll(ReservationVO vo) {
+		log.info("selectAll()...{}", vo);
+		
+		return sqlSession.selectList("RESERVATION_SELECT_ALL", vo);
 	}
 
 }

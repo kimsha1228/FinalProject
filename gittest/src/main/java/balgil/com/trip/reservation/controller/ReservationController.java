@@ -1,7 +1,10 @@
 package balgil.com.trip.reservation.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -56,21 +59,20 @@ public class ReservationController {
 ////		}
 //	}
 	
-	@RequestMapping(value = "/insertOneReservation.do", method = RequestMethod.GET)
-	public String insertOneReservation(ReservationVO vo) {
-		log.info("/insertOneReservation.do...{}", vo);
-		
-		int result = service.insert(vo);
-		log.info("result : {}", result);
-		
-		return "home";
+//	@RequestMapping(value = "/insertOneReservation.do", method = RequestMethod.GET)
+//	public String insertOneReservation(ReservationVO vo) {
+//		log.info("/insertOneReservation.do...{}", vo);
+//		
+//		int result = service.insert(vo);
+//		log.info("result : {}", result);
+//		
 //		if (result == 1) {
-//			return "redirect:reservation_api.do";
+//			return "reservation/reservationComplete";//리다이렉트로 바꿔주기
 //		} else {
-//			return "redirect:reservationInsert.do";
+//			return "redirect:reservationOne.do";
 //		}
-	}
-	
+//	}
+//	
 	@RequestMapping(value = "/cancelReservation.do", method = RequestMethod.GET)
 	public String cancelReservation(ReservationVO vo) {
 		log.info("/cancelReservation.do...{}", vo);
@@ -80,5 +82,22 @@ public class ReservationController {
 		
 		return "reservation/insert";
 	}
+	
+	@RequestMapping(value = "/reservationComplete.do", method = RequestMethod.GET)
+	public String reservationComplete(ReservationVO vo) {
+		log.info("/reservationComplete.do...{}", vo);
+		
+		return "reservation/reservationComplete";
+	}
+	
+	@RequestMapping(value = "/selectAllReservation.do", method = RequestMethod.GET)
+	public String selectAllReservation(ReservationVO vo, Model model) {
+		log.info("/selectAllReservation.do");
+		
+		List<ReservationVO> vos = service.selectAll(vo);
+		log.info("{}", vos);
 
+		return "reservation_api";
+	}
+	
 }
