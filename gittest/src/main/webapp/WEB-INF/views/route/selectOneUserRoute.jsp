@@ -107,14 +107,9 @@
 			<input type="date" name="res_date" id="datePicker">
 			
 			<div id="quantityContainer">
-<!-- 				<p>수량 선택</p> -->
-<!-- 				<input type='button' value='-' class='qtyminus minus' onclick='decrementQuantity()' /> -->
-<!-- 				<input type='text' name='quantity' value='1' id='quantity' class='qty' /> -->
-<!-- 				<input type='button' value='+' class='qtyplus plus' onclick='incrementQuantity()' /> -->
 			</div>
 			
-			<p>현재 상품번호 act_id ${vo2.id}, 예약자 user_id ${user_id}</p>
-			<input type='hidden' name='act_id' value='${vo2.id}'/>
+			<p> 예약자 user_id ${user_id}</p>
 			<input type='hidden' name='user_id' value='${user_id}'/>
 		</form>
 		<input type="submit" form="Reservation" formaction="insertManyCart.do" value="장바구니">

@@ -50,6 +50,7 @@ $(function(){
 			var innerHTML = '';
 			innerHTML += `<div id="${act_id}">`;
 			innerHTML += `<p>${act_name}의 수량 선택</p>`;
+			innerHTML += `<input type='hidden' name='act_id' value='${act_id}'/>`;
 			innerHTML += `<input type="button" value="-" class="qtyminus minus" data-act-id="${act_id}" />`;
 			innerHTML += `<input type="text" name="quantity" value="1" id="quantity" class="qty" />`;
 			innerHTML += `<input type="button" value="+" class="qtyplus plus" data-act-id="${act_id}" />`;
