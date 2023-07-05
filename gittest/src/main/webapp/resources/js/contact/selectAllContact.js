@@ -1,6 +1,6 @@
 window.onload = function() {
   $.ajax({
-    url: "jsonSelectAllAnswer.do",
+    url: "jsonSelectAllContact.do",
     type: "GET",
     dataType: "json",
     success: function(data) {
@@ -12,7 +12,7 @@ window.onload = function() {
         tag_vos += `
           <tr>
             <td>				
-              <a href="selectOneAnswer.do?id=${vo.id}">${vo.id}</a>
+              <a href="selectOneContact.do?id=${vo.id}">${vo.id}</a>
             </td>
             <td>${vo.num}</td>
             <td>${vo.content}</td>

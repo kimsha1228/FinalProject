@@ -10,11 +10,15 @@ public interface ContactDAO {
 	
 	public List<ContactVO> selectAllUser();
 	
-	public ContactVO selectOne(ContactVO vo);
+	public ContactVO selectOneContact(ContactVO vo);
 	
 	public ContactVO selectOneUser(ContactVO vo);
 	
 	public int delete(ContactVO vo);
 	
-	public int insertContactOK(ContactVO vo);
+	public int insertOK(ContactVO vo);
+	
+    public List<ContactVO> selectAllContact(ContactVO vo);
+    
+	
 }

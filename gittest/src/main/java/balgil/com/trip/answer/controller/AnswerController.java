@@ -18,9 +18,9 @@ public class AnswerController {
 	@Autowired
 	AnswerService service;
 	
-	@RequestMapping(value = "/answer_selectAll.do", method = RequestMethod.GET)
-	public String answer_selectAll() {
-		log.info("/answer_selectAll.do");
+	@RequestMapping(value = "/selectAllAnswer.do", method = RequestMethod.GET)
+	public String selectAllAnswer() {
+		log.info("/selectAllAnswer.do");
 		
 		List<AnswerVO> vos = service.selectAll();
 		
@@ -28,56 +28,56 @@ public class AnswerController {
 		return "answer/selectAll";
 	}
 	
-	@RequestMapping(value = "/answer_selectOne.do", method = RequestMethod.GET)
-	public String answer_selectOne(AnswerVO vo) {
-		log.info("/answer_selectOne.do....{}", vo);
+	@RequestMapping(value = "/selectOneAnswer.do", method = RequestMethod.GET)
+	public String selectOneAnswer(AnswerVO vo) {
+		log.info("/selectOneAnswer.do....{}", vo);
 		
 		AnswerVO vo2 = service.selectOne(vo);
 		
 		return "answer/selectOne";
 	}
 	
-	@RequestMapping(value = "/answer_insert.do", method = RequestMethod.GET)
-		public String answer_insert() {
-		log.info("/answer_insert.do...");	
+	@RequestMapping(value = "/insertAnswer.do", method = RequestMethod.GET)
+		public String insertAnswer() {
+		log.info("/insertAnswer.do...");	
 		
 		return "answer/insert";
 	}
 	
-	@RequestMapping(value = "/answer_insertOK.do", method = RequestMethod.POST)
-	public String answer_insertOK(AnswerVO vo) {
-		log.info("/answer_insertOK.do....");
+	@RequestMapping(value = "/inserAnswertOK.do", method = RequestMethod.POST)
+	public String insertAnswerOK(AnswerVO vo) {
+		log.info("/insertAnswerOK.do....");
 		
 		int result = service.insert(vo);
 		log.info("result...{}", result);
 		
 		if(result==1) {
-			return "redirect:answer_selectAll.do";
+			return "redirect:selectAllAnswer.do";
 		}else {
-			return "redirect:answer_insert.do";
+			return "redirect:insertAnswer.do";
 		}
 	}
 	
-	@RequestMapping(value = "/answer_update.do", method = RequestMethod.GET)
-	public String answer_update(AnswerVO vo) {
-	log.info("/answer_update.do...", vo);
+	@RequestMapping(value = "/updateAnswer.do", method = RequestMethod.GET)
+	public String updateAnswer(AnswerVO vo) {
+	log.info("/updateAnswer.do...", vo);
 	
 	AnswerVO vo2 = service.selectOne(vo);
 	
 	return "answer/update";
 	}
 	
-	@RequestMapping(value = "/answer_updateOK.do", method = RequestMethod.POST)
-	public String answer_updateOK(AnswerVO vo) {
-		log.info("/answer_updateOK.do....");
+	@RequestMapping(value = "/updateAnswerOK.do", method = RequestMethod.POST)
+	public String updateAnswerOK(AnswerVO vo) {
+		log.info("/updateAnswerOK.do....");
 		
 		int result = service.update(vo);
 		log.info("result...{}", result);
 		
 		if(result==1) {
-			return "redirect:answer_selectOne.do?num="+vo.getNum();
+			return "redirect:selectOneAnswer.do?num="+vo.getNum();
 		}else {
-			return "redirect:answer_update.do?num="+vo.getNum();
+			return "redirect:updateAnswer.do?num="+vo.getNum();
 		}
 	}
 	

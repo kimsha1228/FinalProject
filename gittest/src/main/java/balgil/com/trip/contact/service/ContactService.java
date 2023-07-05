@@ -28,8 +28,12 @@ public class ContactService {
 		return dao.selectAll();
 	}
 	
+	public List<ContactVO> selectAll(ContactVO vo) {
+        return dao.selectAllContact(vo);
+    }
+	
 	public ContactVO selectOne(ContactVO vo) {
-		return dao.selectOne(vo);
+		return dao.selectOneContact(vo);
 	}
 	
 	public int delete(ContactVO vo) {

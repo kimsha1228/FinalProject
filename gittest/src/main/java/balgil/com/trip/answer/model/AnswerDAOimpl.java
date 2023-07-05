@@ -21,39 +21,39 @@ public class AnswerDAOimpl implements AnswerDAO {
 	
 	@Override
 	public int insert(AnswerVO vo) {
-		log.info("insert()....{}", vo);
-		return sqlSession.insert("A_INSERT", vo);
+		log.info("insertAnswer()....{}", vo);
+		return sqlSession.insert("ANSWER_INSERT", vo);
 	}
 
 	@Override
 	public int update(AnswerVO vo) {
-		log.info("update()....{}", vo);
-		return sqlSession.update("A_UPDATE", vo);
+		log.info("updateAnswer()....{}", vo);
+		return sqlSession.update("ANSWER_UPDATE", vo);
 	}
 
 	@Override
 	public int delete(AnswerVO vo) {
-		log.info("delete()....{}", vo);
-		return sqlSession.delete("A_DELETE", vo);
+		log.info("deleteAnswer()....{}", vo);
+		return sqlSession.delete("ANSWER_DELETE", vo);
 	}
 
 	@Override
 	public List<AnswerVO> selectAll() {
 		log.info("selectAll()......");
-		return sqlSession.selectList("A_SELECT_ALL");
+		return sqlSession.selectList("ANSWER_SELECT_ALL");
 	}
 	
 	@Override
 	public AnswerVO selectOne(AnswerVO vo) {
 		log.info("selectOne()....{}", vo);
 		
-		return sqlSession.selectOne("A_SELECT_ONE",vo);
+		return sqlSession.selectOne("ANSWER_SELECT_ONE",vo);
 	}
 	
 	@Override
 	public List<AnswerVO> selectAll(AnswerVO vo) {
-	    log.info("selectAll()......");
-	    return sqlSession.selectList("A_SELECT_ALL", vo);
+	    log.info("selectAllAnswer()......{}", vo);
+	    return sqlSession.selectList("ANSWER_SELECT_ALL", vo);
 	}
 
 }

@@ -39,14 +39,8 @@ public class AnswerService {
 		return dao.selectOne(vo);
 	}
 	
-    public List<AnswerVO> jsonSelectAllAnswer(AnswerVO vo) {
-        log.info("jsonSelectAllAnswer.do..{}", vo);
-        
-        if (vo == null) {
-            return dao.selectAll();
-        } else {
-            return dao.selectAll(vo);
-        }
+    public List<AnswerVO> selectAll(AnswerVO vo) {
+        return dao.selectAll(vo);
     }
 
 }

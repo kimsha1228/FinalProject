@@ -20,10 +20,10 @@ public class AnswerRestController {
     AnswerService service;
     
     @ResponseBody
-    @RequestMapping(value = "/jsonSelectAllanswer.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/jsonSelectAllAnswer.do", method = RequestMethod.GET)
     public List<AnswerVO> jsonSelectAllAnswer(AnswerVO vo) {
         log.info("jsonSelectAllAnswer.do..{}", vo);
         
-        return service.selectAll();
+        return service.selectAll(vo);
     }
 }

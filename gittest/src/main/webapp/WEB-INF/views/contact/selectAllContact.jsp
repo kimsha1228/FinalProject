@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>답변목록</title>
+<title>문의목록</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/answer/selectAllAnswer.js"></script>
+<script type="text/javascript" src="resources/js/contact/selectAllcontact.js"></script>
 <script>
 	let user_id = '<%= session.getAttribute("user_id") %>';
 	console.log("현재 로그인 되어있는 아이디:",user_id);
@@ -15,15 +15,20 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>답변목록</h1>
+	<h1>문의목록</h1>
 	<table>
 		<thead>
 			<tr>
 				<th>num</th>
+				<th>title</th>
 				<th>content</th>
-				<th>ans_date</th>
+				<th>con_date</th>
+				<th>attach_img</th>
+				<th>file</th>
+				<th>user_id</th>
 				<th>seller_id</th>
-				<th>contact_id</th>
+				<th>act_id</th>
+				<th>act_name</th>
 			</tr>
 		</thead>
 		<tbody id="vos">
