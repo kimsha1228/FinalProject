@@ -54,4 +54,11 @@ public class HomeController {
 		
 		return "test/Route_test";
 	}
+	
+	@RequestMapping(value = "/map_test.do", method = RequestMethod.GET)
+	public String map_test(Locale locale, Model model) {
+		log.info("map 테스트용 jsp로 이동");
+		
+		return "test/map_test";
+	}
 }
