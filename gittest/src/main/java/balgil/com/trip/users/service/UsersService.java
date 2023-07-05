@@ -17,7 +17,7 @@ public class UsersService {
 	UsersDAO dao;
 
 	public UsersService() {
-		log.info("MemberService()...");
+		log.info("UsersService()...");
 	}
 
 	public List<UsersVO> selectAll() {

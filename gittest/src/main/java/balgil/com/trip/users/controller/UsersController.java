@@ -1,12 +1,8 @@
 package balgil.com.trip.users.controller;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
@@ -16,9 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import lombok.extern.slf4j.Slf4j;
 import balgil.com.trip.users.model.UsersVO;
 import balgil.com.trip.users.service.UsersService;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Handles requests for the application home page.

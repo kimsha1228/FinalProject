@@ -19,4 +19,5 @@ public interface UsersDAO {
 	List<UsersVO> searchList(String searchKey, String searchWord);
 
 	UsersVO idCheck(UsersVO vo);
+
 }

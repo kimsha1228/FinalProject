@@ -30,5 +30,4 @@ public class UsersRestController {
 			return "{\"result\":\"NotOK\"}";
 		}
 	}
-
 }
