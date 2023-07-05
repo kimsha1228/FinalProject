@@ -36,11 +36,11 @@ public class CartService {
 		// TODO Auto-generated method stub
 		return dao.selectAll(vo);
 	}
-
-	public void addToCart(ActivityVO activity, HttpSession session) {
-		    // 장바구니에 상품 추가 로직 작성
-		    dao.addToCart(activity, session);
-	}
+//
+//	public void addToCart(ActivityVO activity, HttpSession session) {
+//		    // 장바구니에 상품 추가 로직 작성
+//		    dao.addToCart(activity, session);
+//	}
 
 	public void deleteOneCart(int act_id) {
 		
@@ -55,5 +55,18 @@ public class CartService {
 	
 	//insertOneCart, insertManyCart ,deleteOneCart, deleteManyCart
    
+	
+	//임시
+	 public void addTempProductToCart(String user_id, int act_id) {
+	   
+	 }
+	 
+	 //임시
+	 public void addToCart(CartVO cart) {
+			dao.addToCart(cart);
+	    }
+	 
+	 
+	 
    
 }

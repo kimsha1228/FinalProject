@@ -40,14 +40,10 @@ public class CartDAOimpl implements CartDAO {
         return vos;
     }
 
+    //임시
     @Override
-    public void addToCart(ActivityVO activity, HttpSession session) {
-        List<ActivityVO> cartItems = (List<ActivityVO>) session.getAttribute("cartItems");
-
-        // 장바구니에 상품을 추가
-        cartItems.add(activity);
-        
-        session.setAttribute("cartItems", cartItems);
+    public void addToCart(CartVO cart) {
+        sqlSession.insert("sqlMapper_cart", cart);
     }
 
 	

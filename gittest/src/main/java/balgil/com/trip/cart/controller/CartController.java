@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import balgil.com.trip.activity.model.ActivityVO;
+import balgil.com.trip.activity.service.ActivityService;
 import balgil.com.trip.cart.model.CartVO;
 import balgil.com.trip.cart.service.CartService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +25,12 @@ public class CartController {
 
     @Autowired
     CartService cartService;
+    private ActivityService activityService;
+    
+    @Autowired
+    public void setActivityService(ActivityService activityService) {
+        this.activityService = activityService;
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String cart() {
@@ -71,25 +78,60 @@ public class CartController {
     public String cartList(Model model) {
         log.info("/cartList.do");
 
-        // 카트 리스트 조회 로직을 수행하고 결과를 모델에 추가합니다.
+        // 카트 리스트 조회 로직을 수행하고 결과를 모델에 추가
 //        List<CartVO> cartList = cartService.getCartList();
 //        model.addAttribute("cartList", cartList);
 
         return "cart/cartList";
     }
     
+//    
+//    @RequestMapping(value = "/addToCart", method = RequestMethod.POST)
+//    @ResponseBody
+//    public ActivityVO addToCart(@RequestBody ActivityVO activity, HttpSession session) {
+//    	List<ActivityVO> cartItems = (List<ActivityVO>) session.getAttribute("cartItems");
+//
+//        // 장바구니에 상품을 추가
+//        cartItems.add(activity);
+//      cartService.addToCart(activity, session);
+//
+//      return activity; // 추가한 상품 정보 반환
+//    }
+
+    
+    //임시
+    @RequestMapping(value = "/addTempProductToCart", method = RequestMethod.POST)
+    public String addTempProductToCart(@RequestParam("act_id") int act_id, HttpSession session) {
+        String user_id = (String) session.getAttribute("user_id");
+        cartService.addTempProductToCart(user_id, act_id);
+        return "redirect:/cartList";
+    }
     
     @RequestMapping(value = "/addToCart", method = RequestMethod.POST)
-    @ResponseBody
-    public ActivityVO addToCart(@RequestBody ActivityVO activity, HttpSession session) {
-    	List<ActivityVO> cartItems = (List<ActivityVO>) session.getAttribute("cartItems");
-
-        // 장바구니에 상품을 추가합니다
-        cartItems.add(activity);
-      cartService.addToCart(activity, session);
-
-      return activity; // 추가한 상품 정보 반환
+    public String addToCart(@RequestParam("act_id") int act_id, HttpSession session) {
+        String user_id = (String) session.getAttribute("user_id");
+        
+        // 데이터베이스에서 활동 정보
+        ActivityVO activity = new ActivityVO();
+        activity.setId(act_id);
+        ActivityVO selectedActivity = activityService.selectOne(activity);
+        
+        // 장바구니에 추가할 상품 정보를 담은 CartVO 객체를 생성
+        CartVO cart = new CartVO();
+        cart.setUser_id(user_id);
+        cart.setAct_id(selectedActivity.getId());
+        cart.setAct_name(selectedActivity.getAct_name());
+        cart.setPrice(selectedActivity.getPrice());
+   
+        
+        // 상품을 장바구니에 추가
+        cartService.addToCart(cart);
+        
+        return "redirect:/cartList";
     }
+
+
+
 
     
     

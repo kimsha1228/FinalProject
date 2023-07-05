@@ -17,7 +17,7 @@ public interface CartDAO {
 	    List<CartVO> selectAll(CartVO vo);
 	    
 
-	    void addToCart(ActivityVO activity, HttpSession session);
-	    
+	    //임시
+	    void addToCart(CartVO cart);	    
 	}
 
