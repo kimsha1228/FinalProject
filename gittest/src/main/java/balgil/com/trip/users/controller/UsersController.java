@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import balgil.com.trip.users.model.UsersVO;
 import balgil.com.trip.users.service.UsersService;
@@ -100,8 +101,15 @@ public class UsersController {
 		
 		UsersVO vo2 = service.login(vo);
 		log.info("vo2...{}",vo2);
+		
+		if(vo2 == null) {
+			return "redirect:login.do?message=fail";
+		}else {
+			session.setAttribute("user_id", vo2.getId());
+			return "redirect:home.do";
+		}
 
-  }//end u_selectAll
+	}
 	
 	@RequestMapping(value = "/u_deleteOK.do", method = RequestMethod.GET)
 	public String m_deleteOK(UsersVO vo) {
@@ -159,30 +167,3 @@ public class UsersController {
 	}
 
 }
-
-  @ResponseBody
-	@RequestMapping(value = "/jsonUsersSelectOne.do", method = RequestMethod.GET)
-	public UsersVO jsonUsersSelectOne(UsersVO vo) {
-		log.info("jsonUserSelectOne.do...{}", vo);
-		
-		if(vo2 == null) {
-			return "redirect:login.do?message=fail";
-		}else {
-			session.setAttribute("user_id", vo2.getId());
-			return "redirect:home.do";
-		}
-
-	}
-	
-	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping(value = "/jsonUsersSelectOne.do", method = RequestMethod.GET)
-	 * public UsersVO jsonUsersSelectOne(UsersVO vo) {
-	 * log.info("jsonUserSelectOne.do...연습하는 중  ㅇㅇㅇㅇㅇㅇㅇ....{}", vo);
-	 * 
-	 * UsersVO vo2 = service.selectOne(vo); log.info("vo2: {}", vo2);
-	 * 
-	 * return vo2; }//end jsonUserSelectOne - sha
-	 */	
-

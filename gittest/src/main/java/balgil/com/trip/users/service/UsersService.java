@@ -53,7 +53,7 @@ public class UsersService {
 	}
 
   public int pointUpdate(String user_id, String point) {
-		return dao.update(user_id, point);
+		return dao.pointUpdate(user_id, point);
 	}
 
 }
