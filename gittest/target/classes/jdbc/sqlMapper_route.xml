@@ -81,6 +81,8 @@
 			r.img,
 			r.summary,
 			r.seller_id,
+			r.vcount,
+			r.likes,
 			d."NAME" as 여행지,
 			r.rt1,
 			a1.act_name as 루트1,
@@ -115,6 +117,8 @@
 			r.route_date,
 			r.seller_id,
 			r.dest_id,
+			r.vcount,
+			r.likes,
 			d."NAME" as 여행지,
 			r.rt1,
 			a1.act_name as 루트1,
@@ -177,6 +181,11 @@
 	
 	<update id="ROUTE_VCOUNTUP" parameterType="balgil.com.trip.route.model.RouteVO">
 		update ROUTE set vcount=vcount+1
+		where ID = #{id}
+	</update>
+	
+	<update id="ROUTE_LIKEUP" parameterType="balgil.com.trip.route.model.RouteVO">
+		update ROUTE set likes=likes+1
 		where ID = #{id}
 	</update>
 	

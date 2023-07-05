@@ -106,3 +106,24 @@ $(document).on('click', '.qtyminus', function() {
 		quantityInput.val(currentQuantity - 1);
 	}
 });
+
+function likeUpRoute(value){
+	console.log(value);
+	$.ajax({
+	    url: "likeUpRoute.do",
+	    data: {id: value},
+		method:'GET',
+	    dataType:'json',
+	    success: function(response) {
+	        console.log("ajax success",response,response.result);
+	        if(response.result=="NotOK"){
+	        	alert("추천은 10초에 한번만 가능합니다");
+	        }else if(response.result=="OK"){
+	        	alert("루트를 추천했습니다");
+	        }
+	    },
+	 	error:function(xhr,status,error){
+			console.log('xhr.status:',xhr.status);
+	 	}
+	});//end ajax
+}

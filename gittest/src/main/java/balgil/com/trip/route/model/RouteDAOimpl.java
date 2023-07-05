@@ -67,12 +67,12 @@ public class RouteDAOimpl implements RouteDAO {
 
 	@Override
 	public void updateVcount(RouteVO vo) {
-
+		sqlSession.update("ROUTE_VCOUNTUP",vo);
 	}
 
 	@Override
 	public void updateLikeUp(RouteVO vo) {
-
+		sqlSession.update("ROUTE_LIKEUP",vo);
 	}
 
 }

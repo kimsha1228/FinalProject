@@ -37,5 +37,12 @@ public class RouteService {
 	public int delete(RouteVO vo) {
 		return dao.delete(vo);
 	}
+
+	public void vcountUp(RouteVO vo) {
+		dao.updateVcount(vo);
+	}
 	
+	public void likeup(RouteVO vo) {
+		dao.updateLikeUp(vo);
+	}
 }

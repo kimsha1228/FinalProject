@@ -7,12 +7,16 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import balgil.com.trip.route.model.RouteVO;
 import balgil.com.trip.route.service.RouteService;
@@ -138,7 +142,7 @@ public class RouteController {
 	@RequestMapping(value = "/deleteRouteOk.do", method = RequestMethod.GET)
 	public String deleteRouteOk(RouteVO vo) {
 		log.info("deleteRouteOk.do..{}", vo);
-		
+
 		int result = service.delete(vo);
 
 		log.info("삭제 성공여부:{}", result);
@@ -171,13 +175,16 @@ public class RouteController {
 
 	@RequestMapping(value = "/selectOneDestRoute.do", method = RequestMethod.GET)
 	public String selectOneDestRoute(RouteVO vo) {
-		log.info("selectOneDestRoute.do..{}",vo.getDest_id());
+		log.info("selectOneDestRoute.do..{}", vo.getDest_id());
 		return "route/selectOneDestRoute";
 	}
-	
+
 	@RequestMapping(value = "/selectOneUserRoute.do", method = RequestMethod.GET)
-	public String selectOneUserRoute(RouteVO vo,Model model) {
+	public String selectOneUserRoute(RouteVO vo, Model model) {
 		log.info("/selectOneUserRoute.do...{}", vo);
+
+		log.info("루트의 vcount 올립니다...{}", vo.getId());
+		service.vcountUp(vo);
 
 		RouteVO vo2 = service.selectOne(vo);
 
@@ -188,10 +195,45 @@ public class RouteController {
 		return "route/selectOneUserRoute";
 	}
 
+	@ResponseBody
 	@RequestMapping(value = "/likeUpRoute.do", method = RequestMethod.GET)
-	public String likeUpRoute() {
+	public String likeUpRoute(RouteVO vo, HttpServletRequest request, HttpServletResponse response) {
+		// 요청으로부터 쿠키리스트를 불러온다
+		Cookie[] cookies = request.getCookies();
 
-		return "test/Route_test";
+		// 제어용 플래그
+		int flag = 0;
+
+		// 쿠키 갯수만큼 반복
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				// 1인체로 나오면 isLiked 쿠키는 없는거고 새로 생성해줘야함
+				flag = 1;
+//				log.info("{}",cookie.getName());
+//				log.info("{}",cookie.getValue());
+
+				// 쿠키가 있다면 새로 쿠키를 생성하지 않게 flag를 0으로 만들고 탈출
+				if (cookie.getName().equals("isLiked") && cookie.getValue().equals("1")) {
+					log.info("isLiked 쿠키 이미 있지롱");
+					flag = 0;
+					break;
+				}
+			}
+		}
+
+		// 이 조건이 통과하면 쿠키가 없다는뜻이므로 새로 생성하면서 추천수up
+		if (flag == 1) {
+			service.likeup(vo);
+			Cookie isLikedCookie = new Cookie("isLiked", "1");
+	        isLikedCookie.setMaxAge(10);
+	        response.addCookie(isLikedCookie);
+		}
+		
+		if(flag==1) {
+			return "{\"result\":\"OK\"}";
+		}else {
+			return "{\"result\":\"NotOK\"}";
+		}
 	}
 
 }

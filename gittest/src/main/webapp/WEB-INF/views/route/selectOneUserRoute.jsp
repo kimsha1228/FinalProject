@@ -17,7 +17,7 @@
 	let act_id5 = ${vo2.act_id5}; let act_name5 = "${vo2.act_name5}";
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 </script>
-<script type="text/javascript" src="resources/js/route/selectOneUserRoute.js?ver=5"></script>
+<script type="text/javascript" src="resources/js/route/selectOneUserRoute.js?ver=2"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -30,6 +30,7 @@
 				<th>route_name</th>
 				<th>루트</th>
 				<th>vcount</th>
+				<th>추천수<button onclick="likeUpRoute(${vo2.id})">추천하기!</button></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -52,6 +53,7 @@
 				  </c:if>
 				</td>
 				<td>${vo2.vcount}</td>
+				<td>${vo2.likes}</td>
 			</tr>
 		</tbody>
 		<tfoot>
