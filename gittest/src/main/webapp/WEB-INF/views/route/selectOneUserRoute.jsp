@@ -9,10 +9,15 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript">
-	let user_id = '<%= session.getAttribute("user_id") %>';
+	let user_id = '<%= session.getAttribute("user_id") %>'; 
+	let act_id1 = ${vo2.act_id1}; let act_name1 = "${vo2.act_name1}";
+	let act_id2 = ${vo2.act_id2}; let act_name2 = "${vo2.act_name2}";
+	let act_id3 = ${vo2.act_id3}; let act_name3 = "${vo2.act_name3}";
+	let act_id4 = ${vo2.act_id4}; let act_name4 = "${vo2.act_name4}";
+	let act_id5 = ${vo2.act_id5}; let act_name5 = "${vo2.act_name5}";
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 </script>
-<script type="text/javascript" src="resources/js/route/selectOneUserRoute.js?ver=1"></script>
+<script type="text/javascript" src="resources/js/route/selectOneUserRoute.js?ver=5"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -58,34 +63,34 @@
 	<div id="act_container">
 		<div>
 			<label for="act1">${vo2.act_name1}</label>
-			<input type="checkbox" id="act1" name="act1">
+			<input type="checkbox" id="act1" name="1">
 			<button onclick="addWish('${user_id}',${vo2.act_id1})">♥</button>
 		</div>
 		<div>
 			<c:if test="${not empty vo2.act_name2}">
 				<label for="act2">${vo2.act_name2}</label>
-				<input type="checkbox" id="act2" name="act2">
+				<input type="checkbox" id="act2" name="2">
 		  		<button onclick="addWish('${user_id}',${vo2.act_id2})">♥</button>
 			</c:if>
 		</div>
 		<div>
 			<c:if test="${not empty vo2.act_name3}">
 				<label for="act3">${vo2.act_name3}</label>
-				<input type="checkbox" id="act3" name="act3">
+				<input type="checkbox" id="act3" name="3">
 		  		<button onclick="addWish('${user_id}',${vo2.act_id3})">♥</button>
 			</c:if>
 		</div>
 		<div>
 			<c:if test="${not empty vo2.act_name4}">
 				<label for="act4">${vo2.act_name4}</label>
-				<input type="checkbox" id="act4" name="act4">
+				<input type="checkbox" id="act4" name="4">
 		  		<button onclick="addWish('${user_id}',${vo2.act_id4})">♥</button>
 			</c:if>
 		</div>
 		<div>
 			<c:if test="${not empty vo2.act_name5}">
 				<label for="act5">${vo2.act_name5}</label>
-				<input type="checkbox" id="act5" name="act5">
+				<input type="checkbox" id="act5" name="5">
 		  		<button onclick="addWish('${user_id}',${vo2.act_id5})">♥</button>
 			</c:if>
 		</div>
@@ -101,11 +106,11 @@
 			<p>예약 날짜 선택</p>
 			<input type="date" name="res_date" id="datePicker">
 			
-			<div>
-				<p>수량 선택</p>
-				<input type='button' value='-' class='qtyminus minus' onclick='decrementQuantity()' />
-				<input type='text' name='quantity' value='1' id='quantity' class='qty' />
-				<input type='button' value='+' class='qtyplus plus' onclick='incrementQuantity()' />
+			<div id="quantityContainer">
+<!-- 				<p>수량 선택</p> -->
+<!-- 				<input type='button' value='-' class='qtyminus minus' onclick='decrementQuantity()' /> -->
+<!-- 				<input type='text' name='quantity' value='1' id='quantity' class='qty' /> -->
+<!-- 				<input type='button' value='+' class='qtyplus plus' onclick='incrementQuantity()' /> -->
 			</div>
 			
 			<p>현재 상품번호 act_id ${vo2.id}, 예약자 user_id ${user_id}</p>
@@ -117,8 +122,8 @@
 	<br>
 	<br>
 	<div>
-		<p>(임시로 구글지도 공유를 통해 에버랜드만 띄워놈)</p>
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3174.0516200106736!2d127.198060288855!3d37.2939104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b5403ce34d773%3A0x1fa18ab619238098!2z7JeQ67KE656c65Oc!5e0!3m2!1sko!2skr!4v1688088597204!5m2!1sko!2skr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		<p>(임시로 구글지도 공유를 통해 롯데월드를 띄워놈)</p>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.8567164696165!2d127.09853812637908!3d37.51129742729288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca5a7250efe81%3A0x433df2c1fec03b98!2z66Gv642w7JuU65Oc!5e0!3m2!1sko!2skr!4v1688484108914!5m2!1sko!2skr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 	</div>
 </body>
 </html>

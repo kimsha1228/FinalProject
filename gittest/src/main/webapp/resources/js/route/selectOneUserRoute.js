@@ -9,6 +9,60 @@ $(function(){
 	var now = new Date();
 	now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); //한국시간으로 변경
 	document.getElementById('datePicker').value = now.toISOString().slice(0, -14); //자릿수짜르기
+	
+	//checkbox event
+	$('input[type=checkbox]').change(function() {
+		var act_name;
+	    var act_id;
+	
+		//체크한 체크박스에 따라 act_name1~5 act_id1~5가 act_name act_id에 삽입됨
+		switch(this.name){
+			case "1":
+				act_name=act_name1;
+				act_id=act_id1;
+				break;
+			case "2":
+				act_name=act_name2;
+				act_id=act_id2;
+				break;
+			case "3":
+				act_name=act_name3;
+				act_id=act_id3;
+				break;
+			case "4":
+				act_name=act_name4;
+				act_id=act_id4;
+				break;
+			case "5":
+				act_name=act_name5;
+				act_id=act_id5;
+				break;
+			default:
+				alert("Something wrong..");
+		}
+
+        //체크박스 이벤트 핸들러
+        if ($(this).is(':checked')) {
+        	console.log(act_name);
+            alert(`${act_name} is added`);
+            
+            //삽입할 HTML요소 구성
+			var innerHTML = '';
+			innerHTML += `<div id="${act_id}">`;
+			innerHTML += `<p>${act_name}의 수량 선택</p>`;
+			innerHTML += `<input type="button" value="-" class="qtyminus minus" data-act-id="${act_id}" />`;
+			innerHTML += `<input type="text" name="quantity" value="1" id="quantity" class="qty" />`;
+			innerHTML += `<input type="button" value="+" class="qtyplus plus" data-act-id="${act_id}" />`;
+			innerHTML += `</div>`;
+			
+            
+            $('#quantityContainer').append(innerHTML);
+        }
+        else {
+            alert(`${act_name} is removed`);
+            $('#' + act_id).remove();
+        }
+    });
 });
 //end onload
 
@@ -33,15 +87,20 @@ function addWish(user_id,act_id){
 	});//end $.ajax()...
 }
 
-function incrementQuantity() {
-	var quantityInput = document.getElementById('quantity');
-	var currentQuantity = parseInt(quantityInput.value);
-	quantityInput.value = currentQuantity + 1;
-}
-function decrementQuantity() {
-	var quantityInput = document.getElementById('quantity');
-	var currentQuantity = parseInt(quantityInput.value);
+  // Increment quantity
+$(document).on('click', '.qtyplus', function() {
+	var act_id = $(this).data('act-id');
+	var quantityInput = $('#quantityContainer').find(`#${act_id} input[name=quantity]`);
+	var currentQuantity = parseInt(quantityInput.val());
+	quantityInput.val(currentQuantity + 1);
+});
+
+// Decrement quantity
+$(document).on('click', '.qtyminus', function() {
+	var act_id = $(this).data('act-id');
+	var quantityInput = $('#quantityContainer').find(`#${act_id} input[name=quantity]`);
+	var currentQuantity = parseInt(quantityInput.val());
 	if (currentQuantity > 0) {
-		quantityInput.value = currentQuantity - 1;
+		quantityInput.val(currentQuantity - 1);
 	}
-}
+});
