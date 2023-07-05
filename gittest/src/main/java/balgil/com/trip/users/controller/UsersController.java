@@ -100,16 +100,9 @@ public class UsersController {
 		
 		UsersVO vo2 = service.login(vo);
 		log.info("vo2...{}",vo2);
-		
-		if(vo2 == null) {
-			return "redirect:login.do?message=fail";
-		}else {
-			session.setAttribute("user_id", vo2.getId());
-			return "redirect:home.do";
-		}
 
-	}
-
+  }//end u_selectAll
+	
 	@RequestMapping(value = "/u_deleteOK.do", method = RequestMethod.GET)
 	public String m_deleteOK(UsersVO vo) {
 		log.info("/u_deleteOK.do");
@@ -166,6 +159,20 @@ public class UsersController {
 	}
 
 }
+
+  @ResponseBody
+	@RequestMapping(value = "/jsonUsersSelectOne.do", method = RequestMethod.GET)
+	public UsersVO jsonUsersSelectOne(UsersVO vo) {
+		log.info("jsonUserSelectOne.do...{}", vo);
+		
+		if(vo2 == null) {
+			return "redirect:login.do?message=fail";
+		}else {
+			session.setAttribute("user_id", vo2.getId());
+			return "redirect:home.do";
+		}
+
+	}
 	
 	/*
 	 * @ResponseBody

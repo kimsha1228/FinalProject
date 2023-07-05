@@ -21,8 +21,8 @@ public class RouteRestController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/jsonSelectAllRoute.do", method = RequestMethod.GET)
-	public List<RouteVO> jsonSelectAllAct(RouteVO vo) {
-		log.info("jsonSelectAllAct.do..{}",vo);
+	public List<RouteVO> jsonSelectAllRoute(RouteVO vo) {
+		log.info("jsonSelectAllRoute.do..{}",vo);
 		return service.selectAll(vo);
 	}
 	
@@ -36,15 +36,15 @@ public class RouteRestController {
 		return service.searchRoute(seller_id,searchKey,searchWord);
 	}
 	
-//	@ResponseBody
-//	@RequestMapping(value = "/jsonSelectOneRoute.do", method = RequestMethod.GET)
-//	public RouteVO jsonSelectOneRoute(RouteVO vo) {
-//		log.info("jsonSelectOneRoute.do...{}", vo);
-//		
-//		RouteVO vo2 = service.selectOne(vo);
-//		log.info("vo2: {}", vo2);
-//		
-//		return vo2;
-//	}
+	@ResponseBody
+	@RequestMapping(value = "/jsonSelectOneRoute.do", method = RequestMethod.GET)
+	public RouteVO jsonSelectOneRoute(RouteVO vo) {
+		log.info("jsonSelectOneRoute.do...{}", vo);
+		
+		RouteVO vo2 = service.selectOne(vo);
+		log.info("vo2: {}", vo2);
+		
+		return vo2;
+	}
 	
 }

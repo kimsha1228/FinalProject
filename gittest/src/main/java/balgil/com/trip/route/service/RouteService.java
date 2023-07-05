@@ -25,5 +25,24 @@ public class RouteService {
 	public List<RouteVO> searchRoute(String seller_id, String searchKey, String searchWord) {
 		return dao.searchList(seller_id, searchKey, searchWord);
 	}
+
+	public RouteVO selectOne(RouteVO vo) {
+		return dao.selectOne(vo);
+	}
+
+	public int update(RouteVO vo) {
+		return dao.update(vo);
+	}
+
+	public int delete(RouteVO vo) {
+		return dao.delete(vo);
+	}
+
+	public void vcountUp(RouteVO vo) {
+		dao.updateVcount(vo);
+	}
 	
+	public void likeup(RouteVO vo) {
+		dao.updateLikeUp(vo);
+	}
 }

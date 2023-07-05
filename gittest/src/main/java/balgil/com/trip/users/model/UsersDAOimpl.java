@@ -81,6 +81,15 @@ public class UsersDAOimpl implements UsersDAO {
 		return sqlSession.selectOne("U_ID_CHECK",vo);
 	}
 
+  public int pointUpdate(String user_id, String point) {
+		log.info("update()...{},{}", user_id, point);
+		
+		UsersVO vo = new UsersVO();
+		vo.setUser_id(user_id);
+		vo.setPoint(Integer.parseInt(point));
+		
+		return sqlSession.update("USERPOINT_UPDATE", vo);
+	}
 }
 
 	/*

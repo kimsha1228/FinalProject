@@ -23,7 +23,7 @@ public class HomeController {
 	
 	@RequestMapping(value = {"/","/home.do"}, method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		log.info("hihihi hello{}.", locale);
+		log.info("hello{}.", locale);
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -48,6 +48,18 @@ public class HomeController {
 	@RequestMapping(value = "/Route_test.do", method = RequestMethod.GET)
 	public String Route_test(Locale locale, Model model) {
 		log.info("Route 테스트용 jsp로 이동");
+		
+		//임시 로그인용 변수 추후 변경하거나 삭제할 예정
+		session.setAttribute("user_id", "seller02");
+		
 		return "test/Route_test";
 	}
+	
+	@RequestMapping(value = "/map_test.do", method = RequestMethod.GET)
+	public String map_test(Locale locale, Model model) {
+		log.info("map 테스트용 jsp로 이동");
+		
+		return "test/map_test";
+	}
 }
+

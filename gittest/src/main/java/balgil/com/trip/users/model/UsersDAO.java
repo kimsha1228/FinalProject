@@ -7,6 +7,8 @@ public interface UsersDAO {
 	List<UsersVO> selectAll();
 
 	UsersVO selectOne(UsersVO vo);
+  
+  int pointUpdate(String user_id, String point);//이름 변경
 
 	int insert(UsersVO vo);
 
@@ -19,5 +21,5 @@ public interface UsersDAO {
 	List<UsersVO> searchList(String searchKey, String searchWord);
 
 	UsersVO idCheck(UsersVO vo);
-
+	
 }

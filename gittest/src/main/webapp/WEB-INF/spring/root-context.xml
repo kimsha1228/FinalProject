@@ -37,13 +37,19 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations">
 			<list>
-				<value>classpath:jdbc/sqlMapper_activity.xml</value>
+				<value>classpath:jdbc/sqlMapper_answer.xml</value>
+				<value>classpath:jdbc/sqlMapper_contact.xml</value>
+				<value>classpath:jdbc/sqlMapper_comments.xml</value>
+				<value>classpath:jdbc/sqlMapper_faq.xml</value>
 				<value>classpath:jdbc/sqlMapper_cart.xml</value>
 				<value>classpath:jdbc/sqlMapper_image.xml</value>
 				<value>classpath:jdbc/sqlMapper_reservation.xml</value>
+				<value>classpath:jdbc/sqlMapper_payment.xml</value>
 				<value>classpath:jdbc/sqlMapper_route.xml</value>
 				<value>classpath:jdbc/sqlMapper_usercoupon.xml</value>
 				<value>classpath:jdbc/sqlMapper_users.xml</value>
+				<value>classpath:jdbc/sqlMapper_activity.xml</value>
+				<value>classpath:jdbc/sqlMapper_pointhistory.xml</value>
 			</list>
 		</property>
 	</bean>

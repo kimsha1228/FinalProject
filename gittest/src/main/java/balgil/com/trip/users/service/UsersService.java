@@ -51,4 +51,9 @@ public class UsersService {
 	public UsersVO idCheck(UsersVO vo) {
 		return dao.idCheck(vo);
 	}
+
+  public int pointUpdate(String user_id, String point) {
+		return dao.update(user_id, point);
+	}
+
 }

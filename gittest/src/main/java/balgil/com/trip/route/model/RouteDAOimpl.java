@@ -28,12 +28,15 @@ public class RouteDAOimpl implements RouteDAO {
 
 	@Override
 	public int update(RouteVO vo) {
-		return 0;
+		//RT1~RT5를 NULL로 만들어 주는 작업을 함
+		sqlSession.update("ROUTE_BEFORE_UPDATE",vo);
+		
+		return sqlSession.update("ROUTE_UPDATE",vo);
 	}
 
 	@Override
 	public int delete(RouteVO vo) {
-		return 0;
+		return sqlSession.delete("ROUTE_DELETE",vo);
 	}
 
 	@Override
@@ -43,7 +46,7 @@ public class RouteDAOimpl implements RouteDAO {
 
 	@Override
 	public RouteVO selectOne(RouteVO vo) {
-		return null;
+		return sqlSession.selectOne("ROUTE_SELECT_ONE", vo);
 	}
 
 	@Override
@@ -64,12 +67,12 @@ public class RouteDAOimpl implements RouteDAO {
 
 	@Override
 	public void updateVcount(RouteVO vo) {
-
+		sqlSession.update("ROUTE_VCOUNTUP",vo);
 	}
 
 	@Override
 	public void updateLikeUp(RouteVO vo) {
-
+		sqlSession.update("ROUTE_LIKEUP",vo);
 	}
 
 }
