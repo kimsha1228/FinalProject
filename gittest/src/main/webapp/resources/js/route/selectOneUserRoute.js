@@ -61,6 +61,7 @@ $(function(){
         }
         else {
             alert(`${act_name} is removed`);
+            //해당 id=act_id? 의 div를 지운다
             $('#' + act_id).remove();
         }
     });
