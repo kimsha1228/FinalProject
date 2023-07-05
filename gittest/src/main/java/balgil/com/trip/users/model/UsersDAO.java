@@ -8,8 +8,8 @@ public interface UsersDAO {
 
 	UsersVO selectOne(UsersVO vo);
   
-  int pointUpdate(String user_id, String point);//이름 변경
-
+	int pointUpdate(String user_id, String point);
+	
 	int insert(UsersVO vo);
 
 	int update(UsersVO vo);

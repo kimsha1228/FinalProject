@@ -80,8 +80,9 @@ public class UsersDAOimpl implements UsersDAO {
 		log.info("idCheck()...{}", vo);
 		return sqlSession.selectOne("U_ID_CHECK",vo);
 	}
-
-  public int pointUpdate(String user_id, String point) {
+	
+	@Override
+	public int pointUpdate(String user_id, String point) {
 		log.info("update()...{},{}", user_id, point);
 		
 		UsersVO vo = new UsersVO();
@@ -91,14 +92,5 @@ public class UsersDAOimpl implements UsersDAO {
 		return sqlSession.update("USERPOINT_UPDATE", vo);
 	}
 }
-
-	/*
-	 * @Override public UsersVO selectOne(UsersVO vo) { log.info("selectOne()...{}",
-	 * vo);
-	 * 
-	 * UsersVO vo2 = sqlSession.selectOne("USERS_SELECTONE", vo);
-	 * 
-	 * return vo2; }
-	 */
 
 
