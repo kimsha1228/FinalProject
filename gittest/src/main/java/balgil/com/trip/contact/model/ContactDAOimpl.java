@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import balgil.com.trip.answer.model.AnswerVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

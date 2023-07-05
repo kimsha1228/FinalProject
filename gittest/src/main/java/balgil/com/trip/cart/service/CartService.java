@@ -2,15 +2,11 @@ package balgil.com.trip.cart.service;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import balgil.com.trip.activity.model.ActivityVO;
 import balgil.com.trip.cart.model.CartDAO;
 import balgil.com.trip.cart.model.CartVO;
-import balgil.com.trip.reservation.model.ReservationVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
