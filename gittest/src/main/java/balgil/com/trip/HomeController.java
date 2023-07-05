@@ -23,7 +23,7 @@ public class HomeController {
 	
 	@RequestMapping(value = {"/","/home.do"}, method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		log.info("hihihi hello{}.", locale);
+		log.info("hello{}.", locale);
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -62,3 +62,4 @@ public class HomeController {
 		return "test/map_test";
 	}
 }
+

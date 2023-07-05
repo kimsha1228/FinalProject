@@ -7,7 +7,7 @@
 	
 	<li><a href="Route_test.do">Route_test</a></li>
 
-	<li><a href="map_test.do">map_test</a></li>
+  <li><a href="map_test.do">map_test</a></li>
 	
 	<li><a href="reservation_api.do">예약페이지 테스트 중....</a></li>
 		
