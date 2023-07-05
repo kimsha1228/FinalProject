@@ -75,7 +75,8 @@ public class PaymentController {
 				+"&res_id="+vo.getRes_id()
 				+"&price="+vo.getPrice()
 				+"&price_total="+vo.getPrice_total()
-				+"&res_date="+vo.getRes_date()+"&quantity="+vo.getQuantity();
+				+"&res_date="+vo.getRes_date()+"&quantity="+vo.getQuantity()
+				+"&user_id="+vo.getUser_id();
 			
 			}else {
 				return "home"; // 나중에 리다이렉트

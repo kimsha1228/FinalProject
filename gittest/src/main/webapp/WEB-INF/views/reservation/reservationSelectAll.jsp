@@ -74,7 +74,7 @@ function paymentSelectOne(){
 	<table>
 	<tr>
 		<th><a href="home.do">메인페이지로</a></th>
-		<th><a href="selectAllReservation.do?user_id=${param.user_id}">예약 내역 페이지로</a></th>
+		<th><a href="selectAllReservation.do">예약 내역 페이지로</a></th>
 	</tr>
 	</table>
 	<hr>

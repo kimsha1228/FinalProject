@@ -1,7 +1,10 @@
 package balgil.com.trip.reservation.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -86,4 +89,15 @@ public class ReservationController {
 		
 		return "reservation/reservationComplete";
 	}
+	
+	@RequestMapping(value = "/selectAllReservation.do", method = RequestMethod.GET)
+	public String selectAllReservation(ReservationVO vo, Model model) {
+		log.info("/selectAllReservation.do");
+		
+		List<ReservationVO> vos = service.selectAll(vo);
+		log.info("{}", vos);
+
+		return "reservation_api";
+	}
+	
 }
