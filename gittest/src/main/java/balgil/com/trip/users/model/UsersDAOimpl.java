@@ -1,5 +1,7 @@
 package balgil.com.trip.users.model;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,20 +16,72 @@ public class UsersDAOimpl implements UsersDAO {
 	SqlSession sqlSession;
 
 	public UsersDAOimpl() {
-		log.info("UsersDAOimpl()...");
+		log.info("MemberDAOimpl()...");
+	}
+
+	@Override
+	public List<UsersVO> selectAll() {
+		log.info("selectAll()...");
+
+		return sqlSession.selectList("U_SELECT_ALL");
 	}
 
 	@Override
 	public UsersVO selectOne(UsersVO vo) {
 		log.info("selectOne()...{}", vo);
-		
-		UsersVO vo2 = sqlSession.selectOne("USERS_SELECTONE", vo);
-		
-		return vo2;
+
+		return sqlSession.selectOne("U_SELECT_ONE", vo);
 	}
 
 	@Override
-	public int update(String user_id, String point) {
+	public int insert(UsersVO vo) {
+		log.info("insert()...{}", vo);
+
+		return sqlSession.insert("U_INSERT", vo);
+	}
+
+	@Override
+	public int update(UsersVO vo) {
+		log.info("update()...{}", vo);
+
+		return sqlSession.update("U_UPDATE", vo);
+	}
+	
+	@Override
+	public int delete(UsersVO vo) {
+		log.info("delete()...{}", vo);
+
+		return sqlSession.delete("U_DELETE", vo);
+	}
+
+	@Override
+	public UsersVO login(UsersVO vo) {
+		log.info("login()...{}", vo);
+		return sqlSession.selectOne("LOGIN", vo);
+	}
+
+	@Override
+	public List<UsersVO> searchList(String searchKey, String searchWord) {
+		log.info("searchList()...searchKey:{}", searchKey);
+		log.info("searchList()...searchWord:{}", searchWord);
+		
+		String key = "";
+		if(searchKey.equals("name")) {
+			key = "U_SEARCH_LIST_NAME";
+		}else {
+			key = "U_SEARCH_LIST_TEL";
+		}
+		
+		return sqlSession.selectList(key,"%"+searchWord+"%");
+	}
+
+	@Override
+	public UsersVO idCheck(UsersVO vo) {
+		log.info("idCheck()...{}", vo);
+		return sqlSession.selectOne("U_ID_CHECK",vo);
+	}
+
+  public int pointUpdate(String user_id, String point) {
 		log.info("update()...{},{}", user_id, point);
 		
 		UsersVO vo = new UsersVO();
@@ -35,9 +89,16 @@ public class UsersDAOimpl implements UsersDAO {
 		vo.setPoint(Integer.parseInt(point));
 		
 		return sqlSession.update("USERPOINT_UPDATE", vo);
-		
-		
 	}
-
-
 }
+
+	/*
+	 * @Override public UsersVO selectOne(UsersVO vo) { log.info("selectOne()...{}",
+	 * vo);
+	 * 
+	 * UsersVO vo2 = sqlSession.selectOne("USERS_SELECTONE", vo);
+	 * 
+	 * return vo2; }
+	 */
+
+

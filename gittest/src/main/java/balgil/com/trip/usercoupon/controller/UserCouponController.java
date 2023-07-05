@@ -26,6 +26,7 @@ public class UserCouponController {
 	@RequestMapping(value = "/userCouponSelectAll.do", method = RequestMethod.GET)
 	public List<UserCouponVO> userCouponSelectAll(UserCouponVO vo) {
 		log.info("userCouponSelectAll.do...{}", vo);
+		log.info("userCouponSelectAll.do...{}", vo);
 		
 		List<UserCouponVO> vos = service.selectAll(vo);
 		log.info("vos: {}", vos);

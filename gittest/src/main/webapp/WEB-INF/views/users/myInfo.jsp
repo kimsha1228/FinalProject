@@ -12,7 +12,7 @@
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>내 정보 관리</h1>
 	<form action="myInfo.do" method="post">
-		<table id="memberList">
+		<table id="usersList">
 			<tr>
 				<td><label for="img">프로필 사진:</label></td>
 				<td><input type="image" id="img" name="img" value="tester">
