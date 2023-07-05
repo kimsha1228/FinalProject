@@ -6,110 +6,54 @@
 <head>
 <meta charset="UTF-8">
 <title>reservationComplete</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="text/javascript">
-$(function(){
-	console.log("onload...");
-	actSelectOne();
-	paymentSelectOne();
-});//end onload...
-
-function actSelectOne(){
-	$.ajax({
- 		url : "jsonActSelectOne.do",
- 		data:{id:${param.act_id}},
- 		method:'GET',
- 		dataType:'json', 
- 		success : function(vo) {
- 			let act_name =  `\${vo.act_name}`;
- 			$("#act_name").html(act_name);
- 		},
- 		error:function(xhr,status,error){
- 			console.log('xhr.status:', xhr.status);
- 		}
- 	});//end $.ajax()...
-}//end actSelectOne
-
-function paymentSelectOne(){
-	console.log('${param.res_id}');
-	$.ajax({
- 		url : "jsonPaymentSelectOne.do",
- 		data:{res_id:'${param.res_id}'},
- 		method:'GET',
- 		dataType:'json', 
- 		success : function(vo) {
- 			let pay_info =  '';
- 			pay_info += `
- 				<tr>
-					<th>결제 상세 정보</th>
-				</tr>
-				<tr>
-					<td>포인트 사용 금액</td>
-					<td>(-)\${vo.point}원</td>
-				</tr>
-				<tr>
-					<td>쿠폰 사용 금액</td>
-					<td>(-)\${vo.coupon}원</td>
-				</tr>
-				<tr>
-					<td>최종 결제 금액</td>
-					<td>\${vo.price_final}원</td>
-				</tr>
- 			`;
- 			$("#pay_info").html(pay_info);
- 		},
- 		error:function(xhr,status,error){
- 			console.log('xhr.status:', xhr.status);
- 		}
- 	});//end $.ajax()...
-}//end actSelectOne
-
-</script>	
-
-
+<jsp:include page="../css.jsp"></jsp:include>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h3>결제 완료</h3>
-	<table>
-	<tr>
-		<th><a href="home.do">메인페이지로</a></th>
-		<th><a href="selectAllReservation.do">예약 내역 페이지로</a></th>
-	</tr>
-	</table>
-	<hr>
+	<h1>reservationSelectAll</h1>
+	
+	<div style="padding:5px">
+		<form action="selectCancelReservation.do">
+			<input type="submit" value="취소내역">
+		</form>
+	</div>
 
-	<table>
-		<tbody>
+	<table id="memberList">
+	<thead>
+		<tr>
+			<th>num</th>
+			<th>id</th>
+			<th>pw</th>
+			<th>name</th>
+			<th>tel</th>
+			<th>img</th>
+		</tr>
+	</thead>
+	<tbody>
+		<c:forEach var="vo" items="${vos}">
 			<tr>
-				<th>예약 상세 정보</th>
+				<td><a href="selectOneReservation.do?id=${vo.id}">${vo.id}</a></td>
 			</tr>
 			<tr>
-				<td>상품명</td>
-				<td id="act_name"></td>
+				<td>${vo.id}</td>
 			</tr>
 			<tr>
-				<td>예약일</td>
-				<td>${param.res_date}</td>
+				<td>${vo.name}</td>
 			</tr>
 			<tr>
-				<td>예약수량</td>
-				<td>${param.quantity}</td>
+				<td>${vo.pw}</td>
 			</tr>
+				<td>${vo.tel}</td>
 			<tr>
-				<td>가격</td>
-				<td>${param.price}원</td>
+				<td>${vo.}</td>
 			</tr>
-			<tr>
-				<td>총 금액</td>
-				<td>${param.price_total}원</td>
-			</tr>
-		</tbody>
-	</table>
-	<hr>
-	<table>
-		<tbody id="pay_info">
-		</tbody>
+		</c:forEach>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="5">1 2 3 4 5</td>
+		</tr>
+	</tfoot>
 	</table>
 </body>
 </html>
