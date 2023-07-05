@@ -38,6 +38,10 @@
 		<property name="mapperLocations">
 			<list>
 				<value>classpath:jdbc/sqlMapper_movie.xml</value>
+				<value>classpath:jdbc/sqlMapper_answer.xml</value>
+				<value>classpath:jdbc/sqlMapper_contact.xml</value>
+				<value>classpath:jdbc/sqlMapper_comments.xml</value>
+				<value>classpath:jdbc/sqlMapper_faq.xml</value>
 			</list>
 		</property>
 	</bean>

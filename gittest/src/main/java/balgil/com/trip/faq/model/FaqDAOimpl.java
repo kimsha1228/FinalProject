@@ -70,4 +70,10 @@ public class FaqDAOimpl implements FaqDAO {
 		
 		return sqlSession.selectOne("FAQ_SELECT_ONE",vo);
 	}
+
+	@Override
+	public List<FaqVO> selectAll(FaqVO vo) {
+	    log.info("selectAllFaq()......{}", vo);
+	    return sqlSession.selectList("FAQ_SELECT_ALL", vo);
+	}
 }
