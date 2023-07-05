@@ -225,10 +225,12 @@ public class RouteController {
 		if (flag == 1) {
 			service.likeup(vo);
 			Cookie isLikedCookie = new Cookie("isLiked", "1");
-	        isLikedCookie.setMaxAge(10);
+	        isLikedCookie.setMaxAge(10); //쿠키 수명 설정
+	        
 	        response.addCookie(isLikedCookie);
 		}
 		
+		// 리턴에 따라 알람이 달라짐
 		if(flag==1) {
 			return "{\"result\":\"OK\"}";
 		}else {
