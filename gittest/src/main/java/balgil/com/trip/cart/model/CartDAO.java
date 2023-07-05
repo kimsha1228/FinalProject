@@ -2,9 +2,22 @@ package balgil.com.trip.cart.model;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import balgil.com.trip.activity.model.ActivityVO;
+
 public interface CartDAO {
-    int insert(CartVO cart);
-    int delete(CartVO cart);
-//    List<CartVO> selectAll(CartVO cart, String userId);
-    List<CartVO> selectAll(CartVO vo);
-}
+	
+		int insert(CartVO vo);
+	    
+	    void deleteOneCart(int act_id);
+	    
+	    void deleteManyCart(List<Integer> act_id);
+	    
+	    List<CartVO> selectAll(CartVO vo);
+	    
+
+	    //임시
+	    void addToCart(CartVO cart);	    
+	}
+
