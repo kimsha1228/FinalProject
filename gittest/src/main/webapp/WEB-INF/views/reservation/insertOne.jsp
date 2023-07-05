@@ -135,7 +135,7 @@ $(function(){
 	 			console.log('xhr.status:', xhr.status);
 	 		}
 	 	});//end $.ajax()...
-	}//end userSelectOne
+	}//end actSelectOne
 	
 	function userCouponSelectAll(){
 		$.ajax({
@@ -152,8 +152,16 @@ $(function(){
 	 			let discount = '';
 
 	 			if(vos==0){
-					$("#discount").hide();
-					coupon += `보유한 쿠폰이 없습니다`;
+// 					$("#discount").hide();
+					discount += `보유한 쿠폰이 없습니다`;
+		 			coupon += `<select id="coupon-select">`;
+		 			coupon += `<option value="0">쿠폰 사용 안함</option>`;
+		 			coupon += "</select>";
+
+		 			discount += `
+		 				<div><input type="hidden" name="coupon" class="coupon" value="0"></div>
+		 				<div><input type="hidden" name="code" class="code" value="0"></div>
+		 				`;
 				} else{
 					$("#discount").show();
 		 			coupon += `<select id="coupon-select">`;
@@ -166,7 +174,7 @@ $(function(){
 		 			
 		 			discount += `<div>쿠폰 할인 금액: <span id="discountPrice">0</span>원</div>
 		 				<div><input type="hidden" name="coupon" class="coupon" value="0"></div>
-		 				<div><input type="hidden" name="code" class="code" value=""></div>
+		 				<div><input type="hidden" name="code" class="code" value="0"></div>
 		 				`;
 				}
 					
@@ -185,8 +193,10 @@ $(function(){
 			
 			if($("#coupon-select option:selected").val()=='0'){
 				let couponPrice = 0;
+				let couponCode = 0;
 				$("#discountPrice").html("<span style=\"color:blue;\">"+couponPrice+"</span>");
 				$(".coupon").val(couponPrice);
+				$(".code").val(couponCode);
 			}else {
 			 	let discountRate = $("#coupon-select option:selected").text().slice(0,1).trim();
 				let couponPrice = Math.floor(originalPrice*(discountRate/100));
@@ -219,7 +229,7 @@ $(function(){
 			
 		}
 		
-	}
+	}//end setFinalPriceInfo
 	
 </script>
 </head>

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import balgil.com.trip.payment.model.PaymentVO;
 import balgil.com.trip.payment.service.PaymentService;
 import balgil.com.trip.pointhistory.service.PointHistoryService;
+import balgil.com.trip.reservation.model.ReservationVO;
+import balgil.com.trip.reservation.service.ReservationService;
 import balgil.com.trip.usercoupon.service.UserCouponService;
 import balgil.com.trip.users.service.UsersService;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +23,10 @@ import lombok.extern.slf4j.Slf4j;
 public class PaymentController {
 
 	@Autowired
-	PaymentService service;
+	PaymentService pay_service;
+	
+	@Autowired
+	ReservationService res_service;
 
 	@Autowired
 	UsersService u_service; 
@@ -42,38 +47,53 @@ public class PaymentController {
         Calendar dateTime = Calendar.getInstance();
         res_id = sdf.format(dateTime.getTime());
         res_id = res_id+"_"+(int)(Math.random()*10000);
-        
-//        log.info(res_id);
 		vo.setRes_id(res_id);
 		
-		int result = service.insert(vo);
-		log.info("result : {}", result);
+		int pay_result = pay_service.insert(vo);
+		log.info("pay_result : {}", pay_result);
 		
-		if(result==1) {
+		if(pay_result==1) {
 			
-			int result_user = u_service.point(vo.getUser_id(), vo.getPoint());
+			int result_user = u_service.pointUpdate(vo.getUser_id(), vo.getPoint());
 			int result_pointHistory = p_service.useInsert(vo.getUser_id(), vo.getPoint());
 			int result_userCoupon = uc_service.update(vo.getUser_id(), vo.getCode());
 			
 			if(result_user==1 && result_userCoupon==1 && result_pointHistory==1) {
-				return "redirect:insertOneReservation.do?id="+vo.getRes_id()+"&quantity="+vo.getQuantity()+
-						"&price="+vo.getPrice()+"&res_date="+vo.getRes_date()+"&price_final="+vo.getPrice_final()+
-						"&act_id="+vo.getAct_id()+"&user_id="+vo.getUser_id();
+				ReservationVO resvo = new ReservationVO();
+				resvo.setAct_id(vo.getAct_id());
+				resvo.setId(vo.getRes_id());
+				resvo.setPrice(vo.getPrice());
+				resvo.setPrice_total(vo.getPrice_total());
+				resvo.setQuantity(vo.getQuantity());
+				resvo.setUser_id(vo.getUser_id());
+				resvo.setRes_date(vo.getRes_date());
+				
+				int res_result = res_service.insert(resvo);
+				log.info("res_result : {}", res_result);
+
+				return "redirect:reservationComplete.do?act_id="+vo.getAct_id()
+				+"&res_id="+vo.getRes_id()
+				+"&price="+vo.getPrice()
+				+"&price_total="+vo.getPrice_total()
+				+"&res_date="+vo.getRes_date()+"&quantity="+vo.getQuantity();
+			
 			}else {
 				return "home"; // 나중에 리다이렉트
 			}
+			
 		}else {
-			return "reservation/insertOne"; // 나중에 리다이렉트
+			return "redirect:reservationOne.do?act_id=5&res_date=2023-10-31&quantity=5&price=50000"; // 나중에 리다이렉트
 		}
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/jsonSelectOnePayment.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/jsonPaymentSelectOne.do", method = RequestMethod.GET)
 	public PaymentVO jsonSelectOnePayment(PaymentVO vo) {
-		log.info("/jsonSelectOnePayment.do");
+		log.info("/jsonSelectOnePayment.do...{}", vo);
 		
-		PaymentVO vo2 = service.selectOne(vo);
-		
+		PaymentVO vo2 = pay_service.selectOne(vo);
+		log.info("vo2: {}", vo2);
+
 		return vo2;
 	}
 

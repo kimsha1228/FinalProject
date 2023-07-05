@@ -56,21 +56,20 @@ public class ReservationController {
 ////		}
 //	}
 	
-	@RequestMapping(value = "/insertOneReservation.do", method = RequestMethod.GET)
-	public String insertOneReservation(ReservationVO vo) {
-		log.info("/insertOneReservation.do...{}", vo);
-		
-		int result = service.insert(vo);
-		log.info("result : {}", result);
-		
-		return "home";
+//	@RequestMapping(value = "/insertOneReservation.do", method = RequestMethod.GET)
+//	public String insertOneReservation(ReservationVO vo) {
+//		log.info("/insertOneReservation.do...{}", vo);
+//		
+//		int result = service.insert(vo);
+//		log.info("result : {}", result);
+//		
 //		if (result == 1) {
-//			return "redirect:reservation_api.do";
+//			return "reservation/reservationComplete";//리다이렉트로 바꿔주기
 //		} else {
-//			return "redirect:reservationInsert.do";
+//			return "redirect:reservationOne.do";
 //		}
-	}
-	
+//	}
+//	
 	@RequestMapping(value = "/cancelReservation.do", method = RequestMethod.GET)
 	public String cancelReservation(ReservationVO vo) {
 		log.info("/cancelReservation.do...{}", vo);
@@ -80,5 +79,11 @@ public class ReservationController {
 		
 		return "reservation/insert";
 	}
-
+	
+	@RequestMapping(value = "/reservationComplete.do", method = RequestMethod.GET)
+	public String reservationComplete(ReservationVO vo) {
+		log.info("/reservationComplete.do...{}", vo);
+		
+		return "reservation/reservationComplete";
+	}
 }

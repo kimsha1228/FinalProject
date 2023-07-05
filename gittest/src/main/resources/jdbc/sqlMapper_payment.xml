@@ -5,7 +5,11 @@
 
 <mapper namespace="balgil.com.trip.payment">
 	<insert id="PAYMENT_INSERT" parameterType="balgil.com.trip.payment.model.PaymentVO">
-		insert into payment (id, price_total, coupon, point, price_final, res_id)
-		values (seq_reservation.nextval, #{price_total}, #{coupon}, #{point}, #{price_final}, #{res_id})
+		insert into payment (id, price_total, coupon, point, price_final, res_id, code)
+		values (seq_reservation.nextval, #{price_total}, #{coupon}, #{point}, #{price_final}, #{res_id}, #{code})
 	</insert>
+	
+	<select id="PAYMENT_SELECT_ONE" resultType="balgil.com.trip.payment.model.PaymentVO">
+		select * from payment where res_id = #{res_id}
+	</select>
 </mapper>
