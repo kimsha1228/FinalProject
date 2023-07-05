@@ -10,4 +10,5 @@ public class CartVO {
     private String res_date;
     private String user_id;
     private int act_id;
+    
 }

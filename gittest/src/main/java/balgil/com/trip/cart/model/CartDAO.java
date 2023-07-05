@@ -15,7 +15,9 @@ public interface CartDAO {
 	    void deleteManyCart(List<Integer> act_id);
 	    
 	    List<CartVO> selectAll(CartVO vo);
+	    
 
 	    void addToCart(ActivityVO activity, HttpSession session);
+	    
 	}
 

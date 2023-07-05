@@ -4,34 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="balgil.com.trip.cart">
-<!--     <insert id="CART_INSERT" parameterType="test.com.git.cart.model.CartVO"> -->
-<!--         INSERT INTO CART ("NUM", "QUANTITY", "RES_DATE", "USER_ID", "ACT_OPT_NUM", "ACT_NUM") -->
-<!--         VALUES (SEQ_CART.nextval, #{quantity}, #{resDate}, #{userId}, #{actOptNum}, #{actNum}) -->
-<!--     </insert> -->
-
-<!--     <delete id="CART_DELETE" parameterType="int"> -->
-<!--         DELETE FROM CART WHERE NUM = #{num} -->
-<!--     </delete> -->
-
-<!--     <select id="CART_SELECT_ALL" resultType="test.com.git.cart.model.CartVO"> -->
-<!--         SELECT * FROM CART -->
-<!--     </select> -->
-
-<!--     추가 기능 -->
-<!--     <select id="CART_SELECT_BY_USER" resultType="test.com.git.cart.model.CartVO"> -->
-<!--         SELECT * FROM CART WHERE USER_ID = #{userId} -->
-<!--     </select> -->
-
-<!--     <update id="CART_UPDATE_QUANTITY" parameterType="test.com.git.cart.model.CartVO"> -->
-<!--         UPDATE CART SET QUANTITY = #{quantity} WHERE NUM = #{num} -->
-<!--     </update> -->
-
-<!--     <delete id="CART_DELETE_BY_USER_AND_PRODUCT" parameterType="map"> -->
-<!--         DELETE FROM CART WHERE USER_ID = #{userId} AND NUM = #{num} -->
-<!--     </delete> -->
-    
-    <select id="CARTTEST" resultType="balgil.com.trip.cart.model.CartVO">
-    	select * from cart where user_id = #{user_id}
-    </select>
+	
+	<select id="CART_SELECT_ALL" resultType="balgil.com.trip.cart.model.CartVO">
+		select * from CART where user_id = #{user_id} order by id desc
+	</select>
+	
+	<insert id="CART_INSERT" parameterType="balgil.com.trip.cart.model.CartVO">
+		INSERT INTO CART (id, quantity, res_date, user_id, act_id)
+		VALUES (SEQ_CART.nextval, #{quantity}, #{res_date}, #{user_id}, #{act_id})
+	</insert>
+	
+	<delete id="CART_DELETE_ONE">
+		delete from CART where act_id = #{act_id}
+	</delete>
+	
+	<delete id="CART_DELETE_MANY">
+		delete from CART where act_id in
+		<foreach item="item" index="index" collection="act_id" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+	
+	
+	
 </mapper>
-
