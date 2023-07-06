@@ -49,8 +49,6 @@ public class PaymentController {
         res_id = res_id+"_"+(int)(Math.random()*10000);
 		vo.setRes_id(res_id);
 		
-		log.info("코드으으으으으"+vo.getCode());
-		
 		int pay_result = pay_service.insert(vo);
 		log.info("pay_result : {}", pay_result);
 		if(pay_result==1) {
@@ -91,17 +89,6 @@ public class PaymentController {
 		}else {
 			return "redirect:insertOneReservation.do?act_id=5&res_date=2023-10-31&quantity=5&price=50000"; // 나중에 리다이렉트
 		}
-	}
-
-	@ResponseBody
-	@RequestMapping(value = "/jsonPaymentSelectOne.do", method = RequestMethod.GET)
-	public PaymentVO jsonSelectOnePayment(PaymentVO vo) {
-		log.info("/jsonSelectOnePayment.do...{}", vo);
-		
-		PaymentVO vo2 = pay_service.selectOne(vo);
-		log.info("vo2: {}", vo2);
-
-		return vo2;
 	}
 
 }
