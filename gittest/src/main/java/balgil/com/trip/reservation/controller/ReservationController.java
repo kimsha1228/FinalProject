@@ -8,6 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import balgil.com.trip.payment.model.PaymentVO;
+import balgil.com.trip.payment.service.PaymentService;
+import balgil.com.trip.pointhistory.service.PointHistoryService;
 import balgil.com.trip.reservation.model.ReservationVO;
 import balgil.com.trip.reservation.service.ReservationService;
 import balgil.com.trip.usercoupon.service.UserCouponService;
@@ -19,7 +22,19 @@ import lombok.extern.slf4j.Slf4j;
 public class ReservationController {
 
 	@Autowired
-	ReservationService service; 
+	ReservationService service;
+	
+	@Autowired
+	PaymentService pay_service;
+	
+	@Autowired
+	UsersService u_service; 
+	
+	@Autowired
+	UserCouponService uc_service; 
+
+	@Autowired
+	PointHistoryService p_service; 
 	
 	@RequestMapping(value = "/reservation_api.do", method = RequestMethod.GET)
 	public String reservation_api() {
@@ -61,12 +76,24 @@ public class ReservationController {
 	
 	@RequestMapping(value = "/cancelReservation.do", method = RequestMethod.GET)
 	public String cancelReservation(ReservationVO vo) {
-		log.info("/cancelReservation.do...{}", vo);
+		log.info("/cancelReservation.do...{}", vo);//reservation id, user_id 넘어올 것
 		
-		int result = service.update(vo);
-		log.info("result: ", result);
+		int result = service.update(vo);//iscanceled 1로 변경 후 
 		
-		return "reservation_api";
+		String res_id = vo.getId();
+		PaymentVO pay_vo = pay_service.selectCancelObject(res_id);
+		log.info("{}", pay_vo);
+		
+		int result_user = u_service.pointInsertBack(vo.getUser_id(), pay_vo.getPoint());
+		int result_pointHistory = p_service.useInsertBack(vo.getUser_id(), pay_vo.getPoint());
+		int result_userCoupon = uc_service.updateCouponBack(vo.getUser_id(), pay_vo.getCode());
+		
+		log.info("result: {}", result);
+		log.info("result_user: {}", result_user);
+		log.info("result_pointHistory: {}", result_pointHistory);
+		log.info("result_userCoupon: {}", result_userCoupon);
+		
+		return "redirect:selectCancelReservation.do?user_id="+vo.getUser_id();
 	}
 	
 	@RequestMapping(value = "/reservationComplete.do", method = RequestMethod.GET)

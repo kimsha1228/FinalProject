@@ -30,14 +30,24 @@ public class UserCouponDAOimpl implements UserCouponDAO {
 	}
 
 	@Override
-	public int update(String user_id,String code) {
+	public int updateCouponUse(String user_id,String code) {
 		
 		UserCouponVO vo = new UserCouponVO();
 		vo.setUser_id(user_id);
 		vo.setCouponcode(code);
 		
-		return sqlSession.update("USERCOUPON_UPDATE", vo);
+		return sqlSession.update("USERCOUPON_USE", vo);
 	}
 
+	@Override
+	public int updateCouponBack(String user_id,String code) {
+		
+		UserCouponVO vo = new UserCouponVO();
+		vo.setUser_id(user_id);
+		vo.setCouponcode(code);
+		
+		return sqlSession.update("USERCOUPON_BACK", vo);
+	}
+	
 
 }

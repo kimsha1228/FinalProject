@@ -56,7 +56,7 @@ public class PaymentController {
 			
 			int result_user = u_service.pointUpdate(vo.getUser_id(), vo.getPoint());
 			int result_pointHistory = p_service.useInsert(vo.getUser_id(), vo.getPoint());
-			int result_userCoupon = uc_service.update(vo.getUser_id(), vo.getCode());
+			int result_userCoupon = uc_service.updateCouponUse(vo.getUser_id(), vo.getCode());
 			
 			if(result_user==1 && result_userCoupon==1 && result_pointHistory==1) {
 				ReservationVO resvo = new ReservationVO();

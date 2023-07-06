@@ -16,5 +16,5 @@ public class ReservationVO {
 	private int iscommented;
 	private int iscanceled;
 	private String user_id;
-	
+
 }

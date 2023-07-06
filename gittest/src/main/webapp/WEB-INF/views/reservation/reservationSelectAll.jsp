@@ -41,8 +41,8 @@
 					<td><a href="selectOneAct.do?id=${vo.act_id}">${vo.act_name}</a></td>
 				</tr>
 				<tr>
-					<td colspan="2"><a href="selectOneReservation.do?id=${vo.id}">예약상세</a>
-						<a href="cancelReservation.do?id=${vo.id}">예약 취소</a></td>
+					<td colspan="2"><a href="selectOneReservation.do?id=${vo.id}&user_id=john123">예약상세</a>
+						<a href="cancelReservation.do?id=${vo.id}&user_id=john123">예약 취소</a></td><!-- 세션 -->
 				</tr>
 			</c:forEach>
 		</c:if>

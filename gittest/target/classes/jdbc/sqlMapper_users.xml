@@ -4,11 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="balgil.com.trip.users">
-	<select id="USERS_SELECTONE" resultType="balgil.com.trip.users.model.UsersVO">
+	<select id="U_SELECT_ONE" resultType="balgil.com.trip.users.model.UsersVO">
 		select * from users where id = #{id}
 	</select>
 	
 	<update id="USERPOINT_UPDATE">
 		update users set point = point - #{point} where user_id = #{user_id}
+	</update>
+
+	<update id="USERPOINT_INSERT_BACK">
+		update users set point = point + #{point} where user_id = #{user_id}
 	</update>
 </mapper>
