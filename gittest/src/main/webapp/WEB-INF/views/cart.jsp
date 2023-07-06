@@ -8,9 +8,11 @@
 </head>
 <body>
     <ul>
-        <li><a href="noCart.do">담은 상품 없을 때</a></li>
-        <li><a href="cartList.do">담은 상품 있을 때</a></li>
-    </ul>
+    <li><a href="noCart.do">담은 상품 없을 때</a></li>
+    <li><a href="cartList.do">담은 상품 있을 때</a></li>
+    <li><a href="cart2.do">테스트</a></li>
+</ul>
+
 </body>
 </html>
 
