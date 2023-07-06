@@ -39,8 +39,5 @@ public class AnswerService {
 		return dao.selectOne(vo);
 	}
 	
-    public List<AnswerVO> selectAll(AnswerVO vo) {
-        return dao.selectAll(vo);
-    }
-
+   
 }
