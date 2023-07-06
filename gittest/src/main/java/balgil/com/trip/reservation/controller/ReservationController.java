@@ -35,9 +35,9 @@ public class ReservationController {
 		return "reservation/insertOne";
 	}
 
-//	@RequestMapping(value = "/insertManyReservation.do", method = RequestMethod.GET)
-//	public String insertManyReservation(String datas) {
-//		log.info("/insertManyReservation.do...{}", datas);
+//	@RequestMapping(value = "/ReservationMany.do", method = RequestMethod.GET)
+//	public String ReservationMany(String datas) {
+//		log.info("/ReservationMany.do...{}", datas);
 //		
 //		String[] arr = datas.split(":");//2,10000,2023-07-30
 //		for (int i = 0; i < arr.length; i++) {
@@ -59,20 +59,6 @@ public class ReservationController {
 ////		}
 //	}
 	
-//	@RequestMapping(value = "/insertOneReservation.do", method = RequestMethod.GET)
-//	public String insertOneReservation(ReservationVO vo) {
-//		log.info("/insertOneReservation.do...{}", vo);
-//		
-//		int result = service.insert(vo);
-//		log.info("result : {}", result);
-//		
-//		if (result == 1) {
-//			return "reservation/reservationComplete";//리다이렉트로 바꿔주기
-//		} else {
-//			return "redirect:reservationOne.do";
-//		}
-//	}
-//	
 	@RequestMapping(value = "/cancelReservation.do", method = RequestMethod.GET)
 	public String cancelReservation(ReservationVO vo) {
 		log.info("/cancelReservation.do...{}", vo);
@@ -80,7 +66,7 @@ public class ReservationController {
 		int result = service.update(vo);
 		log.info("result: ", result);
 		
-		return "reservation/insert";
+		return "reservation_api";
 	}
 	
 	@RequestMapping(value = "/reservationComplete.do", method = RequestMethod.GET)

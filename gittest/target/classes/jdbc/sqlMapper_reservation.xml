@@ -26,7 +26,7 @@
 	<select id="RESERVATION_SELECT_ONE" resultType="balgil.com.trip.reservation.model.ReservationVO">
 		select r.id, r.res_date, r.act_id, a.act_name, r.quantity, r.price, r.price_total 
 		from reservation r join activity a on(r.act_id = a.id)
-		where r.id = #{id}
+		where r.id = #{id} and user_id = #{user_id}
 	</select>
 	
 </mapper>

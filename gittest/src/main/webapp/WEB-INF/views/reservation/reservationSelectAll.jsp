@@ -30,7 +30,7 @@
 			<c:forEach var="vo" items="${vos1}">
 				<tr>
 					<th>예약번호</th>
-					<td><a href="selectOneReservation.do?id=${vo.id}">${vo.id}</a></td>
+					<td><a href="selectOneReservation.do?id=${vo.id}&user_id=john123">${vo.id}</a></td><!-- 여기도 세션 처리 -->
 				</tr>
 				<tr>
 					<th>예약일</th>

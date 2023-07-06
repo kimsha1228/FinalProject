@@ -86,8 +86,12 @@ function paymentSelectOne(){
 			</tr>
 		</tbody>
 
-		<tfoot id="pay_info" text-align="right">
-		</tfoot>
+		<tbody id="pay_info">
+		</tbody>
+		<tr>
+			<th colspan="2"><a href="cancelReservation.do?id=${vo1.id}">예약 취소</a></th>
+		</tr>
+
 	</table>
 </body>
 </html>
