@@ -91,6 +91,8 @@ public class UsersDAOimpl implements UsersDAO {
 		
 		return sqlSession.update("USERPOINT_UPDATE", vo);
 	}
+
+	
 }
 
 

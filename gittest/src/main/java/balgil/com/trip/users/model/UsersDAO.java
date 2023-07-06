@@ -23,3 +23,4 @@ public interface UsersDAO {
 	UsersVO idCheck(UsersVO vo);
 	
 }
+

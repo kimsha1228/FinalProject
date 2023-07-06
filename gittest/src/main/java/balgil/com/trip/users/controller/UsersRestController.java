@@ -40,5 +40,6 @@ public class UsersRestController {
 		log.info("vo2: {}", vo2);
 		
 		return vo2;
-	}//end jsonUserSelectOne - sha
+  	}//end jsonUserSelectOne - sha
+  	
 }
