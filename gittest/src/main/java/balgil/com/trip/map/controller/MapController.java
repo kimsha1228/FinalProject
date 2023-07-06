@@ -56,4 +56,12 @@ public class MapController {
 	public String map_test11() {
 		return "test/map_test/11";
 	}
+	@RequestMapping(value = "/map_test12.do", method = RequestMethod.GET)
+	public String map_test12() {
+		return "test/map_test/12";
+	}
+	@RequestMapping(value = "/map_test13.do", method = RequestMethod.GET)
+	public String map_test13() {
+		return "test/map_test/13";
+	}
 }
