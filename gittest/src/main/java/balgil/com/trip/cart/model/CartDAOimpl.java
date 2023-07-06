@@ -32,14 +32,14 @@ public class CartDAOimpl implements CartDAO {
     public List<CartVO> selectAll(CartVO vo) {
         log.info("selectAll()...{}", vo);
 
-        List<CartVO> vos = sqlSession.selectList("CARTTEST", vo);
+        List<CartVO> vos = sqlSession.selectList("CART_SELECT_ALL", vo);
         return vos;
     }
 
     //임시
     @Override
     public void addToCart(CartVO cart) {
-        sqlSession.insert("sqlMapper_cart", cart);
+        sqlSession.insert("addToCart", cart);
     }
 
 	
