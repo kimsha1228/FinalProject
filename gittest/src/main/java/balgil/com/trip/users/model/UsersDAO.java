@@ -21,5 +21,9 @@ public interface UsersDAO {
 	List<UsersVO> searchList(String searchKey, String searchWord);
 
 	UsersVO idCheck(UsersVO vo);
+
+	int pointInsertBack(String user_id, String point);
+
+	UsersVO selectOneUser(UsersVO vo);
 	
 }

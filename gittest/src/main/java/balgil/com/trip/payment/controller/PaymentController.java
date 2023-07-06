@@ -49,16 +49,22 @@ public class PaymentController {
         res_id = res_id+"_"+(int)(Math.random()*10000);
 		vo.setRes_id(res_id);
 		
+		log.info("코드으으으으으"+vo.getCode());
+		
 		int pay_result = pay_service.insert(vo);
 		log.info("pay_result : {}", pay_result);
-		
 		if(pay_result==1) {
 			
 			int result_user = u_service.pointUpdate(vo.getUser_id(), vo.getPoint());
 			int result_pointHistory = p_service.useInsert(vo.getUser_id(), vo.getPoint());
-			int result_userCoupon = uc_service.update(vo.getUser_id(), vo.getCode());
+			int result_userCoupon = 0;
+			if(vo.getCode().equals("0")) {
+				result_userCoupon = 1;
+			}else {
+				result_userCoupon = uc_service.updateCouponUse(vo.getUser_id(), vo.getCode());
+			}
 			
-			if(result_user==1 && result_userCoupon==1 && result_pointHistory==1) {
+			if(result_user==1 && result_pointHistory==1 && result_userCoupon==1) {
 				ReservationVO resvo = new ReservationVO();
 				resvo.setAct_id(vo.getAct_id());
 				resvo.setId(vo.getRes_id());
@@ -83,7 +89,7 @@ public class PaymentController {
 			}
 			
 		}else {
-			return "redirect:reservationOne.do?act_id=5&res_date=2023-10-31&quantity=5&price=50000"; // 나중에 리다이렉트
+			return "redirect:insertOneReservation.do?act_id=5&res_date=2023-10-31&quantity=5&price=50000"; // 나중에 리다이렉트
 		}
 	}
 

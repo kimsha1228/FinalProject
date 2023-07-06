@@ -6,6 +6,8 @@ public interface UserCouponDAO {
 
 	List<UserCouponVO> selectAll(UserCouponVO vo);
 
-	int update(String user_id, String code);
+	int updateCouponUse(String user_id, String code);
+
+	int updateCouponBack(String user_id, String code);
 
 }

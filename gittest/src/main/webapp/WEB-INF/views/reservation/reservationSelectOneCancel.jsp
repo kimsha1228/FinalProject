@@ -26,7 +26,7 @@ function paymentSelectOne(){
  			let pay_info =  '';
  			pay_info += `
  				<tr>
-					<th colspan="2">결제 상세 정보</th>
+					<th colspan="2">결제 취소 정보</th>
 				</tr>
 				<tr>
 					<th>총 금액</th>
@@ -57,12 +57,12 @@ function paymentSelectOne(){
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>reservationSelectOne</h1>
+	<h1>reservationSelectOneCancel</h1>
 
 	<table border="1">
 		<tbody>
 			<tr>
-				<th colspan="2">예약 상세 정보</th>
+				<th colspan="2">예약 취소 정보</th>
 			</tr>
 			<tr>
 				<th>예약번호</th>
@@ -88,9 +88,6 @@ function paymentSelectOne(){
 
 		<tbody id="pay_info">
 		</tbody>
-		<tr>
-			<th colspan="2"><a href="cancelReservation.do?id=${vo1.id}&user_id=john123">예약 취소</a></th>
-		</tr>
 
 	</table>
 </body>

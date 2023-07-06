@@ -21,12 +21,24 @@ public class PointHistoryDAOimpl implements PointHistoryDAO {
 
 	@Override
 	public int useInsert(String user_id, String point) {
-		
+		log.info("useInsert()...");
+
 		PointHistoryVO vo = new PointHistoryVO();
 		vo.setUser_id(user_id);
 		vo.setPoint(Integer.parseInt(point));
 		
 		return sqlSession.insert("POINTHISTORY_USE_INSERT", vo);
+	}
+
+	@Override
+	public int useInsertBack(String user_id, String point) {
+		log.info("useInsertBack()...");
+
+		PointHistoryVO vo = new PointHistoryVO();
+		vo.setUser_id(user_id);
+		vo.setPoint(Integer.parseInt(point));
+		
+		return sqlSession.insert("POINTHISTORY_USE_INSERT_BACK", vo);
 	}
 
 //	@Override
