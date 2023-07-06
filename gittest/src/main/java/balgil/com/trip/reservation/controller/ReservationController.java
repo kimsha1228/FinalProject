@@ -84,8 +84,16 @@ public class ReservationController {
 		PaymentVO pay_vo = pay_service.selectCancelObject(res_id);
 		log.info("{}", pay_vo);
 		
-		int result_user = u_service.pointInsertBack(vo.getUser_id(), pay_vo.getPoint());
-		int result_pointHistory = p_service.useInsertBack(vo.getUser_id(), pay_vo.getPoint());
+		
+		int result_user = 0;
+		int result_pointHistory = 0;
+		if(pay_vo.getPoint().equals("0")) {
+			result_user = 1;
+			result_pointHistory = 1;
+		}else {
+			result_user = u_service.pointUpdate(vo.getUser_id(), pay_vo.getPoint());
+			result_pointHistory = p_service.useInsert(vo.getUser_id(), pay_vo.getPoint());
+		}
 		int result_userCoupon = 0;
 		if(pay_vo.getCode().equals("0")) {
 			result_userCoupon = 1;
