@@ -12,4 +12,6 @@ public interface ReservationDAO {
 
 	List<ReservationVO> selectCancel(ReservationVO vo);
 
+	ReservationVO selectOne(ReservationVO vo);
+
 }

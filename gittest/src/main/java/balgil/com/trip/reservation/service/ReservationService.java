@@ -36,4 +36,8 @@ public class ReservationService {
 		return dao.selectCancel(vo);
 	}
 
+	public ReservationVO selectOne(ReservationVO vo) {
+		return dao.selectOne(vo);
+	}
+
 }

@@ -47,4 +47,11 @@ public class ReservationDAOimpl implements ReservationDAO {
 		return sqlSession.selectList("CANCEL_RESERVATION_SELECT_ALL", vo);
 	}
 
+	@Override
+	public ReservationVO selectOne(ReservationVO vo) {
+		log.info("selectOne()...{}", vo);
+
+		return sqlSession.selectOne("RESERVATION_SELECT_ONE", vo);
+	}
+
 }
