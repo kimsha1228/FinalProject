@@ -77,13 +77,16 @@ function addAddressToCoordinate(address) {
         var item = response.v2.addresses[0],
             point = new naver.maps.Point(item.x, item.y);
 			console.log(point);
-			
-			
-        markerArray.push(new naver.maps.Marker({
-        	animation:2,
-            position: new naver.maps.LatLng(point),
-            map: map
-        }));
+		for(var i = 0 ; i<markerArray.length;i++){
+			if(point==)
+		}
+		if(flag==1){
+	        markerArray.push(new naver.maps.Marker({
+	        	animation:2,
+	            position: new naver.maps.LatLng(point),
+	            map: map
+	        }));
+		}
         
         //두 좌표를 더해서 중간값으로 나눠보기
         var centerX = markerArray[0].getPosition().x + marker.getPosition().x;
