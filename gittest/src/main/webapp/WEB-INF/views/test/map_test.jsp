@@ -12,4 +12,7 @@
 	<li><a href="map_test08.do">Geocoder2: 주소와 좌표 검색 API 사용하기</a></li>
 	<li><a href="map_test09.do">Geocoder3: 프로젝트에 맞게 고치기1</a></li>
 	<li><a href="map_test10.do">Geocoder4: 프로젝트에 맞게 고치기2</a></li>
+	<li><a href="map_test11.do">Geocoder5: 프로젝트에 맞게 고치기3</a></li>
+	<li><a href="map_test12.do">Geocoder6: 프로젝트에 맞게 고치기4</a></li>
+	<li><a href="map_test12.do">Geocoder7: 프로젝트에 맞게 고치기5</a></li>
 </ul>
