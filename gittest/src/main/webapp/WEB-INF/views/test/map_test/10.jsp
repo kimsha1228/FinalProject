@@ -15,7 +15,7 @@
 <h1>프로젝트에 맞게 개조해보기 2</h1>
 <pre>
 Geocoder 서브 모듈의 Service 객체를 사용하여 
-두 주소를 마커표시하고 center를 중앙으로 옮기기
+주소를 마커표시하고 center를 중앙으로 옮기기
 </pre>
 <a href="https://navermaps.github.io/maps.js.ncp/docs/tutorial-3-geocoder-geocoding.example.html" target='_blank'> 튜토리얼 링크 </a><br>
 <button onclick="addAddressToCoordinate('경기 용인시 처인구 포곡읍 전대리 495-5')">클릭1</button>
@@ -34,33 +34,9 @@ var map = new naver.maps.Map("map", {
     zoom: 16,
     mapTypeControl: true
 });
-
-var marker = new naver.maps.Marker({
-    map: map
-});
 var markerArray = new Array();
 
 map.setCursor('pointer');
-
-function searchAddressToCoordinate(address) {
-    naver.maps.Service.geocode({
-        query: address
-    }, function(status, response) {
-        if (status === naver.maps.Service.Status.ERROR) {
-            return alert('오류!');
-        }
-
-        if (response.v2.meta.totalCount === 0) {
-            return alert('검색결과 갯수: ' + response.v2.meta.totalCount);
-        }
-
-        var item = response.v2.addresses[0],
-            point = new naver.maps.Point(item.x, item.y);
-
-        map.setCenter(point);
-        marker.setPosition(point);
-    });
-}
 
 function addAddressToCoordinate(address) {
     naver.maps.Service.geocode({
@@ -75,11 +51,19 @@ function addAddressToCoordinate(address) {
         }
 
         var item = response.v2.addresses[0],
+        //검색해서 나온 결과의 좌표를 셋팅
             point = new naver.maps.Point(item.x, item.y);
-			console.log(point);
+			
+		flag=1;
+		
+		//이미 찍힌 마커인지 체크, 
 		for(var i = 0 ; i<markerArray.length;i++){
-			if(point==)
+			if(	(markerArray[i].getPosition().x===point.x)&&
+				(markerArray[i].getPosition().y===point.y))
+			flag=0;
 		}
+		
+		//찍힌 마커가 없을때만 배열에 새 마커 추가
 		if(flag==1){
 	        markerArray.push(new naver.maps.Marker({
 	        	animation:2,
@@ -88,20 +72,21 @@ function addAddressToCoordinate(address) {
 	        }));
 		}
         
-        //두 좌표를 더해서 중간값으로 나눠보기
-        var centerX = markerArray[0].getPosition().x + marker.getPosition().x;
-//         console.log(marker2.getPosition().x);
-//         console.log(marker.getPosition().x);
-//         console.log(centerX);
-//         console.log(centerX/2);
-        var centerY = markerArray[0].getPosition().y + marker.getPosition().y;
-//         console.log(marker2.getPosition().y);
-//         console.log(marker.getPosition().y);
-//         console.log(centerY);
-//         console.log(centerY/2);
-        point = new naver.maps.Point(centerX/2, centerY/2);
+        //좌표들을 더해서 중간값 구하기
+        var centerX=0;
+		var centerY=0;
+		//현재 마커배열 길이만큼 반복
+		for(var i = 0 ; i<markerArray.length;i++){
+			centerX+=markerArray[i].getPosition().x;
+			centerY+=markerArray[i].getPosition().y;
+		}
+		//평균 계산
+		centerX=centerX/markerArray.length;
+		centerY=centerY/markerArray.length;
+		//map에 넣을 좌표 계산
+        point = new naver.maps.Point(centerX, centerY);
         
-        //맵을 중앙으로 셋팅한다
+        //맵을 좌표로 셋팅한다
         map.setCenter(point);
         
         flag=0;
@@ -109,7 +94,7 @@ function addAddressToCoordinate(address) {
 }
 
 function initGeocoder() {
-    searchAddressToCoordinate('경기도 용인시 처인구 포곡읍 에버랜드로 199');
+	addAddressToCoordinate('경기도 용인시 처인구 포곡읍 에버랜드로 199');
 }
 
 naver.maps.onJSContentLoaded = initGeocoder;
