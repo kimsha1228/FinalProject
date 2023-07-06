@@ -57,12 +57,8 @@
 		<c:if test="${vos2.size()!=0}">
 			<c:forEach var="vo2" items="${vos2}">
 				<tr>
-					<th>예약번호</th>
-					<td>${vo2.id}</td>
-				</tr>
-				<tr>
-					<th>예약일</th>
-					<td>${vo2.res_date}</td>
+					<th>취소번호</th>
+					<td><a href="selectOneCancelReservation.do?id=${vo2.id}&user_id=john123">${vo2.id}</a></td>
 				</tr>
 				<tr>
 					<th>상품명</th>

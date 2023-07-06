@@ -139,5 +139,17 @@ public class ReservationController {
 		return "reservation/reservationSelectOne";
 	}
 	
+	@RequestMapping(value = "/selectOneCancelReservation.do", method = RequestMethod.GET)
+	public String selectOneCancelReservation(ReservationVO vo, Model model) {
+		log.info("/selectOneCancelReservation.do");
+		
+		ReservationVO vo1 = service.selectOne(vo);
+		log.info("{}", vo1);
+		
+		model.addAttribute("vo1",vo1);
+		
+		return "reservation/reservationSelectOneCancel";
+	}
+	
 	
 }
