@@ -60,4 +60,8 @@ public class UsersService {
 		return dao.pointInsertBack(user_id, point);
 	}
 
+	public UsersVO selectOneUser(UsersVO vo) {
+		return dao.selectOneUser(vo);
+	}
+
 }

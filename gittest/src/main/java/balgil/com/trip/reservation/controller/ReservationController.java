@@ -43,16 +43,16 @@ public class ReservationController {
 		return "reservation_api";
 	}
 	
-	@RequestMapping(value = "/reservationOne.do", method = RequestMethod.GET)
-	public String reservationOne() {
-		log.info("/reservationOne.do");
+	@RequestMapping(value = "/insertOneReservation.do", method = RequestMethod.GET)
+	public String insertOneReservation() {
+		log.info("/insertOneReservation.do");
 
 		return "reservation/insertOne";
 	}
 
-//	@RequestMapping(value = "/ReservationMany.do", method = RequestMethod.GET)
-//	public String ReservationMany(String datas) {
-//		log.info("/ReservationMany.do...{}", datas);
+//	@RequestMapping(value = "/insertManyReservation.do", method = RequestMethod.GET)
+//	public String insertManyReservation(String datas) {
+//		log.info("/insertManyReservation.do...{}", datas);
 //		
 //		String[] arr = datas.split(":");//2,10000,2023-07-30
 //		for (int i = 0; i < arr.length; i++) {
@@ -86,7 +86,12 @@ public class ReservationController {
 		
 		int result_user = u_service.pointInsertBack(vo.getUser_id(), pay_vo.getPoint());
 		int result_pointHistory = p_service.useInsertBack(vo.getUser_id(), pay_vo.getPoint());
-		int result_userCoupon = uc_service.updateCouponBack(vo.getUser_id(), pay_vo.getCode());
+		int result_userCoupon = 0;
+		if(pay_vo.getCode().equals("0")) {
+			result_userCoupon = 1;
+		}else {
+			result_userCoupon = uc_service.updateCouponBack(vo.getUser_id(), pay_vo.getCode());
+		}
 		
 		log.info("result: {}", result);
 		log.info("result_user: {}", result_user);

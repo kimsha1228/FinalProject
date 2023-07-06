@@ -102,4 +102,11 @@ public class UsersDAOimpl implements UsersDAO {
 
 		return sqlSession.update("USERPOINT_INSERT_BACK", vo);
 	}
+
+	@Override
+	public UsersVO selectOneUser(UsersVO vo) {
+		log.info("selectOneUser()...{}", vo);
+		
+		return sqlSession.selectOne("USER_SELECT_ONE", vo);
+	}
 }

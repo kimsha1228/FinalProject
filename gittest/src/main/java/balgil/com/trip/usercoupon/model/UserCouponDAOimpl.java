@@ -23,31 +23,31 @@ public class UserCouponDAOimpl implements UserCouponDAO {
 	@Override
 	public List<UserCouponVO> selectAll(UserCouponVO vo) {
 		log.info("selectOne()...{}", vo);
-		
+
 		List<UserCouponVO> vos = sqlSession.selectList("USERCOUPON_SELECTALL", vo);
 
 		return vos;
 	}
 
 	@Override
-	public int updateCouponUse(String user_id,String code) {
-		
+	public int updateCouponUse(String user_id, String code) {
+		log.info("updateCouponUse()...{}, {}", user_id, code);
+
 		UserCouponVO vo = new UserCouponVO();
 		vo.setUser_id(user_id);
 		vo.setCouponcode(code);
-		
+
 		return sqlSession.update("USERCOUPON_USE", vo);
 	}
 
 	@Override
-	public int updateCouponBack(String user_id,String code) {
-		
+	public int updateCouponBack(String user_id, String code) {
+
 		UserCouponVO vo = new UserCouponVO();
 		vo.setUser_id(user_id);
 		vo.setCouponcode(code);
-		
+
 		return sqlSession.update("USERCOUPON_BACK", vo);
 	}
-	
 
 }

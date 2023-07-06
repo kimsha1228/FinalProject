@@ -23,5 +23,7 @@ public interface UsersDAO {
 	UsersVO idCheck(UsersVO vo);
 
 	int pointInsertBack(String user_id, String point);
+
+	UsersVO selectOneUser(UsersVO vo);
 	
 }

@@ -76,6 +76,7 @@
 			<input type='button' value='+' class='qtyplus plus' onclick='incrementQuantity()' />
 			<p>현재 상품번호 act_id ${vo2.id}, 예약자 user_id ${user_id}</p>
 			<input type='hidden' name='act_id' value='${vo2.id}'/>
+			<input type='hidden' name='price' value='${vo2.price}'/>
 			<input type='hidden' name='user_id' value='${user_id}'/>
 		</form>
 		<input type="submit" form="Reservation" formaction="insertOneReservation.do" value="바로구매">

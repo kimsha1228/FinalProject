@@ -7,6 +7,10 @@
 	<select id="U_SELECT_ONE" resultType="balgil.com.trip.users.model.UsersVO">
 		select * from users where id = #{id}
 	</select>
+
+	<select id="USER_SELECT_ONE" resultType="balgil.com.trip.users.model.UsersVO"> <!-- reservation용입니다 -->
+		select * from users where user_id = #{user_id}
+	</select>
 	
 	<update id="USERPOINT_UPDATE">
 		update users set point = point - #{point} where user_id = #{user_id}
