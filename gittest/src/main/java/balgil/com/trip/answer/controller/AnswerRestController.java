@@ -21,9 +21,9 @@ public class AnswerRestController {
     
     @ResponseBody
     @RequestMapping(value = "/jsonSelectAllAnswer.do", method = RequestMethod.GET)
-    public List<AnswerVO> jsonSelectAllAnswer(AnswerVO vo) {
-        log.info("jsonSelectAllAnswer.do..{}", vo);
+    public List<AnswerVO> jsonSelectAllAnswer() {
+        log.info("jsonSelectAllAnswer.do..");
         
-        return service.selectAll(vo);
+        return service.selectAll();
     }
 }

@@ -12,7 +12,5 @@ public interface AnswerDAO {
 	
 	public List<AnswerVO> selectAll();
 	
-    public List<AnswerVO> selectAll(AnswerVO vo);
-
 	public AnswerVO selectOne(AnswerVO vo);
 }

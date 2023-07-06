@@ -21,8 +21,8 @@ public class FaqRestController {
 	
 	@ResponseBody
 	@RequestMapping (value = "/jsonSelectAllFaq.do", method = RequestMethod.GET)
-	public List<FaqVO> jsonSelectAllFaq(FaqVO vo){
-		log.info("jsonSelectAllFaq.do....{}", vo);
-		return service.selectAll(vo);
+	public List<FaqVO> jsonSelectAllFaq(){
+		log.info("jsonSelectAllFaq.do....");
+		return service.selectAll();
 	}
 }

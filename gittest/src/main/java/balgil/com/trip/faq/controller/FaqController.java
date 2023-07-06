@@ -19,9 +19,9 @@ public class FaqController {
 	@Autowired
 	FaqService service;
 	
-	@RequestMapping(value = "/selectAllFAQ.do", method = RequestMethod.GET)
-	public String selectAllFAQ(Model model) {
-		log.info("/selectAllFAQ.do");
+	@RequestMapping(value = "/selectAllFaq.do", method = RequestMethod.GET)
+	public String selectAllFaq(Model model) {
+		log.info("/selectAllFaq.do");
 		
 		List<FaqVO> vos = service.selectAll();
 			
@@ -30,9 +30,9 @@ public class FaqController {
 		return "faq/selectAll";
 	}
 	
-	@RequestMapping(value = "/selectOneFAQ.do", method = RequestMethod.GET)
-	public String selectOneFAQ(FaqVO vo, Model model) {
-		log.info("/selectOneFAQ.do...{}", vo);
+	@RequestMapping(value = "/selectOneFaq.do", method = RequestMethod.GET)
+	public String selectOneFaq(FaqVO vo, Model model) {
+		log.info("/selectOneFaq.do...{}", vo);
 		
 		FaqVO vo2 = service.selectOne(vo);
 		model.addAttribute("vo2", vo2);
@@ -40,30 +40,30 @@ public class FaqController {
 		return "faq/selectOne";
 	}
 	
-	@RequestMapping(value = "/insertFAQ.do", method = RequestMethod.GET)
-	public String insertFAQ() {
-		log.info("/insertFAQ.do...");
+	@RequestMapping(value = "/insertFaq.do", method = RequestMethod.GET)
+	public String insertFaq() {
+		log.info("/insertFaq.do...");
 		
 		return "faq/insert";
 	}
 	
-	@RequestMapping(value = "/insertFAQOK.do", method = RequestMethod.POST)
-	public String insertFAQOK(FaqVO vo) {
-		log.info("/insertFAQOK.do...{}", vo);
+	@RequestMapping(value = "/insertFaqOK.do", method = RequestMethod.POST)
+	public String insertFaqOK(FaqVO vo) {
+		log.info("/insertFaqOK.do...{}", vo);
 		
 		int result = service.insert(vo);
 		log.info("result...{}", result);
 		
 		if(result==1) {
-			return "redirect:selectAllFAQ.do";
+			return "redirect:selectAllFaq.do";
 		}else {
-			return "redirect:insertFAQ.do";
+			return "redirect:insertFaq.do";
 		}
 	}
 	
-	@RequestMapping(value = "/updateFAQ.do", method = RequestMethod.GET)
-	public String updateFAQ(FaqVO vo, Model model) {
-		log.info("/updateFAQ.do...{}", vo);
+	@RequestMapping(value = "/updateFaq.do", method = RequestMethod.GET)
+	public String updateFaq(FaqVO vo, Model model) {
+		log.info("/updateFaq.do...{}", vo);
 		
 		FaqVO vo2 = service.selectOne(vo);
 		
@@ -72,31 +72,31 @@ public class FaqController {
 		return "faq/update";
 	}
 	
-	@RequestMapping(value = "/updateFAQOK.do", method = RequestMethod.POST)
-	public String updateFAQOK(FaqVO vo) {
-		log.info("/updateFAQOK.do...{}", vo);
+	@RequestMapping(value = "/updateFaqOK.do", method = RequestMethod.POST)
+	public String updateFaqOK(FaqVO vo) {
+		log.info("/updateFaqOK.do...{}", vo);
 		
 		int result = service.update(vo);
 		log.info("result...{}", result);
 		
 		if(result==1){
-			return "redirect:selectOneFAQ.do?id="+vo.getId();
+			return "redirect:selectOneFaq.do?id="+vo.getId();
 		}else {
-			return "redirect:updateFAQ.do?id="+vo.getId();
+			return "redirect:updateFaq.do?id="+vo.getId();
 		}
 	}
 	
-	@RequestMapping(value = "/deleteFAQOK.do", method = RequestMethod.GET)
-	public String deleteFAQOK(FaqVO vo) {
-		log.info("/deleteFAQOK.do...{}", vo);
+	@RequestMapping(value = "/deleteFaqOK.do", method = RequestMethod.GET)
+	public String deleteFaqOK(FaqVO vo) {
+		log.info("/deleteFaqOK.do...{}", vo);
 		
 		int result = service.delete(vo);
 		log.info("result...{}", result);
 		
 		if(result==1) {
-			return "redirect:selectAllFAQ.do";
+			return "redirect:selectAllFaq.do";
 		}else {
-			return "redirect:selectOneFAQ.do?id="+vo.getId();
+			return "redirect:selectOneFaq.do?id="+vo.getId();
 		}
 	}
 	
