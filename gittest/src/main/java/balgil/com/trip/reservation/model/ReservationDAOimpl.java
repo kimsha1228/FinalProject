@@ -36,8 +36,15 @@ public class ReservationDAOimpl implements ReservationDAO {
 	@Override
 	public List<ReservationVO> selectAll(ReservationVO vo) {
 		log.info("selectAll()...{}", vo);
-		
+
 		return sqlSession.selectList("RESERVATION_SELECT_ALL", vo);
+	}
+
+	@Override
+	public List<ReservationVO> selectCancel(ReservationVO vo) {
+		log.info("selectCancel()...{}", vo);
+
+		return sqlSession.selectList("CANCEL_RESERVATION_SELECT_ALL", vo);
 	}
 
 }

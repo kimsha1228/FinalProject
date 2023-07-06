@@ -94,10 +94,24 @@ public class ReservationController {
 	public String selectAllReservation(ReservationVO vo, Model model) {
 		log.info("/selectAllReservation.do");
 		
-		List<ReservationVO> vos = service.selectAll(vo);
-		log.info("{}", vos);
+		List<ReservationVO> vos1 = service.selectAll(vo);
+		log.info("{}", vos1);
+		
+		model.addAttribute("vos1",vos1);
 
-		return "reservation_api";
+		return "reservation/reservationSelectAll";
+	}
+	
+	@RequestMapping(value = "/selectCancelReservation.do", method = RequestMethod.GET)
+	public String selectCancelReservation(ReservationVO vo, Model model) {
+		log.info("/selectCancelReservation.do");
+		
+		List<ReservationVO> vos2 = service.selectCancel(vo);
+		log.info("{}", vos2);
+		
+		model.addAttribute("vos2",vos2);
+		
+		return "reservation/reservationSelectAll";
 	}
 	
 }
