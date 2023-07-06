@@ -32,11 +32,11 @@ public class CartController {
         this.activityService = activityService;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String cart() {
-        log.info("/cart");
-        return "cart";
-    }
+//    @RequestMapping(method = RequestMethod.GET)
+//    public String cart() {
+//        log.info("/cart");
+//        return "cart";
+//    }
 
     @RequestMapping(value = "/selectAllCart", method = RequestMethod.GET)
     public String selectAllCart(CartVO vo, Model model) {

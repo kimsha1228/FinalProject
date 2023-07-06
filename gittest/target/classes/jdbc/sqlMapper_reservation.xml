@@ -14,6 +14,19 @@
 	</update>
 	
 	<select id="RESERVATION_SELECT_ALL" resultType="balgil.com.trip.reservation.model.ReservationVO">
-		select * from reservation where user_id = #{user_id} and iscanceled=0
+		select r.id, r.res_date, r.act_id, a.act_name from reservation r join activity a on(r.act_id = a.id)
+		where user_id = #{user_id} and iscanceled=0
 	</select>
+	
+	<select id="CANCEL_RESERVATION_SELECT_ALL" resultType="balgil.com.trip.reservation.model.ReservationVO">
+		select r.id, r.res_date, r.act_id, a.act_name from reservation r join activity a on(r.act_id = a.id)
+		where user_id = #{user_id} and iscanceled=1
+	</select>
+
+	<select id="RESERVATION_SELECT_ONE" resultType="balgil.com.trip.reservation.model.ReservationVO">
+		select r.id, r.res_date, r.act_id, a.act_name, r.quantity, r.price, r.price_total 
+		from reservation r join activity a on(r.act_id = a.id)
+		where r.id = #{id}
+	</select>
+	
 </mapper>

@@ -7,6 +7,7 @@ public class ReservationVO {
 
 	private String id;
 	private int act_id;
+	private String act_name;
 	private String res_date;
 	private int quantity;
 	private int price;
