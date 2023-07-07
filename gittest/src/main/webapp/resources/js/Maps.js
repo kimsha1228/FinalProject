@@ -1,8 +1,10 @@
 //변수제어용 플래그
 let mapFlag = 0;
+//순서 저장용 이게 있어야 루트에서 삭제에 제대로 대응할수있음
+let orders = new Array();
 //id가 map인곳에 지도객체 생성
 var map = new naver.maps.Map("map", {
-    zoom: 16,
+    zoom: 15,
     mapTypeControl: true
 });
 //마커 저장용 배열
@@ -14,15 +16,15 @@ let polyline = new naver.maps.Polyline({
     map: map,
     path: [new naver.maps.LatLng(36.734249797, 127.410516004)], //임의의 값
     startIcon: 3,//시작점은 동그라미
-    startIconSize: 20,
+    startIconSize: 10,
     endIcon: 2,//끝점은 화살표
-    endIconSize: 20,
+    endIconSize: 10,
 });
 
 
 map.setCursor('pointer');
 
-function addAddressToCoordinate(address) {
+function addAddressToCoordinate(address,order) {
     naver.maps.Service.geocode({
         query: address
     }, function(status, response) {
@@ -56,6 +58,7 @@ function addAddressToCoordinate(address) {
 	        }));
 			//폴리라인 그리기용 푸쉬
 			arrayOfCoords.push(markerArray[i].position)
+			orders.push(order);
 		}
         
         //좌표들을 더해서 중간값 구하기
@@ -100,16 +103,17 @@ function initGeocoder() {
         removeMarker($('#address').val());
     });
 	
-	addAddressToCoordinate(initadd);
+	addAddressToCoordinate(initadd,'1');
 }
 
 function removeMarker(value) {
-	if(markerArray[value-1]===undefined){
+	if(markerArray[value]===undefined){
 		alert('잘못 입력하셨습니다');	
 	}else{
-		markerArray[value-1].setMap(null);
-		polyline.getPath().removeAt(value-1);
-		markerArray.splice(value-1,1);
+		console.log("넘어온 value:",value);
+		markerArray[value].setMap(null);
+		polyline.getPath().removeAt(value);
+		markerArray.splice(value,1);
 	}
 }
 
