@@ -36,9 +36,10 @@ public class UsersRestController {
 	public UsersVO jsonUsersSelectOne(UsersVO vo) {
 		log.info("jsonUserSelectOne.do...{}", vo);
 		
-		UsersVO vo2 = service.selectOne(vo);
+		UsersVO vo2 = service.selectOneUser(vo);
 		log.info("vo2: {}", vo2);
 		
 		return vo2;
-	}//end jsonUserSelectOne - sha
+  	}//end jsonUserSelectOne - sha
+  	
 }

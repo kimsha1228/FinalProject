@@ -25,7 +25,7 @@ public class ContactController {
 		List<ContactVO> vos = service.selectAll();
 		model.addAttribute("vos", vos);
 		
-		return "contact/selectAll";
+		return "contact/selectAllContact";
 	}
 	
 	@RequestMapping(value = "/selectOneContact.do", method = RequestMethod.GET)
@@ -35,14 +35,14 @@ public class ContactController {
 		ContactVO vo2 = service.selectOne(vo);
 		model.addAttribute("vo2", vo2);
 		
-		return "contact/selectOne";
+		return "contact/selectOneContact";
 	}
 	
 	@RequestMapping(value = "/insertContact.do", method = RequestMethod.GET)
 		public String insertContact() {
 		log.info("/insertContact.do...");	
 		
-		return "contact/insert";
+		return "contact/insertContact";
 	}
 	
 	@RequestMapping(value = "/insertContactOK.do", method = RequestMethod.POST)
