@@ -38,9 +38,9 @@ public class CartService {
 //		    dao.addToCart(activity, session);
 //	}
 
-	public int deleteOneCart(int id) {
+	public int deleteOneCart(CartVO vo) {
 		
-		return dao.deleteOneCart(id);
+		return dao.deleteOneCart(vo);
 	}
 
 	public void deleteManyCart(List<Integer> act_id) {

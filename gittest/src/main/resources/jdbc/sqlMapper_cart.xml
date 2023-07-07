@@ -23,11 +23,11 @@
 		update CART set quantity = quantity + #{quantity} where id = #{id}
 	</update>
 
-	<update id="CART_UPDATE_COUNT_UP" parameterType="balgil.com.trip.cart.model.CartVO">
-		update CART set quantity = quantity + #{quantity} where id = #{id}
+	<update id="CART_UPDATE_COUNT" parameterType="balgil.com.trip.cart.model.CartVO">
+		update CART set quantity = #{quantity} where id = #{id}
 	</update>
 
-	<delete id="CART_DELETE_ONE">
+	<delete id="CART_DELETE_ONE" parameterType="balgil.com.trip.cart.model.CartVO">
 		delete from CART where id = #{id}
 	</delete>
 

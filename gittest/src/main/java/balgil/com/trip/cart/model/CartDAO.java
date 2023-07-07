@@ -6,7 +6,7 @@ public interface CartDAO {
 	
 		int insertOne(CartVO vo);
 	    
-		int deleteOneCart(int id);
+		int deleteOneCart(CartVO vo);
 	    
 		public void deleteManyCart(List<Integer> act_id);
 	    
