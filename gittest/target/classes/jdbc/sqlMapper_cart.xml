@@ -5,18 +5,13 @@
 
 <mapper namespace="balgil.com.trip.cart">
 
-	<select id="CART_SELECT_ALL"
-		resultType="balgil.com.trip.cart.model.CartVO">
-		select * from CART where user_id = #{user_id} order by id
-		desc
+	<select id="CART_SELECT_ALL" resultType="balgil.com.trip.cart.model.CartVO">
+		select * from CART where user_id = #{user_id} order by id desc
 	</select>
 
-	<insert id="CART_INSERT"
-		parameterType="balgil.com.trip.cart.model.CartVO">
-		INSERT INTO CART (id, quantity, res_date, user_id,
-		act_id)
-		VALUES (SEQ_CART.nextval, #{quantity}, #{res_date}, #{user_id},
-		#{act_id})
+	<insert id="CART_INSERT_ONE" parameterType="balgil.com.trip.cart.model.CartVO">
+		INSERT INTO CART (id, quantity, price, res_date, user_id, act_id)
+		VALUES (SEQ_CART.nextval, #{quantity}, #{price}, #{res_date}, #{user_id}, #{act_id})
 	</insert>
 
 	<delete id="CART_DELETE_ONE">

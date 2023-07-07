@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface CartDAO {
 	
-		public int insert(CartVO vo);
+		public int insertOne(CartVO vo);
 	    
 		public void deleteOneCart(int act_id);
 	    

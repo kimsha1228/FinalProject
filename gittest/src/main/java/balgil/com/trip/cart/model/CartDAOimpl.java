@@ -21,10 +21,10 @@ public class CartDAOimpl implements CartDAO {
     }
     
     @Override
-	public int insert(CartVO vo) {
+	public int insertOne(CartVO vo) {
 		log.info("insert()...{}", vo);
 
-		return sqlSession.insert("CART_INSERT", vo);
+		return sqlSession.insert("CART_INSERT_ONE", vo);
 	}
 
 

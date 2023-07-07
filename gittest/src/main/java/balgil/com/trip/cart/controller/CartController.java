@@ -32,13 +32,13 @@ public class CartController {
         this.activityService = activityService;
     }
 
-//    @RequestMapping(method = RequestMethod.GET)
-//    public String cart() {
-//        log.info("/cart");
-//        return "cart";
-//    }
+    @RequestMapping(value = "/cart.do", method = RequestMethod.GET)
+    public String cart() {
+        log.info("/cart");
+        return "cart";
+    }
 
-    @RequestMapping(value = "/selectAllCart", method = RequestMethod.GET)
+    @RequestMapping(value = "/selectAllCart.do", method = RequestMethod.GET)
     public String selectAllCart(CartVO vo, Model model) {
         log.info("/selectAllCart...{}", vo);
         List<CartVO> cartList = cartService.selectAllCart(vo);
@@ -46,12 +46,12 @@ public class CartController {
         return "cart_list";
     }
 
-    @RequestMapping(value = "/insertOneCart", method = RequestMethod.GET)
+    @RequestMapping(value = "/insertOneCart.do", method = RequestMethod.GET)
     public String insertOneCart(CartVO vo) {
         log.info("/insertOneCart...{}", vo);
-        int result = cartService.insert(vo);
+        int result = cartService.insertOne(vo);
         log.info("result: {}", result);
-        return "cart.insertOne";
+        return "cart";//리다이렉트
     }
 
     @RequestMapping(value = "/deleteOneCart.do", method = RequestMethod.GET)
@@ -100,14 +100,14 @@ public class CartController {
 
     
     //임시
-    @RequestMapping(value = "/addTempProductToCart", method = RequestMethod.POST)
+    @RequestMapping(value = "/addTempProductToCart.do", method = RequestMethod.POST)
     public String addTempProductToCart(@RequestParam("act_id") int act_id, HttpSession session) {
         String user_id = (String) session.getAttribute("user_id");
         cartService.addTempProductToCart(user_id, act_id);
         return "redirect:/cartList";
     }
     
-    @RequestMapping(value = "/addToCart", method = RequestMethod.POST)
+    @RequestMapping(value = "/addToCart.do", method = RequestMethod.POST)
     public String addToCart(@RequestParam("act_id") int act_id, HttpSession session) {
         String user_id = (String) session.getAttribute("user_id");
         
@@ -120,7 +120,7 @@ public class CartController {
         CartVO cart = new CartVO();
         cart.setUser_id(user_id);
         cart.setAct_id(selectedActivity.getId());
-        cart.setAct_name(selectedActivity.getAct_name());
+//        cart.setAct_name(selectedActivity.getAct_name());
         cart.setPrice(selectedActivity.getPrice());
    
         

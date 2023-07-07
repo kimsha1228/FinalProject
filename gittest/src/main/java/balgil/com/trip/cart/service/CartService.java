@@ -20,8 +20,8 @@ public class CartService {
 		log.info("CartService()...");
 	}
 
-	public int insert(CartVO vo) {
-		return dao.insert(vo);
+	public int insertOne(CartVO vo) {
+		return dao.insertOne(vo);
 	}
 
 //	public int delete(CartVO vo) {
