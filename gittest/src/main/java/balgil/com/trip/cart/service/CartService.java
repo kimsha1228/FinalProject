@@ -61,6 +61,14 @@ public class CartService {
 	 public void addToCart(CartVO cart) {
 			dao.addToCart(cart);
 	    }
+
+	public CartVO selectOne(CartVO vo) {
+		return dao.selectOne(vo);
+	}
+
+	public int insertCountUp(CartVO vo) {
+		return dao.insertCountUp(vo);
+	}
 	 
 	 
 	 

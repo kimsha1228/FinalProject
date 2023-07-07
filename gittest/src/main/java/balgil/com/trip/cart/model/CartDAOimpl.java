@@ -52,4 +52,18 @@ public class CartDAOimpl implements CartDAO {
 	public void deleteManyCart(List<Integer> act_id) {
 	    sqlSession.delete("CART_DELETE_MANY", act_id);
 	}
+
+	@Override
+	public CartVO selectOne(CartVO vo) {
+        log.info("selectOne()...{}", vo);
+
+		return sqlSession.selectOne("CART_SELECT_ONE", vo);
+	}
+
+	@Override
+	public int insertCountUp(CartVO vo) {
+		log.info("insertCountUp()...{}", vo);
+
+		return sqlSession.update("CART_INSERT_COUNT_UP", vo);
+	}
 }

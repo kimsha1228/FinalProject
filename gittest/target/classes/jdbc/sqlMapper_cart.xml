@@ -9,10 +9,18 @@
 		select * from CART where user_id = #{user_id} order by id desc
 	</select>
 
+	<select id="CART_SELECT_ONE" resultType="balgil.com.trip.cart.model.CartVO">
+		select * from CART where user_id = #{user_id} and act_id = #{act_id} and res_date = #{res_date}
+	</select>
+
 	<insert id="CART_INSERT_ONE" parameterType="balgil.com.trip.cart.model.CartVO">
 		INSERT INTO CART (id, quantity, price, res_date, user_id, act_id)
 		VALUES (SEQ_CART.nextval, #{quantity}, #{price}, #{res_date}, #{user_id}, #{act_id})
 	</insert>
+
+	<update id="CART_INSERT_COUNT_UP" parameterType="balgil.com.trip.cart.model.CartVO">
+		update CART set quantity = quantity + #{quantity} where id = #{id}
+	</update>
 
 	<delete id="CART_DELETE_ONE">
 		delete from CART where act_id = #{act_id}

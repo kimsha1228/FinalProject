@@ -49,9 +49,23 @@ public class CartController {
     @RequestMapping(value = "/insertOneCart.do", method = RequestMethod.GET)
     public String insertOneCart(CartVO vo) {
         log.info("/insertOneCart...{}", vo);
-        int result = cartService.insertOne(vo);
-        log.info("result: {}", result);
-        return "cart";//리다이렉트
+        
+        CartVO vo1 = cartService.selectOne(vo);
+        log.info("result: {}", vo1);
+        
+        int result_insert = 0;
+        int result_insertUp = 0;
+        if(vo1!=null) {
+        	vo.setId(vo1.getId());
+        	result_insertUp = cartService.insertCountUp(vo);
+        }else {
+        	result_insert = cartService.insertOne(vo);
+        }
+        log.info("result_insert: {}", result_insert);
+        log.info("result_insertUp: {}", result_insertUp);
+        
+        
+        return "home";//리다이렉트
     }
 
     @RequestMapping(value = "/deleteOneCart.do", method = RequestMethod.GET)
