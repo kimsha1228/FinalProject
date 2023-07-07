@@ -64,15 +64,23 @@ $(function(){
 			
             
             $('#quantityContainer').append(innerHTML);
-            addAddressToCoordinate(act_add);
+            addAddressToCoordinate(act_add,this.name);
         }
         else {
             alert(`${act_name} is removed`);
             //해당 id=act_id? 의 div를 지운다
             $('#' + act_id).remove();
-            removeMarker(this.name);
+            
+           for(var i =0 ;i<orders.length;i++){
+			    if(orders[i]==(this.name)){
+			        removeMarker(i);
+			        orders.splice(i,1);
+			    }
+			}
         }
     });
+    
+    $('#act1').trigger('change');
 });
 //end onload
 

@@ -20,7 +20,7 @@
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 	console.log("현재 주소:",initadd);
 </script>
-<script type="text/javascript" src="resources/js/route/selectOneUserRoute.js?ver=4"></script>
+<script type="text/javascript" src="resources/js/route/selectOneUserRoute.js?ver=2"></script>
 
 </head>
 <body>
@@ -69,7 +69,7 @@
 	<div id="act_container">
 		<div>
 			<label for="act1">${vo2.act_name1}</label>
-			<input type="checkbox" id="act1" name="1">
+			<input type="checkbox" id="act1" name="1" checked> <!-- name은 js에서 순서확인용으로 사용됨 -->
 			<button onclick="addWish('${user_id}',${vo2.act_id1})">♥</button>
 		</div>
 		<div>
