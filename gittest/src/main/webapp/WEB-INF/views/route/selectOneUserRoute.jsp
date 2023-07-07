@@ -8,16 +8,20 @@
 <title>상품 정보</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<!-- 네이버 지도 API JS -->
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fxc9ew4qop&submodules=geocoder"></script>
 <script type="text/javascript">
 	let user_id = '<%= session.getAttribute("user_id") %>'; 
-	let act_id1 = ${vo2.act_id1}; let act_name1 = "${vo2.act_name1}";
-	let act_id2 = ${vo2.act_id2}; let act_name2 = "${vo2.act_name2}";
-	let act_id3 = ${vo2.act_id3}; let act_name3 = "${vo2.act_name3}";
-	let act_id4 = ${vo2.act_id4}; let act_name4 = "${vo2.act_name4}";
-	let act_id5 = ${vo2.act_id5}; let act_name5 = "${vo2.act_name5}";
+	let act_id1 = ${vo2.act_id1}; let act_name1 = "${vo2.act_name1}"; let initadd = "${vo2.act_add1}";
+	let act_id2 = ${vo2.act_id2}; let act_name2 = "${vo2.act_name2}"; let act_add2 = "${vo2.act_add2}";
+	let act_id3 = ${vo2.act_id3}; let act_name3 = "${vo2.act_name3}"; let act_add3 = "${vo2.act_add3}";
+	let act_id4 = ${vo2.act_id4}; let act_name4 = "${vo2.act_name4}"; let act_add4 = "${vo2.act_add4}";
+	let act_id5 = ${vo2.act_id5}; let act_name5 = "${vo2.act_name5}"; let act_add5 = "${vo2.act_add5}";
 	console.log("현재 로그인 되어있는 아이디:",user_id);
+	console.log("현재 주소:",initadd);
 </script>
-<script type="text/javascript" src="resources/js/route/selectOneUserRoute.js?ver=2"></script>
+<script type="text/javascript" src="resources/js/route/selectOneUserRoute.js?ver=4"></script>
+
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -119,8 +123,10 @@
 	<br>
 	<br>
 	<div>
-		<p>(임시로 구글지도 공유를 통해 롯데월드를 띄워놈)</p>
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.8567164696165!2d127.09853812637908!3d37.51129742729288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca5a7250efe81%3A0x433df2c1fec03b98!2z66Gv642w7JuU65Oc!5e0!3m2!1sko!2skr!4v1688484108914!5m2!1sko!2skr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		<p>루트 선택 순서</p>
+		<div id="map" style="width:500px; height:600px;"></div>	
 	</div>
+<!-- 지도 구현 js -->
+<script type="text/javascript" src="resources/js/Maps.js"></script>
 </body>
 </html>

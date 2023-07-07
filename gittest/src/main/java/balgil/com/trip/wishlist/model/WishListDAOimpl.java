@@ -32,6 +32,14 @@ public class WishListDAOimpl implements WishListDAO {
 
 		return sqlSession.update("WISHLIST_UPDATE", vo);
 	}
+	
+	@Override
+	public int delete(WishListVO vo) {
+		log.info("delete()...{}", vo);
+
+		return sqlSession.delete("WISHLIST_DELETE", vo);
+	}
+
 
 	@Override
 	public List<WishListVO> selectAll(WishListVO vo) {

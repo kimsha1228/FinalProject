@@ -23,8 +23,8 @@
 
 
 	<br>
-	
-	
+
+
 	<table border="1">
 		<c:if test="${not empty vos1}">
 
@@ -42,17 +42,19 @@
 				</tr>
 
 				<tr>
-					<td colspan="2"><a href="cancelWishList.do?id=${vo.act_id}">위시리스트
-							삭제</a></td>
+					<td colspan="2"><a
+						href="deleteOK.do?act_id=${vo.act_id}&user_id=${vo.user_id}">
+							위시리스트 삭제 </a></td>
 				</tr>
+
 			</c:forEach>
 		</c:if>
 		<c:if test="${empty vos1}">
 			<tr>
-				<td>예약한 상품이 없습니다</td>
+				<td>위시리스트에 담긴 상품이 없습니다. </td>
 			</tr>
 			<tr>
-				<td><a href="home.do">예약하러 가기</a></td>
+				<td><a href="home.do">홈화면으로 가기</a></td>
 			</tr>
 		</c:if>
 		<c:if test="${not empty vos2}">

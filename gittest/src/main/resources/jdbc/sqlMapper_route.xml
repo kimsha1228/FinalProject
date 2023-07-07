@@ -21,6 +21,11 @@
 	  <result property="act_name3" column="루트3" />
 	  <result property="act_name4" column="루트4" />
 	  <result property="act_name5" column="루트5" />
+	  <result property="act_add1" column="주소1" />
+	  <result property="act_add2" column="주소2" />
+	  <result property="act_add3" column="주소3" />
+	  <result property="act_add4" column="주소4" />
+	  <result property="act_add5" column="주소5" />
 	  <result property="act_id1" column="rt1" />
 	  <result property="act_id2" column="rt2" />
 	  <result property="act_id3" column="rt3" />
@@ -122,14 +127,19 @@
 			d."NAME" as 여행지,
 			r.rt1,
 			a1.act_name as 루트1,
+			a1."ADD" as 주소1,
 			r.rt2,
 			a2.act_name as 루트2,
+			a2."ADD" as 주소2,
 			r.rt3,
 			a3.act_name as 루트3,
+			a3."ADD" as 주소3,
 			r.rt4,
 			a4.act_name as 루트4,
+			a4."ADD" as 주소4,
 			r.rt5,
-			a5.act_name as 루트5
+			a5.act_name as 루트5,
+			a5."ADD" as 주소5
 		FROM
 			route r
 			INNER JOIN destination d ON d.id = r.dest_id

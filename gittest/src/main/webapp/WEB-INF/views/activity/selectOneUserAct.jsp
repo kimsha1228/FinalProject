@@ -7,9 +7,14 @@
 <title>상품 정보</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<!-- 네이버 지도 API JS -->
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fxc9ew4qop&submodules=geocoder"></script>
 <script type="text/javascript">
 	let user_id = '<%= session.getAttribute("user_id") %>';
+// 	let initadd = '서울 종로구 효자로 12 국립고궁박물관';
+	let initadd = '${vo2.add}';
 	console.log("현재 로그인 되어있는 아이디:",user_id);
+	console.log("현재 주소:",initadd);
 </script>
 <script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=1"></script>
 </head>
@@ -85,13 +90,15 @@
 	<br>
 	<br>
 	<div>
-		<p>${vo2.add}</p>
-		<p>(임시로 구글지도 공유를 통해 에버랜드만 띄워놈)</p>
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3174.0516200106736!2d127.198060288855!3d37.2939104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b5403ce34d773%3A0x1fa18ab619238098!2z7JeQ67KE656c65Oc!5e0!3m2!1sko!2skr!4v1688088597204!5m2!1sko!2skr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		<p>주소: ${vo2.add}</p>
+		<div id="map" style="width:100%;height:600px;"></div>
 	</div>
 	<br>
 	<br>
 	<button onclick="window.location.href='selectFaq.do'">고객센터</button>
 	<button onclick="window.location.href='insertContact.do?act_id=${vo2.id}&seller_id=${vo2.seller_id}'">문의하기</button>
+
+<!-- 지도 구현 js -->
+<script type="text/javascript" src="resources/js/Maps.js"></script>
 </body>
 </html>

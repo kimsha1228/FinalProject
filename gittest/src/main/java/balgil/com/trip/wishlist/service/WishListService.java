@@ -27,6 +27,11 @@ public class WishListService {
 	public int update(WishListVO vo) {
 		return dao.update(vo);
 	}
+	
+	public int delete(WishListVO vo) {
+		return dao.delete(vo);
+	}
+
 
 	public List<WishListVO> selectAll(WishListVO vo) {
 		return dao.selectAll(vo);
