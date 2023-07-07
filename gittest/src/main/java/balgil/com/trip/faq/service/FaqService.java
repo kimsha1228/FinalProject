@@ -40,10 +40,6 @@ public class FaqService {
 		return dao.selectAll();
 	}
 	
-	public List<FaqVO> selectAll(FaqVO vo){
-		return dao.selectAll(vo);
-	}
-	
 	public List<FaqVO> searchList(String searchKey, String searchWord){
 		return dao.searchList(searchKey, searchWord);
 	}

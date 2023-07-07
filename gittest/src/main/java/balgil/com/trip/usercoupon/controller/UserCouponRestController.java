@@ -17,16 +17,15 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Controller
-public class UserCouponController {
+public class UserCouponRestController {
 	
 	@Autowired
 	UserCouponService service;
 	
 	@ResponseBody
-	@RequestMapping(value = "/userCouponSelectAll.do", method = RequestMethod.GET)
-	public List<UserCouponVO> userCouponSelectAll(UserCouponVO vo) {
-		log.info("userCouponSelectAll.do...{}", vo);
-		log.info("userCouponSelectAll.do...{}", vo);
+	@RequestMapping(value = "/jsonUserCouponSelectAll.do", method = RequestMethod.GET)
+	public List<UserCouponVO> jsonUserCouponSelectAll(UserCouponVO vo) {
+		log.info("jsonUserCouponSelectAll.do...{}", vo);
 		
 		List<UserCouponVO> vos = service.selectAll(vo);
 		log.info("vos: {}", vos);

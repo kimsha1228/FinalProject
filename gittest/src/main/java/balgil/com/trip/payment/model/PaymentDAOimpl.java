@@ -31,7 +31,12 @@ public class PaymentDAOimpl implements PaymentDAO {
 
 		return sqlSession.selectOne("PAYMENT_SELECT_ONE", vo);
 	}
-	
-	
+
+	@Override
+	public PaymentVO selectCancelObject(String res_id) {
+		log.info("selectCancelObject()...{}", res_id);
+
+		return sqlSession.selectOne("SELECT_CANCEL_OBJECT", res_id);
+	}
 
 }
