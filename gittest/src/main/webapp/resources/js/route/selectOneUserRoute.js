@@ -79,7 +79,6 @@ $(function(){
 				var act_name;
 			    var act_id;
 			    var act_add;
-				console.log("asdf");
 				//체크한 체크박스에 따라 act_name1~5 act_id1~5가 act_name act_id에 삽입됨
 				switch(this.name){
 					case "1":

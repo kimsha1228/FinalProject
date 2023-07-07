@@ -102,8 +102,13 @@ function initGeocoder() {
         e.preventDefault();
         removeMarker($('#address').val());
     });
-	
-	addAddressToCoordinate(result.actVos[0].add,'1');
+    
+    //맞으면 selectOneUserAct에서 호출한거고 아니면 selectOneUserRoute에서 호출한것으로 짐작가능
+	if(typeof result=='string'){
+		addAddressToCoordinate(result,'1');
+	}else{
+		addAddressToCoordinate(result.actVos[0].add,'1');
+	}
 }
 
 function removeMarker(value) {
