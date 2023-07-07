@@ -26,13 +26,13 @@ public class WishListDAOimpl implements WishListDAO {
 		return sqlSession.insert("WISHLIST_INSERT", vo);
 	}
 
-	@Override
-	public int update(WishListVO vo) {
-		log.info("update()...{}", vo);
+//	@Override
+//	public int update(WishListVO vo) {
+//		log.info("update()...{}", vo);
+//
+//		return sqlSession.update("WISHLIST_UPDATE", vo);
+//	}
 
-		return sqlSession.update("WISHLIST_UPDATE", vo);
-	}
-	
 	@Override
 	public int delete(WishListVO vo) {
 		log.info("delete()...{}", vo);
@@ -40,19 +40,11 @@ public class WishListDAOimpl implements WishListDAO {
 		return sqlSession.delete("WISHLIST_DELETE", vo);
 	}
 
-
 	@Override
 	public List<WishListVO> selectAll(WishListVO vo) {
 		log.info("selectAll()...{}", vo);
 
 		return sqlSession.selectList("WISHLIST_SELECT_ALL_WITH_USER_ID", vo);
-	}
-
-	@Override
-	public List<WishListVO> selectCancel(WishListVO vo) {
-		log.info("selectCancel()...{}", vo);
-
-		return sqlSession.selectList("CANCEL_WISHLIST_SELECT_ALL", vo);
 	}
 
 	@Override

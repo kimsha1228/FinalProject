@@ -24,21 +24,12 @@ public class WishListService {
 		return dao.insert(vo);
 	}
 
-	public int update(WishListVO vo) {
-		return dao.update(vo);
-	}
-	
 	public int delete(WishListVO vo) {
 		return dao.delete(vo);
 	}
 
-
 	public List<WishListVO> selectAll(WishListVO vo) {
 		return dao.selectAll(vo);
-	}
-
-	public List<WishListVO> selectCancel(WishListVO vo) {
-		return dao.selectCancel(vo);
 	}
 
 	public WishListVO selectOne(WishListVO vo) {
