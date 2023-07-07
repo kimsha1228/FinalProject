@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +11,7 @@
 <script>
 	let user_id = '<%= session.getAttribute("user_id") %>';
 	console.log("현재 로그인 되어있는 아이디:",user_id);
-</script>	
+</script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -20,7 +19,7 @@
 	<table>
 		<thead>
 			<tr>
-				<th>id</th>
+				<th>num</th>
 				<th>title</th>
 				<th>content</th>
 				<th>con_date</th>
@@ -32,22 +31,7 @@
 				<th>act_name</th>
 			</tr>
 		</thead>
-		<tbody>
-			<c:forEach var="vo" items="${vos}">
-				<tr>
-					<td><a href="selectOneContact.do?id=${vo.id}">${vo.id}</a></td>
-					<td>${vo.id}</td>
-					<td>${vo.title}</td>
-					<td>${vo.content}</td>
-					<td>${vo.con_date}</td>
-					<td>${vo.attach_img}</td>
-					<td>${vo.file}</td>
-					<td>${vo.user_id}</td>
-					<td>${vo.seller_id}</td>
-					<td>${vo.act_id}</td>
-					<td>${vo.act_name}</td>
-				</tr>
-			</c:forEach>
+		<tbody id="vos">
 
 		</tbody>
 		<tfoot>
