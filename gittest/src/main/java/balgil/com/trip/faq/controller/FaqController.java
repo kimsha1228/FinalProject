@@ -27,7 +27,7 @@ public class FaqController {
 			
 		model.addAttribute("vos", vos);
 		
-		return "faq/selectAll";
+		return "faq/selectAllFaq";
 	}
 	
 	@RequestMapping(value = "/selectOneFaq.do", method = RequestMethod.GET)
@@ -37,14 +37,14 @@ public class FaqController {
 		FaqVO vo2 = service.selectOne(vo);
 		model.addAttribute("vo2", vo2);
 		
-		return "faq/selectOne";
+		return "faq/selectOneFaq";
 	}
 	
 	@RequestMapping(value = "/insertFaq.do", method = RequestMethod.GET)
 	public String insertFaq() {
 		log.info("/insertFaq.do...");
 		
-		return "faq/insert";
+		return "faq/insertFaq";
 	}
 	
 	@RequestMapping(value = "/insertFaqOK.do", method = RequestMethod.POST)
@@ -69,7 +69,7 @@ public class FaqController {
 		
 		model.addAttribute("vo2", vo2);
 		
-		return "faq/update";
+		return "faq/updateFaq";
 	}
 	
 	@RequestMapping(value = "/updateFaqOK.do", method = RequestMethod.POST)

@@ -25,7 +25,7 @@ public class AnswerController {
 		List<AnswerVO> vos = service.selectAll();
 		
 		
-		return "answer/selectAll";
+		return "answer/selectAllAnswer";
 	}
 	
 	@RequestMapping(value = "/selectOneAnswer.do", method = RequestMethod.GET)
@@ -34,14 +34,14 @@ public class AnswerController {
 		
 		AnswerVO vo2 = service.selectOne(vo);
 		
-		return "answer/selectOne";
+		return "answer/selectOneAnswer";
 	}
 	
 	@RequestMapping(value = "/insertAnswer.do", method = RequestMethod.GET)
 		public String insertAnswer() {
 		log.info("/insertAnswer.do...");	
 		
-		return "answer/insert";
+		return "answer/insertAnswer";
 	}
 	
 	@RequestMapping(value = "/inserAnswertOK.do", method = RequestMethod.POST)
@@ -64,7 +64,7 @@ public class AnswerController {
 	
 	AnswerVO vo2 = service.selectOne(vo);
 	
-	return "answer/update";
+	return "answer/updateAnswer";
 	}
 	
 	@RequestMapping(value = "/updateAnswerOK.do", method = RequestMethod.POST)
