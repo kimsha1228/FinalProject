@@ -1,9 +1,11 @@
 package balgil.com.trip.payment.controller;
 
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.aggregation.ConvertOperators.ToDate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -77,7 +79,10 @@ public class PaymentController {
 				resvo.setPrice_total(vo.getPrice_total());
 				resvo.setQuantity(vo.getQuantity());
 				resvo.setUser_id(vo.getUser_id());
-				resvo.setRes_date(vo.getRes_date());
+				String res_date = vo.getRes_date();
+				res_date = res_date.substring(0,10);
+				log.info(res_date.substring(0,10));
+				resvo.setRes_date(res_date);
 				
 				int res_result = res_service.insert(resvo);
 				log.info("res_result : {}", res_result);
@@ -97,5 +102,6 @@ public class PaymentController {
 			return "redirect:insertOneReservation.do?act_id=5&res_date=2023-10-31&quantity=5&price=50000"; // 나중에 리다이렉트
 		}
 	}
+
 
 }

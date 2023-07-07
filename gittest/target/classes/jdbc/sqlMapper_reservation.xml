@@ -6,7 +6,7 @@
 <mapper namespace="balgil.com.trip.reservation">
 	<insert id="RESERVATION_INSERT" parameterType="balgil.com.trip.reservation.model.ReservationVO">
 		insert into reservation (id, quantity, price, res_date, price_total, act_id, user_id)
-		values (#{id}, #{quantity}, #{price}, TO_DATE(#{res_date}, 'YYYY-MM-DD'), #{price_total}, #{act_id}, #{user_id})
+		values (#{id}, #{quantity}, #{price}, #{res_date}, #{price_total}, #{act_id}, #{user_id})
 	</insert>
 	
 	<update id="RESERVATION_UPDATE" parameterType="balgil.com.trip.reservation.model.ReservationVO">
