@@ -8,11 +8,12 @@
 <title>장바구니</title>
 </head>
 <body>
+<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>장바구니</h1>
 		<table>
 		<c:if test="${not empty cartList}">
 			<c:forEach items="${cartList}" var="cart">
-				<form action='#' id='Reservation' method='GET'>
+				<form action='#' id='Cart' method='GET'>
 					<table>
 						<tr>
 							<td><input type="checkbox" name="selectedActivities" value="${cart.id}"></td>
@@ -20,6 +21,7 @@
 						<tr>
 							<th>상품명</th>
 							<td><a href="selectOneUserAct.do?id=${cart.act_id}">
+								<input type="hidden" name="id" value="${cart.id}"><!-- 세션 -->
 								<input type="hidden" name="user_id" value="john123"><!-- 세션 -->
 								<input type="hidden" name="act_id" value="${cart.act_id}">${cart.act_name}</a>
 							</td>
@@ -43,8 +45,8 @@
 							<td>${cart.price*cart.quantity}</td>
 						</tr>
 						<tr>
-							<td><input type="submit" form="Reservation" formaction="insertOneReservation.do" value="바로구매"></td>
-							<td><input type="submit" form="Reservation" formaction="deleteOneCart.do?id=${cart.id}" value="삭제"></td>
+							<td><input type="submit" form="Cart" formaction="insertOneReservation.do" value="바로구매"></td>
+							<td><input type="submit" form="Cart" formaction="deleteOneCart.do" value="삭제"></td>
 						</tr>
 					</table>
 				</form>

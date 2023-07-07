@@ -44,8 +44,8 @@ public class CartDAOimpl implements CartDAO {
 
 	
 	@Override
-	public void deleteOneCart(int act_id) {
-	    sqlSession.delete("CART_DELETE_ONE", act_id);
+	public int deleteOneCart(int id) {
+	    return sqlSession.delete("CART_DELETE_ONE", id);
 	}
 
 	@Override

@@ -83,9 +83,11 @@ public class CartController {
     }
 
     @RequestMapping(value = "/deleteOneCart.do", method = RequestMethod.GET)
-    public String deleteOneCart(@RequestParam("num") int act_id) {
-    	cartService.deleteOneCart(act_id);
-    	return "redirect:/cartList"; // 삭제 후 장바구니 페이지로 리다이렉트
+    public String deleteOneCart(CartVO vo) {
+    	log.debug("vo", vo);
+    	int result_delete = cartService.deleteOneCart(vo.getId());
+    	log.info("result: {}", result_delete);
+    	return "redirect:selectAllCart.do?user_id=john123"; // 삭제 후 장바구니 페이지로 리다이렉트
     }
 
     @RequestMapping(value = "/deleteManyCart.do", method = RequestMethod.POST)
