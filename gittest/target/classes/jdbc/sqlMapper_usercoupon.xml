@@ -9,7 +9,12 @@
 		on c.code = u.couponcode where user_id = #{user_id} and isused = 0
 	</select>
 	
-	<update id="USERCOUPON_UPDATE">
+	<update id="USERCOUPON_USE">
 		update user_coupon set isused = 1 where user_id = #{user_id} and couponcode = #{couponcode} 
 	</update>
+
+	<update id="USERCOUPON_BACK">
+		update user_coupon set isused = 0 where user_id = #{user_id} and couponcode = #{couponcode} 
+	</update>
+
 </mapper>
