@@ -36,24 +36,10 @@ public class ContactDAOimpl implements ContactDAO {
 	}
 
 	@Override
-	public List<ContactVO> selectAllUser() {
-		log.info("selectAllUser()....");
-		
-		return sqlSession.selectList("C_SELECT_ALL_USER");
-	}
-
-	@Override
 	public ContactVO selectOneContact(ContactVO vo) {
 		log.info("selectOneContact()....{}", vo);
 		
 		return sqlSession.selectOne("C_SELECT_ONE", vo);
-	}
-
-	@Override
-	public ContactVO selectOneUser(ContactVO vo) {
-		log.info("selectOneUser()....{}", vo);
-		
-		return sqlSession.selectOne("C_SELECT_ONE_USER", vo);
 	}
 
 	@Override
@@ -74,6 +60,13 @@ public class ContactDAOimpl implements ContactDAO {
 	public List<ContactVO> selectAllContact(ContactVO vo) {
 	    log.info("selectAll()......{}", vo);
 	    return sqlSession.selectList("C_SELECT_ALL", vo);
+	}
+
+	@Override
+	public int updateContact(ContactVO vo) {
+	    log.info("update()......{}", vo);
+
+	    return sqlSession.update("C_UPDATE", vo);
 	}
 
 }

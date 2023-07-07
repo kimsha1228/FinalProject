@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import balgil.com.trip.activity.model.ActivityVO;
 import balgil.com.trip.contact.model.ContactVO;
 import balgil.com.trip.contact.service.ContactService;
 import lombok.extern.slf4j.Slf4j;
@@ -58,6 +59,31 @@ public class ContactController {
 			return "redirect:insertContact.do";
 		}
 	}
+	
+	@RequestMapping(value = "/updateContact.do", method = RequestMethod.GET)
+	public String updateContact(ContactVO vo, Model model) {
+		log.info("/updateContact.do...{}", vo);
+
+		ContactVO vo2 = service.selectOne(vo);
+
+		model.addAttribute("vo2", vo2);
+
+		return "contact/updateContact";
+	}
+	
+	@RequestMapping(value = "/updateContactOK.do", method = RequestMethod.GET)
+	public String updateContactOK(ContactVO vo) {
+		log.info("/updateContactOK.do...{}", vo);
+
+		int result = service.update(vo);
+		log.info("result...{}", result);
+		
+		if(result==1) {
+			return "redirect:selectOneContact.do?id="+vo.getId();
+		}else {
+			return "redirect:updateContact.do?id="+vo.getId();
+		}
+	}
 	@RequestMapping(value = "/deleteContactOK.do", method = RequestMethod.POST)
 	public String deleteContactOK(ContactVO vo) {
 		log.info("/deleteContactOK.do....{}", vo);
@@ -68,7 +94,7 @@ public class ContactController {
 		if(result==1) {
 			return "redirect:selectAllContact.do";
 		}else {
-			return "redirect:selectOneContact.do?num="+vo.getNum();
+			return "redirect:selectOneContact.do?id="+vo.getId();
 		}
 	}
 	
