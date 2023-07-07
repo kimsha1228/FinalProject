@@ -11,6 +11,7 @@ public class CartVO {
     private int price;
     private String res_date;
     private String user_id;
+    private String act_name;
     private int act_id;
 //    private ActivityVO activity;
 

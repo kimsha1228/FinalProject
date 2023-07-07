@@ -42,8 +42,9 @@ public class CartController {
     public String selectAllCart(CartVO vo, Model model) {
         log.info("/selectAllCart...{}", vo);
         List<CartVO> cartList = cartService.selectAllCart(vo);
+        
         model.addAttribute("cartList", cartList);
-        return "cart_list";
+        return "cart/cartListTest";
     }
 
     @RequestMapping(value = "/insertOneCart.do", method = RequestMethod.GET)
@@ -65,13 +66,26 @@ public class CartController {
         log.info("result_insertUp: {}", result_insertUp);
         
         
-        return "home";//리다이렉트
+        return "home";//위에서 리다이렉트 if(result_insertUp==1){return ~~;}해주기
+    }
+    
+    
+    @RequestMapping(value = "/updateOneCart.do", method = RequestMethod.GET)
+    public String updateOneCart(CartVO vo) {
+    	log.info("updateOneCart: {}", vo);
+    	int result_update = cartService.updateOneCart(vo);	//장바구니에서 수량 조절
+//    	if(result_update==1) {
+//    		
+//    	}
+    	log.info("result_update: {}",result_update);
+    	
+    	return "redirect:selectAllCart.do?user_id=john123"; // 삭제 후 장바구니 페이지로 리다이렉트
     }
 
     @RequestMapping(value = "/deleteOneCart.do", method = RequestMethod.GET)
     public String deleteOneCart(@RequestParam("num") int act_id) {
-        cartService.deleteOneCart(act_id);
-        return "redirect:/cartList"; // 삭제 후 장바구니 페이지로 리다이렉트
+    	cartService.deleteOneCart(act_id);
+    	return "redirect:/cartList"; // 삭제 후 장바구니 페이지로 리다이렉트
     }
 
     @RequestMapping(value = "/deleteManyCart.do", method = RequestMethod.POST)

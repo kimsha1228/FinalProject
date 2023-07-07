@@ -66,4 +66,11 @@ public class CartDAOimpl implements CartDAO {
 
 		return sqlSession.update("CART_INSERT_COUNT_UP", vo);
 	}
+
+	@Override
+	public int updateOneCart(CartVO vo) {
+		log.info("updateOneCart()...{}", vo);
+
+		return sqlSession.update("CART_UPDATE_COUNT_UP", vo);
+	}
 }

@@ -18,6 +18,8 @@ public interface CartDAO {
 
 		CartVO selectOne(CartVO vo);
 
-		int insertCountUp(CartVO vo);	    
+		int insertCountUp(CartVO vo);
+
+		int updateOneCart(CartVO vo);	    
 	}
 

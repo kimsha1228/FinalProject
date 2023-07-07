@@ -6,7 +6,8 @@
 <mapper namespace="balgil.com.trip.cart">
 
 	<select id="CART_SELECT_ALL" resultType="balgil.com.trip.cart.model.CartVO">
-		select * from CART where user_id = #{user_id} order by id desc
+		select c.id, c.act_id, c.res_date, c.quantity, c.price, a.act_name from cart c join activity a
+		on(c.act_id = a.id) where user_id = #{user_id} order by id desc
 	</select>
 
 	<select id="CART_SELECT_ONE" resultType="balgil.com.trip.cart.model.CartVO">
@@ -22,8 +23,12 @@
 		update CART set quantity = quantity + #{quantity} where id = #{id}
 	</update>
 
+	<update id="CART_UPDATE_COUNT_UP" parameterType="balgil.com.trip.cart.model.CartVO">
+		update CART set quantity = quantity + #{quantity} where id = #{id}
+	</update>
+
 	<delete id="CART_DELETE_ONE">
-		delete from CART where act_id = #{act_id}
+		delete from CART where id = #{id}
 	</delete>
 
 	<delete id="CART_DELETE_MANY">

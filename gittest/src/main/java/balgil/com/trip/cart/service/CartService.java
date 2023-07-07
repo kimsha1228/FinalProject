@@ -69,6 +69,10 @@ public class CartService {
 	public int insertCountUp(CartVO vo) {
 		return dao.insertCountUp(vo);
 	}
+
+	public int updateOneCart(CartVO vo) {
+		return dao.updateOneCart(vo);
+	}
 	 
 	 
 	 
