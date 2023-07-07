@@ -14,28 +14,34 @@ $(function(){
 	$('input[type=checkbox]').change(function() {
 		var act_name;
 	    var act_id;
+	    var act_add;
 	
 		//체크한 체크박스에 따라 act_name1~5 act_id1~5가 act_name act_id에 삽입됨
 		switch(this.name){
 			case "1":
 				act_name=act_name1;
 				act_id=act_id1;
+				act_add=initadd;
 				break;
 			case "2":
 				act_name=act_name2;
 				act_id=act_id2;
+				act_add=act_add2;
 				break;
 			case "3":
 				act_name=act_name3;
 				act_id=act_id3;
+				act_add=act_add3;
 				break;
 			case "4":
 				act_name=act_name4;
 				act_id=act_id4;
+				act_add=act_add4;
 				break;
 			case "5":
 				act_name=act_name5;
 				act_id=act_id5;
+				act_add=act_add5;
 				break;
 			default:
 				alert("Something wrong..");
@@ -43,7 +49,7 @@ $(function(){
 
         //체크박스 이벤트 핸들러
         if ($(this).is(':checked')) {
-        	console.log(act_name);
+        //	console.log(act_id,act_name,act_add);
             alert(`${act_name} is added`);
             
             //삽입할 HTML요소 구성
@@ -58,11 +64,13 @@ $(function(){
 			
             
             $('#quantityContainer').append(innerHTML);
+            addAddressToCoordinate(act_add);
         }
         else {
             alert(`${act_name} is removed`);
             //해당 id=act_id? 의 div를 지운다
             $('#' + act_id).remove();
+            removeMarker(this.name);
         }
     });
 });

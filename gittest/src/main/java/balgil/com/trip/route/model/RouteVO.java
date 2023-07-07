@@ -29,6 +29,11 @@ public class RouteVO {
 	private String act_name3;
 	private String act_name4;
 	private String act_name5;
+	private String act_add1;
+	private String act_add2;
+	private String act_add3;
+	private String act_add4;
+	private String act_add5;
 	//
 	private String seller_id;
 	private int[] rts;
