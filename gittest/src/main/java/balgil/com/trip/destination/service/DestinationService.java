@@ -19,6 +19,10 @@ public class DestinationService {
 	public DestinationService() {
 		log.info("DestinationService()...");
 	}
+	
+	public int insert(DestinationVO vo) {
+		return dao.insert(vo);
+	}
 
 	public List<DestinationVO> selectAll(DestinationVO vo) {
 		return dao.selectAll(vo);

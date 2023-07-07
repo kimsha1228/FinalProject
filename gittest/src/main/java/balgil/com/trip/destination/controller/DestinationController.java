@@ -38,7 +38,15 @@ public class DestinationController {
 		return "destination/destinationSelectAll";
 	}
 
+	@RequestMapping(value = "/selectOneDestination.do", method = RequestMethod.GET)
+	public String selectOneDestination(DestinationVO vo, Model model) {
+		log.info("/selectOneDestination.do");
 
+		DestinationVO destination = service.selectOne(vo);
+		log.info("{}", destination);
 
+		model.addAttribute("destination", destination);
 
+		return "destination/destinationSelectAll";
+	}
 }

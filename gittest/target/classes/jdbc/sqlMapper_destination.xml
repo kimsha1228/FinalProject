@@ -5,15 +5,29 @@
 
 <mapper namespace="balgil.com.trip.destination">
 
+	<insert id="DESTINATION_INSERT"
+		parameterType="balgil.com.trip.destination.model.DestinationVO">
+		INSERT INTO DESTINATION (id, name, category)
+		VALUES (#{id},
+		#{name}, #{category})
+	</insert>
+
 	<select id="DESTINATION_SELECT_ALL"
 		resultType="balgil.com.trip.destination.model.DestinationVO">
-		SELECT id, name
+		SELECT id, name, category
 		FROM DESTINATION
+		<where>
+			<if test="category != null">
+				AND category = #{category}
+			</if>
+		</where>
 	</select>
-	
+
 	<select id="DESTINATION_SELECT_ONE"
 		resultType="balgil.com.trip.destination.model.DestinationVO">
-		SELECT id, name
+		SELECT id, name, category
 		FROM DESTINATION
+		WHERE id = #{id}
 	</select>
+
 </mapper>

@@ -10,3 +10,12 @@ public class DestinationVO {
 	private String name;
 
 }
+
+
+
+
+
+
+
+
+
