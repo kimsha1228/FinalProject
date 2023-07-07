@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -253,10 +254,10 @@ $(function(){
 				<td><input type="hidden" name="quantity" id = "quantity" value="${param.quantity}">수량: ${param.quantity}</td>
 			</tr>
 			<tr>
-				<td><input type="hidden" name="price" id = "price" value="${param.price}">금액: ${param.price}</td>
+				<td><input type="hidden" name="price" id = "price" value="${param.price}">금액: <fmt:formatNumber value="${param.price}" pattern=" #,###원" /> </td>
 			</tr>
 			<tr>	
-				<td><input type="hidden" name="price_total" id = "price_total" value="${param.price*param.quantity}">총 금액: ${param.price*param.quantity}</td>
+				<td><input type="hidden" name="price_total" id = "price_total" value="${param.price*param.quantity}">총 금액: <fmt:formatNumber value="${param.price*param.quantity}" pattern=" #,###원" /></td>
 			</tr>
 			
 			<!-- 쿠폰 select -->
