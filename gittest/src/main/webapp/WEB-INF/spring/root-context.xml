@@ -51,6 +51,7 @@
 				<value>classpath:jdbc/sqlMapper_activity.xml</value>
 				<value>classpath:jdbc/sqlMapper_pointhistory.xml</value>
 				<value>classpath:jdbc/sqlMapper_wishlist.xml</value>
+				<value>classpath:jdbc/sqlMapper_destination.xml</value>
 			</list>
 		</property>
 	</bean>

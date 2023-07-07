@@ -51,7 +51,7 @@
 		</c:if>
 		<c:if test="${empty vos1}">
 			<tr>
-				<td>위시리스트에 담긴 상품이 없습니다. </td>
+				<td>위시리스트에 담긴 상품이 없습니다.</td>
 			</tr>
 			<tr>
 				<td><a href="home.do">홈화면으로 가기</a></td>

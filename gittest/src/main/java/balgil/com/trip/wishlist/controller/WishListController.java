@@ -17,30 +17,27 @@ import lombok.extern.slf4j.Slf4j;
 public class WishListController {
 
 	@Autowired
-	WishListService service; 
-	
-	
+	WishListService service;
+
 	@RequestMapping(value = "/wishlist.do", method = RequestMethod.GET)
 	public String wishlist() {
 		log.info("/wishlist.do");
 
 		return "wishlist";
 	}
-	
+
 	@RequestMapping(value = "/selectAllWishList.do", method = RequestMethod.GET)
 	public String selectAllWishList(WishListVO vo, Model model) {
 		log.info("/selectAllWishList.do");
-		
+
 		List<WishListVO> vos1 = service.selectAll(vo);
 		log.info("{}", vos1);
-		
-		model.addAttribute("vos1",vos1);
+
+		model.addAttribute("vos1", vos1);
 
 		return "wishlist/wishlistSelectAll";
 	}
-	
-	
-	
+
 	@RequestMapping(value = "/deleteOK.do", method = RequestMethod.GET)
 	public String deleteOK(WishListVO vo, Model model) {
 		int result = service.delete(vo);
@@ -52,6 +49,5 @@ public class WishListController {
 			return "redirect:selectOne.do?user_id=" + vo.getUser_id();
 		}
 	}
-
 
 }

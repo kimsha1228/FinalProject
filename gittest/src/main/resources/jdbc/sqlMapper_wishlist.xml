@@ -11,14 +11,12 @@
 		#{act_id}, #{user_id})
 	</insert>
 
-	<update id="WISHLIST_UPDATE"
-		parameterType="balgil.com.trip.wishlist.model.WishListVO">
-		UPDATE WISHLIST SET iscanceled = 1 WHERE id = #{id}
-	</update>
+
 
 	<delete id="WISHLIST_DELETE"
 		parameterType="balgil.com.trip.wishlist.model.WishListVO">
-		DELETE FROM WISHLIST WHERE act_id = #{act_id} AND user_id = #{user_id}
+		DELETE FROM WISHLIST WHERE act_id = #{act_id} AND
+		user_id = #{user_id}
 	</delete>
 
 
