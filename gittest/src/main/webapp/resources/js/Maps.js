@@ -103,7 +103,7 @@ function initGeocoder() {
         removeMarker($('#address').val());
     });
 	
-	addAddressToCoordinate(initadd,'1');
+	addAddressToCoordinate(result.actVos[0].add,'1');
 }
 
 function removeMarker(value) {
