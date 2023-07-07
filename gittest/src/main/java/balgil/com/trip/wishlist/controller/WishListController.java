@@ -20,6 +20,13 @@ public class WishListController {
 	WishListService service; 
 	
 	
+	@RequestMapping(value = "/wishlist.do", method = RequestMethod.GET)
+	public String wishlist() {
+		log.info("/wishlist.do");
+
+		return "wishlist";
+	}
+	
 	@RequestMapping(value = "/selectAllWishList.do", method = RequestMethod.GET)
 	public String selectAllWishList(WishListVO vo, Model model) {
 		log.info("/selectAllWishList.do");
@@ -31,4 +38,20 @@ public class WishListController {
 
 		return "wishlist/wishlistSelectAll";
 	}
+	
+	
+	
+	@RequestMapping(value = "/deleteOK.do", method = RequestMethod.GET)
+	public String deleteOK(WishListVO vo, Model model) {
+		int result = service.delete(vo);
+		if (result == 1) {
+			List<WishListVO> vos1 = service.selectAll(vo);
+			model.addAttribute("vos1", vos1);
+			return "wishlist/wishlistSelectAll";
+		} else {
+			return "redirect:selectOne.do?user_id=" + vo.getUser_id();
+		}
+	}
+
+
 }

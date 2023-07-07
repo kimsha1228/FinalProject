@@ -8,7 +8,5 @@
 	<hr>
 	<li><a href="selectAllReservation.do?user_id=john123">예약 내역 페이지로</a></li>
 	<li><a href="selectOnepayment.do?user_id=john123">결제 상세 정보</a></li>
-	<li><a href="selectAllWishList.do?user_id=john123">위시리스트</a></li>
-	
 
 </ul>

@@ -7,6 +7,8 @@ public interface WishListDAO {
 	int insert(WishListVO vo);
 
 	int update(WishListVO vo);
+	
+	int delete(WishListVO vo);
 
 	List<WishListVO> selectAll(WishListVO vo);
 
