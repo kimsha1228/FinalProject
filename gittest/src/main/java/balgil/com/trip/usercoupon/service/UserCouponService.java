@@ -24,8 +24,12 @@ public class UserCouponService {
 		return dao.selectAll(vo);
 	}
 
-	public int update(String user_id, String code) {
-		return dao.update(user_id, code);
+	public int updateCouponUse(String user_id, String code) {
+		return dao.updateCouponUse(user_id, code);
+	}
+
+	public int updateCouponBack(String user_id, String code) {
+		return dao.updateCouponBack(user_id, code);
 	}
 
 }

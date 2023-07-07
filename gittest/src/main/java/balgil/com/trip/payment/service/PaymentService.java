@@ -26,4 +26,8 @@ public class PaymentService {
 		return dao.selectOne(vo);
 	}
 
+	public PaymentVO selectCancelObject(String res_id) {
+		return dao.selectCancelObject(res_id);
+	}
+
 }

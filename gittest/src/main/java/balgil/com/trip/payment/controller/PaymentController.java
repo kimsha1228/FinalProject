@@ -51,14 +51,25 @@ public class PaymentController {
 		
 		int pay_result = pay_service.insert(vo);
 		log.info("pay_result : {}", pay_result);
-		
 		if(pay_result==1) {
 			
-			int result_user = u_service.pointUpdate(vo.getUser_id(), vo.getPoint());
-			int result_pointHistory = p_service.useInsert(vo.getUser_id(), vo.getPoint());
-			int result_userCoupon = uc_service.update(vo.getUser_id(), vo.getCode());
+			int result_user = 0;
+			int result_pointHistory = 0;
+			if(vo.getPoint().equals("0")) {
+				result_user = 1;
+				result_pointHistory = 1;
+			}else {
+				result_user = u_service.pointUpdate(vo.getUser_id(), vo.getPoint());
+				result_pointHistory = p_service.useInsert(vo.getUser_id(), vo.getPoint());
+			}
+			int result_userCoupon = 0;
+			if(vo.getCode().equals("0")) {
+				result_userCoupon = 1;
+			}else {
+				result_userCoupon = uc_service.updateCouponUse(vo.getUser_id(), vo.getCode());
+			}
 			
-			if(result_user==1 && result_userCoupon==1 && result_pointHistory==1) {
+			if(result_user==1 && result_pointHistory==1 && result_userCoupon==1) {
 				ReservationVO resvo = new ReservationVO();
 				resvo.setAct_id(vo.getAct_id());
 				resvo.setId(vo.getRes_id());
@@ -83,19 +94,8 @@ public class PaymentController {
 			}
 			
 		}else {
-			return "redirect:reservationOne.do?act_id=5&res_date=2023-10-31&quantity=5&price=50000"; // 나중에 리다이렉트
+			return "redirect:insertOneReservation.do?act_id=5&res_date=2023-10-31&quantity=5&price=50000"; // 나중에 리다이렉트
 		}
-	}
-
-	@ResponseBody
-	@RequestMapping(value = "/jsonPaymentSelectOne.do", method = RequestMethod.GET)
-	public PaymentVO jsonSelectOnePayment(PaymentVO vo) {
-		log.info("/jsonSelectOnePayment.do...{}", vo);
-		
-		PaymentVO vo2 = pay_service.selectOne(vo);
-		log.info("vo2: {}", vo2);
-
-		return vo2;
 	}
 
 }

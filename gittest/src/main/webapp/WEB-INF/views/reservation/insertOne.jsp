@@ -21,7 +21,7 @@ $(function(){
 	console.log('usersSelectOne()...');
 		$.ajax({
 	 		url : "jsonUsersSelectOne.do",
-	 		data:{id:1},	//이 부분 세션 받아서 {user_id:{user_id}}로 바꿔줘야함 Mapper변경 잊지 말자
+	 		data:{user_id:$('#user_id').val()},
 	 		method:'GET',
 	 		dataType:'json', 
 	 		success : function(vo2) {
@@ -139,7 +139,7 @@ $(function(){
 	
 	function userCouponSelectAll(){
 		$.ajax({
-	 		url : "userCouponSelectAll.do",
+	 		url : "jsonUserCouponSelectAll.do",
 	 		data:{user_id:$('#user_id').val()},
 // 	 		data:{user_id:'seller01'},
 	 		method:'GET',
@@ -152,18 +152,16 @@ $(function(){
 	 			let discount = '';
 
 	 			if(vos==0){
-// 					$("#discount").hide();
 					discount += `보유한 쿠폰이 없습니다`;
 		 			coupon += `<select id="coupon-select">`;
 		 			coupon += `<option value="0">쿠폰 사용 안함</option>`;
-		 			coupon += "</select>";
+		 			coupon += `</select>`;
 
 		 			discount += `
 		 				<div><input type="hidden" name="coupon" class="coupon" value="0"></div>
 		 				<div><input type="hidden" name="code" class="code" value="0"></div>
 		 				`;
 				} else{
-					$("#discount").show();
 		 			coupon += `<select id="coupon-select">`;
 		 			coupon += `<option selected disabled>쿠폰을 선택해주세요</option>`;
 		 			coupon += `<option value="0">쿠폰 사용 안함</option>`;
@@ -243,7 +241,7 @@ $(function(){
 		<tbody>
 			<!-- 상품 페이지에서 넘어올 부분 -->
 			<tr>
-				<td><input type="hidden" name="user_id" id = "user_id" value="john123">${user_id}</td><!-- 세션 연결되면 유저아이디 입력 -->
+				<td><input type="hidden" name="user_id" id = "user_id" value="${user_id}">${user_id}</td><!-- 세션 연결되면 유저아이디 입력 -->
 			</tr>
 			<tr>	
 				<td><input type="hidden" name="act_id" id = "act_id" value="${param.act_id}">상품명: <span id="act_name"></span></td>
@@ -274,7 +272,7 @@ $(function(){
 			</tr>
 			<!-- 포인트 보유 금액 -->
 			<tr id = "pointbox">
-				<td id="having_point">
+				<td id = "having_point">
 				</td>
 			</tr>
 			<!-- 포인트 사용 금액 -->
