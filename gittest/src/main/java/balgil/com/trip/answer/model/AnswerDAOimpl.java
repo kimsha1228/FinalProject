@@ -50,10 +50,5 @@ public class AnswerDAOimpl implements AnswerDAO {
 		return sqlSession.selectOne("ANSWER_SELECT_ONE",vo);
 	}
 	
-	@Override
-	public List<AnswerVO> selectAll(AnswerVO vo) {
-	    log.info("selectAllAnswer()......{}", vo);
-	    return sqlSession.selectList("ANSWER_SELECT_ALL", vo);
-	}
 
 }

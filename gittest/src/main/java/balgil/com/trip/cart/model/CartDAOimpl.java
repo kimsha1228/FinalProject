@@ -2,14 +2,10 @@ package balgil.com.trip.cart.model;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import balgil.com.trip.activity.model.ActivityVO;
-import balgil.com.trip.reservation.model.ReservationVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -36,14 +32,14 @@ public class CartDAOimpl implements CartDAO {
     public List<CartVO> selectAll(CartVO vo) {
         log.info("selectAll()...{}", vo);
 
-        List<CartVO> vos = sqlSession.selectList("CARTTEST", vo);
+        List<CartVO> vos = sqlSession.selectList("CART_SELECT_ALL", vo);
         return vos;
     }
 
     //임시
     @Override
     public void addToCart(CartVO cart) {
-        sqlSession.insert("sqlMapper_cart", cart);
+        sqlSession.insert("addToCart", cart);
     }
 
 	

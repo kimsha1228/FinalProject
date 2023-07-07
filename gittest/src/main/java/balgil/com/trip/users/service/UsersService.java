@@ -45,15 +45,23 @@ public class UsersService {
 	}
 
 	public List<UsersVO> searchList(String searchKey, String searchWord) {
-		return dao.searchList(searchKey,searchWord);
+		return dao.searchList(searchKey, searchWord);
 	}
 
 	public UsersVO idCheck(UsersVO vo) {
 		return dao.idCheck(vo);
 	}
 
-  public int pointUpdate(String user_id, String point) {
+	public int pointUpdate(String user_id, String point) {
 		return dao.pointUpdate(user_id, point);
   }
-  
+
+	public int pointInsertBack(String user_id, String point) {
+		return dao.pointInsertBack(user_id, point);
+	}
+
+	public UsersVO selectOneUser(UsersVO vo) {
+		return dao.selectOneUser(vo);
+	}
+
 }

@@ -27,7 +27,7 @@ public class CommentsController {
 		
 		model.addAttribute("vos", vos);
 		
-		return "comments/selectAll";
+		return "comments/selectAllComments";
 	}
 	
 	
@@ -38,14 +38,14 @@ public class CommentsController {
 		CommentsVO vo2 = service.selectOne(vo);
 		model.addAttribute("vo2", vo2);
 		
-		return "comments/selectOne";		
+		return "comments/selectOneComments";		
 	}
 	
 	@RequestMapping(value = "/insertComments.do", method = RequestMethod.GET)
 	public String insertComments(CommentsVO vo) {
 		log.info("/insertComments.do....");
 		
-		return "comments/insert";
+		return "comments/insertComments";
 	}
 	
 	@RequestMapping(value = "/insertCommentsOK.do", method = RequestMethod.POST)
@@ -70,7 +70,7 @@ public class CommentsController {
 		
 		model.addAttribute("vo2", vo2);
 		
-		return "comments/update";
+		return "comments/updateComments";
 	}
 	
 	@RequestMapping(value = "/updateCommentsOK.do", method = RequestMethod.POST)

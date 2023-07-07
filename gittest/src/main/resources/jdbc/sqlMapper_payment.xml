@@ -12,4 +12,9 @@
 	<select id="PAYMENT_SELECT_ONE" resultType="balgil.com.trip.payment.model.PaymentVO">
 		select * from payment where res_id = #{res_id}
 	</select>
+	
+	<select id="SELECT_CANCEL_OBJECT" resultType="balgil.com.trip.payment.model.PaymentVO">
+		select point, code from payment where res_id = #{res_id}
+	</select>
+	
 </mapper>

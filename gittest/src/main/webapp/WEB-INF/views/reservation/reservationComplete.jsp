@@ -62,7 +62,7 @@ function paymentSelectOne(){
  			console.log('xhr.status:', xhr.status);
  		}
  	});//end $.ajax()...
-}//end actSelectOne
+}//end PaymentSelectOne
 
 </script>	
 

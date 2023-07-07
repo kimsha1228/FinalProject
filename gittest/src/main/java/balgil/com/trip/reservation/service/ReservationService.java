@@ -32,4 +32,12 @@ public class ReservationService {
 		return dao.selectAll(vo);
 	}
 
+	public List<ReservationVO> selectCancel(ReservationVO vo) {
+		return dao.selectCancel(vo);
+	}
+
+	public ReservationVO selectOne(ReservationVO vo) {
+		return dao.selectOne(vo);
+	}
+
 }

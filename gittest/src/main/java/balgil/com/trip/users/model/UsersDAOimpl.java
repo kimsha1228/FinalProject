@@ -46,7 +46,7 @@ public class UsersDAOimpl implements UsersDAO {
 
 		return sqlSession.update("U_UPDATE", vo);
 	}
-	
+
 	@Override
 	public int delete(UsersVO vo) {
 		log.info("delete()...{}", vo);
@@ -64,35 +64,49 @@ public class UsersDAOimpl implements UsersDAO {
 	public List<UsersVO> searchList(String searchKey, String searchWord) {
 		log.info("searchList()...searchKey:{}", searchKey);
 		log.info("searchList()...searchWord:{}", searchWord);
-		
+
 		String key = "";
-		if(searchKey.equals("name")) {
+		if (searchKey.equals("name")) {
 			key = "U_SEARCH_LIST_NAME";
-		}else {
+		} else {
 			key = "U_SEARCH_LIST_TEL";
 		}
-		
-		return sqlSession.selectList(key,"%"+searchWord+"%");
+
+		return sqlSession.selectList(key, "%" + searchWord + "%");
 	}
 
 	@Override
 	public UsersVO idCheck(UsersVO vo) {
 		log.info("idCheck()...{}", vo);
-		return sqlSession.selectOne("U_ID_CHECK",vo);
+		return sqlSession.selectOne("U_ID_CHECK", vo);
 	}
-	
+
 	@Override
 	public int pointUpdate(String user_id, String point) {
-		log.info("update()...{},{}", user_id, point);
-		
+		log.info("pointUpdate()...{},{}", user_id, point);
+
 		UsersVO vo = new UsersVO();
 		vo.setUser_id(user_id);
 		vo.setPoint(Integer.parseInt(point));
-		
+
 		return sqlSession.update("USERPOINT_UPDATE", vo);
 	}
 
-	
+	@Override
+	public int pointInsertBack(String user_id, String point) {
+		log.info("pointInsertBack()...{},{}", user_id, point);
+
+		UsersVO vo = new UsersVO();
+		vo.setUser_id(user_id);
+		vo.setPoint(Integer.parseInt(point));
+
+		return sqlSession.update("USERPOINT_INSERT_BACK", vo);
+	}
+
+	@Override
+	public UsersVO selectOneUser(UsersVO vo) {
+		log.info("selectOneUser()...{}", vo);
+		
+		return sqlSession.selectOne("USER_SELECT_ONE", vo);
+	}
 }
-
-
