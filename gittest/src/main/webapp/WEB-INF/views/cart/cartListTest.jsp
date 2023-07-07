@@ -78,9 +78,9 @@
 		</table>
 		
 		<!-- 구매 버튼 영역 -->
-<!-- 		<div class="content_btn_section"> -->
-<!-- 			<a class="order_btn">주문하기</a> -->
-<!-- 		</div> -->
+		<div class="order_btn_section">
+			<a class="order_btn">주문하기</a>
+		</div>
 		
 		<!-- 수량 조정 form -->
 		<form action="updateOneCart.do" method="get" class="quantity_update_form">
@@ -94,9 +94,9 @@
 		</form>		
 		
 		<!-- 주문 form -->
-<!-- 		<form action="주문 링크로 가자" method="get" class="order_form"> -->
+		<form action="order.do" method="get" class="order_form">
 		
-<!-- 		</form>			 -->
+		</form>			
 	</c:if>
 
 	<c:if test="${empty cartList}">
@@ -117,23 +117,24 @@
 
 	/* 체크여부에 따른 총 가격 변화*/
 	$(".selectedActivity").on("change", function(){
-		setTotalInfo($(".cart_one_info"));
+		setTotalPrice($(".cart_one_info"));
 	});
 
 	/* 체크박스 전체 선택 */
-	$(".all_check_input").on("click", function(){
+	$(".allSelectedActivity").on("click", function(){
 
 		/* 체크박스 체크/해제 */
-		if($(".all_check_input").prop("checked")){
+		if($(".allSelectedActivity").prop("checked")){
 			$(".selectedActivity").attr("checked", true);
 		} else{
 			$(".selectedActivity").attr("checked", false);
 		}
 		
-		setTotalInfo($(".cart_one_info"));	
+		setTotalPrice($(".cart_one_info"));	
 		
 	});
 	
+	/* 총 상품 가격 */
 	function setTotalPrice(){
 		let totalPrice = 0;
 		$(".cart_one_info").each(function(index, element){
@@ -176,7 +177,46 @@
 		$(".quantity_delete_form").submit();
 	});
 			
-	
+	/* 주문 페이지 이동 */	
+	$(".order_btn").on("click", function(){
+		
+		let form_contents ='';
+		let orderNumber = 0;
+		
+		$(".cart_one_info").each(function(index, element){
+			
+			if($(element).find(".selectedActivity").is(":checked") === true){
+				
+				let act_id = $(element).find(".act_id").val();
+				let quantity = $(element).find(".quantity").val();
+				let price = $(element).find(".price").val();
+				let price_total = $(element).find(".price_total").val();
+				let res_date = $(element).find(".res_date").val();
+				
+				let act_id_input = "<input name='act_id" + orderNumber + "' type='hidden' value='" + act_id + "'>";
+				form_contents += act_id_input;
+				
+				let quantity_input = "<input name='quantity" + orderNumber + "' type='hidden' value='" + quantity + "'>";
+				form_contents += quantity_input;
+				
+				let price_input = "<input name='price" + orderNumber + "' type='hidden' value='" + price + "'>";
+				form_contents += price_input;
+				
+				let price_total_input = "<input name='price_total" + orderNumber + "' type='hidden' value='" + price_total + "'>";
+				form_contents += price_total_input;
+				
+				let res_date_input = "<input name='res_date" + orderNumber + "' type='hidden' value='" + res_date + "'>";
+				form_contents += res_date_input;
+				
+				orderNumber += 1;
+				
+			}
+		});	
+
+		$(".order_form").html(form_contents);
+		$(".order_form").submit();
+		
+	});
 	</script>
 	
 </body>
