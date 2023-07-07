@@ -180,17 +180,11 @@ public class RouteController {
 	}
 
 	@RequestMapping(value = "/selectOneUserRoute.do", method = RequestMethod.GET)
-	public String selectOneUserRoute(RouteVO vo, Model model) {
+	public String selectOneUserRoute(RouteVO vo) {
 		log.info("/selectOneUserRoute.do...{}", vo);
 
 		log.info("루트의 vcount 올립니다...{}", vo.getId());
 		service.vcountUp(vo);
-
-		RouteVO vo2 = service.selectOne(vo);
-
-		log.info("After Select...{}", vo2);
-
-		model.addAttribute("vo2", vo2);
 
 		return "route/selectOneUserRoute";
 	}
