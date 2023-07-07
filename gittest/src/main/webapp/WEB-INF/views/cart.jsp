@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Cart Project</title>
-    <a>화면 테스트용</a>
 </head>
 <body>
+    <h3>화면 테스트용</h3>
     <ul>
     <li><a href="noCart.do">담은 상품 없을 때</a></li>
     <li><a href="cartList.do">담은 상품 있을 때</a></li>

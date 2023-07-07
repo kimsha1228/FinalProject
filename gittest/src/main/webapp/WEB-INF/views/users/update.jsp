@@ -12,7 +12,7 @@
 	<h1>회원수정</h1>
 	
 	<form action="u_updateOK.do" method="post" enctype="multipart/form-data">
-		<table id=""usersList"">
+		<table id="usersList">
 			<tr>
 				<td><label for="id">회원번호:</label></td>
 				<td><span id="span_id">${vo2.id}</span><input type="hidden" id="id" name="id"
