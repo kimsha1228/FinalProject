@@ -111,8 +111,10 @@
 	</c:if>
 	
 	<script>
+	
 	$(document).ready(function(){
 		setTotalPrice();	
+	
 	});	
 
 	/* 체크여부에 따른 총 가격 변화*/

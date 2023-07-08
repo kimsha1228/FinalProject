@@ -90,7 +90,7 @@ function paymentSelectOne(){
 		<tbody id="pay_info">
 		</tbody>
 		<tr>
-			<th colspan="2"><a href="cancelReservation.do?id=${vo1.id}&user_id=john123">예약 취소</a></th>
+			<th colspan="2"><a href="cancelReservation.do?id=${vo1.id}&user_id=${user_id}">예약 취소</a></th>
 		</tr>
 
 	</table>
