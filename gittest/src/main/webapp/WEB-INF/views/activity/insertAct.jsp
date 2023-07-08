@@ -48,7 +48,7 @@
 			<tr>
 				<td><label for="add">주소:</label></td>
 				<td><input type="text" id="add" name="add"
-					value="경기도 용인시 처인구 포곡읍 에버랜드로 199 에버랜드 리조트"></td>
+					value="경기도 용인시 처인구 포곡읍 에버랜드로 199"></td>
 			</tr>
 			<tr id="multiplefiles">
 				<td>
