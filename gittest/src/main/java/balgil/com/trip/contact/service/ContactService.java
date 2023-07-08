@@ -29,7 +29,7 @@ public class ContactService {
 	}
 	
 	public ContactVO selectOne(ContactVO vo) {
-		return dao.selectOneContact(vo);
+		return dao.selectOne(vo);
 	}
 	
 	public int delete(ContactVO vo) {
@@ -37,7 +37,7 @@ public class ContactService {
 	}
 	
 	public int update(ContactVO vo) {
-		return dao.updateContact(vo);
+		return dao.update(vo);
 	}
 
 }
