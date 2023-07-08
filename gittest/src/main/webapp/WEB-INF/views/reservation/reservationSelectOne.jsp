@@ -17,7 +17,7 @@ $(function(){
 });//end onload...
 
 function paymentSelectOne(){
-	console.log('${param.id}');
+	console.log('${vo1.id}');
 	$.ajax({
  		url : "jsonPaymentSelectOne.do",
  		data:{res_id:'${param.id}'},
@@ -90,9 +90,27 @@ function paymentSelectOne(){
 		<tbody id="pay_info">
 		</tbody>
 		<tr>
-			<th colspan="2"><a href="cancelReservation.do?id=${vo1.id}&user_id=${user_id}">예약 취소</a></th>
+			<th colspan="2">
+			<button id="cancelOne" data-id="${vo1.id}" data-user_id="${user_id}">예약취소</button>
+			</th>
 		</tr>
 
 	</table>
+	
+	<!-- 삭제 form -->
+	<form action="cancelReservation.do" method="post" class="delete_form">
+		<input type="hidden" name="id" class="delete_id">
+		<input type="hidden" name="user_id" class="delete_user_id">
+	</form>	
+	
+	<script>
+	$("#deleteOne").on("click", function(e){
+		const id = $(this).data("id");
+		const user_id = $(this).data("user_id");
+		$(".delete_id").val(id);
+		$(".delete_user_id").val(user_id);
+		$(".delete_form").submit();
+	});
+	</script>
 </body>
 </html>

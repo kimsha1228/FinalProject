@@ -48,7 +48,7 @@ public class CartController {
         return "cart/cartListTest";
     }
 
-    @RequestMapping(value = "/insertOneCart.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/insertOneCart.do", method = RequestMethod.POST)
     public String insertOneCart(CartVO vo) {
         log.info("/insertOneCart...{}", vo);
         

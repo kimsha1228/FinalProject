@@ -39,7 +39,7 @@ public class PaymentController {
 	@Autowired
 	PointHistoryService p_service; 
 	
-	@RequestMapping(value = "/insertPaymentOne.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/insertPaymentOne.do", method = RequestMethod.POST)
 	public String insertPaymentOne(PaymentVO vo) {
 		log.info("/insertPaymentOne.do");
 		log.info("vo: {}", vo);
@@ -87,19 +87,14 @@ public class PaymentController {
 				int res_result = res_service.insert(resvo);
 				log.info("res_result : {}", res_result);
 
-				return "redirect:reservationComplete.do?act_id="+vo.getAct_id()
-				+"&res_id="+vo.getRes_id()
-				+"&price="+vo.getPrice()
-				+"&price_total="+vo.getPrice_total()
-				+"&res_date="+vo.getRes_date()+"&quantity="+vo.getQuantity()
-				+"&user_id="+vo.getUser_id();
+				return "redirect:reservationComplete.do";
 			
 			}else {
 				return "home"; // 나중에 리다이렉트
 			}
 			
 		}else {
-			return "redirect:insertOneReservation.do?act_id=5&res_date=2023-10-31&quantity=5&price=50000"; // 나중에 리다이렉트
+			return "redirect:reservation_api.do"; // 나중에 리다이렉트
 		}
 	}
 

@@ -43,14 +43,14 @@ public class ReservationController {
 		return "reservation_api";
 	}
 	
-	@RequestMapping(value = "/insertOneReservation.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/insertOneReservation.do", method = RequestMethod.POST)
 	public String insertOneReservation() {
 		log.info("/insertOneReservation.do");
 
 		return "reservation/insertOne";
 	}
 
-//	@RequestMapping(value = "/insertManyReservation.do", method = RequestMethod.GET)
+//	@RequestMapping(value = "/insertManyReservation.do", method = RequestMethod.POST)
 //	public String insertManyReservation(String datas) {
 //		log.info("/insertManyReservation.do...{}", datas);
 //		
@@ -77,7 +77,7 @@ public class ReservationController {
 ////		}
 //	}
 	
-	@RequestMapping(value = "/cancelReservation.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/cancelReservation.do", method = RequestMethod.POST)
 	public String cancelReservation(ReservationVO vo) {
 		log.info("/cancelReservation.do...{}", vo);//reservation id, user_id 넘어올 것
 		
@@ -109,7 +109,7 @@ public class ReservationController {
 		log.info("result_pointHistory: {}", result_pointHistory);
 		log.info("result_userCoupon: {}", result_userCoupon);
 		
-		return "redirect:selectCancelReservation.do?user_id="+vo.getUser_id();
+		return "reservation/cancelComplete";
 	}
 	
 	@RequestMapping(value = "/reservationComplete.do", method = RequestMethod.GET)
@@ -119,7 +119,7 @@ public class ReservationController {
 		return "reservation/reservationComplete";
 	}
 	
-	@RequestMapping(value = "/selectAllReservation.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/selectAllReservation.do", method = RequestMethod.POST)
 	public String selectAllReservation(ReservationVO vo, Model model) {
 		log.info("/selectAllReservation.do");
 		
@@ -131,7 +131,7 @@ public class ReservationController {
 		return "reservation/reservationSelectAll";
 	}
 	
-	@RequestMapping(value = "/selectCancelReservation.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/selectCancelReservation.do", method = RequestMethod.POST)
 	public String selectCancelReservation(ReservationVO vo, Model model) {
 		log.info("/selectCancelReservation.do");
 		
@@ -143,7 +143,7 @@ public class ReservationController {
 		return "reservation/reservationSelectAll";
 	}
 	
-	@RequestMapping(value = "/selectOneReservation.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/selectOneReservation.do", method = RequestMethod.POST)
 	public String selectOneReservation(ReservationVO vo, Model model) {
 		log.info("/selectOneReservation.do");
 		
@@ -155,7 +155,7 @@ public class ReservationController {
 		return "reservation/reservationSelectOne";
 	}
 	
-	@RequestMapping(value = "/selectOneCancelReservation.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/selectOneCancelReservation.do", method = RequestMethod.POST)
 	public String selectOneCancelReservation(ReservationVO vo, Model model) {
 		log.info("/selectOneCancelReservation.do");
 		
