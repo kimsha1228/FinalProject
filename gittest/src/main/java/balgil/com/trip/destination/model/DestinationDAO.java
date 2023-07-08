@@ -8,5 +8,8 @@ public interface DestinationDAO {
 
 	List<DestinationVO> selectAll(DestinationVO vo);
 
+	List<DestinationVO> selectAll();
+
 	DestinationVO selectOne(DestinationVO vo);
+
 }

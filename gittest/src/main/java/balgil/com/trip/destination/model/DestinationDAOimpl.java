@@ -33,6 +33,11 @@ public class DestinationDAOimpl implements DestinationDAO {
 
         return sqlSession.selectList("DESTINATION_SELECT_ALL", vo);
     }
+    
+    @Override
+    public List<DestinationVO> selectAll() {
+    	return sqlSession.selectList("DESTINATION_SELECT_ALL");
+    }
 
     @Override
     public DestinationVO selectOne(DestinationVO vo) {

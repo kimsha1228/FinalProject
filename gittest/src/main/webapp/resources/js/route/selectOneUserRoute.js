@@ -3,7 +3,11 @@ const urlParams = new URL(location.href).searchParams;
 let id = urlParams.get('id');
 console.log(id);
 
+//jsonSelectOneRoute 결과를 담을 변수
 let result;
+
+//체크박스 이벤트 핸들러에 쓰일 카운트용 변수
+let count=0;
 
 //onload...
 $(function(){
@@ -117,20 +121,21 @@ $(function(){
 						var innerHTML = '';
 						innerHTML += `<div id="${act_id}">`;
 						innerHTML += `<p>${act_name}의 수량 선택</p>`;
-						innerHTML += `<input type='hidden' name='act_id' value='${act_id}'/>`;
+						innerHTML += `<input type="hidden" name="act_id${count}" value='${act_id}'/>`;
 						innerHTML += `<input type="button" value="-" class="qtyminus minus" data-act-id="${act_id}" />`;
-						innerHTML += `<input type="text" name="quantity" value="1" id="quantity" class="qty" />`;
+						innerHTML += `<input type="text" name="quantity${count}" value="1" id="quantity" class="qty" />`;
 						innerHTML += `<input type="button" value="+" class="qtyplus plus" data-act-id="${act_id}" />`;
 						innerHTML += `</div>`;
 						
 			            
 			            $('#quantityContainer').append(innerHTML);
 			            addAddressToCoordinate(act_add,this.name);
+			            count++;
 			        }
 			        else {
 			            //해당 id=act_id? 의 div를 지운다
 			            $('#' + act_id).remove();
-			            
+			            count--;
 			           for(var i =0 ;i<orders.length;i++){
 						    if(orders[i]==(this.name)){
 						        removeMarker(i);
