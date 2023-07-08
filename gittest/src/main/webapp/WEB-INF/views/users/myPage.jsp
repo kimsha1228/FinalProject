@@ -19,6 +19,5 @@
 	<h1><a href="selectAllUserContact.do">문의내역 페이지</a></h1>
 	<h1><a href="logout.do">로그아웃 메인페이지</a></h1>
 	
-	
 </body>
 </html>
