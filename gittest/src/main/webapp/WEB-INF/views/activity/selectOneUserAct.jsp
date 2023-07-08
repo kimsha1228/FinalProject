@@ -72,7 +72,7 @@
 		<a href="selectAllComments.do?act_id=${vo2.id}">상품 후기 전체보기</a>
 	</div>
 	<div>
-		<form action='#' id='Reservation' method='GET'>
+		<form action='#' id='Reservation' method='POST'>
 			<p>예약 날짜 선택</p>
 			<input type="date" name="res_date" id="datePicker">
 			<p>수량 선택</p>

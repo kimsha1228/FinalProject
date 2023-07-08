@@ -237,7 +237,7 @@ $(function(){
 		<tbody id="vo2"></tbody> <!-- 이 부분에 유저 정보 얻어오기 -->
 	</table>
 	
-<form action="insertPaymentOne.do" method="get">
+<form action="insertPaymentOne.do" method="POST">
 	<table border="1">
 		<tbody>
 			<!-- 상품 페이지에서 넘어올 부분 -->

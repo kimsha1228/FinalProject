@@ -16,7 +16,7 @@ $(function(){
 });//end onload...
 
 function paymentSelectOne(){
-	console.log('${param.id}');
+	console.log('${vo1.id}');
 	$.ajax({
  		url : "jsonPaymentSelectOne.do",
  		data:{res_id:'${param.id}'},
