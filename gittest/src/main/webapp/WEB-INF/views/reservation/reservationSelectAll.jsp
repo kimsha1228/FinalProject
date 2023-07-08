@@ -74,7 +74,7 @@
 				<tr>
 					<th>취소번호</th>
 					<td><a
-						href="selectOneCancelReservation.do?id=${vo2.id}&user_id=john123">${vo2.id}</a></td>
+						href="selectOneCancelReservation.do?id=${vo2.id}&user_id=${user_id}">${vo2.id}</a></td>
 				</tr>
 				<tr>
 					<th>상품명</th>
@@ -87,8 +87,7 @@
 				<td>취소한 상품이 없습니다</td>
 			</tr>
 			<tr>
-				<td><a href="selectAllReservation.do?user_id=john123">예약내역
-						보기</a></td>
+				<td><a href="selectAllReservation.do?user_id=john123">예약내역 보기</a></td>
 				<!-- 세션 연결되면 아이디 바꾸기 -->
 			</tr>
 		</c:if>
