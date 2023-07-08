@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,9 +19,9 @@
 				</td>
 				<td>
 					<select id="dest_id" name="dest_id">
-						  <option value="1">서울</option>
-						  <option value="2">제주</option>
-						  <option value="3" selected>경기도</option>
+					<c:forEach var="vo" items="${vos}" varStatus="status">
+						<option value="${status.count}">${vo.name}</option>
+					</c:forEach>
 					</select>
 				</td>
 			</tr>
@@ -47,7 +48,7 @@
 			<tr>
 				<td><label for="add">주소:</label></td>
 				<td><input type="text" id="add" name="add"
-					value="경기도 용인시 처인구 포곡읍 에버랜드로 199 에버랜드 리조트"></td>
+					value="경기도 용인시 처인구 포곡읍 에버랜드로 199"></td>
 			</tr>
 			<tr id="multiplefiles">
 				<td>
