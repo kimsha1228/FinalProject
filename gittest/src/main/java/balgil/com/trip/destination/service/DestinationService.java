@@ -28,7 +28,12 @@ public class DestinationService {
 		return dao.selectAll(vo);
 	}
 
+	public List<DestinationVO> selectAll() {
+		return dao.selectAll();
+	}
+
 	public DestinationVO selectOne(DestinationVO vo) {
 		return dao.selectOne(vo);
 	}
+
 }
