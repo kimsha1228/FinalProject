@@ -165,6 +165,13 @@ public class UsersController {
 		
 		return "users/login";
 	}
+	
+	@RequestMapping(value = "/myPage.do", method = RequestMethod.GET)
+	public String myPage() {
+		log.info("/myPage.do....");
+		
+		return "users/myPage";
+	}
 }
 
 

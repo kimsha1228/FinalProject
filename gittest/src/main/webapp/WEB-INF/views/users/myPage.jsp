@@ -10,7 +10,7 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1><a href="myInfo.do?id={user_id}">내 정보 관리</a></h1>
+	<h1><a href="myInfo.do?user_id=${user_id}">내 정보 관리</a></h1>
 	<h1><a href="selectAllUserCoupon.do">쿠폰 페이지</a></h1>
 	<h1><a href="selectAllPoint.do">포인트 페이지</a></h1>
 	<h1><a href="selectAllCart.do">장바구니 페이지</a></h1>
