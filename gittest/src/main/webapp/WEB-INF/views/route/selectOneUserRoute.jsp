@@ -14,7 +14,7 @@
 	let user_id = '<%= session.getAttribute("user_id") %>'; 
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 </script>
-<script type="text/javascript" src="resources/js/route/selectOneUserRoute.js?ver=3"></script>
+<script type="text/javascript" src="resources/js/route/selectOneUserRoute.js?ver=8"></script>
 
 </head>
 <body>
