@@ -138,7 +138,11 @@ public class ActivityController {
 		log.info("/updateAct.do...{}", vo);
 
 		ActivityVO vo2 = service.selectOne(vo);
-
+		//현재 DB에 있는 여행지를 조회함
+		List<DestinationVO> vos = destService.selectAll();
+		log.info("destination 조회결과:{}",vos);
+		
+		model.addAttribute("vos",vos);
 		model.addAttribute("vo2", vo2);
 
 		return "activity/updateAct";
