@@ -21,6 +21,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import balgil.com.trip.activity.model.ActivityVO;
 import balgil.com.trip.activity.service.ActivityService;
+import balgil.com.trip.destination.model.DestinationVO;
+import balgil.com.trip.destination.service.DestinationService;
 import balgil.com.trip.image.model.ImageVO;
 import balgil.com.trip.image.service.ImageService;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +40,9 @@ public class ActivityController {
 	@Autowired
 	ActivityService service;
 
+	@Autowired
+	DestinationService destService;
+	
 	// 이미지 테이블 업로드용 서비스
 	@Autowired
 	ImageService imgService;
@@ -46,8 +51,15 @@ public class ActivityController {
 	ServletContext sContext;
 
 	@RequestMapping(value = "/insertAct.do", method = RequestMethod.GET)
-	public String insertAct() {
+	public String insertAct(Model model) {
 		log.info("insertAct.jsp로 이동");
+		
+		//현재 DB에 있는 여행지를 조회함
+		List<DestinationVO> vos = destService.selectAll();
+		log.info("destination 조회결과:{}",vos);
+		
+		model.addAttribute("vos",vos);
+		
 		return "activity/insertAct";
 	}
 

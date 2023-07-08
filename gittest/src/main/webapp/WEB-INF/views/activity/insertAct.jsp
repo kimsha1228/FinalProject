@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,9 +19,9 @@
 				</td>
 				<td>
 					<select id="dest_id" name="dest_id">
-						  <option value="1">서울</option>
-						  <option value="2">제주</option>
-						  <option value="3" selected>경기도</option>
+					<c:forEach var="vo" items="${vos}" varStatus="status">
+						<option value="${status.count}">${vo.name}</option>
+					</c:forEach>
 					</select>
 				</td>
 			</tr>
