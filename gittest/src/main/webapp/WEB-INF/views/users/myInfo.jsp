@@ -15,7 +15,7 @@
 		<table id="usersList">
 			<tr>
 				<td><label for="img">프로필 사진:</label></td>
-				<td><input type="image" id="img" name="img" value="tester">
+				<td><input type="text" id="text" name="text" value="tester">
 				<button type="button" onclick="idCheck()" class="myButton">사진 업로드</button>
 					<span id="demo"></span></td>
 			</tr>
