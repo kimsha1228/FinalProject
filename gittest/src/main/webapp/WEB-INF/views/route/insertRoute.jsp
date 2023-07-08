@@ -9,12 +9,12 @@
 <link rel="stylesheet" href="resources/css/multi-select2.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/route/multi-select2.js"></script>
+<script type="text/javascript" src="resources/js/route/multi-select2.js?ver=1"></script>
 <script>
 	let user_id = '<%= session.getAttribute("user_id") %>';
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 </script>
-<script type="text/javascript" src="resources/js/route/insertRoute.js?ver=4"></script>
+<script type="text/javascript" src="resources/js/route/insertRoute.js?ver=7"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>

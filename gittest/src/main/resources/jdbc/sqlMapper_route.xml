@@ -44,6 +44,21 @@
 		<if test="rt5 != null">
 		   or id = #{rt5}		  
 		</if>
+		 ORDER BY Case id
+                        when #{rt1} then 1
+                        <if test="rt2 != null">
+						when #{rt2} then 2		  
+						</if>
+                        <if test="rt3 != null">
+						when #{rt3} then 3		  
+						</if>
+                        <if test="rt4 != null">
+						when #{rt4} then 4		  
+						</if>
+                        <if test="rt5 != null">
+						when #{rt5} then 5		  
+						</if>
+		 END
 	</select>
 
 	<select id="ROUTE_SELECT_ALL" resultMap="RouteVOResultMap">
