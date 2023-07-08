@@ -21,10 +21,10 @@ public class CartDAOimpl implements CartDAO {
     }
     
     @Override
-	public int insert(CartVO vo) {
+	public int insertOne(CartVO vo) {
 		log.info("insert()...{}", vo);
 
-		return sqlSession.insert("CART_INSERT", vo);
+		return sqlSession.insert("CART_INSERT_ONE", vo);
 	}
 
 
@@ -44,12 +44,33 @@ public class CartDAOimpl implements CartDAO {
 
 	
 	@Override
-	public void deleteOneCart(int act_id) {
-	    sqlSession.delete("CART_DELETE_ONE", act_id);
+	public int deleteOneCart(CartVO vo) {
+	    return sqlSession.delete("CART_DELETE_ONE", vo);
 	}
 
 	@Override
 	public void deleteManyCart(List<Integer> act_id) {
 	    sqlSession.delete("CART_DELETE_MANY", act_id);
+	}
+
+	@Override
+	public CartVO selectOne(CartVO vo) {
+        log.info("selectOne()...{}", vo);
+
+		return sqlSession.selectOne("CART_SELECT_ONE", vo);
+	}
+
+	@Override
+	public int insertCountUp(CartVO vo) {
+		log.info("insertCountUp()...{}", vo);
+
+		return sqlSession.update("CART_INSERT_COUNT_UP", vo);
+	}
+
+	@Override
+	public int updateOneCart(CartVO vo) {
+		log.info("updateOneCart()...{}", vo);
+
+		return sqlSession.update("CART_UPDATE_COUNT", vo);
 	}
 }

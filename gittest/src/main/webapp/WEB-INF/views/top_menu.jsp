@@ -18,6 +18,10 @@
 	<li><a href ="Faq_test.do">FAQ test</a></li>
 	
 	<li><a href ="Contact_test.do">문의 test</a></li>
+	
+	<li><a href ="Faq_test.do">FAQ</a></li>
   
 	<li><a href="cart.do">장바구니 가기</a></li>
+	
+	<li><a href="wishlist.do">위시리스트 가기</a></li>
 </ul>

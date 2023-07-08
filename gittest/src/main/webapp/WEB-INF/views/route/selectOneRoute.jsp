@@ -29,19 +29,10 @@
 				<td>${vo2.summary}</td>
 				<td>${vo2.dest_name}</td>
 				<td>
-				  ${vo2.act_name1} 
-				  <c:if test="${not empty vo2.act_name2}">
-				    → ${vo2.act_name2}
-				  </c:if>
-				  <c:if test="${not empty vo2.act_name3}">
-				    → ${vo2.act_name3}
-				  </c:if>
-				  <c:if test="${not empty vo2.act_name4}">
-				    → ${vo2.act_name4}
-				  </c:if>
-				  <c:if test="${not empty vo2.act_name5}">
-				    → ${vo2.act_name5}
-				  </c:if>
+					<c:forEach var="vo" items="${vo2.actVos}" varStatus="status">
+					    ${vo.act_name}
+					    <c:if test="${!status.last}"> → </c:if>
+					</c:forEach>
 				</td>
 				<td>${vo2.content}</td>
 			</tr>

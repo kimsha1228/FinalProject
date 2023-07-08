@@ -54,6 +54,9 @@ public class ReservationController {
 //	public String insertManyReservation(String datas) {
 //		log.info("/insertManyReservation.do...{}", datas);
 //		
+////		act_id0=5&quantity0=4&price0=10000&price_total0=40000&res_date0=2023-11-30+00%3A00%3A00
+////		이런 식으로 넘어올 것...
+//	
 //		String[] arr = datas.split(":");//2,10000,2023-07-30
 //		for (int i = 0; i < arr.length; i++) {
 //			ReservationVO vo = new ReservationVO();

@@ -54,7 +54,7 @@ public class UsersService {
 
 	public int pointUpdate(String user_id, String point) {
 		return dao.pointUpdate(user_id, point);
-	}
+  }
 
 	public int pointInsertBack(String user_id, String point) {
 		return dao.pointInsertBack(user_id, point);

@@ -4,9 +4,9 @@ import java.util.List;
 
 public interface CartDAO {
 	
-		public int insert(CartVO vo);
+		int insertOne(CartVO vo);
 	    
-		public void deleteOneCart(int act_id);
+		int deleteOneCart(CartVO vo);
 	    
 		public void deleteManyCart(List<Integer> act_id);
 	    
@@ -14,6 +14,12 @@ public interface CartDAO {
 	    
 
 	    //임시
-		public void addToCart(CartVO cart);	    
+		public void addToCart(CartVO cart);
+
+		CartVO selectOne(CartVO vo);
+
+		int insertCountUp(CartVO vo);
+
+		int updateOneCart(CartVO vo);	    
 	}
 
