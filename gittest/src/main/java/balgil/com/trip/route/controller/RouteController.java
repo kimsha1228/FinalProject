@@ -85,11 +85,9 @@ public class RouteController {
 
 	@RequestMapping(value = "/updateRoute.do", method = RequestMethod.GET)
 	public String updateRoute(RouteVO vo, Model model) {
-		log.info("/selectOneRoute.do...{}", vo);
+		log.info("/insertRoute.jsp...{}", vo);
 
 		RouteVO vo2 = service.selectOne(vo);
-
-		log.info("after select..{}", vo2);
 
 		model.addAttribute("vo2", vo2);
 
@@ -98,7 +96,7 @@ public class RouteController {
 
 	@RequestMapping(value = "/updateRouteOk.do", method = RequestMethod.POST)
 	public String updateRouteOk(RouteVO vo) throws IllegalStateException, IOException {
-		log.info("/updateActOk.do...{}", vo);
+		log.info("/updateRouteOk.do...{}", vo);
 
 		// TODO: 추후 로컬 파일도 삭제하게 해야함
 		String getOriginalFilename = vo.getFile().getOriginalFilename();
@@ -219,7 +217,7 @@ public class RouteController {
 		if (flag == 1) {
 			service.likeup(vo);
 			Cookie isLikedCookie = new Cookie("isLiked", "1");
-	        isLikedCookie.setMaxAge(10); //쿠키 수명 설정
+	        isLikedCookie.setMaxAge(10); //쿠키 수명 설정 초단위
 	        
 	        response.addCookie(isLikedCookie);
 		}
