@@ -10,6 +10,7 @@
 */
 
 //사용법은 http://loudev.com/#home 참조
+//5개 제한하는 법은 https://github.com/lou/multi-select/pull/248 여기는 참조했음
 
 !function ($) {
 
