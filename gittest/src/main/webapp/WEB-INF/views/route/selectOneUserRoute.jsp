@@ -41,7 +41,7 @@
 	<div id="route_content">
 	</div>
 	<div>
-		<form action='#' id='Reservation' method='GET'>
+		<form action='#' id='Reservation' method='POST'>
 		
 			<p>예약 날짜 선택</p>
 			<input type="date" name="res_date" id="datePicker">
