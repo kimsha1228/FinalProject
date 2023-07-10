@@ -34,7 +34,11 @@
 									<input type="hidden" name="res_date" class="res_date" value="${cart.res_date}">
 								</td>
 								<td></td>
-								<td><button class="delete_btn" data-id="${cart.id}">삭제</button></td>
+								<td>
+								<button class="order_btn" data-id="${cart.id}" data-user_id="${cart.user_id}" data-act_id="${cart.act_id}"
+								data-price="${cart.price}" data-quantity="${cart.quantity}"  data-res_date="${cart.res_date}">구매</button>
+								<button class="delete_btn" data-id="${cart.id}">삭제</button>
+								</td>
 							</tr>
 							<tr>
 								<th>상품명</th>
@@ -78,9 +82,9 @@
 		</table>
 		
 		<!-- 구매 버튼 영역 -->
-		<div class="order_btn_section">
-			<a class="order_btn">주문하기</a>
-		</div>
+<!-- 		<div class="order_btn_section"> -->
+<!-- 			<a class="order_btn">주문하기</a> -->
+<!-- 		</div> -->
 		
 		<!-- 수량 조정 form -->
 		<form action="updateOneCart.do" method="get" class="quantity_update_form">
@@ -94,8 +98,13 @@
 		</form>		
 		
 		<!-- 주문 form -->
-		<form action="order.do" method="get" class="order_form">
-		
+		<form action="insertOneReservation.do" method="POST" class="order_form">
+			<input type="hidden" name="id" class="order_id">
+			<input type="hidden" name="user_id" class="order_user_id">
+			<input type="hidden" name="act_id" class="order_act_id">
+			<input type="hidden" name="price" class="order_price">
+			<input type="hidden" name="quantity" class="order_quantity">
+			<input type="hidden" name="res_date" class="order_res_date">
 		</form>			
 	</c:if>
 
@@ -178,46 +187,23 @@
 		$(".delete_id").val(id);
 		$(".quantity_delete_form").submit();
 	});
-			
-	/* 주문 페이지 이동 */	
-	$(".order_btn").on("click", function(){
-		
-		let form_contents ='';
-		let orderNumber = 0;
-		
-		$(".cart_one_info").each(function(index, element){
-			
-			if($(element).find(".selectedActivity").is(":checked") === true){
-				
-				let act_id = $(element).find(".act_id").val();
-				let quantity = $(element).find(".quantity").val();
-				let price = $(element).find(".price").val();
-				let price_total = $(element).find(".price_total").val();
-				let res_date = $(element).find(".res_date").val();
-				
-				let act_id_input = "<input name='act_id" + orderNumber + "' type='hidden' value='" + act_id + "'>";
-				form_contents += act_id_input;
-				
-				let quantity_input = "<input name='quantity" + orderNumber + "' type='hidden' value='" + quantity + "'>";
-				form_contents += quantity_input;
-				
-				let price_input = "<input name='price" + orderNumber + "' type='hidden' value='" + price + "'>";
-				form_contents += price_input;
-				
-				let price_total_input = "<input name='price_total" + orderNumber + "' type='hidden' value='" + price_total + "'>";
-				form_contents += price_total_input;
-				
-				let res_date_input = "<input name='res_date" + orderNumber + "' type='hidden' value='" + res_date + "'>";
-				form_contents += res_date_input;
-				
-				orderNumber += 1;
-				
-			}
-		});	
-
-		$(".order_form").html(form_contents);
+	
+	/* 한 개 구매 버튼 */
+	$(".order_btn").on("click", function(e){
+		e.preventDefault();
+		let id = $(this).data("id");
+		let user_id = $(this).data("user_id");
+		let act_id = $(this).data("act_id");
+		let price = $(this).data("price");
+		let quantity = $(this).data("quantity");
+		let res_date = $(this).data("res_date");
+		$(".order_id").val(id);
+		$(".order_user_id").val(user_id);
+		$(".order_act_id").val(act_id);
+		$(".order_price").val(price);
+		$(".order_quantity").val(quantity);
+		$(".order_res_date").val(res_date);
 		$(".order_form").submit();
-		
 	});
 	</script>
 	

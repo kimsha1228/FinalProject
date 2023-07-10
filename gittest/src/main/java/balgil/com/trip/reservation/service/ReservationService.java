@@ -40,4 +40,8 @@ public class ReservationService {
 		return dao.selectOne(vo);
 	}
 
+	public int deleteOne(ReservationVO vo) {
+		return dao.deleteOne(vo);
+	}
+
 }

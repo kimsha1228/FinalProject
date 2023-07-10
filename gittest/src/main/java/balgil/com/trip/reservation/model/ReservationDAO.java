@@ -14,4 +14,6 @@ public interface ReservationDAO {
 
 	ReservationVO selectOne(ReservationVO vo);
 
+	int deleteOne(ReservationVO vo);
+
 }

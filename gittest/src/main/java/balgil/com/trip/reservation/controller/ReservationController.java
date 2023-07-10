@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import balgil.com.trip.payment.model.PaymentVO;
 import balgil.com.trip.payment.service.PaymentService;
@@ -49,42 +51,16 @@ public class ReservationController {
 
 		return "reservation/insertOne";
 	}
-
-//	@RequestMapping(value = "/insertManyReservation.do", method = RequestMethod.POST)
-//	public String insertManyReservation(String datas) {
-//		log.info("/insertManyReservation.do...{}", datas);
-//		
-////		act_id0=5&quantity0=4&price0=10000&price_total0=40000&res_date0=2023-11-30+00%3A00%3A00
-////		이런 식으로 넘어올 것...
-//	
-//		String[] arr = datas.split(":");//2,10000,2023-07-30
-//		for (int i = 0; i < arr.length; i++) {
-//			ReservationVO vo = new ReservationVO();
-//			vo.setQuantity(Integer.parseInt(arr[i].split(",")[0]));//"2"
-//			vo.setPrice(Integer.parseInt(arr[i].split(",")[1]));//"10000"
-//			vo.setRes_date(arr[i].split(",")[2]);//"2023-07-30"
-//			log.info("vo...{}", vo);
-////			int result = service.insert(vo);
-////			log.info("result : {}", result);
-//		}
-//		
-////		
-//		return "reservation/insertOne";//나중에 바꾸기
-////		if (result == 1) {
-////			return "redirect:reservation_api.do";
-////		} else {
-////			return "redirect:reservationInsert.do";
-////		}
-//	}
 	
-	@RequestMapping(value = "/cancelReservation.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/cancelReservation.do", method = RequestMethod.GET)
 	public String cancelReservation(ReservationVO vo) {
 		log.info("/cancelReservation.do...{}", vo);//reservation id, user_id 넘어올 것
 		
 		int result = service.update(vo);//iscanceled 1로 변경 후 
+		log.info("result:{}", result);
 		
 		String res_id = vo.getId();
-		PaymentVO pay_vo = pay_service.selectCancelObject(res_id);
+		PaymentVO pay_vo = pay_service.selectCancelOne(res_id);
 		log.info("{}", pay_vo);
 		
 		
@@ -109,7 +85,7 @@ public class ReservationController {
 		log.info("result_pointHistory: {}", result_pointHistory);
 		log.info("result_userCoupon: {}", result_userCoupon);
 		
-		return "reservation/cancelComplete";
+		return "redirect:selectCancelReservation.do?user_id="+vo.getUser_id();
 	}
 	
 	@RequestMapping(value = "/reservationComplete.do", method = RequestMethod.GET)
@@ -119,7 +95,7 @@ public class ReservationController {
 		return "reservation/reservationComplete";
 	}
 	
-	@RequestMapping(value = "/selectAllReservation.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/selectAllReservation.do", method = RequestMethod.GET)
 	public String selectAllReservation(ReservationVO vo, Model model) {
 		log.info("/selectAllReservation.do");
 		
@@ -131,7 +107,7 @@ public class ReservationController {
 		return "reservation/reservationSelectAll";
 	}
 	
-	@RequestMapping(value = "/selectCancelReservation.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/selectCancelReservation.do", method = RequestMethod.GET)
 	public String selectCancelReservation(ReservationVO vo, Model model) {
 		log.info("/selectCancelReservation.do");
 		
@@ -143,7 +119,7 @@ public class ReservationController {
 		return "reservation/reservationSelectAll";
 	}
 	
-	@RequestMapping(value = "/selectOneReservation.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/selectOneReservation.do", method = RequestMethod.GET)
 	public String selectOneReservation(ReservationVO vo, Model model) {
 		log.info("/selectOneReservation.do");
 		
@@ -155,7 +131,7 @@ public class ReservationController {
 		return "reservation/reservationSelectOne";
 	}
 	
-	@RequestMapping(value = "/selectOneCancelReservation.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/selectOneCancelReservation.do", method = RequestMethod.GET)
 	public String selectOneCancelReservation(ReservationVO vo, Model model) {
 		log.info("/selectOneCancelReservation.do");
 		
@@ -166,6 +142,20 @@ public class ReservationController {
 		
 		return "reservation/reservationSelectOneCancel";
 	}
+	
+	@RequestMapping(value = "/deleteOneReservation.do", method = RequestMethod.GET)
+	public String deleteOneReservation(ReservationVO vo) {
+		log.info("/selectOneCancelReservation.do");
+		
+		int res_result = service.deleteOne(vo);
+		int pay_result = pay_service.deleteOne(vo.getId());
+		log.info("res_result:{}", res_result);
+		log.info("pay_result:{}", pay_result);
+		
+		return "redirect:selectCancelReservation.do?user_id="+vo.getUser_id();
+	}
+	
+	
 	
 	
 }
