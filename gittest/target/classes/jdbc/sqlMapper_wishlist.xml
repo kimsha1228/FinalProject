@@ -4,13 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="balgil.com.trip.wishlist">
-	<insert id="WISHLIST_INSERT"
-		parameterType="balgil.com.trip.wishlist.model.WishListVO">
-		INSERT INTO WISHLIST (id, act_id, user_id)
-		VALUES (#{id},
-		#{act_id}, #{user_id})
-	</insert>
-
+		<insert id="ADD_TO_WISHLIST">
+			INSERT INTO WISHLIST (act_id, user_id)
+			VALUES (#{act_id}, #{user_id})
+		</insert>
 
 
 	<delete id="WISHLIST_DELETE"
@@ -43,4 +40,7 @@
 		WHERE user_id =
 		#{user_id}
 	</select>
+
+	
+
 </mapper>

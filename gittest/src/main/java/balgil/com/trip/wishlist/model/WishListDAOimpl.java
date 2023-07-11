@@ -1,6 +1,8 @@
 package balgil.com.trip.wishlist.model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +47,13 @@ public class WishListDAOimpl implements WishListDAO {
         log.info("selectOne()...{}", vo);
 
         return sqlSession.selectOne("WISHLIST_SELECT_ONE", vo);
+    }
+    
+    @Override
+    public void addToWishList(String user_id, int act_id) {
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("user_id", user_id);
+        paramMap.put("act_id", act_id);
+        sqlSession.insert("ADD_TO_WISHLIST", paramMap);
     }
 }

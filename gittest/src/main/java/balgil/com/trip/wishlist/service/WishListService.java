@@ -35,4 +35,9 @@ public class WishListService {
 	public WishListVO selectOne(WishListVO vo) {
 		return dao.selectOne(vo);
 	}
+
+	public void addToWishList(String user_id, int act_id) {
+		// TODO Auto-generated method stub
+		
+	}
 }
