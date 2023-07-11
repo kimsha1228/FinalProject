@@ -9,10 +9,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/contact/selectAllcontact.js"></script>
-<script>
-	let user_id = '<%= session.getAttribute("user_id") %>';
-	console.log("현재 로그인 되어있는 아이디:",user_id);
-</script>
+
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -27,12 +24,16 @@
 			</tr>
 			<tr>
 				<td><label for="content">content:</label></td>
-				<td><textarea rows="10" cols="20" name="content">content1</textarea></td>
+				<td><textarea rows="10" cols="20" name="content" value="content">content1</textarea></td>
 			</tr>
 			<tr>
-				<td><label for="writer">writer:</label></td>
-				<td>${user_id}<input type="hidden" id="writer" name="writer" value="${user_id}"></td>
+				<td><label for="user_id">writer:</label></td>
+				<td>user_id<input type="hidden" id="user_id" name="user_id" value="user_id"></td>
 			</tr>
+			<tr>
+				<td><label for="seller_id">seller:</label></td>
+				<td>seller_id<input type="hidden" id="seller_id" name="seller_id" value="seller_id"></td>
+			</tr>	
 			<tr>
 				<td colspan="2"><input type="submit" class="myButton"></td>
 			</tr>
