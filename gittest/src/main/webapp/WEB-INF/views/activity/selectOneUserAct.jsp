@@ -74,7 +74,7 @@
 	<div>
 		<form action='#' id='Reservation' method='POST'>
 			<p>예약 날짜 선택</p>
-			<input type="date" name="res_date" id="datePicker">
+			<input type="date" name="res_date" id="datePicker" min="">
 			<p>수량 선택</p>
 			<input type='button' value='-' class='qtyminus minus' onclick='decrementQuantity()' />
 			<input type='text' name='quantity' value='1' id='quantity' class='qty' />

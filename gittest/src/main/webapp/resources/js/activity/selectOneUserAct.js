@@ -65,12 +65,11 @@ $(function(){
 		}
 	});//end $.ajax()...
 	
-	
-	
 	//날짜 선택을 오늘로 변경
 	var now = new Date();
 	now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); //한국시간으로 변경
-	document.getElementById('datePicker').value = now.toISOString().slice(0, -14); //자릿수짜르기
+	document.getElementById('datePicker').value = now.toISOString().slice(0, 10); //자릿수짜르기
+	document.getElementById('datePicker').setAttribute("min", now); //오늘 이전 날짜 설정 못하게
 	
 });
 //end onload

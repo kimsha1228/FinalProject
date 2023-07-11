@@ -6,7 +6,7 @@
 <mapper namespace="balgil.com.trip.usercoupon">
 	<select id="USERCOUPON_SELECTALL" resultType="balgil.com.trip.usercoupon.model.UserCouponVO">
 		select c.code, c.name, c.expire, c.rate from coupon c join user_coupon u 
-		on c.code = u.couponcode where user_id = #{user_id} and isused = 0
+		on c.code = u.couponcode where user_id = #{user_id} and isused = 0 order by code asc
 	</select>
 	
 	<update id="USERCOUPON_USE">

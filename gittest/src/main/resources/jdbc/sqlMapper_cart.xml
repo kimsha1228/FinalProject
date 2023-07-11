@@ -38,12 +38,9 @@
 			#{item}
 		</foreach>
 	</delete>
-
-
-	<!-- cartMapper.addToCart.xml -->
-	<insert id="addToCart" parameterType="balgil.com.trip.cart.model.CartVO">
-		INSERT INTO cart (user_id, act_id, act_name, price, ...)
-		VALUES (#{user_id}, #{act_id}, #{act_name}, #{price}, ...)
-	</insert>
+	
+	<delete id="CART_UPDATE_TIME">
+		delete from cart where <![CDATA[res_date < sysdate]]>
+	</delete>
 
 </mapper>

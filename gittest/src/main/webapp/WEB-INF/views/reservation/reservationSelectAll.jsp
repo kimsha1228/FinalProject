@@ -15,18 +15,7 @@
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>reservationSelectAll</h1>
 
-
-
-<!-- 	<table border="1"> -->
 		<c:if test="${vos1.size()!=0}">
-<!-- 			<form action="selectAllReservation.do" method="POST"> -->
-<%-- 				<input type="hidden" name="user_id" id="user_id" value="${user_id}"> --%>
-<!-- 				<input type="submit" value="예약내역"> -->
-<!-- 			</form> -->
-<!-- 			<form action="selectCancelReservation.do" method="POST"> -->
-<%-- 				<input type="hidden" name="user_id" id="user_id" value="${user_id}"> --%>
-<!-- 				<input type="submit" value="취소내역"> -->
-<!-- 			</form> -->
 			<table>
 			<tr>
 			<th colspan="2">
@@ -60,23 +49,29 @@
 			</c:forEach>
 		</c:if>
 		<c:if test="${vos1.size()==0}">
-<!-- 			<form action="selectAllReservation.do" method="POST"> -->
-<%-- 				<input type="hidden" name="user_id" id="user_id" value="${user_id}"> --%>
-<!-- 				<input type="submit" value="예약내역"> -->
-<!-- 			</form> -->
-<!-- 			<form action="selectCancelReservation.do" method="POST"> -->
-<%-- 				<input type="hidden" name="user_id" id="user_id" value="${user_id}"> --%>
-<!-- 				<input type="submit" value="취소내역"> -->
-<!-- 			</form> -->
+		<table>
+			<tr>
+			<th colspan="2">
+			<a href="selectAllReservation.do?user_id=${user_id}">예약내역</a>
+			<a href="selectCancelReservation.do?user_id=${user_id}">취소내역</a>
+			</th>
+			</tr>
+			</table>
 		<table>
 			<tr>
 				<td>예약한 상품이 없습니다</td>
 			</tr>
 			<tr>
-				<td><a href="home.do">예약하러 가기</a></td>
+				<td><a href="selectAllUserAct.do">예약하러 가기</a></td>
 			</tr>
 			</table>
 		</c:if>
+		
+		
+		
+		
+		
+		
 		<c:if test="${vos2.size()!=0}">
 			<c:forEach var="vo2" items="${vos2}">
 			<table>
@@ -106,7 +101,6 @@
 			</tr>
 			</table>
 		</c:if>
-<!-- 	</table> -->
 	
 </body>
 </html>

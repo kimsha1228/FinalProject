@@ -63,7 +63,6 @@ public class ReservationDAOimpl implements ReservationDAO {
 
 	@Override
 	public void updateTime() {
-		
 		log.info("updateTime()...");
 		
 		sqlSession.update("RESERVATION_UPDATE_TIME");

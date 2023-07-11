@@ -20,6 +20,8 @@ public interface CartDAO {
 
 		int insertCountUp(CartVO vo);
 
-		int updateOneCart(CartVO vo);	    
+		int updateOneCart(CartVO vo);
+
+		void updateTime();	    
 	}
 
