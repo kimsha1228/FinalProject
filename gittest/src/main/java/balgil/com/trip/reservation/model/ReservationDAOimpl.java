@@ -61,4 +61,12 @@ public class ReservationDAOimpl implements ReservationDAO {
 		return sqlSession.delete("RESERVATION_DELETE", vo);
 	}
 
+	@Override
+	public void updateTime() {
+		
+		log.info("updateTime()...");
+		
+		sqlSession.update("RESERVATION_UPDATE_TIME");
+	}
+
 }

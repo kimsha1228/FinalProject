@@ -7,6 +7,7 @@ import java.util.Calendar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.aggregation.ConvertOperators.ToDate;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -96,6 +97,16 @@ public class PaymentController {
 		}else {
 			return "redirect:reservation_api.do"; // 나중에 리다이렉트
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/insertPaymentMany.do", method = RequestMethod.GET)
+	public String insertPaymentMany( PaymentVO vo) {
+		log.info("/insertPaymentMany.do");
+		log.info("vo: {}", vo);
+		
+		return "home"; // 나중에 리다이렉트
+		
 	}
 
 	

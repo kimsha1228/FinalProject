@@ -16,4 +16,6 @@ public interface ReservationDAO {
 
 	int deleteOne(ReservationVO vo);
 
+	void updateTime();
+
 }
