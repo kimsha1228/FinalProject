@@ -33,8 +33,9 @@
 				<c:if test="${destination.category eq category}">
 					<tr>
 						<td><a 
-							href="${pageContext.request.contextPath}/selectOneDestination.do?id=
-							${destination.id}&name=${destination.name}">${destination.name}</a></td>
+							href="${pageContext.request.contextPath}
+							/selectOneDestination.do?id=${destination.id}">
+							${destination.name}</a></td>
 						<td>${destination.id}</td>
 						<td>${destination.category}</td>
 					</tr>

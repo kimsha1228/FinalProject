@@ -12,45 +12,38 @@ import lombok.extern.slf4j.Slf4j;
 @Repository
 public class WishListDAOimpl implements WishListDAO {
 
-	@Autowired
-	SqlSession sqlSession;
+    @Autowired
+    SqlSession sqlSession;
 
-	public WishListDAOimpl() {
-		log.info("WishListDAOimpl()...");
-	}
+    public WishListDAOimpl() {
+        log.info("WishListDAOimpl()...");
+    }
 
-	@Override
-	public int insert(WishListVO vo) {
-		log.info("insert()...{}", vo);
+    @Override
+    public int insertWishList(WishListVO vo) {
+        log.info("insertWishList()...{}", vo);
 
-		return sqlSession.insert("WISHLIST_INSERT", vo);
-	}
+        return sqlSession.insert("WISHLIST_INSERT", vo);
+    }
 
-//	@Override
-//	public int update(WishListVO vo) {
-//		log.info("update()...{}", vo);
-//
-//		return sqlSession.update("WISHLIST_UPDATE", vo);
-//	}
+    @Override
+    public int delete(WishListVO vo) {
+        log.info("delete()...{}", vo);
 
-	@Override
-	public int delete(WishListVO vo) {
-		log.info("delete()...{}", vo);
+        return sqlSession.delete("WISHLIST_DELETE", vo);
+    }
 
-		return sqlSession.delete("WISHLIST_DELETE", vo);
-	}
+    @Override
+    public List<WishListVO> selectAll(WishListVO vo) {
+        log.info("selectAll()...{}", vo);
 
-	@Override
-	public List<WishListVO> selectAll(WishListVO vo) {
-		log.info("selectAll()...{}", vo);
+        return sqlSession.selectList("WISHLIST_SELECT_ALL_WITH_USER_ID", vo);
+    }
 
-		return sqlSession.selectList("WISHLIST_SELECT_ALL_WITH_USER_ID", vo);
-	}
+    @Override
+    public WishListVO selectOne(WishListVO vo) {
+        log.info("selectOne()...{}", vo);
 
-	@Override
-	public WishListVO selectOne(WishListVO vo) {
-		log.info("selectOne()...{}", vo);
-
-		return sqlSession.selectOne("WISHLIST_SELECT_ONE", vo);
-	}
+        return sqlSession.selectOne("WISHLIST_SELECT_ONE", vo);
+    }
 }

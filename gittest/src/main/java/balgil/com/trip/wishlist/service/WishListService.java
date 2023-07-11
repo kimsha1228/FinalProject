@@ -20,8 +20,8 @@ public class WishListService {
 		log.info("WishListService()...");
 	}
 
-	public int insert(WishListVO vo) {
-		return dao.insert(vo);
+	public int  insertWishList(WishListVO vo) {
+		return dao.insertWishList(vo);
 	}
 
 	public int delete(WishListVO vo) {
