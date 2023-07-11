@@ -17,7 +17,7 @@
 	<h1><a href="selectAllReservation.do">액티비티 예약내역 페이지</a></h1>
 	<h1><a href="selectMyComments.do">이용후기 페이지</a></h1>
 	<h1><a href="selectAllUserContact.do">문의내역 페이지</a></h1>
-	<h1><a href="logout.do">로그아웃 메인페이지</a></h1>
+	<h1><a href="logout.do">로그아웃</a></h1>
 	
 </body>
 </html>
