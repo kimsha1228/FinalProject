@@ -51,9 +51,10 @@ $(function(){
 			//체크박스 생성용
 			response.actVos.forEach(function(e, index){
 				if(index==0){
+					//<label for="act${index+1}">${e.act_name}</label>
 					vo += `
 						<div>
-							<label for="act${index+1}">${e.act_name}</label>
+							<a href='selectOneUserAct.do?id=${e.id}' style="text-decoration:none">${e.act_name}</a>
 							<input type="checkbox" id="act${index+1}" name="${index+1}" checked>
 							<button onclick="addWish('${user_id}',${e.id})">♥</button>
 						</div>
@@ -61,7 +62,7 @@ $(function(){
 				}else{
 					vo += `
 						<div>
-							<label for="act${index+1}">${e.act_name}</label>
+							<a href='selectOneUserAct.do?id=${e.id}' style="text-decoration:none">${e.act_name}</a>
 							<input type="checkbox" id="act${index+1}" name="${index+1}">
 							<button onclick="addWish('${user_id}',${e.id})">♥</button>
 						</div>
@@ -117,18 +118,18 @@ $(function(){
 			        //체크박스 이벤트 핸들러
 			        if ($(this).is(':checked')) {
 			            
-			            //삽입할 HTML요소 구성
-						var innerHTML = '';
-						innerHTML += `<div id="${act_id}">`;
-						innerHTML += `<p>${act_name}의 수량 선택</p>`;
-						innerHTML += `<input type="hidden" name="act_id${count}" value='${act_id}'/>`;
-						innerHTML += `<input type="button" value="-" class="qtyminus minus" data-act-id="${act_id}" />`;
-						innerHTML += `<input type="text" name="quantity${count}" value="1" id="quantity" class="qty" />`;
-						innerHTML += `<input type="button" value="+" class="qtyplus plus" data-act-id="${act_id}" />`;
-						innerHTML += `</div>`;
-						
-			            
-			            $('#quantityContainer').append(innerHTML);
+			            /*  주석처리
+				            //삽입할 HTML요소 구성
+							var innerHTML = '';
+							innerHTML += `<div id="${act_id}">`;
+							innerHTML += `<p>${act_name}의 수량 선택</p>`;
+							innerHTML += `<input type="hidden" name="act_id${count}" value='${act_id}'/>`;
+							innerHTML += `<input type="button" value="-" class="qtyminus minus" data-act-id="${act_id}" />`;
+							innerHTML += `<input type="text" name="quantity${count}" value="1" id="quantity" class="qty" />`;
+							innerHTML += `<input type="button" value="+" class="qtyplus plus" data-act-id="${act_id}" />`;
+							innerHTML += `</div>`;
+				            $('#quantityContainer').append(innerHTML);
+			            */
 			            addAddressToCoordinate(act_add,this.name);
 			            count++;
 			        }
@@ -152,11 +153,12 @@ $(function(){
 		}
 	});//end ajax()...
 
-	//날짜 선택을 오늘로 변경
-	var now = new Date();
-	now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); //한국시간으로 변경
-	document.getElementById('datePicker').value = now.toISOString().slice(0, -14); //자릿수짜르기
-	
+	/* 주석처리
+		//날짜 선택을 오늘로 변경
+		var now = new Date();
+		now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); //한국시간으로 변경
+		document.getElementById('datePicker').value = now.toISOString().slice(0, -14); //자릿수짜르기
+	*/
 	
 });
 //end onload
@@ -182,23 +184,25 @@ function addWish(user_id,act_id){
 	});//end $.ajax()...
 }
 
-  // Increment quantity
-$(document).on('click', '.qtyplus', function() {
-	var act_id = $(this).data('act-id');
-	var quantityInput = $('#quantityContainer').find(`#${act_id} input[name=quantity]`);
-	var currentQuantity = parseInt(quantityInput.val());
-	quantityInput.val(currentQuantity + 1);
-});
-
-// Decrement quantity
-$(document).on('click', '.qtyminus', function() {
-	var act_id = $(this).data('act-id');
-	var quantityInput = $('#quantityContainer').find(`#${act_id} input[name=quantity]`);
-	var currentQuantity = parseInt(quantityInput.val());
-	if (currentQuantity > 0) {
-		quantityInput.val(currentQuantity - 1);
-	}
-});
+/*  주석처리
+	// Increment quantity
+	$(document).on('click', '.qtyplus', function() {
+		var act_id = $(this).data('act-id');
+		var quantityInput = $('#quantityContainer').find(`#${act_id1} input[name=quantity]`);
+		var currentQuantity = parseInt(quantityInput.val());
+		quantityInput.val(currentQuantity + 1);
+	});
+	
+	// Decrement quantity
+	$(document).on('click', '.qtyminus', function() {
+		var act_id = $(this).data('act-id');
+		var quantityInput = $('#quantityContainer').find(`#${act_id1} input[name=quantity]`);
+		var currentQuantity = parseInt(quantityInput.val());
+		if (currentQuantity > 0) {
+			quantityInput.val(currentQuantity - 1);
+		}
+	});
+*/
 
 function likeUpRoute(value){
 	console.log(value);

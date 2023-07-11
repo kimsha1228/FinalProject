@@ -14,7 +14,7 @@
 	let user_id = '<%= session.getAttribute("user_id") %>'; 
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 </script>
-<script type="text/javascript" src="resources/js/route/selectOneUserRoute.js?ver=8"></script>
+<script type="text/javascript" src="resources/js/route/selectOneUserRoute.js?ver=9"></script>
 
 </head>
 <body>
@@ -40,22 +40,22 @@
 	<br>
 	<div id="route_content">
 	</div>
-	<div>
-		<form action='#' id='Reservation' method='POST'>
-		
-			<p>예약 날짜 선택</p>
-			<input type="date" name="res_date" id="datePicker">
+	<%-- 주석처리함
+		<div>
+			<form action='#' id='Reservation' method='POST'>
 			
-			<div id="quantityContainer">
-			</div>
-			
-			<p> 예약자 user_id ${user_id}</p>
-			<input type='hidden' name='user_id' value='${user_id}'/>
-		</form>
-		<input type="submit" form="Reservation" formaction="insertManyCart.do" value="장바구니">
-	</div>
-	<br>
-	<br>
+				<p>예약 날짜 선택</p>
+				<input type="date" name="res_date" id="datePicker">
+				
+				<div id="quantityContainer">
+				</div>
+				
+				<p> 예약자 user_id ${user_id}</p>
+				<input type='hidden' name='user_id' value='${user_id}'/>
+			</form>
+			<input type="submit" form="Reservation" formaction="insertManyCart.do" value="장바구니">
+		</div>
+	 --%>
 	<div>
 		<p>루트 선택 순서</p>
 		<div id="map" style="width:500px; height:600px;"></div>	
