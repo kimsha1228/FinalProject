@@ -57,7 +57,10 @@
 		</div>
 	 --%>
 	<div>
-		<p>루트 선택 순서<button onclick="showRoadRoute()">도로경로 표시하기</button></p> 
+		<p>루트 선택 순서
+			<button onclick="showRoadRoute()">도로경로 표시하기</button>
+			<button onclick="hideRoadRoute()">원래대로 표시하기</button>
+		</p> 
 		<div id="map" style="width:500px; height:600px;"></div>	
 	</div>
 <!-- 지도 구현 js -->

@@ -247,3 +247,7 @@ function showRoadRoute(){
 	});//end ajax
 	
 }
+function hideRoadRoute(){
+	console.log(arrayOfCoords);
+	polyline.setPath(arrayOfCoords);
+}
