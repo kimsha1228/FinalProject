@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +27,7 @@ function paymentSelectOne(){
  			let pay_info =  '';
  			pay_info += `
  				<tr>
-					<th colspan="2">결제 취소 정보</th>
+					<th colspan="2">결제 상세 정보</th>
 				</tr>
 				<tr>
 					<th>총 금액</th>
@@ -57,7 +58,7 @@ function paymentSelectOne(){
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>reservationSelectOneCancel</h1>
+	<h1>reservationSelectOneExpired</h1>
 	
 	<table>
 		<tr>
@@ -72,7 +73,7 @@ function paymentSelectOne(){
 	<table border="1">
 		<tbody>
 			<tr>
-				<th colspan="2">예약 취소 정보</th>
+				<th colspan="2">예약 상세 정보</th>
 			</tr>
 			<tr>
 				<th>예약번호</th>
@@ -92,17 +93,11 @@ function paymentSelectOne(){
 			</tr>
 			<tr>
 				<th>가격</th>
-				<td>${vo1.price}원</td>
+				<td><fmt:formatNumber value="${vo1.price}" pattern="#,### 원" /></td>
 			</tr>
 		</tbody>
 
 		<tbody id="pay_info">
-		</tbody>
-		<tbody>
-		
-		<tr>
-			<th colspan="2"><a href="deleteOneCancelReservation.do?id=${vo1.id}">내역 삭제하기</a></th>
-		</tr>
 		</tbody>
 	</table>
 	

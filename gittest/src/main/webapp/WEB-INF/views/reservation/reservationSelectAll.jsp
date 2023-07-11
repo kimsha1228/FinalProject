@@ -20,6 +20,7 @@
 			<tr>
 			<th colspan="2">
 			<a href="selectAllReservation.do?user_id=${user_id}">예약내역</a>
+			<a href="selectExpiredReservation.do?user_id=${user_id}">사용내역</a>
 			<a href="selectCancelReservation.do?user_id=${user_id}">취소내역</a>
 			</th>
 			</tr>
@@ -53,6 +54,7 @@
 			<tr>
 			<th colspan="2">
 			<a href="selectAllReservation.do?user_id=${user_id}">예약내역</a>
+			<a href="selectExpiredReservation.do?user_id=${user_id}">사용내역</a>
 			<a href="selectCancelReservation.do?user_id=${user_id}">취소내역</a>
 			</th>
 			</tr>
@@ -67,6 +69,35 @@
 			</table>
 		</c:if>
 		
+		<c:if test="${vos3.size()!=0}">
+			<c:forEach var="vo3" items="${vos3}">
+			<table>
+				<tr>
+					<th>취소번호</th>
+					<td>${vo3.id}</td>
+				</tr>
+				<tr>
+					<th>상품명</th>
+					<td><a href="selectOneUserAct.do?id=${vo3.act_id}">${vo3.act_name}</a></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<a href="selectOneExpiredReservation.do?id=${vo3.id}&user_id=${user_id}">예약상세</a>
+					</td>
+				</tr>
+				</table>
+			</c:forEach>
+		</c:if>
+		<c:if test="${vos3.size()==0}">
+		<table>
+			<tr>
+				<td>사용한 상품이 없습니다</td>
+			</tr>
+			<tr>
+				<td><a href="selectAllReservation.do?user_id=${user_id}">예약내역 보기</a></td>
+			</tr>
+			</table>
+		</c:if>
 		
 		
 		
