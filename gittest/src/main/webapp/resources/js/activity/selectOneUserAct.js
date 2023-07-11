@@ -104,8 +104,8 @@ function addWish(user_id){
 		},
 		method:'POST',
 		dataType:'json',
-		success : function() {
-		// TODO addWish Later!
+		success : function(response) {
+			console.log(response);
 		},
 		error:function(xhr,status,error){
 			console.log('xhr.status:', xhr.status);

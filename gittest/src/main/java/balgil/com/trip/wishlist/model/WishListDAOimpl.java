@@ -23,7 +23,15 @@ public class WishListDAOimpl implements WishListDAO {
 	public int insert(WishListVO vo) {
 		log.info("insert()...{}", vo);
 
-		return sqlSession.insert("WISHLIST_INSERT", vo);
+		int result=0;
+		
+		//없으면 위시리스트 추가, 없으면 제거
+		try {
+			result = sqlSession.insert("WISHLIST_INSERT", vo);
+		} catch (Exception e) {
+			sqlSession.delete("WISHLIST_DELETE",vo);
+		}
+		return result;
 	}
 
 //	@Override

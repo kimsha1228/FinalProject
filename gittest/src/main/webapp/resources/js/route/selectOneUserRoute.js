@@ -17,6 +17,7 @@ $(function(){
 		data:{id:id},
 		method:'GET',
 		dataType:'json',
+		async : false,
 		success : function(response) {
 			console.log('ajax...success:', response);
 			result=response;
@@ -56,7 +57,7 @@ $(function(){
 						<div>
 							<a href='selectOneUserAct.do?id=${e.id}' style="text-decoration:none">${e.act_name}</a>
 							<input type="checkbox" id="act${index}" name="${index}" checked>
-							<button onclick="addWish('${user_id}',${e.id})">♥</button>
+							<button id="wish${index}" class="${e.id}" onclick="addWish('${user_id}',${e.id},${index})">♡</button>
 						</div>
 					`;
 				}else{
@@ -64,7 +65,7 @@ $(function(){
 						<div>
 							<a href='selectOneUserAct.do?id=${e.id}' style="text-decoration:none">${e.act_name}</a>
 							<input type="checkbox" id="act${index}" name="${index}">
-							<button onclick="addWish('${user_id}',${e.id})">♥</button>
+							<button id="wish${index}" class="${e.id}" onclick="addWish('${user_id}',${e.id},${index})">♡</button>
 						</div>
 					`;
 				}
@@ -154,6 +155,33 @@ $(function(){
 		}
 	});//end ajax()...
 
+
+	//초기 위시리스트 하트 빈하트 여부 확인
+	$.ajax({
+		url : "jsonselectAllWishList.do",
+		data:{
+			user_id:user_id
+		},
+		method:'GET',
+		dataType:'json',
+		async : false,
+		success : function(response) {
+			//사용자의 위시리스트 만큼 반복
+			for(let i in response){
+				let vo = response[i];
+				//페이지내의 요소에서 확인
+				for(let j=0;j<5;j++){
+					if($('#wish'+j).attr('class')==vo.act_id){
+					    $('#wish'+j).text('♥');
+					}
+				}
+			}
+		},
+		error:function(xhr,status,error){
+			console.log('xhr.status:', xhr.status);
+		}
+	});//end $.ajax()...
+
 	/* 주석처리
 		//날짜 선택을 오늘로 변경
 		var now = new Date();
@@ -164,7 +192,7 @@ $(function(){
 });
 //end onload
 
-function addWish(user_id,act_id){
+function addWish(user_id,act_id,index){
 	let param_user_id=user_id;
 	let param_act_id=act_id;
 	console.log("insertWishListOk로 넘겨줄 파라미터",param_user_id,param_act_id);
@@ -176,8 +204,15 @@ function addWish(user_id,act_id){
 		},
 		method:'POST',
 		dataType:'json',
-		success : function() {
-		// TODO addWish Later!
+		success : function(response) {
+			console.log(response);
+			if(response.result==='OK'){
+				alert("위시리스트에 추가했습니다");
+				$('#wish'+index).text('♥');
+			}else{
+				alert("위시리스트에 제거했습니다");
+				$('#wish'+index).text('♡');
+			}
 		},
 		error:function(xhr,status,error){
 			console.log('xhr.status:', xhr.status);
