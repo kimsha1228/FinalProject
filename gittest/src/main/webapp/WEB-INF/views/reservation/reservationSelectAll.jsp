@@ -17,7 +17,7 @@
 
 
 
-	<table border="1">
+<!-- 	<table border="1"> -->
 		<c:if test="${vos1.size()!=0}">
 <!-- 			<form action="selectAllReservation.do" method="POST"> -->
 <%-- 				<input type="hidden" name="user_id" id="user_id" value="${user_id}"> --%>
@@ -106,7 +106,7 @@
 			</tr>
 			</table>
 		</c:if>
-	</table>
+<!-- 	</table> -->
 	
 </body>
 </html>

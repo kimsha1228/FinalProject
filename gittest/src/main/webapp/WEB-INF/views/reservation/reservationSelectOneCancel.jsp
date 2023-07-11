@@ -91,7 +91,7 @@ function paymentSelectOne(){
 		<tbody>
 		
 		<tr>
-			<th colspan="2"><a href="deleteOneReservation.do?id=${vo1.id}">내역 삭제하기</a></th>
+			<th colspan="2"><a href="deleteOneCancelReservation.do?id=${vo1.id}">내역 삭제하기</a></th>
 		</tr>
 		</tbody>
 	</table>

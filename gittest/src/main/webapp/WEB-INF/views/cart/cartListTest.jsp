@@ -81,11 +81,6 @@
 			</tr>
 		</table>
 		
-		<!-- 구매 버튼 영역 -->
-<!-- 		<div class="order_btn_section"> -->
-<!-- 			<a class="order_btn">주문하기</a> -->
-<!-- 		</div> -->
-		
 		<!-- 수량 조정 form -->
 		<form action="updateOneCart.do" method="get" class="quantity_update_form">
 			<input type="hidden" name="id" class="update_id">
@@ -105,7 +100,7 @@
 			<input type="hidden" name="price" class="order_price">
 			<input type="hidden" name="quantity" class="order_quantity">
 			<input type="hidden" name="res_date" class="order_res_date">
-		</form>			
+		</form>	
 	</c:if>
 
 	<c:if test="${empty cartList}">

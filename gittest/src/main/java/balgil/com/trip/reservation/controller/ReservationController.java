@@ -143,9 +143,9 @@ public class ReservationController {
 		return "reservation/reservationSelectOneCancel";
 	}
 	
-	@RequestMapping(value = "/deleteOneReservation.do", method = RequestMethod.GET)
-	public String deleteOneReservation(ReservationVO vo) {
-		log.info("/selectOneCancelReservation.do");
+	@RequestMapping(value = "/deleteOneCancelReservation.do", method = RequestMethod.GET)
+	public String deleteOneCancelReservation(ReservationVO vo) {
+		log.info("/deleteOneCancelReservation.do");
 		
 		int res_result = service.deleteOne(vo);
 		int pay_result = pay_service.deleteOne(vo.getId());
@@ -154,8 +154,5 @@ public class ReservationController {
 		
 		return "redirect:selectCancelReservation.do?user_id="+vo.getUser_id();
 	}
-	
-	
-	
 	
 }
