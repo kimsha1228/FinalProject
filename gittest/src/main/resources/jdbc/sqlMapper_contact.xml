@@ -4,8 +4,8 @@
 <mapper namespace="balgil.com.trip.contact">
 
     <insert id="C_INSERT" parameterType="balgil.com.trip.contact.model.ContactVO">
-        insert into contact (id, title, content, con_date, attach_img, user_id, seller_id, act_id, act_name)
-        values (#{id}, #{title}, #{content}, #{con_date}, #{attach_img}, #{user_id}, #{seller_id}, #{act_id}, #{act_name})
+        insert into contact (id, title, content, attach_img, user_id, seller_id, act_id, act_name)
+        values (seq_contact.nextval, #{title}, #{content}, #{attach_img}, #{user_id}, #{seller_id}, #{act_id}, #{act_name})
     </insert>
 
     <select id="C_SELECT_ALL" resultType="balgil.com.trip.contact.model.ContactVO">

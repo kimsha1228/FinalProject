@@ -46,7 +46,7 @@ public class ContactController {
 		return "contact/insertContact";
 	}
 	
-	@RequestMapping(value = "/insertContactOK.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/insertContactOK.do", method = RequestMethod.GET)
 	public String insertContactOK(ContactVO vo) {
 		log.info("/insertContactOK.do....");
 		
