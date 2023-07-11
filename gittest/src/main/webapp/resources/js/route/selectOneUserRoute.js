@@ -225,4 +225,35 @@ function likeUpRoute(value){
 	});//end ajax
 }
 
+function showRoadRoute(){
+	console.log(arrayOfCoords);
+	// FormData 형태로 전송
+	var formData = new FormData(); // FormData 선언
+	// 데이터 세팅
+	formData.append("customer_name", c_name);
+	formData.append("customer_phone", c_phone);
+	formData.append("customer_type", c_type);
+	$.ajax({
+		type: 'post',
+		cache: false,
+		url: request_uri,
+		data: formData,
+		processData: false, // FormData로 전송할때 꼭 써줘야할 부분. 안써주면 에러남
+		contentType: false, // FormData로 전송할때 꼭 써줘야할 부분. 안써주면 에러남
+		beforeSend : function(xhr){ // header 세팅
+			xhr.setRequestHeader("X-NCP-APIGW-API-KEY-ID", "asodifjasoi123123123");
+			xhr.setRequestHeader("X-NCP-APIGW-API-KEY", "1234aa-123aa-asdfsd9-asdf-aafdfb");
+		},
+		success:function(data) {
+		if(data) {
+			console.log(data);
+			alert('전송이 완료 되었습니다.');
+		}
+		},
+		error:function(request,status,error){
+			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			alert('전송이 완료되지 않았습니다.');
+		}
+	});//end ajax
 
+}
