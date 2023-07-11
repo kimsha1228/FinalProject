@@ -80,7 +80,7 @@ public class CartController {
 //    	}
     	log.info("result_update: {}",result_update);
     	
-    	return "redirect:selectAllCart.do?user_id=john123"; // 삭제 후 장바구니 페이지로 리다이렉트
+    	return "redirect:selectAllCart.do?user_id=john123"; // 수정 후 장바구니 페이지로 리다이렉트
     }
 
     @RequestMapping(value = "/deleteOneCart.do", method = RequestMethod.GET)

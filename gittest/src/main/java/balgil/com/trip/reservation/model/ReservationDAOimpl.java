@@ -54,4 +54,11 @@ public class ReservationDAOimpl implements ReservationDAO {
 		return sqlSession.selectOne("RESERVATION_SELECT_ONE", vo);
 	}
 
+	@Override
+	public int deleteOne(ReservationVO vo) {
+		log.info("deleteOne()...{}", vo);
+
+		return sqlSession.delete("RESERVATION_DELETE", vo);
+	}
+
 }

@@ -98,5 +98,35 @@ public class PaymentController {
 		}
 	}
 
+	
+	//test중....
+	@RequestMapping(value = "/insertManyReservation.do", method = RequestMethod.POST)
+	public String insertManyReservation(String datas) {
+		log.info("/insertManyReservation.do...{}", datas);
+		
+//		act_id0=5&quantity0=4&price0=10000&price_total0=40000&res_date0=2023-11-30+00%3A00%3A00
+//		이런 식으로 넘어올 것...
+	
+		String[] arr = datas.split(":");//2,10000,2023-07-30
+		for (int i = 0; i < arr.length; i++) {
+			ReservationVO vo = new ReservationVO();
+			vo.setQuantity(Integer.parseInt(arr[i].split(",")[0]));//"2"
+			vo.setPrice(Integer.parseInt(arr[i].split(",")[1]));//"10000"
+			vo.setRes_date(arr[i].split(",")[2]);//"2023-07-30"
+			log.info("vo...{}", vo);
+//			int result = service.insert(vo);
+//			log.info("result : {}", result);
+		}
+		
+//		
+		return "reservation/insertOne";//나중에 바꾸기
+//		if (result == 1) {
+//			return "redirect:reservation_api.do";
+//		} else {
+//			return "redirect:reservationInsert.do";
+//		}
+	}
+	
+	
 
 }

@@ -29,4 +29,8 @@
 		where r.id = #{id} and user_id = #{user_id}
 	</select>
 	
+	<update id="RESERVATION_DELETE" parameterType="balgil.com.trip.reservation.model.ReservationVO">
+		delete from reservation where id = #{id}
+	</update>
+	
 </mapper>
