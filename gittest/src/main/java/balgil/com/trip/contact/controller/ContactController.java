@@ -60,7 +60,7 @@ public class ContactController {
 		}
 	}
 	
-	@RequestMapping(value = "/updateContact.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/updateContact.do", method = RequestMethod.GET)
 	public String updateContact(ContactVO vo, Model model) {
 		log.info("/updateContact.do...{}", vo);
 
@@ -71,7 +71,7 @@ public class ContactController {
 		return "contact/updateContact";
 	}
 	
-	@RequestMapping(value = "/updateContactOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/updateContactOK.do", method = RequestMethod.POST)
 	public String updateContactOK(ContactVO vo) {
 		log.info("/updateContactOK.do...{}", vo);
 

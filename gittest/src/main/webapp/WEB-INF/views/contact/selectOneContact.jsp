@@ -43,8 +43,10 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="5"><a href="updateContactOK.do?id=${param.id}">문의수정</a>
-					<a href="deleteContactOK.do?id=${param.id}">문의삭제</a></td>
+				<td colspan="5">
+					<a href="updateContact.do?id=${param.id}">문의수정</a>
+					<a href="deleteContactOK.do?id=${param.id}">문의삭제</a>
+				</td>
 			</tr>
 		</tfoot>
 	</table>
