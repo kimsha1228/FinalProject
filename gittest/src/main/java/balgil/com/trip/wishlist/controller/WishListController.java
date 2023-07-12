@@ -20,19 +20,19 @@ public class WishListController {
 	@Autowired
 	WishListService service;
 
-	@ResponseBody
-	@RequestMapping(value = "/insertWishListOK.do", method = RequestMethod.POST)
-	public String insertWishListOK(WishListVO vo) {
-		log.info("/insertWishListOK.do..{}",vo);
-		
-		int result = service.insert(vo);
-		
-		if(result==1) {
-			return "{\"result\":\"OK\"}";
-		}else {
-			return "{\"result\":\"NotOK\"}";
-		}
-	}
+//	@ResponseBody
+//	@RequestMapping(value = "/insertWishListOK.do", method = RequestMethod.POST)
+//	public String insertWishListOK(WishListVO vo) {
+//		log.info("/insertWishListOK.do..{}",vo);
+//		
+//		int result = service.insert(vo);
+//		
+//		if(result==1) {
+//			return "{\"result\":\"OK\"}";
+//		}else {
+//			return "{\"result\":\"NotOK\"}";
+//		}
+//	}
 	
 	@RequestMapping(value = "/wishlist.do", method = RequestMethod.GET)
 	public String wishlist() {

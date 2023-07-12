@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,7 +85,9 @@ function paymentSelectOne(){
 			</tr>
 			<tr>
 				<th>예약일</th>
-				<td>${vo1.res_date}</td>
+				<td><fmt:parseDate value="${vo1.res_date}" var="res_date" pattern="yyyy-MM-dd"/>
+					<fmt:formatDate value="${res_date}" pattern="yyyy년 MM월 dd일"/>
+				</td>
 			</tr>
 			<tr>
 				<th>예약수량</th>
@@ -101,7 +104,7 @@ function paymentSelectOne(){
 		<tbody>
 		
 		<tr>
-			<th colspan="2"><a href="deleteOneCancelReservation.do?id=${vo1.id}">내역 삭제하기</a></th>
+			<th colspan="2"><a href="deleteOneCancelReservation.do?id=${vo1.id}&user_id=${user_id}">내역 삭제하기</a></th>
 		</tr>
 		</tbody>
 	</table>

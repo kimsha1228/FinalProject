@@ -85,7 +85,9 @@ function paymentSelectOne(){
 			</tr>
 			<tr>
 				<th>예약일</th>
-				<td>${vo1.res_date}</td>
+				<td><fmt:parseDate value="${vo1.res_date}" var="res_date" pattern="yyyy-MM-dd"/>
+					<fmt:formatDate value="${res_date}" pattern="yyyy년 MM월 dd일"/>
+				</td>
 			</tr>
 			<tr>
 				<th>예약수량</th>
