@@ -13,8 +13,12 @@
 		select * from payment where res_id = #{res_id}
 	</select>
 	
-	<select id="SELECT_CANCEL_OBJECT" resultType="balgil.com.trip.payment.model.PaymentVO">
+	<select id="SELECT_CANCEL_ONE" resultType="balgil.com.trip.payment.model.PaymentVO">
 		select point, code from payment where res_id = #{res_id}
 	</select>
+	
+	<update id="PAYMENT_DELETE_ONE" parameterType="balgil.com.trip.payment.model.PaymentVO">
+		delete from payment where res_id = #{res_id}
+	</update>
 	
 </mapper>

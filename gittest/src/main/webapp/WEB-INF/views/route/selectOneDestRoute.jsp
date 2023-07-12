@@ -19,7 +19,7 @@
 	let dest_id = ${param.dest_id};
 	console.log("현재 로그인 되어있는 아이디:",user_id,dest_id);
 </script>
-<script type="text/javascript" src="resources/js/route/selectOneDestRoute.js?ver=3"></script>
+<script type="text/javascript" src="resources/js/route/selectOneDestRoute.js?ver=1"></script>
 
 </head>
 <body>

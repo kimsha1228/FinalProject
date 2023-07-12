@@ -51,7 +51,7 @@ function idCheck(){
 		<table id="memberList">
 		    <tr>
 				<td><label for="id">회원번호:</label></td>
-				<td><input type="test" id="id" name="id" value="tester"></td>
+				<td><input type="text" id="id" name="id" value="tester"></td>
 			</tr>
 			<tr>
 				<td><label for="user_id"> user_id:</label></td>
@@ -69,7 +69,7 @@ function idCheck(){
 			</tr>
 			<tr>
 				<td><label for="region">region:</label></td>
-				<td><input type="text" id="region" name=""region"" value="tester"></td>
+				<td><input type="text" id="region" name="region" value="tester"></td>
 			</tr>
 			<tr>
 				<td><label for="tel">tel:</label></td>

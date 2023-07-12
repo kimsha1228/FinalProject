@@ -20,47 +20,30 @@ public class CartService {
 		log.info("CartService()...");
 	}
 
-	public int insert(CartVO vo) {
-		return dao.insert(vo);
+	public int insertOne(CartVO vo) {
+		return dao.insertOne(vo);
 	}
-
-//	public int delete(CartVO vo) {
-//		return dao.delete(vo);
-//	}
 
 	public List<CartVO> selectAllCart(CartVO vo) {
-		// TODO Auto-generated method stub
 		return dao.selectAll(vo);
 	}
-//
-//	public void addToCart(ActivityVO activity, HttpSession session) {
-//		    // 장바구니에 상품 추가 로직 작성
-//		    dao.addToCart(activity, session);
-//	}
 
-	public void deleteOneCart(int act_id) {
+	public int deleteOneCart(CartVO vo) {
 		
-	        dao.deleteOneCart(act_id);
+		return dao.deleteOneCart(vo);
 	}
 
-	public void deleteManyCart(List<Integer> act_id) {
-		
-	        dao.deleteManyCart(act_id);
+	public CartVO selectOne(CartVO vo) {
+		return dao.selectOne(vo);
 	}
 
-	
-	//insertOneCart, insertManyCart ,deleteOneCart, deleteManyCart
-   
-	
-	//임시
-	 public void addTempProductToCart(String user_id, int act_id) {
-	   
-	 }
-	 
-	 //임시
-	 public void addToCart(CartVO cart) {
-			dao.addToCart(cart);
-	    }
+	public int insertCountUp(CartVO vo) {
+		return dao.insertCountUp(vo);
+	}
+
+	public int updateOneCart(CartVO vo) {
+		return dao.updateOneCart(vo);
+	}
 	 
 	 
 	 
