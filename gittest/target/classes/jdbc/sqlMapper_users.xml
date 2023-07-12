@@ -35,7 +35,10 @@
 		update users set type = 4 where user_id = #{user_id}
 	</update>
 	
-
+<!-- 	<update id="LOGIN_POINT_UPDATE"> -->
+<!-- 		update users set point = point + 100 where user_id = #{user_id} -->
+<!-- 	</update> -->
+	
 	<!-- reservation용입니다 -->
 	<select id="USER_SELECT_ONE" resultType="balgil.com.trip.users.model.UsersVO"> 
 		select * from users where user_id = #{user_id}

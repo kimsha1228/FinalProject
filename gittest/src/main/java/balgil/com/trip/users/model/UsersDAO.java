@@ -29,6 +29,8 @@ public interface UsersDAO {
 	UsersVO selectUsersRecord(UsersVO vo);
 
 	int typeUpdate(UsersVO vo);
+
+//	int loginPoint(UsersVO vo2);
 	
 }
 

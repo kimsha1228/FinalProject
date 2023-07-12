@@ -124,5 +124,12 @@ public class UsersDAOimpl implements UsersDAO {
 		return sqlSession.update("U_TYPE_UPDATE", vo);
 	}
 
+//	@Override
+//	public int loginPoint(UsersVO vo2) {
+//		log.info("loginPoint()...{}", vo2);
+//
+//		return sqlSession.update("LOGIN_POINT_UPDATE", vo2);
+//	}
+
 }
 

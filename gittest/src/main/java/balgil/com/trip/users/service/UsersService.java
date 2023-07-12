@@ -71,4 +71,8 @@ public class UsersService {
 	public int typeUpdate(UsersVO vo) {
 		return dao.typeUpdate(vo);
 	}
+
+//	public int loginPoint(UsersVO vo2) {
+//		return dao.loginPoint(vo2);
+//	}
 }

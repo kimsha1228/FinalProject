@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import balgil.com.trip.pointhistory.service.PointHistoryService;
 import balgil.com.trip.users.model.UsersVO;
 import balgil.com.trip.users.service.UsersService;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +33,9 @@ public class UsersController {
 	@Autowired
 	UsersService service;
 
+	@Autowired
+	PointHistoryService his_service;
+	
 	@Autowired
 	ServletContext sContext;
 	
