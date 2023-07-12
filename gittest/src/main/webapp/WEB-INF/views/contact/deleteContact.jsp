@@ -1,45 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+  pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의목록</title>
+<title>삭제</title>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/contact/selectAllcontact.js"></script>
-<script>
-	let user_id = '<%= session.getAttribute("user_id") %>';
-	console.log("현재 로그인 되어있는 아이디:",user_id);
-</script>
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="resources/js/contact/deleteContact.js"></script>
 </head>
 <body>
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>문의목록</h1>
-	<table>
-		<thead>
-			<tr>
-				<th>num</th>
-				<th>title</th>
-				<th>content</th>
-				<th>con_date</th>
-				<th>attach_img</th>
-				<th>file</th>
-				<th>user_id</th>
-				<th>seller_id</th>
-				<th>act_id</th>
-				<th>act_name</th>
-			</tr>
-		</thead>
-		<tbody id="vos">
-
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="5">1 2 3 4 5</td>
-			</tr>
-		</tfoot>
-	</table>
-	<br>
+  <jsp:include page="../top_menu.jsp"></jsp:include>
+  <h1>글 삭제</h1>
+  
+  <form action="deleteContactOK.do" method="get"> 
+    <table>
+      <tr>
+        <td><label for="id">id:</label></td>
+        <td>${vo2.id}
+        <input type="hidden" id="id" name="id" value="${vo2.id}">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="title">title:</label></td>
+        <td>${vo2.title}</td>
+      </tr>
+      <tr>
+        <td><label for="content">content:</label></td>
+        <td>${vo2.content}</td>
+      </tr>
+      <tr>
+        <td><label for="writer">writer:</label></td>
+        <td>${vo2.writer}</td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="submit" value="삭제" class="myButton"></td>
+      </tr>
+    </table>
+  </form>
 </body>
 </html>

@@ -30,7 +30,7 @@ public class ContactController {
 	}
 	
 	@RequestMapping(value = "/selectOneContact.do", method = RequestMethod.GET)
-	public String selectOneContact(ContactVO vo, Model model) {
+	public String selectOnecontact(ContactVO vo, Model model) {
 		log.info("/selectOneContact.do....{}", vo);
 		
 		ContactVO vo2 = service.selectOne(vo);
@@ -46,7 +46,7 @@ public class ContactController {
 		return "contact/insertContact";
 	}
 	
-	@RequestMapping(value = "/insertContactOK.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/insertContactOK.do", method = RequestMethod.GET)
 	public String insertContactOK(ContactVO vo) {
 		log.info("/insertContactOK.do....");
 		
@@ -60,7 +60,7 @@ public class ContactController {
 		}
 	}
 	
-	@RequestMapping(value = "/updateContact.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/updateContact.do", method = RequestMethod.POST)
 	public String updateContact(ContactVO vo, Model model) {
 		log.info("/updateContact.do...{}", vo);
 
@@ -84,7 +84,7 @@ public class ContactController {
 			return "redirect:updateContact.do?id="+vo.getId();
 		}
 	}
-	@RequestMapping(value = "/deleteContactOK.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/deleteContactOK.do", method = RequestMethod.GET)
 	public String deleteContactOK(ContactVO vo) {
 		log.info("/deleteContactOK.do....{}", vo);
 		
