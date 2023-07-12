@@ -4,6 +4,9 @@ import java.util.List;
 
 public interface CouponDAO {
 
-	List<CouponVO> selectList(CouponVO vo);
+	List<CouponVO> selectAll();
 
+	CouponVO selectOne(CouponVO vo);
+
+	
 }
