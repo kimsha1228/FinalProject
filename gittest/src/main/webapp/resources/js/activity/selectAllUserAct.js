@@ -70,10 +70,90 @@ $(function(){
 		}
 	});//end $.ajax()...
 	
+	
+	 // **********************************
+	 //  tablesorter 페이징 옵션 변수
+	 // **********************************
+	  var pagerOptions = {
+	
+	    // target the pager markup - see the HTML block below
+	    container: $(".tableContainer"),
+	
+	    // output string - default is '{page}/{totalPages}'
+	    // possible variables: {size}, {page}, {totalPages}, {filteredPages}, {startRow}, {endRow}, {filteredRows} and {totalRows}
+	    // also {page:input} & {startRow:input} will add a modifiable input in place of the value
+	    // In v2.27.7, this can be set as a function
+	    // output: function(table, pager) { return 'page ' + pager.startRow + ' - ' + pager.endRow; }
+	    output: '{startRow:input} – {endRow} / {totalRows} 번째',
+	
+	    // apply disabled classname (cssDisabled option) to the pager arrows when the rows
+	    // are at either extreme is visible; default is true
+	    updateArrows: true,
+	
+	    // starting page of the pager (zero based index)
+	    page: 0,
+	
+	    // Number of visible rows - default is 10
+	    size: 10,
+	
+	    // Save pager page & size if the storage script is loaded (requires $.tablesorter.storage in jquery.tablesorter.widgets.js)
+	    savePages : true,
+	
+	    // Saves tablesorter paging to custom key if defined.
+	    // Key parameter name used by the $.tablesorter.storage function.
+	    // Useful if you have multiple tables defined
+	    storageKey:'tablesorter-pager',
+	
+	    // Reset pager to this page after filtering; set to desired page number (zero-based index),
+	    // or false to not change page at filter start
+	    pageReset: 0,
+	
+	    // if true, the table will remain the same height no matter how many records are displayed. The space is made up by an empty
+	    // table row set to a height to compensate; default is false
+	    fixedHeight: false,
+	
+	    // remove rows from the table to speed up the sort of large tables.
+	    // setting this to false, only hides the non-visible rows
+	    // needed if you plan to add/remove rows with the pager enabled.
+	    removeRows: false,
+	
+	    // If true, child rows will be counted towards the pager set size
+	    countChildRows: false,
+	
+	    // css class names of pager arrows
+	    cssNext: '.next', // next page arrow
+	    cssPrev: '.prev', // previous page arrow
+	    cssFirst: '.first', // go to first page arrow
+	    cssLast: '.last', // go to last page arrow
+	    cssGoto: '.gotoPage', // select dropdown to allow choosing a page
+	
+	    cssPageDisplay: '.pagedisplay', // location of where the "output" is displayed
+	    cssPageSize: '.pagesize', // page size selector - select dropdown that sets the "size" option
+	
+	    // class added to arrows when at the extremes (i.e. prev/first arrows are "disabled" when on the first page)
+	    cssDisabled: 'disabled', // Note there is no period "." in front of this class name
+	    cssErrorRow: 'tablesorter-errorRow' // ajax error information row
+	
+	  };//end 페이징변수
+	
+	
 	//테이블을 간단하게 페이징 해주는 api
-	$('#tableContainer table').DataTable({
-		
-	});
+	$("#tableContainer").tablesorter({
+	
+	})
+    // bind to pager events
+    // *********************
+    .bind('pagerChange pagerComplete pagerInitialized pageMoved', function(e, c) {
+      var msg = '"</span> event triggered, ' + (e.type === 'pagerChange' ? 'going to' : 'now on') +
+        ' page <span class="typ">' + (c.page + 1) + '/' + c.totalPages + '</span>';
+      $('#display')
+        .append('<li><span class="str">"' + e.type + msg + '</li>')
+        .find('li:first').remove();
+    })
+
+    // initialize the pager plugin
+    // ****************************
+    .tablesorterPager(pagerOptions);
 	
 	//위시리스트 추가 함수
 	$('.wish').click(function(){
@@ -106,6 +186,16 @@ $(function(){
 		});//end $.ajax()...
 		
 	});
+	
+	//엔터키만 눌러도 searchList가 작동
+	$('#searchWord').on('keydown', function(e) {
+	    var keyCode = e.which;
+	
+	    if (keyCode === 13) { // Enter Key
+	    	searchList();
+	    }
+	});
+	
 	
 });
 //end onload
@@ -192,5 +282,37 @@ $('#DataTables_Table_0_paginate').click(function(){
 	
 	
 });
-//이하 페이징처리
-//end 페이징
+
+//참고한 사이트 https://mottie.github.io/tablesorter/docs/example-trigger-sort.html
+function sortFunction(value){
+	switch (value) {
+		//최근 등록
+		case 1:
+ 			$("#tableContainer").trigger("sorton", [ [[6,1]] ]);
+			break;
+			
+		//오래된 순
+		case 2:
+ 			$("#tableContainer").trigger("sorton", [ [[6,0]] ]);
+			break;
+
+		//조회순
+		case 3:
+			$("#tableContainer").find("th:contains(vcount)").trigger("sort");
+			$("#tableContainer").trigger("sorton", [ [[5,1]] ]);
+			break;
+		
+		//평점순
+		case 4:
+ 			$("#tableContainer").find("th:contains(rate)").trigger("sort");
+ 			$("#tableContainer").trigger("sorton", [ [[2,1]] ]);
+ 			break;
+ 			
+ 		//정렬 초기화
+ 		case 5:
+ 			$("#tableContainer").trigger("sortReset");
+ 		break;
+		default:
+    	console.log(`error sorting.`);
+	}
+}
