@@ -12,9 +12,6 @@ import balgil.com.trip.usercoupon.model.UserCouponVO;
 import balgil.com.trip.usercoupon.service.UserCouponService;
 import lombok.extern.slf4j.Slf4j;
 
-/**
- * Handles requests for the application home page.
- */
 @Slf4j
 @Controller
 public class UserCouponRestController {

@@ -48,7 +48,7 @@ function idCheck(){
 	<h1>회원가입</h1>
 	
 	<form action="u_insertOK.do" method="post" enctype="multipart/form-data">
-		<table id="memberList">
+		<table>
 		    <tr>
 				<td><label for="id">회원번호:</label></td>
 				<td><input type="text" id="id" name="id" value="tester"></td>

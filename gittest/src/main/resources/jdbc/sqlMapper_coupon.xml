@@ -4,7 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="balgil.com.trip.coupon">
-
+	
+	<select id="C_SELECT_ALL" resultType="balgil.com.trip.coupon.model.CouponVO">
+		select * from coupon order by code asc
+	</select>
+	
 	<delete id="COUPON_UPDATE_TIME">
 		delete from coupon where <![CDATA[res_date < sysdate]]>
 	</delete>

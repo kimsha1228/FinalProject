@@ -55,6 +55,17 @@ public class UsersController {
 		
 		return "users/selectAll";
 	}
+	
+	@RequestMapping(value = "/u_selectOne.do", method = RequestMethod.GET)
+	public String u_selectOne(UsersVO vo, Model model) {
+		log.info("/u_selectOne.do...{}", vo);
+
+		UsersVO vo2 = service.selectOne(vo);
+
+		model.addAttribute("vo2", vo2);
+
+		return "users/selectOne";
+	}
 
 	@RequestMapping(value = "/u_insert.do", method = RequestMethod.POST)
 	public String m_insert() {
@@ -66,7 +77,6 @@ public class UsersController {
 	@RequestMapping(value = "/u_insertOK.do", method = RequestMethod.POST)
 	public String u_insertOK(UsersVO vo) throws IllegalStateException, IOException {
 		log.info("/u_insertOK.do...{}", vo);
-
 		
 		log.info("{}", vo);
 
@@ -79,6 +89,17 @@ public class UsersController {
 		}
 	}
 
+	@RequestMapping(value = "/u_update.do", method = RequestMethod.GET)
+	public String u_update(UsersVO vo, Model model) {
+		log.info("/u_update.do...{}", vo);
+
+		UsersVO vo2 = service.selectOne(vo);
+
+		model.addAttribute("vo2", vo2);
+
+		return "users/update";
+	}
+	
 	@RequestMapping(value = "/u_updateOK.do", method = RequestMethod.POST)
 	public String u_updateOK(UsersVO vo) throws IllegalStateException, IOException {
 		log.info("/u_updateOK.do...{}", vo);
@@ -93,22 +114,6 @@ public class UsersController {
 		} else {
 			return "redirect:u_update.do?num=" + vo.getId();
 		}
-	}
-
-	@RequestMapping(value = "/loginOK.do", method = RequestMethod.POST)
-	public String loginOK(UsersVO vo) {
-		log.info("/loginOK.do...{}",vo);
-		
-		UsersVO vo2 = service.login(vo);
-		log.info("vo2...{}",vo2);
-		
-		if(vo2 == null) {
-			return "redirect:login.do?message=fail";
-		}else {
-			session.setAttribute("user_id", vo2.getId());
-			return "redirect:home.do";
-		}
-
 	}
 	
 	@RequestMapping(value = "/u_deleteOK.do", method = RequestMethod.GET)
@@ -125,37 +130,6 @@ public class UsersController {
 
 	}
 
-	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
-	public String logout() {
-		log.info("/logout.do");
-		
-		session.invalidate();
-
-		return "redirect:home.do";
-	}
-
-	@RequestMapping(value = "/u_selectOne.do", method = RequestMethod.GET)
-	public String u_selectOne(UsersVO vo, Model model) {
-		log.info("/u_selectOne.do...{}", vo);
-
-		UsersVO vo2 = service.selectOne(vo);
-
-		model.addAttribute("vo2", vo2);
-
-		return "users/selectOne";
-	}
-
-	@RequestMapping(value = "/u_update.do", method = RequestMethod.GET)
-	public String u_update(UsersVO vo, Model model) {
-		log.info("/u_update.do...{}", vo);
-
-		UsersVO vo2 = service.selectOne(vo);
-
-		model.addAttribute("vo2", vo2);
-
-		return "users/update";
-	}
-
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String login(String message,Model model) {
 		log.info("/login.do....{}",message);
@@ -165,17 +139,41 @@ public class UsersController {
 		
 		return "users/login";
 	}
+
+	@RequestMapping(value = "/loginOK.do", method = RequestMethod.POST)
+	public String loginOK(UsersVO vo) {
+		log.info("/loginOK.do...{}",vo);
+		
+		UsersVO vo2 = service.login(vo);
+		log.info("vo2...{}",vo2);
+		
+		if(vo2 == null) {
+			return "redirect:login.do?message=fail";
+		}else {
+			session.setAttribute("user_id", vo2.getId());
+			return "redirect:home.do";
+		}
+	}
+
+	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
+	public String logout() {
+		log.info("/logout.do");
+		
+		session.invalidate();
+
+		return "redirect:home.do";
+	}
 	
 	@RequestMapping(value = "/myPage.do", method = RequestMethod.GET)
-	public String myPage(String message,Model model) {
-		log.info("/myPage.do....{}",message);
+	public String myPage() {
+		log.info("/myPage.do...");
 
 		return "users/myPage";
 	}
 	
 	@RequestMapping(value = "/myInfo.do", method = RequestMethod.GET)
-	public String myInfo(String message,Model model) {
-		log.info("/myInfo.do....{}",message);
+	public String myInfo() {
+		log.info("/myInfo.do...");
 
 		return "users/myInfo";
 	}
