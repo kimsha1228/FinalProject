@@ -26,7 +26,7 @@
 								<td class="cart_one_info">
 									<input type="checkbox" name="selectedActivity" class="selectedActivity" checked="checked">
 									<input type="hidden" name="id" class="id" value="${cart.id}">
-									<input type="hidden" name="user_id" class="user_id" value="john123"> <!-- 세션없어서 이걸로 테스트 -->
+									<input type="hidden" name="user_id" class="user_id" value="${user_id}"> <!-- 세션없어서 이걸로 테스트 -->
 									<input type="hidden" name="act_id" class="act_id" value="${cart.act_id}">
 									<input type="hidden" name="price" class="price" value="${cart.price}">
 									<input type="hidden" name="quantity" class="quantity" value="${cart.quantity}">
@@ -34,7 +34,11 @@
 									<input type="hidden" name="res_date" class="res_date" value="${cart.res_date}">
 								</td>
 								<td></td>
-								<td><button class="delete_btn" data-id="${cart.id}">삭제</button></td>
+								<td>
+								<button class="order_btn" data-id="${cart.id}" data-user_id="${user_id}" data-act_id="${cart.act_id}"
+								data-price="${cart.price}" data-quantity="${cart.quantity}"  data-res_date="${cart.res_date}">구매</button>
+								<button class="delete_btn" data-id="${cart.id}">삭제</button>
+								</td>
 							</tr>
 							<tr>
 								<th>상품명</th>
@@ -44,7 +48,8 @@
 							</tr>
 							<tr>
 								<th>예약예정일</th>
-								<td>${cart.res_date}</td>
+								<td><fmt:parseDate value="${cart.res_date}" var="res_date" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value="${res_date}" pattern="yyyy년 MM월 dd일"/></td>
 							</tr>
 							<tr>
 								<th>수량</th>
@@ -76,10 +81,8 @@
 				</td>
 			</tr>
 		</table>
-		
-		<!-- 구매 버튼 영역 -->
 		<div class="order_btn_section">
-			<a class="order_btn">주문하기</a>
+			<a class="order_many_btn">주문하기</a>
 		</div>
 		
 		<!-- 수량 조정 form -->
@@ -94,9 +97,19 @@
 		</form>		
 		
 		<!-- 주문 form -->
-		<form action="order.do" method="get" class="order_form">
+		<form action="insertOneReservation.do" method="POST" class="order_form">
+			<input type="hidden" name="id" class="order_id">
+			<input type="hidden" name="user_id" class="order_user_id">
+			<input type="hidden" name="act_id" class="order_act_id">
+			<input type="hidden" name="price" class="order_price">
+			<input type="hidden" name="quantity" class="order_quantity">
+			<input type="hidden" name="res_date" class="order_res_date">
+		</form>
 		
-		</form>			
+		<!-- 다중 주문 form -->
+<!-- 		<form action="insertManyReservation.do" method="get" class="order_many_form"> -->
+		
+<!-- 		</form>	 -->
 	</c:if>
 
 	<c:if test="${empty cartList}">
@@ -111,8 +124,10 @@
 	</c:if>
 	
 	<script>
+	
 	$(document).ready(function(){
 		setTotalPrice();	
+	
 	});	
 
 	/* 체크여부에 따른 총 가격 변화*/
@@ -176,12 +191,30 @@
 		$(".delete_id").val(id);
 		$(".quantity_delete_form").submit();
 	});
-			
+	
+	/* 한 개 구매 버튼 */
+	$(".order_btn").on("click", function(e){
+		e.preventDefault();
+		let id = $(this).data("id");
+		let user_id = $(this).data("user_id");
+		let act_id = $(this).data("act_id");
+		let price = $(this).data("price");
+		let quantity = $(this).data("quantity");
+		let res_date = $(this).data("res_date");
+		$(".order_id").val(id);
+		$(".order_user_id").val(user_id);
+		$(".order_act_id").val(act_id);
+		$(".order_price").val(price);
+		$(".order_quantity").val(quantity);
+		$(".order_res_date").val(res_date);
+		$(".order_form").submit();
+	});
+	
+	
 	/* 주문 페이지 이동 */	
-	$(".order_btn").on("click", function(){
+	$(".order_many_btn").on("click", function(){
 		
-		let form_contents ='';
-		let orderNumber = 0;
+		let txt_jsons ='[';
 		
 		$(".cart_one_info").each(function(index, element){
 			
@@ -193,30 +226,23 @@
 				let price_total = $(element).find(".price_total").val();
 				let res_date = $(element).find(".res_date").val();
 				
-				let act_id_input = "<input name='act_id" + orderNumber + "' type='hidden' value='" + act_id + "'>";
-				form_contents += act_id_input;
-				
-				let quantity_input = "<input name='quantity" + orderNumber + "' type='hidden' value='" + quantity + "'>";
-				form_contents += quantity_input;
-				
-				let price_input = "<input name='price" + orderNumber + "' type='hidden' value='" + price + "'>";
-				form_contents += price_input;
-				
-				let price_total_input = "<input name='price_total" + orderNumber + "' type='hidden' value='" + price_total + "'>";
-				form_contents += price_total_input;
-				
-				let res_date_input = "<input name='res_date" + orderNumber + "' type='hidden' value='" + res_date + "'>";
-				form_contents += res_date_input;
-				
-				orderNumber += 1;
-				
+				txt_jsons += '{"act_id":'+act_id+',"quantity":'+quantity+',"price":'+price+',"price_total":'+price_total+',"res_date":'+res_date+'},';
 			}
 		});	
-
-		$(".order_form").html(form_contents);
-		$(".order_form").submit();
+		txt_jsons += ']';
+		
+		$.ajax({
+			url : "insertManyReservation.do",
+			data : {
+				txt_json : txt_jsons
+			}, //여러개
+			dataType : "json",
+			success : function(response) {
+			}
+		});
 		
 	});
+	
 	</script>
 	
 </body>

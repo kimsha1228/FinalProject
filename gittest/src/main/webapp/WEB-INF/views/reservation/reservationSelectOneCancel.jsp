@@ -16,7 +16,7 @@ $(function(){
 });//end onload...
 
 function paymentSelectOne(){
-	console.log('${param.id}');
+	console.log('${vo1.id}');
 	$.ajax({
  		url : "jsonPaymentSelectOne.do",
  		data:{res_id:'${param.id}'},
@@ -58,6 +58,16 @@ function paymentSelectOne(){
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>reservationSelectOneCancel</h1>
+	
+	<table>
+		<tr>
+			<th colspan="2">
+				<a href="selectAllReservation.do?user_id=${user_id}">예약내역</a>
+				<a href="selectExpiredReservation.do?user_id=${user_id}">사용내역</a>
+				<a href="selectCancelReservation.do?user_id=${user_id}">취소내역</a>
+			</th>
+		</tr>
+	</table>
 
 	<table border="1">
 		<tbody>
@@ -88,7 +98,13 @@ function paymentSelectOne(){
 
 		<tbody id="pay_info">
 		</tbody>
-
+		<tbody>
+		
+		<tr>
+			<th colspan="2"><a href="deleteOneCancelReservation.do?id=${vo1.id}">내역 삭제하기</a></th>
+		</tr>
+		</tbody>
 	</table>
+	
 </body>
 </html>

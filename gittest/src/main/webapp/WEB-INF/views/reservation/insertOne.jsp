@@ -230,6 +230,21 @@ $(function(){
 		
 	}//end setFinalPriceInfo
 	
+	function test(){
+		let obj = new Object();
+		obj.id = "tester";
+		$.ajax({
+			url:"insertPaymentMany.do",
+			type:"get",
+			dataType:'json',
+			data:JSON.stringify(obj),
+			success:function(data){
+				console.log(data);
+			}
+		});
+	
+	}
+	
 </script>
 </head>
 <body>
@@ -237,7 +252,7 @@ $(function(){
 		<tbody id="vo2"></tbody> <!-- 이 부분에 유저 정보 얻어오기 -->
 	</table>
 	
-<form action="insertPaymentOne.do" method="get">
+<form action="insertPaymentOne.do" method="POST">
 	<table border="1">
 		<tbody>
 			<!-- 상품 페이지에서 넘어올 부분 -->
@@ -248,7 +263,10 @@ $(function(){
 				<td><input type="hidden" name="act_id" id = "act_id" value="${param.act_id}">상품명: <span id="act_name"></span></td>
 			</tr>
 			<tr>	
-				<td><input type="hidden" name="res_date" id = "res_date" value="${param.res_date}">예약일: ${param.res_date}</td>
+				<td><input type="hidden" name="res_date" id = "res_date" value="${param.res_date}">
+					예약일: <fmt:parseDate value="${param.res_date}" var="res_date" pattern="yyyy-MM-dd"/>
+							<fmt:formatDate value="${res_date}" pattern="yyyy년 MM월 dd일"/>
+				</td>
 			</tr>
 			<tr>	
 				<td><input type="hidden" name="quantity" id = "quantity" value="${param.quantity}">수량: ${param.quantity}</td>

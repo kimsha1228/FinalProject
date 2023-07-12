@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import balgil.com.trip.wishlist.model.WishListVO;
 import balgil.com.trip.wishlist.service.WishListService;
@@ -17,8 +18,21 @@ import lombok.extern.slf4j.Slf4j;
 public class WishListController {
 
 	@Autowired
-	WishListService service; 
-	
+	WishListService service;
+
+	@ResponseBody
+	@RequestMapping(value = "/insertWishListOK.do", method = RequestMethod.POST)
+	public String insertWishListOK(WishListVO vo) {
+		log.info("/insertWishListOK.do..{}",vo);
+		
+		int result = service.insert(vo);
+		
+		if(result==1) {
+			return "{\"result\":\"OK\"}";
+		}else {
+			return "{\"result\":\"NotOK\"}";
+		}
+	}
 	
 	@RequestMapping(value = "/wishlist.do", method = RequestMethod.GET)
 	public String wishlist() {
@@ -26,21 +40,19 @@ public class WishListController {
 
 		return "wishlist";
 	}
-	
+
 	@RequestMapping(value = "/selectAllWishList.do", method = RequestMethod.GET)
 	public String selectAllWishList(WishListVO vo, Model model) {
 		log.info("/selectAllWishList.do");
-		
+
 		List<WishListVO> vos1 = service.selectAll(vo);
 		log.info("{}", vos1);
-		
-		model.addAttribute("vos1",vos1);
+
+		model.addAttribute("vos1", vos1);
 
 		return "wishlist/wishlistSelectAll";
 	}
-	
-	
-	
+
 	@RequestMapping(value = "/deleteOK.do", method = RequestMethod.GET)
 	public String deleteOK(WishListVO vo, Model model) {
 		int result = service.delete(vo);
@@ -52,6 +64,15 @@ public class WishListController {
 			return "redirect:selectOne.do?user_id=" + vo.getUser_id();
 		}
 	}
-
+	
+	@ResponseBody
+	@RequestMapping(value = "/jsonselectAllWishList.do", method = RequestMethod.GET)
+	public List<WishListVO> jsonselectAllWishList(WishListVO vo) {
+		log.info("/jsonselectAllWishList.do..{}",vo);
+		
+		List<WishListVO> vos1 = service.selectAll(vo);
+		
+		return vos1;
+	}
 
 }
