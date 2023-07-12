@@ -93,6 +93,11 @@ $(function(){
 	now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); //한국시간으로 변경
 	document.getElementById('datePicker').value = now.toISOString().slice(0, -14); //자릿수짜르기
 	
+	//날짜를 제한하는
+	var now_utc = Date.now(); //밀리초
+	var timeOff = new Date().getTimezoneOffset()*60000; //분단위를 밀리초로 변환
+	var today = new Date(now_utc-timeOff).toISOString().split("T")[0]; //오늘 날짜를 구함
+	document.getElementById("datePicker").setAttribute("min", today); //date의 min 속성을 이용해 오늘 이전은 선택 불가능하게 설정
 });
 //end onload
 
