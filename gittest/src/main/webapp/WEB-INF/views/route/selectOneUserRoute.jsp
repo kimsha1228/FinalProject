@@ -14,7 +14,7 @@
 	let user_id = '<%= session.getAttribute("user_id") %>'; 
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 </script>
-<script type="text/javascript" src="resources/js/route/selectOneUserRoute.js?ver=9"></script>
+<script type="text/javascript" src="resources/js/route/selectOneUserRoute.js?ver=3"></script>
 
 </head>
 <body>
@@ -57,10 +57,13 @@
 		</div>
 	 --%>
 	<div>
-		<p>루트 선택 순서</p>
+		<p>루트 선택 순서
+			<button onclick="showRoadRoute()">도로경로 표시하기</button>
+			<button onclick="hideRoadRoute()">원래대로 표시하기</button>
+		</p> 
 		<div id="map" style="width:500px; height:600px;"></div>	
 	</div>
 <!-- 지도 구현 js -->
-<script type="text/javascript" src="resources/js/Maps.js?ver=1"></script>
+<script type="text/javascript" src="resources/js/Maps.js?ver=5"></script>
 </body>
 </html>

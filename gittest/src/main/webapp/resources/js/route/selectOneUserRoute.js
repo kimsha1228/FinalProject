@@ -17,6 +17,7 @@ $(function(){
 		data:{id:id},
 		method:'GET',
 		dataType:'json',
+		async : false,
 		success : function(response) {
 			console.log('ajax...success:', response);
 			result=response;
@@ -51,20 +52,20 @@ $(function(){
 			//체크박스 생성용
 			response.actVos.forEach(function(e, index){
 				if(index==0){
-					//<label for="act${index+1}">${e.act_name}</label>
+					//<label for="act${index}">${e.act_name}</label>
 					vo += `
 						<div>
 							<a href='selectOneUserAct.do?id=${e.id}' style="text-decoration:none">${e.act_name}</a>
-							<input type="checkbox" id="act${index+1}" name="${index+1}" checked>
-							<button onclick="addWish('${user_id}',${e.id})">♥</button>
+							<input type="checkbox" id="act${index}" name="${index}" checked>
+							<button id="wish${index}" class="${e.id}" onclick="addWish('${user_id}',${e.id},${index})">♡</button>
 						</div>
 					`;
 				}else{
 					vo += `
 						<div>
 							<a href='selectOneUserAct.do?id=${e.id}' style="text-decoration:none">${e.act_name}</a>
-							<input type="checkbox" id="act${index+1}" name="${index+1}">
-							<button onclick="addWish('${user_id}',${e.id})">♥</button>
+							<input type="checkbox" id="act${index}" name="${index}">
+							<button id="wish${index}" class="${e.id}" onclick="addWish('${user_id}',${e.id},${index})">♡</button>
 						</div>
 					`;
 				}
@@ -86,27 +87,27 @@ $(function(){
 			    var act_add;
 				//체크한 체크박스에 따라 act_name1~5 act_id1~5가 act_name act_id에 삽입됨
 				switch(this.name){
-					case "1":
+					case "0":
 						act_name=response.actVos[0].act_name;
 						act_id=response.actVos[0].id;
 						act_add=response.actVos[0].add;
 						break;
-					case "2":
+					case "1":
 						act_name=response.actVos[1].act_name;
 						act_id=response.actVos[1].id;
 						act_add=response.actVos[1].add;
 						break;
-					case "3":
+					case "2":
 						act_name=response.actVos[2].act_name;
 						act_id=response.actVos[2].id;
 						act_add=response.actVos[2].add;
 						break;
-					case "4":
+					case "3":
 						act_name=response.actVos[3].act_name;
 						act_id=response.actVos[3].id;
 						act_add=response.actVos[3].add;
 						break;
-					case "5":
+					case "4":
 						act_name=response.actVos[4].act_name;
 						act_id=response.actVos[4].id;
 						act_add=response.actVos[4].add;
@@ -135,23 +136,51 @@ $(function(){
 			        }
 			        else {
 			            //해당 id=act_id? 의 div를 지운다
-			            $('#' + act_id).remove();
+			            //$('#' + act_id).remove();
 			            count--;
-			           for(var i =0 ;i<orders.length;i++){
+			            for(var i =0 ;i<orders.length;i++){
 						    if(orders[i]==(this.name)){
+						    	console.log("오더 인덱스:",i);
+						    	console.log("클릭한 박스:",this.name);
 						        removeMarker(i);
-						        orders.splice(i,1);
 						    }
 						}
 			        }
 			    });
 				    
-			$('#act1').trigger('change');
+			$('#act0').trigger('change');
 		}, //end success
 		error:function(xhr,status,error){
 			console.log('xhr.status:', xhr.status);
 		}
 	});//end ajax()...
+
+
+	//초기 위시리스트 하트 빈하트 여부 확인
+	$.ajax({
+		url : "jsonselectAllWishList.do",
+		data:{
+			user_id:user_id
+		},
+		method:'GET',
+		dataType:'json',
+		async : false,
+		success : function(response) {
+			//사용자의 위시리스트 만큼 반복
+			for(let i in response){
+				let vo = response[i];
+				//페이지내의 요소에서 확인
+				for(let j=0;j<5;j++){
+					if($('#wish'+j).attr('class')==vo.act_id){
+					    $('#wish'+j).text('♥');
+					}
+				}
+			}
+		},
+		error:function(xhr,status,error){
+			console.log('xhr.status:', xhr.status);
+		}
+	});//end $.ajax()...
 
 	/* 주석처리
 		//날짜 선택을 오늘로 변경
@@ -163,7 +192,7 @@ $(function(){
 });
 //end onload
 
-function addWish(user_id,act_id){
+function addWish(user_id,act_id,index){
 	let param_user_id=user_id;
 	let param_act_id=act_id;
 	console.log("insertWishListOk로 넘겨줄 파라미터",param_user_id,param_act_id);
@@ -175,8 +204,15 @@ function addWish(user_id,act_id){
 		},
 		method:'POST',
 		dataType:'json',
-		success : function() {
-		// TODO addWish Later!
+		success : function(response) {
+			console.log(response);
+			if(response.result==='OK'){
+				alert("위시리스트에 추가했습니다");
+				$('#wish'+index).text('♥');
+			}else{
+				alert("위시리스트에 제거했습니다");
+				$('#wish'+index).text('♡');
+			}
 		},
 		error:function(xhr,status,error){
 			console.log('xhr.status:', xhr.status);
@@ -225,4 +261,28 @@ function likeUpRoute(value){
 	});//end ajax
 }
 
-
+//도로경로 표시용 함수
+function showRoadRoute(){
+	console.log(arrayOfCoords);
+	
+	$.ajax({
+		url: "directions5.do",
+		data: JSON.stringify(polyline.getPath()._array),
+		method:'POST',
+		contentType: "application/json; charset=utf-8",
+		dataType:'json',
+		success:function(data) {
+			console.log(data);
+			RoadRoute=data;
+			polyline.setPath(RoadRoute.route.trafast[0].path);
+		},
+		error:function(request,status,error){
+			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		}
+	});//end ajax
+	
+}
+function hideRoadRoute(){
+	console.log(arrayOfCoords);
+	polyline.setPath(arrayOfCoords);
+}
