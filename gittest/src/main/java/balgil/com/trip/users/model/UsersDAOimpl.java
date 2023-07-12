@@ -110,5 +110,19 @@ public class UsersDAOimpl implements UsersDAO {
 		return sqlSession.selectOne("USER_SELECT_ONE", vo);
 	}
 
+	@Override
+	public UsersVO selectUsersRecord(UsersVO vo) {
+		log.info("selectUsersRecord()...{}", vo);
+		
+		return sqlSession.selectOne("USER_RECORD", vo);
+	}
+
+	@Override
+	public int typeUpdate(UsersVO vo) {
+		log.info("typeUpdate()...{}", vo);
+
+		return sqlSession.update("U_TYPE_UPDATE", vo);
+	}
+
 }
 

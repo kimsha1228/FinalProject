@@ -4,10 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="balgil.com.trip.users">
-	<select id="U_SELECT_ONE" resultType="balgil.com.trip.users.model.UsersVO">
-		select * from users where id = #{id}
-	</select>
-	
 	<insert id="U_INSERT">
 		insert into users(id, user_id, pw, name, tel, eng_name, email, type) 
 		values(seq_user.nextval, #{user_id}, #{pw}, #{name}, #{tel}, #{eng_name}, #{email}, #{type})
@@ -16,8 +12,11 @@
 	<update id="U_UPDATE">
 		update users set name=#{name}, eng_name=#{eng_name}, tel=#{tel}, email=#{email}, img=#{img}
 		where user_id = #{user_id}
-	
 	</update>
+	
+	<delete id="U_DELETE" parameterType="balgil.com.trip.users.model.UsersVO">
+		delete from users where user_id = #{user_id}
+	</delete>
 	
 	<select id="U_ID_CHECK" resultType="balgil.com.trip.users.model.UsersVO">
 		select * from users where user_id = #{user_id}
@@ -27,7 +26,14 @@
 		select * from users where user_id = #{user_id} and pw = #{pw}
 	</select>
 	
+	<select id="USER_RECORD" resultType="balgil.com.trip.users.model.UsersVO">
+		select u.user_id from reservation r join users u 
+		on r.user_id = u.user_id where u.user_id = #{user_id}
+	</select>
 	
+	<update id="U_TYPE_UPDATE">
+		update users set type = 4 where user_id = #{user_id}
+	</update>
 	
 
 	<!-- reservation용입니다 -->

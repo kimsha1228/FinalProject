@@ -212,15 +212,23 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value = "/u_deleteOK.do", method = RequestMethod.GET)
-	public String m_deleteOK(UsersVO vo) {
-		log.info("/u_deleteOK.do");
-
-		int result = service.delete(vo);
+	public String u_deleteOK(UsersVO vo) {
+		log.info("/u_deleteOK.do...{}", vo);
+		
+		UsersVO users = service.selectUsersRecord(vo); //cascade..?
+		
+		int result = 0;
+		if(users!=null) {
+			result = service.typeUpdate(vo);
+		} else {
+			result = service.delete(vo);
+		}
 
 		if (result == 1) {
+			session.invalidate();
 			return "redirect:home.do";
 		} else {
-			return "redirect:u_update.do?user_id=" + vo.getUser_id();
+			return "redirect:myInfo.do?user_id=" + vo.getUser_id();
 		}
 
 	}
@@ -242,7 +250,7 @@ public class UsersController {
 		UsersVO vo2 = service.login(vo);
 		log.info("vo2...{}",vo2);
 		
-		if(vo2 == null) {
+		if(vo2 == null || vo2.getType() == 4) {	//4번 탈퇴 처리된 회원은 로그인 불가
 			return "redirect:login.do?message=fail";
 		}else {
 			session.setAttribute("user_id", vo2.getUser_id());
@@ -272,6 +280,29 @@ public class UsersController {
 		log.info("/myInfo.do...{}", vo);
 		
 		UsersVO users = service.selectOne(vo);
+		
+		String eng_name = users.getEng_name();
+		int idx = eng_name.indexOf(" ");
+		String first_name = eng_name.substring(0, idx);
+		String last_name = eng_name.substring(idx+1);
+		users.setFirst_name(first_name);
+		users.setLast_name(last_name);
+		
+		String tel = users.getTel();
+		String telnum[] = tel.split("-");
+		String tel1 = telnum[0];
+		String tel2 = telnum[1];
+		String tel3 = telnum[2];
+		users.setTel1(tel1);
+		users.setTel2(tel2);
+		users.setTel3(tel3);
+		
+		String email = users.getEmail();
+		int idx1 = email.indexOf("@");
+		String email1 = email.substring(0, idx1);
+		String email2 = email.substring(idx1+1);
+		users.setEmail1(email1);
+		users.setEmail2(email2);
 		
 		model.addAttribute("users", users);
 		

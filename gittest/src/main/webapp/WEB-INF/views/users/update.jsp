@@ -54,7 +54,7 @@
 			</tr>
 		</table>
 	</form>
-	<button type="button" class="myButton">회원탈퇴</button>
+	<a href="u_deleteOK.do?user_id=${user_id}">회원탈퇴</a>
 </body>
 </html>
 	
