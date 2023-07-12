@@ -26,7 +26,7 @@
 								<td class="cart_one_info">
 									<input type="checkbox" name="selectedActivity" class="selectedActivity" checked="checked">
 									<input type="hidden" name="id" class="id" value="${cart.id}">
-									<input type="hidden" name="user_id" class="user_id" value="john123"> <!-- 세션없어서 이걸로 테스트 -->
+									<input type="hidden" name="user_id" class="user_id" value="${user_id}"> <!-- 세션없어서 이걸로 테스트 -->
 									<input type="hidden" name="act_id" class="act_id" value="${cart.act_id}">
 									<input type="hidden" name="price" class="price" value="${cart.price}">
 									<input type="hidden" name="quantity" class="quantity" value="${cart.quantity}">
@@ -35,7 +35,7 @@
 								</td>
 								<td></td>
 								<td>
-								<button class="order_btn" data-id="${cart.id}" data-user_id="${cart.user_id}" data-act_id="${cart.act_id}"
+								<button class="order_btn" data-id="${cart.id}" data-user_id="${user_id}" data-act_id="${cart.act_id}"
 								data-price="${cart.price}" data-quantity="${cart.quantity}"  data-res_date="${cart.res_date}">구매</button>
 								<button class="delete_btn" data-id="${cart.id}">삭제</button>
 								</td>
@@ -48,7 +48,8 @@
 							</tr>
 							<tr>
 								<th>예약예정일</th>
-								<td>${cart.res_date}</td>
+								<td><fmt:parseDate value="${cart.res_date}" var="res_date" pattern="yyyy-MM-dd"/>
+									<fmt:formatDate value="${res_date}" pattern="yyyy년 MM월 dd일"/></td>
 							</tr>
 							<tr>
 								<th>수량</th>
@@ -80,6 +81,9 @@
 				</td>
 			</tr>
 		</table>
+		<div class="order_btn_section">
+			<a class="order_many_btn">주문하기</a>
+		</div>
 		
 		<!-- 수량 조정 form -->
 		<form action="updateOneCart.do" method="get" class="quantity_update_form">
@@ -100,7 +104,12 @@
 			<input type="hidden" name="price" class="order_price">
 			<input type="hidden" name="quantity" class="order_quantity">
 			<input type="hidden" name="res_date" class="order_res_date">
-		</form>	
+		</form>
+		
+		<!-- 다중 주문 form -->
+<!-- 		<form action="insertManyReservation.do" method="get" class="order_many_form"> -->
+		
+<!-- 		</form>	 -->
 	</c:if>
 
 	<c:if test="${empty cartList}">
@@ -200,6 +209,40 @@
 		$(".order_res_date").val(res_date);
 		$(".order_form").submit();
 	});
+	
+	
+	/* 주문 페이지 이동 */	
+	$(".order_many_btn").on("click", function(){
+		
+		let txt_jsons ='[';
+		
+		$(".cart_one_info").each(function(index, element){
+			
+			if($(element).find(".selectedActivity").is(":checked") === true){
+				
+				let act_id = $(element).find(".act_id").val();
+				let quantity = $(element).find(".quantity").val();
+				let price = $(element).find(".price").val();
+				let price_total = $(element).find(".price_total").val();
+				let res_date = $(element).find(".res_date").val();
+				
+				txt_jsons += '{"act_id":'+act_id+',"quantity":'+quantity+',"price":'+price+',"price_total":'+price_total+',"res_date":'+res_date+'},';
+			}
+		});	
+		txt_jsons += ']';
+		
+		$.ajax({
+			url : "insertManyReservation.do",
+			data : {
+				txt_json : txt_jsons
+			}, //여러개
+			dataType : "json",
+			success : function(response) {
+			}
+		});
+		
+	});
+	
 	</script>
 	
 </body>

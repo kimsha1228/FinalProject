@@ -44,4 +44,8 @@ public class ReservationService {
 		return dao.deleteOne(vo);
 	}
 
+	public List<ReservationVO> selectExpired(ReservationVO vo) {
+		return dao.selectExpired(vo);
+	}
+
 }

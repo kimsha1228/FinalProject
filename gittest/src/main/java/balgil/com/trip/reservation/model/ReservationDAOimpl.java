@@ -63,10 +63,16 @@ public class ReservationDAOimpl implements ReservationDAO {
 
 	@Override
 	public void updateTime() {
-		
 		log.info("updateTime()...");
 		
 		sqlSession.update("RESERVATION_UPDATE_TIME");
+	}
+
+	@Override
+	public List<ReservationVO> selectExpired(ReservationVO vo) {
+		log.info("selectExpired()...{}", vo);
+
+		return sqlSession.selectList("EXPIRED_RESERVATION_SELECT_ALL", vo);
 	}
 
 }
