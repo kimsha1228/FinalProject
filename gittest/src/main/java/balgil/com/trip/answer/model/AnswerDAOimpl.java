@@ -42,13 +42,7 @@ public class AnswerDAOimpl implements AnswerDAO {
 		log.info("selectAll()......");
 		return sqlSession.selectList("ANSWER_SELECT_ALL");
 	}
-	
-	@Override
-	public AnswerVO selectOne(AnswerVO vo) {
-		log.info("selectOne()....{}", vo);
-		
-		return sqlSession.selectOne("ANSWER_SELECT_ONE",vo);
-	}
+
 	
 
 }

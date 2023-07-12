@@ -16,22 +16,50 @@
 	  <result property="dest_id" column="dest_id" />
 	  <result property="date" column="route_date" />
 	  <result property="dest_name" column="여행지" />
-	  <result property="act_name1" column="루트1" />
-	  <result property="act_name2" column="루트2" />
-	  <result property="act_name3" column="루트3" />
-	  <result property="act_name4" column="루트4" />
-	  <result property="act_name5" column="루트5" />
-	  <result property="act_add1" column="주소1" />
-	  <result property="act_add2" column="주소2" />
-	  <result property="act_add3" column="주소3" />
-	  <result property="act_add4" column="주소4" />
-	  <result property="act_add5" column="주소5" />
-	  <result property="act_id1" column="rt1" />
-	  <result property="act_id2" column="rt2" />
-	  <result property="act_id3" column="rt3" />
-	  <result property="act_id4" column="rt4" />
-	  <result property="act_id5" column="rt5" />
+	  
+	  <!-- List<Actity> actVos에 집어넣기 위한 collection mapping-->
+	  <!-- property="actVos"  RouteVO 내의 List<Activity> 변수명-->
+	  <!-- javaType="ArrayList"  List 컬렉션 명시-->
+	  <!-- column="{rt1=번호1}"  전자는 서브쿼리에 쓰일#{rt1} 후자는 메인쿼리에서 받아온 r.rt1 as 번호1의 번호1-->
+	  <!-- ofType="...ActivityVO" 서브쿼리의 결과를 매핑할 타입-->
+	  <!-- select="selectActivityVOS" 서브쿼리의 id-->
+	  <collection property="actVos"
+		  javaType="ArrayList" 
+		  column="{rt1=번호1,rt2=번호2,rt3=번호3,rt4=번호4,rt5=번호5}" 
+		  ofType="balgil.com.trip.activity.model.ActivityVO"
+		  select="selectActivityVOS"></collection>
 	</resultMap>
+	
+	<select id="selectActivityVOS" parameterType="java.util.Map" resultType="balgil.com.trip.activity.model.ActivityVO">
+	  SELECT * FROM activity WHERE id = #{rt1}
+		<if test="rt2 != null">
+		   or id = #{rt2}		  
+		</if>
+		<if test="rt3 != null">
+		   or id = #{rt3}		  
+		</if>
+		<if test="rt4 != null">
+		   or id = #{rt4}		  
+		</if>
+		<if test="rt5 != null">
+		   or id = #{rt5}		  
+		</if>
+		 ORDER BY Case id
+                        when #{rt1} then 1
+                        <if test="rt2 != null">
+						when #{rt2} then 2		  
+						</if>
+                        <if test="rt3 != null">
+						when #{rt3} then 3		  
+						</if>
+                        <if test="rt4 != null">
+						when #{rt4} then 4		  
+						</if>
+                        <if test="rt5 != null">
+						when #{rt5} then 5		  
+						</if>
+		 END
+	</select>
 
 	<select id="ROUTE_SELECT_ALL" resultMap="RouteVOResultMap">
 		SELECT
@@ -45,24 +73,14 @@
 			r.vcount,
 			r.likes,
 			d."NAME" as 여행지,
-			r.rt1,
-			a1.act_name as 루트1,
-			r.rt2,
-			a2.act_name as 루트2,
-			r.rt3,
-			a3.act_name as 루트3,
-			r.rt4,
-			a4.act_name as 루트4,
-			r.rt5,
-			a5.act_name as 루트5
+			r.rt1 as 번호1,
+			r.rt2 as 번호2,
+			r.rt3 as 번호3,
+			r.rt4 as 번호4,
+			r.rt5 as 번호5
 		FROM
 			route r
 			INNER JOIN destination d ON d.id = r.dest_id
-			LEFT JOIN activity a1 ON a1.id = r.RT1
-			LEFT JOIN activity a2 ON a2.id = r.RT2
-			LEFT JOIN activity a3 ON a3.id = r.RT3
-			LEFT JOIN activity a4 ON a4.id = r.RT4
-			LEFT JOIN activity a5 ON a5.id = r.RT5
 		WHERE
 		<!-- seller_id냐 dest_id냐 취사선택 -->
 		<choose>
@@ -89,24 +107,14 @@
 			r.vcount,
 			r.likes,
 			d."NAME" as 여행지,
-			r.rt1,
-			a1.act_name as 루트1,
-			r.rt2,
-			a2.act_name as 루트2,
-			r.rt3,
-			a3.act_name as 루트3,
-			r.rt4,
-			a4.act_name as 루트4,
-			r.rt5,
-			a5.act_name as 루트5
+			r.rt1 as 번호1,
+			r.rt2 as 번호2,
+			r.rt3 as 번호3,
+			r.rt4 as 번호4,
+			r.rt5 as 번호5
 		FROM
 			route r
 			INNER JOIN destination d ON d.id = r.dest_id
-			LEFT JOIN activity a1 ON a1.id = r.RT1
-			LEFT JOIN activity a2 ON a2.id = r.RT2
-			LEFT JOIN activity a3 ON a3.id = r.RT3
-			LEFT JOIN activity a4 ON a4.id = r.RT4
-			LEFT JOIN activity a5 ON a5.id = r.RT5
 		WHERE
 			r.seller_id = #{seller_id} AND
 			r.${searchKey} like #{searchWord}
@@ -125,29 +133,14 @@
 			r.vcount,
 			r.likes,
 			d."NAME" as 여행지,
-			r.rt1,
-			a1.act_name as 루트1,
-			a1."ADD" as 주소1,
-			r.rt2,
-			a2.act_name as 루트2,
-			a2."ADD" as 주소2,
-			r.rt3,
-			a3.act_name as 루트3,
-			a3."ADD" as 주소3,
-			r.rt4,
-			a4.act_name as 루트4,
-			a4."ADD" as 주소4,
-			r.rt5,
-			a5.act_name as 루트5,
-			a5."ADD" as 주소5
+			r.rt1 as 번호1,
+			r.rt2 as 번호2,
+			r.rt3 as 번호3,
+			r.rt4 as 번호4,
+			r.rt5 as 번호5
 		FROM
 			route r
 			INNER JOIN destination d ON d.id = r.dest_id
-			LEFT JOIN activity a1 ON a1.id = r.RT1
-			LEFT JOIN activity a2 ON a2.id = r.RT2
-			LEFT JOIN activity a3 ON a3.id = r.RT3
-			LEFT JOIN activity a4 ON a4.id = r.RT4
-			LEFT JOIN activity a5 ON a5.id = r.RT5
 		WHERE
 			r.id = #{id}
 		ORDER BY r.id

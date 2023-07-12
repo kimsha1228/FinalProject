@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import balgil.com.trip.destination.model.DestinationVO;
+import balgil.com.trip.destination.service.DestinationService;
 import balgil.com.trip.route.model.RouteVO;
 import balgil.com.trip.route.service.RouteService;
 import lombok.extern.slf4j.Slf4j;
@@ -30,11 +33,21 @@ public class RouteController {
 	RouteService service;
 
 	@Autowired
+	DestinationService destService;
+	
+	@Autowired
 	ServletContext sContext;
 
 	@RequestMapping(value = "/insertRoute.do", method = RequestMethod.GET)
-	public String insertRoute() {
+	public String insertRoute(Model model) {
 		log.info("insertRoute.jsp로 이동");
+		
+		//현재 DB에 있는 여행지를 조회함
+		List<DestinationVO> vos = destService.selectAll();
+		log.info("destination 조회결과:{}",vos);
+		
+		model.addAttribute("vos",vos);
+		
 		return "route/insertRoute";
 	}
 
@@ -85,11 +98,9 @@ public class RouteController {
 
 	@RequestMapping(value = "/updateRoute.do", method = RequestMethod.GET)
 	public String updateRoute(RouteVO vo, Model model) {
-		log.info("/selectOneRoute.do...{}", vo);
+		log.info("/insertRoute.jsp...{}", vo);
 
 		RouteVO vo2 = service.selectOne(vo);
-
-		log.info("after select..{}", vo2);
 
 		model.addAttribute("vo2", vo2);
 
@@ -98,7 +109,7 @@ public class RouteController {
 
 	@RequestMapping(value = "/updateRouteOk.do", method = RequestMethod.POST)
 	public String updateRouteOk(RouteVO vo) throws IllegalStateException, IOException {
-		log.info("/updateActOk.do...{}", vo);
+		log.info("/updateRouteOk.do...{}", vo);
 
 		// TODO: 추후 로컬 파일도 삭제하게 해야함
 		String getOriginalFilename = vo.getFile().getOriginalFilename();
@@ -180,17 +191,11 @@ public class RouteController {
 	}
 
 	@RequestMapping(value = "/selectOneUserRoute.do", method = RequestMethod.GET)
-	public String selectOneUserRoute(RouteVO vo, Model model) {
+	public String selectOneUserRoute(RouteVO vo) {
 		log.info("/selectOneUserRoute.do...{}", vo);
 
 		log.info("루트의 vcount 올립니다...{}", vo.getId());
 		service.vcountUp(vo);
-
-		RouteVO vo2 = service.selectOne(vo);
-
-		log.info("After Select...{}", vo2);
-
-		model.addAttribute("vo2", vo2);
 
 		return "route/selectOneUserRoute";
 	}
@@ -225,7 +230,7 @@ public class RouteController {
 		if (flag == 1) {
 			service.likeup(vo);
 			Cookie isLikedCookie = new Cookie("isLiked", "1");
-	        isLikedCookie.setMaxAge(10); //쿠키 수명 설정
+	        isLikedCookie.setMaxAge(10); //쿠키 수명 설정 초단위
 	        
 	        response.addCookie(isLikedCookie);
 		}

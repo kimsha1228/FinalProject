@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import balgil.com.trip.wishlist.model.WishListVO;
 import balgil.com.trip.wishlist.service.WishListService;
@@ -19,6 +20,20 @@ public class WishListController {
 	@Autowired
 	WishListService service;
 
+	@ResponseBody
+	@RequestMapping(value = "/insertWishListOK.do", method = RequestMethod.POST)
+	public String insertWishListOK(WishListVO vo) {
+		log.info("/insertWishListOK.do..{}",vo);
+		
+		int result = service.insert(vo);
+		
+		if(result==1) {
+			return "{\"result\":\"OK\"}";
+		}else {
+			return "{\"result\":\"NotOK\"}";
+		}
+	}
+	
 	@RequestMapping(value = "/wishlist.do", method = RequestMethod.GET)
 	public String wishlist() {
 		log.info("/wishlist.do");
@@ -48,6 +63,16 @@ public class WishListController {
 		} else {
 			return "redirect:selectOne.do?user_id=" + vo.getUser_id();
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/jsonselectAllWishList.do", method = RequestMethod.GET)
+	public List<WishListVO> jsonselectAllWishList(WishListVO vo) {
+		log.info("/jsonselectAllWishList.do..{}",vo);
+		
+		List<WishListVO> vos1 = service.selectAll(vo);
+		
+		return vos1;
 	}
 
 	@RequestMapping(value = "/insertWishList.do", method = RequestMethod.POST)

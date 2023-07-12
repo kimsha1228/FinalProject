@@ -6,20 +6,16 @@ public interface CartDAO {
 	
 		int insertOne(CartVO vo);
 	    
-		int deleteOneCart(int id);
+		int deleteOneCart(CartVO vo);
 	    
-		public void deleteManyCart(List<Integer> act_id);
+		List<CartVO> selectAll(CartVO vo);
 	    
-		public List<CartVO> selectAll(CartVO vo);
-	    
-
-	    //임시
-		public void addToCart(CartVO cart);
-
 		CartVO selectOne(CartVO vo);
 
 		int insertCountUp(CartVO vo);
 
-		int updateOneCart(CartVO vo);	    
+		int updateOneCart(CartVO vo);
+
+		void updateTime();	    
 	}
 

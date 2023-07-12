@@ -18,67 +18,36 @@ public class AnswerController {
 	@Autowired
 	AnswerService service;
 	
-	@RequestMapping(value = "/selectAllAnswer.do", method = RequestMethod.GET)
-	public String selectAllAnswer() {
-		log.info("/selectAllAnswer.do");
+	@RequestMapping(value = "/deleteAnswerOk.do", method = RequestMethod.GET)
+	public String deleteAnswerOk(AnswerVO vo) {
+		log.info("/deleteAnswerOK.do...{}", vo);
 		
-		List<AnswerVO> vos = service.selectAll();
+		int result = service.delete(vo);
+		log.info("result..{}", result);
 		
-		
-		return "answer/selectAllAnswer";
+		return "redirect:selectOneContact.do?id="+vo.getId();
 	}
 	
-	@RequestMapping(value = "/selectOneAnswer.do", method = RequestMethod.GET)
-	public String selectOneAnswer(AnswerVO vo) {
-		log.info("/selectOneAnswer.do....{}", vo);
-		
-		AnswerVO vo2 = service.selectOne(vo);
-		
-		return "answer/selectOneAnswer";
-	}
-	
-	@RequestMapping(value = "/insertAnswer.do", method = RequestMethod.GET)
-		public String insertAnswer() {
-		log.info("/insertAnswer.do...");	
-		
-		return "answer/insertAnswer";
-	}
-	
-	@RequestMapping(value = "/inserAnswertOK.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/insertAnswerOK.do", method = RequestMethod.GET)
 	public String insertAnswerOK(AnswerVO vo) {
 		log.info("/insertAnswerOK.do....");
 		
 		int result = service.insert(vo);
 		log.info("result...{}", result);
 		
-		if(result==1) {
-			return "redirect:selectAllAnswer.do";
-		}else {
-			return "redirect:insertAnswer.do";
-		}
+		return "redirect:selectOneContact.do?id="+vo.getId();
+		
 	}
 	
-	@RequestMapping(value = "/updateAnswer.do", method = RequestMethod.GET)
-	public String updateAnswer(AnswerVO vo) {
-	log.info("/updateAnswer.do...", vo);
 	
-	AnswerVO vo2 = service.selectOne(vo);
-	
-	return "answer/updateAnswer";
-	}
-	
-	@RequestMapping(value = "/updateAnswerOK.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/updateAnswerOK.do", method = RequestMethod.GET)
 	public String updateAnswerOK(AnswerVO vo) {
 		log.info("/updateAnswerOK.do....");
 		
 		int result = service.update(vo);
 		log.info("result...{}", result);
 		
-		if(result==1) {
-			return "redirect:selectOneAnswer.do?num="+vo.getNum();
-		}else {
-			return "redirect:updateAnswer.do?num="+vo.getNum();
-		}
+		return "redirect:selectOneContact.do?id="+vo.getId();
 	}
 	
 	

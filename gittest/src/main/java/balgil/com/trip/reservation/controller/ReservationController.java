@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import balgil.com.trip.payment.model.PaymentVO;
 import balgil.com.trip.payment.service.PaymentService;
@@ -43,45 +45,22 @@ public class ReservationController {
 		return "reservation_api";
 	}
 	
-	@RequestMapping(value = "/insertOneReservation.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/insertOneReservation.do", method = RequestMethod.POST)
 	public String insertOneReservation() {
 		log.info("/insertOneReservation.do");
 
 		return "reservation/insertOne";
 	}
-
-//	@RequestMapping(value = "/insertManyReservation.do", method = RequestMethod.GET)
-//	public String insertManyReservation(String datas) {
-//		log.info("/insertManyReservation.do...{}", datas);
-//		
-//		String[] arr = datas.split(":");//2,10000,2023-07-30
-//		for (int i = 0; i < arr.length; i++) {
-//			ReservationVO vo = new ReservationVO();
-//			vo.setQuantity(Integer.parseInt(arr[i].split(",")[0]));//"2"
-//			vo.setPrice(Integer.parseInt(arr[i].split(",")[1]));//"10000"
-//			vo.setRes_date(arr[i].split(",")[2]);//"2023-07-30"
-//			log.info("vo...{}", vo);
-////			int result = service.insert(vo);
-////			log.info("result : {}", result);
-//		}
-//		
-////		
-//		return "reservation/insertOne";//나중에 바꾸기
-////		if (result == 1) {
-////			return "redirect:reservation_api.do";
-////		} else {
-////			return "redirect:reservationInsert.do";
-////		}
-//	}
 	
 	@RequestMapping(value = "/cancelReservation.do", method = RequestMethod.GET)
 	public String cancelReservation(ReservationVO vo) {
 		log.info("/cancelReservation.do...{}", vo);//reservation id, user_id 넘어올 것
 		
 		int result = service.update(vo);//iscanceled 1로 변경 후 
+		log.info("result:{}", result);
 		
 		String res_id = vo.getId();
-		PaymentVO pay_vo = pay_service.selectCancelObject(res_id);
+		PaymentVO pay_vo = pay_service.selectCancelOne(res_id);
 		log.info("{}", pay_vo);
 		
 		
@@ -139,6 +118,18 @@ public class ReservationController {
 		
 		return "reservation/reservationSelectAll";
 	}
+
+	@RequestMapping(value = "/selectExpiredReservation.do", method = RequestMethod.GET)
+	public String selectExpiredReservation(ReservationVO vo, Model model) {
+		log.info("/selectExpiredReservation.do");
+		
+		List<ReservationVO> vos3 = service.selectExpired(vo);
+		log.info("{}", vos3);
+		
+		model.addAttribute("vos3",vos3);
+
+		return "reservation/reservationSelectAll";
+	}
 	
 	@RequestMapping(value = "/selectOneReservation.do", method = RequestMethod.GET)
 	public String selectOneReservation(ReservationVO vo, Model model) {
@@ -163,6 +154,31 @@ public class ReservationController {
 		
 		return "reservation/reservationSelectOneCancel";
 	}
+	
+	@RequestMapping(value = "/selectOneExpiredReservation.do", method = RequestMethod.GET)
+	public String selectOneExpiredReservation(ReservationVO vo, Model model) {
+		log.info("/selectOneExpiredReservation.do");
+		
+		ReservationVO vo1 = service.selectOne(vo);
+		log.info("{}", vo1);
+		
+		model.addAttribute("vo1",vo1);
+		
+		return "reservation/reservationSelectOneExpired";
+	}
+	
+	@RequestMapping(value = "/deleteOneCancelReservation.do", method = RequestMethod.GET)
+	public String deleteOneCancelReservation(ReservationVO vo) {
+		log.info("/deleteOneCancelReservation.do");
+		
+		int res_result = service.deleteOne(vo);
+		int pay_result = pay_service.deleteOne(vo.getId());
+		log.info("res_result:{}", res_result);
+		log.info("pay_result:{}", pay_result);
+		
+		return "redirect:selectCancelReservation.do?user_id="+vo.getUser_id();
+	}
+	
 	
 	
 }
