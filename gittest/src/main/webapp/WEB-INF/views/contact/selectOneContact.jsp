@@ -50,6 +50,7 @@
 			</tr>
 		</tfoot>
 	</table>
+	
 	<hr>
 	<h1>답변</h1>
 	<table id="answerList">
@@ -61,22 +62,21 @@
 			<td>
 				<form action="insertAnswerOK.do">
 					<input type="hidden" name=id value="${param.id}">
-					<input type="hidden" name="writer" value="writer">
-					<input type="text" name="content" value="댓글입니다.">
-					<input type="text" name="seller_id" value="seller">
+					<input type="text" name="content" value="답변">
+					<input type="hidden" name="seller_id" value="${vo2.seller_id}">
+					<input type="hidden" name="contact_id" value="${vo2.id}">
 					<input type="submit" value="입력완료" class="myButton">
 				</form>
 			</td>
-			<td>${contact_id}</td>
+			<td>${vo2.seller_id}</td>
 		</tr>
-	</table>	
-	
-	
+	</table>
+		
 	<table id="commentsList">
 		<tr>
 			<th>id</th>
-			<th>cnum</th>
 			<th>content</th>
+			<th>seller_id</th>
 			<th>ans_date</th>
 			<th></th>
 		</tr>
@@ -85,16 +85,17 @@
 				<td>${com.id}</td>
 				<td>
 					<form action="updateAnswerOK.do">
+						<input type="hidden" name="contact_id" value="${com.contact_id}">
 						<input type="hidden" name="id" value="${com.id}">
-						<input type="hidden" name="cnum" value="${com.cnum}">
 						<input type="text" name="content" value="${com.content}">
 						<input type="submit" value="수정완료" class="myButton">
 					</form>
 				</td>
-				<td>${com.contact_id}</td>
+				<td>${com.content}</td>
+				<td>${com.seller_id}</td>
 				<td>${com.ans_date}</td>
 				<td>
-					<a href="deleteContactOK.do?cnum=${com.cnum}&id=${com.id}" class="myButton">댓글삭제</a>
+					<a href="deleteAnswerOK.do?id=${com.id}&contact_id=${com.contact_id}" class="myButton">댓글삭제</a>
 				</td>
 			</tr>
 		</c:forEach>
