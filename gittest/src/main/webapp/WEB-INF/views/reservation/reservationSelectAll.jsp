@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +35,9 @@
 				</tr>
 				<tr>
 					<th>예약일</th>
-					<td>${vo.res_date}</td>
+					<td><fmt:parseDate value="${vo.res_date}" var="res_date" pattern="yyyy-MM-dd"/>
+						<fmt:formatDate value="${res_date}" pattern="yyyy년 MM월 dd일"/>
+					</td>
 				</tr>
 				<tr>
 					<th>상품명</th>
@@ -98,10 +101,6 @@
 			</tr>
 			</table>
 		</c:if>
-		
-		
-		
-		
 		
 		<c:if test="${vos2.size()!=0}">
 			<c:forEach var="vo2" items="${vos2}">

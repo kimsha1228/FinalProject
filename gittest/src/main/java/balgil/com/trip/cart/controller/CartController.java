@@ -69,7 +69,7 @@ public class CartController {
         log.info("result_insertUp: {}", result_insertUp);
         
         
-        return "home";//위에서 리다이렉트 if(result_insertUp==1){return ~~;}해주기
+        return "redirect:selectOneUserAct.do?id="+vo.getAct_id();
     }
     
     //장바구니에서 수량 조절
@@ -77,12 +77,10 @@ public class CartController {
     public String updateOneCart(CartVO vo) {
     	log.info("updateOneCart: {}", vo);
     	int result_update = cartService.updateOneCart(vo);	
-//    	if(result_update==1) {
-//    		
-//    	}
+
     	log.info("result_update: {}",result_update);
     	
-    	return "redirect:selectAllCart.do?user_id=john123"; // 수정 후 장바구니 페이지로 리다이렉트
+    	return "redirect:selectAllCart.do?user_id="+vo.getUser_id(); // 수정 후 장바구니 페이지로 리다이렉트
     }
     
     //장바구니에서 삭제
@@ -91,7 +89,7 @@ public class CartController {
     	log.info("deleteOneCart: {}", vo);
     	int result_delete = cartService.deleteOneCart(vo);
     	log.info("result: {}", result_delete);
-    	return "redirect:selectAllCart.do?user_id=john123"; // 삭제 후 장바구니 페이지로 리다이렉트
+    	return "redirect:selectAllCart.do?user_id="+vo.getUser_id(); // 삭제 후 장바구니 페이지로 리다이렉트
     }
 
     

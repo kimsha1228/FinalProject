@@ -64,4 +64,5 @@ public class WishListDAOimpl implements WishListDAO {
         paramMap.put("act_id", act_id);
         sqlSession.insert("ADD_TO_WISHLIST", paramMap);
     }
+
 }

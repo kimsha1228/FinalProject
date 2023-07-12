@@ -229,22 +229,6 @@ $(function(){
 		}
 		
 	}//end setFinalPriceInfo
-	
-	function test(){
-		let obj = new Object();
-		obj.id = "tester";
-		$.ajax({
-			url:"insertPaymentMany.do",
-			type:"get",
-			dataType:'json',
-			data:JSON.stringify(obj),
-			success:function(data){
-				console.log(data);
-			}
-		});
-	
-	}
-	
 </script>
 </head>
 <body>
