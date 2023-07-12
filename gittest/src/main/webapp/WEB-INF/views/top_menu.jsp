@@ -13,8 +13,6 @@
 		
 	<li><a href="myPage.do">마이페이지</a></li>
 	
-	<li><a href="myInfo.do">내 정보 관리</a></li>
-
 	<li><a href ="Contact_test.do">문의 test</a></li>
 	
 	<li><a href ="Faq_test.do">FAQ</a></li>

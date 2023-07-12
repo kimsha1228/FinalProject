@@ -14,12 +14,12 @@
 	<form action="loginOK.do" method="post">
 		<table>
 			<tr>
-				<td><label for="user_id">id:</label></td>
-				<td><input type="text" id="user_id" name="user_id" value="tester1"></td>
+				<td><label for="user_id">아이디</label></td>
+				<td><input type="text" id="user_id" name="user_id" value="" placeholder="아이디"></td>
 			</tr>
 			<tr>
-				<td><label for="pw">pw:</label></td>
-				<td><input type="password" id="pw" name="pw" value="hi11"></td>
+				<td><label for="pw">패스워드</label></td>
+				<td><input type="password" id="pw" name="pw" value="" placeholder="패스워드"></td>
 			</tr>
 
 			<tr>
