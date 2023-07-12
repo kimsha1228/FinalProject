@@ -21,6 +21,10 @@
   
 	<li><a href="cart.do">장바구니 가기</a></li>
 	
+	<li><a href="login.do">로그인</a></li>
+	
+	<li><a href="logout.do">로그아웃</a></li>
+	
 	<li><a href="wishlist.do">위시리스트 가기</a></li>
 	
 	<li><a href="destination.do">여행지 가기</a></li>

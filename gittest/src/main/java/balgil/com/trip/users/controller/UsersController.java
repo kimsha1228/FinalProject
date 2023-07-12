@@ -167,10 +167,17 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value = "/myPage.do", method = RequestMethod.GET)
-	public String myPage() {
-		log.info("/myPage.do....");
-		
+	public String myPage(String message,Model model) {
+		log.info("/myPage.do....{}",message);
+
 		return "users/myPage";
+	}
+	
+	@RequestMapping(value = "/myInfo.do", method = RequestMethod.GET)
+	public String myInfo(String message,Model model) {
+		log.info("/myInfo.do....{}",message);
+
+		return "users/myInfo";
 	}
 }
 
