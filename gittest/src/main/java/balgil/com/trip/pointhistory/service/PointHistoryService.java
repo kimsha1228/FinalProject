@@ -20,16 +20,11 @@ public class PointHistoryService {
 		log.info("CouponService()...");
 	}
 
-	public int useInsert(String user_id, String point) {
-		return dao.useInsert(user_id, point);
+	public List<PointHistoryVO> selectAllPointHistory() {
+		return dao.selectAllPointHistory();
 	}
 
-	public int useInsertBack(String user_id, String point) {
-		return dao.useInsertBack(user_id, point);
-	}
 
-//	public List<PointHistoryVO> selectAll(PointHistoryVO vo) {
-//		return dao.selectAll(vo);
-//	}
+
 
 }

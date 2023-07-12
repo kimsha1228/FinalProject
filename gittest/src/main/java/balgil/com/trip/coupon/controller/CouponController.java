@@ -30,7 +30,7 @@ public class CouponController {
 	public String selectAllCoupon(Model model) {
 		log.info("/selectAllCoupon.do");
 
-		List<CouponVO> vos = service.selectAll();
+		List<CouponVO> vos = service.selectAllCoupon();
 
 		model.addAttribute("vos", vos);
 

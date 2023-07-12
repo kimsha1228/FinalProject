@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import balgil.com.trip.pointhistory.model.PointHistoryVO;
 import balgil.com.trip.pointhistory.service.PointHistoryService;
@@ -22,15 +22,21 @@ public class PointHistoryController {
 	@Autowired
 	PointHistoryService service;
 	
-//	@ResponseBody
-//	@RequestMapping(value = "/jsonPointHistorySelectAll.do", method = RequestMethod.GET)
-//	public List<PointHistoryVO> jsonPointHistorySelectAll(PointHistoryVO vo) {
-//		log.info("jsonPointHistorySelectAll.do...{}", vo);
-//		
-//		List<PointHistoryVO> vos = service.selectAll(vo);
-//		log.info("vo2: {}", vos);
-//		
-//		return vos;
-//	}
-	
+	@RequestMapping(value = "/PointHistory.do", method = RequestMethod.GET)
+	public String PointHistory() {
+		log.info("/PointHistory.do");
+
+		return "pointhistory";
+	}
+
+	@RequestMapping(value = "/selectAllPointHistory.do", method = RequestMethod.GET)
+	public String selectAllPointHistory(Model model) {
+		log.info("/selectAllPointHistory.do");
+
+		List<PointHistoryVO> vos = service.selectAllPointHistory();
+
+		model.addAttribute("vos", vos);
+
+		return "pointhistory/selectAllPointHistory";
+	}
 }

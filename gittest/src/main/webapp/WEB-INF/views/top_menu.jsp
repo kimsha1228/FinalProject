@@ -21,6 +21,10 @@
 	
 	<li><a href ="Coupon.do">쿠폰 가기</a></li>
   
+	<li><a href ="PointHistory.do">포인트 가기</a></li>
+	
+	<li><a href ="Contant.do">문의내역 가기</a></li>
+	
 	<li><a href="cart.do">장바구니 가기</a></li>
 	
 	<li><a href="login.do">로그인</a></li>

@@ -22,8 +22,8 @@ public class ContactRestController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/jsonSelectAllContact.do", method = RequestMethod.GET)
-	public List<ContactVO> jsonSelectAllContact(ContactVO vo) {
-		log.info("jsonSelectAllContact.do..{}",vo);
-		return service.selectAll(vo);	
+	public List<ContactVO> jsonSelectAllContact() {
+		log.info("jsonSelectAllContact.do..");
+		return service.selectAll();	
 	}
 }

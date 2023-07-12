@@ -10,14 +10,14 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1><a href="myInfo.do">내 정보 관리</a></h1>
-	<h1><a href="selectAllUserCoupon.do">쿠폰 페이지</a></h1>
-	<h1><a href="selectAllPoint.do">포인트 페이지</a></h1>
-	<h1><a href="selectAllCart.do">장바구니 페이지</a></h1>
-	<h1><a href="selectAllReservation.do">액티비티 예약내역 페이지</a></h1>
-	<h1><a href="selectMyComments.do">이용후기 페이지</a></h1>
-	<h1><a href="selectAllUserContact.do">문의내역 페이지</a></h1>
-	<h1><a href="logout.do">로그아웃</a></h1>
-	
+	<h4><a href="myInfo.do">내 정보 관리(X)</a></h4>
+	<h4><a href="selectAllCoupon.do">쿠폰 페이지(X)</a></h4>
+	<h4><a href="selectAllPointHistory.do">포인트 페이지(X)</a></h4>
+	<h4><a href="selectAllCart.do?user_id=${user_id}">장바구니 페이지(세션)</a></h4>
+	<h4><a href="selectAllCart.do?user_id=john123">장바구니 페이지</a></h4>
+	<h4><a href="selectAllReservation.do?user_id=${user_id}">액티비티 예약내역 페이지</a></h4>
+	<h4><a href="selectMyComments.do">이용후기 페이지(연결)</a></h4>
+	<h4><a href="selectAllContant.do">문의내역 페이지(연결)</a></h4>
+	<h4><a href="logout.do">로그아웃</a></h4>
 </body>
 </html>
