@@ -1,5 +1,7 @@
 package balgil.com.trip.users.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -18,6 +20,10 @@ public class UsersVO {
 	private String tel2;
 	private String tel3;
 	private String email;
+	private String email1;
+	private String email2;
+	private String img;
+	private MultipartFile file;
 	private int type;
 	private int point;
 	

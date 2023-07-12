@@ -7,6 +7,28 @@
 	<select id="U_SELECT_ONE" resultType="balgil.com.trip.users.model.UsersVO">
 		select * from users where id = #{id}
 	</select>
+	
+	<insert id="U_INSERT">
+		insert into users(id, user_id, pw, name, tel, eng_name, email, type) 
+		values(seq_user.nextval, #{user_id}, #{pw}, #{name}, #{tel}, #{eng_name}, #{email}, #{type})
+	</insert>
+	
+	<update id="U_UPDATE">
+		update users set name=#{name}, eng_name=#{eng_name}, tel=#{tel}, email=#{email}, img=#{img}
+		where user_id = #{user_id}
+	
+	</update>
+	
+	<select id="U_ID_CHECK" resultType="balgil.com.trip.users.model.UsersVO">
+		select * from users where user_id = #{user_id}
+	</select>
+	
+	<select id="LOGIN" resultType="balgil.com.trip.users.model.UsersVO">
+		select * from users where user_id = #{user_id} and pw = #{pw}
+	</select>
+	
+	
+	
 
 	<!-- reservation용입니다 -->
 	<select id="USER_SELECT_ONE" resultType="balgil.com.trip.users.model.UsersVO"> 

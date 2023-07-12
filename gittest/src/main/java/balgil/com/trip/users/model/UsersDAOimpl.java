@@ -30,7 +30,7 @@ public class UsersDAOimpl implements UsersDAO {
 	public UsersVO selectOne(UsersVO vo) {
 		log.info("selectOne()...{}", vo);
 
-		return sqlSession.selectOne("U_SELECT_ONE", vo);
+		return sqlSession.selectOne("USER_SELECT_ONE", vo);
 	}
 
 	@Override

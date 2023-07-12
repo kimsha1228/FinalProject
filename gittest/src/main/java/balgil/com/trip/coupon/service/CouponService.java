@@ -29,7 +29,7 @@ public class CouponService {
 	}
 
 	public List<CouponVO> selectList(CouponVO vo) {
-		return null;
+		return dao.selectList(vo);
 	}
 
 }
