@@ -67,15 +67,15 @@
 		</table>
 	</form>
       <script>
-      $(function(){
-    	   $("input[type='submit']").click(function(event){
-    	      var $fileUpload = $("input[type='file']");
-    	      if (parseInt($fileUpload.get(0).files.length) > 5){ //5개이상이면
-	    	     event.preventDefault(); // 제출이벤트를 막음
-    	         alert("이미지는 최대 5장까지만 삽입 가능합니다.");
-    	      }
-    	   });
-    	});
+			$(function(){
+	    	   $("input[type='file']").change(function(event){
+	    	      var $fileUpload = $("input[type='file']");
+	    	      if (parseInt($fileUpload.get(0).files.length) > 5){ //5개이상이면
+	    	         $fileUpload.val('');// 파일선택을 초기화
+	    	         alert("이미지는 최대 5장까지만 삽입 가능합니다.");
+	    	      }
+	    	   });
+			});
       </script>
 </body>
 </html>

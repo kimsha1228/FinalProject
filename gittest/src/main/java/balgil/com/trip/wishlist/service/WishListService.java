@@ -20,8 +20,8 @@ public class WishListService {
 		log.info("WishListService()...");
 	}
 
-	public int insert(WishListVO vo) {
-		return dao.insert(vo);
+	public int  insertWishList(WishListVO vo) {
+		return dao.insertWishList(vo);
 	}
 
 	public int delete(WishListVO vo) {
@@ -34,5 +34,10 @@ public class WishListService {
 
 	public WishListVO selectOne(WishListVO vo) {
 		return dao.selectOne(vo);
+	}
+
+	public void addToWishList(String user_id, int act_id) {
+		// TODO Auto-generated method stub
+		
 	}
 }

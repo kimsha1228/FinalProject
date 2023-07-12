@@ -11,5 +11,8 @@
 		
 	</select>
 	
+	<delete id="COUPON_UPDATE_TIME">
+		delete from coupon where <![CDATA[res_date < sysdate]]>
+	</delete>
 	
 </mapper>

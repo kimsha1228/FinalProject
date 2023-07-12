@@ -18,4 +18,6 @@ public interface ReservationDAO {
 
 	void updateTime();
 
+	List<ReservationVO> selectExpired(ReservationVO vo);
+
 }

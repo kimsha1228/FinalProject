@@ -8,7 +8,7 @@ public interface ContactDAO {
 	
 	public List<ContactVO> selectAll();
 	
-	public ContactVO selectOneContact(ContactVO vo);
+	public ContactVO selectOne(ContactVO vo);
 	
 	public int delete(ContactVO vo);
 	
@@ -16,7 +16,7 @@ public interface ContactDAO {
 	
     public List<ContactVO> selectAllContact(ContactVO vo);
     
-    public int updateContact(ContactVO vo);
+    public int update(ContactVO vo);
     
 	
 }

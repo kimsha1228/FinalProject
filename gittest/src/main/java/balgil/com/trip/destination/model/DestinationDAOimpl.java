@@ -27,6 +27,7 @@ public class DestinationDAOimpl implements DestinationDAO {
 		return sqlSession.insert("DESTINATION_INSERT", vo);
 	}
 
+    
     @Override
     public List<DestinationVO> selectAll(DestinationVO vo) {
         log.info("selectAll()...{}", vo);
@@ -39,10 +40,12 @@ public class DestinationDAOimpl implements DestinationDAO {
     	return sqlSession.selectList("DESTINATION_SELECT_ALL");
     }
 
+
     @Override
     public DestinationVO selectOne(DestinationVO vo) {
         log.info("selectOne()...{}", vo);
 
-        return sqlSession.selectOne("DESTINATION_SELECT_ONE", vo);
+        return sqlSession.selectOne("DESTINATION_SELECT_ONE_BY_ID", vo);
     }
+
 }

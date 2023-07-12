@@ -36,7 +36,7 @@ public class ContactDAOimpl implements ContactDAO {
 	}
 
 	@Override
-	public ContactVO selectOneContact(ContactVO vo) {
+	public ContactVO selectOne(ContactVO vo) {
 		log.info("selectOneContact()....{}", vo);
 		
 		return sqlSession.selectOne("C_SELECT_ONE", vo);
@@ -63,7 +63,7 @@ public class ContactDAOimpl implements ContactDAO {
 	}
 
 	@Override
-	public int updateContact(ContactVO vo) {
+	public int update(ContactVO vo) {
 	    log.info("update()......{}", vo);
 
 	    return sqlSession.update("C_UPDATE", vo);

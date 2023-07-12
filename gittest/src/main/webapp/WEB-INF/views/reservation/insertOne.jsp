@@ -263,7 +263,10 @@ $(function(){
 				<td><input type="hidden" name="act_id" id = "act_id" value="${param.act_id}">상품명: <span id="act_name"></span></td>
 			</tr>
 			<tr>	
-				<td><input type="hidden" name="res_date" id = "res_date" value="${param.res_date}">예약일: ${param.res_date}</td>
+				<td><input type="hidden" name="res_date" id = "res_date" value="${param.res_date}">
+					예약일: <fmt:parseDate value="${param.res_date}" var="res_date" pattern="yyyy-MM-dd"/>
+							<fmt:formatDate value="${res_date}" pattern="yyyy년 MM월 dd일"/>
+				</td>
 			</tr>
 			<tr>	
 				<td><input type="hidden" name="quantity" id = "quantity" value="${param.quantity}">수량: ${param.quantity}</td>
@@ -312,7 +315,6 @@ $(function(){
 		</tbody>
 	</table>
 </form>
-<!-- 	<button onclick="test()">test</button> -->
 
 </body>
 </html>

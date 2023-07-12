@@ -25,7 +25,6 @@
 				<th>content</th>
 				<th>con_date</th>
 				<th>attach_img</th>
-				<th>file</th>
 				<th>user_id</th>
 				<th>seller_id</th>
 				<th>act_id</th>
@@ -41,7 +40,6 @@
 					<td>${vo.content}</td>
 					<td>${vo.con_date}</td>
 					<td>${vo.attach_img}</td>
-					<td>${vo.file}</td>
 					<td>${vo.user_id}</td>
 					<td>${vo.seller_id}</td>
 					<td>${vo.act_id}</td>

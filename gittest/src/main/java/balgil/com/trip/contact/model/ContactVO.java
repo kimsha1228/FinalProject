@@ -14,7 +14,6 @@ public class ContactVO {
 	public String content;
 	public Date con_date;
 	public String attach_img;
-	public MultipartFile file;
 	public String user_id;
 	public String seller_id;
 	public int act_id;

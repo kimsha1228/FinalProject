@@ -37,7 +37,7 @@ $(function(){
 	
 	//후기 한개 출력용
 	$.ajax({
-		url : "json_selectOneComment.do",
+		url : "jsonSelectOneComment.do",
 		data:{act_id:id},
 		method:'GET',
 		dataType:'json',
@@ -65,13 +65,40 @@ $(function(){
 		}
 	});//end $.ajax()...
 	
-	
+	//초기 위시리스트 하트 빈하트 여부 확인
+	$.ajax({
+		url : "jsonselectAllWishList.do",
+		data:{
+			user_id:user_id
+		},
+		method:'GET',
+		dataType:'json',
+		async : false,
+		success : function(response) {
+			//사용자의 위시리스트 만큼 반복
+			for(let i in response){
+				let vo = response[i];
+				if($('#wish').attr('class')==vo.act_id){
+				    $('#wish').text('♥');
+				}
+			}
+		},
+		error:function(xhr,status,error){
+			console.log('xhr.status:', xhr.status);
+		}
+	});//end $.ajax()...
 	
 	//날짜 선택을 오늘로 변경
 	var now = new Date();
 	now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); //한국시간으로 변경
-	document.getElementById('datePicker').value = now.toISOString().slice(0, -14); //자릿수짜르기
+	document.getElementById('datePicker').value = now.toISOString().slice(0, 10); //자릿수짜르기
+	document.getElementById('datePicker').setAttribute("min", now); //오늘 이전 날짜 설정 못하게
 	
+	//날짜를 제한하는
+	var now_utc = Date.now(); //밀리초
+	var timeOff = new Date().getTimezoneOffset()*60000; //분단위를 밀리초로 변환
+	var today = new Date(now_utc-timeOff).toISOString().split("T")[0]; //오늘 날짜를 구함
+	document.getElementById("datePicker").setAttribute("min", today); //date의 min 속성을 이용해 오늘 이전은 선택 불가능하게 설정
 });
 //end onload
 
@@ -93,19 +120,27 @@ function copyLink() {
   );
 }
 
-function addWish(user_id){
+function addWish(user_id,act_id){
 	let param_user_id=user_id;
-	console.log("insertWishListOk로 넘겨줄 파라미터",param_user_id,id);
+	let param_act_id=act_id;
+	console.log("insertWishListOk로 넘겨줄 파라미터",param_user_id,param_act_id);
 	$.ajax({
 		url : "insertWishListOK.do",
 		data:{
-			act_id:id,
+			act_id:param_act_id,
 			user_id:param_user_id
 		},
 		method:'POST',
 		dataType:'json',
-		success : function() {
-		// TODO addWish Later!
+		success : function(response) {
+			console.log(response);
+			if(response.result==='OK'){
+				alert("위시리스트에 추가했습니다");
+				$('#wish').text('♥');
+			}else{
+				alert("위시리스트에 제거했습니다");
+				$('#wish').text('♡');
+			}
 		},
 		error:function(xhr,status,error){
 			console.log('xhr.status:', xhr.status);

@@ -1,7 +1,6 @@
 package balgil.com.trip.map.controller;
 
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;

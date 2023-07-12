@@ -19,6 +19,5 @@
 	<h4><a href="selectMyComments.do">이용후기 페이지(연결)</a></h4>
 	<h4><a href="selectAllUserContact.do">문의내역 페이지(연결)</a></h4>
 	<h4><a href="logout.do">로그아웃</a></h4>
-	
 </body>
 </html>

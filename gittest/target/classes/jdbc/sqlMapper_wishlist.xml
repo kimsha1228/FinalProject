@@ -6,12 +6,9 @@
 <mapper namespace="balgil.com.trip.wishlist">
 	<insert id="WISHLIST_INSERT"
 		parameterType="balgil.com.trip.wishlist.model.WishListVO">
-		INSERT INTO WISHLIST (id, act_id, user_id)
-		VALUES (#{id},
-		#{act_id}, #{user_id})
+		INSERT INTO WISHLIST (act_id, user_id)
+		VALUES (#{act_id}, #{user_id})
 	</insert>
-
-
 
 	<delete id="WISHLIST_DELETE"
 		parameterType="balgil.com.trip.wishlist.model.WishListVO">
@@ -43,4 +40,7 @@
 		WHERE user_id =
 		#{user_id}
 	</select>
+
+	
+
 </mapper>

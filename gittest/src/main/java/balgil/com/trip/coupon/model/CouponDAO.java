@@ -8,5 +8,8 @@ public interface CouponDAO {
 
 	CouponVO selectOne(CouponVO vo);
 
+	List<CouponVO> selectList(CouponVO vo);
 	
+	void updateTime();
+
 }

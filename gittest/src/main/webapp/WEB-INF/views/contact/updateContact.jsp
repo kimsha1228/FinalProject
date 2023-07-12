@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -32,8 +32,8 @@
 				<td><textarea rows="10" cols="20" name="content">${vo2.content}</textarea></td>
 			</tr>
 			<tr>
-				<td><label for="writer">writer:</label></td>
-				<td>${vo2.writer}<input type="hidden" id="writer" name="writer" value="${vo2.writer}"></td>
+				<td><label for="user_id">user_id:</label></td>
+				<td>${vo2.user_id}<input type="hidden" id="user_id" name="user_id" value="${vo2.user_id}"></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" class="myButton"></td>

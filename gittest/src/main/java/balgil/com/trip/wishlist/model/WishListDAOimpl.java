@@ -1,6 +1,8 @@
 package balgil.com.trip.wishlist.model;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,45 +14,54 @@ import lombok.extern.slf4j.Slf4j;
 @Repository
 public class WishListDAOimpl implements WishListDAO {
 
-	@Autowired
-	SqlSession sqlSession;
+    @Autowired
+    SqlSession sqlSession;
 
-	public WishListDAOimpl() {
-		log.info("WishListDAOimpl()...");
-	}
+    public WishListDAOimpl() {
+        log.info("WishListDAOimpl()...");
+    }
 
-	@Override
-	public int insert(WishListVO vo) {
-		log.info("insert()...{}", vo);
+    @Override
+    public int insertWishList(WishListVO vo) {
+        log.info("insertWishList()...{}", vo);
+    
+        int result=0;
 
-		return sqlSession.insert("WISHLIST_INSERT", vo);
-	}
+      //없으면 위시리스트 추가, 없으면 제거
+        try {
+          result = sqlSession.insert("WISHLIST_INSERT", vo);
+        } catch (Exception e) {
+          sqlSession.delete("WISHLIST_DELETE",vo);
+        }
+        return result;
+    }
 
-//	@Override
-//	public int update(WishListVO vo) {
-//		log.info("update()...{}", vo);
-//
-//		return sqlSession.update("WISHLIST_UPDATE", vo);
-//	}
+    @Override
+    public int delete(WishListVO vo) {
+        log.info("delete()...{}", vo);
 
-	@Override
-	public int delete(WishListVO vo) {
-		log.info("delete()...{}", vo);
+        return sqlSession.delete("WISHLIST_DELETE", vo);
+    }
 
-		return sqlSession.delete("WISHLIST_DELETE", vo);
-	}
+    @Override
+    public List<WishListVO> selectAll(WishListVO vo) {
+        log.info("selectAll()...{}", vo);
 
-	@Override
-	public List<WishListVO> selectAll(WishListVO vo) {
-		log.info("selectAll()...{}", vo);
+        return sqlSession.selectList("WISHLIST_SELECT_ALL_WITH_USER_ID", vo);
+    }
 
-		return sqlSession.selectList("WISHLIST_SELECT_ALL_WITH_USER_ID", vo);
-	}
+    @Override
+    public WishListVO selectOne(WishListVO vo) {
+        log.info("selectOne()...{}", vo);
 
-	@Override
-	public WishListVO selectOne(WishListVO vo) {
-		log.info("selectOne()...{}", vo);
-
-		return sqlSession.selectOne("WISHLIST_SELECT_ONE", vo);
-	}
+        return sqlSession.selectOne("WISHLIST_SELECT_ONE", vo);
+    }
+    
+    @Override
+    public void addToWishList(String user_id, int act_id) {
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("user_id", user_id);
+        paramMap.put("act_id", act_id);
+        sqlSession.insert("ADD_TO_WISHLIST", paramMap);
+    }
 }

@@ -18,7 +18,16 @@ public class CouponDAOimpl implements CouponDAO {
 	public CouponDAOimpl() {
 		log.info("CouponDAOimpl()...");
 	}
+	
+	@Override
+	public List<CouponVO> selectList(CouponVO vo) {
+		log.info("selectList()...{}", vo);
 
+		List<CouponVO> vos = sqlSession.selectList("COUPON_SELECTLIST", vo);
+
+		return vos;
+	}
+	
 	@Override
 	public List<CouponVO> selectAll() {
 		log.info("selectAll()...");
@@ -33,4 +42,12 @@ public class CouponDAOimpl implements CouponDAO {
 		return sqlSession.selectOne("C_SELECT_ONE", vo);
 	}
 	
+	@Override
+	public void updateTime() {
+		log.info("updateTime()...");
+
+		sqlSession.update("COUPON_UPDATE_TIME");
+
+	}
+
 }

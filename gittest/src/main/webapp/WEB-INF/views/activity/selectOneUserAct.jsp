@@ -16,7 +16,7 @@
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 	console.log("현재 주소:",result);
 </script>
-<script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=1"></script>
+<script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=5"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -57,7 +57,7 @@
 			</tr>
 			<tr>
 				<td><button onclick="copyLink()">공유</button></td>
-				<td><button onclick="addWish('${user_id}')">♥</button></td>
+				<td><button id="wish" class="${vo2.id}" onclick="addWish('${user_id}','${vo2.id}')">♡</button></td>
 			</tr>
 		</tbody>
 		<tfoot>
@@ -74,7 +74,7 @@
 	<div>
 		<form action='#' id='Reservation' method='POST'>
 			<p>예약 날짜 선택</p>
-			<input type="date" name="res_date" id="datePicker">
+			<input type="date" name="res_date" id="datePicker" min="">
 			<p>수량 선택</p>
 			<input type='button' value='-' class='qtyminus minus' onclick='decrementQuantity()' />
 			<input type='text' name='quantity' value='1' id='quantity' class='qty' />
