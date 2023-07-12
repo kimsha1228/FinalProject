@@ -26,4 +26,16 @@
 	<delete id="COMMENTS_DELETE">
 		delete from comments where id=#{id}
 	</delete>
+	
+	<select id="selectWritableComments" parameterType="balgil.com.trip.reservation.model.ReservationVO">
+        SELECT ID, QUANTITY, PRICE, RES_DATE, PRICE_FINAL, ACT_ID, USER_ID
+        FROM Reservation
+        WHERE id=#{id}
+    </select>
+
+    <select id="selectWrittenComments" parameterType="balgil.com.trip.comments.model.CommentsVO">
+        SELECT ID, RATE, CONTENT, COM_DATE, LIKES, USER_ID, ACT_ID
+        FROM Comments
+        WHERE id=#{id}
+    </select>
 </mapper>

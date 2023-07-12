@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import balgil.com.trip.reservation.model.ReservationVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -16,7 +17,7 @@ public class CommentsDAOimpl implements CommentsDAO {
 	SqlSession sqlSession;
 	
 	public CommentsDAOimpl() {
-		log.info("BoardDAOimpl....");
+		log.info("CommentsDAOimpl....");
 	}
 	
 	@Override
@@ -53,6 +54,16 @@ public class CommentsDAOimpl implements CommentsDAO {
 		
 		return sqlSession.delete("COMMENTS_DELETE", vo);
 	}
+	
+	
+	@Override
+    public List<ReservationVO> selectWritableComments() {
+        return sqlSession.selectList("COMMENTS_SELECT_WRITABLE");
+    }
 
+    @Override
+    public List<CommentsVO> selectWrittenComments() {
+        return sqlSession.selectList("COMMENTS_SELECT_WRITTEN");
+    }
 
 }

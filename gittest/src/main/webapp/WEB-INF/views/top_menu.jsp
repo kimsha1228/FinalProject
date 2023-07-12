@@ -22,4 +22,6 @@
 	<li><a href="wishlist.do">위시리스트 가기</a></li>
 	
 	<li><a href="destination.do">여행지 가기</a></li>
+	
+    <li><a href="comments.do">이용 후기</a></li> 
 </ul>
