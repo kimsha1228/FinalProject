@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="balgil.com.trip.reservation">
+
 	<insert id="RESERVATION_INSERT" parameterType="balgil.com.trip.reservation.model.ReservationVO">
 		insert into reservation (id, quantity, price, res_date, price_total, act_id, user_id)
 		values (#{id}, #{quantity}, #{price}, #{res_date}, #{price_total}, #{act_id}, #{user_id})
@@ -23,10 +24,23 @@
 		where user_id = #{user_id} and iscanceled=1 order by r.res_date asc
 	</select>
 
+	<select id="EXPIRED_RESERVATION_SELECT_ALL" resultType="balgil.com.trip.reservation.model.ReservationVO">
+		select r.id, r.res_date, r.act_id, a.act_name from reservation r join activity a on(r.act_id = a.id)
+		where user_id = #{user_id} and iscanceled=2 order by r.res_date asc
+	</select>
+
 	<select id="RESERVATION_SELECT_ONE" resultType="balgil.com.trip.reservation.model.ReservationVO">
 		select r.id, r.res_date, r.act_id, a.act_name, r.quantity, r.price, r.price_total 
 		from reservation r join activity a on(r.act_id = a.id)
 		where r.id = #{id} and user_id = #{user_id}
 	</select>
+	
+	<delete id="RESERVATION_DELETE" parameterType="balgil.com.trip.reservation.model.ReservationVO">
+		delete from reservation where id = #{id}
+	</delete>
+
+	<update id="RESERVATION_UPDATE_TIME">
+		update reservation set iscanceled = 2 where <![CDATA[res_date < sysdate]]> and iscanceled = 0
+	</update>
 	
 </mapper>

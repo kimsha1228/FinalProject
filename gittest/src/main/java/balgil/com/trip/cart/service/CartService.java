@@ -24,43 +24,14 @@ public class CartService {
 		return dao.insertOne(vo);
 	}
 
-//	public int delete(CartVO vo) {
-//		return dao.delete(vo);
-//	}
-
 	public List<CartVO> selectAllCart(CartVO vo) {
-		// TODO Auto-generated method stub
 		return dao.selectAll(vo);
 	}
-//
-//	public void addToCart(ActivityVO activity, HttpSession session) {
-//		    // 장바구니에 상품 추가 로직 작성
-//		    dao.addToCart(activity, session);
-//	}
 
-	public int deleteOneCart(int id) {
+	public int deleteOneCart(CartVO vo) {
 		
-		return dao.deleteOneCart(id);
+		return dao.deleteOneCart(vo);
 	}
-
-	public void deleteManyCart(List<Integer> act_id) {
-		
-	        dao.deleteManyCart(act_id);
-	}
-
-	
-	//insertOneCart, insertManyCart ,deleteOneCart, deleteManyCart
-   
-	
-	//임시
-	 public void addTempProductToCart(String user_id, int act_id) {
-	   
-	 }
-	 
-	 //임시
-	 public void addToCart(CartVO cart) {
-			dao.addToCart(cart);
-	    }
 
 	public CartVO selectOne(CartVO vo) {
 		return dao.selectOne(vo);

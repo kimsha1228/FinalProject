@@ -6,7 +6,7 @@
 
 <mapper namespace="balgil.com.trip.comments">
 	<select id="COMMENTS_SELECT_ALL" resultType="balgil.com.trip.comments.model.CommentsVO">
-		select * from comments order by id desc
+		select * from comments where id=#{id}
 	</select>
 	
 	<select id="COMMENTS_SELECT_ONE" resultType="balgil.com.trip.comments.model.CommentsVO">

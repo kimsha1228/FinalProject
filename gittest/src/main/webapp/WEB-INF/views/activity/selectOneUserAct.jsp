@@ -8,15 +8,15 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <!-- 네이버 지도 API JS -->
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=fxc9ew4qop&submodules=geocoder"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${mapProperty.clientID}&submodules=geocoder"></script>
 <script type="text/javascript">
 	let user_id = '<%= session.getAttribute("user_id") %>';
 // 	let initadd = '서울 종로구 효자로 12 국립고궁박물관';
-	let initadd = '${vo2.add}';
+	let result = '${vo2.add}';
 	console.log("현재 로그인 되어있는 아이디:",user_id);
-	console.log("현재 주소:",initadd);
+	console.log("현재 주소:",result);
 </script>
-<script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=1"></script>
+<script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=4"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -57,7 +57,7 @@
 			</tr>
 			<tr>
 				<td><button onclick="copyLink()">공유</button></td>
-				<td><button onclick="addWish('${user_id}')">♥</button></td>
+				<td><button id="wish" class="${vo2.id}" onclick="addWish('${user_id}','${vo2.id}')">♡</button></td>
 			</tr>
 		</tbody>
 		<tfoot>
@@ -72,9 +72,9 @@
 		<a href="selectAllComments.do?act_id=${vo2.id}">상품 후기 전체보기</a>
 	</div>
 	<div>
-		<form action='#' id='Reservation' method='GET'>
+		<form action='#' id='Reservation' method='POST'>
 			<p>예약 날짜 선택</p>
-			<input type="date" name="res_date" id="datePicker">
+			<input type="date" name="res_date" id="datePicker" min="">
 			<p>수량 선택</p>
 			<input type='button' value='-' class='qtyminus minus' onclick='decrementQuantity()' />
 			<input type='text' name='quantity' value='1' id='quantity' class='qty' />

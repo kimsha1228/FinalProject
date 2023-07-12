@@ -56,7 +56,7 @@ public class UsersController {
 		return "users/selectAll";
 	}
 
-	@RequestMapping(value = "/u_insert.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/u_insert.do", method = RequestMethod.POST)
 	public String m_insert() {
 		log.info("/u_insert.do");
 
@@ -165,6 +165,13 @@ public class UsersController {
 		
 		return "users/login";
 	}
-
+	
+	@RequestMapping(value = "/myPage.do", method = RequestMethod.GET)
+	public String myPage() {
+		log.info("/myPage.do....");
+		
+		return "users/myPage";
+	}
 }
+
 
