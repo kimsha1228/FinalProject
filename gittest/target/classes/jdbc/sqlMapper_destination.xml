@@ -18,7 +18,9 @@
 		resultType="balgil.com.trip.destination.model.DestinationVO">
 		SELECT id, name, category
 		FROM DESTINATION
-		WHERE category = #{category}
+		<where>
+			<if test="category != null">category = #{category}</if>
+		</where>
 	</select>
 
 	<select id="DESTINATION_SELECT_ONE_BY_ID"
