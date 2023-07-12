@@ -118,6 +118,18 @@ public class ReservationController {
 		
 		return "reservation/reservationSelectAll";
 	}
+
+	@RequestMapping(value = "/selectExpiredReservation.do", method = RequestMethod.GET)
+	public String selectExpiredReservation(ReservationVO vo, Model model) {
+		log.info("/selectExpiredReservation.do");
+		
+		List<ReservationVO> vos3 = service.selectExpired(vo);
+		log.info("{}", vos3);
+		
+		model.addAttribute("vos3",vos3);
+
+		return "reservation/reservationSelectAll";
+	}
 	
 	@RequestMapping(value = "/selectOneReservation.do", method = RequestMethod.GET)
 	public String selectOneReservation(ReservationVO vo, Model model) {
@@ -167,17 +179,6 @@ public class ReservationController {
 		return "redirect:selectCancelReservation.do?user_id="+vo.getUser_id();
 	}
 	
-	@RequestMapping(value = "/selectExpiredReservation.do", method = RequestMethod.GET)
-	public String selectExpiredReservation(ReservationVO vo, Model model) {
-		log.info("/selectExpiredReservation.do");
-		
-		List<ReservationVO> vos3 = service.selectExpired(vo);
-		log.info("{}", vos3);
-		
-		model.addAttribute("vos3",vos3);
-
-		return "reservation/reservationSelectAll";
-	}
 	
 	
 }

@@ -34,20 +34,9 @@ public class CartDAOimpl implements CartDAO {
 		return vos;
 	}
 
-	// 임시
-	@Override
-	public void addToCart(CartVO cart) {
-		sqlSession.insert("addToCart", cart);
-	}
-
 	@Override
 	public int deleteOneCart(CartVO vo) {
 		return sqlSession.delete("CART_DELETE_ONE", vo);
-	}
-
-	@Override
-	public void deleteManyCart(List<Integer> act_id) {
-		sqlSession.delete("CART_DELETE_MANY", act_id);
 	}
 
 	@Override

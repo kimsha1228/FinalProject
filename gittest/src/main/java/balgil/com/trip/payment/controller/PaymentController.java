@@ -1,16 +1,19 @@
 package balgil.com.trip.payment.controller;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.aggregation.ConvertOperators.ToDate;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import balgil.com.trip.payment.model.PaymentVO;
 import balgil.com.trip.payment.service.PaymentService;
@@ -39,6 +42,8 @@ public class PaymentController {
 
 	@Autowired
 	PointHistoryService p_service; 
+	
+	Gson gson = new GsonBuilder().create();
 	
 	@RequestMapping(value = "/insertPaymentOne.do", method = RequestMethod.POST)
 	public String insertPaymentOne(PaymentVO vo) {
@@ -99,44 +104,44 @@ public class PaymentController {
 		}
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/insertPaymentMany.do", method = RequestMethod.GET)
-	public String insertPaymentMany( PaymentVO vo) {
-		log.info("/insertPaymentMany.do");
-		log.info("vo: {}", vo);
-		
-		return "home"; // 나중에 리다이렉트
-		
-	}
-
 	
 	//test중....
-	@RequestMapping(value = "/insertManyReservation.do", method = RequestMethod.POST)
-	public String insertManyReservation(String datas) {
+	@ResponseBody
+	@RequestMapping(value = "/insertManyReservation.do", method = RequestMethod.GET)
+	public String insertManyReservation(@RequestParam(value = "txt_json") String datas) {
 		log.info("/insertManyReservation.do...{}", datas);
 		
-//		act_id0=5&quantity0=4&price0=10000&price_total0=40000&res_date0=2023-11-30+00%3A00%3A00
-//		이런 식으로 넘어올 것...
-	
-		String[] arr = datas.split(":");//2,10000,2023-07-30
-		for (int i = 0; i < arr.length; i++) {
-			ReservationVO vo = new ReservationVO();
-			vo.setQuantity(Integer.parseInt(arr[i].split(",")[0]));//"2"
-			vo.setPrice(Integer.parseInt(arr[i].split(",")[1]));//"10000"
-			vo.setRes_date(arr[i].split(",")[2]);//"2023-07-30"
-			log.info("vo...{}", vo);
-//			int result = service.insert(vo);
-//			log.info("result : {}", result);
+		PaymentVO[] vo_gsons = gson.fromJson(datas, PaymentVO[].class);
+		
+		for (PaymentVO vo : vo_gsons) {
+			log.info(vo.toString());
 		}
 		
+		List<PaymentVO> vos = Arrays.asList(vo_gsons);
+		for (PaymentVO vo : vos) {
+			log.info(vo.toString());
+		}
+		
+//		String[] arr = datas.split(":");//2,10000,2023-07-30
+//		for (int i = 0; i < arr.length; i++) {
+//			ReservationVO vo = new ReservationVO();
+//			vo.setQuantity(Integer.parseInt(arr[i].split(",")[0]));//"2"
+//			vo.setPrice(Integer.parseInt(arr[i].split(",")[1]));//"10000"
+//			vo.setRes_date(arr[i].split(",")[2]);//"2023-07-30"
+//			log.info("vo...{}", vo);
+////			int result = service.insert(vo);
+////			log.info("result : {}", result);
+//		}
+		
 //		
-		return "reservation/insertOne";//나중에 바꾸기
+//		return "reservation/insertOne";//나중에 바꾸기
 //		if (result == 1) {
-//			return "redirect:reservation_api.do";
+			return "redirect:reservation_api.do";
 //		} else {
 //			return "redirect:reservationInsert.do";
 //		}
 	}
+	
 	
 	
 

@@ -31,14 +31,6 @@
 		delete from CART where id = #{id}
 	</delete>
 
-	<delete id="CART_DELETE_MANY">
-		delete from CART where act_id in
-		<foreach item="item" index="index" collection="act_id"
-			open="(" separator="," close=")">
-			#{item}
-		</foreach>
-	</delete>
-	
 	<delete id="CART_UPDATE_TIME">
 		delete from cart where <![CDATA[res_date < sysdate]]>
 	</delete>
