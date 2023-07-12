@@ -10,48 +10,47 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>내 정보 관리</h1>
-	<form action="myInfo.do" method="post">
+	<h1>내 정보 수정</h1>
+	<form action="u_updateOK.do" method="post" enctype="multipart/form-data">
 		<table id="usersList">
 			<tr>
 				<td><label for="img">프로필 사진:</label></td>
-				<td><input type="text" id="text" name="text" value="tester">
-				<button type="button" onclick="idCheck()" class="myButton">사진 업로드</button>
-					<span id="demo"></span></td>
+				<td><input type="file" id="img" name="img" value=""></td>
 			</tr>
 			<tr>
 				<td><label for="name">이름:</label></td>
-				<td><input type="text" id="name" name="name" value="tester"></td>
+				<td><input type="text" id="name" name="name" value=""></td>
 			</tr>
 			<tr>
 				<td><label for="name">영문명:</label></td>
 				<td>
-				    <label for="name">first name:</label>
-					<input type="text" id="name" name="name" value="tester">
-					<hr>
-					<label for="name">last name:</label>
-					<input type="text" id="name" name="name" value="tester">
+					<input type="text" id="last_name" name="last_name" value="" placeholder="영문 성">
+					<input type="text" id="first_name" name="first_name" value="" placeholder="영문 이름">
 				</td>
 			</tr>
 			<tr>
 				<td><label for="tel">전화번호:</label></td>
-				<td><input type="text" id="tel" name="tel" value="tester"></td>
+				<td>
+					<input type="text" id="tel1" name="tel1" value="010">
+					<input type="text" id="tel2" name="tel2" value="">
+					<input type="text" id="tel3" name="tel3" value="">
+				</td>
 			</tr>
 			<tr>
 				<td><label for="email">이메일:</label></td>
-				<td><input type="text" id="email" name="email" value="tester"></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-				<button type="button" onclick="idCheck()" class="myButton">회원탈퇴</button>
-				<input type="submit" class="myButton">
+				<td>
+					<input type="text" id="email1" name="email1" value="tester">
+					<input type="text" id="email2" name="email2" value="@naver.com">
 				</td>
+			</tr>
+			<tr style="margin-top:100px">
+				<th colspan="2">
+				<input type="submit" value="저장하기">
+				</th>
 			</tr>
 		</table>
 	</form>
+	<button type="button" class="myButton">회원탈퇴</button>
 </body>
 </html>
 	
-	
-</body>
-</html>

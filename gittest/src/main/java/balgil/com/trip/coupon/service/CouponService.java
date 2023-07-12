@@ -24,4 +24,12 @@ public class CouponService {
 		return dao.selectList(vo);
 	}
 
+	public List<CouponVO> selectAll() {
+		return dao.selectAll();
+	}
+
+	public CouponVO selectOne(CouponVO vo) {
+		return dao.selectOne(vo);
+	}
+
 }
