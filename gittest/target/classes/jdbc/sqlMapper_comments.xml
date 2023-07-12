@@ -10,7 +10,7 @@
 	</select>
 	
 	<select id="COMMENTS_SELECT_ONE" resultType="balgil.com.trip.comments.model.CommentsVO">
-		select * from comments where id = #{id}
+		select * from comments where act_id = #{act_id}
 	</select>
 	
 	<insert id="COMMENTS_INSERT" parameterType="balgil.com.trip.comments.model.CommentsVO">

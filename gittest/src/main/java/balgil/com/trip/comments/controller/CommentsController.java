@@ -101,64 +101,63 @@ public class CommentsController {
 
 		return "comments/updateComments";
 	}
-
-	@RequestMapping(value = "/updateCommentsOK.do", method = RequestMethod.POST)
-	public String updateCommentsOK(CommentsVO vo, @RequestParam("file") MultipartFile file) throws IOException {
-	    log.info("/updateCommentsOK.do...{}", vo);
-
-	    String originalFilename = file.getOriginalFilename();
-	    int fileNameLength = originalFilename.length();
-	    log.info("originalFilename:{}", originalFilename);
-	    log.info("fileNameLength:{}", fileNameLength);
-
-	    if (fileNameLength != 0) {
-	        vo.setAct_num(originalFilename);
-	        // 웹 어플리케이션이 갖는 실제 경로: 이미지를 업로드할 대상 경로를 찾아서 파일저장.
-	        String realPath = sContext.getRealPath("resources/uploadimg");
-	        log.info("realPath : {}", realPath);
-
-	        File f = new File(realPath + "\\" + vo.getAct_num());
-	        file.transferTo(f);
-
-	        // 썸네일 이미지 생성
-	        BufferedImage originalBufferImg = ImageIO.read(f);
-	        BufferedImage thumbBufferImg = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
-	        Graphics2D graphics = thumbBufferImg.createGraphics();
-	        graphics.drawImage(originalBufferImg, 0, 0, 50, 50, null);
-
-	        File thumbFile = new File(realPath + "/thumb_" + vo.getAct_num());
-	        String formatName = vo.getAct_num().substring(vo.getAct_num().lastIndexOf(".") + 1);
-	        log.info("formatName : {}", formatName);
-	        ImageIO.write(thumbBufferImg, formatName, thumbFile);
-	    }
-
-	    log.info("{}", vo);
-
-	    int result = service.update(vo);
-	    log.info("result:{}", result);
-
-	    if (result == 1) {
-	        return "redirect:selectOneComments.do?act_num=" + vo.getAct_num();
-	    } else {
-	        return "redirect:updateComments.do?act_num=" + vo.getAct_num();
-	    }
-	}
+//
+//	@RequestMapping(value = "/updateCommentsOK.do", method = RequestMethod.POST)
+//	public String updateCommentsOK(CommentsVO vo, @RequestParam("file") MultipartFile file) throws IOException {
+//	    log.info("/updateCommentsOK.do...{}", vo);
+//
+//	    String originalFilename = file.getOriginalFilename();
+//	    int fileNameLength = originalFilename.length();
+//	    log.info("originalFilename:{}", originalFilename);
+//	    log.info("fileNameLength:{}", fileNameLength);
+//
+//	    if (fileNameLength != 0) {
+//	        vo.setAct_id(originalFilename);
+//	        // 웹 어플리케이션이 갖는 실제 경로: 이미지를 업로드할 대상 경로를 찾아서 파일저장.
+//	        String realPath = sContext.getRealPath("resources/uploadimg");
+//	        log.info("realPath : {}", realPath);
+//
+//	        File f = new File(realPath + "\\" + vo.getAct_id());
+//	        file.transferTo(f);
+//
+//	        // 썸네일 이미지 생성
+//	        BufferedImage originalBufferImg = ImageIO.read(f);
+//	        BufferedImage thumbBufferImg = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
+//	        Graphics2D graphics = thumbBufferImg.createGraphics();
+//	        graphics.drawImage(originalBufferImg, 0, 0, 50, 50, null);
+//
+//	        File thumbFile = new File(realPath + "/thumb_" + vo.getAct_id());
+//	        String formatName = vo.getAct_id().substring(vo.getAct_id().lastIndexOf(".") + 1);
+//	        log.info("formatName : {}", formatName);
+//	        ImageIO.write(thumbBufferImg, formatName, thumbFile);
+//	    }
+//
+//	    log.info("{}", vo);
+//
+//	    int result = service.update(vo);
+//	    log.info("result:{}", result);
+//
+//	    if (result == 1) {
+//	        return "redirect:selectOneComments.do?Act_id=" + vo.getAct_id();
+//	    } else {
+//	        return "redirect:updateComments.do?Act_id=" + vo.getAct_id();
+//	    }
+//	}
 
 
 
 	@RequestMapping(value = "/deleteCommentsOK.do", method = RequestMethod.GET)
-	public String deleteCommentsOK(CommentsVO vo) {
-		log.info("/deleteCommentsOK.do...{}", vo);
+	public String deleteCommentsOK(@RequestParam("user_id") String user_id, CommentsVO vo) {
+	    log.info("/deleteCommentsOK.do...{}", vo);
 
-		int result = service.delete(vo);
+	    int result = service.delete(vo);
 
-		log.info("result...{}", result);
+	    log.info("result...{}", result);
 
-		if (result == 1) {
-			return "redirect:selectAllComments.do";
-		} else {
-			return "redirect:selectOneComments.do?act_num=" + vo.getAct_num();
-		}
+	    return "forward:/selectAllComments.do?user_id=" + user_id;
 	}
+
+
+
 
 }

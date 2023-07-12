@@ -66,4 +66,6 @@ public class CommentsDAOimpl implements CommentsDAO {
         return sqlSession.selectList("COMMENTS_SELECT_WRITTEN");
     }
 
+	
+
 }
