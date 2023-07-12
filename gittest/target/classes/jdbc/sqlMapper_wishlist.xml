@@ -10,8 +10,6 @@
 		VALUES (#{act_id}, #{user_id})
 	</insert>
 
-
-
 	<delete id="WISHLIST_DELETE"
 		parameterType="balgil.com.trip.wishlist.model.WishListVO">
 		DELETE FROM WISHLIST WHERE act_id = #{act_id} AND
@@ -42,4 +40,7 @@
 		WHERE user_id =
 		#{user_id}
 	</select>
+
+	
+
 </mapper>

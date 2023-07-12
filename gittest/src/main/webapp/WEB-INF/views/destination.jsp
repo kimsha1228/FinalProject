@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <ul>
 
-	<li><a href="selectAllDestination.do">여행지 화면</a></li>
+
+	<li><a href="selectAllDestination.do?category=City">여행지 선택 화면</a></li>
 	
 
 </ul>
