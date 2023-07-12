@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
@@ -12,6 +16,7 @@
 			<value>classpath:jdbc/oracle.properties</value>
 		</property>
 	</bean>
+	<util:properties id="property" location="classpath:jdbc/oracle.properties" />
 	<!--1. 기존 오프라인 jdbc용 -->
 <!-- 	<bean id="dataSource" -->
 <!-- 		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> -->
@@ -51,6 +56,7 @@
 				<value>classpath:jdbc/sqlMapper_activity.xml</value>
 				<value>classpath:jdbc/sqlMapper_pointhistory.xml</value>
 				<value>classpath:jdbc/sqlMapper_wishlist.xml</value>
+				<value>classpath:jdbc/sqlMapper_destination.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -63,4 +69,12 @@
 		<property name="maxUploadSize" value="10485760" /> 
 		<!-- -1 이면 크기제한 없음 10MB로 제한함 -->
 	</bean>
+	
+	<!--1. 네이버 지도 API -->
+	<bean id="mapProperty" class="balgil.com.trip.map.model.MapVO">
+		<property name="clientID" value="${naver.CLIENTID}" />
+	</bean>
+	
+	
+	
 </beans>

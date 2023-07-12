@@ -32,5 +32,4 @@ public class UserCouponRestController {
 		
 		return vos;
 	}
-	
 }

@@ -109,4 +109,6 @@ public class UsersDAOimpl implements UsersDAO {
 		
 		return sqlSession.selectOne("USER_SELECT_ONE", vo);
 	}
+
 }
+

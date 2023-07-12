@@ -12,7 +12,7 @@ window.onload = function(){
 				tag_vos+=`
 				<tr>
  					<td>				
- 						<a href="selectOneAct.do?id=${vo.id}">${vo.id}</a>
+ 						<a href="selectOneUserAct.do?id=${vo.id}">${vo.id}</a>
  					</td>
  					<td>${vo.act_name}</td>
  					<td>${vo.rate}</td>

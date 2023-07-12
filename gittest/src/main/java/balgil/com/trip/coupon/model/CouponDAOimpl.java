@@ -28,4 +28,12 @@ public class CouponDAOimpl implements CouponDAO {
 		return vos;
 	}
 
+	@Override
+	public void updateTime() {
+		log.info("updateTime()...");
+
+		sqlSession.update("COUPON_UPDATE_TIME");
+
+	}
+
 }
