@@ -164,6 +164,7 @@ public class UsersController {
 		return "redirect:home.do";
 	}
 	
+
 	@RequestMapping(value = "/myPage.do", method = RequestMethod.GET)
 	public String myPage() {
 		log.info("/myPage.do...");

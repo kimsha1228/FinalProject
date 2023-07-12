@@ -15,7 +15,7 @@
 		<table id="usersList">
 			<tr>
 				<td><label for="img">프로필 사진:</label></td>
-				<td><input type="file" id="img" name="img">
+				<td><input type="file" id="img" name="img" value=""></td>
 			</tr>
 			<tr>
 				<td><label for="name">이름:</label></td>
@@ -54,6 +54,3 @@
 </body>
 </html>
 	
-	
-</body>
-</html>
