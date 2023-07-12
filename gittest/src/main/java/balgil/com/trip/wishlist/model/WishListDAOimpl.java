@@ -59,7 +59,7 @@ public class WishListDAOimpl implements WishListDAO {
     
     @Override
     public void addToWishList(String user_id, int act_id) {
-        Map<String, Object> paramMap = new HashMap<>();
+        Map<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("user_id", user_id);
         paramMap.put("act_id", act_id);
         sqlSession.insert("ADD_TO_WISHLIST", paramMap);
