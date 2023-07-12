@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상품</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <!-- Include DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 <!-- Include DataTables JS -->
@@ -14,28 +14,8 @@
 <script>
     let user_id = '<%= session.getAttribute("user_id") %>';
     console.log("현재 로그인 되어있는 아이디:", user_id);
-
-    // Wishlist에 상품을 추가하는 함수
-    function addWish(userId, actId) {
-        console.log("Add to Wishlist: user_id =", userId, ", act_id =", actId);
-        
-        $.ajax({
-            url: "/addWish",
-            method: "POST",
-            data: {
-                user_id: userId,
-                act_id: actId
-            },
-            success: function(response) {
-                console.log("Wishlist에 상품이 추가되었습니다.", response);
-            },
-            error: function(xhr, status, error) {
-                console.error("Wishlist 추가 중 오류가 발생했습니다.", error);
-            }
-        });
-    }
 </script>
-<script type="text/javascript" src="resources/js/activity/selectAllUserAct.js?ver=4"></script>
+<script type="text/javascript" src="resources/js/activity/selectAllUserAct.js?ver=14"></script>
 </head>
 <body>
 <jsp:include page="../top_menu.jsp"></jsp:include>
@@ -76,7 +56,7 @@
             </tr>
         </thead>
         <tbody id="vos2">
-            <c:forEach var="vo" items="${vos}">
+            <c:forEach var="vo" items="${vos}" varStatus="status">
                 <tr>
                     <td>                
                         <a href="selectOneUserAct.do?id=${vo.id}">${vo.id}</a>
@@ -84,7 +64,7 @@
                     <td>${vo.act_name}</td>
                     <td>${vo.rate}</td>
                     <td>${vo.price}</td>
-                    <td><button onclick="addWish(user_id, ${vo.id})">♥</button></td>                
+                    <td><button class="wish" data-act_id="${vo.id}" data-arg1='${user_id}' data-arg2= '${vo.id}' data-arg3='${status.count}'>♡</button></td>                
                 </tr>
             </c:forEach>
         </tbody>
