@@ -36,11 +36,11 @@
 						<td>${vo.com_date}</td>
 						<td>${vo.likes}</td>
 						<td>${vo.user_id}</td>
-						<td><img width="35px"
-							src="resources/uploadimg/apple${vo.act_id}"></td>
-						<td><a href="updateComments.do?id=${vo.id}" class="myButton">수정</a>
-						</td>
-						<td><a href="deleteCommentsOK.do?id=${vo.id}"
+						<%-- <td><img width="35px"
+							src="resources/uploadimg/thumb_${vo.id}"></td> --%>
+						<td><a href="updateComments.do?id=${param.id}"
+							class="myButton">수정</a></td>
+						<td><a href="deleteCommentsOK.do?id=${param.id}"
 							class="myButton">삭제</a></td>
 					</tr>
 				</c:if>

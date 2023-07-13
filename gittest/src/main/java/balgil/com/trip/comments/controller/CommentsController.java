@@ -101,6 +101,8 @@ public class CommentsController {
 
 		return "comments/updateComments";
 	}
+	
+
 //
 //	@RequestMapping(value = "/updateCommentsOK.do", method = RequestMethod.POST)
 //	public String updateCommentsOK(CommentsVO vo, @RequestParam("file") MultipartFile file) throws IOException {
@@ -145,17 +147,23 @@ public class CommentsController {
 //	}
 
 
-
 	@RequestMapping(value = "/deleteCommentsOK.do", method = RequestMethod.GET)
-	public String deleteCommentsOK(@RequestParam("user_id") String user_id, CommentsVO vo) {
+	public String deleteCommentsOK(CommentsVO vo) {
 	    log.info("/deleteCommentsOK.do...{}", vo);
 
 	    int result = service.delete(vo);
 
 	    log.info("result...{}", result);
 
-	    return "forward:/selectAllComments.do?user_id=" + user_id;
+	    if (result == 1) {
+	        return "redirect:/selectAllComments.do?user_id=" + vo.getUser_id();
+	    } else {
+	        return "redirect:/selectOneComments.do?act_id=" + vo.getAct_id();
+	    }
 	}
+
+
+
 
 
 
