@@ -157,7 +157,6 @@ function searchList(){
 			console.log('xhr.status:',xhr.status);
 	 	}
 	});//end ajax
-	
 	//다시 위시리스트 하트 빈하트 여부 확인
 	$.ajax({
 		url : "jsonselectAllWishList.do",
@@ -222,9 +221,7 @@ function sortFunction(value){
  			
  		//정렬 초기화
  		case 5:
- 			$('#searchWord').val('');
- 			searchList();
- 			callTableSorter();
+ 			$("#myTable").trigger("sortReset");
  		break;
 		default:
     	console.log(`error sorting.`);
@@ -276,7 +273,7 @@ function callTableSorter(){
 	    // remove rows from the table to speed up the sort of large tables.
 	    // setting this to false, only hides the non-visible rows
 	    // needed if you plan to add/remove rows with the pager enabled.
-	    removeRows: false,
+	    removeRows: true,
 	
 	    // If true, child rows will be counted towards the pager set size
 	    countChildRows: false,
