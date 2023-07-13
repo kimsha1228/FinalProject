@@ -71,26 +71,7 @@ public class CommentsController {
 
 
 
-	@RequestMapping(value = "/insertComments.do", method = RequestMethod.GET)
-	public String insertComments(CommentsVO vo) {
-		log.info("/insertComments.do....");
-
-		return "comments/insertComments";
-	}
-
-	@RequestMapping(value = "/insertCommentsOK.do", method = RequestMethod.POST)
-	public String insertCommentsOK(CommentsVO vo) {
-		log.info("/insertCommentsOK.do...{}", vo);
-
-		int result = service.insert(vo);
-		log.info("result...{}", result);
-
-		if (result == 1) {
-			return "redirect:selectAllComments.do";
-		} else {
-			return "redirect:insertComments.do";
-		}
-	}
+	
 
 	@RequestMapping(value = "/updateComments.do", method = RequestMethod.GET)
 	public String updateComments(Model model, CommentsVO vo) {
@@ -151,6 +132,60 @@ public class CommentsController {
 	    }
 	}
 
+	
+	
+	@RequestMapping(value = "/insertComments.do", method = RequestMethod.GET)
+	public String insertComments(CommentsVO vo) {
+		log.info("/insertComments.do....");
+
+		return "comments/insertComments";
+	}
+
+	@RequestMapping(value = "/insertCommentsOK.do", method = RequestMethod.POST)
+	public String insertCommentsOK(CommentsVO vo) throws IllegalStateException, IOException{
+		log.info("/insertCommentsOK.do...{}", vo);
+
+		String getOriginalFilename = vo.getFile().getOriginalFilename();
+		int fileNameLength = vo.getFile().getOriginalFilename().length();
+		log.info("getOriginalFilename:{}", getOriginalFilename);
+		log.info("fileNameLength:{}", fileNameLength);
+
+		if (getOriginalFilename.length() != 0) {
+
+			vo.setSave_name(getOriginalFilename);
+			// 웹 어플리케이션이 갖는 실제 경로: 이미지를 업로드할 대상 경로를 찾아서 파일저장.
+			String realPath = sContext.getRealPath("resources/uploadimg");
+			log.info("realPath : {}", realPath);
+
+			File f = new File(realPath + "\\" + vo.getSave_name());
+			vo.getFile().transferTo(f);
+
+			//// create thumbnail image/////////
+			BufferedImage original_buffer_img = ImageIO.read(f);
+			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
+			Graphics2D graphic = thumb_buffer_img.createGraphics();
+			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
+
+			File thumb_file = new File(realPath + "/thumb_" + vo.getSave_name());
+			String formatName = vo.getSave_name().substring(vo.getSave_name().lastIndexOf(".") + 1);
+			log.info("formatName : {}", formatName);
+			ImageIO.write(thumb_buffer_img, formatName, thumb_file);
+
+		} else {
+			vo.setSave_name("default.png");
+		}
+		log.info("{}", vo);
+
+		int result = service.insert(vo);
+		log.info("result:{}", result);
+
+
+		if (result == 1) {
+			return "redirect:selectMyComments.do";
+		} else {
+			return "redirect:insertComments.do";
+		}
+	}
 
 
 

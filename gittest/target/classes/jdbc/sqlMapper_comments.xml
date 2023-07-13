@@ -17,22 +17,21 @@
 
 	<insert id="COMMENTS_INSERT"
 		parameterType="balgil.com.trip.comments.model.CommentsVO">
-		insert into comments (id, rate, content, com_date,
-		likes, user_id, act_id)
-		values (#{id}, #{rate}, #{content},
-		#{com_date}, #{likes}, #{user_id}, #{act_id})
+		insert into comments (id, rate, content, com_date)
+		values (seq_comments.nextval, #{rate}, #{content},
+		#{com_date})
 	</insert>
 
 	<update id="COMMENTS_UPDATE"
 		parameterType="balgil.com.trip.comments.model.CommentsVO">
 		update comments
-		set 
-<!-- 		rate = #{rate}, -->
+		set
+		<!-- rate = #{rate}, -->
 		content = #{content},
 		com_date = sysdate,
 		save_name = #{save_name}
-<!-- 		likes = #{likes}, -->
-<!-- 		act_id = #{act_id} -->
+		<!-- likes = #{likes}, -->
+		<!-- act_id = #{act_id} -->
 		where id = #{id}
 	</update>
 
