@@ -14,4 +14,9 @@
 		values (#{user_id}, '구매취소', #{point}, sysdate)
 	</insert>
 	
+	<insert id="POINTHISTORY_SAVE_INSERT" parameterType="balgil.com.trip.pointhistory.model.PointHistoryVO">
+		insert into point_history (user_id, history, point, point_date)
+		values (#{user_id}, #{history}, #{point}, sysdate)
+	</insert>
+	
 </mapper>

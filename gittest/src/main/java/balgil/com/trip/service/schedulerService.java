@@ -22,7 +22,7 @@ public class schedulerService {
 	@Autowired
 	CouponDAO cou_dao;
 	
-	@Scheduled(cron="0 05 0 * * *")
+	@Scheduled(cron="0 0 11 * * *")
 	public void scheduleRun(){
 		log.info("00시 정각에 실행");
 		res_dao.updateTime();

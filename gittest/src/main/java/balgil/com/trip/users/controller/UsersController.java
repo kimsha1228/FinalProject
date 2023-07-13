@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import balgil.com.trip.pointhistory.model.PointHistoryVO;
 import balgil.com.trip.pointhistory.service.PointHistoryService;
 import balgil.com.trip.users.model.UsersVO;
 import balgil.com.trip.users.service.UsersService;
@@ -42,44 +43,87 @@ public class UsersController {
 	@Autowired
 	HttpSession session;
 
-	@RequestMapping(value = "/u_selectAll.do", method = RequestMethod.GET)
-	public String u_selectAll(Model model) {
-		log.info("/u_selectAll.do");
+	@RequestMapping(value = "/selectAllSeller.do", method = RequestMethod.GET)
+	public String selectAllSeller(Model model) {
+		log.info("/selectAllSeller.do");
 
-		List<UsersVO> vos = service.selectAll();
+		List<UsersVO> vos = service.selectAllSeller();
 
 		model.addAttribute("vos", vos);
 
-		return "users/selectAll";
+		return "admin/selectAllSeller";
 	}
 
-	@RequestMapping(value = "/u_searchList.do", method = RequestMethod.GET)
-	public String u_searchList(String searchKey,String searchWord,Model model) {
-		log.info("/u_searchList.do...searchKey:{}",searchKey);
-		log.info("/u_searchList.do...searchWord:{}",searchWord);
+	@RequestMapping(value = "/selectAllUser.do", method = RequestMethod.GET)
+	public String selectAllUser(Model model) {
+		log.info("/selectAllUser.do");
 
-		List<UsersVO> vos = service.searchList(searchKey,searchWord);
+		List<UsersVO> vos = service.selectAllUser();
+
+		model.addAttribute("vos", vos);
+
+		return "admin/selectAllUser";
+	}
+	
+	@RequestMapping(value = "/searchSellerList.do", method = RequestMethod.GET)
+	public String searchSellerList(String searchKey, String searchWord, Model model) {
+		log.info("/searchSellerList.do...searchKey:{}",searchKey);
+		log.info("/searchSellerList.do...searchWord:{}",searchWord);
+
+		List<UsersVO> vos = service.searchListSeller(searchKey,searchWord);
 
 		model.addAttribute("vos", vos);
 		
-		return "users/selectAll";
+		return "admin/selectAllSeller";
 	}
 	
-	@RequestMapping(value = "/u_selectOne.do", method = RequestMethod.GET)
-	public String u_selectOne(UsersVO vo, Model model) {
-		log.info("/u_selectOne.do...{}", vo);
+	@RequestMapping(value = "/searchUserList.do", method = RequestMethod.GET)
+	public String u_searchList(String searchKey, String searchWord, Model model) {
+		log.info("/searchUserList.do...searchKey:{}",searchKey);
+		log.info("/searchUserList.do...searchWord:{}",searchWord);
+		
+		List<UsersVO> vos = service.searchListUser(searchKey,searchWord);
+		
+		model.addAttribute("vos", vos);
+		
+		return "admin/selectAllUser";
+	}
+	
+	@RequestMapping(value = "/selectOneSeller.do", method = RequestMethod.GET)
+	public String selectOneSeller(UsersVO vo, Model model) {
+		log.info("/selectOneSeller.do...{}", vo);
 
 		UsersVO vo2 = service.selectOne(vo);
 
 		model.addAttribute("vo2", vo2);
 
-		return "users/selectOne";
+		return "admin/selectOneSeller";
+	}
+
+	@RequestMapping(value = "/selectOneUser.do", method = RequestMethod.GET)
+	public String selectOneUser(UsersVO vo, Model model) {
+		log.info("/selectOneUser.do...{}", vo);
+		
+		UsersVO vo2 = service.selectOne(vo);
+		
+		model.addAttribute("vo2", vo2);
+		
+		return "admin/selectOneUser";
+	}
+	
+	@RequestMapping(value = "/sellerTypeUpdate.do", method = RequestMethod.GET)
+	public String sellerTypeUpdate(UsersVO vo) {
+		log.info("/sellerTypeUpdate.do", vo);
+		
+		int result = service.sellerTypeUpdate(vo);
+		
+		return "redirect:selectOneSeller.do?user_id="+vo.getUser_id();
 	}
 
 	@RequestMapping(value = "/u_insert.do", method = RequestMethod.GET)
-	public String m_insert() {
+	public String u_insert() {
 		log.info("/u_insert.do");
-
+		
 		return "users/insert";
 	}
 
@@ -312,6 +356,19 @@ public class UsersController {
 		
 		return "users/myInfo";
 	}
+	
+	@RequestMapping(value = "/pointPlus.do", method = RequestMethod.GET)
+	public String pointPlus(String user_id, String history, String point) {
+		log.info("/pointPlus.do");
+		
+		int his_result = his_service.saveInsert(user_id, history, point);
+		int user_result = service.pointInsert(user_id, point);
+		log.info("results:{},{}", his_result, user_result);
+		
+		return "redirect:selectOneUser.do?user_id="+user_id;
+	}
+
+	
 }
 
 
