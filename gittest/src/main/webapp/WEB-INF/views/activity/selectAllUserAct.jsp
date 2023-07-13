@@ -12,6 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/route/tablesorter/jquery.tablesorter.min.js"></script>
 <script src="https://mottie.github.io/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
+<script src="https://mottie.github.io/tablesorter/js/jquery.tablesorter.widgets.js"></script>
 
 <title>상품</title>
 <script>
@@ -52,13 +53,13 @@
   	 	<a class="dropdown-item" href="javascript:void(0);" onclick="sortFunction(3);">조회순</a>
   	 	<a class="dropdown-item" href="javascript:void(0);" onclick="sortFunction(4);">평점순</a>
 	  </div>
-	  <a class="btn btn-outline-danger" href="javascript:sortFunction(5);" role="button">초기화</a>
+	    <a class="btn btn-outline-danger" href="javascript:sortFunction(5);" role="button">초기화</a>
 	</div>
-<label for="searchWord">상품 이름</label>
-<input type="hidden" name="searchKey" id="searchKey" value="act_name">
-<input type="text" name="searchWord" id="searchWord">
-<button class="myButton" onclick="searchList()">검색</button>
-
+<!-- <label for="searchWord">상품 이름</label> -->
+<!-- <input type="hidden" name="searchKey" id="searchKey" value="act_name"> -->
+<!-- <input type="text" name="searchWord" id="searchWord"> -->
+<!-- <button class="myButton" onclick="searchList()">검색</button> -->
+<p>상품 이름 <input class="search" type="search" data-column="1"><button type="button" class="reset">검색 초기화</button></p>
 <table id="tableContainer">
     <thead>
         <tr>

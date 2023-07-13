@@ -221,7 +221,7 @@ function sortFunction(value){
  			
  		//정렬 초기화
  		case 5:
- 			$("#myTable").trigger("sortReset");
+ 			$("#tableContainer").trigger("sortReset");
  		break;
 		default:
     	console.log(`error sorting.`);
@@ -296,8 +296,21 @@ function callTableSorter(){
 	
 	
 	//테이블을 간단하게 페이징 해주는 api
-	$("#tableContainer").tablesorter({
-	
+	var $table = $("#tableContainer").tablesorter({
+		widgets: ["filter"],
+	    widgetOptions : {
+		    // filter_anyMatch replaced! Instead use the filter_external option
+		    // Set to use a jQuery selector (or jQuery object) pointing to the
+		    // external filter (column specific or any match)
+		    filter_external : '.search',
+		    // add a default type search to the first name column
+		    filter_defaultFilter: { 1 : '~{query}' },
+		    // include column filters
+		    filter_columnFilters: false,
+		    filter_placeholder: { search : 'Search...' },
+		    filter_saveFilters : true,
+		    filter_reset: '.reset'
+    	}
 	})
     // bind to pager events
     // *********************
@@ -312,4 +325,17 @@ function callTableSorter(){
     // initialize the pager plugin
     // ****************************
     .tablesorterPager(pagerOptions);
+    
+	//tablesorter 내장 검색 옵션
+	$('button[data-column]').on('click', function() {
+	    var $this = $(this),
+		totalColumns = $table[0].config.columns,
+		col = $this.data('column'), // zero-based index or "all"
+		filter = [];
+	
+	    // text to add to filter
+		filter[ col === 'all' ? totalColumns : col ] = $this.text();
+		$table.trigger('search', [ filter ]);
+		return false;
+	});
 }

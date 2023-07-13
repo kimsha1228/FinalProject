@@ -11,13 +11,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/route/tablesorter/jquery.tablesorter.min.js"></script>
 <script src="https://mottie.github.io/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
+<script src="https://mottie.github.io/tablesorter/js/jquery.tablesorter.widgets.js"></script>
 
 <title>홈 상품 검색</title>
 <script>
     let user_id = '<%= session.getAttribute("user_id") %>';
     console.log("현재 로그인 되어있는 아이디:", user_id);
 </script>
-<script type="text/javascript" src="resources/js/activity/searchActHome.js?ver=2"></script>
+<script type="text/javascript" src="resources/js/activity/searchActHome.js?ver=6"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -25,11 +26,11 @@
 	
 	<p id="searchresult"></p>
 
-	<label for="searchWord">상품 검색</label>
-	<input type="hidden" name="searchKey" id="searchKey" value="act_name">
-	<input type="text" name="searchWord" id="searchWord">
-	<button class="myButton" onclick="searchList()" >검색</button>
-
+<!-- 	<label for="searchWord">상품 검색</label> -->
+<!-- 	<input type="hidden" name="searchKey" id="searchKey" value="act_name"> -->
+<!-- 	<input type="text" name="searchWord" id="searchWord"> -->
+<!-- 	<button class="myButton" onclick="searchList()" >검색</button> -->
+	<p>상품 이름 <input class="search" type="search" data-column="1"><button type="button" class="reset">검색 초기화</button></p>
 	<table id="tableContainer">
 	<thead>
         <tr>

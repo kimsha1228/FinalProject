@@ -3,12 +3,12 @@ let rowCount=0;
 
 //현재 url 파라미터에서 값을 가져와서 변수에 할당한다
 const urlParams = new URL(location.href).searchParams;
-let searchWord = urlParams.get('searchWord');
-console.log(searchWord);
+let param_searchWord = urlParams.get('searchWord');
+console.log(param_searchWord);
 
 window.onload = function(){
-	searchList(searchWord);
-	
+	searchList('');
+	$('.search').val(param_searchWord);
 	 // **********************************
 	 //  tablesorter 페이징 옵션 변수
 	 // **********************************
@@ -77,7 +77,20 @@ window.onload = function(){
 	
 	//테이블을 간단하게 페이징 해주는 api
 	$("#tableContainer").tablesorter({
-	
+		widgets: ["filter"],
+	    widgetOptions : {
+		    // filter_anyMatch replaced! Instead use the filter_external option
+		    // Set to use a jQuery selector (or jQuery object) pointing to the
+		    // external filter (column specific or any match)
+		    filter_external : '.search',
+		    // add a default type search to the first name column
+		    filter_defaultFilter: { 1 : '~{query}' },
+		    // include column filters
+		    filter_columnFilters: false,
+		    filter_placeholder: { search : 'Search...' },
+		    filter_saveFilters : true,
+		    filter_reset: '.reset'
+    	}
 	})
     // bind to pager events
     // *********************
@@ -92,6 +105,20 @@ window.onload = function(){
     // initialize the pager plugin
     // ****************************
     .tablesorterPager(pagerOptions);
+	
+	//tablesorter 내장 검색 옵션
+	$('button[data-column]').on('click', function() {
+	    var $this = $(this),
+		totalColumns = $table[0].config.columns,
+		col = $this.data('column'), // zero-based index or "all"
+		filter = [];
+	
+	    // text to add to filter
+		filter[ col === 'all' ? totalColumns : col ] = $this.text();
+		$table.trigger('search', [ filter ]);
+		return false;
+	});
+	
 	
 	//위시리스트 추가 함수
 	$(document).on('click', '.wish', function() {
@@ -134,6 +161,7 @@ window.onload = function(){
 	    }
 	});
 	
+	$('button[data-column]').trigger("click");	
 };//end onload
 
 function searchList(searchWord){
@@ -170,7 +198,8 @@ function searchList(searchWord){
 			$("#vos").html(tag_vos);
 			
 			//검색결과 삽입
-			let result=(searchWord==undefined?$('#searchWord').val():searchWord)+"의 검색결과";
+			console.log("asdf",param_searchWord);
+			let result=param_searchWord+"의 검색결과";
 			$("#searchresult").text(result);
 		},
 	 	error:function(xhr,status,error){
