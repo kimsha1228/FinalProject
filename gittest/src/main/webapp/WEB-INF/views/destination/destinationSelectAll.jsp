@@ -34,7 +34,7 @@
 					<tr>
 						<td><a 
 							href="${pageContext.request.contextPath}
-							/selectOneDestination.do?id=${destination.id}">
+							/selectOneDestRoute.do?dest_id=${destination.id}">
 							${destination.name}</a></td>
 						<td>${destination.id}</td>
 						<td>${destination.category}</td>

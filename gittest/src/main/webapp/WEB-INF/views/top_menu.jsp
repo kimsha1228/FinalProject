@@ -31,7 +31,9 @@
 	
 	<li><a href="destination.do">여행지 가기</a></li>
 	
-	<li><a href="u_update.do?user_id=john123">회원수정</a></li>
+  <li><a href="comments.do">이용 후기</a></li> 
+
+  <li><a href="u_update.do?user_id=john123">회원수정</a></li>
 	
 	<li><a href="myInfo.do?user_id=john123">내 정보 관리</a></li>
 </ul>

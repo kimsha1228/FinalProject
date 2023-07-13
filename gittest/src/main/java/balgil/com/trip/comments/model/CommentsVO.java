@@ -13,5 +13,5 @@ public class CommentsVO {
 	public Date com_date;
 	public int likes;
 	public String user_id;
-	public String act_num;
+	public int act_id;
 }
