@@ -114,15 +114,16 @@ public class CommentsController {
 	    log.info("getOriginalFilename:{}", vo.getFile().getOriginalFilename());
 		log.info("fileNameLength:{}", fileNameLength);
 
-	    if (fileNameLength != 0) {
-	        // 웹 어플리케이션이 갖는 실제 경로: 이미지를 업로드할 대상 경로를 찾아서 파일 저장.
+		if(fileNameLength == 0) {
+			vo.setSave_name(vo.getSave_name());
+		}else  {
+			vo.setSave_name(originalFilename);
 	        String realPath = sContext.getRealPath("resources/uploadimg");
 	        log.info("realPath: {}", realPath);
 
 	        File f = new File(realPath + File.separator + originalFilename);
 	        vo.getFile().transferTo(f);
 
-	        // 썸네일 이미지 생성
 	        BufferedImage originalBufferImg = ImageIO.read(f);
 	        BufferedImage thumbBufferImg = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
 	        Graphics2D graphics = thumbBufferImg.createGraphics();

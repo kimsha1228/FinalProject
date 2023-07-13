@@ -15,6 +15,7 @@ public class CommentsVO {
 	public Date com_date;
 	public int likes;
 	public String user_id;
+	public String save_name;
 	public int act_id;
 	public MultipartFile file;
 }

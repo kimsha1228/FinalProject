@@ -37,7 +37,7 @@
 						<td>${vo.likes}</td>
 						<td>${vo.user_id}</td>
 						<td><img width="35px"
-							src="resources/uploadimg/apple${vo.act_id}"></td>
+							src="resources/uploadimg/${vo.save_name}"></td>
 						<td><a href="updateComments.do?id=${vo.id}" class="myButton">수정</a>
 						</td>
 						<td><a

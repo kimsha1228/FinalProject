@@ -13,6 +13,8 @@
     
     <form action="updateCommentsOK.do" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="${vo2.id}" />
+        <input type="hidden" name="save_name" value="${vo2.save_name}" />
+        <input type="hidden" name="user_id" value="${vo2.user_id}" />
         
         <label for="content">내용:</label><br>
         <textarea id="content" name="content" rows="4" cols="50">${vo2.content}</textarea><br>

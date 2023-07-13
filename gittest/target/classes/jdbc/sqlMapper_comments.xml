@@ -26,12 +26,13 @@
 	<update id="COMMENTS_UPDATE"
 		parameterType="balgil.com.trip.comments.model.CommentsVO">
 		update comments
-		set rate = #{rate},
-		content = #{content, jdbcType=VARCHAR},
-		com_date = #{com_date},
-		likes = #{likes},
-		user_id = #{user_id},
-		act_id = #{act_id}
+		set 
+<!-- 		rate = #{rate}, -->
+		content = #{content},
+		com_date = sysdate,
+		save_name = #{save_name}
+<!-- 		likes = #{likes}, -->
+<!-- 		act_id = #{act_id} -->
 		where id = #{id}
 	</update>
 
