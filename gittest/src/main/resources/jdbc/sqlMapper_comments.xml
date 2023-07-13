@@ -10,7 +10,11 @@
 	</select>
 	
 	<select id="COMMENTS_SELECT_ONE" resultType="balgil.com.trip.comments.model.CommentsVO">
-		select * from comments where act_id = #{act_id}
+	    SELECT *
+		FROM comments
+		WHERE act_id = #{act_id}
+		ORDER BY likes DESC
+		FETCH FIRST 1 ROWS ONLY
 	</select>
 	
 	<insert id="COMMENTS_INSERT" parameterType="balgil.com.trip.comments.model.CommentsVO">
