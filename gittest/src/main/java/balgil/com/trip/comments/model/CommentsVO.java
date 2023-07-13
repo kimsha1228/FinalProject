@@ -1,6 +1,9 @@
 package balgil.com.trip.comments.model;
 
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,5 +20,10 @@ public class CommentsVO {
 	public String user_id;
 	public String save_name;
 	public int act_id;
+<<<<<<< HEAD
 	public MultipartFile file;
 }
+=======
+	private List<MultipartFile> file;
+}
+>>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git

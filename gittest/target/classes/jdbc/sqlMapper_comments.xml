@@ -9,10 +9,20 @@
 		resultType="balgil.com.trip.comments.model.CommentsVO">
 		select * from comments order by id desc
 	</select>
+<<<<<<< HEAD
 
 	<select id="COMMENTS_SELECT_ONE"
 		resultType="balgil.com.trip.comments.model.CommentsVO">
 		select * from comments where id = #{id}
+=======
+	
+	<select id="COMMENTS_SELECT_ONE" resultType="balgil.com.trip.comments.model.CommentsVO">
+	    SELECT *
+		FROM comments
+		WHERE act_id = #{act_id}
+		ORDER BY likes DESC
+		FETCH FIRST 1 ROWS ONLY
+>>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
 	</select>
 
 	<insert id="COMMENTS_INSERT"

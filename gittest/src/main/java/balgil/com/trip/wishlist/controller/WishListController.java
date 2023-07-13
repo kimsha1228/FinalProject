@@ -74,15 +74,4 @@ public class WishListController {
 		
 		return vos1;
 	}
-
-	@RequestMapping(value = "/insertWishList.do", method = RequestMethod.POST)
-	public String insertWishList(WishListVO vo) {
-		log.info("/insertWishList.do");
-		int result = service.insertWishList(vo);
-		if (result == 1) {
-			return "redirect:selectAllWishList.do";
-		} else {
-			return "error";
-		}
-	}
 }

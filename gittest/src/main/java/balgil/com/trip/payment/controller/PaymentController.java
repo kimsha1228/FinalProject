@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import balgil.com.trip.cart.model.CartVO;
+import balgil.com.trip.cart.service.CartService;
 import balgil.com.trip.payment.model.PaymentVO;
 import balgil.com.trip.payment.service.PaymentService;
 import balgil.com.trip.pointhistory.service.PointHistoryService;
@@ -34,6 +36,9 @@ public class PaymentController {
 	@Autowired
 	ReservationService res_service;
 
+	@Autowired
+	CartService c_service; 
+	
 	@Autowired
 	UsersService u_service; 
 	
@@ -95,9 +100,24 @@ public class PaymentController {
 				resvo.setRes_date(res_date);
 				
 				int res_result = res_service.insert(resvo);
-				log.info("res_result : {}", res_result);
+				
+				if(res_result==1) {
+					CartVO cartvo = new CartVO();
+					cartvo.setAct_id(vo.getAct_id());
+					cartvo.setUser_id(vo.getUser_id());
+					cartvo.setRes_date(res_date);
+					cartvo.setQuantity(vo.getQuantity());
+					
+					CartVO result_cart = c_service.selectOne(cartvo);
+					log.info("result_cart:{}", result_cart);
+					if(result_cart != null) {
+						c_service.deleteOneCart(result_cart);
+					}
+						return "redirect:reservationFailure.do";
+				}else {
+					return "redirect:reservationFailure.do";
+				}
 
-				return "redirect:reservationComplete.do";
 			}else {
 				return "redirect:reservationFailure.do";
 			}

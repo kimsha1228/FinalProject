@@ -3,6 +3,9 @@ const urlParams = new URL(location.href).searchParams;
 let id = urlParams.get('id');
 console.log(id);
 
+//지우자
+let temp;
+
 //onload...
 $(function(){
 
@@ -37,25 +40,34 @@ $(function(){
 	
 	//후기 한개 출력용
 	$.ajax({
-		url : "jsonSelectOneComment.do",
+		url : "json_comments_selectOne.do",
 		data:{act_id:id},
 		method:'GET',
 		dataType:'json',
 		success : function(arr) {
 			console.log('ajax...success:', arr);
+			temp=arr;
 			let vos = ``;
-			if(arr.length==0){
+			if(arr.id===0){
 				vos += `	
 					<span>후기가 비어있네요</span>
 				`;
 			}else{
-				$.each(arr,function(vo){
-	// 				console.log(arr[vo].name);
-					vos += `	
-						<span>후기가 있네요</span>
-					`;
-					
-				});
+				// 타임스탬프를 Date 객체로 변환
+				const date = new Date(arr.com_date);
+				// 년, 월, 일 추출
+				const year = date.getFullYear();
+				const month = String(date.getMonth() + 1).padStart(2, '0');
+				const day = String(date.getDate()).padStart(2, '0');
+				// 출력 형식에 맞게 조정
+				const formattedDate = `${year}-${month}-${day}`;
+				
+				//객체에 삽입
+				vos += `	
+					<p>작성일자:${formattedDate}</p>
+					<p>${arr.user_id}님: ${arr.content}</p>
+					<p>♥:${arr.likes}</p>
+				`;
 			}
 			$('#OneComment').html(vos);
 		},

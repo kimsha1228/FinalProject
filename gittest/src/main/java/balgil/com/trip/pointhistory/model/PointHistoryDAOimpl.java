@@ -43,6 +43,18 @@ public class PointHistoryDAOimpl implements PointHistoryDAO {
 		return sqlSession.insert("POINTHISTORY_USE_INSERT_BACK", vo);
 	}
 
+	@Override
+	public int saveInsert(String user_id, String history, String point) {
+		log.info("saveInsert()...");
+
+		PointHistoryVO vo = new PointHistoryVO();
+		vo.setUser_id(user_id);
+		vo.setHistory(history);
+		vo.setPoint(Integer.parseInt(point));
+		
+		return sqlSession.insert("POINTHISTORY_SAVE_INSERT", vo);
+	}
+
 //	@Override
 //	public List<PointHistoryVO> selectAll(PointHistoryVO vo) {
 //		

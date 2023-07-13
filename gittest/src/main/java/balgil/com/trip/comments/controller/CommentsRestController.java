@@ -55,6 +55,7 @@ public class CommentsRestController {
 		log.info("/json_comments_selectOne.do...{}",vo);
 		
 		CommentsVO vo2 = service.selectOne(vo);
+		log.info("comment result: {}",vo2);
 		if(vo2==null) vo2 = vo;
 		return vo2;
 	}

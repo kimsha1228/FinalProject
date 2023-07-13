@@ -20,11 +20,11 @@ public class UsersService {
 		log.info("UsersService()...");
 	}
 
-	public List<UsersVO> selectAll() {
-		return dao.selectAll();
-	}
+//	public List<UsersVO> selectAll() {
+//		return dao.selectAll();
+//	}
 
-	public UsersVO selectOne(UsersVO vo) {
+	public UsersVO selectOne(UsersVO vo) { //json용
 		return dao.selectOne(vo);
 	}
 
@@ -44,10 +44,6 @@ public class UsersService {
 		return dao.login(vo);
 	}
 
-	public List<UsersVO> searchList(String searchKey, String searchWord) {
-		return dao.searchList(searchKey, searchWord);
-	}
-
 	public UsersVO idCheck(UsersVO vo) {
 		return dao.idCheck(vo);
 	}
@@ -56,12 +52,8 @@ public class UsersService {
 		return dao.pointUpdate(user_id, point);
   }
 
-	public int pointInsertBack(String user_id, String point) {
-		return dao.pointInsertBack(user_id, point);
-	}
-
-	public UsersVO selectOneUser(UsersVO vo) {
-		return dao.selectOneUser(vo);
+	public int pointInsert(String user_id, String point) {
+		return dao.pointInsert(user_id, point);
 	}
 
 	public UsersVO selectUsersRecord(UsersVO vo) {
@@ -70,6 +62,26 @@ public class UsersService {
 
 	public int typeUpdate(UsersVO vo) {
 		return dao.typeUpdate(vo);
+	}
+
+	public List<UsersVO> selectAllSeller() {
+		return dao.selectAllSeller();
+	}
+
+	public List<UsersVO> selectAllUser() {
+		return dao.selectAllUser();
+	}
+
+	public List<UsersVO> searchListSeller(String searchKey, String searchWord) {
+		return dao.searchListSeller(searchKey, searchWord);
+	}
+
+	public List<UsersVO> searchListUser(String searchKey, String searchWord) {
+		return dao.searchListUser(searchKey, searchWord);
+	}
+
+	public int sellerTypeUpdate(UsersVO vo) {
+		return dao.sellerTypeUpdate(vo);
 	}
 
 //	public int loginPoint(UsersVO vo2) {
