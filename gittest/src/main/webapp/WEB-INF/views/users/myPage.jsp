@@ -10,15 +10,32 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h4><a href="myInfo.do?user_id=${user_id}">내 정보 관리(X)</a></h4>
-	<h4><a href="selectAllUserCoupon.do">쿠폰 페이지(X)</a></h4>
-	<h4><a href="selectAllPoint.do">포인트 페이지(X)</a></h4>
-	<h4><a href="selectAllCart.do?user_id=${user_id}">장바구니 페이지(세션)</a></h4>
-	<h4><a href="selectAllCart.do?user_id=john123">장바구니 페이지</a></h4>
-	<h4><a href="selectAllReservation.do?user_id=${user_id}">액티비티 예약내역 페이지</a></h4>
-	<h4><a href="selectMyComments.do">이용후기 페이지(연결)</a></h4>
-	<h4><a href="selectAllUserContact.do">문의내역 페이지(연결)</a></h4>
-	<h4><a href="logout.do">로그아웃 메인페이지</a></h4>
+	<h1>마이페이지</h1>
+	<table id="usersList">
+		<tr>
+			<td><img width="50px" src="resources/uploadimg/${users.img}">
+				<a href="myInfo.do?user_id=sss">내 정보 관리</a>
+			</td>
+		</tr>
+		<tr>
+			<td><a href="#">쿠폰</a></td>
+			<td><a href="#">포인트</a></td>
+		</tr>
+	</table>
 	
+	<table>
+		<tr>
+			<td><a href="selectAllCart.do?user_id=john123">장바구니</a></td>
+		</tr>
+		<tr>
+			<td><a href="#">이용 후기</a></td>
+		</tr>
+		<tr>
+			<td><a href="selectAllReservation.do?user_id=john123">예약 내역</a></td>
+		</tr>
+		<tr>
+			<td><a href="#">문의내역</a></td>
+		</tr>
+	</table>
 </body>
 </html>

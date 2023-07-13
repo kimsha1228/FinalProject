@@ -13,4 +13,5 @@ public interface WishListDAO {
     WishListVO selectOne(WishListVO vo);
     
     void addToWishList(String user_id, int act_id);
+
 }

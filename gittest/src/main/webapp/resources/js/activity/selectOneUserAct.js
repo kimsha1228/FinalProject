@@ -94,6 +94,11 @@ $(function(){
 	document.getElementById('datePicker').value = now.toISOString().slice(0, 10); //자릿수짜르기
 	document.getElementById('datePicker').setAttribute("min", now); //오늘 이전 날짜 설정 못하게
 	
+	//날짜를 제한하는
+	var now_utc = Date.now(); //밀리초
+	var timeOff = new Date().getTimezoneOffset()*60000; //분단위를 밀리초로 변환
+	var today = new Date(now_utc-timeOff).toISOString().split("T")[0]; //오늘 날짜를 구함
+	document.getElementById("datePicker").setAttribute("min", today); //date의 min 속성을 이용해 오늘 이전은 선택 불가능하게 설정
 });
 //end onload
 

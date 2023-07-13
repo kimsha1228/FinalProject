@@ -25,7 +25,7 @@ public class WishListController {
 	public String insertWishListOK(WishListVO vo) {
 		log.info("/insertWishListOK.do..{}",vo);
 		
-		int result = service.insert(vo);
+		int result = service.insertWishList(vo);
 		
 		if(result==1) {
 			return "{\"result\":\"OK\"}";

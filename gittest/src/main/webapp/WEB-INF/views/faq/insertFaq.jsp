@@ -4,31 +4,33 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>자주묻는질문</title>
+<title>자주 묻는 질문</title>
 <jsp:include page="../css.jsp"></jsp:include>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="resources/js/faq/insertFaq.js"></script>
+
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>작성</h1>
+	<h1>자주 묻는 질문</h1>
 	
-	<form action="insertFaqOK.do" method="post">
+	<form action="insertFaqOK.do" method="get">
 		<table id="boardList">
 			<tr>
-				<td><label for="title">title:</label></td>
-				<td><input type="text" id="title" name="title" value="title1">
+				<td><label for="title">제목</label></td>
+				<td><input type="text" id="title" name="title" value="faq 제목">
 				</td>
 			</tr>
 			<tr>
-				<td><label for="content">content:</label></td>
-				<td><textarea rows="10" cols="20" name="content">content1</textarea></td>
-			</tr>
-			<tr>
-				<td><label for="writer">writer:</label></td>
-				<td>${user_id}<input type="hidden" id="writer" name="writer" value="${user_id}"></td>
+				<td><label for="content">내용</label></td>
+				<td><textarea rows="10" cols="20" name="content" value="content">faq 내용</textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" class="myButton"></td>
 			</tr>
+			
+	
 		</table>
 	</form>
 </body>

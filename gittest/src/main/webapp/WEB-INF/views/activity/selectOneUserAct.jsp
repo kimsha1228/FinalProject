@@ -16,7 +16,7 @@
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 	console.log("현재 주소:",result);
 </script>
-<script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=4"></script>
+<script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=5"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>

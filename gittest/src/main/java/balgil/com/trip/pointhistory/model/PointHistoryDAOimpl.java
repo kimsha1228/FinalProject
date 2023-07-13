@@ -1,9 +1,11 @@
 package balgil.com.trip.pointhistory.model;
 
-import java.util.List;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.aggregation.ConvertOperators.ToDate;
 import org.springframework.stereotype.Repository;
 
 import lombok.extern.slf4j.Slf4j;

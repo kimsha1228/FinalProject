@@ -67,7 +67,13 @@ public class ActivityController {
 	public String insertActOK(ActivityVO vo) throws IllegalStateException, IOException {
 		log.info("insertActOK로 온 데이터:{}", vo);
 		log.info("file의 갯수 1이면 파일이 있을수도 없을수도 있음:{}", vo.getFile().size());
-
+		
+		//이미지는 최대 5장까지만 업로드 가능함
+		if(vo.getFile().size()>5) {
+			log.info("이미지가 5장 이상입니다.");
+			return "redirect:insertAct.do";
+		};
+		
 		int result = service.insert(vo);
 
 		// 상품 입력에 성공하면 이미지를 삽입하기
@@ -130,7 +136,6 @@ public class ActivityController {
 		} else {
 			return "redirect:insertAct.do";
 		}
-
 	}
 
 	@RequestMapping(value = "/updateAct.do", method = RequestMethod.GET)

@@ -47,7 +47,7 @@ public class FaqController {
 		return "faq/insertFaq";
 	}
 	
-	@RequestMapping(value = "/insertFaqOK.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/insertFaqOK.do", method = RequestMethod.GET)
 	public String insertFaqOK(FaqVO vo) {
 		log.info("/insertFaqOK.do...{}", vo);
 		
