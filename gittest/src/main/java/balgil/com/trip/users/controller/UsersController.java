@@ -78,7 +78,7 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value = "/searchUserList.do", method = RequestMethod.GET)
-	public String u_searchList(String searchKey, String searchWord, Model model) {
+	public String searchUserList(String searchKey, String searchWord, Model model) {
 		log.info("/searchUserList.do...searchKey:{}",searchKey);
 		log.info("/searchUserList.do...searchWord:{}",searchWord);
 		
