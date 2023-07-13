@@ -1,11 +1,9 @@
 package balgil.com.trip.pointhistory.model;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.aggregation.ConvertOperators.ToDate;
 import org.springframework.stereotype.Repository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -55,9 +53,17 @@ public class PointHistoryDAOimpl implements PointHistoryDAO {
 		return sqlSession.insert("POINTHISTORY_SAVE_INSERT", vo);
 	}
 
+	@Override
+	public PointHistoryVO selectOne(String user_id) {
+		log.info("selectOne()...", user_id);
+		
+		return sqlSession.selectOne("POINTHISTORY_SELECT_ONE", user_id);
+	}
+
 //	@Override
 //	public List<PointHistoryVO> selectAll(PointHistoryVO vo) {
-//		
+//		log.info("selectAll()..."vo);
+//
 //		List<PointHistoryVO> vos = sqlSession.selectList("POINTHISTORY_SELECTLIST", vo);
 //		
 //		return vos;

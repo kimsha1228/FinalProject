@@ -20,10 +20,6 @@ public class UsersService {
 		log.info("UsersService()...");
 	}
 
-//	public List<UsersVO> selectAll() {
-//		return dao.selectAll();
-//	}
-
 	public UsersVO selectOne(UsersVO vo) { //json용
 		return dao.selectOne(vo);
 	}
@@ -84,7 +80,7 @@ public class UsersService {
 		return dao.sellerTypeUpdate(vo);
 	}
 
-//	public int loginPoint(UsersVO vo2) {
-//		return dao.loginPoint(vo2);
-//	}
+	public int loginPoint(UsersVO vo2) {
+		return dao.loginPoint(vo2);
+	}
 }

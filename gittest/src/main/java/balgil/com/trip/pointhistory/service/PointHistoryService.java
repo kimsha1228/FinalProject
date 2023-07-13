@@ -33,6 +33,10 @@ public class PointHistoryService {
 		return dao.saveInsert(user_id, history, point);
 	}
 
+	public PointHistoryVO selectOne(String user_id) {
+		return dao.selectOne(user_id);
+	}
+
 //	public List<PointHistoryVO> selectAll(PointHistoryVO vo) {
 //		return dao.selectAll(vo);
 //	}

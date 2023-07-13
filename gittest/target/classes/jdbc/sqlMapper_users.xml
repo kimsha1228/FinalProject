@@ -39,9 +39,9 @@
 		update users set type = 1 where user_id = #{user_id}
 	</update>
 	
-<!-- 	<update id="LOGIN_POINT_UPDATE"> -->
-<!-- 		update users set point = point + 100 where user_id = #{user_id} -->
-<!-- 	</update> -->
+	<update id="LOGIN_POINT_UPDATE">
+		update users set point = point + 100 where user_id = #{user_id}
+	</update>
 
 	<select id="U_SELECT_ALL_SELLER" resultType="balgil.com.trip.users.model.UsersVO"> 
 		select * from users where type in (1, 2) order by type desc

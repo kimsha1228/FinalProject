@@ -302,6 +302,12 @@ public class UsersController {
 			return "redirect:login.do?message=fail";
 		}else {
 			session.setAttribute("user_id", vo2.getUser_id());
+			PointHistoryVO p_vo = his_service.selectOne(vo2.getUser_id()); 
+			if(p_vo==null) {
+				int result = service.pointInsert(vo2.getUser_id(), "100");
+				int his_result = his_service.saveInsert(vo2.getUser_id(), "로그인", "100");
+				log.info("result:{},{}", result, his_result);
+			}
 			return "redirect:home.do";
 		}
 	}

@@ -36,7 +36,7 @@ public interface UsersDAO {
 
 	int sellerTypeUpdate(UsersVO vo);
 	
-//	int loginPoint(UsersVO vo2);
+	int loginPoint(UsersVO vo2);
 	
 }
 
