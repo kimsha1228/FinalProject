@@ -46,23 +46,6 @@ public class FaqDAOimpl implements FaqDAO {
 		return sqlSession.selectList("FAQ_SELECT_ALL");
 	}
 	
-	
-	
-	@Override
-	public List<FaqVO> searchList(String searchKey, String searchWord){
-		log.info("searchList()....searchKey:{}", searchKey);
-		log.info("searchList()....searchWord:{}", searchWord);
-		
-		String key = "";
-		if(searchKey.equals("title")) {
-			key = "FAQ_SEARCH_LIST_TITLE";
-		}else if(searchKey.equals("content")) {
-			key = "FAQ_SEARCH_LIST_CONTENT";
-		}else {
-			key = "FAQ_SEARCH_LIST_WRITER";
-		}
-		return sqlSession.selectList(key, "%"+searchWord+"%");
-	}
 
 	@Override
 	public FaqVO selectOne(FaqVO vo) {

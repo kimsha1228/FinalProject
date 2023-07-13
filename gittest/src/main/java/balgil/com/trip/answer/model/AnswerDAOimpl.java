@@ -14,10 +14,7 @@ public class AnswerDAOimpl implements AnswerDAO {
 	
 	@Autowired
 	SqlSession sqlSession;
-	
-	public AnswerDAOimpl() {
-		log.info("AnswerDAOimpl....");
-	}
+
 	
 	@Override
 	public int insert(AnswerVO vo) {
@@ -38,9 +35,9 @@ public class AnswerDAOimpl implements AnswerDAO {
 	}
 
 	@Override
-	public List<AnswerVO> selectAll() {
-		log.info("selectAll()......");
-		return sqlSession.selectList("ANSWER_SELECT_ALL");
+	public List<AnswerVO> selectAll(AnswerVO vo) {
+		log.info("selectAll()......", vo);
+		return sqlSession.selectList("ANSWER_SELECT_ALL", vo);
 	}
 
 	
