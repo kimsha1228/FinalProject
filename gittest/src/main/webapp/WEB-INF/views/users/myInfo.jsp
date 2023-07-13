@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -10,47 +10,40 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>내 정보 수정</h1>
-	<form action="u_updateOK.do" method="post" enctype="multipart/form-data">
+	<h1>내 정보 관리</h1>
 		<table id="usersList">
 			<tr>
-				<td><label for="img">프로필 사진:</label></td>
-				<td><input type="file" id="img" name="img" value=""></td>
+				<td><label for="img">프로필</label></td>
+				<td><img width="100px" src="resources/uploadimg/${users.img}"></td>
 			</tr>
 			<tr>
-				<td><label for="name">이름:</label></td>
-				<td><input type="text" id="name" name="name" value=""></td>
+				<td><label for="user_id">아이디</label></td>
+				<td>${users.user_id}</td>
 			</tr>
 			<tr>
-				<td><label for="name">영문명:</label></td>
+				<td><label for="name">이름</label></td>
+				<td>${users.name}</td>
+			</tr>
+			<tr>
+				<td><label for="eng_name">영문명</label></td>
 				<td>
-					<input type="text" id="last_name" name="last_name" value="" placeholder="영문 성">
-					<input type="text" id="first_name" name="first_name" value="" placeholder="영문 이름">
+					${users.first_name} ${users.last_name}
 				</td>
 			</tr>
 			<tr>
-				<td><label for="tel">전화번호:</label></td>
+				<td><label for="tel">전화번호</label></td>
 				<td>
-					<input type="text" id="tel1" name="tel1" value="010">
-					<input type="text" id="tel2" name="tel2" value="">
-					<input type="text" id="tel3" name="tel3" value="">
+					${users.tel1} - ${users.tel2} - ${users.tel3}
 				</td>
 			</tr>
 			<tr>
-				<td><label for="email">이메일:</label></td>
+				<td><label for="email">이메일</label></td>
 				<td>
-					<input type="text" id="email1" name="email1" value="tester">
-					<input type="text" id="email2" name="email2" value="@naver.com">
+					${users.email1}@${users.email2}
 				</td>
-			</tr>
-			<tr style="margin-top:100px">
-				<th colspan="2">
-				<input type="submit" value="저장하기">
-				</th>
 			</tr>
 		</table>
-	</form>
-	<button type="button" class="myButton">회원탈퇴</button>
+		<a href="u_update.do?user_id=${user_id}">정보수정</a>
+		<a href="u_deleteOK.do?user_id=${user_id}">회원탈퇴</a>
 </body>
 </html>
-	

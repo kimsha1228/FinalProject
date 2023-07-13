@@ -110,5 +110,17 @@ public class UsersDAOimpl implements UsersDAO {
 		return sqlSession.selectOne("USER_SELECT_ONE", vo);
 	}
 
+	@Override
+	public UsersVO selectUsersRecord(UsersVO vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int typeUpdate(UsersVO vo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
 
