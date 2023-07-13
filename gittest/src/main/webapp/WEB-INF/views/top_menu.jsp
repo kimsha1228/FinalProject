@@ -20,6 +20,8 @@
 	<li><a href ="Coupon.do">쿠폰 가기</a></li>
   
 	<li><a href="cart.do">장바구니 가기</a></li>
+
+	<li><a href="u_insert.do">회원가입</a></li>
 	
 	<li><a href="login.do">로그인</a></li>
 	
@@ -28,4 +30,8 @@
 	<li><a href="wishlist.do">위시리스트 가기</a></li>
 	
 	<li><a href="destination.do">여행지 가기</a></li>
+	
+	<li><a href="u_update.do?user_id=john123">회원수정</a></li>
+	
+	<li><a href="myInfo.do?user_id=john123">내 정보 관리</a></li>
 </ul>

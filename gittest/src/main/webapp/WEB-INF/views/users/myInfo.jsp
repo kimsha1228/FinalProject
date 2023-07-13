@@ -10,33 +10,41 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>내 정보 수정</h1>
-	<table id="usersList">
-		<tr>
-			<td><img width="50px" src="resources/uploadimg/${users.img}">
-				<a href="u_update.do?user_id=sss">내 정보 관리</a>
-			</td>
-		</tr>
-		<tr>
-			<td><a href="#">쿠폰</a></td>
-			<td><a href="#">포인트</a></td>
-		</tr>
-	</table>
-	
-	<table>
-		<tr>
-			<td><a href="selectAllCart.do?user_id=john123">장바구니</a></td>
-		</tr>
-		<tr>
-			<td><a href="#">이용 후기</a></td>
-		</tr>
-		<tr>
-			<td><a href="selectAllReservation.do?user_id=john123">예약 내역</a></td>
-		</tr>
-		<tr>
-			<td><a href="#">문의내역</a></td>
-		</tr>
-	</table>
+	<h1>내 정보 관리</h1>
+		<table id="usersList">
+			<tr>
+				<td><label for="img">프로필</label></td>
+				<td><img width="100px" src="resources/uploadimg/${users.img}"></td>
+			</tr>
+			<tr>
+				<td><label for="user_id">아이디</label></td>
+				<td>${users.user_id}</td>
+			</tr>
+			<tr>
+				<td><label for="name">이름</label></td>
+				<td>${users.name}</td>
+			</tr>
+			<tr>
+				<td><label for="eng_name">영문명</label></td>
+				<td>
+					${users.first_name} ${users.last_name}
+				</td>
+			</tr>
+			<tr>
+				<td><label for="tel">전화번호</label></td>
+				<td>
+					${users.tel1} - ${users.tel2} - ${users.tel3}
+				</td>
+			</tr>
+			<tr>
+				<td><label for="email">이메일</label></td>
+				<td>
+					${users.email1}@${users.email2}
+				</td>
+			</tr>
+		</table>
+		<a href="u_update.do?user_id=${user_id}">정보수정</a>
+		<a href="u_deleteOK.do?user_id=${user_id}">회원탈퇴</a>
 </body>
 </html>
 

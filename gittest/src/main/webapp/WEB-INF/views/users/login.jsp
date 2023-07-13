@@ -15,7 +15,7 @@
 		<table>
 			<tr>
 				<td><label for="user_id">아이디</label></td>
-				<td><input type="text" id="user_id" name="user_id" value="" placeholder="아이디"></td>
+				<td><input type="text" id="user_id" name="user_id" value="" placeholder="아이디" autofocus></td>
 			</tr>
 			<tr>
 				<td><label for="pw">패스워드</label></td>

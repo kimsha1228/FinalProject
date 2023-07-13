@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import balgil.com.trip.pointhistory.model.PointHistoryDAO;
 import balgil.com.trip.pointhistory.model.PointHistoryVO;
+import balgil.com.trip.users.model.UsersVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

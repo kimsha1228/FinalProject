@@ -63,4 +63,16 @@ public class UsersService {
 	public UsersVO selectOneUser(UsersVO vo) {
 		return dao.selectOneUser(vo);
 	}
+
+	public UsersVO selectUsersRecord(UsersVO vo) {
+		return dao.selectUsersRecord(vo);
+	}
+
+	public int typeUpdate(UsersVO vo) {
+		return dao.typeUpdate(vo);
+	}
+
+//	public int loginPoint(UsersVO vo2) {
+//		return dao.loginPoint(vo2);
+//	}
 }
