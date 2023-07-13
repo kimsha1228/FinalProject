@@ -95,6 +95,13 @@ public class ReservationController {
 		return "reservation/reservationComplete";
 	}
 	
+	@RequestMapping(value = "/reservationFailure.do", method = RequestMethod.GET)
+	public String reservationFailure(ReservationVO vo) {
+		log.info("/reservationFailure.do...{}", vo);
+		
+		return "reservation/reservationFailure";
+	}
+	
 	@RequestMapping(value = "/selectAllReservation.do", method = RequestMethod.GET)
 	public String selectAllReservation(ReservationVO vo, Model model) {
 		log.info("/selectAllReservation.do");

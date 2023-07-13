@@ -22,18 +22,18 @@
 				</td>
 			</tr>
 			<tr>
-				<td><label for="title">title:</label></td>
+				<td><label for="title">제목</label></td>
 				<td>
 				<input type="text" id="title" name="title" value="${vo2.title}">
 				</td>
-			</tr>
+			</tr>			
 			<tr>
-				<td><label for="content">content:</label></td>
+				<td><label for="content">내용</label></td>
 				<td><textarea rows="10" cols="20" name="content">${vo2.content}</textarea></td>
 			</tr>
 			<tr>
-				<td><label for="user_id">user_id:</label></td>
-				<td>${vo2.user_id}<input type="hidden" id="user_id" name="user_id" value="${vo2.user_id}"></td>
+				<td><label for="user_id">글쓴이</label></td>
+				<td><input type="hidden" id="title" name="title" value="user_id">${vo2.user_id}</td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" class="myButton"></td>

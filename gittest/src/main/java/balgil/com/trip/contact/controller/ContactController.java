@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import balgil.com.trip.activity.model.ActivityVO;
+import balgil.com.trip.answer.model.AnswerVO;
+import balgil.com.trip.answer.service.AnswerService;
 import balgil.com.trip.contact.model.ContactVO;
 import balgil.com.trip.contact.service.ContactService;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +20,9 @@ import lombok.extern.slf4j.Slf4j;
 public class ContactController {
 	@Autowired
 	ContactService service;
+	
+	@Autowired
+	AnswerService answerservice;
 	
 	@RequestMapping(value = "/selectAllContact.do", method = RequestMethod.GET)
 	public String selectAllContact(Model model) {
@@ -35,6 +40,13 @@ public class ContactController {
 		
 		ContactVO vo2 = service.selectOne(vo);
 		model.addAttribute("vo2", vo2);
+		
+		AnswerVO avo = new AnswerVO();
+		avo.setContact_id(vo.getId());
+		List<AnswerVO> coms = answerservice.selectAll(avo);
+		log.info("{}",coms);
+		
+		model.addAttribute("coms", coms);
 		
 		return "contact/selectOneContact";
 	}
@@ -60,7 +72,7 @@ public class ContactController {
 		}
 	}
 	
-	@RequestMapping(value = "/updateContact.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/updateContact.do", method = RequestMethod.GET)
 	public String updateContact(ContactVO vo, Model model) {
 		log.info("/updateContact.do...{}", vo);
 
@@ -71,7 +83,7 @@ public class ContactController {
 		return "contact/updateContact";
 	}
 	
-	@RequestMapping(value = "/updateContactOK.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/updateContactOK.do", method = RequestMethod.POST)
 	public String updateContactOK(ContactVO vo) {
 		log.info("/updateContactOK.do...{}", vo);
 

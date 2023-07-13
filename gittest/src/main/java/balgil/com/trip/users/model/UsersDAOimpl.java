@@ -30,7 +30,7 @@ public class UsersDAOimpl implements UsersDAO {
 	public UsersVO selectOne(UsersVO vo) {
 		log.info("selectOne()...{}", vo);
 
-		return sqlSession.selectOne("U_SELECT_ONE", vo);
+		return sqlSession.selectOne("USER_SELECT_ONE", vo);
 	}
 
 	@Override
@@ -109,6 +109,27 @@ public class UsersDAOimpl implements UsersDAO {
 		
 		return sqlSession.selectOne("USER_SELECT_ONE", vo);
 	}
+
+	@Override
+	public UsersVO selectUsersRecord(UsersVO vo) {
+		log.info("selectUsersRecord()...{}", vo);
+		
+		return sqlSession.selectOne("USER_RECORD", vo);
+	}
+
+	@Override
+	public int typeUpdate(UsersVO vo) {
+		log.info("typeUpdate()...{}", vo);
+
+		return sqlSession.update("U_TYPE_UPDATE", vo);
+	}
+
+//	@Override
+//	public int loginPoint(UsersVO vo2) {
+//		log.info("loginPoint()...{}", vo2);
+//
+//		return sqlSession.update("LOGIN_POINT_UPDATE", vo2);
+//	}
 
 }
 

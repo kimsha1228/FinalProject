@@ -13,4 +13,5 @@
 		insert into point_history (user_id, history, point, point_date)
 		values (#{user_id}, '구매취소', #{point}, sysdate)
 	</insert>
+	
 </mapper>
