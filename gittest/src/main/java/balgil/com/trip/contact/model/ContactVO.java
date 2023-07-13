@@ -19,6 +19,7 @@ public class ContactVO {
 	public String seller_id;
 	public int act_id;
 	public String act_name;
-	public MultipartFile multipartFile;
+	public MultipartFile file;
+
 
 }

@@ -28,7 +28,7 @@
 			</tr>
 			<tr>
 				<td>사진</td>
-				<td><input type="file" name="file" ></td>
+				<td><input type="file" name="file" id="file"></td>
 			</tr>
 			<tr>
 				<td><label for="user_id">유저id</label></td>
@@ -37,6 +37,10 @@
 			<tr>
 				<td><label for="seller_id">판매자id</label></td>
 				<td>seller_id<input type="hidden" id="seller_id" name="seller_id" value="seller_id"></td>
+			</tr>
+			<tr>
+				<td><label for="act_id">act_id</label></td>
+				<td>act_id<input type="hidden" id="act_id" name="act_id" value="1"></td>
 			</tr>
 			<tr>
 				<td><label for="act_name">act_name</label></td>
