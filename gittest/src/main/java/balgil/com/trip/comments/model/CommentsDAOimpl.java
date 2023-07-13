@@ -43,10 +43,11 @@ public class CommentsDAOimpl implements CommentsDAO {
 
 	@Override
 	public int update(CommentsVO vo) {
-		log.info("update()...{}", vo);
-		
-		return sqlSession.update("COMMENTS_UPDATE", vo);
+	    log.info("update()...{}", vo);
+	    return sqlSession.update("COMMENTS_UPDATE", vo);
 	}
+
+
 
 	@Override
 	public int delete(CommentsVO vo) {

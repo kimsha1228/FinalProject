@@ -58,16 +58,18 @@ public class CommentsController {
 	}
 
 	@RequestMapping(value = "/selectOneComments.do", method = RequestMethod.GET)
-	public String selectOneComments(CommentsVO vo, Model model) {
-		log.info("/selectOneComments.do...{}", vo);
+	public String selectOneComments(Model model, CommentsVO vo) {
+	    log.info("/selectOneComments.do... ", vo);
 
-		CommentsVO vo2 = service.selectOne(vo);
-		log.info("vo2:{}", vo2);
+	    CommentsVO vo2 = service.selectOne(vo);
+	    log.info("vo2: {}", vo2);
 
-		model.addAttribute("vo2", vo2);
+	    model.addAttribute("vo2", vo2);
 
-		return "comments/selectOne";
+	    return "comments/selectOne";
 	}
+
+
 
 	@RequestMapping(value = "/insertComments.do", method = RequestMethod.GET)
 	public String insertComments(CommentsVO vo) {
@@ -91,81 +93,75 @@ public class CommentsController {
 	}
 
 	@RequestMapping(value = "/updateComments.do", method = RequestMethod.GET)
-	public String updateComments(CommentsVO vo, Model model) {
-		log.info("/updateComments.do...{}", vo);
+	public String updateComments(Model model, CommentsVO vo) {
+	    log.info("/updateComments.do...{}", vo);
 
-		CommentsVO vo2 = service.selectOne(vo);
-		log.info("vo2:{}", vo2);
+	    CommentsVO vo2 = service.selectOne(vo);
+	    log.info("vo2:{}", vo2);
 
-		model.addAttribute("vo2", vo2);
+	    model.addAttribute("vo2", vo2);
 
-		return "comments/updateComments";
+	    return "comments/updateComments";
 	}
-	
-
-//
-//	@RequestMapping(value = "/updateCommentsOK.do", method = RequestMethod.POST)
-//	public String updateCommentsOK(CommentsVO vo, @RequestParam("file") MultipartFile file) throws IOException {
-//	    log.info("/updateCommentsOK.do...{}", vo);
-//
-//	    String originalFilename = file.getOriginalFilename();
-//	    int fileNameLength = originalFilename.length();
-//	    log.info("originalFilename:{}", originalFilename);
-//	    log.info("fileNameLength:{}", fileNameLength);
-//
-//	    if (fileNameLength != 0) {
-//	        vo.setAct_id(originalFilename);
-//	        // 웹 어플리케이션이 갖는 실제 경로: 이미지를 업로드할 대상 경로를 찾아서 파일저장.
-//	        String realPath = sContext.getRealPath("resources/uploadimg");
-//	        log.info("realPath : {}", realPath);
-//
-//	        File f = new File(realPath + "\\" + vo.getAct_id());
-//	        file.transferTo(f);
-//
-//	        // 썸네일 이미지 생성
-//	        BufferedImage originalBufferImg = ImageIO.read(f);
-//	        BufferedImage thumbBufferImg = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
-//	        Graphics2D graphics = thumbBufferImg.createGraphics();
-//	        graphics.drawImage(originalBufferImg, 0, 0, 50, 50, null);
-//
-//	        File thumbFile = new File(realPath + "/thumb_" + vo.getAct_id());
-//	        String formatName = vo.getAct_id().substring(vo.getAct_id().lastIndexOf(".") + 1);
-//	        log.info("formatName : {}", formatName);
-//	        ImageIO.write(thumbBufferImg, formatName, thumbFile);
-//	    }
-//
-//	    log.info("{}", vo);
-//
-//	    int result = service.update(vo);
-//	    log.info("result:{}", result);
-//
-//	    if (result == 1) {
-//	        return "redirect:selectOneComments.do?Act_id=" + vo.getAct_id();
-//	    } else {
-//	        return "redirect:updateComments.do?Act_id=" + vo.getAct_id();
-//	    }
-//	}
 
 
-	@RequestMapping(value = "/deleteCommentsOK.do", method = RequestMethod.GET)
-	public String deleteCommentsOK(CommentsVO vo) {
-	    log.info("/deleteCommentsOK.do...{}", vo);
+	@RequestMapping(value = "/updateCommentsOK.do", method = RequestMethod.POST)
+	public String updateCommentsOK(CommentsVO vo) throws IllegalStateException, IOException {
+	    log.info("/updateCommentsOK.do...{}", vo);
 
-	    int result = service.delete(vo);
+	    String originalFilename = vo.getFile().getOriginalFilename();
+	    int fileNameLength = vo.getFile().getOriginalFilename().length();
+	    log.info("getOriginalFilename:{}", vo.getFile().getOriginalFilename());
+		log.info("fileNameLength:{}", fileNameLength);
 
-	    log.info("result...{}", result);
+	    if (fileNameLength != 0) {
+	        // 웹 어플리케이션이 갖는 실제 경로: 이미지를 업로드할 대상 경로를 찾아서 파일 저장.
+	        String realPath = sContext.getRealPath("resources/uploadimg");
+	        log.info("realPath: {}", realPath);
+
+	        File f = new File(realPath + File.separator + originalFilename);
+	        vo.getFile().transferTo(f);
+
+	        // 썸네일 이미지 생성
+	        BufferedImage originalBufferImg = ImageIO.read(f);
+	        BufferedImage thumbBufferImg = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
+	        Graphics2D graphics = thumbBufferImg.createGraphics();
+	        graphics.drawImage(originalBufferImg, 0, 0, 50, 50, null);
+
+	        File thumbFile = new File(realPath +"thumb_" + originalFilename);
+	        String formatName = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
+	        log.info("formatName: {}", formatName);
+	        ImageIO.write(thumbBufferImg, formatName, thumbFile);
+
+	     
+	    }
+
+	    log.info("{}", vo);
+
+	    
+
+	    int result = service.update(vo);
+	    log.info("result: {}", result);
 
 	    if (result == 1) {
-	        return "redirect:/selectAllComments.do?user_id=" + vo.getUser_id();
+	        return "redirect:selectAllComments.do?user_id=" + vo.getUser_id();
 	    } else {
-	        return "redirect:/selectOneComments.do?act_id=" + vo.getAct_id();
+	        return "redirect:updateComments.do?Id=" + (vo != null ? vo.getId() : "");
 	    }
 	}
 
 
 
 
+	@RequestMapping(value = "/deleteCommentsOK.do", method = RequestMethod.GET)
+	public String deleteCommentsOK(Model model, CommentsVO vo, @RequestParam("user_id") String user_id) {
+	    log.info("/deleteCommentsOK.do...{}", vo);
 
+	    int result = service.delete(vo);
 
+	    log.info("result...{}", result);
+
+	    return "redirect:selectAllComments.do?user_id=" + user_id;
+	}
 
 }
