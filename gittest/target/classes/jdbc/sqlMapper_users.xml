@@ -67,10 +67,6 @@
 		select * from users where user_id like #{searchWord} and type = 3
 	</select>
 	
-	<update id="USERPOINT_PLUS">
-		update users set point = point + #{point} where user_id = #{user_id}
-	</update>
-	
 	<!-- reservation용입니다 -->
 	<select id="USER_SELECT_ONE" resultType="balgil.com.trip.users.model.UsersVO"> 
 		select * from users where user_id = #{user_id}

@@ -29,7 +29,6 @@ public class CartService {
 	}
 
 	public int deleteOneCart(CartVO vo) {
-		
 		return dao.deleteOneCart(vo);
 	}
 
@@ -44,8 +43,6 @@ public class CartService {
 	public int updateOneCart(CartVO vo) {
 		return dao.updateOneCart(vo);
 	}
-	 
-	 
-	 
+
    
 }
