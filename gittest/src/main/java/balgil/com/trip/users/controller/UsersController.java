@@ -156,6 +156,7 @@ public class UsersController {
 		
 		
 		if (result == 1) {
+			int his_result = his_service.saveInsert(vo.getUser_id(), "회원가입", "3000");
 			return "redirect:home.do";
 		} else {
 			return "redirect:u_insert.do";

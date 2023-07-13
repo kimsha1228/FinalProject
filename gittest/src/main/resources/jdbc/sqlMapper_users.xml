@@ -5,8 +5,8 @@
 
 <mapper namespace="balgil.com.trip.users">
 	<insert id="U_INSERT">
-		insert into users(id, user_id, pw, name, tel, eng_name, email, type) 
-		values(seq_user.nextval, #{user_id}, #{pw}, #{name}, #{tel}, #{eng_name}, #{email}, #{type})
+		insert into users(id, user_id, pw, name, tel, eng_name, email, type, point) 
+		values(seq_user.nextval, #{user_id}, #{pw}, #{name}, #{tel}, #{eng_name}, #{email}, #{type}, 3000)
 	</insert>
 	
 	<update id="U_UPDATE">
