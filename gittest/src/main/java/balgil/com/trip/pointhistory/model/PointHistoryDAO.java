@@ -10,6 +10,8 @@ public interface PointHistoryDAO {
 
 	int useInsertBack(String user_id, String point);
 
+	int saveInsert(String user_id, String history, String point);
+
 //	List<PointHistoryVO> selectAll(PointHistoryVO vo);
 
 }
