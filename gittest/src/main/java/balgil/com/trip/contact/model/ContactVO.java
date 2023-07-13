@@ -1,6 +1,7 @@
 package balgil.com.trip.contact.model;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,4 +19,6 @@ public class ContactVO {
 	public String seller_id;
 	public int act_id;
 	public String act_name;
+	public MultipartFile multipartFile;
+
 }

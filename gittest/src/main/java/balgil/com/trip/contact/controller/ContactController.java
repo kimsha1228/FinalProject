@@ -1,6 +1,14 @@
 package balgil.com.trip.contact.controller;
 
+
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+
+import javax.imageio.ImageIO;
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import balgil.com.trip.activity.model.ActivityVO;
 import balgil.com.trip.answer.model.AnswerVO;
 import balgil.com.trip.answer.service.AnswerService;
 import balgil.com.trip.contact.model.ContactVO;
@@ -18,11 +25,15 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class ContactController {
+	
 	@Autowired
 	ContactService service;
 	
 	@Autowired
 	AnswerService answerservice;
+	
+	@Autowired
+	ServletContext sContext;
 	
 	@RequestMapping(value = "/selectAllContact.do", method = RequestMethod.GET)
 	public String selectAllContact(Model model) {
@@ -58,12 +69,42 @@ public class ContactController {
 		return "contact/insertContact";
 	}
 	
-	@RequestMapping(value = "/insertContactOK.do", method = RequestMethod.GET)
-	public String insertContactOK(ContactVO vo) {
-		log.info("/insertContactOK.do....");
+	@RequestMapping(value = "/insertContactOK.do", method = RequestMethod.POST)
+	public String insertContactOK(ContactVO vo) throws IllegalStateException, IOException {
+		log.info("/insertContactOK.do....{}", vo);
 		
 		int result = service.insert(vo);
-		log.info("result...{}", result);
+		
+		String getOriginalFilename = vo.getMultipartFile().getOriginalFilename();
+		int fileNameLength = vo.getMultipartFile().getOriginalFilename().length();
+		log.info("getOriginalFilename:{}", getOriginalFilename);
+		log.info("fileNameLength:{}", fileNameLength);
+
+		if (getOriginalFilename.length() == 0) {
+			vo.setAttach_img("default.png");
+		} else {
+			vo.setAttach_img(getOriginalFilename);
+			// 웹 어플리케이션이 갖는 실제 경로: 이미지를 업로드할 대상 경로를 찾아서 파일저장.
+			String realPath = sContext.getRealPath("resources/uploadimg");
+			log.info("realPath : {}", realPath);
+
+			File f = new File(realPath + "\\" + vo.getAttach_img());
+			vo.getMultipartFile().transferTo(f);
+
+			//// create thumbnail image/////////
+			BufferedImage original_buffer_img = ImageIO.read(f);
+			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
+			Graphics2D graphic = thumb_buffer_img.createGraphics();
+			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
+
+			File thumb_file = new File(realPath + "/thumb_" + vo.getAttach_img());
+			String formatName = vo.getAttach_img().substring(vo.getAttach_img().lastIndexOf(".") + 1);
+			log.info("formatName : {}", formatName);
+			ImageIO.write(thumb_buffer_img, formatName, thumb_file);
+
+		} // end else
+	
+		
 		
 		if(result==1) {
 			return "redirect:selectAllContact.do";
@@ -71,6 +112,7 @@ public class ContactController {
 			return "redirect:insertContact.do";
 		}
 	}
+	
 	
 	@RequestMapping(value = "/updateContact.do", method = RequestMethod.GET)
 	public String updateContact(ContactVO vo, Model model) {

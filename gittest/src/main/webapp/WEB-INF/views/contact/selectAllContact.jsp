@@ -35,7 +35,6 @@
 			<c:forEach var="vo" items="${vos}">
 				<tr>
 					<td><a href="selectOneContact.do?id=${vo.id}">${vo.id}</a></td>
-					<td>${vo.id}</td>
 					<td>${vo.title}</td>
 					<td>${vo.content}</td>
 					<td>${vo.con_date}</td>
