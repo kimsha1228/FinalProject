@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import balgil.com.trip.coupon.model.CouponVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -47,6 +48,11 @@ public class UserCouponDAOimpl implements UserCouponDAO {
 		vo.setCouponcode(code);
 
 		return sqlSession.update("USERCOUPON_BACK", vo);
+	}
+
+	@Override
+	public int insert(UserCouponVO vo) {
+		return sqlSession.insert("USERCOUPON_INSERT", vo);
 	}
 
 }

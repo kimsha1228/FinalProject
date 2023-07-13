@@ -19,18 +19,18 @@ public class UsersDAOimpl implements UsersDAO {
 		log.info("MemberDAOimpl()...");
 	}
 
-	@Override
-	public List<UsersVO> selectAll() {
-		log.info("selectAll()...");
+//	@Override
+//	public List<UsersVO> selectAll() {
+//		log.info("selectAll()...");
+//
+//		return sqlSession.selectList("U_SELECT_ALL");
+//	}
 
-		return sqlSession.selectList("U_SELECT_ALL");
-	}
-
 	@Override
-	public UsersVO selectOne(UsersVO vo) {
+	public UsersVO selectOne(UsersVO vo) { //json용
 		log.info("selectOne()...{}", vo);
 
-		return sqlSession.selectOne("U_SELECT_ONE", vo);
+		return sqlSession.selectOne("USER_SELECT_ONE", vo);
 	}
 
 	@Override
@@ -61,21 +61,6 @@ public class UsersDAOimpl implements UsersDAO {
 	}
 
 	@Override
-	public List<UsersVO> searchList(String searchKey, String searchWord) {
-		log.info("searchList()...searchKey:{}", searchKey);
-		log.info("searchList()...searchWord:{}", searchWord);
-
-		String key = "";
-		if (searchKey.equals("name")) {
-			key = "U_SEARCH_LIST_NAME";
-		} else {
-			key = "U_SEARCH_LIST_TEL";
-		}
-
-		return sqlSession.selectList(key, "%" + searchWord + "%");
-	}
-
-	@Override
 	public UsersVO idCheck(UsersVO vo) {
 		log.info("idCheck()...{}", vo);
 		return sqlSession.selectOne("U_ID_CHECK", vo);
@@ -93,34 +78,86 @@ public class UsersDAOimpl implements UsersDAO {
 	}
 
 	@Override
-	public int pointInsertBack(String user_id, String point) {
-		log.info("pointInsertBack()...{},{}", user_id, point);
+	public int pointInsert(String user_id, String point) {
+		log.info("pointInsert()...{},{}", user_id, point);
 
 		UsersVO vo = new UsersVO();
 		vo.setUser_id(user_id);
 		vo.setPoint(Integer.parseInt(point));
 
-		return sqlSession.update("USERPOINT_INSERT_BACK", vo);
-	}
-
-	@Override
-	public UsersVO selectOneUser(UsersVO vo) {
-		log.info("selectOneUser()...{}", vo);
-		
-		return sqlSession.selectOne("USER_SELECT_ONE", vo);
+		return sqlSession.update("USERPOINT_INSERT", vo);
 	}
 
 	@Override
 	public UsersVO selectUsersRecord(UsersVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		log.info("selectUsersRecord()...{}", vo);
+
+		return sqlSession.selectOne("USER_RECORD", vo);
 	}
 
 	@Override
 	public int typeUpdate(UsersVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		log.info("typeUpdate()...{}", vo);
+
+		return sqlSession.update("U_TYPE_UPDATE", vo);
 	}
 
-}
+	@Override
+	public List<UsersVO> selectAllSeller() {
+		log.info("selectAllSeller()...");
 
+		return sqlSession.selectList("U_SELECT_ALL_SELLER");
+	}
+
+	@Override
+	public List<UsersVO> selectAllUser() {
+		log.info("selectAllUser()...");
+
+		return sqlSession.selectList("U_SELECT_ALL_USER");
+	}
+
+	@Override
+	public List<UsersVO> searchListSeller(String searchKey, String searchWord) {
+		log.info("searchListSeller()...searchKey:{}", searchKey);
+		log.info("searchListSeller()...searchWord:{}", searchWord);
+		
+		String key = "";
+		if (searchKey.equals("name")) {
+			key = "SELLER_SEARCH_LIST_NAME";
+		} else {
+			key = "SELLER_SEARCH_LIST_USER_ID";
+		}
+
+		return sqlSession.selectList(key, "%"+searchWord+"%");
+	}
+
+	@Override
+	public List<UsersVO> searchListUser(String searchKey, String searchWord) {
+		log.info("searchListUser()...searchKey:{}", searchKey);
+		log.info("searchListUser()...searchWord:{}", searchWord);
+		
+		String key = "";
+		if (searchKey.equals("name")) {
+			key = "USER_SEARCH_LIST_NAME";
+		} else {
+			key = "USER_SEARCH_LIST_USER_ID";
+		}
+
+		return sqlSession.selectList(key, "%"+searchWord+"%");
+	}
+
+	@Override
+	public int sellerTypeUpdate(UsersVO vo) {
+		log.info("sellerTypeUpdate()...{}", vo);
+
+		return sqlSession.update("SELLER_TYPE_UPDATE", vo);
+	}
+
+//	@Override
+//	public int loginPoint(UsersVO vo2) {
+//		log.info("loginPoint()...{}", vo2);
+//
+//		return sqlSession.update("LOGIN_POINT_UPDATE", vo2);
+//	}
+
+}

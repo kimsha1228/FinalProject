@@ -33,6 +33,10 @@ public class CouponService {
 		return dao.selectAllCoupon();
 	}
 
+	public int insert(CouponVO vo) {
+		return dao.insert(vo);
+	}
+
 
 
 }

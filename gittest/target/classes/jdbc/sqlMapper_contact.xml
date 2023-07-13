@@ -3,42 +3,34 @@
 
 <mapper namespace="balgil.com.trip.contact">
 
-    <insert id="CONTACT_INSERT" parameterType="balgil.com.trip.contact.model.ContactVO">
-        insert into contact (id, title, content, con_date, attach_img, user_id, seller_id, act_id, act_name)
-        values (#{num}, #{title}, #{content}, #{con_date}, #{attach_img}, #{user_id}, #{seller_id}, #{act_id}, #{act_name})
+    <insert id="C_INSERT" parameterType="balgil.com.trip.contact.model.ContactVO">
+        insert into contact (id, title, content, attach_img, user_id, seller_id, act_id, act_name)
+        values (seq_contact.nextval, #{title}, #{content}, #{attach_img}, #{user_id}, #{seller_id}, #{act_id}, #{act_name})
     </insert>
 
-    <select id="CONTACT_SELECT_ALL" resultType="balgil.com.trip.contact.model.ContactVO">
-        select id, title, content, con_date, attach_img, user_id, seller_id, act_id, act_name 
-        from contact
+    <select id="C_SELECT_ALL" resultType="balgil.com.trip.contact.model.ContactVO">
+        select * from contact order by id desc
     </select>
     
-    <select id="CONTACT_SELECT_ALL_USER" resultType="balgil.com.trip.contact.model.ContactVO">
-        select id, title, content, con_date, attach_img, user_id, seller_id, act_id, act_name 
-        from contact
-        where user_id = #{user_id}
-    </select>
 
-    <select id="CONTACT_SELECT_ONE" resultType="balgil.com.trip.contact.model.ContactVO" parameterType="balgil.com.trip.contact.model.ContactVO">
-        select id, title, content, con_date, attach_img, user_id, seller_id, act_id, act_name 
-        from contact
-        where id = #{num}
+    <select id="C_SELECT_ONE" resultType="balgil.com.trip.contact.model.ContactVO">
+        select * from contact where id = #{id}
     </select>
     
-    <select id="CONTACT_SELECT_ONE_USER" resultType="balgil.com.trip.contact.model.ContactVO" parameterType="balgil.com.trip.contact.model.ContactVO">
-        select id, title, content, con_date, attach_img, user_id, seller_id, act_id, act_name 
-        from contact
-        where id = #{num} and user_id = #{user_id}
-    </select>
 
-    <delete id="CONTACT_DELETE" parameterType="balgil.com.trip.contact.model.ContactVO">
+    <delete id="C_DELETE" parameterType="balgil.com.trip.contact.model.ContactVO">
         delete from contact 
-        where id = #{num}
+        where id = #{id}
     </delete>
 
-    <insert id="CONTACT_INSERT_OK" parameterType="balgil.com.trip.contact.model.ContactVO">
-        insert into contact (id, title, content, con_date, attach_img, user_id, seller_id, act_id, act_name)
-        values (#{num}, #{title}, #{content}, #{con_date}, #{attach_img}, #{user_id}, #{seller_id}, #{act_id}, #{act_name})
+    <insert id="C_INSERT_OK" parameterType="balgil.com.trip.contact.model.ContactVO">
+        insert into contact (id, title, content, attach_img, user_id, seller_id, act_id, act_name)
+        values (seq_contact.nextval, #{title}, #{content}, #{attach_img}, #{user_id}, #{seller_id}, #{act_id}, #{act_name})
     </insert>
 
+	<update id="C_UPDATE" parameterType="balgil.com.trip.contact.model.ContactVO">
+        update contact
+        set title = #{title}, content = #{content}, con_date = sysdate
+        where id = #{id}
+    </update>
 </mapper>

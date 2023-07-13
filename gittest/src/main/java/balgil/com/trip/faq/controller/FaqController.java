@@ -19,6 +19,7 @@ public class FaqController {
 	@Autowired
 	FaqService service;
 	
+	
 	@RequestMapping(value = "/selectAllFaq.do", method = RequestMethod.GET)
 	public String selectAllFaq(Model model) {
 		log.info("/selectAllFaq.do");
@@ -47,7 +48,7 @@ public class FaqController {
 		return "faq/insertFaq";
 	}
 	
-	@RequestMapping(value = "/insertFaqOK.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/insertFaqOK.do", method = RequestMethod.GET)
 	public String insertFaqOK(FaqVO vo) {
 		log.info("/insertFaqOK.do...{}", vo);
 		
@@ -101,16 +102,3 @@ public class FaqController {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

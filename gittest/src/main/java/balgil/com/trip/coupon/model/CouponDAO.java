@@ -12,4 +12,6 @@ public interface CouponDAO {
 
 	List<CouponVO> selectAllCoupon();
 
+	int insert(CouponVO vo);
+
 }

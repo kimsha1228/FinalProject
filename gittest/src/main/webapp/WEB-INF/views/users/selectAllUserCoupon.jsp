@@ -11,23 +11,15 @@
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>쿠폰</h1>
-    <form action="coupon_insertOK.do">
+    <form action="userCoupon_insertOK.do">
 	<table>
 		<tr>
-			<th>쿠폰이름</th>
-			<td><input type="text" name="name" value="" placeholder="10% off 두 자리 숫자 맨앞 기입" size="30"></td>
-		</tr>
-		<tr>
 			<th>쿠폰코드</th>
-			<td><input type="text" name="code" value="" placeholder="coupooncode" size="30"></td>
+			<td><input type="hidden" name="user_id" value="john123"><!-- 여기 나중에 세션으로 변경 -->
+			<input type="text" name="couponcode" value="" placeholder="coupooncode" size="30"></td>
+	      	<td><input type="submit" value="쿠폰등록"></td>
 		</tr>
-		<tr>
-			<th>사용기한</th>
-			<td><input type="text" name="expire" value="" placeholder="2099-12-31 형식으로 등록" size="30"></td>
-		</tr>
-		
 	</table>	
-	      <input type="submit" value="쿠폰등록">
 	</form>
 	
 	<table border="1">

@@ -13,19 +13,15 @@
 		
 	<li><a href="myPage.do">마이페이지</a></li>
 	
-	<li><a href="myInfo.do">내 정보 관리</a></li>
-
 	<li><a href ="Contact_test.do">문의 test</a></li>
 	
 	<li><a href ="Faq_test.do">FAQ</a></li>
 	
 	<li><a href ="Coupon.do">쿠폰 가기</a></li>
   
-	<li><a href ="PointHistory.do">포인트 가기</a></li>
-	
-	<li><a href ="Contant.do">문의내역 가기</a></li>
-	
 	<li><a href="cart.do">장바구니 가기</a></li>
+
+	<li><a href="u_insert.do">회원가입</a></li>
 	
 	<li><a href="login.do">로그인</a></li>
 	
@@ -34,4 +30,10 @@
 	<li><a href="wishlist.do">위시리스트 가기</a></li>
 	
 	<li><a href="destination.do">여행지 가기</a></li>
+	
+  <li><a href="comments.do">이용 후기</a></li> 
+
+  <li><a href="u_update.do?user_id=john123">회원수정</a></li>
+	
+	<li><a href="myInfo.do?user_id=john123">내 정보 관리</a></li>
 </ul>

@@ -39,6 +39,7 @@
 			<list>
 				<value>classpath:jdbc/sqlMapper_answer.xml</value>
 				<value>classpath:jdbc/sqlMapper_contact.xml</value>
+				<value>classpath:jdbc/sqlMapper_coupon.xml</value>
 				<value>classpath:jdbc/sqlMapper_comments.xml</value>
 				<value>classpath:jdbc/sqlMapper_faq.xml</value>
 				<value>classpath:jdbc/sqlMapper_cart.xml</value>
