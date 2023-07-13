@@ -72,7 +72,6 @@ public class ContactController {
 	public String insertContactOK(ContactVO vo) throws IllegalStateException, IOException {
 		log.info("/insertContactOK.do....{}", vo);
 
-		int result = service.insert(vo);
 
 		// 로컬 이미지 생성
 		String getOriginalFilename = vo.getFile().getOriginalFilename();
@@ -103,6 +102,9 @@ public class ContactController {
 			ImageIO.write(thumb_buffer_img, formatName, thumb_file);
 
 		} // end else
+
+		
+		int result = service.insert(vo);
 
 		if (result == 1) {
 			return "redirect:selectAllContact.do";
