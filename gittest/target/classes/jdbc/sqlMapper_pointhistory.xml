@@ -23,4 +23,8 @@
 		select * from point_history where user_id = #{user_id} and history = '로그인' and point_date = TO_DATE(SYSDATE, 'YY-MM-DD')
 	</select>
 	
+	<select id="POINTHISTORY_SELECT_USERS" resultType="balgil.com.trip.pointhistory.model.PointHistoryVO">
+		select * from point_history where user_id = #{user_id} order by point_date desc
+	</select>
+	
 </mapper>

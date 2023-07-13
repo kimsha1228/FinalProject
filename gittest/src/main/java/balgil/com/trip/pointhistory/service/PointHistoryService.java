@@ -37,8 +37,8 @@ public class PointHistoryService {
 		return dao.selectOne(user_id);
 	}
 
-//	public List<PointHistoryVO> selectAll(PointHistoryVO vo) {
-//		return dao.selectAll(vo);
-//	}
+	public List<PointHistoryVO> selectAll(String user_id) {
+		return dao.selectAll(user_id);
+	}
 
 }

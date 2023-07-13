@@ -14,6 +14,6 @@ public interface PointHistoryDAO {
 
 	PointHistoryVO selectOne(String user_id);
 
-//	List<PointHistoryVO> selectAll(PointHistoryVO vo);
+	List<PointHistoryVO> selectAll(String user_id);
 
 }

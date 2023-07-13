@@ -19,7 +19,7 @@
 		</tr>
 		<tr>
 			<td><a href="#">쿠폰</a></td>
-			<td><a href="#">포인트</a></td>
+			<td><a href="myPoint.do?user_id=john123">포인트</a></td>
 		</tr>
 	</table>
 	

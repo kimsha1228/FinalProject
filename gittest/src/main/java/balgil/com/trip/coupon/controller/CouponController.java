@@ -49,4 +49,21 @@ public class CouponController {
 		return "coupon/selectAllCoupon";
 	}
 	
+	@RequestMapping(value = "/coupon_insertOK.do", method = RequestMethod.GET)
+	public String Coupon(CouponVO vo) {
+		log.info("/Coupon.do...{}", vo);
+		
+		String name = vo.getName();
+		String name1 = name.substring(0,2);
+		vo.setRate(Integer.parseInt(name1));
+		
+		log.info("/Coupon.do...{}", vo);
+		
+		int result = service.insert(vo);
+		log.info("result:{}", result);
+
+		return "coupon";
+	}
+	
+	
 }

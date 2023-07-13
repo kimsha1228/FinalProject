@@ -375,6 +375,23 @@ public class UsersController {
 		return "redirect:selectOneUser.do?user_id="+user_id;
 	}
 
+	@RequestMapping(value = "/myPoint.do", method = RequestMethod.GET)
+	public String myPoint(UsersVO vo, Model model) {
+		log.info("/myPoint.do");
+		
+		UsersVO vo1 = service.selectOne(vo);
+		log.info("results:{}", vo1);
+		
+		model.addAttribute("vo", vo1);
+		
+		List<PointHistoryVO> vos = his_service.selectAll(vo.getUser_id());
+		log.info("vo2: {}", vos);
+		
+		model.addAttribute("vos", vos);
+		
+		return "users/myPoint";
+	}
+
 	
 }
 
