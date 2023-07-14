@@ -38,7 +38,7 @@ $(function(){
 	 				</tr>
 	 				<tr>
 	 					<td>전화번호</td>
- 						<td>\${vo2.region} \${vo2.tel}</td>
+ 						<td>\${vo2.tel}</td>
 	 				</tr>
 	 				<tr>
  						<td>이메일</td>
