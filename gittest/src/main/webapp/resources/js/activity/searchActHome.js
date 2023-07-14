@@ -6,7 +6,7 @@ const urlParams = new URL(location.href).searchParams;
 let param_searchWord = urlParams.get('searchWord');
 console.log(param_searchWord);
 
-window.onload = function(){
+$(document).ready(function(){
 	searchList('');
 	$('.search').val(param_searchWord);
 	 // **********************************
@@ -151,18 +151,10 @@ window.onload = function(){
 	    }
 	  });
 	});
-	
-	//엔터키만 눌러도 searchList가 작동
-	$('#searchWord').on('keydown', function(e) {
-	    var keyCode = e.which;
-	
-	    if (keyCode === 13) { // Enter Key
-	    	searchList();
-	    }
-	});
-	
-	$('button[data-column]').trigger("click");	
-};//end onload
+
+	filter[1] = $this.text();
+	$table.trigger('search', [ filter ]);
+});//end onload
 
 function searchList(searchWord){
 	
@@ -229,6 +221,7 @@ function searchList(searchWord){
 					}
 				}
 			}
+			
 		},
 		error:function(xhr,status,error){
 			console.log('xhr.status:', xhr.status);

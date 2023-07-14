@@ -72,17 +72,12 @@ public class CartController {
         log.info("result_insert: {}", result_insert);
         log.info("result_insertUp: {}", result_insertUp);
         
-        String msg = "";
-        if(result_insert==1 || result_insertUp==1) {
-			msg = "1";
-		}else {
-			msg = "0";
-		}
-		
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("result", msg);
-
-		return map;
+        // 둘중 하나라도 성공적이면 OK를 반환 
+        if(result_insert>=1||result_insertUp>=1) {
+          return "{\"result\":\"OK\"}";
+        }else {
+          return "{\"result\":\"NotOK\"}";
+        }
     }
     
     //장바구니에서 수량 조절

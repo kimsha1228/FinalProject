@@ -16,7 +16,7 @@
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 	console.log("현재 주소:",result);
 </script>
-<script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=6"></script>
+<script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=7"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -85,7 +85,7 @@
 			<input type='hidden' name='user_id' value='${user_id}'/>
 		</form>
 		<input type="submit" form="Reservation" formaction="insertOneReservation.do" value="바로구매">
-		<button onclick="insertOneCart()">장바구니</button>
+		<button type="submit" onclick="insertOneCart()">장바구니</button>
 	</div>
 	<br>
 	<br>
@@ -100,31 +100,5 @@
 
 <!-- 지도 구현 js -->
 <script type="text/javascript" src="resources/js/Maps.js"></script>
-
-<script>
-function insertOneCart(){
-	console.log('insertOneCart()....');
-	$.ajax({
-		url : "insertOneCart.do",
-		data:{
-			user_id:'${user_id}',
-			act_id:${param.id},
-			res_date:$("#datePicker").val(),
-			price:$("#price").val(),
-			quantity:$("#quantity").val(),
-		},
-		method:'POST',
-		dataType:'json',
-		success : function(obj) {
-			console.log('ajax...success:', obj);
-			alert('장바구니에 추가되었습니다.');
-		},
-		error:function(xhr,status,error){
-			console.log('xhr.status:', xhr.status);
-		}
-	});
-	
-}
-</script>
 </body>
 </html>
