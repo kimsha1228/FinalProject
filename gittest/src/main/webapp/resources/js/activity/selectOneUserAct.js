@@ -172,3 +172,32 @@ function decrementQuantity() {
 		quantityInput.value = currentQuantity - 1;
 	}
 }
+
+function insertOneCart() {
+	//폼 id를 불러옴
+	var form = document.getElementById("Reservation");
+	var formData = new FormData(form);
+	
+	//ajax로 폼을 보냄
+	$.ajax({
+	  url: "insertOneCart.do",
+	  data: formData,
+	  dataType: 'json',
+	  method: 'POST',
+	  processData: false,
+	  contentType: false,
+	  success: function(response) {
+	    console.log(response);
+	    if(response.result=='OK'){
+	    	alert("장바구니에 추가했습니다");
+	    }else{
+	    	alert("장바구니 넣는데 실패했습니다");
+	    }
+	  },
+	  error: function(xhr, status, error) {
+	    console.log('xhr.status:', xhr.status);
+	    alert("장바구니 넣는데 실패했습니다");
+	  }
+	});
+
+}

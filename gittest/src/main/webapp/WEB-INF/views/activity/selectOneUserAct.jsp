@@ -16,7 +16,7 @@
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 	console.log("현재 주소:",result);
 </script>
-<script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=6"></script>
+<script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=7"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -85,7 +85,7 @@
 			<input type='hidden' name='user_id' value='${user_id}'/>
 		</form>
 		<input type="submit" form="Reservation" formaction="insertOneReservation.do" value="바로구매">
-		<input type="submit" form="Reservation" formaction="insertOneCart.do" value="장바구니">
+		<button type="submit" onclick="insertOneCart()">장바구니</button>
 	</div>
 	<br>
 	<br>

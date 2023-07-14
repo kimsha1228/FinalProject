@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import balgil.com.trip.activity.model.ActivityVO;
 import balgil.com.trip.activity.service.ActivityService;
@@ -50,6 +51,7 @@ public class CartController {
     }
     
     //장바구니에 추가했을 때 사용자 장바구니에 같은 상품이 같은 일자에 있으면 수량을 올려준다
+    @ResponseBody
     @RequestMapping(value = "/insertOneCart.do", method = RequestMethod.POST)
     public String insertOneCart(CartVO vo) {
         log.info("/insertOneCart...{}", vo);
@@ -68,8 +70,12 @@ public class CartController {
         log.info("result_insert: {}", result_insert);
         log.info("result_insertUp: {}", result_insertUp);
         
-        
-        return "redirect:selectOneUserAct.do?id="+vo.getAct_id();
+		// 둘중 하나라도 성공적이면 OK를 반환 
+		if(result_insert>=1||result_insertUp>=1) {
+			return "{\"result\":\"OK\"}";
+		}else {
+			return "{\"result\":\"NotOK\"}";
+		}
     }
     
     //장바구니에서 수량 조절
