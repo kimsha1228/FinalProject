@@ -12,6 +12,8 @@ public interface PointHistoryDAO {
 
 	int saveInsert(String user_id, String history, String point);
 
-//	List<PointHistoryVO> selectAll(PointHistoryVO vo);
+	PointHistoryVO selectOne(String user_id);
+
+	List<PointHistoryVO> selectAll(String user_id);
 
 }

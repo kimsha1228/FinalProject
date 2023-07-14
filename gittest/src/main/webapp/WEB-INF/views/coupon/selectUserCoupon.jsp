@@ -10,8 +10,9 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>쿠폰</h1>
-	<form action="coupon_insertOK.do">
+	<h1>나의 포인트</h1>
+	
+	<div><h3>현재 포인트 ${vo.point}</h3></div>
 	<table>
 		<tr>
 			<th>쿠폰이름</th>
@@ -27,9 +28,5 @@
 		</tr>
 	</table>
 		<input type="submit" value="쿠폰등록">
-	</form>
-	
-	<table>
-	</table>
 </body>
 </html>

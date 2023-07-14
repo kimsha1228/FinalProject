@@ -78,7 +78,7 @@ public class UsersController {
 	}
 	
 	@RequestMapping(value = "/searchUserList.do", method = RequestMethod.GET)
-	public String u_searchList(String searchKey, String searchWord, Model model) {
+	public String searchUserList(String searchKey, String searchWord, Model model) {
 		log.info("/searchUserList.do...searchKey:{}",searchKey);
 		log.info("/searchUserList.do...searchWord:{}",searchWord);
 		
@@ -156,6 +156,7 @@ public class UsersController {
 		
 		
 		if (result == 1) {
+			int his_result = his_service.saveInsert(vo.getUser_id(), "회원가입", "3000");
 			return "redirect:home.do";
 		} else {
 			return "redirect:u_insert.do";
@@ -302,6 +303,12 @@ public class UsersController {
 			return "redirect:login.do?message=fail";
 		}else {
 			session.setAttribute("user_id", vo2.getUser_id());
+			PointHistoryVO p_vo = his_service.selectOne(vo2.getUser_id()); 
+			if(p_vo==null) {
+				int result = service.pointInsert(vo2.getUser_id(), "100");
+				int his_result = his_service.saveInsert(vo2.getUser_id(), "로그인", "100");
+				log.info("result:{},{}", result, his_result);
+			}
 			return "redirect:home.do";
 		}
 	}
@@ -366,6 +373,23 @@ public class UsersController {
 		log.info("results:{},{}", his_result, user_result);
 		
 		return "redirect:selectOneUser.do?user_id="+user_id;
+	}
+
+	@RequestMapping(value = "/myPoint.do", method = RequestMethod.GET)
+	public String myPoint(UsersVO vo, Model model) {
+		log.info("/myPoint.do");
+		
+		UsersVO vo1 = service.selectOne(vo);
+		log.info("results:{}", vo1);
+		
+		model.addAttribute("vo", vo1);
+		
+		List<PointHistoryVO> vos = his_service.selectAll(vo.getUser_id());
+		log.info("vo2: {}", vos);
+		
+		model.addAttribute("vos", vos);
+		
+		return "users/myPoint";
 	}
 
 	

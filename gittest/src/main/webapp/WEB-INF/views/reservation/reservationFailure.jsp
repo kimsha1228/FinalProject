@@ -10,8 +10,8 @@
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h3>예약 실패했습니다...</h3>
-	<a href="selectAllReservation.do?user_id=${user_id}">예약 내역 페이지로</a>
-	<a href="selectAllReservation.do?user_id=${user_id}">예약내역 보기</a>
+	<a href="selectAllReservation.do?user_id=${user_id}">예약내역으로</a>
+	<a href="selectAllcart.do?user_id=${user_id}">장바구니로</a>
 
 </body>
 </html>

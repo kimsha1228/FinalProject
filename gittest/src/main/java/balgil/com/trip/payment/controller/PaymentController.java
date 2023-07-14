@@ -113,7 +113,7 @@ public class PaymentController {
 					if(result_cart != null) {
 						c_service.deleteOneCart(result_cart);
 					}
-						return "redirect:reservationFailure.do";
+					return "redirect:reservationComplete.do";
 				}else {
 					return "redirect:reservationFailure.do";
 				}

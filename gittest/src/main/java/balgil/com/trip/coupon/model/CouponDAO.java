@@ -12,4 +12,6 @@ public interface CouponDAO {
 	
 	void updateTime();
 
+	int insert(CouponVO vo);
+
 }

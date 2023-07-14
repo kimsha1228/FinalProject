@@ -32,4 +32,8 @@ public class CouponService {
 		return dao.selectList(vo);
 	}
 
+	public int insert(CouponVO vo) {
+		return dao.insert(vo);
+	}
+
 }
