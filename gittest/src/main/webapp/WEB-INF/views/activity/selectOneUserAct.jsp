@@ -81,11 +81,11 @@
 			<input type='button' value='+' class='qtyplus plus' onclick='incrementQuantity()' />
 			<p>현재 상품번호 act_id ${vo2.id}, 예약자 user_id ${user_id}</p>
 			<input type='hidden' name='act_id' value='${vo2.id}'/>
-			<input type='hidden' name='price' value='${vo2.price}'/>
+			<input type='hidden' name='price' id='price' value='${vo2.price}'/>
 			<input type='hidden' name='user_id' value='${user_id}'/>
 		</form>
 		<input type="submit" form="Reservation" formaction="insertOneReservation.do" value="바로구매">
-		<input type="submit" form="Reservation" formaction="insertOneCart.do" value="장바구니">
+		<button onclick="insertOneCart()">장바구니</button>
 	</div>
 	<br>
 	<br>
@@ -100,5 +100,31 @@
 
 <!-- 지도 구현 js -->
 <script type="text/javascript" src="resources/js/Maps.js"></script>
+
+<script>
+function insertOneCart(){
+	console.log('insertOneCart()....');
+	$.ajax({
+		url : "insertOneCart.do",
+		data:{
+			user_id:'${user_id}',
+			act_id:${param.id},
+			res_date:$("#datePicker").val(),
+			price:$("#price").val(),
+			quantity:$("#quantity").val(),
+		},
+		method:'POST',
+		dataType:'json',
+		success : function(obj) {
+			console.log('ajax...success:', obj);
+			alert('장바구니에 추가되었습니다.');
+		},
+		error:function(xhr,status,error){
+			console.log('xhr.status:', xhr.status);
+		}
+	});
+	
+}
+</script>
 </body>
 </html>
