@@ -7,8 +7,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" >
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
 <link rel="stylesheet" href="resources/css/tablesorter/theme.default.min.css">
+<link rel="stylesheet" href="resources/css/activity/selectAllUserAct.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/route/tablesorter/jquery.tablesorter.min.js"></script>
 <script src="https://mottie.github.io/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
@@ -26,21 +27,68 @@
 <h1>상품</h1>
 <div>추천 리스트</div>
 <table>
-<thead>
-    <tr>
-        <th>id</th>
-        <th>act_name</th>
-        <th>rate</th>
-        <th>vcount</th>
-        <th>tag</th>
-        <th>price</th>
-        <th>wishList</th>
-    </tr>
-</thead>
-<tbody id="vos">
-</tbody>
+	<thead>
+	    <tr>
+	        <th>id</th>
+	        <th>act_name</th>
+	        <th>rate</th>
+	        <th>vcount</th>
+	        <th>tag</th>
+	        <th>price</th>
+	        <th>wishList</th>
+	    </tr>
+	</thead>
+	<tbody id="vos">
+	</tbody>
 </table>
-
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+    <div class="col-sm">
+      One of three columns
+    </div>
+  </div>
+</div>
+    <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
+			
+			<div class="col-5">
+				<div class="card card-block card-1">
+				asdf
+				</div>
+			</div>
+			<div class="col-5">
+				<div class="card card-block card-2">zxcv</div>
+			</div>
+			<div class="col-5">
+				<div class="card card-block card-3">qwer</div>
+			</div>
+			<div class="col-5">
+				<div class="card card-block card-4">fghj</div>
+			</div>
+			<div class="col-5">
+				<div class="card card-block card-5">fghj</div>
+			</div>
+			<div class="col-5">
+				<div class="card card-block card-6">rtyu</div>
+			</div>
+			<div class="col-5">
+				<div class="card card-block card-7">vbnm</div>
+			</div>
+			<div class="col-5">
+				<div class="card card-block card-8">dfgh</div>
+			</div>
+			<div class="col-5">
+				<div class="card card-block card-9">dgasd</div>
+			</div>
+			<div class="col-5">
+				<div class="card card-block card-10">awev</div>
+			</div>
+    </div>
 <br>
 <br>
 	<div class="dropdown">
@@ -106,8 +154,8 @@
 	</form>
 </div>
 <!-- BootStrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" ></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" ></script>
 <script src="https://kit.fontawesome.com/0007d685f8.js" crossorigin="anonymous"></script>
 <!-- https://fontawesome.com/search 아이콘들 주소 -->
 </body>
