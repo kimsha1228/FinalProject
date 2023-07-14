@@ -14,8 +14,11 @@
 	<form
 		action="${pageContext.request.contextPath}/selectAllDestination.do"
 		method="GET">
-		<button type="submit" name="category" value="City">City</button>
-		<button type="submit" name="category" value="Beach">Beach</button>
+		<button type="submit" name="category" value="서울">서울</button>
+		<button type="submit" name="category" value="경기">경기</button>
+		<button type="submit" name="category" value="부산">부산</button>
+		<button type="submit" name="category" value="경주">경주</button>
+		<button type="submit" name="category" value="제주도">제주도</button>
 	</form>
 
 	<h2>${category}</h2>

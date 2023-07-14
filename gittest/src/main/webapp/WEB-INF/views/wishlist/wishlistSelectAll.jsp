@@ -30,9 +30,8 @@
 
 			<c:forEach var="vo" items="${vos1}">
 				<tr>
-					<th>회원번호</th>
-					<td><a
-						href="selectOneWishList.do?id=${vo.act_id}&user_id=${vo.user_id}">${vo.user_id}</a></td>
+					<th>회원정보</th>
+					<td>${vo.user_id}</a></td>
 				</tr>
 
 				<tr>
