@@ -18,4 +18,8 @@
 		values(#{code}, #{name}, TO_DATE(#{expire}, 'YYYY-MM-DD'), #{rate})
 	</insert>
 	
+	<select id="COUPON_SELECT_ONE" resultType="balgil.com.trip.coupon.model.CouponVO">
+		select * from coupon where code = #{code}
+	</select>
+	
 </mapper>

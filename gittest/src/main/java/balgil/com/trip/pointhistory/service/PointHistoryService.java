@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import balgil.com.trip.pointhistory.model.PointHistoryDAO;
 import balgil.com.trip.pointhistory.model.PointHistoryVO;
-import balgil.com.trip.users.model.UsersVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -18,7 +17,7 @@ public class PointHistoryService {
 	PointHistoryDAO dao;
 
 	public PointHistoryService() {
-		log.info("CouponService()...");
+		log.info("PointHistoryService()...");
 	}
 
 	public int useInsert(String user_id, String point) {

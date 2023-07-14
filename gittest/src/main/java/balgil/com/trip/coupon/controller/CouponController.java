@@ -62,7 +62,7 @@ public class CouponController {
 		int result = service.insert(vo);
 		log.info("result:{}", result);
 
-		return "coupon";
+		return "redirect:selectAllCoupon.do";
 	}
 	
 	

@@ -14,7 +14,6 @@ public class UsersVO {
 	private String eng_name;
 	private String first_name;
 	private String last_name;
-	private String region;
 	private String tel;
 	private String tel1;
 	private String tel2;
