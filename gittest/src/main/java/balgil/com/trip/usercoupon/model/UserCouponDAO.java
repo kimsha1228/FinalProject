@@ -10,4 +10,6 @@ public interface UserCouponDAO {
 
 	int updateCouponBack(String user_id, String code);
 
+	int insert(UserCouponVO vo);
+	
 }
