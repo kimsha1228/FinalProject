@@ -20,5 +20,7 @@ public interface CommentsDAO {
 
     List<CommentsVO> selectWrittenComments();
 
+	CommentsVO selectPrevious(CommentsVO vo);
+
 
 }

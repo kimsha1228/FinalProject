@@ -67,6 +67,11 @@ public class CommentsDAOimpl implements CommentsDAO {
         return sqlSession.selectList("COMMENTS_SELECT_WRITTEN");
     }
 
+	@Override
+	public CommentsVO selectPrevious(CommentsVO vo) {
+		return sqlSession.selectOne("COMMENTS_SELECT_PREVIOUS", vo);
+	}
+
 	
 
 }

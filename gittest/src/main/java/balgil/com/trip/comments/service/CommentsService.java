@@ -49,5 +49,9 @@ public class CommentsService {
         return dao.selectWrittenComments();
     }
 
+	public CommentsVO selectPrevious(CommentsVO vo) {
+		return dao.selectPrevious(vo);
+	}
+
 
 }

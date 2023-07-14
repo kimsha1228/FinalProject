@@ -5,16 +5,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="balgil.com.trip.comments">
-	<select id="COMMENTS_SELECT_ALL"
-		resultType="balgil.com.trip.comments.model.CommentsVO">
-		select * from comments order by id desc
-	</select>
-<<<<<<< HEAD
 
-	<select id="COMMENTS_SELECT_ONE"
-		resultType="balgil.com.trip.comments.model.CommentsVO">
-		select * from comments where id = #{id}
-=======
+	<select id="COMMENTS_SELECT_ALL" resultType="balgil.com.trip.comments.model.CommentsVO">
+		select * from comments where id=#{id}
+	</select>
+	
+	<select id="COMMENTS_SELECT_PREVIOUS" resultType="balgil.com.trip.comments.model.CommentsVO">
+		select * from comments where user_id = #{user_id} and res_id = #{res_id}
+	</select>
 	
 	<select id="COMMENTS_SELECT_ONE" resultType="balgil.com.trip.comments.model.CommentsVO">
 	    SELECT *
@@ -22,49 +20,42 @@
 		WHERE act_id = #{act_id}
 		ORDER BY likes DESC
 		FETCH FIRST 1 ROWS ONLY
->>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
+	</select>
+<!-- 건호님 부분 -->
+
+
+	<select id="COMMENTS_SELECT_USER" resultType="balgil.com.trip.comments.model.CommentsVO">
+		select * from comments order by id desc
 	</select>
 
-	<insert id="COMMENTS_INSERT"
-		parameterType="balgil.com.trip.comments.model.CommentsVO">
-		insert into comments (id, rate, content, com_date)
-		values (seq_comments.nextval, #{rate}, #{content},
-		#{com_date})
+	<insert id="COMMENTS_INSERT" parameterType="balgil.com.trip.comments.model.CommentsVO">
+		insert into comments (id, rate, content, com_date, user_id, act_id, res_id)
+		values (seq_comments.nextval, #{rate}, #{content}, sysdate, #{user_id}, #{act_id}, #{res_id})
 	</insert>
 
-	<update id="COMMENTS_UPDATE"
-		parameterType="balgil.com.trip.comments.model.CommentsVO">
+	<update id="COMMENTS_UPDATE" parameterType="balgil.com.trip.comments.model.CommentsVO">
 		update comments
-		set
-		<!-- rate = #{rate}, -->
+		set 
+<!-- 		rate = #{rate}, -->
 		content = #{content},
 		com_date = sysdate,
 		save_name = #{save_name}
-		<!-- likes = #{likes}, -->
-		<!-- act_id = #{act_id} -->
+<!-- 		likes = #{likes}, -->
+<!-- 		act_id = #{act_id} -->
 		where id = #{id}
 	</update>
-
-
-
 
 	<delete id="COMMENTS_DELETE">
 		delete from comments where id=#{id}
 	</delete>
 
-	<select id="selectWritableComments"
-		parameterType="balgil.com.trip.reservation.model.ReservationVO">
-		SELECT ID, QUANTITY, PRICE, RES_DATE, PRICE_FINAL,
-		ACT_ID, USER_ID
-		FROM Reservation
-		WHERE id=#{id}
+	<select id="selectWritableComments" parameterType="balgil.com.trip.reservation.model.ReservationVO">
+		SELECT ID, QUANTITY, PRICE, RES_DATE, PRICE_FINAL, ACT_ID, USER_ID
+		FROM Reservation WHERE id=#{id}
 	</select>
 
-	<select id="selectWrittenComments"
-		parameterType="balgil.com.trip.comments.model.CommentsVO">
-		SELECT ID, RATE, CONTENT, COM_DATE, LIKES, USER_ID,
-		ACT_ID
-		FROM Comments
-		WHERE id=#{id}
+	<select id="selectWrittenComments" parameterType="balgil.com.trip.comments.model.CommentsVO">
+		SELECT ID, RATE, CONTENT, COM_DATE, LIKES, USER_ID, ACT_ID
+		FROM Comments WHERE id=#{id}
 	</select>
 </mapper>

@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import lombok.Data;
 
 @Data
@@ -18,12 +16,7 @@ public class CommentsVO {
 	public Date com_date;
 	public int likes;
 	public String user_id;
-	public String save_name;
+	public String res_id;
 	public int act_id;
-<<<<<<< HEAD
-	public MultipartFile file;
+	public List<MultipartFile> file;
 }
-=======
-	private List<MultipartFile> file;
-}
->>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
