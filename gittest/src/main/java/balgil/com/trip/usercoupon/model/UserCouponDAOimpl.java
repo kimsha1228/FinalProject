@@ -49,4 +49,9 @@ public class UserCouponDAOimpl implements UserCouponDAO {
 		return sqlSession.update("USERCOUPON_BACK", vo);
 	}
 
+	@Override
+	public int insert(UserCouponVO vo) {
+		return sqlSession.insert("USERCOUPON_INSERT", vo);
+	}
+
 }

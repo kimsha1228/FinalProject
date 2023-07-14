@@ -16,7 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import balgil.com.trip.pointhistory.model.PointHistoryVO;
 import balgil.com.trip.pointhistory.service.PointHistoryService;
@@ -116,6 +115,7 @@ public class UsersController {
 		log.info("/sellerTypeUpdate.do", vo);
 		
 		int result = service.sellerTypeUpdate(vo);
+		log.info("result:{}", result);
 		
 		return "redirect:selectOneSeller.do?user_id="+vo.getUser_id();
 	}
@@ -157,6 +157,8 @@ public class UsersController {
 		
 		if (result == 1) {
 			int his_result = his_service.saveInsert(vo.getUser_id(), "회원가입", "3000");
+			log.info("his_result: {}", his_result);
+			
 			return "redirect:home.do";
 		} else {
 			return "redirect:u_insert.do";
