@@ -30,4 +30,5 @@
 		delete from image where act_id = #{act_id}
 	</delete>
 	
+	
 </mapper>

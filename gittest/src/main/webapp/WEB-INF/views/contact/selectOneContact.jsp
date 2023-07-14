@@ -50,7 +50,7 @@
 			</tr>
 		</tfoot>
 	</table>
-	
+	<img width="300px" src="resources/uploadimg/${vo2.attach_img}" />
 	<hr>
 	<h1>답변</h1>
 	<table id="answerList">

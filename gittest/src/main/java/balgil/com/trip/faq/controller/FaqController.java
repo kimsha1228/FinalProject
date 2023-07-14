@@ -19,6 +19,7 @@ public class FaqController {
 	@Autowired
 	FaqService service;
 	
+	
 	@RequestMapping(value = "/selectAllFaq.do", method = RequestMethod.GET)
 	public String selectAllFaq(Model model) {
 		log.info("/selectAllFaq.do");

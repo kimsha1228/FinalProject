@@ -49,12 +49,6 @@ public class ContactDAOimpl implements ContactDAO {
 		return sqlSession.delete("C_DELETE", vo);
 	}
 
-	@Override
-	public int insertOK(ContactVO vo) {
-		log.info("insertCotactOK()....{}", vo);
-		
-		return sqlSession.insert("C_INSERT_CONTACTOK", vo);
-	}
 	
 	@Override
 	public List<ContactVO> selectAllContact(ContactVO vo) {

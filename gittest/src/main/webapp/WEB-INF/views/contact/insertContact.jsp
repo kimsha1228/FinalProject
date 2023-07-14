@@ -15,7 +15,7 @@
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>문의작성</h1>
 	
-	<form action="insertContactOK.do" method="get">
+	<form action="insertContactOK.do" method="post" enctype="multipart/form-data">
 		<table id="boardList">
 			<tr>
 				<td><label for="title">제목</label></td>
@@ -24,11 +24,11 @@
 			</tr>
 			<tr>
 				<td><label for="content">내용</label></td>
-				<td><textarea rows="10" cols="20" name="content" value="content">문의 내용을 입력해주세요</textarea></td>
+				<td><textarea rows="10" cols="20" name="content" >문의 내용을 입력해주세요</textarea></td>
 			</tr>
 			<tr>
-				<td><label for="attach_img">attach_img</label></td>
-				<td><textarea rows="10" cols="20" name="attach_img" value="attach_img">attach_img</textarea></td>
+				<td>사진</td>
+				<td><input type="file" name="file" id="file"></td>
 			</tr>
 			<tr>
 				<td><label for="user_id">유저id</label></td>
@@ -37,6 +37,10 @@
 			<tr>
 				<td><label for="seller_id">판매자id</label></td>
 				<td>seller_id<input type="hidden" id="seller_id" name="seller_id" value="seller_id"></td>
+			</tr>
+			<tr>
+				<td><label for="act_id">act_id</label></td>
+				<td>act_id<input type="hidden" id="act_id" name="act_id" value="1"></td>
 			</tr>
 			<tr>
 				<td><label for="act_name">act_name</label></td>
