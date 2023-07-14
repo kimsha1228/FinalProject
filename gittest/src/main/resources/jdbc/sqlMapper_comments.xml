@@ -5,8 +5,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="balgil.com.trip.comments">
+
 	<select id="COMMENTS_SELECT_ALL" resultType="balgil.com.trip.comments.model.CommentsVO">
 		select * from comments where id=#{id}
+	</select>
+	
+	<select id="COMMENTS_SELECT_PREVIOUS" resultType="balgil.com.trip.comments.model.CommentsVO">
+		select * from comments where user_id = #{user_id} and res_id = #{res_id}
 	</select>
 	
 	<select id="COMMENTS_SELECT_ONE" resultType="balgil.com.trip.comments.model.CommentsVO">
@@ -16,30 +21,33 @@
 		ORDER BY likes DESC
 		FETCH FIRST 1 ROWS ONLY
 	</select>
-	
+<!-- 건호님 부분 -->
+
+
+	<select id="COMMENTS_SELECT_USER" resultType="balgil.com.trip.comments.model.CommentsVO">
+		select * from comments order by id desc
+	</select>
+
 	<insert id="COMMENTS_INSERT" parameterType="balgil.com.trip.comments.model.CommentsVO">
-		insert into comments (id, rate, content, com_date, likes, user_id, act_id)
-		values (#{id}, #{rate}, #{content}, #{com_date}, #{likes}, #{user_id}, #{act_id})
+		insert into comments (id, rate, content, com_date, user_id, act_id, res_id)
+		values (seq_comments.nextval, #{rate}, #{content}, sysdate, #{user_id}, #{act_id}, #{res_id})
 	</insert>
-	
+
 	<update id="COMMENTS_UPDATE" parameterType="balgil.com.trip.comments.model.CommentsVO">
-		update comments set rate=#{rate}, content=#{content}, com_date=#{com_date}, likes=#{likes}, user_id=#{user_id}, act_id=#{act_id}
-		where id=#{id}
+		update comments set content = #{content} where id = #{id} and user_id = #{user_id}
 	</update>
-	
+
 	<delete id="COMMENTS_DELETE">
 		delete from comments where id=#{id}
 	</delete>
-	
-	<select id="selectWritableComments" parameterType="balgil.com.trip.reservation.model.ReservationVO">
-        SELECT ID, QUANTITY, PRICE, RES_DATE, PRICE_FINAL, ACT_ID, USER_ID
-        FROM Reservation
-        WHERE id=#{id}
-    </select>
 
-    <select id="selectWrittenComments" parameterType="balgil.com.trip.comments.model.CommentsVO">
-        SELECT ID, RATE, CONTENT, COM_DATE, LIKES, USER_ID, ACT_ID
-        FROM Comments
-        WHERE id=#{id}
-    </select>
+	<select id="COMMENTS_WRITTEN" resultType="balgil.com.trip.comments.model.CommentsVO">
+		select a.act_name, c.act_id, c.res_id from activity a join comments c on(a.id=c.act_id) where user_id=#{user_id}
+	</select>
+	
+	<select id="COMMENTS_WRITTEN_ONE" resultType="balgil.com.trip.comments.model.CommentsVO">
+		select a.act_name, c.id, c.act_id, c.res_id, c.rate, c.content, c.com_date, c.likes from activity a join comments c on(a.id=c.act_id) 
+		where res_id = #{res_id} and user_id=#{user_id}
+	</select>
+	
 </mapper>

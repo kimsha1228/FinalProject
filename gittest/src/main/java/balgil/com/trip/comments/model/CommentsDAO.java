@@ -16,9 +16,11 @@ public interface CommentsDAO {
 
     int delete(CommentsVO vo);
     
-    List<ReservationVO> selectWritableComments();
+	CommentsVO selectPrevious(CommentsVO vo);
 
-    List<CommentsVO> selectWrittenComments();
+	List<CommentsVO> selectWrittenComments(CommentsVO vo);
+
+	CommentsVO selectMyOneComments(CommentsVO vo);
 
 
 }
