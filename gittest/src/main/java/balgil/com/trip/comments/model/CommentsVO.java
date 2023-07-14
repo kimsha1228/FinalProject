@@ -17,6 +17,7 @@ public class CommentsVO {
 	public int likes;
 	public String user_id;
 	public String res_id;
+	public String act_name;
 	public int act_id;
 	public List<MultipartFile> file;
 }

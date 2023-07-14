@@ -41,16 +41,16 @@ public class CommentsService {
 		return dao.delete(vo);
 	}
 	
-	public List<ReservationVO> getWritableComments() {
-        return dao.selectWritableComments();
-    }
-
-    public List<CommentsVO> getWrittenComments() {
-        return dao.selectWrittenComments();
-    }
-
 	public CommentsVO selectPrevious(CommentsVO vo) {
 		return dao.selectPrevious(vo);
+	}
+
+	public List<CommentsVO> selectWrittenComments(CommentsVO vo) {
+		return dao.selectWrittenComments(vo);
+	}
+
+	public CommentsVO selectOneComments(CommentsVO vo) {
+		return dao.selectMyOneComments(vo);
 	}
 
 

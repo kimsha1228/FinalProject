@@ -20,4 +20,10 @@ public interface ReservationDAO {
 
 	List<ReservationVO> selectExpired(ReservationVO vo);
 
+	int updatedComments(String res_id);
+
+	int updatedNoComments(String res_id);
+
+	List<ReservationVO> selectNoComments(ReservationVO vo);
+
 }

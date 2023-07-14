@@ -39,18 +39,41 @@ public class CommentsController {
 
 	@Autowired
 	ServletContext sContext;
-
+	
+	@RequestMapping(value = "/selectAllComments.do", method = RequestMethod.GET)
+	public String selectAllComments(Model model) {
+		log.info("/selectAllComments.do");
+		
+		List<CommentsVO> vos = service.selectAll();
+		
+		model.addAttribute("vos", vos);
+		
+		return "comments/selectAll";
+	}
+	
+	@RequestMapping(value = "/selectOneComments.do", method = RequestMethod.GET) //후기 상세
+	public String selectOneComments(Model model, CommentsVO vo) {
+		log.info("/selectOneComments.do... ", vo);
+		
+		CommentsVO vo2 = service.selectOne(vo);
+		log.info("vo2: {}", vo2);
+		
+		model.addAttribute("vo2", vo2);
+		
+		return "comments/selectOne";
+	}
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	@RequestMapping(value = "/comments.do", method = RequestMethod.GET)
 	public String comments() {
 		log.info("/comments.do");
 		return "comments";
 	}
 
-	@RequestMapping(value = "/selectMyComments.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/selectMyComments.do", method = RequestMethod.GET) //작성가능한 후기
 	public String selectMyComments(ReservationVO vo, Model model) {
 		log.info("/selectMyComments.do...{}", vo);
 		
-		List<ReservationVO> vos = rservice.selectExpired(vo);
+		List<ReservationVO> vos = rservice.selectNoComments(vo);
 		log.info("{}", vos);
 		
 		model.addAttribute("vos",vos);
@@ -58,101 +81,27 @@ public class CommentsController {
 		return "comments/selectMyComments";
 	}
 
-//	@RequestMapping(value = "/selectMyWrittenComments.do", method = RequestMethod.GET)
-//	public String selectMyWrittenComments(CommentsVO vo, Model model) {
-//		log.info("/selectMyWrittenComments.do...{}", vo);
-//		
-//		List<ReservationVO> vos = rservice.selectExpired(vo);
-//		log.info("{}", vos);
-//		
-//		model.addAttribute("vos",vos);
-//		
-//		return "comments/selectMyComments";
-//	}
+	@RequestMapping(value = "/selectMyWrittenComments.do", method = RequestMethod.GET)
+	public String selectMyWrittenComments(CommentsVO vo, Model model) {
+		log.info("/selectMyWrittenComments.do...{}", vo);
+		
+		List<CommentsVO> vos1 = service.selectWrittenComments(vo);
+		
+		model.addAttribute("vos1",vos1);
+		
+		return "comments/selectMyComments";
+	}
 	
-	@RequestMapping(value = "/selectAllComments.do", method = RequestMethod.GET)
-	public String selectAllComments(Model model) {
-		log.info("/selectAllComments.do");
-
-		List<CommentsVO> vos = service.selectAll();
-
-		model.addAttribute("vos", vos);
-
-		return "comments/selectAll";
+	@RequestMapping(value = "/selectMyOneComments.do", method = RequestMethod.GET)
+	public String selectMyOneComments(CommentsVO vo, Model model) {
+		log.info("/selectMyOneComments.do...{}", vo);
+		
+		CommentsVO vo2 = service.selectOneComments(vo);
+		
+		model.addAttribute("vo2", vo2);
+		
+		return "comments/selectOneMyComments";
 	}
-
-	@RequestMapping(value = "/selectOneComments.do", method = RequestMethod.GET)
-	public String selectOneComments(Model model, CommentsVO vo) {
-	    log.info("/selectOneComments.do... ", vo);
-
-	    CommentsVO vo2 = service.selectOne(vo);
-	    log.info("vo2: {}", vo2);
-
-	    model.addAttribute("vo2", vo2);
-
-	    return "comments/selectOne";
-	}
-
-	@RequestMapping(value = "/updateComments.do", method = RequestMethod.GET)
-	public String updateComments(Model model, CommentsVO vo) {
-	    log.info("/updateComments.do...{}", vo);
-
-	    CommentsVO vo2 = service.selectOne(vo);
-	    log.info("vo2:{}", vo2);
-
-	    model.addAttribute("vo2", vo2);
-
-	    return "comments/updateComments";
-	}
-
-
-	@RequestMapping(value = "/updateCommentsOK.do", method = RequestMethod.POST)
-	public String updateCommentsOK(CommentsVO vo) throws IllegalStateException, IOException {
-	    log.info("/updateCommentsOK.do...{}", vo);
-
-//	    String originalFilename = vo.getFile().getOriginalFilename();
-//	    int fileNameLength = vo.getFile().getOriginalFilename().length();
-//	    log.info("getOriginalFilename:{}", vo.getFile().getOriginalFilename());
-//		log.info("fileNameLength:{}", fileNameLength);
-//
-//		if(fileNameLength == 0) {
-//			vo.setSave_name(vo.getSave_name());
-//		}else  {
-//			vo.setSave_name(originalFilename);
-//	        String realPath = sContext.getRealPath("resources/uploadimg");
-//	        log.info("realPath: {}", realPath);
-//
-//	        File f = new File(realPath + File.separator + originalFilename);
-//	        vo.getFile().transferTo(f);
-//
-//	        BufferedImage originalBufferImg = ImageIO.read(f);
-//	        BufferedImage thumbBufferImg = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
-//	        Graphics2D graphics = thumbBufferImg.createGraphics();
-//	        graphics.drawImage(originalBufferImg, 0, 0, 50, 50, null);
-//
-//	        File thumbFile = new File(realPath +"thumb_" + originalFilename);
-//	        String formatName = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
-//	        log.info("formatName: {}", formatName);
-//	        ImageIO.write(thumbBufferImg, formatName, thumbFile);
-//
-//	     
-//	    }
-//
-//	    log.info("{}", vo);
-//
-//	    
-//
-//	    int result = service.update(vo);
-//	    log.info("result: {}", result);
-//
-//	    if (result == 1) {
-//	        return "redirect:selectAllComments.do?user_id=" + vo.getUser_id();
-//	    } else {
-	        return "redirect:updateComments.do?Id=" + (vo != null ? vo.getId() : "");
-//	    }
-	}
-
-	
 	
 	@RequestMapping(value = "/insertComments.do", method = RequestMethod.GET)
 	public String insertComments(CommentsVO vo) {
@@ -177,9 +126,12 @@ public class CommentsController {
 		// 상품 입력에 성공하면 이미지를 삽입하기
 		if (result == 1) {
 			log.info("Insert쿼리 성공!");
-
+			
+			//reservation iscommented 1로 바꿔주기
+			int res_result = rservice.updatedComments(vo.getRes_id());
+			log.info("res_result:{}", res_result);
+			
 			CommentsVO vo2 = service.selectPrevious(vo);
-
 			log.info("삽입한 결과 가져오기(act_id가 필요해서):{}", vo2.getId());
 
 			// 파일이 없으면 default.png를 대신 image테이블에 넣을 예정
@@ -230,24 +182,100 @@ public class CommentsController {
 		}//end if
 
 		if (result == 1) {
-			//reservation iscommented 1로 바꿔주기
 			return "redirect:comments.do";
 		} else {
 			return "redirect:insertComments.do";
 		}
 	}
+	
+	@RequestMapping(value = "/updateComments.do", method = RequestMethod.POST)
+	public String updateComments(Model model, CommentsVO vo) {
+	    log.info("/updateComments.do...{}", vo);
 
+	    CommentsVO vo2 = service.selectOneComments(vo);
+	    log.info("vo2:{}", vo2);
+	    
+	    ImageVO vo1 = new ImageVO();
+	    vo1.setComment_id(vo.getId());
+	    List<ImageVO> vos = imgService.selectAll(vo1);
+	    log.info("vos:{}", vos);
 
+	    model.addAttribute("vo2", vo2);
+	    model.addAttribute("vos", vos);
 
-	@RequestMapping(value = "/deleteCommentsOK.do", method = RequestMethod.GET)
-	public String deleteCommentsOK(Model model, CommentsVO vo, @RequestParam("user_id") String user_id) {
+	    return "comments/updateComments";
+	}
+
+	@RequestMapping(value = "/updateCommentsOK.do", method = RequestMethod.POST)
+	public String updateCommentsOK(CommentsVO vo) throws IllegalStateException, IOException {
+	    log.info("/updateCommentsOK.do...{}", vo);
+	    
+	    int result = service.update(vo);
+	    log.info("result:{}",result);
+		
+		//업로드 한 파일이 없으면 사진에 변경은 없음
+		if (vo.getFile().get(0).getSize() == 0) {
+			log.info("이미지는 변경사항 없음!");
+		} else {
+			
+			// 기존 이미지를 테이블에서 삭제
+			ImageVO delete = new ImageVO();
+			delete.setComment_id(vo.getId());
+			imgService.delete(delete);
+			
+			// 파일의 갯수만큼 반복!
+			for (MultipartFile vos : vo.getFile()) {
+				String getOriginalFilename = vos.getOriginalFilename();
+				int fileNameLength = vos.getOriginalFilename().length();
+				log.info("getOriginalFilename:{}", getOriginalFilename);
+				log.info("fileNameLength:{}", fileNameLength);
+
+				// 웹 어플리케이션이 갖는 실제 경로: 이미지를 업로드할 대상 경로를 찾아서 파일저장.
+				String realPath = sContext.getRealPath("resources/uploadimg");
+				log.info("realPath : {}", realPath);
+
+				File f = new File(realPath + "\\" + getOriginalFilename);
+				vos.transferTo(f);
+
+				// 이미지를 서버에 저장
+				ImageVO imageVO = new ImageVO();
+				imageVO.setName(getOriginalFilename);
+				imageVO.setComment_id(vo.getId());
+
+				imgService.insert(imageVO);
+
+				//// create thumbnail image/////////
+				BufferedImage original_buffer_img = ImageIO.read(f);
+				BufferedImage thumb_buffer_img = new BufferedImage(200, 200, BufferedImage.TYPE_3BYTE_BGR);
+				Graphics2D graphic = thumb_buffer_img.createGraphics();
+				graphic.drawImage(original_buffer_img, 0, 0, 200, 200, null);
+
+				File thumb_file = new File(realPath + "/thumb_" + getOriginalFilename);
+				String formatName = getOriginalFilename.substring(getOriginalFilename.lastIndexOf(".") + 1);
+				log.info("formatName : {}", formatName);
+				ImageIO.write(thumb_buffer_img, formatName, thumb_file);
+			}
+		}//end if
+
+		if (result == 1) {
+			return "redirect:selectMyOneComments.do?res_id=" + vo.getRes_id()+"&user_id="+vo.getUser_id();
+		} else {
+			return "selectMyWrittenComments.do?user_id="+vo.getUser_id();
+		}
+	}
+
+	@RequestMapping(value = "/deleteCommentsOK.do", method = RequestMethod.POST)
+	public String deleteCommentsOK(CommentsVO vo) {
 	    log.info("/deleteCommentsOK.do...{}", vo);
 
 	    int result = service.delete(vo);
-
 	    log.info("result...{}", result);
+	    if(result==1) {
+	    	int res_result = rservice.updatedNoComments(vo.getRes_id());
+	    	log.info("res_result...{}", res_result);
+	    }
 
-	    return "redirect:selectAllComments.do?user_id=" + user_id;
+	    return "redirect:selectMyComments.do?user_id=" + vo.getUser_id();
 	}
 
 }

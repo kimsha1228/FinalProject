@@ -16,18 +16,17 @@
 		<table>
 			<tr>
 				<td><label for="user_id">USER_ID:</label></td>
-				<td><input type="text" id="user_id" name="user_id" value="${user_id}" required>${user_id}
+				<td><input type="text" id="user_id" name="user_id" value="${user_id}" readonly required>
 				<input type="hidden" id="res_id" name="res_id" value="${param.res_id}" required></td>
-			<tr>
+			</tr>
 			<tr>
 				<td><label for="act_id">ACT_ID:</label></td>
 				<td><input type="text" id="act_id" name="act_id" value="${param.act_id}" required></td>
-			<tr>
+			</tr>
 			<tr>
 				<td><label for="content">Content:</label></td>
 				<td><textarea id="content" name="content" rows="5" cols="50" required></textarea></td>
 			</tr>
-			<tr>
 			<tr>
 				<td><label for="rate">Rate:</label></td>
 				<td><select id="rate" name="rate" required>
@@ -37,7 +36,7 @@
 						<option value="4">4</option>
 						<option value="5">5</option>
 				</select></td>
-			<tr>
+			</tr>
 			<tr id="multiplefiles">
 				<td>
 				<input type="file" name="file" multiple id="multiplefiles"></td>

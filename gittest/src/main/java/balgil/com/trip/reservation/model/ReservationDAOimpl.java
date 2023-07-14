@@ -75,4 +75,25 @@ public class ReservationDAOimpl implements ReservationDAO {
 		return sqlSession.selectList("EXPIRED_RESERVATION_SELECT_ALL", vo);
 	}
 
+	@Override
+	public int updatedComments(String res_id) {
+		log.info("updatedComments()...{}", res_id);
+
+		return sqlSession.update("RESERVATION_COMMENTS", res_id);
+	}
+
+	@Override
+	public List<ReservationVO> selectNoComments(ReservationVO vo) {
+		log.info("selectNoComments()...{}", vo);
+
+		return sqlSession.selectList("EXPIRED_RESERVATION_SELECT_NOCOMMENTS", vo);
+	}
+
+	@Override
+	public int updatedNoComments(String res_id) {
+		log.info("updatedNoComments()...{}", res_id);
+
+		return sqlSession.update("RESERVATION_NO_COMMENTS", res_id);
+	}
+
 }

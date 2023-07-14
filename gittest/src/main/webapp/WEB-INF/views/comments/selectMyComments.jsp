@@ -20,9 +20,8 @@
 			<table>
 			<tr>
 			<th colspan="2">
-			<a href="selectExpiredReservation.do?user_id=${user_id}">사용내역</a>
-			<a href="select.do?user_id=${user_id}">사용내역</a>
-                <!-- 여기에 작성한 후기 링크 걸어주기-->
+			<a href="selectMyComments.do?user_id=${user_id}">작성 가능한 후기</a>
+			<a href="selectMyWrittenComments.do?user_id=${user_id}">내가 쓴 후기</a>
 			</th>
 			</tr>
 			</table>
@@ -55,7 +54,7 @@
 		<c:if test="${vos.size()==0}">
 		<table>
 			<tr>
-				<td>이용한 상품이 없습니다</td>
+				<td>후기를 쓸 수 있는 상품이 없습니다</td>
 			</tr>
 			<tr>
 				<td><a href="selectAllReservation.do?user_id=${user_id}">예약내역 보기</a></td>
@@ -64,24 +63,15 @@
 		</c:if>	
 		
 		<c:if test="${vos1.size()!=0}">
-			<table>
-			<tr>
-			<th colspan="2">
-			<a href="selectExpiredReservation.do?user_id=${user_id}">사용내역</a>
-                <!-- 여기에 작성한 후기 링크 걸어주기-->
-			</th>
-			</tr>
-			</table>
-			
 			<c:forEach var="vo1" items="${vos1}">
 				<table>
 				<tr>
 					<th>상품명</th>
-					<td>${vo1.act_id}</td>
+					<td><a href="selectOneUserAct.do?id=${vo1.act_id}">${vo1.act_name}</a></td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<a href="insertComments.do?act_id=${vo.act_id}&user_id=${user_id}">후기 작성</a>
+						<a href="selectMyOneComments.do?res_id=${vo1.res_id}&user_id=${user_id}">후기 상세</a>
 					</td>
 				</tr>
 			</table>
@@ -94,7 +84,7 @@
 				<td>작성한 후기가 없습니다</td>
 			</tr>
 			<tr>
-				<td><a href="selectExpiredReservation.do?user_id=${user_id}">이용 내역 보기</a></td>
+				<td><a href="selectMyComments.do?user_id=${user_id}">후기 작성하러 가기</a></td>
 			</tr>
 			</table>
 		</c:if>	
