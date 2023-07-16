@@ -150,6 +150,7 @@ function removeMarker(value) {
 		//여기서 arrayOfCoords로 재셋팅후 splice 해줘야 의도한대로 동작함
 		polyline.setPath(arrayOfCoords);
 		polyline.getPath().splice(todelete,1);
+		
 		markerArray.splice(todelete,1);
 		
 	}

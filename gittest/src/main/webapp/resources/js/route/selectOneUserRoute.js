@@ -284,5 +284,14 @@ function showRoadRoute(){
 }
 function hideRoadRoute(){
 	console.log(arrayOfCoords);
-	polyline.setPath(arrayOfCoords);
+	//orders 상태를 [0,3]->[0,1] 이런식으로 재정렬 해서 indexOutOfBounds 방지
+   	var newOrders=findRanking(orders);
+	var newArray = new Array();
+	for(var i = 0 ;i<orders.length;i++){
+		newArray.push(arrayOfCoords[newOrders[i]]);
+	}
+	console.log("재정렬후의 newArray:",newArray);
+	polyline.setPath(newArray);
+	
+	//polyline.setPath(arrayOfCoords);
 }
