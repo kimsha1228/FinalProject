@@ -70,7 +70,7 @@
 </ul>
 </div>
 </header>
-<script type="text/javascript"><!-- 이거 왜 안먹엉 -->
+<script type="text/javascript">
 	if('${user_id}'===''){
 		$('.login').show();
 		$('.u_insert').show();
