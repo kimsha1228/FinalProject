@@ -140,8 +140,8 @@ $(function(){
 			            count--;
 			            for(var i =0 ;i<orders.length;i++){
 						    if(orders[i]==(this.name)){
-						    	console.log("오더 인덱스:",i);
-						    	console.log("클릭한 박스:",this.name);
+						    	//console.log("오더 인덱스:",i);
+						    	//console.log("클릭한 박스:",this.name);
 						        removeMarker(i);
 						    }
 						}
@@ -263,7 +263,7 @@ function likeUpRoute(value){
 
 //도로경로 표시용 함수
 function showRoadRoute(){
-	console.log(arrayOfCoords);
+	//console.log(arrayOfCoords);
 	
 	$.ajax({
 		url: "directions5.do",

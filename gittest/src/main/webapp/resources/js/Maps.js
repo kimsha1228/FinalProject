@@ -39,7 +39,7 @@ function addAddressToCoordinate(address,index) {
         var item = response.v2.addresses[0],
         //검색해서 나온 결과의 좌표를 셋팅
         point = new naver.maps.Point(item.x, item.y);
-        console.log("체크한 주소의 좌표값:", point);
+        //console.log("체크한 주소의 좌표값:", point);
 			
 		mapFlag=1;
 		
@@ -49,28 +49,30 @@ function addAddressToCoordinate(address,index) {
 			if(	(markerArray[i].getPosition().x===point.x)&&
 				(markerArray[i].getPosition().y===point.y)){
 				mapFlag=0;
-				console.log("통과하지 못함");
+			//	console.log("통과하지 못함");
 			}
 		}
 
 		//찍힌 마커가 없을때만 배열에 새 마커 추가
 		if(mapFlag==1){
-			console.log("마커가 없습니다");
+		//	console.log("마커가 없습니다");
 	        markerArray.splice(index,0,new naver.maps.Marker({
 	        	animation:2,
 	            position: new naver.maps.LatLng(point),
 	            map: map
 	        }));
-	        for(let i in markerArray){
-		        console.log("푸쉬후 마커배열",markerArray[i].getPosition());       
-	        };
-			//폴리라인 그리기용 푸쉬
 			arrayOfCoords.splice(index,0,point);
-			for(let i in markerArray){
-		        console.log("푸쉬후 arrayOfCoords배열",arrayOfCoords[i]);       
-	        };
 			orders.push(index);
-        
+	        
+	        
+	        /*
+	        for(let i in markerArray){
+		        console.log("푸쉬후 마커배열",i,markerArray[i].getPosition());       
+		        console.log("푸쉬후 arrayOfCoords배열",i,arrayOfCoords[i]);       
+	        };
+        	*/
+        	
+        	
 	        //좌표들을 더해서 중간값 구하기
 	        var centerX=0;
 			var centerY=0;
@@ -90,14 +92,16 @@ function addAddressToCoordinate(address,index) {
 	        
 			//arrayOfCoords에 저장된 좌표들을 가져와서 폴리라인을 그린다
 	        if(markerArray.length>1){
-	        	console.log(orders);
-	        	console.log(findRanking(orders));
-	        	var newOrders=findRanking(orders);
+	        //	console.log(orders);
+	        //	console.log(findRanking(orders));
+	        
+	        	//orders 상태를 [0,3]->[0,1] 이런식으로 재정렬 해서 indexOutOfBounds 방지
+	           	var newOrders=findRanking(orders);
 	        	var newArray = new Array();
 	        	for(var i = 0 ;i<orders.length;i++){
 	        		newArray.push(arrayOfCoords[newOrders[i]]);
 	        	}
-	        	console.log("재정렬후의 newArray:",newArray);
+	        //	console.log("재정렬후의 newArray:",newArray);
 				polyline.setPath(newArray);
 	        }
 		}
@@ -134,15 +138,19 @@ function removeMarker(value) {
 	if(markerArray[value]===undefined){
 		alert('잘못 입력하셨습니다');	
 	}else{
-		console.log("넘어온 value:",value);
+	//	console.log("넘어온 value:",value);
+		
+		//orders 상태를 [0,3]->[0,1] 이런식으로 재정렬 해서 indexOutOfBounds 방지
 		var newOrders=findRanking(orders);
 		var todelete = newOrders.splice(value,1);
 		orders.splice(value,1);
-		console.log("제거할 배열:",todelete);
-		console.log(markerArray[todelete].setMap(null));
-		console.log(polyline.setPath(arrayOfCoords));
-		console.log(polyline.getPath().splice(todelete,1));
-		console.log(markerArray.splice(todelete,1));
+	//	console.log("제거할 배열:",todelete);
+		markerArray[todelete].setMap(null);
+		
+		//여기서 arrayOfCoords로 재셋팅후 splice 해줘야 의도한대로 동작함
+		polyline.setPath(arrayOfCoords);
+		polyline.getPath().splice(todelete,1);
+		markerArray.splice(todelete,1);
 		
 	}
 }
