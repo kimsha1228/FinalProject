@@ -39,6 +39,7 @@ function addAddressToCoordinate(address,index) {
         var item = response.v2.addresses[0],
         //검색해서 나온 결과의 좌표를 셋팅
         point = new naver.maps.Point(item.x, item.y);
+        console.log("체크한 주소의 좌표값:", point);
 			
 		mapFlag=1;
 		
@@ -62,7 +63,7 @@ function addAddressToCoordinate(address,index) {
 	        }));
 			//폴리라인 그리기용 푸쉬
 			arrayOfCoords.splice(index,0,point);
-			orders.splice(index,0,index);
+			orders.push(index);
         
 	        //좌표들을 더해서 중간값 구하기
 	        var centerX=0;
@@ -83,7 +84,14 @@ function addAddressToCoordinate(address,index) {
 	        
 			//arrayOfCoords에 저장된 좌표들을 가져와서 폴리라인을 그린다
 	        if(markerArray.length>1){
-				polyline.setPath(arrayOfCoords);
+	        	console.log(orders);
+	        	console.log(findRanking(orders));
+	        	var newOrders=findRanking(orders);
+	        	var newArray = new Array();
+	        	for(var i = 0 ;i<orders.length;i++){
+	        		newArray.push(arrayOfCoords[newOrders[i]]);
+	        	}
+				polyline.setPath(newArray);
 	        }
 		}
         mapFlag=0;
@@ -120,11 +128,32 @@ function removeMarker(value) {
 		alert('잘못 입력하셨습니다');	
 	}else{
 		console.log("넘어온 value:",value);
-		markerArray[value].setMap(null);
-		polyline.getPath().removeAt(value);
-		markerArray.splice(value,1);
-		orders.splice(value,1);
+		var todelete = orders.splice(value,1);
+		console.log("제거할 배열:",todelete);
+		console.log(markerArray[todelete].setMap(null));
+		console.log(polyline.getPath().removeAt(todelete));
+		console.log(markerArray.splice(todelete,1));
+		
 	}
 }
 
 naver.maps.onJSContentLoaded = initGeocoder;
+
+function findRanking(arr) {
+  // 배열 복사
+  var sortedArr = arr.slice();
+  
+  // 배열 정렬
+  sortedArr.sort(function(a, b) {
+    return a - b;
+  });
+  
+  // 순위 계산
+  var newArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    var rank = sortedArr.indexOf(arr[i]);
+    newArr.push(rank);
+  }
+  
+  return newArr;
+}
