@@ -55,7 +55,7 @@ public class CartController {
     //장바구니에 추가했을 때 사용자 장바구니에 같은 상품이 같은 일자에 있으면 수량을 올려준다
     @ResponseBody
     @RequestMapping(value = "/insertOneCart.do", method = RequestMethod.POST)
-    public Map<String, String> insertOneCart(CartVO vo) {
+    public String insertOneCart(CartVO vo) {
         log.info("/insertOneCart...{}", vo);
         
         CartVO vo1 = cartService.selectOne(vo);
