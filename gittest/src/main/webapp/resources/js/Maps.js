@@ -151,6 +151,16 @@ function removeMarker(value) {
 		polyline.setPath(arrayOfCoords);
 		polyline.getPath().splice(todelete,1);
 		
+		//후처리
+    	//orders 상태를 [0,3]->[0,1] 이런식으로 재정렬 해서 indexOutOfBounds 방지
+       	newOrders=findRanking(orders);
+    	var newArray = new Array();
+    	for(var i = 0 ;i<orders.length;i++){
+    		newArray.push(arrayOfCoords[newOrders[i]]);
+    	}
+    //	console.log("재정렬후의 newArray:",newArray);
+		polyline.setPath(newArray);
+		
 		markerArray.splice(todelete,1);
 		
 	}
