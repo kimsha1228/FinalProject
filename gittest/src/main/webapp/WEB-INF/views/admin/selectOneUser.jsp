@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>selectOne</title>
 <jsp:include page="../css.jsp"></jsp:include>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
