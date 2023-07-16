@@ -95,7 +95,7 @@
 	</div>
 	<br>
 	<br>
-	<button onclick="window.location.href='selectFaq.do'">고객센터</button>
+	<button onclick="window.location.href='selectFaq.do'">고객센터</button><!-- selectAllFaq.do 연결 -->
 	<button onclick="window.location.href='insertContact.do?act_id=${vo2.id}&seller_id=${vo2.seller_id}'">문의하기</button>
 
 <!-- 지도 구현 js -->
