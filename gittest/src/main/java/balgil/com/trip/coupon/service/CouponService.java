@@ -15,13 +15,25 @@ public class CouponService {
 
 	@Autowired
 	CouponDAO dao;
-
+	
 	public CouponService() {
 		log.info("CouponService()...");
 	}
 
+	public List<CouponVO> selectAll() {
+		return dao.selectAll();
+	}
+	
+	public CouponVO selectOne(CouponVO vo) {
+		return dao.selectOne(vo);
+	}
+
 	public List<CouponVO> selectList(CouponVO vo) {
 		return dao.selectList(vo);
+	}
+
+	public int insert(CouponVO vo) {
+		return dao.insert(vo);
 	}
 
 }

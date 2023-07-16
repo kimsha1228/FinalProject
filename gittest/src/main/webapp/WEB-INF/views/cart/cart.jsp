@@ -36,8 +36,8 @@
 								<td></td>
 								<td>
 								<button class="order_btn" data-id="${cart.id}" data-user_id="${user_id}" data-act_id="${cart.act_id}"
-								data-price="${cart.price}" data-quantity="${cart.quantity}"  data-res_date="${cart.res_date}">구매</button>
-								<button class="delete_btn" data-id="${cart.id}">삭제</button>
+								data-price="${cart.price}" data-quantity="${cart.quantity}"  data-res_date="${cart.res_date}">단일 구매</button>
+								<button class="delete_btn" data-id="${cart.id}" data-user_id="${user_id}">삭제</button>
 								</td>
 							</tr>
 							<tr>
@@ -57,7 +57,7 @@
 									<input type="number" value="${cart.quantity}" class="quantity_input">	
 									<button class="plus_btn">+</button>
 									<button class="minus_btn">-</button>
-									<button class="quantity_modify_btn" data-id="${cart.id}">변경</button>
+									<button class="quantity_modify_btn" data-id="${cart.id}" data-user_id="${user_id}">변경</button>
 								</td>
 							</tr>
 							<tr>
@@ -88,12 +88,15 @@
 		<!-- 수량 조정 form -->
 		<form action="updateOneCart.do" method="get" class="quantity_update_form">
 			<input type="hidden" name="id" class="update_id">
+			<input type="hidden" name="user_id" class="update_user_id">
+			<input type="hidden" name="quantity" class="update_quantity">
 			<input type="hidden" name="quantity" class="update_quantity">
 		</form>	
 		
 		<!-- 삭제 form -->
 		<form action="deleteOneCart.do" method="get" class="quantity_delete_form">
 			<input type="hidden" name="id" class="delete_id">
+			<input type="hidden" name="user_id" class="delete_user_id">
 		</form>		
 		
 		<!-- 주문 form -->
@@ -178,8 +181,10 @@
 	/* 수량 수정 버튼 */
 	$(".quantity_modify_btn").on("click", function(){
 		let id = $(this).data("id");
+		let user_id = $(this).data("user_id");
 		let quantity = $(this).parent("td").find("input").val();
 		$(".update_id").val(id);
+		$(".update_user_id").val(user_id);
 		$(".update_quantity").val(quantity);
 		$(".quantity_update_form").submit();
 	});
@@ -188,7 +193,9 @@
 	$(".delete_btn").on("click", function(e){
 		e.preventDefault();
 		const id = $(this).data("id");
+		let user_id = $(this).data("user_id");
 		$(".delete_id").val(id);
+		$(".delete_user_id").val(user_id);
 		$(".quantity_delete_form").submit();
 	});
 	

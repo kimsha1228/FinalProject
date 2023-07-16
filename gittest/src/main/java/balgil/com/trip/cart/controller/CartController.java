@@ -1,7 +1,9 @@
 package balgil.com.trip.cart.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import balgil.com.trip.activity.model.ActivityVO;
 import balgil.com.trip.activity.service.ActivityService;
@@ -50,8 +53,9 @@ public class CartController {
     }
     
     //장바구니에 추가했을 때 사용자 장바구니에 같은 상품이 같은 일자에 있으면 수량을 올려준다
+    @ResponseBody
     @RequestMapping(value = "/insertOneCart.do", method = RequestMethod.POST)
-    public String insertOneCart(CartVO vo) {
+    public Map<String, String> insertOneCart(CartVO vo) {
         log.info("/insertOneCart...{}", vo);
         
         CartVO vo1 = cartService.selectOne(vo);
@@ -68,8 +72,12 @@ public class CartController {
         log.info("result_insert: {}", result_insert);
         log.info("result_insertUp: {}", result_insertUp);
         
-        
-        return "home";//위에서 리다이렉트 if(result_insertUp==1){return ~~;}해주기
+        // 둘중 하나라도 성공적이면 OK를 반환 
+        if(result_insert>=1||result_insertUp>=1) {
+          return "{\"result\":\"OK\"}";
+        }else {
+          return "{\"result\":\"NotOK\"}";
+        }
     }
     
     //장바구니에서 수량 조절
@@ -77,12 +85,10 @@ public class CartController {
     public String updateOneCart(CartVO vo) {
     	log.info("updateOneCart: {}", vo);
     	int result_update = cartService.updateOneCart(vo);	
-//    	if(result_update==1) {
-//    		
-//    	}
+
     	log.info("result_update: {}",result_update);
     	
-    	return "redirect:selectAllCart.do?user_id=john123"; // 수정 후 장바구니 페이지로 리다이렉트
+    	return "redirect:selectAllCart.do?user_id="+vo.getUser_id(); // 수정 후 장바구니 페이지로 리다이렉트
     }
     
     //장바구니에서 삭제
@@ -91,7 +97,7 @@ public class CartController {
     	log.info("deleteOneCart: {}", vo);
     	int result_delete = cartService.deleteOneCart(vo);
     	log.info("result: {}", result_delete);
-    	return "redirect:selectAllCart.do?user_id=john123"; // 삭제 후 장바구니 페이지로 리다이렉트
+    	return "redirect:selectAllCart.do?user_id="+vo.getUser_id(); // 삭제 후 장바구니 페이지로 리다이렉트
     }
 
     

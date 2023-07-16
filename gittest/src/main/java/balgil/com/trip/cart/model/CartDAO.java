@@ -16,6 +16,7 @@ public interface CartDAO {
 
 		int updateOneCart(CartVO vo);
 
-		void updateTime();	    
+		void updateTime();
+
 	}
 

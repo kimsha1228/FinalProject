@@ -18,9 +18,9 @@ public class UsersRestController {
 	UsersService service;
 	
 	@ResponseBody
-	@RequestMapping(value = "/json_m_idCheck.do", method = RequestMethod.GET)
-	public String json_m_idCheck(UsersVO vo) {
-		log.info("/json_m_idCheck.do...{}",vo);
+	@RequestMapping(value = "/json_u_idCheck.do", method = RequestMethod.GET)
+	public String json_u_idCheck(UsersVO vo) {
+		log.info("/json_u_idCheck.do...{}",vo);
 		
 		UsersVO vo2 = service.idCheck(vo);
 		log.info("{}",vo2);
@@ -37,7 +37,7 @@ public class UsersRestController {
 	public UsersVO jsonUsersSelectOne(UsersVO vo) {
 		log.info("jsonUserSelectOne.do...{}", vo);
 		
-		UsersVO vo2 = service.selectOneUser(vo);
+		UsersVO vo2 = service.selectOne(vo);
 		log.info("vo2: {}", vo2);
 		
 		return vo2;

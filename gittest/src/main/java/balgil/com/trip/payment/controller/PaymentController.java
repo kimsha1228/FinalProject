@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import balgil.com.trip.cart.model.CartVO;
+import balgil.com.trip.cart.service.CartService;
 import balgil.com.trip.payment.model.PaymentVO;
 import balgil.com.trip.payment.service.PaymentService;
 import balgil.com.trip.pointhistory.service.PointHistoryService;
@@ -34,6 +36,9 @@ public class PaymentController {
 	@Autowired
 	ReservationService res_service;
 
+	@Autowired
+	CartService c_service; 
+	
 	@Autowired
 	UsersService u_service; 
 	
@@ -59,10 +64,12 @@ public class PaymentController {
 		
 		int pay_result = pay_service.insert(vo);
 		log.info("pay_result : {}", pay_result);
+		
 		if(pay_result==1) {
 			
 			int result_user = 0;
 			int result_pointHistory = 0;
+			
 			if(vo.getPoint().equals("0")) {
 				result_user = 1;
 				result_pointHistory = 1;
@@ -70,7 +77,9 @@ public class PaymentController {
 				result_user = u_service.pointUpdate(vo.getUser_id(), vo.getPoint());
 				result_pointHistory = p_service.useInsert(vo.getUser_id(), vo.getPoint());
 			}
+			
 			int result_userCoupon = 0;
+			
 			if(vo.getCode().equals("0")) {
 				result_userCoupon = 1;
 			}else {
@@ -91,58 +100,55 @@ public class PaymentController {
 				resvo.setRes_date(res_date);
 				
 				int res_result = res_service.insert(resvo);
-				log.info("res_result : {}", res_result);
+				
+				if(res_result==1) {
+					CartVO cartvo = new CartVO();
+					cartvo.setAct_id(vo.getAct_id());
+					cartvo.setUser_id(vo.getUser_id());
+					cartvo.setRes_date(res_date);
+					cartvo.setQuantity(vo.getQuantity());
+					
+					CartVO result_cart = c_service.selectOne(cartvo);
+					log.info("result_cart:{}", result_cart);
+					if(result_cart != null) {
+						c_service.deleteOneCart(result_cart);
+					}
+					return "redirect:reservationComplete.do";
+				}else {
+					return "redirect:reservationFailure.do";
+				}
 
-				return "redirect:reservationComplete.do";
-			
 			}else {
-				return "home"; // 나중에 리다이렉트
+				return "redirect:reservationFailure.do";
 			}
-			
 		}else {
-			return "redirect:reservation_api.do"; // 나중에 리다이렉트
+			return "redirect:reservationFailure.do";
 		}
 	}
 	
 	
-	//test중....
-	@ResponseBody
-	@RequestMapping(value = "/insertManyReservation.do", method = RequestMethod.GET)
-	public String insertManyReservation(@RequestParam(value = "txt_json") String datas) {
-		log.info("/insertManyReservation.do...{}", datas);
-		
-		PaymentVO[] vo_gsons = gson.fromJson(datas, PaymentVO[].class);
-		
-		for (PaymentVO vo : vo_gsons) {
-			log.info(vo.toString());
-		}
-		
-		List<PaymentVO> vos = Arrays.asList(vo_gsons);
-		for (PaymentVO vo : vos) {
-			log.info(vo.toString());
-		}
-		
-//		String[] arr = datas.split(":");//2,10000,2023-07-30
-//		for (int i = 0; i < arr.length; i++) {
-//			ReservationVO vo = new ReservationVO();
-//			vo.setQuantity(Integer.parseInt(arr[i].split(",")[0]));//"2"
-//			vo.setPrice(Integer.parseInt(arr[i].split(",")[1]));//"10000"
-//			vo.setRes_date(arr[i].split(",")[2]);//"2023-07-30"
-//			log.info("vo...{}", vo);
-////			int result = service.insert(vo);
-////			log.info("result : {}", result);
-//		}
-		
+//	@ResponseBody
+//	@RequestMapping(value = "/insertManyReservation.do", method = RequestMethod.GET)
+//	public String insertManyReservation(@RequestParam(value = "txt_json") String datas) {
+//		log.info("/insertManyReservation.do...{}", datas);
 //		
-//		return "reservation/insertOne";//나중에 바꾸기
-//		if (result == 1) {
-			return "redirect:reservation_api.do";
-//		} else {
-//			return "redirect:reservationInsert.do";
+//		PaymentVO[] vo_gsons = gson.fromJson(datas, PaymentVO[].class);
+//		
+//		for (PaymentVO vo : vo_gsons) {
+//			log.info(vo.toString());
 //		}
-	}
-	
-	
+//		
+//		List<PaymentVO> vos = Arrays.asList(vo_gsons);
+//		for (PaymentVO vo : vos) {
+//			log.info(vo.toString());
+//		}
+//		
+////		if (result == 1) {
+////			return "redirect:reservation_api.do";
+////		} else {
+//			return "redirect:reservationInsert.do";
+////		}
+//	}
 	
 
 }

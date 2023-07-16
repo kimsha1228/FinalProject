@@ -4,11 +4,14 @@ import java.util.List;
 
 public interface WishListDAO {
 
-	int insert(WishListVO vo);
+    int insertWishList(WishListVO vo);
 
-	int delete(WishListVO vo);
+    int delete(WishListVO vo);
 
-	List<WishListVO> selectAll(WishListVO vo);
+    List<WishListVO> selectAll(WishListVO vo);
 
-	WishListVO selectOne(WishListVO vo);
+    WishListVO selectOne(WishListVO vo);
+    
+    void addToWishList(String user_id, int act_id);
+
 }

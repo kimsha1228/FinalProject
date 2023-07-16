@@ -12,9 +12,5 @@
 	<h3>결제가 완료되었습니다!</h3>
 	<a href="home.do">메인페이지로</a>
 	<a href="selectAllReservation.do?user_id=${user_id}">예약내역 보기</a>
-		<form action="selectAllReservation.do" method="POST">
-				<input type="hidden" name="user_id" id="user_id" value="${user_id}">
-				<input type="submit" value="예약내역">
-		</form>
 </body>
 </html>

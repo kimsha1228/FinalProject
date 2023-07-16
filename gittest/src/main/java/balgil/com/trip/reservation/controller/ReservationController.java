@@ -70,8 +70,8 @@ public class ReservationController {
 			result_user = 1;
 			result_pointHistory = 1;
 		}else {
-			result_user = u_service.pointUpdate(vo.getUser_id(), pay_vo.getPoint());
-			result_pointHistory = p_service.useInsert(vo.getUser_id(), pay_vo.getPoint());
+			result_user = u_service.pointInsert(vo.getUser_id(), pay_vo.getPoint());
+			result_pointHistory = p_service.useInsertBack(vo.getUser_id(), pay_vo.getPoint());
 		}
 		int result_userCoupon = 0;
 		if(pay_vo.getCode().equals("0")) {
@@ -93,6 +93,13 @@ public class ReservationController {
 		log.info("/reservationComplete.do...{}", vo);
 		
 		return "reservation/reservationComplete";
+	}
+	
+	@RequestMapping(value = "/reservationFailure.do", method = RequestMethod.GET)
+	public String reservationFailure(ReservationVO vo) {
+		log.info("/reservationFailure.do...{}", vo);
+		
+		return "reservation/reservationFailure";
 	}
 	
 	@RequestMapping(value = "/selectAllReservation.do", method = RequestMethod.GET)

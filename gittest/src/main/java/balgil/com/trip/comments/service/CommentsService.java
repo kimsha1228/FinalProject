@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import balgil.com.trip.comments.model.CommentsDAO;
 import balgil.com.trip.comments.model.CommentsVO;
+import balgil.com.trip.reservation.model.ReservationVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -39,4 +40,18 @@ public class CommentsService {
 	public int delete(CommentsVO vo) {
 		return dao.delete(vo);
 	}
+	
+	public CommentsVO selectPrevious(CommentsVO vo) {
+		return dao.selectPrevious(vo);
+	}
+
+	public List<CommentsVO> selectWrittenComments(CommentsVO vo) {
+		return dao.selectWrittenComments(vo);
+	}
+
+	public CommentsVO selectOneComments(CommentsVO vo) {
+		return dao.selectMyOneComments(vo);
+	}
+
+
 }

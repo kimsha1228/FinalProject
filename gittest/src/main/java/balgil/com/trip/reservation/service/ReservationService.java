@@ -48,4 +48,16 @@ public class ReservationService {
 		return dao.selectExpired(vo);
 	}
 
+	public int updatedComments(String res_id) {
+		return dao.updatedComments(res_id);
+	}
+
+	public int updatedNoComments(String res_id) {
+		return dao.updatedNoComments(res_id);
+	}
+
+	public List<ReservationVO> selectNoComments(ReservationVO vo) {
+		return dao.selectNoComments(vo);
+	}
+
 }

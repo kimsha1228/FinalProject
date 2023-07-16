@@ -7,10 +7,9 @@
 	<insert id="WISHLIST_INSERT"
 		parameterType="balgil.com.trip.wishlist.model.WishListVO">
 		INSERT INTO WISHLIST (act_id, user_id)
-		VALUES (#{act_id}, #{user_id})
+		VALUES (#{act_id},
+		#{user_id})
 	</insert>
-
-
 
 	<delete id="WISHLIST_DELETE"
 		parameterType="balgil.com.trip.wishlist.model.WishListVO">
@@ -19,13 +18,6 @@
 	</delete>
 
 
-	<select id="WISHLIST_SELECT_ALL"
-		resultType="balgil.com.trip.wishlist.model.WishListVO">
-		SELECT act_id, user_id
-		FROM WISHLIST
-		WHERE user_id =
-		#{user_id}
-	</select>
 
 	<select id="WISHLIST_SELECT_ONE"
 		resultType="balgil.com.trip.wishlist.model.WishListVO">
@@ -37,9 +29,13 @@
 
 	<select id="WISHLIST_SELECT_ALL_WITH_USER_ID"
 		resultType="balgil.com.trip.wishlist.model.WishListVO">
-		SELECT act_id, user_id
-		FROM WISHLIST
-		WHERE user_id =
-		#{user_id}
+		SELECT w.act_id, w.user_id, a.act_name
+		FROM WISHLIST w
+		JOIN activity a ON (w.act_id = a.id)
+		WHERE w.user_id = #{user_id}
 	</select>
+
+
+
+
 </mapper>

@@ -6,7 +6,12 @@
 <mapper namespace="balgil.com.trip.activity">
 	<select id="ACT_SELECT_ALL" resultType="balgil.com.trip.activity.model.ActivityVO">
 		select * from ACTIVITY
-		where seller_id = #{seller_id} order by id desc
+		<where>
+			<if test="seller_id!='admin01'">
+				seller_id = #{seller_id}
+			</if>
+		</where> 
+		order by id desc
 	</select>
 	
 	<select id="ACT_SELECT_ALL_DEST" resultType="balgil.com.trip.activity.model.ActivityVO">

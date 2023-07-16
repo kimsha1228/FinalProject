@@ -38,7 +38,7 @@ $(function(){
 	 				</tr>
 	 				<tr>
 	 					<td>전화번호</td>
- 						<td>\${vo2.region} \${vo2.tel}</td>
+ 						<td>\${vo2.tel}</td>
 	 				</tr>
 	 				<tr>
  						<td>이메일</td>
@@ -229,22 +229,6 @@ $(function(){
 		}
 		
 	}//end setFinalPriceInfo
-	
-	function test(){
-		let obj = new Object();
-		obj.id = "tester";
-		$.ajax({
-			url:"insertPaymentMany.do",
-			type:"get",
-			dataType:'json',
-			data:JSON.stringify(obj),
-			success:function(data){
-				console.log(data);
-			}
-		});
-	
-	}
-	
 </script>
 </head>
 <body>

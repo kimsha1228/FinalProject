@@ -30,16 +30,15 @@
 
 			<c:forEach var="vo" items="${vos1}">
 				<tr>
-					<th>회원번호</th>
-					<td><a
-						href="selectOneWishList.do?id=${vo.act_id}&user_id=${vo.user_id}">${vo.user_id}</a></td>
-					<!-- 여기도 세션 처리 -->
+					<th>회원정보</th>
+					<td>${vo.user_id}</a></td>
 				</tr>
 
 				<tr>
 					<th>상품번호</th>
-					<td><a href="selectOneAct.do?id=${vo.act_id}">${vo.act_id}</a></td>
+					<td><a href="selectOneUserAct.do?id=${vo.act_id}">${vo.act_name}</a></td>
 				</tr>
+
 
 				<tr>
 					<td colspan="2"><a
@@ -66,7 +65,7 @@
 
 				<tr>
 					<th>상품번호</th>
-					<td><a href="selectOneAct.do?id=${vo2.act_id}">${vo.act_id}</a></td>
+					<td><a href="selectOneUserAct.do?id=${vo2.act_id}">${vo2.act_name}</a></td>
 				</tr>
 			</c:forEach>
 		</c:if>

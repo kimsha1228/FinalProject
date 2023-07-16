@@ -16,7 +16,7 @@
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 	console.log("현재 주소:",result);
 </script>
-<script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=4"></script>
+<script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=7"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -69,7 +69,7 @@
 		뭔가 댓글이 여기에 출력됨
 		<div id="OneComment">
 		</div>
-		<a href="selectAllComments.do?act_id=${vo2.id}">상품 후기 전체보기</a>
+		<a href="selectOneComments.do?act_id=${vo2.id}">상품 후기 전체보기</a>
 	</div>
 	<div>
 		<form action='#' id='Reservation' method='POST'>
@@ -81,11 +81,11 @@
 			<input type='button' value='+' class='qtyplus plus' onclick='incrementQuantity()' />
 			<p>현재 상품번호 act_id ${vo2.id}, 예약자 user_id ${user_id}</p>
 			<input type='hidden' name='act_id' value='${vo2.id}'/>
-			<input type='hidden' name='price' value='${vo2.price}'/>
+			<input type='hidden' name='price' id='price' value='${vo2.price}'/>
 			<input type='hidden' name='user_id' value='${user_id}'/>
 		</form>
 		<input type="submit" form="Reservation" formaction="insertOneReservation.do" value="바로구매">
-		<input type="submit" form="Reservation" formaction="insertOneCart.do" value="장바구니">
+		<button type="submit" onclick="insertOneCart()">장바구니</button>
 	</div>
 	<br>
 	<br>

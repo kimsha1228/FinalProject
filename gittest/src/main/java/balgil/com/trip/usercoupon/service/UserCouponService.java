@@ -31,5 +31,9 @@ public class UserCouponService {
 	public int updateCouponBack(String user_id, String code) {
 		return dao.updateCouponBack(user_id, code);
 	}
+	
+	public int insert(UserCouponVO vo) {
+		return dao.insert(vo);
+	}
 }
 

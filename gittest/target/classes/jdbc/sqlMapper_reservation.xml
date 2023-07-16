@@ -43,4 +43,17 @@
 		update reservation set iscanceled = 2 where <![CDATA[res_date < sysdate]]> and iscanceled = 0
 	</update>
 	
+	<update id="RESERVATION_COMMENTS" parameterType="balgil.com.trip.reservation.model.ReservationVO">
+		update reservation set iscommented=1 where id = #{id}
+	</update>
+	
+	<update id="RESERVATION_NO_COMMENTS" parameterType="balgil.com.trip.reservation.model.ReservationVO">
+		update reservation set iscommented=0 where id = #{id}
+	</update>
+	
+	<select id="EXPIRED_RESERVATION_SELECT_NOCOMMENTS" resultType="balgil.com.trip.reservation.model.ReservationVO">
+		select r.id, r.res_date, r.act_id, a.act_name from reservation r join activity a on(r.act_id = a.id)
+		where user_id = #{user_id} and iscanceled = 2 and iscommented = 0 order by r.res_date asc
+	</select>
+	
 </mapper>

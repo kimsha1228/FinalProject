@@ -25,7 +25,8 @@ public class PointHistoryDAOimpl implements PointHistoryDAO {
 
 		PointHistoryVO vo = new PointHistoryVO();
 		vo.setUser_id(user_id);
-		vo.setPoint(Integer.parseInt(point));
+		int usePoint = Integer.parseInt(point);
+		vo.setPoint(-usePoint);
 		
 		return sqlSession.insert("POINTHISTORY_USE_INSERT", vo);
 	}
@@ -41,12 +42,32 @@ public class PointHistoryDAOimpl implements PointHistoryDAO {
 		return sqlSession.insert("POINTHISTORY_USE_INSERT_BACK", vo);
 	}
 
-//	@Override
-//	public List<PointHistoryVO> selectAll(PointHistoryVO vo) {
-//		
-//		List<PointHistoryVO> vos = sqlSession.selectList("POINTHISTORY_SELECTLIST", vo);
-//		
-//		return vos;
-//	}
+	@Override
+	public int saveInsert(String user_id, String history, String point) {
+		log.info("saveInsert()...");
+
+		PointHistoryVO vo = new PointHistoryVO();
+		vo.setUser_id(user_id);
+		vo.setHistory(history);
+		vo.setPoint(Integer.parseInt(point));
+		
+		return sqlSession.insert("POINTHISTORY_SAVE_INSERT", vo);
+	}
+
+	@Override
+	public PointHistoryVO selectOne(String user_id) {
+		log.info("selectOne()...", user_id);
+		
+		return sqlSession.selectOne("POINTHISTORY_SELECT_ONE", user_id);
+	}
+
+	@Override
+	public List<PointHistoryVO> selectAll(String user_id) {
+		log.info("selectAll()...", user_id);
+
+		List<PointHistoryVO> vos = sqlSession.selectList("POINTHISTORY_SELECT_USERS", user_id);
+		
+		return vos;
+	}
 
 }

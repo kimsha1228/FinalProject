@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface UsersDAO {
 
-	List<UsersVO> selectAll();
+//	List<UsersVO> selectAll();
 
 	UsersVO selectOne(UsersVO vo);
   
@@ -18,13 +18,25 @@ public interface UsersDAO {
 
 	UsersVO login(UsersVO vo);
 
-	List<UsersVO> searchList(String searchKey, String searchWord);
-
 	UsersVO idCheck(UsersVO vo);
 
-	int pointInsertBack(String user_id, String point);
+	int pointInsert(String user_id, String point);
 
-	UsersVO selectOneUser(UsersVO vo);
+	UsersVO selectUsersRecord(UsersVO vo);
+
+	int typeUpdate(UsersVO vo);
+
+	List<UsersVO> selectAllSeller();
+
+	List<UsersVO> selectAllUser();
+
+	List<UsersVO> searchListSeller(String searchKey, String searchWord);
+
+	List<UsersVO> searchListUser(String searchKey, String searchWord);
+
+	int sellerTypeUpdate(UsersVO vo);
+	
+	int loginPoint(UsersVO vo2);
 	
 }
 
