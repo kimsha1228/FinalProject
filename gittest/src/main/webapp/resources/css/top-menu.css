@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+*{
+    margin:0px;
+    font-family: NBG,sans-serif;
+    text-decoration: none;
+}
+
+#content a{
+    text-decoration: none; 
+    text-align: center;
+    color:black;
+    font-size:17px;
+    font-weight: bold;
+}
+#login a{
+    text-decoration: none; 
+    text-align: center;
+    color:#888888;
+    font-size:12px;
+}
+
+li{list-style-type:none;}
+
+header{width:1000px;  margin:0px auto; overflow: hidden;}
+
+#logo, #content{float: left;}
+#login{float: right;}
+
+#content li{
+    float: left;
+    margin-top: 55px;
+    margin-left:30px;
+}
+#login li{
+    float: left;
+    margin-top: 55px;
+    margin-left:25px;
+}
+
+#logo {
+    height: 55px;
+    margin-top: 40px;
+    /*margin-left: 50px;*/
+}
