@@ -61,8 +61,14 @@ function addAddressToCoordinate(address,index) {
 	            position: new naver.maps.LatLng(point),
 	            map: map
 	        }));
+	        for(let i in markerArray){
+		        console.log("푸쉬후 마커배열",markerArray[i].getPosition());       
+	        };
 			//폴리라인 그리기용 푸쉬
 			arrayOfCoords.splice(index,0,point);
+			for(let i in markerArray){
+		        console.log("푸쉬후 arrayOfCoords배열",arrayOfCoords[i]);       
+	        };
 			orders.push(index);
         
 	        //좌표들을 더해서 중간값 구하기
@@ -91,6 +97,7 @@ function addAddressToCoordinate(address,index) {
 	        	for(var i = 0 ;i<orders.length;i++){
 	        		newArray.push(arrayOfCoords[newOrders[i]]);
 	        	}
+	        	console.log("재정렬후의 newArray:",newArray);
 				polyline.setPath(newArray);
 	        }
 		}
@@ -128,10 +135,13 @@ function removeMarker(value) {
 		alert('잘못 입력하셨습니다');	
 	}else{
 		console.log("넘어온 value:",value);
-		var todelete = orders.splice(value,1);
+		var newOrders=findRanking(orders);
+		var todelete = newOrders.splice(value,1);
+		orders.splice(value,1);
 		console.log("제거할 배열:",todelete);
 		console.log(markerArray[todelete].setMap(null));
-		console.log(polyline.getPath().removeAt(todelete));
+		console.log(polyline.setPath(arrayOfCoords));
+		console.log(polyline.getPath().splice(todelete,1));
 		console.log(markerArray.splice(todelete,1));
 		
 	}

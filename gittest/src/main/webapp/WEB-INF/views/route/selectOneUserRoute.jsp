@@ -64,6 +64,6 @@
 		<div id="map" style="width:500px; height:600px;"></div>	
 	</div>
 <!-- 지도 구현 js -->
-<script type="text/javascript" src="resources/js/Maps.js?ver=7"></script>
+<script type="text/javascript" src="resources/js/Maps.js?ver=2"></script>
 </body>
 </html>
