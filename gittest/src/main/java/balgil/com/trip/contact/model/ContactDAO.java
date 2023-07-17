@@ -6,7 +6,7 @@ public interface ContactDAO {
 	
 	public int insert(ContactVO vo);
 	
-	public List<ContactVO> selectAll();
+	public List<ContactVO> selectAll(ContactVO vo);
 	
 	public ContactVO selectOne(ContactVO vo);
 	

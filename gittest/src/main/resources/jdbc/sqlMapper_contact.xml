@@ -9,9 +9,18 @@
     </insert>
 
     <select id="C_SELECT_ALL" resultType="balgil.com.trip.contact.model.ContactVO">
-        select * from contact order by id desc
+        select * from contact 
+        <where>
+				<if test="seller_id!='admin01'">
+					seller_id = #{seller_id}
+				</if>
+		</where>
+		 order by id desc
     </select>
-    
+   
+    <select id="C_SELECT_ALL_USER" resultType="balgil.com.trip.contact.model.ContactVO">
+        select * from contact where user_id = #{user_id} order by id desc
+    </select>
 
     <select id="C_SELECT_ONE" resultType="balgil.com.trip.contact.model.ContactVO">
         select * from contact where id = #{id}

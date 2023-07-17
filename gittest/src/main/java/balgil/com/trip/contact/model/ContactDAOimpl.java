@@ -29,10 +29,15 @@ public class ContactDAOimpl implements ContactDAO {
 	}
 
 	@Override
-	public List<ContactVO> selectAll() {
-		log.info("selectAllContact()....");
+	public List<ContactVO> selectAll(ContactVO vo) {
+		log.info("selectAllContact()....{}", vo);
 		
-		return sqlSession.selectList("C_SELECT_ALL");
+		if(vo.getUser_id()!=null) {
+			return sqlSession.selectList("C_SELECT_ALL_USER", vo);
+		}else {
+			return sqlSession.selectList("C_SELECT_ALL", vo);
+		}
+		
 	}
 
 	@Override
