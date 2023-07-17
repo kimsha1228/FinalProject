@@ -8,13 +8,8 @@
 		
 		<div id="page">
 			<ul>
-<<<<<<< HEAD
-				<li><a href="#"><p>관리자 페이지로</p></a></li>
-				<li><a href="#"><p>판매자 페이지로</p></a></li>
-=======
 				<li><a href="admin.do"><p>관리자 페이지로</p></a></li>
 				<li><a href="seller.do"><p>판매자 페이지로</p></a></li>
->>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
 			</ul>
 		</div>
 	</div>

@@ -28,6 +28,7 @@
 			</tr>
 		</table>
 	</form>
+	<a href="findPassword.do" class="myButton">비밀번호찾기</a>
 	<p>${message}</p>
 	
 </body>
