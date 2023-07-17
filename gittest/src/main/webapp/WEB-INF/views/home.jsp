@@ -6,55 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Home</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
-<title>Home</title>
 <jsp:include page="./css.jsp"></jsp:include>
+<link rel="stylesheet" href="resources/css/home.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/home.js?ver=2"></script>
-<style>
-
-/* 중앙정렬 */
-section > section:first-child{
-	text-align: center;
-}
-
-/* 탑메뉴랑 거리두기 */
-section > section{
-	margin: 25px 0px 0px 0px;
-}
-
-.scrolling-wrapper{
-	overflow-x: auto;
-	margin-left: 0px;
-	margin-right: 0px;
-}
-.card-block{
-	height: 100%;
-	background-color: #fff;
-	border: none;
-	background-position: center;
-	background-size: cover;
-	transition: all 0.2s ease-in-out !important;
-	border-radius: 24px;
-	&:hover{
-		transform: translateY(-5px);
-		box-shadow: none;
-		opacity: 0.9;
-	}
-}
-
-#recommended,#allAct,#destinations{ 
-  text-align: center;
-}
-
-/* act제목이 너무 긴경우 감춤*/
-.card-act-name{
-   overflow:hidden;
-   text-overflow:ellipsis;
-   white-space:nowrap; 
-}
-</style>
 </head>
 <body>
 <jsp:include page="./top_menu.jsp"></jsp:include>
