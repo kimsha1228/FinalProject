@@ -16,7 +16,7 @@
 		<table>
 			<tr>
 				<td><label for="user_id">USER_ID:</label></td>
-				<td><input type="text" id="user_id" name="user_id" value="${user_id}" readonly required>
+				<td><input type="text" id="user_id" name="user_id" value="${user.user_id}" readonly required>
 				<input type="hidden" id="res_id" name="res_id" value="${param.res_id}" required></td>
 			</tr>
 			<tr>

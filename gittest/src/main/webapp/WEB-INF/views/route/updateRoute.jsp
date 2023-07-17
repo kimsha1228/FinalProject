@@ -10,7 +10,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/route/multi-select2.js"></script>
 <script>
-	let user_id = '<%= session.getAttribute("user_id") %>';
+	let user_id = '${user.user_id}';
 	let dest_id = ${vo2.dest_id};
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 </script>
@@ -44,8 +44,8 @@
 				<td>배너 사진 <input type="file" name="file" id="file"></td>
 			</tr>
 			<tr>
-				<td>작성자는 현재 ${user_id} 
-					<input type="hidden" name="seller_id" value="${user_id}">
+				<td>작성자는 현재 ${user.user_id} 
+					<input type="hidden" name="seller_id" value="${user.user_id}">
 					<input type="hidden" name="id" value="${param.id}">
 					<input type="hidden" name="dest_id" value="${vo2.dest_id}">
 				</td>

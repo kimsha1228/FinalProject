@@ -41,8 +41,8 @@
 <!--         </tfoot> -->
     </table>
    		<div>
-   			<button class="update_comm" data-id="${vo2.id}" data-res_id="${vo2.res_id}" data-user_id="${user_id}">후기수정</button>
-   			<button class="delete_comm" data-id="${vo2.id}" data-user_id="${user_id}" data-res_id="${vo2.res_id}">후기삭제</button>
+   			<button class="update_comm" data-id="${vo2.id}" data-res_id="${vo2.res_id}" data-user_id="${user.user_id}">후기수정</button>
+   			<button class="delete_comm" data-id="${vo2.id}" data-res_id="${vo2.res_id}" data-user_id="${user.user_id}">후기삭제</button>
    		</div>
    		
    		<form action="updateComments.do" method="post" class="update_comm_form">

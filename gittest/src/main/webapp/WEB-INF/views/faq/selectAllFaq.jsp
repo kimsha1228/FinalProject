@@ -10,8 +10,9 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/faq/selectAllFaq.js"></script>
 <script>
-	let seller_id = '<%= session.getAttribute("seller_id") %>';
-	console.log("현재 로그인 되어있는 아이디:",seller_id);
+	let user_id = '${user.user_id}';
+	console.log("현재 로그인 되어있는 아이디:",user_id);
+>>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject
 </script>	
 </head>
 <body>

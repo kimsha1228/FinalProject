@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<ul><!--현재 테스트 페이지들로 탑메뉴 구성되어 있음-->
+<ul>
+<!--현재 테스트 페이지들로 탑메뉴 구성되어 있음 -->
 	<li><a href="home.do">HOME</a></li>
 
 	<li><a href="Activity_test.do">Activity_test</a></li>
@@ -63,15 +64,15 @@
 	<li class="u_insert"><a href="u_insert.do">회원가입</a></li>
 	
 	<!-- 로그인 후 로그인 안보이게 하고 하단 링크들 출력 -->
-	<li class="wishlist"><a href="selectAllWishList.do?user_id=${user_id}">위시리스트</a></li>
-	<li class="cart"><a href="selectAllCart.do?user_id=${user_id}">장바구니</a></li>
-	<li class="myPage"><a href="myPage.do?user_id=${user_id}">마이페이지</a></li>
+	<li class="wishlist"><a href="selectAllWishList.do?user_id=${user.user_id}">위시리스트</a></li>
+	<li class="cart"><a href="selectAllCart.do?user_id=${user.user_id}">장바구니</a></li>
+	<li class="myPage"><a href="myPage.do?user_id=${user.user_id}">마이페이지</a></li>
 	<li class="logout"><a href="logout.do">로그아웃</a></li>
 </ul>
 </div>
 </header>
 <script type="text/javascript">
-	if('${user_id}'===''){
+	if('${user.user_id}'===''){
 		$('.login').show();
 		$('.u_insert').show();
 		$('.wishlist').hide();

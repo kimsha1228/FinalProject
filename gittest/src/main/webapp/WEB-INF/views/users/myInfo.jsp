@@ -44,8 +44,8 @@
 				</td>
 			</tr>
 		</table>
-		<a href="u_update.do?user_id=${user_id}">정보수정</a>
-		<a href="u_deleteOK.do?user_id=${user_id}">회원탈퇴</a>
+		<a href="u_update.do?user_id=${user.user_id}">정보수정</a>
+		<a href="u_deleteOK.do?user_id=${user.user_id}">회원탈퇴</a>
 </body>
 </html>
 

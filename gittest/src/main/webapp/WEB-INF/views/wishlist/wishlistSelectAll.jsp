@@ -31,7 +31,7 @@
 			<c:forEach var="vo" items="${vos1}">
 				<tr>
 					<th>회원정보</th>
-					<td>${vo.user_id}</a></td>
+					<td>${vo.user_id}</td>
 				</tr>
 
 				<tr>

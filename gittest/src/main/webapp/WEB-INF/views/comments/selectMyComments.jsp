@@ -19,8 +19,8 @@
 	<table>
 	<tr>
 	<th colspan="2">
-	<a href="selectMyComments.do?user_id=${user_id}">작성 가능한 후기</a>
-	<a href="selectMyWrittenComments.do?user_id=${user_id}">내가 쓴 후기</a>
+	<a href="selectMyComments.do?user_id=${user.user_id}">작성 가능한 후기</a>
+	<a href="selectMyWrittenComments.do?user_id=${user.user_id}">내가 쓴 후기</a>
 	</th>
 	</tr>
 	</table>
@@ -44,7 +44,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<a href="insertComments.do?act_id=${vo.act_id}&user_id=${user_id}&res_id=${vo.id}">후기 작성</a>
+						<a href="insertComments.do?act_id=${vo.act_id}&user_id=${user.user_id}&res_id=${vo.id}">후기 작성</a>
 					</td>
 				</tr>
 			</table>
@@ -57,7 +57,7 @@
 				<td>후기를 쓸 수 있는 상품이 없습니다</td>
 			</tr>
 			<tr>
-				<td><a href="selectAllReservation.do?user_id=${user_id}">예약내역 보기</a></td>
+				<td><a href="selectAllReservation.do?user_id=${user.user_id}">예약내역 보기</a></td>
 			</tr>
 			</table>
 		</c:if>	
@@ -71,7 +71,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<a href="selectMyOneComments.do?res_id=${vo1.res_id}&user_id=${user_id}">후기 상세</a>
+						<a href="selectMyOneComments.do?res_id=${vo1.res_id}&user_id=${user.user_id}">후기 상세</a>
 					</td>
 				</tr>
 			</table>
@@ -84,7 +84,7 @@
 				<td>작성한 후기가 없습니다</td>
 			</tr>
 			<tr>
-				<td><a href="selectMyComments.do?user_id=${user_id}">후기 작성하러 가기</a></td>
+				<td><a href="selectMyComments.do?user_id=${user.user_id}">후기 작성하러 가기</a></td>
 			</tr>
 			</table>
 		</c:if>	

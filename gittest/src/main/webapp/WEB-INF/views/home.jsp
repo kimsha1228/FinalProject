@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Home</title>
+<jsp:include page="./css.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
@@ -14,5 +15,6 @@
 	<h1>${user_id}</h1>
 
 	<P>The time on the server is ${serverTime}.</P>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

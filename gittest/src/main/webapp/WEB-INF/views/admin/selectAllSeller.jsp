@@ -11,7 +11,7 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1><a href="selectAllUser.do">판매자목록</a></h1>
+	<h1><a href="selectAllSeller.do">판매자목록</a></h1>
 	
 	<div style="padding:5px">
 		<form action="searchSellerList.do">
