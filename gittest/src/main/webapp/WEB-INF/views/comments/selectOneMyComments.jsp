@@ -83,7 +83,7 @@
             });
         });
 
-        function likeComment(id) {
+        /* function likeComment(id) {
             $.ajax({
                 url: "likeComment.do",
                 method: "POST",
@@ -97,7 +97,7 @@
                     alert("요청을 처리하는 동안 오류가 발생했습니다.");
                 }
             });
-        }
+        } */
     </script>
 </body>
 </html>
