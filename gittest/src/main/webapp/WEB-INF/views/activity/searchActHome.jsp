@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
@@ -18,7 +19,7 @@
     let user_id = '<%= session.getAttribute("user_id") %>';
     console.log("현재 로그인 되어있는 아이디:", user_id);
 </script>
-<script type="text/javascript" src="resources/js/activity/searchActHome.js?ver=3"></script>
+<script type="text/javascript" src="resources/js/activity/searchActHome.js?ver=4"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -35,7 +36,7 @@
 	<thead>
         <tr>
             <th class="sorter-false">id</th>
-            <th class="sorter-false">act_name</th>
+            <th class="sorter-false" data-value="${param.searchWord}">act_name</th>
             <th class="sorter-false">rate</th>
             <th class="sorter-false">price</th>
             <th class="sorter-false">wishList</th>

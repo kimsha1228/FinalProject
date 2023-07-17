@@ -78,11 +78,13 @@ public class MapController {
 			stringBuffer.append("&waypoints=");
 			for (int i = 1; i < newVos.size()-1; i++) {
 				stringBuffer.append(String.valueOf(newVos.get(i).getX())+
-									","+
-									String.valueOf(newVos.get(i).getY())+
-									":"
+										","+
+										String.valueOf(newVos.get(i).getY())+
+										"%7C" // | <- 이걸 uri 코드화한것
 									);
 			}
+			stringBuffer.deleteCharAt(stringBuffer.length()-1);
+			stringBuffer.deleteCharAt(stringBuffer.length()-1);
 			stringBuffer.deleteCharAt(stringBuffer.length()-1);
 		}
 		log.info("{}",stringBuffer.toString());

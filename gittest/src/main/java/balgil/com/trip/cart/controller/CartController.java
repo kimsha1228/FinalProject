@@ -1,21 +1,14 @@
 package balgil.com.trip.cart.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import balgil.com.trip.activity.model.ActivityVO;
 import balgil.com.trip.activity.service.ActivityService;
 import balgil.com.trip.cart.model.CartVO;
 import balgil.com.trip.cart.service.CartService;
@@ -52,6 +45,7 @@ public class CartController {
         return "cart/cart";
     }
     
+<<<<<<< HEAD
 //    //장바구니에 추가했을 때 사용자 장바구니에 같은 상품이 같은 일자에 있으면 수량을 올려준다
 //    @ResponseBody
 //    @RequestMapping(value = "/insertOneCart.do", method = RequestMethod.POST)
@@ -79,6 +73,35 @@ public class CartController {
 //          return "{\"result\":\"NotOK\"}";
 //        }
 //    }
+=======
+    //장바구니에 추가했을 때 사용자 장바구니에 같은 상품이 같은 일자에 있으면 수량을 올려준다
+    @ResponseBody
+    @RequestMapping(value = "/insertOneCart.do", method = RequestMethod.POST)
+    public String insertOneCart(CartVO vo) {
+        log.info("/insertOneCart...{}", vo);
+        
+        CartVO vo1 = cartService.selectOne(vo);
+        log.info("result: {}", vo1);
+        
+        int result_insert = 0;
+        int result_insertUp = 0;
+        if(vo1!=null) {
+        	vo.setId(vo1.getId());
+        	result_insertUp = cartService.insertCountUp(vo);
+        }else {
+        	result_insert = cartService.insertOne(vo);
+        }
+        log.info("result_insert: {}", result_insert);
+        log.info("result_insertUp: {}", result_insertUp);
+
+		// 둘중 하나라도 성공적이면 OK를 반환 
+		if(result_insert>=1||result_insertUp>=1) {
+			return "{\"result\":\"OK\"}";
+		}else {
+			return "{\"result\":\"NotOK\"}";
+		}
+    }
+>>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject
     
     //장바구니에서 수량 조절
     @RequestMapping(value = "/updateOneCart.do", method = RequestMethod.GET)

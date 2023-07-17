@@ -326,8 +326,12 @@ public class UsersController {
 	
 	//마이페이지, 마이인포 다 세션 연결하면 세션으로 아이디 넘겨받기
 	@RequestMapping(value = "/myPage.do", method = RequestMethod.GET)
-	public String myPage(UsersVO vo) {
-		log.info("/myPage.do...");
+	public String myPage(UsersVO vo, Model model) {
+		log.info("/myPage.do...{}", vo);
+		UsersVO users = service.selectOne(vo);
+		log.info("/myPage.do...{}", users);
+		
+		model.addAttribute("users", users);
 
 		return "users/myPage";
 	}
