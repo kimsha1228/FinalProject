@@ -69,5 +69,19 @@ public class HomeController {
 		
 		return "test/Contact_test";
 	}
+
+	@RequestMapping(value = "/admin.do", method = RequestMethod.GET)
+	public String admin() {
+		log.info("admin");
+		
+		return "admin/admin";
+	}
+	
+	@RequestMapping(value = "/seller.do", method = RequestMethod.GET)
+	public String seller() {
+		log.info("seller");
+		
+		return "seller/seller";
+	}
 }
 

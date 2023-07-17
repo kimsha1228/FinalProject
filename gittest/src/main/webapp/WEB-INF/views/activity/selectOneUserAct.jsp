@@ -13,7 +13,8 @@
 <%-- 	let user_id = '<%= session.getAttribute("user_id") %>'; --%>
 // 	let initadd = '서울 종로구 효자로 12 국립고궁박물관';
 	let result = '${vo2.add}';
-    console.log("현재 로그인 되어있는 아이디:", ${user.user_id});
+	let user_id = '${user.user_id}';
+    console.log("현재 로그인 되어있는 아이디:", user_id);
 	console.log("현재 주소:",result);
 </script>
 <script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=7"></script>
