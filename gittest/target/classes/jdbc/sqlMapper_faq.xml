@@ -20,12 +20,12 @@
     </delete>
 
     <select id="FAQ_SELECT_ALL" resultType="balgil.com.trip.faq.model.FaqVO">
-        select * from faq order by id desc
+        select * from faq <where><if test="seller_id!='admin01'">seller_id = #{seller_id}</if></where>order by id desc
     </select>
 
     <select id="FAQ_SELECT_ONE" resultType="balgil.com.trip.faq.model.FaqVO" parameterType="balgil.com.trip.faq.model.FaqVO">
         select * from faq where id = #{id}
     </select>
-    
+  
 
 </mapper>
