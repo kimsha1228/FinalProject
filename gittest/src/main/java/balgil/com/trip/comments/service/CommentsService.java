@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import balgil.com.trip.comments.model.CommentsDAO;
 import balgil.com.trip.comments.model.CommentsVO;
+import balgil.com.trip.reservation.model.ReservationVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

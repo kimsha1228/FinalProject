@@ -10,6 +10,7 @@
 */
 
 //사용법은 http://loudev.com/#home 참조
+//5개 제한하는 법은 https://github.com/lou/multi-select/pull/248 여기는 참조했음
 
 !function ($) {
 
@@ -75,7 +76,10 @@
         var action = that.options.dblClick ? 'dblclick' : 'click';
 
         that.$selectableUl.on(action, '.ms-elem-selectable', function(){
-          that.select($(this).data('ms-value'));
+          var selectedCount = ms.find(':selected').length;
+          if (!that.options.limit || that.options.limit > selectedCount) {
+              that.select($(this).data('ms-value'));
+          }
         });
         that.$selectionUl.on(action, '.ms-elem-selection', function(){
           that.deselect($(this).data('ms-value'));
@@ -528,7 +532,8 @@
     disabledClass : 'disabled',
     dblClick : false,
     keepOrder: false,
-    cssClass: ''
+    cssClass: '',
+    limit: null
   };
 
   $.fn.multiSelect.Constructor = MultiSelect;

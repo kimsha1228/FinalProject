@@ -32,6 +32,7 @@ public class CouponController {
 
 		List<CouponVO> vos = service.selectAll();
 
+		log.info("vos...{}", vos);
 		model.addAttribute("vos", vos);
 
 		return "coupon/selectAllCoupon";

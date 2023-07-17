@@ -20,9 +20,9 @@
 			<table>
 			<tr>
 			<th colspan="2">
-			<a href="selectAllReservation.do?user_id=${user_id}">예약내역</a>
-			<a href="selectExpiredReservation.do?user_id=${user_id}">사용내역</a>
-			<a href="selectCancelReservation.do?user_id=${user_id}">취소내역</a>
+			<a href="selectAllReservation.do?user_id=${user.user_id}">예약내역</a>
+			<a href="selectExpiredReservation.do?user_id=${user.user_id}">사용내역</a>
+			<a href="selectCancelReservation.do?user_id=${user.user_id}">취소내역</a>
 			</th>
 			</tr>
 			</table>
@@ -45,8 +45,8 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<a href="selectOneReservation.do?id=${vo.id}&user_id=${user_id}">예약상세</a>
-						<a href="cancelReservation.do?id=${vo.id}&user_id=${user_id}">예약 취소</a>
+						<a href="selectOneReservation.do?id=${vo.id}&user_id=${user.user_id}">예약상세</a>
+						<a href="cancelReservation.do?id=${vo.id}&user_id=${user.user_id}">예약 취소</a>
 					</td>
 				</tr>
 			</table>
@@ -56,9 +56,9 @@
 		<table>
 			<tr>
 			<th colspan="2">
-			<a href="selectAllReservation.do?user_id=${user_id}">예약내역</a>
-			<a href="selectExpiredReservation.do?user_id=${user_id}">사용내역</a>
-			<a href="selectCancelReservation.do?user_id=${user_id}">취소내역</a>
+			<a href="selectAllReservation.do?user_id=${user.user_id}">예약내역</a>
+			<a href="selectExpiredReservation.do?user_id=${user.user_id}">사용내역</a>
+			<a href="selectCancelReservation.do?user_id=${user.user_id}">취소내역</a>
 			</th>
 			</tr>
 			</table>
@@ -85,7 +85,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<a href="selectOneExpiredReservation.do?id=${vo3.id}&user_id=${user_id}">예약상세</a>
+						<a href="selectOneExpiredReservation.do?id=${vo3.id}&user_id=${user.user_id}">예약상세</a>
 					</td>
 				</tr>
 				</table>
@@ -97,7 +97,7 @@
 				<td>사용한 상품이 없습니다</td>
 			</tr>
 			<tr>
-				<td><a href="selectAllReservation.do?user_id=${user_id}">예약내역 보기</a></td>
+				<td><a href="selectAllReservation.do?user_id=${user.user_id}">예약내역 보기</a></td>
 			</tr>
 			</table>
 		</c:if>
@@ -115,7 +115,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<a href="selectOneCancelReservation.do?id=${vo2.id}&user_id=${user_id}">취소상세</a>
+						<a href="selectOneCancelReservation.do?id=${vo2.id}&user_id=${user.user_id}">취소상세</a>
 					</td>
 				</tr>
 				</table>
@@ -127,7 +127,7 @@
 				<td>취소한 상품이 없습니다</td>
 			</tr>
 			<tr>
-				<td><a href="selectAllReservation.do?user_id=${user_id}">예약내역 보기</a></td>
+				<td><a href="selectAllReservation.do?user_id=${user.user_id}">예약내역 보기</a></td>
 			</tr>
 			</table>
 		</c:if>

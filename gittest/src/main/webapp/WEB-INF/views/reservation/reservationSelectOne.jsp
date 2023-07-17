@@ -63,9 +63,15 @@ function paymentSelectOne(){
 	<table>
 		<tr>
 			<th colspan="2">
+<<<<<<< HEAD
 				<a href="selectAllReservation.do?user_id=${user_id}">예약내역</a>
 				<a href="selectExpiredReservation.do?user_id=${user_id}">사용내역</a>
 				<a href="selectCancelReservation.do?user_id=${user_id}">취소내역</a>
+=======
+				<a href="selectAllReservation.do?user_id=${user.user_id}">예약내역</a>
+				<a href="selectExpiredReservation.do?user_id=${user.user_id}">사용내역</a>
+				<a href="selectCancelReservation.do?user_id=${user.user_id}">취소내역</a>
+>>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
 			</th>
 		</tr>
 	</table>
@@ -103,7 +109,11 @@ function paymentSelectOne(){
 		</tbody>
 		<tr>
 			<th colspan="2">
+<<<<<<< HEAD
 			<a href="cancelReservation.do?id=${vo1.id}&user_id=${user_id}">예약취소</a>
+=======
+			<a href="cancelReservation.do?id=${vo1.id}&user_id=${user.user_id}">예약취소</a>
+>>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
 			</th>
 		</tr>
 	</table>
