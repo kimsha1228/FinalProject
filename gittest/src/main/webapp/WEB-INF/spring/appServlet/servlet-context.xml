@@ -9,18 +9,11 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
-<<<<<<< HEAD
-	
-	<task:annotation-driven/>
-	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	
-=======
 
 	<task:annotation-driven />
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
->>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
@@ -38,10 +31,6 @@
 	</beans:bean>
 
 	<context:component-scan base-package="balgil.com.trip" />
-<<<<<<< HEAD
-	
-</beans:beans>
-=======
 
 	<interceptors>
 		<interceptor>
@@ -51,4 +40,3 @@
 	</interceptors>
 
 </beans:beans>
->>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
