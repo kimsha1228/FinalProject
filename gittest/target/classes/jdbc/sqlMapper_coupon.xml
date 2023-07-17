@@ -15,7 +15,7 @@
 	
 	<insert id="COUPON_INSERT">
 		insert into coupon (code, name, expire, rate)
-		values(#{code}, #{name}, TO_DATE(#{expire}, 'YYYY-MM-DD'), #{rate})
+		values(#{code}, #{name}, TO_DATE(#{expire}, 'RR-MM-DD'), #{rate})
 	</insert>
 	
 	<select id="COUPON_SELECT_ONE" resultType="balgil.com.trip.coupon.model.CouponVO">
