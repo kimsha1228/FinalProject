@@ -27,6 +27,20 @@ public class ActivityRestController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value = "/jsonSelectAllUserActImg.do", method = RequestMethod.GET)
+	public List<ActivityVO> jsonSelectAllUserActImg() {
+		log.info("jsonSelectAllUserActImg.do..{}");
+		return service.selectAllImg();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/jsonSelectPopularAct.do", method = RequestMethod.GET)
+	public List<ActivityVO> jsonSelectPopularAct() {
+		log.info("jsonSelectPopularAct.do..{}");
+		return service.selectPopular();
+	}
+	
+	@ResponseBody
 	@RequestMapping(value = "/jsonSelectRecommendedAct.do", method = RequestMethod.GET)
 	public List<ActivityVO> jsonSelectRecommendedAct() {
 		log.info("jsonSelectRecommendedAct.do..{}");
