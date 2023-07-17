@@ -25,7 +25,7 @@
 			<tr>
 				<td><label for="content">후기작성</label></td>
 				<td><textarea id="content" name="content" rows="5" cols="50" required>${vo2.content}</textarea>
-					<input type="hidden" id="user_id" name="user_id" value="${user_id}" required>
+					<input type="hidden" id="user_id" name="user_id" value="${user.user_id}" required>
 					<input type="hidden" id="res_id" name="res_id" value="${vo2.res_id}" required>
 					<input type="hidden" id="id" name="id" value="${vo2.id}" required>
 				</td>

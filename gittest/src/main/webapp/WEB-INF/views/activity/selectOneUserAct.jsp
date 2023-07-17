@@ -10,10 +10,10 @@
 <!-- 네이버 지도 API JS -->
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${mapProperty.clientID}&submodules=geocoder"></script>
 <script type="text/javascript">
-	let user_id = '<%= session.getAttribute("user_id") %>';
+<%-- 	let user_id = '<%= session.getAttribute("user_id") %>'; --%>
 // 	let initadd = '서울 종로구 효자로 12 국립고궁박물관';
 	let result = '${vo2.add}';
-	console.log("현재 로그인 되어있는 아이디:",user_id);
+    console.log("현재 로그인 되어있는 아이디:", ${user.user_id});
 	console.log("현재 주소:",result);
 </script>
 <script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=7"></script>
@@ -57,7 +57,7 @@
 			</tr>
 			<tr>
 				<td><button onclick="copyLink()">공유</button></td>
-				<td><button id="wish" class="${vo2.id}" onclick="addWish('${user_id}','${vo2.id}')">♡</button></td>
+				<td><button id="wish" class="${vo2.id}" onclick="addWish('${user.user_id}','${vo2.id}')">♡</button></td>
 			</tr>
 		</tbody>
 		<tfoot>
@@ -82,7 +82,7 @@
 			<p>현재 상품번호 act_id ${vo2.id}, 예약자 user_id ${user_id}</p>
 			<input type='hidden' name='act_id' value='${vo2.id}'/>
 			<input type='hidden' name='price' id='price' value='${vo2.price}'/>
-			<input type='hidden' name='user_id' value='${user_id}'/>
+			<input type='hidden' name='user_id' value='${user.user_id}'/>
 		</form>
 		<input type="submit" form="Reservation" formaction="insertOneReservation.do" value="바로구매">
 		<button type="submit" onclick="insertOneCart()">장바구니</button>

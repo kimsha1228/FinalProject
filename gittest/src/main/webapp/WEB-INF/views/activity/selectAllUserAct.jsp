@@ -17,8 +17,8 @@
 
 <title>상품</title>
 <script>
-    let user_id = '<%= session.getAttribute("user_id") %>';
-    console.log("현재 로그인 되어있는 아이디:", user_id);
+<%--     let user_id = '<%= session.getAttribute("user_id") %>'; --%>
+	console.log("현재 로그인 되어있는 아이디:", ${user.user_id});
 </script>
 <script type="text/javascript" src="resources/js/activity/selectAllUserAct.js?ver=3"></script>
 </head>
@@ -129,7 +129,7 @@
                 <td>${vo.act_name}</td>
                 <td>${vo.rate}</td>
                 <td>${vo.price}</td>
-                <td><button class="wish" data-act_id="${vo.id}" data-arg1='${user_id}' data-arg2= '${vo.id}' data-arg3='${status.count}'>♡</button></td>                
+                <td><button class="wish" data-act_id="${vo.id}" data-arg1='${user.user_id}' data-arg2= '${vo.id}' data-arg3='${status.count}'>♡</button></td>                
                 <td style="display: none;">${vo.vcount}</td>
                 <td style="display: none;">${vo.act_date}</td>
             </tr>

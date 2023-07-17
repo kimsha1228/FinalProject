@@ -42,8 +42,8 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<th colspan="9"><a href="u_update.do?user_id=${param.user_id}">회원수정</a>
-					<a href="u_deleteOK.do?user_id=${param.user_id}">회원삭제</a></th>
+				<th colspan="9"><a href="u_update.do?user_id=${vo2.user_id}">회원수정</a>
+					<a href="u_deleteOK.do?user_id=${vo2.user_id}">회원삭제</a></th>
 			</tr>
 		</tfoot>
 	</table>

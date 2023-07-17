@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import balgil.com.trip.users.model.UsersVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -24,8 +25,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		String sPath = request.getServletPath();
 		log.info("preHandle()....{}",sPath);
 		
-		String user_id = (String) session.getAttribute("user_id");
-		log.info("preHandle()....user_id : {}", user_id);
+		UsersVO user = (UsersVO) session.getAttribute("user");
+		log.info("preHandle()....user : {}", user);
 		
 		//인터셉터 처리할 부분들 다 넣기
 //		if(sPath.equals("/b_selectAll.do")

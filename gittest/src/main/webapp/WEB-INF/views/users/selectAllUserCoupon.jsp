@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
 	<table>
 		<tr>
 			<th>쿠폰코드</th>
-			<td><input type="hidden" name="user_id" value="${user_id}"><!-- 여기 나중에 세션으로 변경 -->
+			<td><input type="hidden" name="user_id" value="${user.user_id}"><!-- 여기 나중에 세션으로 변경 -->
 			<input type="text" name="couponcode" value="" placeholder="coupooncode" size="30"></td>
 	      	<td><input type="submit" value="쿠폰등록"></td>
 		</tr>
@@ -33,7 +34,7 @@
 		<tr>
 			<td>${vos.name}</td>
 			<td>${vos.code}</td>
-			<td>${vos.expire}</td>
+			<td><fmt:formatDate value="${vos.expire}" pattern="yyyy년 MM월 dd일"/></td>
 		</tr>
 	</c:forEach>
 	</table>
