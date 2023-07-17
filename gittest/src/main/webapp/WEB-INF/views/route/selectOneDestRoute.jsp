@@ -15,7 +15,7 @@
 
 <title>루트목록</title>
 <script>
-	let user_id = '<%= session.getAttribute("user_id") %>';
+	let user_id = '${user.user_id}';
 	let dest_id = ${param.dest_id};
 	console.log("현재 로그인 되어있는 아이디:",user_id,dest_id);
 </script>

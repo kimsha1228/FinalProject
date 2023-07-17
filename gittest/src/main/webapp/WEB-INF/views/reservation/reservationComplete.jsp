@@ -12,6 +12,6 @@
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h3>결제가 완료되었습니다!</h3>
 	<a href="home.do">메인페이지로</a>
-	<a href="selectAllReservation.do?user_id=${user_id}">예약내역 보기</a>
+	<a href="selectAllReservation.do?user_id=${user.user_id}">예약내역 보기</a>
 </body>
 </html>
