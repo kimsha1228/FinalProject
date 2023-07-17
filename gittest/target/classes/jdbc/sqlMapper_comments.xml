@@ -14,12 +14,12 @@
 		select * from comments where user_id = #{user_id} and res_id = #{res_id}
 	</select>
 	
-	<select id="COMMENTS_SELECT_ONE" resultType="balgil.com.trip.comments.model.CommentsVO">
+	<select id="SELECT_COMMENT_LIST" resultType="balgil.com.trip.comments.model.CommentsVO">
 	    SELECT *
 		FROM comments
 		WHERE act_id = #{act_id}
 		ORDER BY likes DESC
-		FETCH FIRST 1 ROWS ONLY
+<!-- 		FETCH FIRST 1 ROWS ONLY -->
 	</select>
 <!-- 건호님 부분 -->
 
@@ -59,7 +59,7 @@
    
     <update id="COMMENTS_UPDATE_LIKES">
         UPDATE comments
-        SET likes = #{likesCount}
+        SET likes = likes+1
         WHERE id = #{id}
     </update>
     

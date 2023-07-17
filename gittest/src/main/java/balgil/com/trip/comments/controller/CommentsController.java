@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,6 +41,9 @@ public class CommentsController {
 
 	@Autowired
 	ServletContext sContext;
+	
+	@Autowired
+	HttpSession session;
 
 	@RequestMapping(value = "/selectAllComments.do", method = RequestMethod.GET)
 	public String selectAllComments(Model model) {
@@ -54,14 +58,32 @@ public class CommentsController {
 
 	@RequestMapping(value = "/selectOneComments.do", method = RequestMethod.GET) // 후기 상세
 	public String selectOneComments(Model model, CommentsVO vo) {
-		log.info("/selectOneComments.do... ", vo);
+		log.info("/selectOneComments.do... {}", vo);
 
-		CommentsVO vo2 = service.selectOne(vo);
-		log.info("vo2: {}", vo2);
+		List<CommentsVO> vos = service.selectCommentList(vo);
+		log.info("vos: {}", vos);
 
-		model.addAttribute("vo2", vo2);
+		model.addAttribute("vos", vos);
 
 		return "comments/selectOne";
+	}
+	@RequestMapping(value = "/updateLikes.do", method = RequestMethod.GET) // 후기 상세
+	public String updateLikes(Model model, CommentsVO vo) {
+		log.info("/updateLikes.do... {}", vo);
+		
+		String user_id = (String) session.getAttribute("user_id");
+		session.setAttribute("updateLikesSession",user_id+vo.getId());
+		String updateLikesSession = (String) session.getAttribute("updateLikesSession");
+		log.info("updateLikesSession : {}", updateLikesSession);
+		
+//		if(!updateLikesSession.equals(user_id+vo.getId())) {
+//			
+			int result = service.updateLikes(vo);
+			log.info("result: {}", result);
+//		}
+		
+		
+		return "redirect:selectOneComments.do?act_id="+vo.getAct_id();
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////

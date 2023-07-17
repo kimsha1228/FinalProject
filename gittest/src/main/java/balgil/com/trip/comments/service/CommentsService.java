@@ -26,8 +26,8 @@ public class CommentsService {
 		return dao.selectAll();
 	}
 	
-	public CommentsVO selectOne(CommentsVO vo) {
-		return dao.selectOne(vo);
+	public  List<CommentsVO> selectCommentList(CommentsVO vo) {
+		return dao.selectCommentList(vo);
 	}
 	
 	public int insert(CommentsVO vo) {
@@ -60,6 +60,11 @@ public class CommentsService {
         likesCount++;
         dao.updateLikesCount(id, likesCount);
         return likesCount;
+	}
+
+	public int updateLikes(CommentsVO vo) {
+		// TODO Auto-generated method stub
+		return dao.updateLikes(vo);
 	}
 
 
