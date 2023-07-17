@@ -12,18 +12,18 @@
 <script>
 	let user_id = '${user.user_id}';
 	console.log("현재 로그인 되어있는 아이디:",user_id);
->>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject
-</script>	
+</script>
+
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>FAQ</h1>
-	
-	<c:if test="${user.user_id}=='admin01'">
+<c:if test="${user.user_id == null && seller_id eq 'admin01'}">
 	<div>
 		<a href="insertFaq.do">FAQ 작성하기</a>
 	</div>
-	</c:if>
+	<button class="insert-faq-button" onclick="goToInsertFaq()">Insert FAQ</button>
+</c:if>
 	<table>
 		<thead>
 			<tr>
@@ -52,5 +52,8 @@
 		</tfoot>
 	</table>
 	<br>
+	<script>
+</script>
+
 </body>
 </html>
