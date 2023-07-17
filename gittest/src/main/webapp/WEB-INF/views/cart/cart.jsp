@@ -81,9 +81,9 @@
 				</td>
 			</tr>
 		</table>
-		<div class="order_btn_section">
-			<a class="order_many_btn">주문하기</a>
-		</div>
+<!-- 		<div class="order_btn_section"> -->
+<!-- 			<a class="order_many_btn">주문하기</a> -->
+<!-- 		</div> -->
 		
 		<!-- 수량 조정 form -->
 		<form action="updateOneCart.do" method="get" class="quantity_update_form">

@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>selectAll</title>
 <jsp:include page="../css.jsp"></jsp:include>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -15,7 +16,7 @@
 	<table>
 		<tr>
 			<th>쿠폰코드</th>
-			<td><input type="hidden" name="user_id" value="john123"><!-- 여기 나중에 세션으로 변경 -->
+			<td><input type="hidden" name="user_id" value="${user_id}"><!-- 여기 나중에 세션으로 변경 -->
 			<input type="text" name="couponcode" value="" placeholder="coupooncode" size="30"></td>
 	      	<td><input type="submit" value="쿠폰등록"></td>
 		</tr>

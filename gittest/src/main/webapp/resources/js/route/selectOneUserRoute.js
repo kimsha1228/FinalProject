@@ -140,8 +140,8 @@ $(function(){
 			            count--;
 			            for(var i =0 ;i<orders.length;i++){
 						    if(orders[i]==(this.name)){
-						    	console.log("오더 인덱스:",i);
-						    	console.log("클릭한 박스:",this.name);
+						    	//console.log("오더 인덱스:",i);
+						    	//console.log("클릭한 박스:",this.name);
 						        removeMarker(i);
 						    }
 						}
@@ -263,7 +263,7 @@ function likeUpRoute(value){
 
 //도로경로 표시용 함수
 function showRoadRoute(){
-	console.log(arrayOfCoords);
+	//console.log(arrayOfCoords);
 	
 	$.ajax({
 		url: "directions5.do",
@@ -284,5 +284,14 @@ function showRoadRoute(){
 }
 function hideRoadRoute(){
 	console.log(arrayOfCoords);
-	polyline.setPath(arrayOfCoords);
+	//orders 상태를 [0,3]->[0,1] 이런식으로 재정렬 해서 indexOutOfBounds 방지
+   	var newOrders=findRanking(orders);
+	var newArray = new Array();
+	for(var i = 0 ;i<orders.length;i++){
+		newArray.push(arrayOfCoords[newOrders[i]]);
+	}
+	console.log("재정렬후의 newArray:",newArray);
+	polyline.setPath(newArray);
+	
+	//polyline.setPath(arrayOfCoords);
 }

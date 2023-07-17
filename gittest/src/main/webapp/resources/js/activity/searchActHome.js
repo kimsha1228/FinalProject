@@ -151,9 +151,6 @@ $(document).ready(function(){
 	    }
 	  });
 	});
-
-	filter[1] = $this.text();
-	$table.trigger('search', [ filter ]);
 });//end onload
 
 function searchList(searchWord){

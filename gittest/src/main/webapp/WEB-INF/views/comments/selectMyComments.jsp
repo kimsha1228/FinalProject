@@ -14,17 +14,17 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>reservationSelectAll</h1>
+	<h1>이용후기</h1>
 
+	<table>
+	<tr>
+	<th colspan="2">
+	<a href="selectMyComments.do?user_id=${user_id}">작성 가능한 후기</a>
+	<a href="selectMyWrittenComments.do?user_id=${user_id}">내가 쓴 후기</a>
+	</th>
+	</tr>
+	</table>
 		<c:if test="${vos.size()!=0}">
-			<table>
-			<tr>
-			<th colspan="2">
-			<a href="selectMyComments.do?user_id=${user_id}">작성 가능한 후기</a>
-			<a href="selectMyWrittenComments.do?user_id=${user_id}">내가 쓴 후기</a>
-			</th>
-			</tr>
-			</table>
 			<c:forEach var="vo" items="${vos}">
 					
 				<table>
