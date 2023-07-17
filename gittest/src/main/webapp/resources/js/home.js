@@ -14,10 +14,10 @@ $(function(){
 				let vo = response[i];
 				tag_vos+=`
 				<a class="col-3" href="selectOneUserAct.do?id=${vo.id}">
-					<div class="card card-block">
+					<div class="card card-block" style="align-items: center;">
 						<img class="card-img-top" width='150px' height='150px' src="resources/uploadimg/thumb_${vo.eng_name}">
-						<div class="card-act-name">${vo.act_name}</div>
-						<div>${vo.rate}점</div>
+						<div class="card-act-name" style="align-self: normal;">${vo.act_name}</div>
+						<span class="stars">${vo.rate}</span>
 						<div>${vo.price}원</div>
 					</div>
 				</a>
@@ -50,10 +50,10 @@ $(function(){
 				let vo = response[i];
 				tag_vos+=`
 				<a class="col-3" href="selectOneUserAct.do?id=${vo.id}">
-					<div class="card card-block">
+					<div class="card card-block" style="align-items: center;">
 						<img class="card-img-top" width='150px' height='150px' src="resources/uploadimg/thumb_${vo.eng_name}">
-						<div class="card-act-name">${vo.act_name}</div>
-						<div>${vo.rate}점</div>
+						<div class="card-act-name" style="align-self: normal;">${vo.act_name}</div>
+						<span class="stars">${vo.rate}</span>
 						<div>${vo.price}원</div>
 					</div>
 				</a>
@@ -64,13 +64,27 @@ $(function(){
 			</div>
 			`;
 			$("#allAct").html(tag_vos);
+			
+			//별을 적용
+			$('span.stars').stars();
 		},
 	 	error:function(xhr,status,error){
 			console.log('xhr.status:',xhr.status);
 	 	}
 	});//end ajax
-	
+		
 });
 //end onload
 
-
+	$.fn.stars = function() {
+	    return $(this).each(function() {
+	        // Get the value
+	        var val = parseFloat($(this).html());
+	        // Make sure that the value is in 0 - 5 range, multiply to get width
+	        var size = Math.max(0, (Math.min(5, val))) * 16;
+	        // Create stars holder
+	        var $span = $('<span />').width(size);
+	        // Replace the numerical value with stars
+	        $(this).html($span);
+	    });
+	}

@@ -67,7 +67,6 @@
 	<section id="allAct">
 	</section>
 </section>
-
 <jsp:include page="./footer.jsp"></jsp:include>
 <!-- BootStrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
