@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import balgil.com.trip.comments.model.CommentsDAO;
 import balgil.com.trip.comments.model.CommentsVO;
@@ -51,6 +52,14 @@ public class CommentsService {
 
 	public CommentsVO selectOneComments(CommentsVO vo) {
 		return dao.selectMyOneComments(vo);
+	}
+
+	@Transactional
+	public int likeComment(int id) {
+		int likesCount = dao.getLikesCount(id);
+        likesCount++;
+        dao.updateLikesCount(id, likesCount);
+        return likesCount;
 	}
 
 

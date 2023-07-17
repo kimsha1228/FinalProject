@@ -22,5 +22,8 @@ public interface CommentsDAO {
 
 	CommentsVO selectMyOneComments(CommentsVO vo);
 
+	void updateLikesCount(int id, int likesCount);
+
+	int getLikesCount(int id);
 
 }

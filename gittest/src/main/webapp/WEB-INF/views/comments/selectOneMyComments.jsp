@@ -1,18 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>selectOne</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<jsp:include page="../css.jsp"></jsp:include>
+    <meta charset="UTF-8">
+    <title>selectOne</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <jsp:include page="../css.jsp"></jsp:include>
 </head>
 <body>
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-	
-	<table border="1">
+    <jsp:include page="../top_menu.jsp"></jsp:include>
+    
+    <table border="1">
         <thead>
             <tr>
                 <th>상품명</th>
@@ -23,65 +22,82 @@
             </tr>
         </thead>
         <tbody>
-                <tr>
-                    <td>${vo2.act_name}</td>
-                    <td>${vo2.rate}</td>
-                    <td>${vo2.content}</td>
-                    <td><fmt:formatDate value="${vo2.com_date}" pattern="yyyy년 MM월 dd일"/></td>
-                    <td>${vo2.likes}</td>
-                </tr>
+            <tr>
+                <td>${vo2.act_name}</td>
+                <td>${vo2.rate}</td>
+                <td>${vo2.content}</td>
+                <td><fmt:formatDate value="${vo2.com_date}" pattern="yyyy년 MM월 dd일"/></td>
+                <td>${vo2.likes}</td>
+                <td>
+                    <button class="like_comm" data-id="${vo2.id}">좋아요</button>
+                </td>
+            </tr>
         </tbody>
-<!--         <tfoot> -->
-<!--         	<tr> -->
-<!--         		<td colspan="5"> -->
-<%-- 					<a href="updateComments.do?id=${vo2.id}">후기수정</a> --%>
-<%-- 					<a href="deleteCommentsOK.do?id=${vo2.id}">후기삭제</a> --%>
-<!--         		</td> -->
-<!--         	</tr> -->
-<!--         </tfoot> -->
     </table>
-   		<div>
-   			<button class="update_comm" data-id="${vo2.id}" data-res_id="${vo2.res_id}" data-user_id="${user_id}">후기수정</button>
-   			<button class="delete_comm" data-id="${vo2.id}" data-user_id="${user_id}" data-res_id="${vo2.res_id}">후기삭제</button>
-   		</div>
-   		
-   		<form action="updateComments.do" method="post" class="update_comm_form">
-			<input type="hidden" name="id" class="update_id">
-			<input type="hidden" name="res_id" class="update_res_id">
-			<input type="hidden" name="user_id" class="update_user_id">
-		</form>
-		
-   		<form action="deleteCommentsOK.do" method="post" class="delete_comm_form">
-			<input type="hidden" name="id" class="delete_id">
-			<input type="hidden" name="res_id" class="delete_res_id">
-			<input type="hidden" name="user_id" class="delete_user_id">
-		</form>
-		
-   	<script>
-	   	$(".update_comm").on("click", function(e){
-			e.preventDefault();
-			const id = $(this).data("id");
-			let res_id = $(this).data("res_id");
-			let user_id = $(this).data("user_id");
-			$(".update_id").val(id);
-			$(".update_res_id").val(res_id);
-			$(".update_user_id").val(user_id);
-			$(".update_comm_form").submit();
-		});
-	   		
-	   	$(".delete_comm").on("click", function(e){
-			e.preventDefault();
-			const id = $(this).data("id");
-			let res_id = $(this).data("res_id");
-			let user_id = $(this).data("user_id");
-			$(".delete_id").val(id);
-			$(".delete_res_id").val(res_id);
-			$(".delete_user_id").val(user_id);
-			$(".delete_comm_form").submit();
-		});
-	   		
-   	</script>
-   		
-   		
+    
+    <div>
+        <button class="update_comm" data-id="${vo2.id}" data-res_id="${vo2.res_id}" data-user_id="${user_id}">후기수정</button>
+        <button class="delete_comm" data-id="${vo2.id}" data-user_id="${user_id}" data-res_id="${vo2.res_id}">후기삭제</button>
+    </div>
+    
+    <form action="updateComments.do" method="post" class="update_comm_form">
+        <input type="hidden" name="id" class="update_id">
+        <input type="hidden" name="res_id" class="update_res_id">
+        <input type="hidden" name="user_id" class="update_user_id">
+    </form>
+    
+    <form action="deleteCommentsOK.do" method="post" class="delete_comm_form">
+        <input type="hidden" name="id" class="delete_id">
+        <input type="hidden" name="res_id" class="delete_res_id">
+        <input type="hidden" name="user_id" class="delete_user_id">
+    </form>
+    
+    <script>
+        $(document).ready(function() {
+            $(".like_comm").on("click", function(e) {
+                e.preventDefault();
+                const id = $(this).data("id");
+                likeComment(id);
+            });
+
+            $(".update_comm").on("click", function(e){
+                e.preventDefault();
+                const id = $(this).data("id");
+                let res_id = $(this).data("res_id");
+                let user_id = $(this).data("user_id");
+                $(".update_id").val(id);
+                $(".update_res_id").val(res_id);
+                $(".update_user_id").val(user_id);
+                $(".update_comm_form").submit();
+            });
+
+            $(".delete_comm").on("click", function(e){
+                e.preventDefault();
+                const id = $(this).data("id");
+                let res_id = $(this).data("res_id");
+                let user_id = $(this).data("user_id");
+                $(".delete_id").val(id);
+                $(".delete_res_id").val(res_id);
+                $(".delete_user_id").val(user_id);
+                $(".delete_comm_form").submit();
+            });
+        });
+
+        function likeComment(id) {
+            $.ajax({
+                url: "likeComment.do",
+                method: "POST",
+                data: { id: id },
+                success: function(response) {
+                    const likesCount = response.likesCount;
+                    $(`button[data-id="${id}"]`).siblings("td").text(likesCount);
+                    $(`button[data-id="${id}"]`).prop("disabled", true);
+                },
+                error: function() {
+                    alert("요청을 처리하는 동안 오류가 발생했습니다.");
+                }
+            });
+        }
+    </script>
 </body>
 </html>

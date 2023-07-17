@@ -73,6 +73,14 @@ public class CommentsDAOimpl implements CommentsDAO {
 		return sqlSession.selectOne("COMMENTS_WRITTEN_ONE", vo);
 	}
 
+	 @Override
+	    public int getLikesCount(int id) {
+	        return sqlSession.selectOne("COMMENTS_GET_LIKES", id);
+	    }
 	
+	 @Override
+	    public void updateLikesCount(int id, int likesCount) {
+	        sqlSession.update("COMMENTS_UPDATE_LIKES", id);
+	    }
 
 }

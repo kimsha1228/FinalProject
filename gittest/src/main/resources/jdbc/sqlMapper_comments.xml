@@ -50,4 +50,18 @@
 		where res_id = #{res_id} and user_id=#{user_id}
 	</select>
 	
+	 <select id="COMMENTS_GET_LIKES" resultType="java.lang.Integer">
+        SELECT likes
+        FROM comments
+        WHERE id = #{id}
+    </select>
+    
+   
+    <update id="COMMENTS_UPDATE_LIKES">
+        UPDATE comments
+        SET likes = #{likesCount}
+        WHERE id = #{id}
+    </update>
+    
+	
 </mapper>
