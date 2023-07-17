@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,18 +12,24 @@
 <script>
 	let user_id = '${user.user_id}';
 	console.log("현재 로그인 되어있는 아이디:",user_id);
-</script>
+	
+	$(document).ready(function() {
+		if (user_id === "admin01") {
+			$("#faq_menu").find("li").show();
+		} else {
+			$("#faq_menu").find("li").hide();
+		}
+	});
 
+</script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>FAQ</h1>
-<c:if test="${user.user_id == null && seller_id eq 'admin01'}">
-	<div>
-		<a href="insertFaq.do">FAQ 작성하기</a>
-	</div>
-	<button class="insert-faq-button" onclick="goToInsertFaq()">Insert FAQ</button>
-</c:if>
+	<ul id="faq_menu">
+		<li><a href ="insertFaq.do">문의 입력</a></li>
+	</ul>
+
 	<table>
 		<thead>
 			<tr>
@@ -51,9 +57,10 @@
 			</tr>
 		</tfoot>
 	</table>
-	<br>
-	<script>
-</script>
+	<div>
+		<a class="btn" id="insert_btn">문의 작성</a>
+	</div>
 
+	<br>
 </body>
 </html>

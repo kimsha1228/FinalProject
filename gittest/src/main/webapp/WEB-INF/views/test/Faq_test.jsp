@@ -5,5 +5,4 @@
 <ul>
 	<li><a href="home.do">HOME</a></li>
 	<li><a href="selectAllFaq.do?seller_id=seller01">selectAllFaq.do</a></li>
-	<li><a href="insertFaq.do">insertFaq.do</a></li>
 </ul>
