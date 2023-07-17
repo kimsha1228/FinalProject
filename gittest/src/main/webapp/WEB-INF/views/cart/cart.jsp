@@ -26,7 +26,7 @@
 								<td class="cart_one_info">
 									<input type="checkbox" name="selectedActivity" class="selectedActivity" checked="checked">
 									<input type="hidden" name="id" class="id" value="${cart.id}">
-									<input type="hidden" name="user_id" class="user_id" value="${user_id}"> <!-- 세션없어서 이걸로 테스트 -->
+									<input type="hidden" name="user_id" class="user_id" value="${user.user_id}">
 									<input type="hidden" name="act_id" class="act_id" value="${cart.act_id}">
 									<input type="hidden" name="price" class="price" value="${cart.price}">
 									<input type="hidden" name="quantity" class="quantity" value="${cart.quantity}">
@@ -35,9 +35,9 @@
 								</td>
 								<td></td>
 								<td>
-								<button class="order_btn" data-id="${cart.id}" data-user_id="${user_id}" data-act_id="${cart.act_id}"
+								<button class="order_btn" data-id="${cart.id}" data-user_id="${user.user_id}" data-act_id="${cart.act_id}"
 								data-price="${cart.price}" data-quantity="${cart.quantity}"  data-res_date="${cart.res_date}">단일 구매</button>
-								<button class="delete_btn" data-id="${cart.id}" data-user_id="${user_id}">삭제</button>
+								<button class="delete_btn" data-id="${cart.id}" data-user_id="${user.user_id}">삭제</button>
 								</td>
 							</tr>
 							<tr>
@@ -57,7 +57,7 @@
 									<input type="number" value="${cart.quantity}" class="quantity_input">	
 									<button class="plus_btn">+</button>
 									<button class="minus_btn">-</button>
-									<button class="quantity_modify_btn" data-id="${cart.id}" data-user_id="${user_id}">변경</button>
+									<button class="quantity_modify_btn" data-id="${cart.id}" data-user_id="${user.user_id}">변경</button>
 								</td>
 							</tr>
 							<tr>

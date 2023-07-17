@@ -304,7 +304,7 @@ public class UsersController {
 		if(vo2 == null || vo2.getType() == 4) {	//4번 탈퇴 처리된 회원은 로그인 불가
 			return "redirect:login.do?message=fail";
 		}else {
-			session.setAttribute("user_id", vo2.getUser_id());
+			session.setAttribute("user", vo2);
 			PointHistoryVO p_vo = his_service.selectOne(vo2.getUser_id()); 
 			if(p_vo==null) {
 				int result = service.pointInsert(vo2.getUser_id(), "100");
