@@ -53,6 +53,6 @@ public class FaqDAOimpl implements FaqDAO {
 		
 		return sqlSession.selectOne("FAQ_SELECT_ONE",vo);
 	}
-
+	
 
 }

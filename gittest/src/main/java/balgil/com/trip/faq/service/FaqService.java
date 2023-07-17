@@ -40,4 +40,5 @@ public class FaqService {
 		return dao.selectAll();
 	}
 	
+	
 }
