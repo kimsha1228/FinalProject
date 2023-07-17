@@ -4,16 +4,18 @@ import java.util.List;
 
 public interface CartDAO {
 	
-		public int insert(CartVO vo);
+		int insertOne(CartVO vo);
 	    
-		public void deleteOneCart(int act_id);
+		int deleteOneCart(CartVO vo);
 	    
-		public void deleteManyCart(List<Integer> act_id);
+		List<CartVO> selectAll(CartVO vo);
 	    
-		public List<CartVO> selectAll(CartVO vo);
-	    
+		CartVO selectOne(CartVO vo);
 
-	    //임시
-		public void addToCart(CartVO cart);	    
+		int insertCountUp(CartVO vo);
+
+		int updateOneCart(CartVO vo);
+
+		void updateTime();
+
 	}
-

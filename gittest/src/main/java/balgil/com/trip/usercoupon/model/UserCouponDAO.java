@@ -2,8 +2,6 @@ package balgil.com.trip.usercoupon.model;
 
 import java.util.List;
 
-import balgil.com.trip.coupon.model.CouponVO;
-
 public interface UserCouponDAO {
 
 	List<UserCouponVO> selectAll(UserCouponVO vo);

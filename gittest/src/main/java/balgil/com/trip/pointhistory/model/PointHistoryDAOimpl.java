@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import balgil.com.trip.coupon.model.CouponVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -26,7 +25,8 @@ public class PointHistoryDAOimpl implements PointHistoryDAO {
 
 		PointHistoryVO vo = new PointHistoryVO();
 		vo.setUser_id(user_id);
-		vo.setPoint(Integer.parseInt(point));
+		int usePoint = Integer.parseInt(point);
+		vo.setPoint(-usePoint);
 		
 		return sqlSession.insert("POINTHISTORY_USE_INSERT", vo);
 	}
@@ -55,10 +55,19 @@ public class PointHistoryDAOimpl implements PointHistoryDAO {
 	}
 
 	@Override
-	public List<PointHistoryVO> selectAllPointHistory() {
-		return null;
+	public PointHistoryVO selectOne(String user_id) {
+		log.info("selectOne()...", user_id);
+		
+		return sqlSession.selectOne("POINTHISTORY_SELECT_ONE", user_id);
 	}
 
+	@Override
+	public List<PointHistoryVO> selectAll(String user_id) {
+		log.info("selectAll()...", user_id);
 
+		List<PointHistoryVO> vos = sqlSession.selectList("POINTHISTORY_SELECT_USERS", user_id);
+		
+		return vos;
+	}
 
 }

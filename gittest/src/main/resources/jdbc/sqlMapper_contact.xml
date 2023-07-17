@@ -23,11 +23,6 @@
         where id = #{id}
     </delete>
 
-    <insert id="C_INSERT_OK" parameterType="balgil.com.trip.contact.model.ContactVO">
-        insert into contact (id, title, content, attach_img, user_id, seller_id, act_id, act_name)
-        values (seq_contact.nextval, #{title}, #{content}, #{attach_img}, #{user_id}, #{seller_id}, #{act_id}, #{act_name})
-    </insert>
-
 	<update id="C_UPDATE" parameterType="balgil.com.trip.contact.model.ContactVO">
         update contact
         set title = #{title}, content = #{content}, con_date = sysdate

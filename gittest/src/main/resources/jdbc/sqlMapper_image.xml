@@ -5,7 +5,7 @@
 
 <mapper namespace="balgil.com.trip.image">
 	<select id="IMAGE_SELECT_ALL_COM" resultType="balgil.com.trip.image.model.ImageVO">
-		select * from image where comm_id = #{comm_id} order by id
+		select * from image where comment_id = #{comment_id} order by id
 	</select>
 	
 	<select id="IMAGE_SELECT_ALL_ACT" resultType="balgil.com.trip.image.model.ImageVO">
@@ -29,5 +29,6 @@
 	<delete id="IMAGE_DELETE_ACT">
 		delete from image where act_id = #{act_id}
 	</delete>
+	
 	
 </mapper>

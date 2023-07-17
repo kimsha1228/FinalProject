@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class AnswerVO {
-	private int num;
+	private int id;
 	private String content;
 	private Date ans_date;
 	private String seller_id;

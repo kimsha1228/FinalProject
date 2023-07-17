@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@ $(function(){
 });//end onload...
 
 function paymentSelectOne(){
-	console.log('${param.id}');
+	console.log('${vo1.id}');
 	$.ajax({
  		url : "jsonPaymentSelectOne.do",
  		data:{res_id:'${param.id}'},
@@ -58,6 +59,16 @@ function paymentSelectOne(){
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>reservationSelectOneCancel</h1>
+	
+	<table>
+		<tr>
+			<th colspan="2">
+				<a href="selectAllReservation.do?user_id=${user_id}">예약내역</a>
+				<a href="selectExpiredReservation.do?user_id=${user_id}">사용내역</a>
+				<a href="selectCancelReservation.do?user_id=${user_id}">취소내역</a>
+			</th>
+		</tr>
+	</table>
 
 	<table border="1">
 		<tbody>
@@ -74,7 +85,9 @@ function paymentSelectOne(){
 			</tr>
 			<tr>
 				<th>예약일</th>
-				<td>${vo1.res_date}</td>
+				<td><fmt:parseDate value="${vo1.res_date}" var="res_date" pattern="yyyy-MM-dd"/>
+					<fmt:formatDate value="${res_date}" pattern="yyyy년 MM월 dd일"/>
+				</td>
 			</tr>
 			<tr>
 				<th>예약수량</th>
@@ -88,7 +101,13 @@ function paymentSelectOne(){
 
 		<tbody id="pay_info">
 		</tbody>
-
+		<tbody>
+		
+		<tr>
+			<th colspan="2"><a href="deleteOneCancelReservation.do?id=${vo1.id}&user_id=${user_id}">내역 삭제하기</a></th>
+		</tr>
+		</tbody>
 	</table>
+	
 </body>
 </html>

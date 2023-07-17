@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>내 정보 관리</title>
 <jsp:include page="../css.jsp"></jsp:include>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -43,7 +44,7 @@
 				</td>
 			</tr>
 		</table>
-		<a href="u_update.do?user_id=${user_id}">정보수정</a>
-		<a href="u_deleteOK.do?user_id=${user_id}">회원탈퇴</a>
+		<a href="u_update.do?user_id=${user.user_id}">정보수정</a>
+		<a href="u_deleteOK.do?user_id=${user.user_id}">회원탈퇴</a>
 </body>
 </html>

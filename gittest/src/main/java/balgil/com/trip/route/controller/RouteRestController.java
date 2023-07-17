@@ -23,7 +23,10 @@ public class RouteRestController {
 	@RequestMapping(value = "/jsonSelectAllRoute.do", method = RequestMethod.GET)
 	public List<RouteVO> jsonSelectAllRoute(RouteVO vo) {
 		log.info("jsonSelectAllRoute.do..{}",vo);
-		return service.selectAll(vo);
+		
+		List<RouteVO> vos= service.selectAll(vo);
+		log.info("쿼리결과..{}",vos);
+		return vos;
 	}
 	
 	@ResponseBody

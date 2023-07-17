@@ -2,6 +2,8 @@ package balgil.com.trip.contact.model;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -16,4 +18,7 @@ public class ContactVO {
 	public String seller_id;
 	public int act_id;
 	public String act_name;
+	public MultipartFile file;
+
+
 }

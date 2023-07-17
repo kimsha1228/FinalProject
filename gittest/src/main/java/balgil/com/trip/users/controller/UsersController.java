@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import balgil.com.trip.pointhistory.model.PointHistoryVO;
 import balgil.com.trip.pointhistory.service.PointHistoryService;
 import balgil.com.trip.users.model.UsersVO;
 import balgil.com.trip.users.service.UsersService;
@@ -114,6 +115,7 @@ public class UsersController {
 		log.info("/sellerTypeUpdate.do", vo);
 		
 		int result = service.sellerTypeUpdate(vo);
+		log.info("result:{}", result);
 		
 		return "redirect:selectOneSeller.do?user_id="+vo.getUser_id();
 	}
@@ -154,6 +156,9 @@ public class UsersController {
 		
 		
 		if (result == 1) {
+			int his_result = his_service.saveInsert(vo.getUser_id(), "회원가입", "3000");
+			log.info("his_result: {}", his_result);
+			
 			return "redirect:home.do";
 		} else {
 			return "redirect:u_insert.do";
@@ -299,7 +304,13 @@ public class UsersController {
 		if(vo2 == null || vo2.getType() == 4) {	//4번 탈퇴 처리된 회원은 로그인 불가
 			return "redirect:login.do?message=fail";
 		}else {
-			session.setAttribute("user_id", vo2.getUser_id());
+			session.setAttribute("user", vo2);
+			PointHistoryVO p_vo = his_service.selectOne(vo2.getUser_id()); 
+			if(p_vo==null) {
+				int result = service.pointInsert(vo2.getUser_id(), "100");
+				int his_result = his_service.saveInsert(vo2.getUser_id(), "로그인", "100");
+				log.info("result:{},{}", result, his_result);
+			}
 			return "redirect:home.do";
 		}
 	}
@@ -315,8 +326,12 @@ public class UsersController {
 	
 	//마이페이지, 마이인포 다 세션 연결하면 세션으로 아이디 넘겨받기
 	@RequestMapping(value = "/myPage.do", method = RequestMethod.GET)
-	public String myPage(UsersVO vo) {
-		log.info("/myPage.do...");
+	public String myPage(UsersVO vo, Model model) {
+		log.info("/myPage.do...{}", vo);
+		UsersVO users = service.selectOne(vo);
+		log.info("/myPage.do...{}", users);
+		
+		model.addAttribute("users", users);
 
 		return "users/myPage";
 	}
@@ -364,6 +379,23 @@ public class UsersController {
 		log.info("results:{},{}", his_result, user_result);
 		
 		return "redirect:selectOneUser.do?user_id="+user_id;
+	}
+
+	@RequestMapping(value = "/myPoint.do", method = RequestMethod.GET)
+	public String myPoint(UsersVO vo, Model model) {
+		log.info("/myPoint.do");
+		
+		UsersVO vo1 = service.selectOne(vo);
+		log.info("results:{}", vo1);
+		
+		model.addAttribute("vo", vo1);
+		
+		List<PointHistoryVO> vos = his_service.selectAll(vo.getUser_id());
+		log.info("vo2: {}", vos);
+		
+		model.addAttribute("vos", vos);
+		
+		return "users/myPoint";
 	}
 
 	

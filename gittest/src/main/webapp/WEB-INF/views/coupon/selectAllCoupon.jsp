@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -7,11 +7,12 @@
 <meta charset="UTF-8">
 <title>selectAll</title>
 <jsp:include page="../css.jsp"></jsp:include>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>쿠폰</h1>
-    <form action="coupon_insertOK.do">
+	<form action="coupon_insertOK.do">
 	<table>
 		<tr>
 			<th>쿠폰이름</th>
@@ -19,15 +20,14 @@
 		</tr>
 		<tr>
 			<th>쿠폰코드</th>
-			<td><input type="text" name="code" value="" placeholder="coupooncode" size="30"></td>
+			<td><input type="text" name="code" value="" placeholder="couponcode" size="30"></td>
 		</tr>
 		<tr>
 			<th>사용기한</th>
 			<td><input type="text" name="expire" value="" placeholder="2099-12-31 형식으로 등록" size="30"></td>
 		</tr>
-		
-	</table>	
-	      <input type="submit" value="쿠폰등록">
+	</table>
+		<input type="submit" value="쿠폰등록">
 	</form>
 	
 	<table border="1">
@@ -44,6 +44,5 @@
 		</tr>
 	</c:forEach>
 	</table>
-
 </body>
 </html>

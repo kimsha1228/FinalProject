@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import balgil.com.trip.coupon.model.CouponVO;
 import balgil.com.trip.usercoupon.model.UserCouponDAO;
 import balgil.com.trip.usercoupon.model.UserCouponVO;
 import lombok.extern.slf4j.Slf4j;
@@ -32,9 +31,8 @@ public class UserCouponService {
 	public int updateCouponBack(String user_id, String code) {
 		return dao.updateCouponBack(user_id, code);
 	}
-
+	
 	public int insert(UserCouponVO vo) {
 		return dao.insert(vo);
 	}
-
 }

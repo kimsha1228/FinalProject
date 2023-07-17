@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <ul>
 
-	<li><a href="selectAllPointHistory.do">selectAllPointHistory</a></li>
+	<li><a href="selectAllWishList.do?user_id=john123">위시리스트</a></li>
 	
 
 </ul>

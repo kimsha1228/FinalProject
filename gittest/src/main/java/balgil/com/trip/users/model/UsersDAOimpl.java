@@ -19,13 +19,6 @@ public class UsersDAOimpl implements UsersDAO {
 		log.info("MemberDAOimpl()...");
 	}
 
-//	@Override
-//	public List<UsersVO> selectAll() {
-//		log.info("selectAll()...");
-//
-//		return sqlSession.selectList("U_SELECT_ALL");
-//	}
-
 	@Override
 	public UsersVO selectOne(UsersVO vo) { //json용
 		log.info("selectOne()...{}", vo);
@@ -153,11 +146,11 @@ public class UsersDAOimpl implements UsersDAO {
 		return sqlSession.update("SELLER_TYPE_UPDATE", vo);
 	}
 
-//	@Override
-//	public int loginPoint(UsersVO vo2) {
-//		log.info("loginPoint()...{}", vo2);
-//
-//		return sqlSession.update("LOGIN_POINT_UPDATE", vo2);
-//	}
+	@Override
+	public int loginPoint(UsersVO vo2) {
+		log.info("loginPoint()...{}", vo2);
+
+		return sqlSession.update("LOGIN_POINT_UPDATE", vo2);
+	}
 
 }

@@ -48,7 +48,7 @@ public class UserCouponController {
 			log.info("result:{}", result);
 		}
 
-		return "redirect:selectAllUserCoupon.do?user_id=john123";
+		return "redirect:selectAllUserCoupon.do?user_id="+vo.getUser_id();
 	}
 	
 }

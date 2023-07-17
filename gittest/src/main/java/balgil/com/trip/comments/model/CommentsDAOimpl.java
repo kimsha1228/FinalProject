@@ -16,7 +16,7 @@ public class CommentsDAOimpl implements CommentsDAO {
 	SqlSession sqlSession;
 	
 	public CommentsDAOimpl() {
-		log.info("BoardDAOimpl....");
+		log.info("CommentsDAOimpl....");
 	}
 	
 	@Override
@@ -42,9 +42,8 @@ public class CommentsDAOimpl implements CommentsDAO {
 
 	@Override
 	public int update(CommentsVO vo) {
-		log.info("update()...{}", vo);
-		
-		return sqlSession.update("COMMENTS_UPDATE", vo);
+	    log.info("update()...{}", vo);
+	    return sqlSession.update("COMMENTS_UPDATE", vo);
 	}
 
 	@Override
@@ -54,5 +53,25 @@ public class CommentsDAOimpl implements CommentsDAO {
 		return sqlSession.delete("COMMENTS_DELETE", vo);
 	}
 
+	@Override
+	public CommentsVO selectPrevious(CommentsVO vo) {
+		return sqlSession.selectOne("COMMENTS_SELECT_PREVIOUS", vo);
+	}
+
+	@Override
+	public List<CommentsVO> selectWrittenComments(CommentsVO vo) {
+		log.info("selectWrittenComments()...{}");
+		
+		return sqlSession.selectList("COMMENTS_WRITTEN", vo);
+	}
+
+	@Override
+	public CommentsVO selectMyOneComments(CommentsVO vo) {
+		log.info("selectMyOneComments()...{}");
+		
+		return sqlSession.selectOne("COMMENTS_WRITTEN_ONE", vo);
+	}
+
+	
 
 }

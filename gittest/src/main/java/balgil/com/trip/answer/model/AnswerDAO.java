@@ -10,7 +10,5 @@ public interface AnswerDAO {
 	
 	public int delete(AnswerVO vo);
 	
-	public List<AnswerVO> selectAll();
-	
-	public AnswerVO selectOne(AnswerVO vo);
+	public List<AnswerVO> selectAll(AnswerVO vo);
 }

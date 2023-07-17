@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +38,7 @@ $(function(){
 	 				</tr>
 	 				<tr>
 	 					<td>전화번호</td>
- 						<td>\${vo2.region} \${vo2.tel}</td>
+ 						<td>\${vo2.tel}</td>
 	 				</tr>
 	 				<tr>
  						<td>이메일</td>
@@ -228,7 +229,6 @@ $(function(){
 		}
 		
 	}//end setFinalPriceInfo
-	
 </script>
 </head>
 <body>
@@ -236,7 +236,7 @@ $(function(){
 		<tbody id="vo2"></tbody> <!-- 이 부분에 유저 정보 얻어오기 -->
 	</table>
 	
-<form action="insertPaymentOne.do" method="get">
+<form action="insertPaymentOne.do" method="POST">
 	<table border="1">
 		<tbody>
 			<!-- 상품 페이지에서 넘어올 부분 -->
@@ -247,16 +247,19 @@ $(function(){
 				<td><input type="hidden" name="act_id" id = "act_id" value="${param.act_id}">상품명: <span id="act_name"></span></td>
 			</tr>
 			<tr>	
-				<td><input type="hidden" name="res_date" id = "res_date" value="${param.res_date}">예약일: ${param.res_date}</td>
+				<td><input type="hidden" name="res_date" id = "res_date" value="${param.res_date}">
+					예약일: <fmt:parseDate value="${param.res_date}" var="res_date" pattern="yyyy-MM-dd"/>
+							<fmt:formatDate value="${res_date}" pattern="yyyy년 MM월 dd일"/>
+				</td>
 			</tr>
 			<tr>	
 				<td><input type="hidden" name="quantity" id = "quantity" value="${param.quantity}">수량: ${param.quantity}</td>
 			</tr>
 			<tr>
-				<td><input type="hidden" name="price" id = "price" value="${param.price}">금액: ${param.price}</td>
+				<td><input type="hidden" name="price" id = "price" value="${param.price}">금액: <fmt:formatNumber value="${param.price}" pattern=" #,###원" /> </td>
 			</tr>
 			<tr>	
-				<td><input type="hidden" name="price_total" id = "price_total" value="${param.price*param.quantity}">총 금액: ${param.price*param.quantity}</td>
+				<td><input type="hidden" name="price_total" id = "price_total" value="${param.price*param.quantity}">총 금액: <fmt:formatNumber value="${param.price*param.quantity}" pattern=" #,###원" /></td>
 			</tr>
 			
 			<!-- 쿠폰 select -->

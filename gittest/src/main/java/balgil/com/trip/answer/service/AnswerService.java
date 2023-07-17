@@ -31,13 +31,10 @@ public class AnswerService {
 		return dao.delete(vo);
 	}
 	
-	public List<AnswerVO> selectAll(){
-		return dao.selectAll();
+	public List<AnswerVO> selectAll(AnswerVO vo){
+		return dao.selectAll(vo);
 	}
 	
-	public AnswerVO selectOne(AnswerVO vo) {
-		return dao.selectOne(vo);
-	}
 	
    
 }

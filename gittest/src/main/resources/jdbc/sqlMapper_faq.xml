@@ -26,6 +26,6 @@
     <select id="FAQ_SELECT_ONE" resultType="balgil.com.trip.faq.model.FaqVO" parameterType="balgil.com.trip.faq.model.FaqVO">
         select * from faq where id = #{id}
     </select>
-
+    
 
 </mapper>

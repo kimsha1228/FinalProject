@@ -39,4 +39,18 @@ public class CommentsService {
 	public int delete(CommentsVO vo) {
 		return dao.delete(vo);
 	}
+	
+	public CommentsVO selectPrevious(CommentsVO vo) {
+		return dao.selectPrevious(vo);
+	}
+
+	public List<CommentsVO> selectWrittenComments(CommentsVO vo) {
+		return dao.selectWrittenComments(vo);
+	}
+
+	public CommentsVO selectOneComments(CommentsVO vo) {
+		return dao.selectMyOneComments(vo);
+	}
+
+
 }

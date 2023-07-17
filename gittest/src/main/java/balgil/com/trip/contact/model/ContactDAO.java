@@ -12,8 +12,6 @@ public interface ContactDAO {
 	
 	public int delete(ContactVO vo);
 	
-	public int insertOK(ContactVO vo);
-	
     public List<ContactVO> selectAllContact(ContactVO vo);
     
     public int update(ContactVO vo);

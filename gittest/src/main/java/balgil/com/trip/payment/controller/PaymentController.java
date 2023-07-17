@@ -7,8 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import balgil.com.trip.cart.model.CartVO;
+import balgil.com.trip.cart.service.CartService;
 import balgil.com.trip.payment.model.PaymentVO;
 import balgil.com.trip.payment.service.PaymentService;
 import balgil.com.trip.pointhistory.service.PointHistoryService;
@@ -29,6 +33,9 @@ public class PaymentController {
 	ReservationService res_service;
 
 	@Autowired
+	CartService c_service; 
+	
+	@Autowired
 	UsersService u_service; 
 	
 	@Autowired
@@ -37,7 +44,9 @@ public class PaymentController {
 	@Autowired
 	PointHistoryService p_service; 
 	
-	@RequestMapping(value = "/insertPaymentOne.do", method = RequestMethod.GET)
+	Gson gson = new GsonBuilder().create();
+	
+	@RequestMapping(value = "/insertPaymentOne.do", method = RequestMethod.POST)
 	public String insertPaymentOne(PaymentVO vo) {
 		log.info("/insertPaymentOne.do");
 		log.info("vo: {}", vo);
@@ -51,10 +60,12 @@ public class PaymentController {
 		
 		int pay_result = pay_service.insert(vo);
 		log.info("pay_result : {}", pay_result);
+		
 		if(pay_result==1) {
 			
 			int result_user = 0;
 			int result_pointHistory = 0;
+			
 			if(vo.getPoint().equals("0")) {
 				result_user = 1;
 				result_pointHistory = 1;
@@ -62,7 +73,9 @@ public class PaymentController {
 				result_user = u_service.pointUpdate(vo.getUser_id(), vo.getPoint());
 				result_pointHistory = p_service.useInsert(vo.getUser_id(), vo.getPoint());
 			}
+			
 			int result_userCoupon = 0;
+			
 			if(vo.getCode().equals("0")) {
 				result_userCoupon = 1;
 			}else {
@@ -77,25 +90,61 @@ public class PaymentController {
 				resvo.setPrice_total(vo.getPrice_total());
 				resvo.setQuantity(vo.getQuantity());
 				resvo.setUser_id(vo.getUser_id());
-				resvo.setRes_date(vo.getRes_date());
+				String res_date = vo.getRes_date();
+				res_date = res_date.substring(0,10);
+				log.info(res_date.substring(0,10));
+				resvo.setRes_date(res_date);
 				
 				int res_result = res_service.insert(resvo);
-				log.info("res_result : {}", res_result);
+				
+				if(res_result==1) {
+					CartVO cartvo = new CartVO();
+					cartvo.setAct_id(vo.getAct_id());
+					cartvo.setUser_id(vo.getUser_id());
+					cartvo.setRes_date(res_date);
+					cartvo.setQuantity(vo.getQuantity());
+					
+					CartVO result_cart = c_service.selectOne(cartvo);
+					log.info("result_cart:{}", result_cart);
+					if(result_cart != null) {
+						c_service.deleteOneCart(result_cart);
+					}
+					return "redirect:reservationComplete.do";
+				}else {
+					return "redirect:reservationFailure.do";
+				}
 
-				return "redirect:reservationComplete.do?act_id="+vo.getAct_id()
-				+"&res_id="+vo.getRes_id()
-				+"&price="+vo.getPrice()
-				+"&price_total="+vo.getPrice_total()
-				+"&res_date="+vo.getRes_date()+"&quantity="+vo.getQuantity()
-				+"&user_id="+vo.getUser_id();
-			
 			}else {
-				return "home"; // 나중에 리다이렉트
+				return "redirect:reservationFailure.do";
 			}
-			
 		}else {
-			return "redirect:insertOneReservation.do?act_id=5&res_date=2023-10-31&quantity=5&price=50000"; // 나중에 리다이렉트
+			return "redirect:reservationFailure.do";
 		}
 	}
+	
+	
+//	@ResponseBody
+//	@RequestMapping(value = "/insertManyReservation.do", method = RequestMethod.GET)
+//	public String insertManyReservation(@RequestParam(value = "txt_json") String datas) {
+//		log.info("/insertManyReservation.do...{}", datas);
+//		
+//		PaymentVO[] vo_gsons = gson.fromJson(datas, PaymentVO[].class);
+//		
+//		for (PaymentVO vo : vo_gsons) {
+//			log.info(vo.toString());
+//		}
+//		
+//		List<PaymentVO> vos = Arrays.asList(vo_gsons);
+//		for (PaymentVO vo : vos) {
+//			log.info(vo.toString());
+//		}
+//		
+////		if (result == 1) {
+////			return "redirect:reservation_api.do";
+////		} else {
+//			return "redirect:reservationInsert.do";
+////		}
+//	}
+	
 
 }

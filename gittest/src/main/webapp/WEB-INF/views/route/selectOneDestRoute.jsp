@@ -7,19 +7,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" >
-
-<title>상품목록</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
 <link rel="stylesheet" href="resources/css/tablesorter/theme.default.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/route/tablesorter/jquery.tablesorter.min.js"></script>
+
+
+<title>루트목록</title>
 <script>
 	let user_id = '<%= session.getAttribute("user_id") %>';
 	let dest_id = ${param.dest_id};
 	console.log("현재 로그인 되어있는 아이디:",user_id,dest_id);
 </script>
-<script type="text/javascript" src="resources/js/route/selectOneDestRoute.js?ver=3"></script>
+<script type="text/javascript" src="resources/js/route/selectOneDestRoute.js?ver=1"></script>
 
 </head>
 <body>
@@ -58,7 +58,7 @@
 	</tfoot>
 	</table>
 <!-- BootStrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" ></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" ></script>
 </body>
 </html>

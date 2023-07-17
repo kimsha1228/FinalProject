@@ -6,6 +6,8 @@ public interface PaymentDAO {
 
 	PaymentVO selectOne(PaymentVO vo);
 
-	PaymentVO selectCancelObject(String res_id);
+	PaymentVO selectCancelOne(String res_id);
+
+	int deleteOne(String id);
 
 }

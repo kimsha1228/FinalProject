@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import balgil.com.trip.coupon.model.CouponVO;
 import balgil.com.trip.pointhistory.model.PointHistoryDAO;
 import balgil.com.trip.pointhistory.model.PointHistoryVO;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +17,7 @@ public class PointHistoryService {
 	PointHistoryDAO dao;
 
 	public PointHistoryService() {
-		log.info("CouponService()...");
+		log.info("PointHistoryService()...");
 	}
 
 	public int useInsert(String user_id, String point) {
@@ -33,8 +32,12 @@ public class PointHistoryService {
 		return dao.saveInsert(user_id, history, point);
 	}
 
-	public List<PointHistoryVO> selectAllPointHistory() {
-		return dao.selectAllPointHistory();
+	public PointHistoryVO selectOne(String user_id) {
+		return dao.selectOne(user_id);
+	}
+
+	public List<PointHistoryVO> selectAll(String user_id) {
+		return dao.selectAll(user_id);
 	}
 
 }

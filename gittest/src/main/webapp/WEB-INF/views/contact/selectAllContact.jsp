@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의목록</title>
+<title>문의내용</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/contact/selectAllcontact.js"></script>
@@ -16,7 +16,7 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>문의목록</h1>
+	<h1>문의내용</h1>
 	<table>
 		<thead>
 			<tr>
@@ -35,7 +35,6 @@
 			<c:forEach var="vo" items="${vos}">
 				<tr>
 					<td><a href="selectOneContact.do?id=${vo.id}">${vo.id}</a></td>
-					<td>${vo.id}</td>
 					<td>${vo.title}</td>
 					<td>${vo.content}</td>
 					<td>${vo.con_date}</td>

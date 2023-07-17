@@ -6,11 +6,7 @@
 <mapper namespace="balgil.com.trip.coupon">
 	
 	<select id="COUPON_SELECT_ALL" resultType="balgil.com.trip.coupon.model.CouponVO">
-		select * from coupon order by expire asc
-	</select>
-	
-	<select id="COUPON_SELECT_ONE" resultType="balgil.com.trip.coupon.model.CouponVO">
-		select * from coupon where code = #{code}
+		select * from coupon order by code asc
 	</select>
 	
 	<delete id="COUPON_UPDATE_TIME">
@@ -19,6 +15,11 @@
 	
 	<insert id="COUPON_INSERT">
 		insert into coupon (code, name, expire, rate)
-		values(#{code}, #{name}, TO_DATE(#{expire}, 'YYYY-MM-DD'), #{rate})
+		values(#{code}, #{name}, TO_DATE(#{expire}, 'RR-MM-DD'), #{rate})
 	</insert>
+	
+	<select id="COUPON_SELECT_ONE" resultType="balgil.com.trip.coupon.model.CouponVO">
+		select * from coupon where code = #{code}
+	</select>
+	
 </mapper>

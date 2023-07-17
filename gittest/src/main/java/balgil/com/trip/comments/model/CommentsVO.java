@@ -1,6 +1,9 @@
 package balgil.com.trip.comments.model;
 
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
@@ -13,5 +16,8 @@ public class CommentsVO {
 	public Date com_date;
 	public int likes;
 	public String user_id;
-	public String act_num;
+	public String res_id;
+	public String act_name;
+	public int act_id;
+	public List<MultipartFile> file;
 }
