@@ -26,20 +26,14 @@
 	<table id="boardList">
 		<thead style="text-align: center;">
 			<tr>
-				<th>title</th>
-				<th>content</th>
-				<th>user_id</th>
-				<th>act_id</th>
-				<th>act_name</th>
+				<th>제목</th>
+				<th>문의내용</th>
 			</tr>
 		</thead>
 		<tbody style="text-align: center;">
 			<tr>
 				<td>${vo2.title}</td>
 				<td>${vo2.content}</td>
-				<td>${vo2.user_id}</td>
-				<td>${vo2.act_id}</td>
-				<td>${vo2.act_name}</td>
 			</tr>
 		</tbody>
 		<tfoot>

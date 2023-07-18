@@ -32,8 +32,8 @@
 	<table>
 		<thead>
 			<tr>
-				<th>id</th>
-				<th>title</th>
+				<th>번호</th>
+				<th>제목</th>
 			</tr>
 		</thead>
 		<tbody>

@@ -32,7 +32,7 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>FAQ</h1>
+	<h1>자주 묻는 질문</h1>
 	<ul id="faq_menu">
 		<li><a href="insertFaq.do">문의 입력</a></li>
 	</ul>
@@ -69,7 +69,6 @@
 			<c:forEach var="vo" items="${vos}">
 				<tr>
 					<td><a href="selectOneFaq.do?id=${vo.id}">${vo.id}</a></td>
-					<td>${vo.id}</td>
 					<td>${vo.title}</td>
 					<td>${vo.content}</td>
 					<td>${vo.faq_date}</td>
@@ -83,9 +82,6 @@
 			</tr>
 		</tfoot>
 	</table>
-	<div>
-		<a class="btn" id="insert_btn">문의 작성</a>
-	</div>
 
 	<br>
 </body>
