@@ -8,16 +8,14 @@
 	<meta charset="UTF-8">
 	<title>reservationComplete</title>
 	<jsp:include page="../css.jsp"></jsp:include>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>이용후기</h1>
-	<br>
+	<div id="commentsform">
+	<h3>이용후기</h3>
 
-	<table>
+	<table id="selectmenu">
 		<tr>
 			<th colspan="2">
 				<a href="selectMyComments.do?user_id=${user.user_id}">작성 가능한 후기</a>
@@ -28,7 +26,7 @@
 	
 	<c:if test="${vos.size() != 0}">
 		<c:forEach var="vo" items="${vos}">
-			<table>
+			<table id="commentstable">
 				<tr>
 					<th>예약번호</th>
 					<td>${vo.id}</td>
@@ -46,35 +44,34 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<a href="insertComments.do?act_id=${vo.act_id}&user_id=${user.user_id}&res_id=${vo.id}">후기 작성</a>
+						<a href="insertComments.do?act_id=${vo.act_id}&user_id=${user.user_id}&res_id=${vo.id}" id="cibtn" class="myButton">후기 작성</a>
 					</td>
-					<br>
 				</tr>
 			</table>
 		</c:forEach>
 	</c:if>
 	
 	<c:if test="${vos.size() == 0}">
-		<table>
+		<table id="emptyrescom">
 			<tr>
 				<td>후기를 쓸 수 있는 상품이 없습니다</td>
 			</tr>
 			<tr>
-				<td><a href="selectAllReservation.do?user_id=${user.user_id}">예약내역 보기</a></td>
+				<td><a href="selectAllReservation.do?user_id=${user.user_id}" id="ecbtn" class="myButton">예약내역 보기</a></td>
 			</tr>
 		</table>
 	</c:if>	
 	
 	<c:if test="${vos1.size() != 0}">
 		<c:forEach var="vo1" items="${vos1}">
-			<table>
+			<table id="commentstable">
 				<tr>
 					<th>상품명</th>
 					<td><a href="selectOneUserAct.do?id=${vo1.act_id}">${vo1.act_name}</a></td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<a href="selectMyOneComments.do?res_id=${vo1.res_id}&user_id=${user.user_id}">후기 상세</a>
+						<a href="selectMyOneComments.do?res_id=${vo1.res_id}&user_id=${user.user_id}" id="cibtn" class="myButton">후기 상세</a>
 					</td>
 				</tr>
 			</table>
@@ -82,15 +79,16 @@
 	</c:if>
 	
 	<c:if test="${vos1.size() == 0}">
-		<table>
+		<table id="emptycomments">
 			<tr>
 				<td>작성한 후기가 없습니다</td>
 			</tr>
 			<tr>
-				<td><a href="selectMyComments.do?user_id=${user.user_id}">후기 작성하러 가기</a></td>
+				<td><a href="selectMyComments.do?user_id=${user.user_id}" id="combtn" class="myButton">후기 작성하러 가기</a></td>
 			</tr>
 		</table>
 	</c:if>	
+	</div>
     <jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
