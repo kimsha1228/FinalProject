@@ -45,7 +45,7 @@ function searchList(){
 	$.ajax({
 		url:"jsonSearchAct.do",
 		data:{
-			seller_id:user_id,
+			seller_id:'${user.user_id}',
 			searchKey:$('#searchKey').val(),
 			searchWord:$('#searchWord').val(),
 			},
