@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+#list1{
+    width:1000px;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+#list1 a{
+	border: solid 10px white;
+	border-radius:10px;
+	cursor:pointer;
+	padding:30px 5px;
+	float:left;
+	margin-top: 55px;
+    margin-left:50px;
+    overflow: hidden;
+    color:black;
+    font-size:20px;
+    font-weight: bold;
+}
+
+
+#list1 a:hover {
+	border:solid 10px #0000c9;
+	background-color:#0000c9;
+	color:white;
+}

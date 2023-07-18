@@ -7,7 +7,7 @@
 #loginform {
     width:1000px;
     height:500px;
-    margin: 50px auto;
+    margin:  auto;
 /*     border: 1px solid blue; */
     overflow: hidden;
     text-align: center;
@@ -64,8 +64,3 @@
     overflow: hidden;
     text-align: center;
 }
-
-
-
-
-

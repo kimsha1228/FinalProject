@@ -46,11 +46,3 @@ header{width:1000px;  margin:0px auto; overflow: hidden;}
     margin-top: 40px;
     /*margin-left: 50px;*/
 }
-
-#bodylist li{
-    float: left;
-    margin-top: 55px;
-    margin-left:100px;
-}
-
-

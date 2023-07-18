@@ -8,7 +8,7 @@
 
 <div id="content">
 	<ul>
-		<li><a href="admin.do">관리자 페이지로</a></li>
+		<li><a href="seller.do">판매자 페이지로</a></li>
 	</ul>
 </div>
 <div id="login">
