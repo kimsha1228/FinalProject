@@ -29,21 +29,18 @@ function findPassword(){
 			console.log('ajax...success:', obj.message);
 			let msg = '';
 			if(obj.message==='Not OK'){
-// 				msg = '입력한 정보를 확인해주세요.';
 			alert("입력한 정보를 확인해주세요");
 			}else{
-// 				msg = obj.message;
-			alert(obj.message);
+			alert($('#user_id').val()+"님의 비밀번호는 "+obj.message+"입니다");
 
 			}
-// 			$('#password').html(msg);
 		},
 		error:function(xhr,status,error){
 			console.log('xhr.status:', xhr.status);
 		}
 	});//end $.ajax()...
 	
-}//end idCheck()...
+}//end findPassword()...
 
 </script>
 </head>
