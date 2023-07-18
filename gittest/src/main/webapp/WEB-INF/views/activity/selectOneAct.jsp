@@ -8,12 +8,13 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/activity/selectOneAct.js"></script>
+<jsp:include page="../css.jsp"></jsp:include>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>상품 정보</h1>
 
-	<table>
+	<table id="activityList">
 		<thead>
 			<tr>
 				<th>id</th>

@@ -17,6 +17,7 @@
 >>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
 </script>
 <script type="text/javascript" src="resources/js/activity/selectAllAct.js?ver=1"></script>
+<jsp:include page="../css.jsp"></jsp:include>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -27,7 +28,7 @@
 	<input type="text" name="searchWord" id="searchWord">
 	<button class="myButton" onclick="searchList()" >검색</button>
 
-	<table>
+	<table id="activityList">
 	<thead>
 		<tr>
 			<th>id</th>

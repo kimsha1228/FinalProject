@@ -8,12 +8,13 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <title>Insert Comments</title>
+<jsp:include page="../css.jsp"></jsp:include>
 </head>
 <body>
 	<h1>Insert Comments</h1>
 	<form action="insertCommentsOK.do" method="post"
 		enctype="multipart/form-data">
-		<table>
+		<table id="commentsList">
 			<tr>
 				<td><label for="user_id">USER_ID:</label></td>
 				<td><input type="text" id="user_id" name="user_id" value="${user.user_id}" readonly required>
@@ -56,8 +57,4 @@
 			});
       </script>
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git

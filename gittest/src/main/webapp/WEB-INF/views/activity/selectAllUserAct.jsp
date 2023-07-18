@@ -34,14 +34,11 @@
 	console.log("현재 로그인 되어있는 아이디:", user_id);
 >>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
 </script>
-<<<<<<< HEAD
 <script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=7"></script>
-=======
+
 <script type="text/javascript" src="resources/js/activity/selectAllUserAct.js?ver=3"></script>
->>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
 </head>
 <body>
-<<<<<<< HEAD
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>상품 정보</h1>
 
@@ -88,12 +85,11 @@
 			</tr>
 		</tfoot>
 	</table>
-	<div>
+	
 		뭔가 댓글이 여기에 출력됨
 		<div id="OneComment">
 		</div>
 		<a href="selectOneComments.do?act_id=${vo2.id}">상품 후기 전체보기</a>
-=======
 <jsp:include page="../top_menu.jsp"></jsp:include>
 <h1>상품</h1>
 <div>추천 리스트</div>

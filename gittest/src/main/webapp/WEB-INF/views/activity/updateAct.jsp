@@ -18,6 +18,7 @@
 >>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
 </script>
 <script type="text/javascript" src="resources/js/activity/updateAct.js?ver=4"></script>
+<jsp:include page="../css.jsp"></jsp:include>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -26,7 +27,7 @@
 	</span>
 	<form action="updateActOk.do" method="POST"
 		enctype="multipart/form-data">
-		<table>
+		<table id="activityList">
 			<tr>
 				<td><label for="dest_id">여행지명:</label></td>
 				<td><select id="dest_id" name="dest_id">
