@@ -61,7 +61,7 @@ public class ActivityDAOimpl implements ActivityDAO {
 
 	@Override
 	public List<ActivityVO> selectAllUser() {
-		return sqlSession.selectList("ACT_SELECT_ALL_USER");
+		return sqlSession.selectList("ACT_SELECT_ALL_IMG");
 	}
 
 	@Override

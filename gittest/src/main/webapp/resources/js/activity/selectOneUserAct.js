@@ -17,21 +17,46 @@ $(function(){
 		dataType:'json',
 		success : function(arr) {
 			console.log('ajax...success:', arr);
+
+			//carousel-indicators 추가부분
 			let vos = ``;
+			vos += `	
+				<li data-target="#carouselControls" data-slide-to="0" class="active"></li>
+			`;
+			var length = arr.length;
+			for(var i = 1 ; i < length ;i++){
+	 			console.log(arr[i].name);
+				vos += `	
+					<li data-target="#carouselControls" data-slide-to="${i}"></li>
+				`;
+			};
+			$('.carousel-indicators').html(vos);
+			
+			
+			vos = ``;
+			//없으면 기본 이미지 삽입
 			if(arr.length==0){
 				vos += `	
-					<img src="resources/uploadimg/thumb_default.png">
+					<div class="carousel-item active">
+						<img src="resources/uploadimg/default.jpg" class="d-block w-100" alt="기본이미지">
+					</div>
 				`;
 			}else{
-				$.each(arr,function(vo){
-	// 				console.log(arr[vo].name);
-					vos += `	
-						<img src="resources/uploadimg/thumb_${arr[vo].name}">
-					`;
-					
-				});
+				vos += `	
+					<div class="carousel-item active">
+						<img src="resources/uploadimg/${arr[0].name}" class="d-block w-100" alt="이미지1">
+					</div>
+				`;
+				for(var i = 1 ; i < length ;i++){
+				vos += `	
+					<div class="carousel-item">
+						<img src="resources/uploadimg/${arr[i].name}" class="d-block w-100" alt="이미지1">
+					</div>
+				`;
+				};
 			}
-			$('#imageList').html(vos);
+			$('.carousel-inner').html(vos);
+			
 		},
 		error:function(xhr,status,error){
 			console.log('xhr.status:', xhr.status);
@@ -70,6 +95,8 @@ $(function(){
 				`;
 			}
 			$('#OneComment').html(vos);
+			
+			$('span.stars').stars();
 		},
 		error:function(xhr,status,error){
 			console.log('xhr.status:', xhr.status);
@@ -99,6 +126,7 @@ $(function(){
 			console.log('xhr.status:', xhr.status);
 		}
 	});//end $.ajax()...
+	
 	
 	//날짜 선택을 오늘로 변경
 	var now = new Date();
@@ -200,4 +228,18 @@ function insertOneCart() {
 	  }
 	});
 
+}
+
+//별점 관련 함수 추후 	$('span.stars').stars(); 를 써줘야함
+$.fn.stars = function() {
+    return $(this).each(function() {
+        // Get the value
+        var val = parseFloat($(this).html());
+        // Make sure that the value is in 0 - 5 range, multiply to get width
+        var size = Math.max(0, (Math.min(5, val))) * 16;
+        // Create stars holder
+        var $span = $('<span />').width(size);
+        // Replace the numerical value with stars
+        $(this).html($span);
+    });
 }

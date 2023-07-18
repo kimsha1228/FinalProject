@@ -8,7 +8,7 @@ public interface CommentsDAO {
 
     List<CommentsVO> selectAll();
 
-    CommentsVO selectOne(CommentsVO vo);
+    List<CommentsVO> selectCommentList(CommentsVO vo);
 
     int insert(CommentsVO vo);
 
@@ -22,5 +22,12 @@ public interface CommentsDAO {
 
 	CommentsVO selectMyOneComments(CommentsVO vo);
 
+	void updateLikesCount(int id, int likesCount);
+
+	int getLikesCount(int id);
+
+	int updateLikes(CommentsVO vo);
+
+	CommentsVO selectCommentOne(CommentsVO vo);
 
 }

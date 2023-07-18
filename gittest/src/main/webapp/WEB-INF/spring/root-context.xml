@@ -71,11 +71,13 @@
 		<!-- -1 이면 크기제한 없음 10MB로 제한함 -->
 	</bean>
 	
+	<bean id="mapProperty" class="balgil.com.trip.map.model.MapVO">
+		<property name="clientID" value="${naver.CLIENTID}" />
+	</bean>
+
 	<!--1. 네이버 지도 API -->
 <!-- 	<bean id="mapProperty" class="balgil.com.trip.map.model.MapVO"> -->
 <!-- 		<property name="clientID" value="${naver.CLIENTID}" /> -->
 <!-- 	</bean> -->
-	
-	
 	
 </beans>

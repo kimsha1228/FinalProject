@@ -46,4 +46,8 @@
         <input type="submit" value="수정">
     </form>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> branch 'Gunho' of https://github.com/kimsha1228/FinalProject.git

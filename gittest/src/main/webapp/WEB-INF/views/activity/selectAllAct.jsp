@@ -8,16 +8,15 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
-<%-- 	let user_id = '<%= session.getAttribute("user_id") %>'; --%>
-<<<<<<< HEAD
-    console.log("현재 로그인 되어있는 아이디:", ${user.user_id});
-=======
 	let user_id = '${user.user_id}';
     console.log("현재 로그인 되어있는 아이디:", user_id);
->>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
 </script>
+<<<<<<< HEAD
 <script type="text/javascript" src="resources/js/activity/selectAllAct.js?ver=1"></script>
 <jsp:include page="../css.jsp"></jsp:include>
+=======
+<script type="text/javascript" src="resources/js/activity/selectAllAct.js?ver=3"></script>
+>>>>>>> branch 'Gunho' of https://github.com/kimsha1228/FinalProject.git
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>

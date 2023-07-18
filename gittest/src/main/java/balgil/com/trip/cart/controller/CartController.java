@@ -1,14 +1,21 @@
 package balgil.com.trip.cart.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import balgil.com.trip.activity.model.ActivityVO;
 import balgil.com.trip.activity.service.ActivityService;
 import balgil.com.trip.cart.model.CartVO;
 import balgil.com.trip.cart.service.CartService;
@@ -40,6 +47,7 @@ public class CartController {
     public String selectAllCart(CartVO vo, Model model) {
         log.info("/selectAllCart...{}", vo);
         List<CartVO> cartList = cartService.selectAllCart(vo);
+        log.info("/selectAllCart...{}", cartList);
         
         model.addAttribute("cartList", cartList);
         return "cart/cart";

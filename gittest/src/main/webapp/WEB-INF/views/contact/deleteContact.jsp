@@ -39,8 +39,4 @@
     </table>
   </form>
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git

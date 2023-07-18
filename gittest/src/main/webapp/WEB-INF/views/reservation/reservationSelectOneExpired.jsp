@@ -63,15 +63,9 @@ function paymentSelectOne(){
 	<table>
 		<tr>
 			<th colspan="2">
-<<<<<<< HEAD
-				<a href="selectAllReservation.do?user_id=${user_id}">예약내역</a>
-				<a href="selectExpiredReservation.do?user_id=${user_id}">사용내역</a>
-				<a href="selectCancelReservation.do?user_id=${user_id}">취소내역</a>
-=======
 				<a href="selectAllReservation.do?user_id=${user.user_id}">예약내역</a>
 				<a href="selectExpiredReservation.do?user_id=${user.user_id}">사용내역</a>
 				<a href="selectCancelReservation.do?user_id=${user.user_id}">취소내역</a>
->>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
 			</th>
 		</tr>
 	</table>
@@ -88,6 +82,8 @@ function paymentSelectOne(){
 			<tr>
 				<th>상품명</th>
 				<td><a href="selectOneAct.do?id=${vo1.act_id}">${vo1.act_name}</a></td>
+				<img src="resources/uploadimg/thumb_${vo1.img_name}"/>
+				
 			</tr>
 			<tr>
 				<th>예약일</th>

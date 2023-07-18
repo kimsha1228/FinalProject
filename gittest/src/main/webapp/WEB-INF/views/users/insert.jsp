@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>insert</title>
 <jsp:include page="../css.jsp"></jsp:include>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript">
 
@@ -27,11 +26,13 @@ function idCheck(){
 			console.log('ajax...success:', obj.result);
 			let msg = '';
 			if(obj.result==='OK'){
-				msg = '사용가능한 아이디입니다.';
+				alert("사용가능한 아이디입니다.");
+// 				msg = '사용가능한 아이디입니다.';
 			}else{
-				msg = '사용중인 아이디입니다.';
+				alert("사용중인 아이디입니다.");
+// 				msg = '사용중인 아이디입니다.';
 			}
-			$('#idCheck').text(msg);
+// 			$('#idCheck').text(msg);
 		},
 		error:function(xhr,status,error){
 			console.log('xhr.status:', xhr.status);
@@ -40,77 +41,74 @@ function idCheck(){
 	
 }//end idCheck()...
 
-	
-
 </script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>회원가입</h1>
-	
+	<div id="loginform">
+	<h3>회원가입</h3>
 	<form action="u_insertOK.do" method="post">
-				<table id="usersList">
+		<table id="userinserttable">
 			<tr>
-				<td><label for="name">이름:</label></td>
-				<td><input type="text" id="name" name="name" value=""></td>
+				<td><label for="name">이름</label></td>
+				<td><input type="text" id="name" name="name" value="" autofocus></td>
 			</tr>
 			<tr>
-				<td><label for="user_id">아이디:</label></td>
+				<td><label for="user_id">아이디</label></td>
 				<td><input type="text" id="user_id" name="user_id" value="">
 					<button type="button" onclick="idCheck()">ID중복체크</button>
 					<span id="idCheck"></span>
 				</td>
 			</tr>
 			<tr>
-				<td><label for="pw">패스워드</label></td>
+				<td><label for="pw">비밀번호</label></td>
 				<td><input type="password" id="pw1" name="pw" class="pw" value=""></td>
 			</tr>
 			<tr>
-				<td><label for="pw">패스워드 확인</label></td>
+				<td><label for="pw">비밀번호 확인</label></td>
 				<td><input type="password" id="pw2" class="pw" value="">
-					<span id="alert-success" style="display: none;">비밀번호가 일치합니다.</span>
-    				<span id="alert-danger" style="display: none; color: #d92742;">비밀번호가 일치하지 않습니다.</span>
+					<span id="alert-success" style="display: none;">✅</span>
+    				<span id="alert-danger" style="display: none; color: #d92742;">❎</span>
     			</td>
 			</tr>
 			
 			<tr>
-				<td><label for="name">영문명:</label></td>
+				<td><label for="name">영문명</label></td>
 				<td>
-					<input type="text" id="first_name" name="first_name" value="" placeholder="영문 이름">
-					<input type="text" id="last_name" name="last_name" value="" placeholder="영문 성">
+					<input type="text" id="first_name" name="first_name" value="" placeholder="영문 이름" size="10.5">
+					<input type="text" id="last_name" name="last_name" value="" placeholder="영문 성" size="10.5">
 				</td>
 			</tr>
 			<tr>
-				<td><label for="tel">전화번호:</label></td>
+				<td><label for="tel">전화번호</label></td>
 				<td>
-					<input type="text" id="tel1" name="tel1" value="010">
-					<input type="text" id="tel2" name="tel2" value="">
-					<input type="text" id="tel3" name="tel3" value="">
+					<input type="text" id="tel1" name="tel1" value="010" size="5">
+					<input type="text" id="tel2" name="tel2" value="" size="5">
+					<input type="text" id="tel3" name="tel3" value="" size="5">
 				</td>
 			</tr>
 			<tr>
-				<td><label for="email">이메일:</label></td>
+				<td><label for="email">이메일</label></td>
 				<td>
-					<input type="text" id="email1" name="email1" placeholder="email" value=""><b>@</b>
-					<input type="text" id="email2" name="email2" placeholder="naver.com" value="">
+					<input type="text" id="email1" name="email1" placeholder="email" value="" size="10"><b>@</b>
+					<input type="text" id="email2" name="email2" placeholder="naver.com" value="" size="10">
 				</td>
 			</tr>
 				
 			<tr>
 				<td></td>
 				<td>
-					<input type="checkbox" id="type" name="type" value="2">셀러가입 체크해주세요
+					<input type="checkbox" id="type" name="type" value="2">판매자 가입 체크해주세요
 				</td>
 			</tr>
 			
-			<tr style="margin-top:100px">
-				<th colspan="2">
-				<input type="submit" value="회원가입하기">
-				</th>
+			<tr>
+				<td colspan="2"><input type="submit" value="회원가입하기" id="uinsertbtn" class="myButton"></td>
 			</tr>
 		</table>
 	</form>
-	
+	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
 	<script>
 	$('.pw').focusout(function () {
         var pwd1 = $("#pw1").val();

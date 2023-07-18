@@ -10,11 +10,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
-	<jsp:include page="../top_menu.jsp"></jsp:include>
+<jsp:include page="../top_menu.jsp"></jsp:include>
+<div id="mypageform">
 	<h1>마이페이지</h1>
+</div>
+<div id="mypageform">
 	<table id="usersList">
 		<tr>
-			<td><img width="50px" src="resources/uploadimg/${users.img}">
+			<td>
+			    <img width="50px" src="resources/uploadimg/${users.img}">
 				<a href="myInfo.do?user_id=${user.user_id}">내 정보 관리</a>
 			</td>
 		</tr>
@@ -38,6 +42,7 @@
 			<td><a href="#">문의내역</a></td>
 		</tr>
 	</table>
-	<jsp:include page="../footer.jsp"></jsp:include>
+</div>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

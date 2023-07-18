@@ -14,15 +14,21 @@
 		select * from comments where user_id = #{user_id} and res_id = #{res_id}
 	</select>
 	
-	<select id="COMMENTS_SELECT_ONE" resultType="balgil.com.trip.comments.model.CommentsVO">
+	<select id="SELECT_COMMENT_LIST" resultType="balgil.com.trip.comments.model.CommentsVO">
+	    SELECT *
+		FROM comments
+		WHERE act_id = #{act_id}
+		ORDER BY likes DESC
+<!-- 		FETCH FIRST 1 ROWS ONLY -->
+	</select>
+<!-- 건호님 부분 -->
+	<select id="SELECT_COMMENT_ONE" resultType="balgil.com.trip.comments.model.CommentsVO">
 	    SELECT *
 		FROM comments
 		WHERE act_id = #{act_id}
 		ORDER BY likes DESC
 		FETCH FIRST 1 ROWS ONLY
 	</select>
-<!-- 건호님 부분 -->
-
 
 	<select id="COMMENTS_SELECT_USER" resultType="balgil.com.trip.comments.model.CommentsVO">
 		select * from comments order by id desc
@@ -49,5 +55,19 @@
 		select a.act_name, c.id, c.act_id, c.res_id, c.rate, c.content, c.com_date, c.likes from activity a join comments c on(a.id=c.act_id) 
 		where res_id = #{res_id} and user_id=#{user_id}
 	</select>
+	
+	 <select id="COMMENTS_GET_LIKES" resultType="java.lang.Integer">
+        SELECT likes
+        FROM comments
+        WHERE id = #{id}
+    </select>
+    
+   
+    <update id="COMMENTS_UPDATE_LIKES">
+        UPDATE comments
+        SET likes = likes+1
+        WHERE id = #{id}
+    </update>
+    
 	
 </mapper>

@@ -1,16 +1,139 @@
 @charset "UTF-8";
 
-form,h1{
-	padding-left: 20px;
+*{
+	font-family: NBG,sans-serif;
 }
 
-input{
-	height: 30px;
+#loginform {
+    width:1000px;
+    height:500px;
+    margin:  auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
 }
-select{
-	height: 36px;
-	margin-left: 20px;
+
+
+#logintable {
+    width:250px;
+    margin: 50px auto;
+    border: 0px solid blue;
+/*     overflow: hidden; */
+    text-align: left;
 }
-label{
-	font-size: 15pt;
+
+#fpw{
+	margin-top:-92.5px;
+	margin-left: 65px;
+}
+
+#loginbtn{
+	margin-right: 20px;
+}
+
+#uinsertbtn{
+	margin: 30px 0px 0px 150px;
+}
+
+#pwbtn{
+	margin: 20px 0px 0px 90px;
+}
+
+#userinserttable {
+    width: 500px;
+    margin: 50px 310px;
+    border: 0px solid blue;
+    overflow: hidden;
+    text-align: left;
+}
+
+#fpwtable {
+    width:250px;
+    margin: 50px auto;
+    border: 0px solid blue;
+    overflow: hidden;
+    text-align: left;
+}
+
+
+#wishform {
+    width:1000px;
+    height:98%;
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#wishform table{
+/*     width:1000px; */
+/*     height:98%; */
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+.image-cell img{
+	width: 50px;
+    height: 50px;
+    border-radius: 4.5px;
+    margin: 5px 0px 0px 8px;
+}
+
+#cartform {
+    width:900px;
+    height:98%;
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#mypageform {
+	font-size:15px;
+    width:900px;
+    height:98%;
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#mypageform table {
+	font-size:15px;
+    width:900px;
+    height:98%;
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#selectform {
+    margin: 50px 0px 0px 80px;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: left;
+}
+
+#selectform span{
+	font-size:15px;
+	font-weight:bold;
+}
+
+#cartform table{
+    width:800px;
+    height:98%;
+    margin: auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#carttable img{
+	width: 50px;
+    height: 50px;
+    border-radius: 4.5px;
+    margin: 5px 0px 0px 8px;
 }

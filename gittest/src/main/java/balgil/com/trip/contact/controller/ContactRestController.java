@@ -20,10 +20,10 @@ public class ContactRestController {
 	@Autowired
 	ContactService service;
 	
-	@ResponseBody
-	@RequestMapping(value = "/jsonSelectAllContact.do", method = RequestMethod.GET)
-	public List<ContactVO> jsonSelectAllContact() {
-		log.info("jsonSelectAllContact.do..");
-		return service.selectAll();	
-	}
+//	@ResponseBody
+//	@RequestMapping(value = "/jsonSelectAllContact.do", method = RequestMethod.GET)
+//	public List<ContactVO> jsonSelectAllContact() {
+//		log.info("jsonSelectAllContact.do..");
+//		return service.selectAll();	
+//	}
 }

@@ -24,8 +24,8 @@ public class ContactService {
 		return dao.insert(vo);
 	}
 	
-	public List<ContactVO> selectAll(){
-		return dao.selectAll();
+	public List<ContactVO> selectAll(ContactVO vo){
+		return dao.selectAll(vo);
 	}
 	
 	public ContactVO selectOne(ContactVO vo) {
