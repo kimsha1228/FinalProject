@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>FAQ</title>
+<jsp:include page="../css.jsp"></jsp:include>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/faq/selectAllFaq.js"></script>
@@ -39,7 +40,7 @@
 			</tr>
 			<tr>
 				<td><label for="content">내용</label></td>
-				<td><textarea rows="10" cols="20" name="content" value="content">faq 내용</textarea></td>
+				<td><textarea rows="10" cols="20" name="content">faq 내용</textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" class="myButton"></td>
@@ -78,5 +79,6 @@
 	</table>
 
 	<br>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

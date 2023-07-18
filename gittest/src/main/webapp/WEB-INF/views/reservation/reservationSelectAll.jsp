@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>reservationComplete</title>
+<title>예약내역</title>
 <jsp:include page="../css.jsp"></jsp:include>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -135,6 +135,6 @@
 			</tr>
 			</table>
 		</c:if>
-	
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
