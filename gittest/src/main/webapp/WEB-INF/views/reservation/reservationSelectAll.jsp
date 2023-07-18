@@ -42,6 +42,8 @@
 				<tr>
 					<th>상품명</th>
 					<td><a href="selectOneUserAct.do?id=${vo.act_id}">${vo.act_name}</a></td>
+					<img src="resources/uploadimg/thumb_${vo.img_name }"/>
+					
 				</tr>
 				<tr>
 					<td colspan="2">
@@ -82,6 +84,7 @@
 				<tr>
 					<th>상품명</th>
 					<td><a href="selectOneUserAct.do?id=${vo3.act_id}">${vo3.act_name}</a></td>
+					<img src="resources/uploadimg/thumb_${vo3.img_name }"/>
 				</tr>
 				<tr>
 					<td colspan="2">
@@ -112,6 +115,7 @@
 				<tr>
 					<th>상품명</th>
 					<td><a href="selectOneUserAct.do?id=${vo2.act_id}">${vo2.act_name}</a></td>
+					<img src="resources/uploadimg/thumb_${vo2.img_name }"/>
 				</tr>
 				<tr>
 					<td colspan="2">
