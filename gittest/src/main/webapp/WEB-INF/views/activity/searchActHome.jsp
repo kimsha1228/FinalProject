@@ -17,8 +17,12 @@
 <title>홈 상품 검색</title>
 <script>
 <%--     let user_id = '<%= session.getAttribute("user.user_id") %>'; --%>
+<<<<<<< HEAD
+    console.log("현재 로그인 되어있는 아이디:", ${user.user_id});
+=======
 	let user_id = '${user.user_id}';
 	console.log("현재 로그인 되어있는 아이디:", user_id);
+>>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
 </script>
 <script type="text/javascript" src="resources/js/activity/searchActHome.js?ver=4"></script>
 </head>

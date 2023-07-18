@@ -57,8 +57,4 @@ public class DestinationController {
 
 	    return "destination/destinationSelectOne";
 	}
-
-
-
-
 }

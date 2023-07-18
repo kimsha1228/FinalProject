@@ -4,7 +4,9 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import balgil.com.trip.pointhistory.model.PointHistoryVO;
 import balgil.com.trip.pointhistory.service.PointHistoryService;
@@ -397,8 +400,36 @@ public class UsersController {
 		
 		return "users/myPoint";
 	}
+	
+	@RequestMapping(value = "/findPassword.do", method = RequestMethod.GET)
+	public String findPassword() {
+		log.info("/findPassword.do...");
+
+		return "users/password";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/findPasswordOK.do", method = RequestMethod.POST)
+	public Map<String, String> findPasswordOK(UsersVO vo) {
+		log.info("/findPasswordOK.do...{}",vo);
+		
+		UsersVO vo2 = service.findPassword(vo);
+		log.info("vo2...{}",vo2);
+		
+		String msg = "";
+		if(vo2 == null) {
+			msg = "Not OK";
+		}else {
+			msg = vo2.getPw();
+		}
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("message",msg);
+		
+		return map;
+	}
+
+
 
 	
 }
-
-

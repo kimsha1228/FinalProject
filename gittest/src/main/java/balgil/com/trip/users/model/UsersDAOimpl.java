@@ -153,4 +153,11 @@ public class UsersDAOimpl implements UsersDAO {
 		return sqlSession.update("LOGIN_POINT_UPDATE", vo2);
 	}
 
+	@Override
+	public UsersVO findPassword(UsersVO vo) {
+		log.info("findPassword()...{}", vo);
+
+		return sqlSession.selectOne("USER_PASSWORD", vo);
+	}
+
 }

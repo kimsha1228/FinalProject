@@ -11,7 +11,11 @@
 <!-- 네이버 지도 API JS -->
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${mapProperty.clientID}&submodules=geocoder"></script>
 <script type="text/javascript">
+<<<<<<< HEAD
+	let user_id = '<%= session.getAttribute("user_id") %>'; 
+=======
 	let user_id = '${user.user_id}'; 
+>>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 </script>
 <script type="text/javascript" src="resources/js/route/selectOneUserRoute.js?ver=7"></script>
@@ -50,8 +54,13 @@
 				<div id="quantityContainer">
 				</div>
 				
+<<<<<<< HEAD
+				<p> 예약자 user_id ${user_id}</p>
+				<input type='hidden' name='user_id' value='${user_id}'/>
+=======
 				<p> 예약자 user_id ${user.user_id}</p>
 				<input type='hidden' name='user_id' value='${user.user_id}'/>
+>>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
 			</form>
 			<input type="submit" form="Reservation" formaction="insertManyCart.do" value="장바구니">
 		</div>
