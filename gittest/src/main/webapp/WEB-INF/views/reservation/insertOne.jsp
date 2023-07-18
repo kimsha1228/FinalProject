@@ -45,7 +45,7 @@ $(function(){
 	 					<td>\${vo2.email}</td>
 	 				</tr>
 	  				<tr>
-	  					<td colspan="2">예약자 정보는 <a href="myInfo.do">내 정보 관리</a>에서 변경하세요</td>
+	  					<td colspan="2">예약자 정보는 <a href="myInfo.do?user_id=${user.user_id}">내 정보 관리</a>에서 변경하세요</td>
 	  				</tr>
 	 				`;
 				
