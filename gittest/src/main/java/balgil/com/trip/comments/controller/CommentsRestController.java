@@ -36,15 +36,15 @@ public class CommentsRestController {
 		return vos;
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/json_comments_selectOne.do", method = RequestMethod.GET)
-	public CommentsVO json_comments_selectOne(CommentsVO vo) {
-		log.info("/json_comments_selectOne.do...{}",vo);
-		
-		CommentsVO vo2 = service.selectOne(vo);
-		log.info("comment result: {}",vo2);
-		if(vo2==null) vo2 = vo;
-		return vo2;
-	}
+//	@ResponseBody
+//	@RequestMapping(value = "/json_comments_selectOne.do", method = RequestMethod.GET)
+//	public CommentsVO json_comments_selectOne(CommentsVO vo) {
+//		log.info("/json_comments_selectOne.do...{}",vo);
+//		
+//		CommentsVO vo2 = service.selectOne(vo);
+//		log.info("comment result: {}",vo2);
+//		if(vo2==null) vo2 = vo;
+//		return vo2;
+//	}
 
 }
