@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>문의내용</title>
+<jsp:include page="../css.jsp"></jsp:include>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript"
@@ -52,5 +53,6 @@
 		</tfoot>
 	</table>
 	<br>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
