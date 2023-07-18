@@ -13,7 +13,7 @@
 	<h1>로그인</h1>
 	
 	<form action="loginOK.do" method="post">
-		<table>
+		<table id="login">
 			<tr>
 				<td><label for="user_id">아이디</label></td>
 				<td><input type="text" id="user_id" name="user_id" value="" placeholder="아이디" autofocus></td>

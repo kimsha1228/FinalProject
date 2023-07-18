@@ -79,8 +79,5 @@
 <!-- 	<bean id="mapProperty" class="balgil.com.trip.map.model.MapVO"> -->
 <!-- 		<property name="clientID" value="${naver.CLIENTID}" /> -->
 <!-- 	</bean> -->
->>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject
-	
-	
 	
 </beans>
