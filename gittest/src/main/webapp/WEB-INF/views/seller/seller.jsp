@@ -17,6 +17,7 @@
 			<li><a href="selectAllAct.do">상품목록</a></li>
 			<li><a href="insertRoute.do">루트등록</a></li>
 			<li><a href="selectAllRoute.do">루트목록</a></li>
+			<li><a href="selectAllContact.do?seller_id=${user.user_id}">문의글목록</a></li>
 		</ul>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>

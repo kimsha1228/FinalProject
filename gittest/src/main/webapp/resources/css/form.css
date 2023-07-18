@@ -7,7 +7,7 @@
 #loginform {
     width:1000px;
     height:500px;
-    margin:  auto;
+    margin: auto;
 /*     border: 1px solid blue; */
     overflow: hidden;
     text-align: center;
@@ -40,7 +40,7 @@
 }
 
 #userinserttable {
-    width: 500px;
+    width: 600px;
     margin: 50px 310px;
     border: 0px solid blue;
     overflow: hidden;
@@ -66,9 +66,9 @@
 }
 
 #wishform table{
-/*     width:1000px; */
-/*     height:98%; */
-    margin: 50px auto;
+    width:800px;
+    height:98%;
+    margin: 50px ;
 /*     border: 1px solid blue; */
     overflow: hidden;
     text-align: center;
@@ -91,7 +91,7 @@
 }
 
 #selectform {
-    margin: 50px 0px 0px 80px;
+    margin: 50px 0px 10px 65px;
 /*     border: 1px solid blue; */
     overflow: hidden;
     text-align: left;
@@ -102,7 +102,7 @@
 	font-weight:bold;
 }
 
-#cartform table{
+#carttable{
     width:800px;
     height:98%;
     margin: auto;
@@ -111,9 +111,206 @@
     text-align: center;
 }
 
+.selectedActivity{
+    float: left;
+    margin: 5px 0px 0px 20px;
+}
+
+#carttable1{
+    width:150px;
+    height:98%;
+    margin: auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#carttable2{
+    width:400px;
+    height:98%;
+    margin: auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: left;
+}
+
 #carttable img{
 	width: 50px;
     height: 50px;
     border-radius: 4.5px;
     margin: 5px 0px 0px 8px;
 }
+
+#mypage, #myinfo {
+    width:1000px;
+    height:98%;
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#mypage h3, #myinfo h3, #coupon h3{
+	margin: 0px 0px 30px 0px;
+} 
+
+#mypagetable1 {
+    width:400px;
+    height:98%;
+    margin: auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#mypagetable1 {
+	padding-bottom: 10px; 
+	border-bottom: 2px solid black;
+}
+
+#mypagetable1_1 img{
+	border-radius: 100px;
+	border: 2px solid gray;
+}
+
+#mypagetable2{
+    width:400px;
+    height:98%;
+    margin: 20px 20px 20px 350px;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: left;
+}
+
+#myinfo table{
+	margin: 10px 0px 0px 350px;
+	margin-bottom: 20px;
+	text-align:left;
+} 
+
+#myinfo span{
+	font-size:15px;
+    font-weight: 550;
+    color: #aaa;
+} 
+
+#myinfotable{
+    width:300px;
+    height:98%;
+    margin: auto;
+    padding: 0 0 0 50px;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#myinfotable1_1 img{
+	margin: 0 0 0 50px;
+	border-radius: 100px;
+	border: 2px solid gray;
+}
+
+#usercoupon {
+    width:1000px;
+    height:98%;
+    margin: auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#usercoupontable1{
+    width:400px;
+    margin: 10px 0px 0px 300px;
+    padding: 0px 0px 0px 30px;
+    border-bottom: 1px solid gray;
+    overflow: hidden;
+    text-align: left;
+}
+
+#usercoupontable2{
+    width:400px;
+    margin: 10px 0px 0px 300px;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: left;
+}
+
+#coupon {
+    width:1000px;
+    height:98%;
+    margin: auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#coupontable1{
+    width:400px;
+    margin: 10px 0px 0px 300px;
+    padding: 0px 0px 0px 30px;
+    overflow: hidden;
+    text-align: left;
+}
+
+#coupontable2{
+    width:400px;
+    margin: 10px 0px 0px 300px;
+    padding: 30px 0px 0px 30px;
+    border-top: 1px solid gray;
+    overflow: hidden;
+    text-align: left;
+}
+
+#uupdate {
+    width:1000px;
+    height:500px;
+    margin: 10px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#uupdate h3{
+	margin: 40px;	
+}
+	
+#uupdatetable {
+    width: 600px;
+    margin: 50px 310px;
+    border: 0px solid blue;
+    overflow: hidden;
+    text-align: left;
+}
+
+#udtbtn{
+	margin: 30px 0px 0px 160px;
+}
+
+#emptycart {
+    width: 600px;
+    height: 98%;
+    margin: 50px 320px;
+    border: 0px solid blue;
+    overflow: hidden;
+    text-align: left;
+}
+
+#homebtn{
+	margin: 10px 0px 0px 75px;
+}
+
+#wishform > #emptywish {
+    width: 600px;
+    height: 98%;
+    margin: 50px 0px 0px 370px;
+    border: 0px solid blue;
+    overflow: hidden;
+    text-align: left;
+}
+
+#actbtn{
+	margin: 10px 0px 0px 75px;
+}
+
+

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>reservationComplete</title>
+<title>취소내역상세</title>
 <jsp:include page="../css.jsp"></jsp:include>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -109,6 +109,6 @@ function paymentSelectOne(){
 		</tr>
 		</tbody>
 	</table>
-	
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
