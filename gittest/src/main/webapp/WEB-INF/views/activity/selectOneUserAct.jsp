@@ -10,15 +10,10 @@
 <!-- 네이버 지도 API JS -->
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${mapProperty.clientID}&submodules=geocoder"></script>
 <script type="text/javascript">
-<%-- 	let user_id = '<%= session.getAttribute("user_id") %>'; --%>
 // 	let initadd = '서울 종로구 효자로 12 국립고궁박물관';
 	let result = '${vo2.add}';
-<<<<<<< HEAD
-    console.log("현재 로그인 되어있는 아이디:", ${user.user_id});
-=======
 	let user_id = '${user.user_id}';
     console.log("현재 로그인 되어있는 아이디:", user_id);
->>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
 	console.log("현재 주소:",result);
 </script>
 <script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=7"></script>
