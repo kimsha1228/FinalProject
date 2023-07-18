@@ -17,7 +17,7 @@
 	<table>
 		<tr>
 			<th>쿠폰코드</th>
-			<td><input type="hidden" name="user_id" value="${user.user_id}"><!-- 여기 나중에 세션으로 변경 -->
+			<td><input type="hidden" name="user_id" value="${user.user_id}">
 			<input type="text" name="couponcode" value="" placeholder="coupooncode" size="30"></td>
 	      	<td><input type="submit" value="쿠폰등록"></td>
 		</tr>

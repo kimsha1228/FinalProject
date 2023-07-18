@@ -10,7 +10,7 @@
 	</insert>
 	
 	<update id="U_UPDATE">
-		update users set name=#{name}, eng_name=#{eng_name}, tel=#{tel}, email=#{email}, img=#{img}
+		update users set name=#{name}, pw=#{pw}, eng_name=#{eng_name}, tel=#{tel}, email=#{email}, img=#{img}
 		where user_id = #{user_id}
 	</update>
 	

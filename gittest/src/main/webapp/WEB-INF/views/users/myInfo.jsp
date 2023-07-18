@@ -11,11 +11,13 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>내 정보 관리</h1>
-		<table id="usersList">
-			<tr>
-				<td><label for="img">프로필</label></td>
-				<td><img width="100px" src="resources/uploadimg/${users.img}"></td>
+	<div id="myinfo">
+	<h3>내 정보 관리</h3>
+		<table id="myinfotable">
+			<tr id="myinfotable1_1">
+				<td colspan="2">
+					<img width="100px" height="100px" src="resources/uploadimg/${users.img}">
+				</td>
 			</tr>
 			<tr>
 				<td><label for="user_id">아이디</label></td>
@@ -44,7 +46,9 @@
 				</td>
 			</tr>
 		</table>
-		<a href="u_update.do?user_id=${user.user_id}">정보수정</a>
-		<a href="u_deleteOK.do?user_id=${user.user_id}">회원탈퇴</a>
+		<a href="u_update.do?user_id=${user.user_id}"><span>정보수정</span></a>
+		<a href="u_deleteOK.do?user_id=${user.user_id}"><span>회원탈퇴</span></a>
+		</div>
+		<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
