@@ -333,4 +333,166 @@
 	margin: 10px 0px 0px 75px;
 }
 
+#commentsform {
+    width:1000px;
+    height:98%;
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#selectmenu {
+    width: 600px;
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#selectmenu a {
+	border-bottom: 2px solid black;
+}
+
+#commentstable {
+    width: 450px;
+    margin: 30px 350px;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: left;
+}
+
+#emptycomments {
+    width: 600px;
+    margin: 50px 410px;
+    overflow: hidden;
+    text-align: left;
+}
+
+#emptyrescom {
+    width: 600px;
+    margin: 50px 375px;
+    overflow: hidden;
+    text-align: left;
+}
+
+#combtn{
+	margin: 10px 0px 0px 20px;
+}
+
+#ecbtn{
+	margin: 10px 0px 0px 70px;
+}
+
+#cibtn{
+	margin: 0px 0px 0px -2px;
+}
+
+#resform {
+    width:1000px;
+    height:98%;
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#reoktable, #reexptable, #recantable{
+    width: 500px;
+    margin: 30px 300px;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: left;
+}
+
+#reoktable #resname, #reexptable #resname, #recantable #resname{
+    width: 270px;
+}
+
+#nores {
+	width:200px;
+	margin: 30px 410px;
+}
+
+#complete {
+    width:1000px;
+    height:98%;
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#complete h3{
+    margin: 0px 0px 20px 0px ;
+}
+
+#complete a{
+    margin: 0px 20px 0px 20px ;
+}
+
+#insertres {
+    width:1000px;
+    height:98%;
+    margin: 150px auto;
+    border: 1px solid blue;
+    overflow: hidden;
+    text-align: left;
+}
+
+#userinfo {
+    width:350px;
+    height:98%;
+    margin: 50px auto;
+    border: 3px solid gray;
+    overflow: hidden;
+    text-align: left;
+}
+
+#resinfo {
+    width:350px;
+    height:98%;
+    margin: 50px auto;
+    border: 3px solid gray;
+    overflow: hidden;
+    text-align: left;
+}
+
+#reservebtn{
+	margin: 0px 0px 0px 125px;
+}
+
+#oneresinfo {
+    width:1000px;
+    height:98%;
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#res_info, #pay_info {
+    width:350px;
+    height:98%;
+    margin: 50px auto;
+    border: 3px solid gray;
+    overflow: hidden;
+    text-align: left;
+}
+#res_info th, #pay_info th{
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 

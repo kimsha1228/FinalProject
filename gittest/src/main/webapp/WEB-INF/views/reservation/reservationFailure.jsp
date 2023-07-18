@@ -11,9 +11,11 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
+	<div id="complete">
 	<h3>예약 실패했습니다...</h3>
-	<a href="selectAllReservation.do?user_id=${user.user_id}">예약내역으로</a>
-	<a href="selectAllcart.do?user_id=${user.user_id}">장바구니로</a>
+	<a href="selectAllReservation.do?user_id=${user.user_id}" class="myButton">예약내역으로</a>
+	<a href="selectAllcart.do?user_id=${user.user_id}" class="myButton">장바구니로</a>
+	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
