@@ -23,32 +23,52 @@
 		}
 	});
 </script>
+<style>
+    .inputtable {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column; 
+    }}
+
+  #faq_form {
+        width: 80%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+      .inputtable h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+</style>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>자주 묻는 질문</h1>
-	<ul id="faq_menu">
-		<li><a href="insertFaq.do">문의 입력</a></li>
-	</ul>
-	<form id="faq_form" action="insertFaqOK.do" method="get">
-		<table id="boardList">
-			<tr>
-				<td><label for="title">제목</label></td>
-				<td><input type="text" id="title" name="title" value="faq 제목">
-				</td>
-			</tr>
-			<tr>
-				<td><label for="content">내용</label></td>
-				<td><textarea rows="10" cols="20" name="content" value="content">faq 내용</textarea></td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" class="myButton"></td>
-			</tr>
-
-
-		</table>
-	</form>
+	<div class="inputtable">
+		<h1>자주 묻는 질문</h1>
+		<form id="faq_form" action="insertFaqOK.do" method="get">
+			<table id="boardList">
+				<tr>
+					<td><label for="title">제목</label></td>
+					<td><input type="text" id="title" name="title" value="faq 제목">
+					</td>
+				</tr>
+				<tr>
+					<td><label for="content">내용</label></td>
+					<td><textarea rows="10" cols="20" name="content" value="content">faq 내용</textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" class="myButton" value="작성완료"></td>
+				</tr>
 	
+	
+			</table>
+		</form>
+	</div>	
 
 	<table>
 		<thead>
