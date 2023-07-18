@@ -83,4 +83,8 @@ public class UsersService {
 	public int loginPoint(UsersVO vo2) {
 		return dao.loginPoint(vo2);
 	}
+
+	public UsersVO findPassword(UsersVO vo) {
+		return dao.findPassword(vo);
+	}
 }

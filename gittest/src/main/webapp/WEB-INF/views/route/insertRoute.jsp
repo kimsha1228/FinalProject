@@ -11,7 +11,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/route/multi-select2.js?ver=1"></script>
 <script>
-	let user_id = '<%= session.getAttribute("user_id") %>';
+	let user_id = '${user.user_id}';
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 </script>
 <script type="text/javascript" src="resources/js/route/insertRoute.js?ver=7"></script>

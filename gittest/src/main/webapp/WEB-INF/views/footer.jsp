@@ -8,8 +8,8 @@
 		
 		<div id="page">
 			<ul>
-				<li><a href="#"><p>관리자 페이지로</p></a></li>
-				<li><a href="#"><p>판매자 페이지로</p></a></li>
+				<li><a href="admin.do"><p>관리자 페이지로</p></a></li>
+				<li><a href="seller.do"><p>판매자 페이지로</p></a></li>
 			</ul>
 		</div>
 	</div>

@@ -67,6 +67,10 @@
 		select * from users where user_id like #{searchWord} and type = 3
 	</select>
 	
+	<select id="USER_PASSWORD" resultType="balgil.com.trip.users.model.UsersVO"> 
+		select * from users where user_id = #{user_id} and name = #{name} and tel = #{tel}
+	</select>
+	
 	<!-- reservation용입니다 -->
 	<select id="USER_SELECT_ONE" resultType="balgil.com.trip.users.model.UsersVO"> 
 		select * from users where user_id = #{user_id}

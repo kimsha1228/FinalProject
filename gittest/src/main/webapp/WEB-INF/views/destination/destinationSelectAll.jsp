@@ -18,7 +18,7 @@
 		<button type="submit" name="category" value="서울">서울</button>
 		<button type="submit" name="category" value="경기">경기</button>
 		<button type="submit" name="category" value="부산">부산</button>
-		<button type="submit" name="category" value="경주">경주</button>
+		<button type="submit" name="category" value="인천">인천</button>
 		<button type="submit" name="category" value="제주도">제주도</button>
 	</form>
 
@@ -48,4 +48,8 @@
 		</table>
 	</c:if>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git

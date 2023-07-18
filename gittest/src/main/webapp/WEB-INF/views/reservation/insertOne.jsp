@@ -241,7 +241,7 @@ $(function(){
 		<tbody>
 			<!-- 상품 페이지에서 넘어올 부분 -->
 			<tr>
-				<td><input type="hidden" name="user_id" id = "user_id" value="${user_id}">${user_id}</td><!-- 세션 연결되면 유저아이디 입력 -->
+				<td><input type="hidden" name="user_id" id = "user_id" value="${user.user_id}">${user.user_id}</td><!-- 세션 연결되면 유저아이디 입력 -->
 			</tr>
 			<tr>	
 				<td><input type="hidden" name="act_id" id = "act_id" value="${param.act_id}">상품명: <span id="act_name"></span></td>
