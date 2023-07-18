@@ -66,8 +66,8 @@
 }
 
 #wishform table{
-/*     width:1000px; */
-/*     height:98%; */
+    width:800px;
+    height:98%;
     margin: 50px auto;
 /*     border: 1px solid blue; */
     overflow: hidden;
@@ -91,7 +91,7 @@
 }
 
 #selectform {
-    margin: 50px 0px 0px 80px;
+    margin: 50px 0px 10px 65px;
 /*     border: 1px solid blue; */
     overflow: hidden;
     text-align: left;
@@ -102,13 +102,36 @@
 	font-weight:bold;
 }
 
-#cartform table{
+#carttable{
     width:800px;
     height:98%;
     margin: auto;
 /*     border: 1px solid blue; */
     overflow: hidden;
     text-align: center;
+}
+
+.selectedActivity{
+    float: left;
+    margin: 5px 0px 0px 20px;
+}
+
+#carttable1{
+    width:150px;
+    height:98%;
+    margin: auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#carttable2{
+    width:400px;
+    height:98%;
+    margin: auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: left;
 }
 
 #carttable img{
