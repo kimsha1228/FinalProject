@@ -6,50 +6,70 @@
 <head>
 <meta charset="UTF-8">
 <title>Select Destination</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
+<jsp:include page="../css.jsp"></jsp:include>
+<link rel="stylesheet" href="resources/css/home.css">
+<link rel="stylesheet" href="resources/css/cardAndStar.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>카테고리를 선택하세요</h1>
-
-	<form
-		action="${pageContext.request.contextPath}/selectAllDestination.do"
-		method="GET">
-		<button type="submit" name="category" value="서울">서울</button>
-		<button type="submit" name="category" value="경기">경기</button>
-		<button type="submit" name="category" value="부산">부산</button>
-		<button type="submit" name="category" value="인천">인천</button>
-		<button type="submit" name="category" value="제주도">제주도</button>
-	</form>
-
-	<h2>${category}</h2>
-	<c:if test="${empty destinations}">
-		<p>No destinations found.</p>
-	</c:if>
-	<c:if test="${not empty destinations}">
-		<table>
-			<tr>
-				<th>여행지명</th>
-				<th>여행지번호</th>
-				<th>카테고리</th>
-			</tr>
-			<c:forEach items="${destinations}" var="destination">
-				<c:if test="${destination.category eq category}">
-					<tr>
-						<td><a 
-							href="${pageContext.request.contextPath}
-							/selectOneDestRoute.do?dest_id=${destination.id}">
-							${destination.name}</a></td>
-						<td>${destination.id}</td>
-						<td>${destination.category}</td>
-					</tr>
-				</c:if>
-			</c:forEach>
-		</table>
-	</c:if>
+<section>
+	<section id="destinations">
+		<h3>현재 이용 가능한 여행지</h3>
+		<div class="scrolling-wrapper row flex-row mt-4 pb-4 pt-2">
+				<a class="col-3" href="selectOneDestRoute.do?dest_id=1">
+					<span class="card card-block">
+						<img class="card-img-top" width='150px' height='200px' src="https://youimg1.tripcdn.com/target/0101c12000adm19trE691_C_670_770_R5.jpg_.webp">
+						<span class="card-act-name">서울</span>
+					</span>
+				</a>
+				<a class="col-3" href="selectOneDestRoute.do?dest_id=2">
+					<span class="card card-block">
+						<img class="card-img-top" width='150px' height='200px' src="https://youimg1.tripcdn.com/target/0104h1200083vnxttED9A_C_670_770_R5.jpg_.webp">
+						<span class="card-act-name">경기도</span>
+					</span>
+				</a>
+				<a class="col-3" href="selectOneDestRoute.do?dest_id=3">
+					<span class="card card-block">
+						<img class="card-img-top" width='150px' height='200px' src="https://youimg1.tripcdn.com/target/fd/tg/g3/M0A/46/03/CggYG1XK_vuAAbdvAAqr2aJOX-s018_C_670_770_R5.jpg_.webp">
+						<span class="card-act-name">부산</span>
+					</span>
+				</a>
+				<a class="col-3" href="selectOneDestRoute.do?dest_id=4">
+					<span class="card card-block">
+						<img class="card-img-top" width='150px' height='200px' src="https://youimg1.tripcdn.com/target/0103e120008x0rxdo2CDA_C_670_770_R5.jpg_.webp">
+						<span class="card-act-name">인천</span>
+					</span>
+				</a>
+				<a class="col-3" href="selectOneDestRoute.do?dest_id=5">
+					<span class="card card-block">
+						<img class="card-img-top" width='150px' height='200px' src="https://youimg1.tripcdn.com/target/0105a12000adm6wre0977_C_670_770_R5.jpg_.webp">
+						<span class="card-act-name">제주도</span>
+					</span>
+				</a>
+				<a class="col-3" style="align-self: center;">
+					<span class="card card-block">
+						<span class="card-act-name">추후 추가 예정....</span>
+					</span>
+				</a>
+				<a class="col-3" style="align-self: center;">
+					<span class="card card-block">
+						<span class="card-act-name">추후 추가 예정....</span>
+					</span>
+				</a>
+				<a class="col-3" style="align-self: center;">
+					<span class="card card-block">
+						<span class="card-act-name">추후 추가 예정....</span>
+					</span>
+				</a>
+			</div>
+	</section>
+</section>
+<jsp:include page="../footer.jsp"></jsp:include>
+<!-- BootStrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" ></script>
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git

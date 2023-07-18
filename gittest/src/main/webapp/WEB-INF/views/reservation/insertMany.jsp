@@ -11,8 +11,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
-
-
 	<span>장바구니</span>
 
 	<div class="content_main">
