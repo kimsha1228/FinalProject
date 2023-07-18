@@ -19,6 +19,7 @@ import balgil.com.trip.answer.model.AnswerVO;
 import balgil.com.trip.answer.service.AnswerService;
 import balgil.com.trip.contact.model.ContactVO;
 import balgil.com.trip.contact.service.ContactService;
+import balgil.com.trip.users.model.UsersVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -33,14 +34,24 @@ public class ContactController {
 
 	@Autowired
 	ServletContext sContext;
-
+	
+	//관리자, 판매자 페이지에서는 selectAllContact.do?seller_id=~~~~ 이런식으로 받기
 	@RequestMapping(value = "/selectAllContact.do", method = RequestMethod.GET)
-	public String selectAllContact(Model model) {
-		log.info("/selectAllContact.do");
-
-		List<ContactVO> vos = service.selectAll();
+	public String selectAllContact(ContactVO vo, Model model) {
+		log.info("/selectAllContact.do...{}", vo);
+		
+		List<ContactVO> vos = service.selectAll(vo);
 		model.addAttribute("vos", vos);
 
+		return "contact/selectAllContact";
+	}
+	@RequestMapping(value = "/selectAllUserContact.do", method = RequestMethod.GET)
+	public String selectAllUserContact(ContactVO vo, Model model) {
+		log.info("/selectAllContact.do...{}", vo);
+		
+		List<ContactVO> vos = service.selectAll(vo);
+		model.addAttribute("vos", vos);
+		
 		return "contact/selectAllContact";
 	}
 

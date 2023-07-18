@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +8,12 @@
 <title>문의내용</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/contact/selectAllcontact.js"></script>
+<script type="text/javascript"
+	src="resources/js/contact/selectAllcontact.js"></script>
 <script>
 	let user_id = '${user.user_id}';
-	console.log("현재 로그인 되어있는 아이디:",user_id);
-</script>	
+	console.log("현재 로그인 되어있는 아이디:", user_id);
+</script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>

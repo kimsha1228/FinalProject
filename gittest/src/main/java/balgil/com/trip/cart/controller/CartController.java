@@ -1,14 +1,21 @@
 package balgil.com.trip.cart.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import balgil.com.trip.activity.model.ActivityVO;
 import balgil.com.trip.activity.service.ActivityService;
 import balgil.com.trip.cart.model.CartVO;
 import balgil.com.trip.cart.service.CartService;
@@ -72,8 +79,12 @@ public class CartController {
 			return "{\"result\":\"NotOK\"}";
 		}
     }
+<<<<<<< HEAD
+    //장바구니에서 수량 조절
+=======
 
   //장바구니에서 수량 조절
+>>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject
     @RequestMapping(value = "/updateOneCart.do", method = RequestMethod.GET)
     public String updateOneCart(CartVO vo) {
     	log.info("updateOneCart: {}", vo);
