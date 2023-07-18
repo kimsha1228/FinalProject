@@ -141,7 +141,6 @@
     margin: 5px 0px 0px 8px;
 }
 
-
 #mypage, #myinfo {
     width:1000px;
     height:98%;
@@ -151,7 +150,7 @@
     text-align: center;
 }
 
-#mypage h3, #myinfo h3{
+#mypage h3, #myinfo h3, #coupon h3{
 	margin: 0px 0px 30px 0px;
 } 
 
@@ -211,9 +210,82 @@
 	border: 2px solid gray;
 }
 
+#usercoupon {
+    width:1000px;
+    height:98%;
+    margin: auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
 
+#usercoupontable1{
+    width:400px;
+    margin: 10px 0px 0px 300px;
+    padding: 0px 0px 0px 30px;
+    border-bottom: 1px solid gray;
+    overflow: hidden;
+    text-align: left;
+}
 
+#usercoupontable2{
+    width:400px;
+    margin: 10px 0px 0px 300px;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: left;
+}
 
+#coupon {
+    width:1000px;
+    height:98%;
+    margin: auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#coupontable1{
+    width:400px;
+    margin: 10px 0px 0px 300px;
+    padding: 0px 0px 0px 30px;
+    overflow: hidden;
+    text-align: left;
+}
+
+#coupontable2{
+    width:400px;
+    margin: 10px 0px 0px 300px;
+    padding: 30px 0px 0px 30px;
+    border-top: 1px solid gray;
+    overflow: hidden;
+    text-align: left;
+}
+
+#uupdate {
+    width:1000px;
+    height:500px;
+    margin: 10px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#uupdate h3{
+	margin: 40px;	
+}
+	
+#uupdatetable {
+    width: 600px;
+    margin: 50px 310px;
+    border: 0px solid blue;
+    overflow: hidden;
+    text-align: left;
+}
+
+#udtbtn{
+	margin: 30px 0px 0px 160px;
+}
 
 
 

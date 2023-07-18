@@ -12,10 +12,10 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<div id="loginform">
+	<div id="uupdate">
 	<h3>내 정보 수정</h3>
 	<form action="u_updateOK.do" method="post" enctype="multipart/form-data">
-		<table id="userinserttable">
+		<table id="uupdatetable">
 			<tr>
 				<td><label for="img">프로필 사진</label></td>
 				<td><input type="file" id="file" name="file" value="${users.img}"></td>
@@ -42,28 +42,28 @@
 			<tr>
 				<td><label for="eng_name">영문명</label></td>
 				<td>
-					<input type="text" id="first_name" name="first_name" value="${users.first_name}">
-					<input type="text" id="last_name" name="last_name" value="${users.last_name}">
+					<input type="text" id="first_name" name="first_name" value="${users.first_name}" size="10">
+					<input type="text" id="last_name" name="last_name" value="${users.last_name}" size="10">
 				</td>
 			</tr>
 			<tr>
 				<td><label for="tel">전화번호</label></td>
 				<td>
-					<input type="text" id="tel1" name="tel1" value="${users.tel1}">
-					<input type="text" id="tel2" name="tel2" value="${users.tel2}">
-					<input type="text" id="tel3" name="tel3" value="${users.tel3}">
+					<input type="text" id="tel1" name="tel1" value="${users.tel1}" size="3">
+					<input type="text" id="tel2" name="tel2" value="${users.tel2}" size="3">
+					<input type="text" id="tel3" name="tel3" value="${users.tel3}" size="3">
 				</td>
 			</tr>
 			<tr>
 				<td><label for="email">이메일</label></td>
 				<td>
-					<input type="text" id="email1" name="email1" value="${users.email1}"><b>@</b>
-					<input type="text" id="email2" name="email2" value="${users.email2}">
+					<input type="text" id="email1" name="email1" value="${users.email1}" size="9"><b>@</b>
+					<input type="text" id="email2" name="email2" value="${users.email2}" size="9">
 				</td>
 			</tr>
-			<tr style="margin-top:100px">
+			<tr>
 				<th colspan="2">
-				<input type="submit" value="저장하기">
+				<input type="submit" value="저장하기" id="udtbtn" class="myButton">
 				</th>
 			</tr>
 		</table>

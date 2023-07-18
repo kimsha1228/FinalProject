@@ -19,12 +19,12 @@
 		<table id="boardList">
 			<tr>
 				<td><label for="title">제목</label></td>
-				<td><input type="text" id="title" name="title" value="faq 제목">
+				<td><input type="text" id="title" name="title" placeholder="제목을 입력해주세요">
 				</td>
 			</tr>
 			<tr>
 				<td><label for="content">내용</label></td>
-				<td><textarea rows="10" cols="20" name="content" value="content">faq 내용</textarea></td>
+				<td><textarea rows="10" cols="20" name="content" placeholder="내용을 입력해주세요">faq 내용</textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" class="myButton"></td>
