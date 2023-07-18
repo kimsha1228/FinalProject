@@ -57,9 +57,8 @@
 			<tr>
 				<td colspan="2"><input type="submit" class="myButton"></td>
 			</tr>
-			
-	
 		</table>
 	</form>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

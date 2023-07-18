@@ -12,9 +12,10 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>쿠폰</h1>
+	<div id="coupon">
+	<h3>쿠폰</h3>
 	<form action="coupon_insertOK.do">
-	<table>
+	<table id="coupontable1">
 		<tr>
 			<th>쿠폰이름</th>
 			<td><input type="text" name="name" value="" placeholder="10% off 두 자리 숫자 맨앞 기입" size="30"></td>
@@ -28,10 +29,10 @@
 			<td><input type="text" name="expire" value="" placeholder="2099-12-31 형식으로 등록" size="30"></td>
 		</tr>
 	</table>
-		<input type="submit" value="쿠폰등록">
+		<input type="submit" value="쿠폰등록" class="myButton">
 	</form>
 	
-	<table border="1">
+	<table id="coupontable2">
 		<tr>
 			<th>쿠폰이름</th>
 			<th>쿠폰코드</th>
@@ -45,5 +46,6 @@
 		</tr>
 	</c:forEach>
 	</table>
+	</div>
 </body>
 </html>

@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>결제단계</title>
+<jsp:include page="../css.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript">
 
@@ -30,7 +31,7 @@ $(function(){
 				
 	  			let tag_vo2 =  `
 	  				<tr>
-	 					<td colspan="2">예약자 정보</td>
+	 					<th colspan="2">예약자 정보</th>
 	 				</tr>
 	 				<tr>
 	 					<td>여권상 영문명</td>
@@ -45,7 +46,7 @@ $(function(){
 	 					<td>\${vo2.email}</td>
 	 				</tr>
 	  				<tr>
-	  					<td colspan="2">예약자 정보는 <a href="myInfo.do">내 정보 관리</a>에서 변경하세요</td>
+	  					<td colspan="2"><font color='royalblue' size='2p'><span>예약자 정보는 <a href="myInfo.do?user_id=${user.user_id}">내 정보 관리</a>에서 변경하세요<span></font></td>
 	  				</tr>
 	 				`;
 				
@@ -153,7 +154,7 @@ $(function(){
 	 			let discount = '';
 
 	 			if(vos==0){
-					discount += `보유한 쿠폰이 없습니다`;
+// 					discount += `보유한 쿠폰이 없습니다`;
 		 			coupon += `<select id="coupon-select">`;
 		 			coupon += `<option value="0">쿠폰 사용 안함</option>`;
 		 			coupon += `</select>`;
@@ -177,7 +178,7 @@ $(function(){
 		 				`;
 				}
 					
-	 			$("#coupon").html(coupon);
+	 			$("#coupon_use").html(coupon);
 	 			$("#discount").html(discount);
 	 			
 	 		},
@@ -188,7 +189,7 @@ $(function(){
 	 	
 	 	let originalPrice = $("#price_total").val();
 	 	
-		$("#coupon").change(function(){
+		$("#coupon_use").change(function(){
 			
 			if($("#coupon-select option:selected").val()=='0'){
 				let couponPrice = 0;
@@ -232,22 +233,21 @@ $(function(){
 </script>
 </head>
 <body>
-	<table border="1">
+<div id="insertres">
+	<table id="userinfo">
 		<tbody id="vo2"></tbody> <!-- 이 부분에 유저 정보 얻어오기 -->
 	</table>
 	
 <form action="insertPaymentOne.do" method="POST">
-	<table border="1">
+	<table id="resinfo">
 		<tbody>
 			<!-- 상품 페이지에서 넘어올 부분 -->
-			<tr>
-				<td><input type="hidden" name="user_id" id = "user_id" value="${user.user_id}">${user.user_id}</td><!-- 세션 연결되면 유저아이디 입력 -->
-			</tr>
 			<tr>	
 				<td><input type="hidden" name="act_id" id = "act_id" value="${param.act_id}">상품명: <span id="act_name"></span></td>
 			</tr>
 			<tr>	
-				<td><input type="hidden" name="res_date" id = "res_date" value="${param.res_date}">
+				<td><input type="hidden" name="user_id" id = "user_id" value="${user.user_id}">
+				<input type="hidden" name="res_date" id = "res_date" value="${param.res_date}">
 					예약일: <fmt:parseDate value="${param.res_date}" var="res_date" pattern="yyyy-MM-dd"/>
 							<fmt:formatDate value="${res_date}" pattern="yyyy년 MM월 dd일"/>
 				</td>
@@ -264,7 +264,7 @@ $(function(){
 			
 			<!-- 쿠폰 select -->
 			<tr>
-				<td id = "coupon">
+				<td id = "coupon_use">
 				</td>
 			</tr>
 			<!-- 쿠폰 할인 금액 -->
@@ -293,12 +293,13 @@ $(function(){
 				</td>
 			</tr>
 			<tr>	
-				<td><input type="submit" value="예약하기"></td>
+				<td><input type="submit" value="예약하기" id="reservebtn" class="myButton"></td>
 			</tr>
 			
 		</tbody>
 	</table>
 </form>
+</div>
 
 </body>
 </html>

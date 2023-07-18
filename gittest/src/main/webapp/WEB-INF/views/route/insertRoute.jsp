@@ -15,6 +15,7 @@
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 </script>
 <script type="text/javascript" src="resources/js/route/insertRoute.js?ver=7"></script>
+<jsp:include page="../css.jsp"></jsp:include>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -22,7 +23,7 @@
 
 	<form action="insertRouteOk.do" method="POST"
 		enctype="multipart/form-data">
-		<table>
+		<table id="routeList">
 			<tr>
 				<td><label for="route_name">루트 이름:</label></td>
 				<td><input type="text" id="route_name" name="route_name"

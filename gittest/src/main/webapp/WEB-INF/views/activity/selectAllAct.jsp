@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상품목록</title>
+<jsp:include page="../css.jsp"></jsp:include>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
@@ -22,7 +23,7 @@
 	<input type="text" name="searchWord" id="searchWord">
 	<button class="myButton" onclick="searchList()" >검색</button>
 
-	<table>
+	<table id="activityList">
 	<thead>
 		<tr>
 			<th>id</th>

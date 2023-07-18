@@ -12,6 +12,7 @@
 	console.log("현재 로그인 되어있는 아이디:", user_id);
 </script>
 <script type="text/javascript" src="resources/js/route/selectAllRoute.js?ver=1"></script>
+<jsp:include page="../css.jsp"></jsp:include>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -22,7 +23,7 @@
 	<input type="text" name="searchWord" id="searchWord">
 	<button class="myButton" onclick="searchRoute()" >검색</button>
 
-	<table>
+	<table id="routeList">
 	<thead>
 		<tr>
 			<th>id</th>

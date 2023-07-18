@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>reservationComplete</title>
+<title>결제내역상세</title>
 <jsp:include page="../css.jsp"></jsp:include>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -26,23 +26,23 @@ function paymentSelectOne(){
  		success : function(vo) {
  			let pay_info =  '';
  			pay_info += `
- 				<tr>
+ 				<tr style="margin:10px">
 					<th colspan="2">결제 상세 정보</th>
 				</tr>
 				<tr>
-					<th>총 금액</th>
+					<td>총 금액</td>
 					<td>\${vo.price_total}원</td>
 				</tr>
 				<tr>
-					<th>포인트 사용 금액</th>
+					<td>포인트 사용 금액</td>
 					<td>(-)\${vo.point}원</td>
 				</tr>
 				<tr>
-					<th>쿠폰 사용 금액</th>
+					<td>쿠폰 사용 금액</td>
 					<td>(-)\${vo.coupon}원</td>
 				</tr>
 				<tr>
-					<th>최종 결제 금액</th>
+					<td>최종 결제 금액</td>
 					<td>\${vo.price_final}원</td>
 				</tr>
  			`;
@@ -58,9 +58,10 @@ function paymentSelectOne(){
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>reservationSelectOne</h1>
+	<div id="oneresinfo">
+	<h3>예약내역상세</h3>
 	
-	<table>
+	<table id="selectmenu">
 		<tr>
 			<th colspan="2">
 				<a href="selectAllReservation.do?user_id=${user.user_id}">예약내역</a>
@@ -70,44 +71,45 @@ function paymentSelectOne(){
 		</tr>
 	</table>
 	
-	<table border="1">
+	<table id="res_info">
 		<tbody>
 			<tr>
 				<th colspan="2">예약 상세 정보</th>
 			</tr>
 			<tr>
-				<th>예약번호</th>
+				<td>예약번호</td>
 				<td>${vo1.id}</td>
 			</tr>
 			<tr>
-				<th>상품명</th>
+				<td>상품명</td>
 				<td><a href="selectOneAct.do?id=${vo1.act_id}">${vo1.act_name}</a></td>
-				<img src="resources/uploadimg/thumb_${vo1.img_name}"/>
 			</tr>
 			<tr>
-				<th>예약일</th>
+				<td>예약일</td>
 				<td><fmt:parseDate value="${vo1.res_date}" var="res_date" pattern="yyyy-MM-dd"/>
 					<fmt:formatDate value="${res_date}" pattern="yyyy년 MM월 dd일"/>
 				</td>
 			</tr>
 			<tr>
-				<th>예약수량</th>
+				<td>예약수량</td>
 				<td>${vo1.quantity}</td>
 			</tr>
 			<tr>
-				<th>가격</th>
+				<td>가격</td>
 				<td><fmt:formatNumber value="${vo1.price}" pattern="#,### 원" /></td>
 			</tr>
 		</tbody>
-
-		<tbody id="pay_info">
+	</table>
+	<table id="pay_info">
+		<tbody>
 		</tbody>
 		<tr>
-			<th colspan="2">
+			<td colspan="2">
 			<a href="cancelReservation.do?id=${vo1.id}&user_id=${user.user_id}">예약취소</a>
-			</th>
+			</td>
 		</tr>
 	</table>
-	
+	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

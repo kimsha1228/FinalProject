@@ -9,6 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
+    <jsp:include page="../top_menu.jsp"></jsp:include>
     <h1>후기 작성</h1>
     <form action="insertCommentsOK.do" method="post" enctype="multipart/form-data">
         <table>
@@ -52,6 +53,7 @@
         </table>
         <input type="submit" value="Submit">
     </form>
+    <jsp:include page="../footer.jsp"></jsp:include>
     <script>
             $(function(){
                $("input[type='file']").change(function(event){
