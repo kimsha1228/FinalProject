@@ -6,8 +6,4 @@
 	<li><a href="selectAllDestination.do?category=City">여행지 선택 화면</a></li>
 	
 
-<<<<<<< HEAD
 </ul>
-=======
-</ul>
->>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git

@@ -13,4 +13,5 @@ public interface ActivityDAO {
 	public List<ActivityVO> searchList(String seller_id, String searchKey, String searchWord);
 	public List<ActivityVO> selectRecommended();
 	public List<ActivityVO> selectAllImg();
+	public List<ActivityVO> selectPopular();
 }

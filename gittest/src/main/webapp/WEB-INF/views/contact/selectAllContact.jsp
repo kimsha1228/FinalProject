@@ -17,6 +17,7 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
+	
 	<h1>문의내용</h1>
 	<table>
 		<thead>

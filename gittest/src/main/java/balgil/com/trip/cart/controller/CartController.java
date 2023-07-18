@@ -79,12 +79,9 @@ public class CartController {
 			return "{\"result\":\"NotOK\"}";
 		}
     }
-<<<<<<< HEAD
-    //장바구니에서 수량 조절
-=======
 
-  //장바구니에서 수량 조절
->>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject
+
+    //장바구니에서 수량 조절
     @RequestMapping(value = "/updateOneCart.do", method = RequestMethod.GET)
     public String updateOneCart(CartVO vo) {
     	log.info("updateOneCart: {}", vo);

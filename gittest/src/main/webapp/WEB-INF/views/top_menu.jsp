@@ -14,7 +14,7 @@
 		
 	<li><a href="myPage.do">마이페이지</a></li>
 	
-	<li><a href ="Contact_test.do">문의 test</a></li>
+	<li><a href="selectAllContact.do?seller_id=seller01">고객센터</a></li>	
 	
 	<li><a href ="Faq_test.do">FAQ</a></li>
 	
