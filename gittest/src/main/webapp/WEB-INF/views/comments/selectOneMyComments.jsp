@@ -28,9 +28,7 @@
                 <td>${vo2.content}</td>
                 <td><fmt:formatDate value="${vo2.com_date}" pattern="yyyy년 MM월 dd일"/></td>
                 <td>${vo2.likes}</td>
-                <td>
-                    <button class="like_comm" data-id="${vo2.id}">좋아요</button>
-                </td>
+                
             </tr>
         </tbody>
     </table>
@@ -83,21 +81,7 @@
             });
         });
 
-        /* function likeComment(id) {
-            $.ajax({
-                url: "likeComment.do",
-                method: "POST",
-                data: { id: id },
-                success: function(response) {
-                    const likesCount = response.likesCount;
-                    $(`button[data-id="${id}"]`).siblings("td").text(likesCount);
-                    $(`button[data-id="${id}"]`).prop("disabled", true);
-                },
-                error: function() {
-                    alert("요청을 처리하는 동안 오류가 발생했습니다.");
-                }
-            });
-        } */
+       
     </script>
 </body>
 </html>

@@ -143,7 +143,7 @@ public class CommentsController {
 
 		return "comments/selectOneMyComments";
 	}
-
+	
 	@RequestMapping(value = "/insertComments.do", method = RequestMethod.GET)
 	public String insertComments(CommentsVO vo) {
 		log.info("/insertComments.do....");
@@ -153,82 +153,82 @@ public class CommentsController {
 
 	@RequestMapping(value = "/insertCommentsOK.do", method = RequestMethod.POST)
 	public String insertCommentsOK(CommentsVO vo) throws IllegalStateException, IOException {
-		log.info("insertCommentsOK로 온 데이터:{}", vo);
-		log.info("file의 갯수 1이면 파일이 있을수도 없을수도 있음:{}", vo.getFile().size());
+	    log.info("insertCommentsOK로 온 데이터:{}", vo);
+	    log.info("file의 갯수 1이면 파일이 있을수도 없을수도 있음:{}", vo.getFile().size());
 
-		// 이미지는 최대 5장까지만 업로드 가능함
-		if (vo.getFile().size() > 5) {
-			log.info("이미지가 5장 이상입니다.");
-			return "redirect:insertComments.do";
-		}
-		;
+	    // 이미지는 최대 5장까지만 업로드 가능함
+	    if (vo.getFile().size() > 5) {
+	        log.info("이미지가 5장 이상입니다.");
+	        return "redirect:insertComments.do";
+	    }
 
-		int result = service.insert(vo);
+	    int result = service.insert(vo);
 
-		// 상품 입력에 성공하면 이미지를 삽입하기
-		if (result == 1) {
-			log.info("Insert쿼리 성공!");
+	    // 상품 입력에 성공하면 이미지를 삽입하기
+	    if (result == 1) {
+	        log.info("Insert쿼리 성공!");
 
-			// reservation iscommented 1로 바꿔주기
-			int res_result = rservice.updatedComments(vo.getRes_id());
-			log.info("res_result:{}", res_result);
+	        // reservation iscommented 1로 바꿔주기
+	        int res_result = rservice.updatedComments(vo.getRes_id());
+	        log.info("res_result:{}", res_result);
 
-			CommentsVO vo2 = service.selectPrevious(vo);
-			log.info("삽입한 결과 가져오기(act_id가 필요해서):{}", vo2.getId());
+	        CommentsVO vo2 = service.selectPrevious(vo);
+	        log.info("삽입한 결과 가져오기(act_id가 필요해서):{}", vo2.getId());
 
-			// 파일이 없으면 default.png를 대신 image테이블에 넣을 예정
-			if (vo.getFile().get(0).getSize() == 0) {
-				log.info("파일이 비어있어서 default.png 삽입");
-				// 이미지를 서버에 저장
-				ImageVO imageVO = new ImageVO();
-				imageVO.setName("default.png");
-				imageVO.setComment_id(vo2.getId());
+	        // 파일이 없으면 default.png를 대신 image테이블에 넣을 예정
+	        if (vo.getFile().get(0).getSize() == 0) {
+	            log.info("파일이 비어있어서 default.png 삽입");
+	            // 이미지를 서버에 저장
+	            ImageVO imageVO = new ImageVO();
+	            imageVO.setName("default.png");
+	            imageVO.setComment_id(vo2.getId());
 
-				imgService.insert(imageVO);
-			} else {
-				// 파일의 갯수만큼 반복!
-				for (MultipartFile vos : vo.getFile()) {
-					String getOriginalFilename = vos.getOriginalFilename();
-					int fileNameLength = vos.getOriginalFilename().length();
-					log.info("getOriginalFilename:{}", getOriginalFilename);
-					log.info("fileNameLength:{}", fileNameLength);
+	            imgService.insert(imageVO);
+	        } else {
+	            // 파일의 갯수만큼 반복!
+	            for (MultipartFile vos : vo.getFile()) {
+	                String getOriginalFilename = vos.getOriginalFilename();
+	                int fileNameLength = vos.getOriginalFilename().length();
+	                log.info("getOriginalFilename:{}", getOriginalFilename);
+	                log.info("fileNameLength:{}", fileNameLength);
 
-					// 웹 어플리케이션이 갖는 실제 경로: 이미지를 업로드할 대상 경로를 찾아서 파일저장.
-					String realPath = sContext.getRealPath("resources/uploadimg");
-					log.info("realPath : {}", realPath);
+	                // 웹 어플리케이션이 갖는 실제 경로: 이미지를 업로드할 대상 경로를 찾아서 파일저장.
+	                String realPath = sContext.getRealPath("resources/uploadimg");
+	                log.info("realPath : {}", realPath);
 
-					File f = new File(realPath + "\\" + getOriginalFilename);
-					vos.transferTo(f);
+	                File f = new File(realPath + "\\" + getOriginalFilename);
+	                vos.transferTo(f);
 
-					// 이미지를 서버에 저장
-					ImageVO imageVO = new ImageVO();
-					imageVO.setName(getOriginalFilename);
-					imageVO.setComment_id(vo2.getId());
+	                // 이미지를 서버에 저장
+	                ImageVO imageVO = new ImageVO();
+	                imageVO.setName(getOriginalFilename);
+	                imageVO.setComment_id(vo2.getId());
 
-					imgService.insert(imageVO);
+	                imgService.insert(imageVO);
 
-					//// create thumbnail image/////////
-					BufferedImage original_buffer_img = ImageIO.read(f);
-					BufferedImage thumb_buffer_img = new BufferedImage(200, 200, BufferedImage.TYPE_3BYTE_BGR);
-					Graphics2D graphic = thumb_buffer_img.createGraphics();
-					graphic.drawImage(original_buffer_img, 0, 0, 200, 200, null);
+	                //// create thumbnail image/////////
+	                BufferedImage original_buffer_img = ImageIO.read(f);
+	                BufferedImage thumb_buffer_img = new BufferedImage(200, 200, BufferedImage.TYPE_3BYTE_BGR);
+	                Graphics2D graphic = thumb_buffer_img.createGraphics();
+	                graphic.drawImage(original_buffer_img, 0, 0, 200, 200, null);
 
-					File thumb_file = new File(realPath + "/thumb_" + getOriginalFilename);
-					String formatName = getOriginalFilename.substring(getOriginalFilename.lastIndexOf(".") + 1);
-					log.info("formatName : {}", formatName);
-					ImageIO.write(thumb_buffer_img, formatName, thumb_file);
-				}
-			}
-		} else {
-			log.info("Insert쿼리 실패..");
-		} // end if
+	                File thumb_file = new File(realPath + "/thumb_" + getOriginalFilename);
+	                String formatName = getOriginalFilename.substring(getOriginalFilename.lastIndexOf(".") + 1);
+	                log.info("formatName : {}", formatName);
+	                ImageIO.write(thumb_buffer_img, formatName, thumb_file);
+	            }
+	        }
+	    } else {
+	        log.info("Insert쿼리 실패..");
+	    } // end if
 
-		if (result == 1) {
-			return "redirect:comments.do";
-		} else {
-			return "redirect:insertComments.do";
-		}
+	    if (result == 1) {
+	        return "redirect:comments.do";
+	    } else {
+	        return "redirect:insertComments.do";
+	    }
 	}
+
 
 	@RequestMapping(value = "/updateComments.do", method = RequestMethod.POST)
 	public String updateComments(Model model, CommentsVO vo) {

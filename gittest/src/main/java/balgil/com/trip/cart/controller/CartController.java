@@ -47,6 +47,7 @@ public class CartController {
     public String selectAllCart(CartVO vo, Model model) {
         log.info("/selectAllCart...{}", vo);
         List<CartVO> cartList = cartService.selectAllCart(vo);
+        log.info("/selectAllCart...{}", cartList);
         
         model.addAttribute("cartList", cartList);
         return "cart/cart";
