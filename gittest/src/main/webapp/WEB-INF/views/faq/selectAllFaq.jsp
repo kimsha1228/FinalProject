@@ -11,14 +11,8 @@
 <script type="text/javascript" src="resources/js/faq/selectAllFaq.js"></script>
 <script>
 	let user_id = '${user.user_id}';
-<<<<<<< HEAD
-
-	console.log("현재 로그인 되어있는 아이디:", user_id);
-
-=======
 	console.log("현재 로그인 되어있는 아이디:",user_id);
 	
->>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject
 	$(document).ready(function() {
 		if (user_id === "admin01") {
 			$("#faq_menu").find("li").show();
