@@ -14,15 +14,15 @@
 		
 <!-- 	<li><a href="myPage.do">마이페이지</a></li> -->
 	
-	<li><a href="selectAllContact.do?seller_id=seller01">문의</a></li>	<!--insertcontact seller_id 필요 -->
+<!-- 	<li><a href="selectAllContact.do?seller_id=seller01">문의</a></li>	insertcontact seller_id 필요 -->
 	
-	<li><a href="selectAllContact.do?seller_id=seller01">셀러문의seller01</a></li>
+<!-- 	<li><a href="selectAllContact.do?seller_id=seller01">셀러문의seller01</a></li> -->
 	
-	<li><a href="selectAllContact.do?user_id=john123">유저문의john123</a></li>
+<!-- 	<li><a href="selectAllContact.do?user_id=john123">유저문의john123</a></li> -->
 	
-	<li><a href="selectAllFaq.do?seller_id=admin01">FAQadmin01</a></li>
+<!-- 	<li><a href="selectAllFaq.do?seller_id=admin01">FAQadmin01</a></li> -->
 	
-	<li><a href ="Faq_test.do">FAQ</a></li>
+<!-- 	<li><a href ="Faq_test.do">FAQ</a></li> -->
 	
 <!-- 	<li><a href ="Coupon.do">쿠폰 가기</a></li> -->
   
