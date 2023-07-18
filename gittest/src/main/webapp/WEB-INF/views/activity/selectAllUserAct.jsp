@@ -60,7 +60,7 @@
 	            <tr>
 	                <td>
 	                    <a href="selectOneUserAct.do?id=${vo.id}">
-							<img style="margin: 2px; width:150px; height:150px"  src="resources/uploadimg/thumb_${vo.id}-1.jpg">	
+							<img style="margin: 2px; width:150px; height:150px"  src="resources/uploadimg/thumb_${vo.eng_name}">	
 						</a> 
 					</td>
 	                <td>

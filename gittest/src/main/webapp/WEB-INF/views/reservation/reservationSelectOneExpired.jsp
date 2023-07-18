@@ -82,6 +82,8 @@ function paymentSelectOne(){
 			<tr>
 				<th>상품명</th>
 				<td><a href="selectOneAct.do?id=${vo1.act_id}">${vo1.act_name}</a></td>
+				<img src="resources/uploadimg/thumb_${vo1.img_name}"/>
+				
 			</tr>
 			<tr>
 				<th>예약일</th>

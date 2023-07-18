@@ -7,7 +7,7 @@
 #loginform {
     width:1000px;
     height:500px;
-    margin: 50px auto;
+    margin:  auto;
 /*     border: 1px solid blue; */
     overflow: hidden;
     text-align: center;
@@ -65,7 +65,55 @@
     text-align: center;
 }
 
+#wishform table{
+/*     width:1000px; */
+/*     height:98%; */
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
 
+.image-cell img{
+	width: 50px;
+    height: 50px;
+    border-radius: 4.5px;
+    margin: 5px 0px 0px 8px;
+}
 
+#cartform {
+    width:900px;
+    height:98%;
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
 
+#selectform {
+    margin: 50px 0px 0px 80px;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: left;
+}
 
+#selectform span{
+	font-size:15px;
+	font-weight:bold;
+}
+
+#cartform table{
+    width:800px;
+    height:98%;
+    margin: auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#carttable img{
+	width: 50px;
+    height: 50px;
+    border-radius: 4.5px;
+    margin: 5px 0px 0px 8px;
+}
