@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
-<link rel="stylesheet" href="resources/css/tablesorter/theme.default.min.css">
+<link rel="stylesheet" href="resources/css/tablesorter/theme.default.min.css?ver=1">
 <jsp:include page="../css.jsp"></jsp:include>
-<link rel="stylesheet" href="resources/css/home.css">
+<link rel="stylesheet" href="resources/css/home.css?ver=1">
 <link rel="stylesheet" href="resources/css/cardAndStar.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/route/tablesorter/jquery.tablesorter.min.js"></script>
@@ -25,9 +25,8 @@
 <body>
 <jsp:include page="../top_menu.jsp"></jsp:include>
 <section>
-	<h1>검색 결과 검색</h1>
 	
-	<p id="searchresult"></p>
+	<h1 id="searchresult"></h1>
 
 	<p style="text-align: right;margin: 10px 10px 0px 0px;">상품 이름 <input class="search" type="search" data-column="1"><button type="button" class="reset">검색 초기화</button></p>
 	<table id="tableContainer">

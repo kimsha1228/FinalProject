@@ -197,7 +197,7 @@ function searchList(searchWord){
 			}
 			
 			$("#vos").html(tag_vos);
-			
+			$('span.stars').stars();
 			//검색결과 삽입
 			console.log("asdf",param_searchWord);
 			let result=param_searchWord+"의 검색결과";
