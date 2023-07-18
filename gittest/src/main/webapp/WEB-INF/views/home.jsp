@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
 <jsp:include page="./css.jsp"></jsp:include>
 <link rel="stylesheet" href="resources/css/home.css">
+<link rel="stylesheet" href="resources/css/cardAndStar.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/home.js?ver=2"></script>
 </head>
