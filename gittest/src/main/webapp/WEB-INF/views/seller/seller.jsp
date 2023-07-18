@@ -10,12 +10,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1><a href="insertAct.do">상품등록</a></h1>
-	<h1><a href="selectAllAct.do">상품목록</a></h1>
-	<h1><a href="insertRoute.do">루트등록</a></h1>
-	<h1><a href="selectAllRoute.do">루트목록</a></h1>
-	<h1><a href="selectAllContact.do?seller_id=${user.user_id}">문의글목록</a></h1>
-	
+	<jsp:include page="../seller_top.jsp"></jsp:include>
+	<div id="list1">
+		<ul>
+			<li><a href="insertAct.do">상품등록</a></li>
+			<li><a href="selectAllAct.do">상품목록</a></li>
+			<li><a href="insertRoute.do">루트등록</a></li>
+			<li><a href="selectAllRoute.do">루트목록</a></li>
+		</ul>
+	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

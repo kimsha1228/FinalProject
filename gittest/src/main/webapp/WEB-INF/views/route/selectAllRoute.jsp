@@ -9,7 +9,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
 	let user_id = '${user.user_id}';
-	console.log("현재 로그인 되어있는 아이디:",user_id);
+	console.log("현재 로그인 되어있는 아이디:", user_id);
 </script>
 <script type="text/javascript" src="resources/js/route/selectAllRoute.js?ver=1"></script>
 </head>

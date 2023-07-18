@@ -6,3 +6,4 @@
 <link rel="stylesheet" href="resources/css/form.css?after">
 <link rel="stylesheet" href="resources/css/list.css?after">
 <link rel="stylesheet" href="resources/css/button.css?after">
+<link rel="stylesheet" href="resources/css/admin.css?after">
