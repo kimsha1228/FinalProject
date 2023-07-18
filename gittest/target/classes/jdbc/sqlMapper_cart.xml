@@ -5,18 +5,11 @@
 
 <mapper namespace="balgil.com.trip.cart">
 
-	<select id="CART_SELECT_ALL"
-		resultType="balgil.com.trip.cart.model.CartVO">
+	<select id="CART_SELECT_ALL" resultType="balgil.com.trip.cart.model.CartVO">
 		select c.id, c.act_id, c.res_date, c.quantity, c.price, a.act_name,
-		(
-		select i.name
-		from image i
-		where c.act_id = i.act_id
-		and rownum = 1
-		) as img_name
-		from cart c
-		join activity a
-		on(c.act_id = a.id)
+		(select i.name from image i where c.act_id = i.act_id
+		and rownum = 1) as img_name from cart c
+		join activity a on(c.act_id = a.id)
 		where user_id = #{user_id} order by id desc
 	</select>
 
