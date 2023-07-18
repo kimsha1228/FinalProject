@@ -12,11 +12,14 @@ window.onload = function(){
 				tag_vos+=`
 				<tr>
  					<td>				
- 						<a href="selectOneUserRoute.do?id=${vo.id}">${vo.id}</a>
+ 						<a href="selectOneUserRoute.do?id=${vo.id}">
+							<img style="margin: 2px; width:150px; height:150px"  src="resources/uploadimg/thumb_${vo.img}">	
+						</a> 
  					</td>
- 					<td>${vo.route_name}</td>
- 					<td>${vo.summary}</td>
  					<td>
+ 						<h4><a href="selectOneUserRoute.do?id=${vo.id}">${vo.route_name}</a></h4>
+ 						<p>${vo.summary}</p>
+ 						<p>추천 루트:<br>
  				`;
  				
  				//루트들 삽입하는 부분
@@ -30,18 +33,25 @@ window.onload = function(){
  				
  				
  				tag_vos+=`
- 				</td>
- 					<td>${vo.dest_id}</td>
- 					<td>${vo.date}</td>
- 					<td>${vo.vcount}</td>
- 					<td>${vo.likes}</td>
+ 					</p>
+ 					</td>
+ 					<td style="vertical-align: middle;">
+ 						<p style="width: 200px;">여행지:${vo.dest_name}</p>
+ 						<p style="width: 200px;">조회수:${vo.vcount}</p>
+ 						<p style="width: 200px;">좋아요:${vo.likes}</p>
+ 					</td>
+ 					<td style="display: none;">${vo.likes}</td>
+ 					<td style="display: none;">${vo.vcount}</td>
+ 					<td style="display: none;">${vo.date}</td>
  				</tr>
 				`;
 			}
 			
 			$("#vos").html(tag_vos);
-			$("#myTable").tablesorter({
+			$("#tableContainer").tablesorter({
 		 	})
+		 	let temp = `여행지: ${response[0].dest_name}`;
+		 	$("#chosenDest").text(temp);
 		},
 	 	error:function(xhr,status,error){
 			console.log('xhr.status:',xhr.status);
@@ -53,36 +63,31 @@ window.onload = function(){
 };//end onload
 
 
-//참고한 사이트 https://mottie.github.io/tablesorter/docs/example-trigger-sort.html
 function sortFunction(value){
 	switch (value) {
 		//최근 등록
 		case 1:
-			//date의 칼럼은 6번째 즉 5다
- 			$("#myTable").trigger("sorton", [ [[5,1]] ]);
+ 			$("#tableContainer").trigger("sorton", [ [[5,1]] ]);
 			break;
 			
 		//오래된 순
-		case 2:
-			//date의 칼럼은 6번째 즉 5다
- 			$("#myTable").trigger("sorton", [ [[5,0]] ]);
+		case 2:	
+ 			$("#tableContainer").trigger("sorton", [ [[5,0]] ]);
 			break;
 
 		//조회순
 		case 3:
-//   		$("#myTable").find("th:contains(vcount)").trigger("sort");
-			$("#myTable").trigger("sorton", [ [[6,1]] ]);
+			$("#tableContainer").trigger("sorton", [ [[3,0]] ]);
 			break;
 		
-		//추천순
+		//좋아요순
 		case 4:
-// 			$("#myTable").find("th:contains(likes)").trigger("sort");
- 			$("#myTable").trigger("sorton", [ [[7,1]] ]);
+ 			$("#tableContainer").trigger("sorton", [ [[2,0]] ]);
  			break;
  			
  		//정렬 초기화
  		case 5:
- 			$("#myTable").trigger("sortReset");
+ 			$("#tableContainer").trigger("sortReset");
  		break;
 		default:
     	console.log(`error sorting.`);

@@ -225,11 +225,11 @@ function callTableSorter(){
 		    // external filter (column specific or any match)
 		    filter_external : '.search',
 		    // add a default type search to the first name column
-		    filter_defaultFilter: { 1 : '~{query}' },
+		    filter_defaultFilter: { 1 : '{query}' },
 		    // include column filters
 		    filter_columnFilters: false,
 		    filter_placeholder: { search : 'Search...' },
-		    filter_saveFilters : true,
+		    filter_saveFilters : false,
 		    filter_reset: '.reset'
     	}
 	})

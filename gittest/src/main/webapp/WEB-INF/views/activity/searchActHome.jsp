@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
-<link rel="stylesheet" href="resources/css/tablesorter/theme.default.min.css?ver=1">
+<link rel="stylesheet" href="resources/css/tablesorter/theme.default.min.css?ver=2">
 <jsp:include page="../css.jsp"></jsp:include>
 <link rel="stylesheet" href="resources/css/home.css?ver=1">
 <link rel="stylesheet" href="resources/css/cardAndStar.css">
@@ -15,7 +15,7 @@
 <script type="text/javascript" src="resources/js/route/tablesorter/jquery.tablesorter.min.js"></script>
 <script src="https://mottie.github.io/tablesorter/js/jquery.tablesorter.widgets.js"></script>
 <script src="https://mottie.github.io/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
-<script type="text/javascript" src="resources/js/activity/searchActHome.js?ver=2"></script>
+<script type="text/javascript" src="resources/js/activity/searchActHome.js?ver=6"></script>
 
 <title>홈 상품 검색</title>
 <script>

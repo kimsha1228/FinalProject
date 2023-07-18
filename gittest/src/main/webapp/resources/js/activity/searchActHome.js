@@ -84,11 +84,11 @@ $(document).ready(function(){
 		    // external filter (column specific or any match)
 		    filter_external : '.search',
 		    // add a default type search to the first name column
-		    filter_defaultFilter: { 1 : '~{query}' },
+		    filter_defaultFilter: { 1 : '{query}' },
 		    // include column filters
 		    filter_columnFilters: false,
 		    filter_placeholder: { search : 'Search...' },
-		    filter_saveFilters : true,
+		    filter_saveFilters : false,
 		    filter_reset: '.reset'
     	}
 	})
@@ -151,6 +151,8 @@ $(document).ready(function(){
 	    }
 	  });
 	});
+	$('.reset').trigger('click');
+	$('#tableContainer').trigger('filterReset');
 });//end onload
 
 function searchList(searchWord){
@@ -175,7 +177,7 @@ function searchList(searchWord){
 		            <tr>
 		                <td>
 		                    <a href="selectOneUserAct.do?id=${vo.id}">
-								<img style="margin: 2px; width:150px; height:150px"  src="resources/uploadimg/thumb_${vo.id}-1.jpg">	
+								<img style="margin: 2px; width:150px; height:150px"  src="resources/uploadimg/thumb_${vo.eng_name}">	
 							</a> 
 						</td>
 		                <td>
