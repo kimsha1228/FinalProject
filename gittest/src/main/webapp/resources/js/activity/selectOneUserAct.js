@@ -74,6 +74,7 @@ $(function(){
 			temp=arr;
 			let vos = ``;
 			if(arr.id===0){
+				$(".isCommented").remove();
 				vos += `	
 					<span>후기가 비어있네요</span>
 				`;
@@ -89,9 +90,10 @@ $(function(){
 				
 				//객체에 삽입
 				vos += `	
-					<p>작성일자:${formattedDate}</p>
+					<p style="float:right;">${formattedDate}</p>
+					<h5 class="card-title">추천 댓글</h5>
+					<p style="float:right;clear: right;">♥:${arr.likes}</p>
 					<p>${arr.user_id}님: ${arr.content}</p>
-					<p>♥:${arr.likes}</p>
 				`;
 			}
 			$('#OneComment').html(vos);
@@ -117,7 +119,7 @@ $(function(){
 			//사용자의 위시리스트 만큼 반복
 			for(let i in response){
 				let vo = response[i];
-				if($('#wish').attr('class')==vo.act_id){
+				if($('#wish').hasClass(vo.act_id)){
 				    $('#wish').text('♥');
 				}
 			}

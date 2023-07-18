@@ -171,7 +171,7 @@ $(function(){
 				let vo = response[i];
 				//페이지내의 요소에서 확인
 				for(let j=0;j<5;j++){
-					if($('#wish'+j).attr('class')==vo.act_id){
+					if($('#wish'+j).hasClass(vo.act_id)){
 					    $('#wish'+j).text('♥');
 					}
 				}
