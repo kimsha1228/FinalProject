@@ -29,9 +29,16 @@ public class CommentsDAOimpl implements CommentsDAO {
 
 	@Override
 	public List<CommentsVO> selectCommentList(CommentsVO vo) {
-		log.info("selectOne()...{}", vo);
+		log.info("selectCommentList()...{}", vo);
 
 		return sqlSession.selectList("SELECT_COMMENT_LIST", vo);
+	}
+	
+	//selectOneUserAct.do 에서 후기 한개 출력용
+	@Override
+	public CommentsVO selectCommentOne(CommentsVO vo) {
+		log.info("selectCommentOne()...{}", vo);
+		return sqlSession.selectOne("SELECT_COMMENT_ONE", vo);
 	}
 
 	@Override

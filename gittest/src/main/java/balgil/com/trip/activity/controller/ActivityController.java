@@ -251,7 +251,7 @@ public class ActivityController {
 		log.info("/selectAllUserAct.do...");
 		
 		List<ActivityVO> vos = service.selectAll();
-
+		log.info("{}",vos);
 		model.addAttribute("vos", vos);
 		
 		return "activity/selectAllUserAct";
