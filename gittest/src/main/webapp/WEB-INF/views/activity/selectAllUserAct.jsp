@@ -8,20 +8,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
-<link rel="stylesheet" href="resources/css/tablesorter/theme.default.min.css">
-<link rel="stylesheet" href="resources/css/activity/selectAllUserAct.css">
+<link rel="stylesheet" href="resources/css/tablesorter/theme.default.min.css?ver=1">
 <jsp:include page="../css.jsp"></jsp:include>
 <link rel="stylesheet" href="resources/css/home.css">
 <link rel="stylesheet" href="resources/css/cardAndStar.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/route/tablesorter/jquery.tablesorter.min.js"></script>
-<script src="https://mottie.github.io/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
 <script src="https://mottie.github.io/tablesorter/js/jquery.tablesorter.widgets.js"></script>
-<script type="text/javascript" src="resources/js/activity/selectAllUserAct.js?ver=3"></script>
+<script src="https://mottie.github.io/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
+<script type="text/javascript" src="resources/js/activity/selectAllUserAct.js?ver=10"></script>
 
 <title>상품</title>
 <script>
-<%--     let user_id = '<%= session.getAttribute("user_id") %>'; --%>
 	let user_id = '${user.user_id}';
 </script>
 </head>
@@ -29,62 +27,54 @@
 <jsp:include page="../top_menu.jsp"></jsp:include>
 <section>
 	<h1>상품</h1>
-	<div>추천 리스트</div>
-	<table>
-		<thead>
-		    <tr>
-		        <th>id</th>
-		        <th>act_name</th>
-		        <th>rate</th>
-		        <th>vcount</th>
-		        <th>tag</th>
-		        <th>price</th>
-		        <th>wishList</th>
-		    </tr>
-		</thead>
-		<tbody id="vos">
-		</tbody>
-	</table>
+	<section id="vos">
+	</section>
+	
 	<br>
-		<div class="dropdown">
+		<div class="dropdown" style="text-align: right;margin-right: 10px;">
 		  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		    정렬
 		  </button>
 		  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 		    <a class="dropdown-item" href="javascript:void(0);" onclick="sortFunction(1);">최근 등록</a>
 	  	 	<a class="dropdown-item" href="javascript:void(0);" onclick="sortFunction(2);">오래된 순</a>
-	  	 	<a class="dropdown-item" href="javascript:void(0);" onclick="sortFunction(3);">조회순</a>
-	  	 	<a class="dropdown-item" href="javascript:void(0);" onclick="sortFunction(4);">평점순</a>
+	  	 	<a class="dropdown-item" href="javascript:void(0);" onclick="sortFunction(3);">조회순 ↓↑</a>
+	  	 	<a class="dropdown-item" href="javascript:void(0);" onclick="sortFunction(4);">가격순 ↓↑</a>
 		  </div>
 		    <a class="btn btn-outline-danger" href="javascript:sortFunction(5);" role="button">초기화</a>
 		</div>
-	<!-- <label for="searchWord">상품 이름</label> -->
-	<!-- <input type="hidden" name="searchKey" id="searchKey" value="act_name"> -->
-	<!-- <input type="text" name="searchWord" id="searchWord"> -->
-	<!-- <button class="myButton" onclick="searchList()">검색</button> -->
-	<p>상품 이름 <input class="search" type="search" data-column="1"><button type="button" class="reset">검색 초기화</button></p>
+	<p style="text-align: right;margin: 10px 10px 0px 0px;">상품 이름 <input class="search" type="search" data-column="1"><button type="button" class="reset">검색 초기화</button></p>
 	<table id="tableContainer">
 	    <thead>
 	        <tr>
-	            <th class="sorter-false">id</th>
-	            <th class="sorter-false">act_name</th>
-	            <th class="sorter-false">rate</th>
-	            <th class="sorter-false">price</th>
-	            <th class="sorter-false">wishList</th>
-	            <th class="sorter-false" style="display: none;">vcount</th>
+	            <th class="sorter-false">상품 사진</th>
+	            <th class="sorter-false">상품 요약</th>
+	            <th class="sorter-false">기타정보</th>
+	            <th style="display: none;">price</th>
+	            <th style="display: none;">vcount</th>
 	            <th class="sorter-false" style="display: none;">act_date</th>
 	        </tr>
 	    </thead>
 	    <tbody id="vos2">
 	        <c:forEach var="vo" items="${vos}" varStatus="status">
 	            <tr>
-	                <td>                
-	                    <a href="selectOneUserAct.do?id=${vo.id}">${vo.id}</a>
+	                <td>
+	                    <a href="selectOneUserAct.do?id=${vo.id}">
+							<img style="margin: 2px; width:150px; height:150px"  src="resources/uploadimg/thumb_${vo.id}-1.jpg">	
+						</a> 
+					</td>
+	                <td>
+	                	<h4><a href="selectOneUserAct.do?id=${vo.id}">${vo.act_name}</a></h4>
+	                	<p>${vo.content}</p>
+	                	<span class="stars">${vo.rate}</span>
+	                	${vo.price}원 <button class="wish" data-act_id="${vo.id}" data-arg1='${user.user_id}' data-arg2= '${vo.id}' data-arg3='${status.count}'>♡</button>
 	                </td>
-	                <td>${vo.act_name}</td>
-	                <td>${vo.rate}</td>
-	                <td>${vo.price}</td>
-	                <td><button class="wish" data-act_id="${vo.id}" data-arg1='${user.user_id}' data-arg2= '${vo.id}' data-arg3='${status.count}'>♡</button></td>                
+	                <td style="vertical-align: middle;">
+	                	<p style="width: 200px;">태그: ${vo.tag}</p>
+	                	<p style="width: 200px;">조회수: ${vo.vcount}</p>
+	                	<p style="width: 200px;">주소: ${vo.add}</p>
+	                </td>
+	                <td style="display: none;">${vo.price}</td>
 	                <td style="display: none;">${vo.vcount}</td>
 	                <td style="display: none;">${vo.act_date}</td>
 	            </tr>
@@ -93,22 +83,18 @@
 	    <tfoot>
 	    </tfoot>
 	</table>
-	<div class="tableContainer">
+	<!-- 페이징 요소-->
+	<div class="tableContainer" style="text-align: center;">
 		<form>
 			<i class="fa-sharp fa-solid fa-angles-left fa-2xl first"></i>
 			<i class="fa-sharp fa-solid fa-angle-left fa-2xl prev"></i>
 			<!-- the "pagedisplay" can be any element, including an input -->
-			<span class="pagedisplay" data-pager-output-filtered="{startRow:input} &ndash; {endRow} / {filteredRows} of {totalRows} total rows"></span>
+			<span class="pagedisplay" data-pager-output-filtered="{startRow:input} &ndash; {endRow} / 검색결과: {filteredRows}개"></span>
 			<i class="fa-sharp fa-solid fa-angle-right fa-2xl next"></i>
 			<i class="fa-sharp fa-solid fa-angles-right fa-2xl last"></i>
-	<!-- 		<select class="pagesize"> -->
-	<!-- 		<option value="10">10</option> -->
-	<!-- 		<option value="all">All Rows</option> -->
-	<!-- 		</select> -->
 		</form>
 	</div>
 </section>
-<!-- 페이징 요소-->
 <jsp:include page="../footer.jsp"></jsp:include>
 
 <!-- BootStrap JS -->

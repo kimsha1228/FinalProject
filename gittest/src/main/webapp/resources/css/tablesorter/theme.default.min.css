@@ -40,3 +40,11 @@ td.tablesorter-pager {
   filter: alpha(opacity=50);
   cursor: default;
 }
+
+#tableContainer tbody p{
+	width: 600px;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}

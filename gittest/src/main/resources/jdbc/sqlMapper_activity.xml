@@ -64,8 +64,17 @@
 		]]>
 	</select>
 	
-	<select id="ACT_SELECT_RECOMMENDED" resultType="balgil.com.trip.activity.model.ActivityVO">
-		select * from ACTIVITY where tag = '추천'
+	<select id="ACT_SELECT_RECOMMENDED" 
+	resultMap="ActivityVOResultMap"
+	resultType="balgil.com.trip.activity.model.ActivityVO">
+		<![CDATA[
+		    SELECT DISTINCT
+		      a.*,
+		      i.name
+		    FROM activity a
+		    INNER JOIN image i ON a.id = i.act_id
+		    WHERE i.name LIKE '%1.jpg' and tag = '추천'
+		]]>
 	</select>
 	
 	<select id="ACT_SELECT_ONE" resultType="balgil.com.trip.activity.model.ActivityVO">

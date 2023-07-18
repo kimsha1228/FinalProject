@@ -11,7 +11,7 @@
 	let user_id = '${user.user_id}';
     console.log("현재 로그인 되어있는 아이디:", user_id);
 </script>
-<script type="text/javascript" src="resources/js/activity/selectAllAct.js?ver=1"></script>
+<script type="text/javascript" src="resources/js/activity/selectAllAct.js?ver=3"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>

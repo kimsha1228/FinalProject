@@ -168,19 +168,31 @@ function searchList(searchWord){
 		success:function(response){
 			console.log('ajax...success:',response);
 			let tag_vos='';
-			//루프돌리는방법1
 			for(let i in response){
+				rowCount++;
 				let vo = response[i];
 				tag_vos+=`
-					<tr>
- 					<td>				
- 						<a href="selectOneAct.do?id=${vo.id}">${vo.id}</a>
- 					</td>
- 					<td>${vo.act_name}</td>
- 					<td>${vo.rate}</td>
- 					<td>${vo.price}</td>
- 					<td><button class="wish" data-act_id="${vo.id}" data-arg1='${user_id}' data-arg2= '${vo.id}' data-arg3=${i})>♡</button></td>
- 				</tr>
+		            <tr>
+		                <td>
+		                    <a href="selectOneUserAct.do?id=${vo.id}">
+								<img style="margin: 2px; width:150px; height:150px"  src="resources/uploadimg/thumb_${vo.id}-1.jpg">	
+							</a> 
+						</td>
+		                <td>
+		                	<h4><a href="selectOneUserAct.do?id=${vo.id}">${vo.act_name}</a></h4>
+		                	<p>${vo.content}</p>
+		                	<span class="stars">${vo.rate}</span>
+		                	${vo.price}원 <button class="wish" data-act_id="${vo.id}" data-arg1='${user_id}' data-arg2= '${vo.id}' data-arg3='${status.count}'>♡</button>
+		                </td>
+		                <td style="vertical-align: middle;">
+		                	<p style="width: 200px;">태그: ${vo.tag}</p>
+		                	<p style="width: 200px;">조회수: ${vo.vcount}</p>
+		                	<p style="width: 200px;">주소: ${vo.add}</p>
+		                </td>
+		                <td style="display: none;">${vo.price}</td>
+		                <td style="display: none;">${vo.vcount}</td>
+		                <td style="display: none;">${vo.act_date}</td>
+		            </tr>
 				`;
 			}
 			
@@ -225,3 +237,51 @@ function searchList(searchWord){
 		}
 	});//end $.ajax()...
 };//end searchList()
+
+//참고한 사이트 https://mottie.github.io/tablesorter/docs/example-trigger-sort.html
+function sortFunction(value){
+	switch (value) {
+		//최근 등록
+		case 1:
+ 			$("#tableContainer").trigger("sorton", [ [[5,1]] ]);
+			break;
+			
+		//오래된 순
+		case 2:
+ 			$("#tableContainer").trigger("sorton", [ [[5,0]] ]);
+			break;
+
+		//조회순
+		case 3:
+			$("#tableContainer").find("th:contains(vcount)").trigger("sort");
+ 			$("#tableContainer").trigger('pageAndSize', [1, 5]);
+			break;
+		
+		//가격순
+		case 4:
+ 			$("#tableContainer").find("th:contains(price)").trigger("sort");
+ 			$("#tableContainer").trigger('pageAndSize', [1, 5]);
+ 			break;
+ 			
+ 		//정렬 초기화
+ 		case 5:
+ 			$("#tableContainer").trigger("sortReset");
+ 		break;
+		default:
+    	console.log(`error sorting.`);
+	}
+}
+
+//별점 관련 함수 추후 	$('span.stars').stars(); 를 써줘야함
+$.fn.stars = function() {
+    return $(this).each(function() {
+        // Get the value
+        var val = parseFloat($(this).html());
+        // Make sure that the value is in 0 - 5 range, multiply to get width
+        var size = Math.max(0, (Math.min(5, val))) * 16;
+        // Create stars holder
+        var $span = $('<span />').width(size);
+        // Replace the numerical value with stars
+        $(this).html($span);
+    });
+}
