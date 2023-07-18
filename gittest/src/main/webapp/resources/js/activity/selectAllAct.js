@@ -3,7 +3,7 @@ window.onload = function(){
 	$.ajax({
 		url:"jsonSelectAllAct.do",
 		//세션에서 아이디를 가져온다!
-		data:{seller_id:'${user.user_id}'},
+		data:{seller_id:user_id},
 		dataType:'json',
 		success:function(response){
 			console.log('ajax...success:',response);
@@ -45,7 +45,7 @@ function searchList(){
 	$.ajax({
 		url:"jsonSearchAct.do",
 		data:{
-			seller_id:user_id,
+			seller_id:'${user.user_id}',
 			searchKey:$('#searchKey').val(),
 			searchWord:$('#searchWord').val(),
 			},

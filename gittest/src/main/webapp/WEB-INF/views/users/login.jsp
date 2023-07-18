@@ -10,10 +10,12 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>로그인</h1>
+	
+	<div id="loginform">
+	<h3>로그인</h3>
 	
 	<form action="loginOK.do" method="post">
-		<table id="login">
+		<table id="logintable">
 			<tr>
 				<td><label for="user_id">아이디</label></td>
 				<td><input type="text" id="user_id" name="user_id" value="" placeholder="아이디" autofocus></td>
@@ -24,12 +26,14 @@
 			</tr>
 
 			<tr>
-				<td colspan="2"><input type="submit" value="로그인" class="myButton"></td>
+				<td colspan="2"><input type="submit" value="로그인" id="loginbtn" class="myButton"></td>
 			</tr>
 		</table>
 	</form>
-	<a href="findPassword.do" class="myButton">비밀번호찾기</a>
+	<div id="fpw"><a href="findPassword.do" class="myButton">비밀번호찾기</a></div>
 	<p>${message}</p>
 	
+	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

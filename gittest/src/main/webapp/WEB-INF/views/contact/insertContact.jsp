@@ -9,7 +9,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/contact/selectAllcontact.js"></script>
-
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -31,19 +30,19 @@
 				<td><input type="file" name="file" id="file"></td>
 			</tr>
 			<tr>
-				<td><label for="user_id">유저id</label></td>
-				<td>user_id<input type="hidden" id="user_id" name="user_id" value="user_id"></td>
+				<td><label for="user_id">유저</label></td>
+				<td>user_id<input type="hidden" id="user_id" name="user_id" value="${user.user_id}"></td>
 			</tr>
 			<tr>
-				<td><label for="seller_id">판매자id</label></td>
+				<td><label for="seller_id">판매자</label></td>
 				<td>seller_id<input type="hidden" id="seller_id" name="seller_id" value="seller_id"></td>
 			</tr>
 			<tr>
-				<td><label for="act_id">act_id</label></td>
-				<td>act_id<input type="hidden" id="act_id" name="act_id" value="1"></td>
+				<td><label for="act_id">상품번호</label></td>
+				<td><input type="hidden" id="act_id" name="act_id" value="1"></td>
 			</tr>
 			<tr>
-				<td><label for="act_name">act_name</label></td>
+				<td><label for="act_name">상품명</label></td>
 				<td>seller_id<input type="hidden" id="act_name" name="act_name" value="act_name"></td>
 			</tr>	
 			<tr>
