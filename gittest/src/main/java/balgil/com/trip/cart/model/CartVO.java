@@ -12,7 +12,7 @@ public class CartVO {
     private String res_date;
     private String user_id;
     private String act_name;
-    private String  img_name;
+    private String img_name;
     private int act_id;
 //    private ActivityVO activity;
 
