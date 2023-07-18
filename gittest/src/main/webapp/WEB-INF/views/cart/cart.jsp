@@ -45,6 +45,7 @@
 								<th>상품명</th>
 								<td>
 									<a href="selectOneUserAct.do?id=${cart.act_id}">${cart.act_name}</a>
+									<img  src="resources/uploadimg/thumb_${cart. img_name }"/>
 								</td>
 							</tr>
 							<tr>

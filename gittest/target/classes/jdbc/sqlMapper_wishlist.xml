@@ -29,11 +29,19 @@
 
 	<select id="WISHLIST_SELECT_ALL_WITH_USER_ID"
 		resultType="balgil.com.trip.wishlist.model.WishListVO">
-		SELECT w.act_id, w.user_id, a.act_name
+		SELECT w.act_id, w.user_id, a.act_name,
+		(
+		SELECT i.name
+		FROM image i
+		WHERE w.act_id = i.act_id
+		AND rownum = 1
+		) as img_name
 		FROM WISHLIST w
-		JOIN activity a ON (w.act_id = a.id)
+		JOIN activity a ON (w.act_id =
+		a.id)
 		WHERE w.user_id = #{user_id}
 	</select>
+
 
 
 
