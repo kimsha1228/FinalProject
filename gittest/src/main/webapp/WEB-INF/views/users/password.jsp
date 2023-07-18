@@ -46,29 +46,30 @@ function findPassword(){
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>비밀번호찾기</h1>
+	<div id="loginform">
+	<h3>비밀번호찾기</h3>
 	
 <!-- 	<form action="findPasswordOK.do" method="post"> -->
-		<table>
+		<table id="fpwtable">
 			<tr>
 				<td><label for="user_id">아이디</label></td>
-				<td><input type="text" id="user_id" name="user_id" value="" placeholder="아이디" size="25" autofocus></td>
+				<td><input type="text" id="user_id" name="user_id" value="" size="15" autofocus></td>
 			</tr>
 			<tr>
 				<td><label for="name">이름</label></td>
-				<td><input type="text" id="name" name="name" value="" placeholder="이름" size="25"></td>
+				<td><input type="text" id="name" name="name" value="" size="15"></td>
 			</tr>
 			<tr>
 				<td><label for="tel">전화번호</label></td>
-				<td><input type="text" id="tel" name="tel" value="" placeholder="전화번호 010-0000-0000" size="25"></td>
+				<td><input type="text" id="tel" name="tel" value="" placeholder="010-0000-0000" size="15"></td>
 			</tr>
 
 			<tr>
-				<td colspan="2"><button type="button" onclick="findPassword()" class="myButton">비밀번호 찾기</button></td>
+				<td colspan="2"><button type="button" onclick="findPassword()" id="pwbtn" class="myButton">입력완료</button></td>
 			</tr>
 		</table>
 <!-- 	</form> -->
-	<span id="password"></span>
-	
+	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

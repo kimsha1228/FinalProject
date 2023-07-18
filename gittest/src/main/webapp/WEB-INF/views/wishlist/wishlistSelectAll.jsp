@@ -12,38 +12,21 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>WishList</h1>
-
-
-
-	<form action="${pageContext.request.contextPath}/selectAllUserAct.do"
-		method="GET">
-		<input type="submit" value="상품 보러가기" />
-	</form>
-
-
-	<br>
-
-
-	<table border="1">
+	<div id="wishform">
+	<h3>WishList</h3>
+<%-- 	<form action="${pageContext.request.contextPath}/selectAllUserAct.do" --%>
+<!-- 		method="GET"> -->
+<!-- 		<input type="submit" value="상품 보러가기" /> -->
+<!-- 	</form> -->
+	<table id="wishtable">
 		<c:if test="${not empty vos1}">
 
 			<c:forEach var="vo" items="${vos1}">
-				<tr>
-					<th>회원정보</th>
-					<td>${vo.user_id}</td>
-				</tr>
 
 				<tr>
-					<th>상품번호</th>
+					<th>상품</th>
 					<td><a href="selectOneUserAct.do?id=${vo.act_id}">${vo.act_name}</a></td>
-				</tr>
-
-
-				<tr>
-					<td colspan="2"><a
-						href="deleteOK.do?act_id=${vo.act_id}&user_id=${vo.user_id}">
-							위시리스트 삭제 </a></td>
+					<td><a href="deleteOK.do?act_id=${vo.act_id}&user_id=${vo.user_id}">삭제</a></td>
 				</tr>
 
 			</c:forEach>
@@ -56,20 +39,20 @@
 				<td><a href="home.do">홈화면으로 가기</a></td>
 			</tr>
 		</c:if>
-		<c:if test="${not empty vos2}">
-			<c:forEach var="vo2" items="${vos2}">
-				<tr>
-					<th>회원번호</th>
-					<td>${vo2.user_id}</td>
-				</tr>
-
-				<tr>
-					<th>상품번호</th>
-					<td><a href="selectOneUserAct.do?id=${vo2.act_id}">${vo2.act_name}</a></td>
-				</tr>
-			</c:forEach>
-		</c:if>
-
+<%-- 		<c:if test="${not empty vos2}"> --%>
+<%-- 			<c:forEach var="vo2" items="${vos2}"> --%>
+<!-- 				<tr> -->
+<!-- 					<th>회원번호</th> -->
+<%-- 					<td>${vo2.user_id}</td> --%>
+<!-- 				</tr> -->
+<!-- 				<tr> -->
+<!-- 					<th>상품번호</th> -->
+<%-- 					<td><a href="selectOneUserAct.do?id=${vo2.act_id}">${vo2.act_name}</a></td> --%>
+<!-- 				</tr> -->
+<%-- 			</c:forEach> --%>
+<%-- 		</c:if> --%>
 	</table>
+	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

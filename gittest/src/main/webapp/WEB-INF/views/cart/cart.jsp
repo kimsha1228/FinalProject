@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>장바구니</title>
+<jsp:include page="../css.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
@@ -125,7 +126,7 @@
 			</tr>
 		</table>
 	</c:if>
-	
+	<jsp:include page="../footer.jsp"></jsp:include>
 	<script>
 	
 	$(document).ready(function(){
