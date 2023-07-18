@@ -11,12 +11,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>장바구니</h1>
+<jsp:include page="../top_menu.jsp"></jsp:include>
 		
-
+<div id="cartform">
+	<h3>장바구니</h3>
 	<c:if test="${not empty cartList}">
-		<div class="all_check_input_div">
+		<div class="all_check_input_div" id="selectform">
 			<input type="checkbox" class="allSelectedActivity" checked="checked"><span>전체선택</span>
 		</div>
 		<table>
@@ -35,6 +35,7 @@
 									<input type="hidden" name="res_date" class="res_date" value="${cart.res_date}">
 								</td>
 								<td></td>
+								<td></td>
 								<td>
 								<button class="order_btn" data-id="${cart.id}" data-user_id="${user.user_id}" data-act_id="${cart.act_id}"
 								data-price="${cart.price}" data-quantity="${cart.quantity}"  data-res_date="${cart.res_date}">단일 구매</button>
@@ -42,31 +43,37 @@
 								</td>
 							</tr>
 							<tr>
+								<td>
+									<img width=50px height=50px src="resources/uploadimg/thumb_${cart.img_name}"/>
+								</td>
 								<th>상품명</th>
 								<td>
 									<a href="selectOneUserAct.do?id=${cart.act_id}">${cart.act_name}</a>
-									<img src="resources/uploadimg/thumb_${cart.img_name }"/>
 								</td>
 							</tr>
 							<tr>
+								<td></td>
 								<th>예약예정일</th>
 								<td><fmt:parseDate value="${cart.res_date}" var="res_date" pattern="yyyy-MM-dd"/>
 									<fmt:formatDate value="${res_date}" pattern="yyyy년 MM월 dd일"/></td>
 							</tr>
 							<tr>
+								<td></td>
 								<th>수량</th>
 								<td>
+									<button class="minus_btn">-</button>
 									<input type="number" value="${cart.quantity}" class="quantity_input">	
 									<button class="plus_btn">+</button>
-									<button class="minus_btn">-</button>
 									<button class="quantity_modify_btn" data-id="${cart.id}" data-user_id="${user.user_id}">변경</button>
 								</td>
 							</tr>
 							<tr>
+								<td></td>
 								<th>가격</th>
 								<td><fmt:formatNumber value="${cart.price}" pattern="#,### 원" /></td>
 							</tr>
 							<tr>
+								<td></td>
 								<th>총 금액</th>
 								<td><fmt:formatNumber value="${cart.price*cart.quantity}" pattern="#,### 원" /></td>
 							</tr>
@@ -83,6 +90,7 @@
 				</td>
 			</tr>
 		</table>
+		
 <!-- 		<div class="order_btn_section"> -->
 <!-- 			<a class="order_many_btn">주문하기</a> -->
 <!-- 		</div> -->
@@ -127,6 +135,7 @@
 			</tr>
 		</table>
 	</c:if>
+	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 	<script>
 	
