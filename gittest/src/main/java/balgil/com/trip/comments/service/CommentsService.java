@@ -30,6 +30,10 @@ public class CommentsService {
 		return dao.selectCommentList(vo);
 	}
 	
+	public  CommentsVO selectCommentOne(CommentsVO vo) {
+		return dao.selectCommentOne(vo);
+	}
+	
 	public int insert(CommentsVO vo) {
 		return dao.insert(vo);
 	}
