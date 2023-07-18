@@ -50,4 +50,12 @@ public class ActivityService {
 	public List<ActivityVO> selectRecommended() {
 		return dao.selectRecommended();
 	}
+
+	public List<ActivityVO> selectPopular() {
+		return dao.selectPopular();
+	}
+
+	public List<ActivityVO> selectAllImg() {
+		return dao.selectAllImg();
+	}
 }
