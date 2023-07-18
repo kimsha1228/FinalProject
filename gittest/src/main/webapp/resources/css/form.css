@@ -54,3 +54,18 @@
     overflow: hidden;
     text-align: left;
 }
+
+
+#wishform {
+    width:1000px;
+    height:98%;
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+
+
+
+
