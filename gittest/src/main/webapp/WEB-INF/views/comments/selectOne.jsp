@@ -24,12 +24,12 @@
 	src="https://mottie.github.io/tablesorter/js/jquery.tablesorter.widgets.js"></script>
 
 <title>후기</title>
+<jsp:include page="../css.jsp"></jsp:include>
 
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>후기</h1>
-
 
 	<table id="commentsList">
 		<thead>
@@ -61,5 +61,6 @@
 		</tbody>
 
 	</table>
+    <jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
