@@ -35,15 +35,24 @@
 			</tr>
 			<tr>
 				<td><label for="seller_id">판매자</label></td>
-				<td>seller_id<input type="hidden" id="seller_id" name="seller_id" value="seller_id"></td>
+				<%
+				   String sellerIdParam = request.getParameter("seller_id");
+				%>
+				<td>seller_id<input type="hidden" id="seller_id" name="seller_id" value="<%= sellerIdParam %>"></td>
 			</tr>
 			<tr>
 				<td><label for="act_id">상품번호</label></td>
-				<td><input type="hidden" id="act_id" name="act_id" value="1"></td>
+				<%
+				   String actIdParam = request.getParameter("act_id");
+				%>
+				<td>act_id<input type="hidden" id="act_id" name="act_id" value="<%= actIdParam %>"></td>
 			</tr>
 			<tr>
 				<td><label for="act_name">상품명</label></td>
-				<td>seller_id<input type="hidden" id="act_name" name="act_name" value="act_name"></td>
+				<%
+				   String actNameParam = request.getParameter("act_name");
+				%>
+				<td>act_name<input type="hidden" id="act_name" name="act_name" value="<%= actNameParam %>"></td>
 			</tr>	
 			<tr>
 				<td colspan="2"><input type="submit" class="myButton"></td>
