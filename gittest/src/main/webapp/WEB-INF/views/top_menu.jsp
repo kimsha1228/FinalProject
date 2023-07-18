@@ -14,7 +14,7 @@
 		
 <!-- 	<li><a href="myPage.do">마이페이지</a></li> -->
 	
-	<li><a href="selectAllContact.do?seller_id=seller01">문의</a></li>	<!--insertcontact seller_id 필요 -->
+	<li><a href="selectAllContact.do?seller_id=seller01">문의</a></li>
 	
 	<li><a href="selectAllContact.do?seller_id=seller01">셀러문의seller01</a></li>
 	
