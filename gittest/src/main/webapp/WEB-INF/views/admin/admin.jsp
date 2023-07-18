@@ -19,7 +19,7 @@
 	<h1><a href="selectAllSeller.do">판매자목록</a></h1>
 	<h1><a href="selectAllUser.do">회원목록</a></h1>
 	<h1><a href="selectAllFaq.do">고객센터</a></h1>
-	<h1><a href="selectAllContact.do">문의글목록</a></h1>
+	<h1><a href="selectAllContact.do?seller_id=${user.user_id}">문의글목록</a></h1>
 	
 </body>
 </html>
