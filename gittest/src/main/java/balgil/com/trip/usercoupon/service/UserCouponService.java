@@ -36,4 +36,3 @@ public class UserCouponService {
 		return dao.insert(vo);
 	}
 }
-

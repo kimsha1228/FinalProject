@@ -58,4 +58,8 @@
 	<a href="u_deleteOK.do?user_id=${user.user_id}">회원탈퇴</a>
 </body>
 </html>
+<<<<<<< HEAD
 	
+=======
+	
+>>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
