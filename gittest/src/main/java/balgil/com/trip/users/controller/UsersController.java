@@ -207,6 +207,9 @@ public class UsersController {
 	public String u_updateOK(UsersVO vo) throws IllegalStateException, IOException {
 		log.info("/u_updateOK.do...{}", vo);
 		
+		UsersVO vo1 = service.selectOne(vo);
+		log.info("/vo1...{}", vo1);
+		
 		String getOriginalFilename = vo.getFile().getOriginalFilename();
 		int fileNameLength = vo.getFile().getOriginalFilename().length();
 		log.info("getOriginalFilename:{}", getOriginalFilename);
@@ -232,7 +235,7 @@ public class UsersController {
 			ImageIO.write(thumb_buffer_img, formatName, thumb_file);
 
 		} else {
-			vo.setImg("default.png");
+			vo.setImg(vo1.getImg());
 		}
 		
 		String first_name = vo.getFirst_name();
@@ -251,15 +254,11 @@ public class UsersController {
 		String email = email1+"@"+email2;
 		vo.setEmail(email);
 		
-		int type = 3;
-		if(vo.getType()!=0) type = vo.getType();
-		vo.setType(type);
-
 		int result = service.update(vo);
 		log.info("result: {}", result);
 		
 		if (result == 1) {
-			return "redirect:u_selectOne.do?user_id=" + vo.getUser_id();//리다이렉트 다시 해줘야함
+			return "redirect:myInfo.do?user_id=" + vo.getUser_id();
 		} else {
 			return "redirect:u_update.do?user_id=" + vo.getUser_id();
 		}

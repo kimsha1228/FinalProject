@@ -45,6 +45,7 @@
 			</table>
         <input type="submit" value="수정">
     </form>
+    <jsp:include page="../footer.jsp"></jsp:include>
 </body>
 <<<<<<< HEAD
 </html>

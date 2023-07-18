@@ -12,23 +12,24 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>쿠폰</h1>
+	<div id="usercoupon">
+	<h3>내 쿠폰</h3>
     <form action="userCoupon_insertOK.do">
-	<table>
+	<table id="usercoupontable1">
 		<tr>
-			<th>쿠폰코드</th>
-			<td><input type="hidden" name="user_id" value="${user.user_id}"><!-- 여기 나중에 세션으로 변경 -->
-			<input type="text" name="couponcode" value="" placeholder="coupooncode" size="30"></td>
-	      	<td><input type="submit" value="쿠폰등록"></td>
+<!-- 			<th>쿠폰코드</th> -->
+			<td><input type="hidden" name="user_id" value="${user.user_id}">
+				<input type="text" name="couponcode" value="" placeholder="coupooncode" size="30"></td>
+	      	<td><input type="submit" value="쿠폰등록" class="myButton"></td>
 		</tr>
 	</table>	
 	</form>
 	
-	<table border="1">
+	<table id="usercoupontable2">
 		<tr>
-			<th>쿠폰이름</th>
-			<th>쿠폰코드</th>
-			<th>사용기한</th>
+			<td>쿠폰이름</td>
+			<td>쿠폰코드</td>
+			<td>사용기한</td>
 		</tr>
 	<c:forEach var="vos" items="${vos}">
 		<tr>
@@ -38,6 +39,7 @@
 		</tr>
 	</c:forEach>
 	</table>
-
+	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

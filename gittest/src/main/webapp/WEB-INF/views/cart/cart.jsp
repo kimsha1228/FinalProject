@@ -122,12 +122,12 @@
 	</c:if>
 
 	<c:if test="${empty cartList}">
-		<table>
+		<table id="emptycart">
 			<tr>
 				<td>장바구니에 담긴 상품이 없습니다</td>
 			</tr>
 			<tr>
-				<td><a href="home.do">예약하러 가기</a></td>
+				<td><a href="home.do" id="homebtn" class="myButton">상품 보러가기</a></td>
 			</tr>
 		</table>
 	</c:if>
