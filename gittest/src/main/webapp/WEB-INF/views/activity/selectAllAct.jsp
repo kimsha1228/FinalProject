@@ -8,16 +8,11 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
+<%-- 	let user_id = '<%= session.getAttribute("user_id") %>'; --%>
 	let user_id = '${user.user_id}';
     console.log("현재 로그인 되어있는 아이디:", user_id);
 </script>
 <script type="text/javascript" src="resources/js/activity/selectAllAct.js?ver=1"></script>
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
-<jsp:include page="../css.jsp"></jsp:include>
-<link rel="stylesheet" href="resources/css/home.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/home.js?ver=2"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
