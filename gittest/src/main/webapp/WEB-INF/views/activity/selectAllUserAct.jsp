@@ -22,8 +22,68 @@
 <script>
 	let user_id = '${user.user_id}';
 </script>
+<<<<<<< HEAD
+<script type="text/javascript" src="resources/js/activity/selectOneUserAct.js?ver=7"></script>
+
+<script type="text/javascript" src="resources/js/activity/selectAllUserAct.js?ver=3"></script>
+=======
+>>>>>>> branch 'Gunho' of https://github.com/kimsha1228/FinalProject.git
 </head>
 <body>
+<<<<<<< HEAD
+	<jsp:include page="../top_menu.jsp"></jsp:include>
+	<h1>상품 정보</h1>
+
+	<span id="imageList">
+    	
+    </span>
+	<table>
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>act_name</th>
+				<th>content</th>
+				<th>rate</th>
+				<th>vcount</th>
+				<th>tag</th>
+				<th>add</th>
+				<th>price</th>
+				<th>act_date</th>
+				<th>seller_id</th>
+				<th>dest_id</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>${vo2.id}</td>
+				<td>${vo2.act_name}</td>
+				<td>${vo2.content}</td>
+				<td>${vo2.rate}</td>
+				<td>${vo2.vcount}</td>
+				<td>${vo2.tag}</td>
+				<td>${vo2.add}</td>
+				<td>${vo2.price}</td>
+				<td>${vo2.act_date}</td>
+				<td>${vo2.seller_id}</td>
+				<td>${vo2.dest_id}</td>
+			</tr>
+			<tr>
+				<td><button onclick="copyLink()">공유</button></td>
+				<td><button id="wish" class="${vo2.id}" onclick="addWish('${user.user_id}','${vo2.id}')">♡</button></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+			</tr>
+		</tfoot>
+	</table>
+	
+		뭔가 댓글이 여기에 출력됨
+		<div id="OneComment">
+		</div>
+		<a href="selectOneComments.do?act_id=${vo2.id}">상품 후기 전체보기</a>
+=======
+>>>>>>> branch 'Gunho' of https://github.com/kimsha1228/FinalProject.git
 <jsp:include page="../top_menu.jsp"></jsp:include>
 <section>
 	<h1>상품</h1>

@@ -41,7 +41,7 @@
 			<td><a href="selectAllReservation.do?user_id=${user.user_id}">예약 내역</a></td>
 		</tr>
 		<tr>
-			<td><a href="selectAllUserContact.do?user_id=${user.user_id}">문의내역</a></td>
+			<td><a href="#">문의내역</a></td>
 		</tr>
 	</table>
 	</div>

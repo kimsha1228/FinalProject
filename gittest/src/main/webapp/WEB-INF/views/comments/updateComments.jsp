@@ -13,7 +13,7 @@
     <h1>이용 후기 수정</h1>
     
     <form action="updateCommentsOK.do" method="post" enctype="multipart/form-data">
-        <table>
+        <table id="commentsList">
 			<tr>
 				<td><label for="act_id">상품명</label></td>
 				<td>${vo2.act_name}</td>
@@ -47,4 +47,8 @@
     </form>
     <jsp:include page="../footer.jsp"></jsp:include>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> branch 'Gunho' of https://github.com/kimsha1228/FinalProject.git

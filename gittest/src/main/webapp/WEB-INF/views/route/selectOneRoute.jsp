@@ -8,12 +8,13 @@
 <title>루트 정보</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<jsp:include page="../css.jsp"></jsp:include>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>루트 정보</h1>
 
-	<table>
+	<table id="routeList">
 		<thead>
 			<tr>
 				<th>route_name</th>

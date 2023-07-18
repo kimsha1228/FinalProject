@@ -51,4 +51,8 @@
 		</div>
 		<jsp:include page="../footer.jsp"></jsp:include>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> branch 'Gunho' of https://github.com/kimsha1228/FinalProject.git

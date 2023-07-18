@@ -3,12 +3,66 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
+<meta charset="UTF-8">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<title>Insert Comments</title>
+<jsp:include page="../css.jsp"></jsp:include>
+=======
     <meta charset="UTF-8">
     <title>후기 작성</title>
     <jsp:include page="../css.jsp"></jsp:include>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+>>>>>>> branch 'Gunho' of https://github.com/kimsha1228/FinalProject.git
 </head>
 <body>
+<<<<<<< HEAD
+	<h1>Insert Comments</h1>
+	<form action="insertCommentsOK.do" method="post"
+		enctype="multipart/form-data">
+		<table id="commentsList">
+			<tr>
+				<td><label for="user_id">USER_ID:</label></td>
+				<td><input type="text" id="user_id" name="user_id" value="${user.user_id}" readonly required>
+				<input type="hidden" id="res_id" name="res_id" value="${param.res_id}" required></td>
+			</tr>
+			<tr>
+				<td><label for="act_id">ACT_ID:</label></td>
+				<td><input type="text" id="act_id" name="act_id" value="${param.act_id}" required></td>
+			</tr>
+			<tr>
+				<td><label for="content">Content:</label></td>
+				<td><textarea id="content" name="content" rows="5" cols="50" required></textarea></td>
+			</tr>
+			<tr>
+				<td><label for="rate">Rate:</label></td>
+				<td><select id="rate" name="rate" required>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+				</select></td>
+			</tr>
+			<tr id="multiplefiles">
+				<td>
+				<input type="file" name="file" multiple id="multiplefiles"></td>
+			</tr>
+		</table>
+			<input type="submit" value="Submit">
+	</form>
+	<script>
+			$(function(){
+	    	   $("input[type='file']").change(function(event){
+	    	      var $fileUpload = $("input[type='file']");
+	    	      if (parseInt($fileUpload.get(0).files.length) > 5){ //5개이상이면
+	    	         $fileUpload.val('');// 파일선택을 초기화
+	    	         alert("이미지는 최대 5장까지만 삽입 가능합니다.");
+	    	      }
+	    	   });
+			});
+=======
     <h1>후기 작성</h1>
     <form action="insertCommentsOK.do" method="post" enctype="multipart/form-data">
         <table>
@@ -63,6 +117,7 @@
                   }
                });
             });
+>>>>>>> branch 'Gunho' of https://github.com/kimsha1228/FinalProject.git
       </script>
 </body>
 </html>

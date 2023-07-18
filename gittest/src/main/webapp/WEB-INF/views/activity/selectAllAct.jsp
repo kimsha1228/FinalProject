@@ -11,7 +11,12 @@
 	let user_id = '${user.user_id}';
     console.log("현재 로그인 되어있는 아이디:", user_id);
 </script>
+<<<<<<< HEAD
+<script type="text/javascript" src="resources/js/activity/selectAllAct.js?ver=1"></script>
+<jsp:include page="../css.jsp"></jsp:include>
+=======
 <script type="text/javascript" src="resources/js/activity/selectAllAct.js?ver=3"></script>
+>>>>>>> branch 'Gunho' of https://github.com/kimsha1228/FinalProject.git
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -22,7 +27,7 @@
 	<input type="text" name="searchWord" id="searchWord">
 	<button class="myButton" onclick="searchList()" >검색</button>
 
-	<table>
+	<table id="activityList">
 	<thead>
 		<tr>
 			<th>id</th>

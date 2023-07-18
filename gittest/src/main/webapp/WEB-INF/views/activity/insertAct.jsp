@@ -8,13 +8,14 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <title>상품 작성</title>
+<jsp:include page="../css.jsp"></jsp:include>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>상품 작성</h1>
 
 	<form action="insertActOk.do" method="post" enctype="multipart/form-data">
-		<table>
+		<table id="activityList">
 			<tr>
 				<td>
 					<label for="dest_id">여행지명:</label>
