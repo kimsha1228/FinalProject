@@ -14,6 +14,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${mapProperty.clientID}&submodules=geocoder"></script>
 <script type="text/javascript" src="resources/js/route/selectOneUserRoute.js?ver=7"></script>
+<style>
+#act_container > div > a > img{
+	height:150px;
+}
+</style>
 
 <title>루트 정보</title>
 <script type="text/javascript">
@@ -31,7 +36,7 @@
 	  </p>
 	  <h1 class="display-4"></h1>
 	  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-	  <hr class="my-1">
+	  <hr class="my-2">
 	</div>
 <!-- 	<table> -->
 <!-- 		<thead> -->
@@ -47,19 +52,17 @@
 <!-- 		</tbody> -->
 <!-- 	</table> -->
 	
-	
-	<div id="act_container">
+	<div id="act_container" class="card-group" style="margin: 0rem -1rem;">
 	</div>
-	
 	
 	<div id="route_content">
 	</div>
 	
-	<div>
-		<p>루트 선택 순서
-			<button class="myButton" onclick="showRoadRoute()">도로경로 표시하기</button>
+	<div style="margin-top:20px;">
+		<div style="float: right; margin-right: 176px;">
+			<button class="myButton" onclick="showRoadRoute()">도로경로 표시하기</button><br>
 			<button class="myButton" onclick="hideRoadRoute()">원래대로 표시하기</button>
-		</p> 
+		</div> 
 		<div id="map" style="width:600px;height:400px;"></div>	
 	</div>
 	

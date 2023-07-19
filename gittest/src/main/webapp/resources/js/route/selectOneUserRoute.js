@@ -52,31 +52,65 @@ $(function(){
 			//초기화
 			vo=``;
 			
+			
+		/*
+		<div class="card">
+		   	 <img src="..." class="card-img-top" alt="이미지">
+		   	 <div class="card-body">
+		   	   <h5 class="card-title">Card title</h5>
+		   	 </div>
+		   	 <div class="card-footer">
+		   	 
+		   	 </div>
+	  	</div>
+		*/
 			//체크박스 생성용
 			response.actVos.forEach(function(e, index){
 				if(index==0){
 					//<label for="act${index}">${e.act_name}</label>
 					vo += `
-						<div>
-							<a href='selectOneUserAct.do?id=${e.id}' style="text-decoration:none">${e.act_name}</a>
-							<!-- 부트스트랩 체크박스 -->
-							<span class="custom-control custom-checkbox" style="display: inline-block;">
-							  <input type="checkbox" class="custom-control-input" id="act${index}" name="${index}" checked>
-							  <label class="custom-control-label" for="act${index}"></label>
-							</span>
-							<button id="wish${index}" class="${e.id}" onclick="addWish('${user_id}',${e.id},${index})">♡</button>
+						<div class="card border-primary mb-3" >
+						
+							<a href='selectOneUserAct.do?id=${e.id}'>
+								<img src="resources/uploadimg/${e.eng_name}" class="card-img-top" alt="이미지">
+							</a>
+							
+							<div class="card-body">
+		   	 					<h6 class="card-title"><a href='selectOneUserAct.do?id=${e.id}' style="text-decoration:none">${e.act_name}</a></h6>
+		   	 				</div>
+							
+							<div class="card-footer" style="text-align: center;">
+								<!-- 부트스트랩 체크박스 -->
+								<span class="custom-control custom-checkbox" style="display: inline-block;">
+								  <input type="checkbox" class="custom-control-input" id="act${index}" name="${index}" checked>
+								  <label class="custom-control-label" for="act${index}"></label>
+								</span>
+								
+								<button id="wish${index}" class="${e.id} btn btn-outline-danger btn-sm" onclick="addWish('${user_id}',${e.id},${index})">♡</button>
+	    					</div>
 						</div>
 					`;
 				}else{
 					vo += `
-						<div>
-							<a href='selectOneUserAct.do?id=${e.id}' style="text-decoration:none">${e.act_name}</a>
-							<!-- 부트스트랩 체크박스 -->
-							<span class="custom-control custom-checkbox" style="display: inline-block;">
-							  <input type="checkbox" class="custom-control-input" id="act${index}" name="${index}">
-							  <label class="custom-control-label" for="act${index}"></label>
-							</span>
-							<button id="wish${index}" class="${e.id}" onclick="addWish('${user_id}',${e.id},${index})">♡</button>
+						<div class="card border-primary mb-3">
+						
+							<a href='selectOneUserAct.do?id=${e.id}'>
+								<img src="resources/uploadimg/${e.eng_name}" class="card-img-top" alt="이미지">
+							</a>
+							
+							<div class="card-body">
+		   	 					<h6 class="card-title"><a href='selectOneUserAct.do?id=${e.id}' style="text-decoration:none">${e.act_name}</a></h6>
+		   	 				</div>
+							
+							<div class="card-footer" style="text-align: center;">
+								<!-- 부트스트랩 체크박스 -->
+								<span class="custom-control custom-checkbox" style="display: inline-block;">
+								  <input type="checkbox" class="custom-control-input" id="act${index}" name="${index}">
+								  <label class="custom-control-label" for="act${index}"></label>
+								</span>
+								
+								<button id="wish${index}" class="${e.id} btn btn-outline-danger btn-sm" onclick="addWish('${user_id}',${e.id},${index})">♡</button>
+	    					</div>
 						</div>
 					`;
 				}
@@ -86,8 +120,16 @@ $(function(){
 			
 			//초기화
 			vo=`
-			루트 소개:<br>
-				${response.content}
+				<p>
+				  <button style="font-size:x-large;" class="myButton" type="button" data-toggle="collapse" data-target="#collapseTarget" aria-expanded="false" aria-controls="collapseTarget">
+				    루트소개(클릭!)
+				  </button>
+				</p>
+				<div class="collapse" id="collapseTarget">
+				  <div class="card card-body">
+				  	${response.content}
+				  </div>
+				</div>
 			`;
 			$('#route_content').html(vo); //루트 소개 띄우기
 			
