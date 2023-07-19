@@ -11,7 +11,8 @@
 </head>
 <body>
 	<jsp:include page="../admin_top.jsp"></jsp:include>
-	<div id="adminmenu">
+	<div class="adminmenuselect">
+	<div id="adminmenu1">
 		<ul>
 			<li><a href="insertAct.do"><img width="110px" height="110px" src="resources/uploadimg/IMG_1604.png"></a></li>
 			<li><a href="selectAllAct.do"><img width="110px" height="110px" src="resources/uploadimg/IMG_1605.png"></a></li>
@@ -20,13 +21,14 @@
 			<li><a href="selectAllContact.do?seller_id=${user.user_id}"><img width="110px" height="110px" src="resources/uploadimg/IMG_1608.png"></a></li>
 		</ul>
 	</div>	
-	<div id="adminmenu">	
+	<div id="adminmenu1">	
 		<ul>
 			<li><a href="selectAllCoupon.do"><img width="110px" height="110px" src="resources/uploadimg/IMG_1612.png"></a></li><!-- 쿠폰 -->
 			<li><a href="selectAllSeller.do"><img width="110px" height="110px" src="resources/uploadimg/IMG_1609.png"></a></li>
 			<li><a href="selectAllUser.do"><img width="110px" height="110px" src="resources/uploadimg/IMG_1610.png"></a></li>
 			<li><a href="selectAllFaq.do"><img width="110px" height="110px" src="resources/uploadimg/IMG_1611.png"></a></li>
 		</ul>
+	</div>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>

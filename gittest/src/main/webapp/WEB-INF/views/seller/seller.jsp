@@ -11,7 +11,7 @@
 </head>
 <body>
 	<jsp:include page="../seller_top.jsp"></jsp:include>
-	<div id="adminmenu">
+	<div id="adminmenu1">
 		<ul>
 			<li><a href="insertAct.do"><img width="110px" height="110px" src="resources/uploadimg/IMG_1604.png"></a></li>
 			<li><a href="selectAllAct.do"><img width="110px" height="110px" src="resources/uploadimg/IMG_1605.png"></a></li>

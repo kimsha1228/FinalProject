@@ -13,7 +13,7 @@
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<div id="usercoupon">
-	<h3>내 쿠폰</h3>
+	<h3 style="margin-top:50px; margin-bottom:30px">내 쿠폰</h3>
     <form action="userCoupon_insertOK.do">
 	<table id="usercoupontable1">
 		<tr>
