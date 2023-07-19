@@ -223,7 +223,7 @@ public class CommentsController {
 	    } // end if
 
 	    if (result == 1) {
-	        return "redirect:comments.do";
+	        return "redirect:selectMyComments.do?user_id=" + vo.getUser_id();
 	    } else {
 	        return "redirect:insertComments.do";
 	    }
