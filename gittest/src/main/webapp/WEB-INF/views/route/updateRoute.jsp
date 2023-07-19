@@ -22,47 +22,52 @@
 <jsp:include page="../css.jsp"></jsp:include>
 </head>
 <body>
+	<jsp:include page="../top_menu.jsp"></jsp:include>
 <section style="display: flex;
     			flex-direction: column;
 			    align-items: center;">
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>루트 수정</h1>
+	<h5 style="font-weight:bold; margin-top:30px; margin-bottom:30px">루트수정</h5>
 
 	<form action="updateRouteOk.do" method="POST"
 		enctype="multipart/form-data">
 		<table id="routeList">
 			<tr>
-				<td><label for="route_name">루트 이름:</label></td>
+				<td style="width: 120px"><label for="route_name">루트 이름</label></td>
 				<td><input type="text" id="route_name" name="route_name"
-					value="${vo2.route_name}"></td>
+					value="${vo2.route_name}" size="50"></td>
 			</tr>
 			<tr>
-				<td><label for="summary">루트 설명:</label></td>
-				<td><textarea rows="2" cols="30" name="summary">${vo2.summary}</textarea></td>
+				<td><label for="summary">루트 설명</label></td>
+				<td><textarea rows="2" cols="52" name="summary">${vo2.summary}</textarea></td>
 			</tr>
 			<tr>
-				<td>루트 옵션 선택!</td>
+				<td>루트 옵션 선택</td>
 				<td id="rts"></td>
 			</tr>
 			<tr>
-				<td><label for="content">루트 소개:</label></td>
-				<td><textarea rows="10" cols="30" name="content">${vo2.content}</textarea></td>
+				<td><label for="content">루트 소개</label></td>
+				<td><textarea rows="10" cols="52" name="content">${vo2.content}</textarea></td>
 			</tr>
 			<tr id="file">
-				<td>배너 사진 <input type="file" name="file" id="file"></td>
+				<td>배너 사진</td>
+				<td><input type="file" name="file" id="file"></td>
 			</tr>
 			<tr>
-				<td>작성자는 현재 ${user.user_id} 
+				<td>판매자
 					<input type="hidden" name="seller_id" value="${user.user_id}">
 					<input type="hidden" name="id" value="${param.id}">
 					<input type="hidden" name="dest_id" value="${vo2.dest_id}">
 				</td>
+				<td>	
+					${user.user_id} 
+				</td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" class="route_button"></td>
+				<td colspan="2"><input style="margin-left:230px" type="submit" class="myButton" value="수정완료"></td>
 			</tr>
 		</table>
 	</form>
+	</section>
 </body>
 <jsp:include page="../footer.jsp"></jsp:include>
 <!-- BootStrap JS -->
