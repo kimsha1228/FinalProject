@@ -39,5 +39,9 @@ public class FaqService {
 	public List<FaqVO> selectAll(){
 		return dao.selectAll();
 	}
+
+	public List<FaqVO> searchFaq(String searchKey, String searchWord) {
+		return dao.searchFaq(searchKey, searchWord);
+	}
 	
 }
