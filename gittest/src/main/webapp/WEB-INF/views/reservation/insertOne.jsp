@@ -281,7 +281,7 @@ $(function(){
 			<!-- 포인트 사용 금액 -->
 			<tr id = "point_use">
 				<td>
-					<input type="number" name="point" class="point" value="0">원 
+					<input style="ont-size:16px; text-align:right; width:70px;" type="text" type="number" name="point" class="point" value="0">원 
 					<a class="using_point_input_btn using_point_input_btn_N" data-state="N">모두사용</a>
 					<a class="using_point_input_btn using_point_input_btn_Y" data-state="Y" style="display: none;">사용취소</a>
 					
@@ -289,7 +289,7 @@ $(function(){
 			</tr>
 			<!-- 최종 결제 금액 -->
 			<tr> 
-				<td>최종 결제 금액: <input type="text" name="price_final" id="price_final" value="${param.price*param.quantity}" readonly>
+				<td>최종 결제 금액: <input style="border:0px; font-size:16px; text-align:right; width:70px;" type="text" name="price_final" id="price_final" value="${param.price*param.quantity}" readonly>원
 				</td>
 			</tr>
 			<tr>	
