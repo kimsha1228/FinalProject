@@ -6,19 +6,26 @@
 <head>
 <meta charset="UTF-8">
 <title>루트 작성</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
+<link rel="stylesheet" href="resources/css/tablesorter/theme.default.min.css?ver=2">
+<jsp:include page="../css.jsp"></jsp:include>
+<link rel="stylesheet" href="resources/css/home.css?ver=1">
+<link rel="stylesheet" href="resources/css/cardAndStar.css">
 <link rel="stylesheet" href="resources/css/multi-select2.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/route/multi-select2.js?ver=1"></script>
 <script>
-	let user_id = '${user.user_id}';
-	console.log("현재 로그인 되어있는 아이디:",user_id);
+	const user_id = '${user.user_id}';
 </script>
 <script type="text/javascript" src="resources/js/route/insertRoute.js?ver=7"></script>
-<jsp:include page="../css.jsp"></jsp:include>
 </head>
 <body>
-	<jsp:include page="../top_menu.jsp"></jsp:include>
+<jsp:include page="../top_menu.jsp"></jsp:include>
+<section style="display: flex;
+    			flex-direction: column;
+			    align-items: center;">
 	<h1>루트 작성</h1>
 
 	<form action="insertRouteOk.do" method="POST"
@@ -63,5 +70,9 @@
 			</tr>
 		</table>
 	</form>
+</section>
+
+<jsp:include page="../footer.jsp"></jsp:include>
+
 </body>
 </html>
