@@ -34,7 +34,7 @@
 			</tr>
 			<tr>
 				<td><label for="user_id">글쓴이</label></td>
-				<td><input type="hidden" id="title" name="title" value="user_id">${vo2.user_id}</td>
+				<td><input type="hidden" id="user_id" name="user_id" value="user_id">${vo2.user_id}</td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" class="myButton"></td>
