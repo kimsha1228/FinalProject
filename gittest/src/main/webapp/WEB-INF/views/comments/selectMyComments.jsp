@@ -30,6 +30,9 @@
 				<tr>
 					<th>예약번호</th>
 					<td>${vo.id}</td>
+					<td rowspan="3">
+						<img width="70px" height="70px"src="resources/uploadimg/thumb_${vo.img_name}"/>
+					</td>
 				</tr>
 				<tr>
 					<th>예약일</th>
@@ -39,8 +42,9 @@
 					</td>
 				</tr>
 				<tr>
-					<th>상품명</th>
-					<td><a href="selectOneUserAct.do?id=${vo.act_id}">${vo.act_name}</a></td>
+					<th style="width:100px;">상품명</th>
+					<td style="width:300px;"><a href="selectOneUserAct.do?id=${vo.act_id}">${vo.act_name}</a></td>
+
 				</tr>
 				<tr>
 					<td colspan="2">
@@ -66,8 +70,16 @@
 		<c:forEach var="vo1" items="${vos1}">
 			<table id="commentstable">
 				<tr>
-					<th>상품명</th>
-					<td><a href="selectOneUserAct.do?id=${vo1.act_id}">${vo1.act_name}</a></td>
+					<th>예약번호</th>
+					<td>${vo1.res_id}</td>
+					<td rowspan="3">
+						<img width="70px" height="70px"src="resources/uploadimg/thumb_${vo1.img_name}"/>
+					</td>
+				</tr>
+			
+				<tr>
+					<th style="width:100px;">상품명</th>
+					<td style="width:300px;"><a href="selectOneUserAct.do?id=${vo1.act_id}">${vo1.act_name}</a></td>
 				</tr>
 				<tr>
 					<td colspan="2">

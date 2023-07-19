@@ -203,7 +203,7 @@ function decrementQuantity() {
 	}
 }
 
-function insertOneCart() {
+function insertOneCart(e) {
 	//폼 id를 불러옴
 	var form = document.getElementById("Reservation");
 	var formData = new FormData(form);

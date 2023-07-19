@@ -68,8 +68,13 @@
 	</update>
 	
 	<select id="EXPIRED_RESERVATION_SELECT_NOCOMMENTS" resultType="balgil.com.trip.reservation.model.ReservationVO">
-		select r.id, r.res_date, r.act_id, a.act_name from reservation r join activity a on(r.act_id = a.id)
-		where user_id = #{user_id} and iscanceled = 2 and iscommented = 0 order by r.res_date asc
+	    SELECT r.id, r.res_date, r.act_id, a.act_name,
+	           (SELECT i.name FROM image i WHERE r.act_id = i.act_id AND ROWNUM = 1) AS img_name
+	    FROM reservation r
+	    JOIN activity a ON (r.act_id = a.id)
+	    WHERE user_id = #{user_id} AND iscanceled = 2 AND iscommented = 0
+	    ORDER BY r.res_date ASC
 	</select>
+
 	
 </mapper>

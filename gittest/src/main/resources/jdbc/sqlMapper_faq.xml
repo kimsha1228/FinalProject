@@ -27,5 +27,13 @@
         select * from faq where id = #{id}
     </select>
   
+  	<select id="FAQ_SEARCH_LIST_TITLE" resultType="balgil.com.trip.faq.model.FaqVO">
+        select * from faq where title like #{searchWord} order by id desc
+    </select>
+  
+  	<select id="FAQ_SEARCH_LIST_CONTENT" resultType="balgil.com.trip.faq.model.FaqVO">
+        select * from faq where content like #{searchWord} order by id desc
+    </select>
+  
 
 </mapper>

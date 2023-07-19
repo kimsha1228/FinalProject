@@ -18,7 +18,8 @@
 		<table id="uupdatetable">
 			<tr>
 				<td><label for="img">프로필 사진</label></td>
-				<td><input type="file" id="file" name="file" value="${users.img}"></td>
+				<td><input type="file" id="file" name="file" value="${users.img}">
+				</td>
 			</tr>
 			<tr>
 				<td><label for="user_id">아이디</label></td>
