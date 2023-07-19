@@ -35,7 +35,7 @@
 <!-- 네이버 지도 API JS -->
 <script type="text/javascript">
 	let result = '${vo2.add}';
-	let user_id = '${user.user_id}';
+	const user_id = '${user.user_id}';
 </script>
 </head>
 <body>
@@ -101,11 +101,31 @@
 		<div id="map" style="width:600px;height:400px;"></div>
 	</div>
 	<button class="myButton" onclick="window.location.href='selectFaq.do'">고객센터</button><!-- selectAllFaq.do 연결 -->
-	<button class="myButton" onclick="window.location.href='insertContact.do?act_id=${vo2.id}&seller_id=${vo2.seller_id}'">문의하기</button>
+	<button class="myButton loginCheckContact" data-act_id="${vo2.id}" data-seller_id="${vo2.seller_id}">문의하기</button>
 </section>
 
 
 <jsp:include page="../footer.jsp"></jsp:include>
+<!-- 로그인 안할시 띄울 모달창 -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">경고!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        로그인 해주세요
+      </div>
+      <div class="modal-footer">
+        <a href="login.do" type="button" class="btn btn-primary">로그인하러가기</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- 지도 구현 js -->
 <script type="text/javascript" src="resources/js/Maps.js"></script>
 <!-- BootStrap JS -->

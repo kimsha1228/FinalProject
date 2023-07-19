@@ -1,7 +1,6 @@
 //현재 url 파라미터에서 값을 가져와서 변수에 할당한다
 const urlParams = new URL(location.href).searchParams;
 let id = urlParams.get('id');
-console.log(id);
 
 //jsonSelectOneRoute 결과를 담을 변수
 let result;
@@ -38,32 +37,12 @@ $(function(){
  			vo = vo.substring(0, vo.length - 3);
 	 		$('.lead').text(vo);
 	 			
-	 			/*
-				vo+= `</td>
-						<td>${response.vcount}</td>
-						<td>${response.likes}</td>
-					</tr>
-				`;
-				$('#vos').html(vo); //테이블 띄우기
-			*/
-			vo=`♥: ${response.likes} <button class="myButton" onclick="likeUpRoute(${response.id})">추천하기!</button>`;
+			vo=`♥: ${response.likes} <button class="myButton " onclick="likeUpRoute(${response.id})">추천하기!</button>`;
 			$('#추천수').html(vo);
 			
 			//초기화
 			vo=``;
 			
-			
-		/*
-		<div class="card">
-		   	 <img src="..." class="card-img-top" alt="이미지">
-		   	 <div class="card-body">
-		   	   <h5 class="card-title">Card title</h5>
-		   	 </div>
-		   	 <div class="card-footer">
-		   	 
-		   	 </div>
-	  	</div>
-		*/
 			//체크박스 생성용
 			response.actVos.forEach(function(e, index){
 				if(index==0){
@@ -171,19 +150,6 @@ $(function(){
 		
 			        //체크박스 이벤트 핸들러
 			        if ($(this).is(':checked')) {
-			            
-			            /*  주석처리
-				            //삽입할 HTML요소 구성
-							var innerHTML = '';
-							innerHTML += `<div id="${act_id}">`;
-							innerHTML += `<p>${act_name}의 수량 선택</p>`;
-							innerHTML += `<input type="hidden" name="act_id${count}" value='${act_id}'/>`;
-							innerHTML += `<input type="button" value="-" class="qtyminus minus" data-act-id="${act_id}" />`;
-							innerHTML += `<input type="text" name="quantity${count}" value="1" id="quantity" class="qty" />`;
-							innerHTML += `<input type="button" value="+" class="qtyplus plus" data-act-id="${act_id}" />`;
-							innerHTML += `</div>`;
-				            $('#quantityContainer').append(innerHTML);
-			            */
 			            addAddressToCoordinate(act_add,this.name);
 			            count++;
 			        }
@@ -234,14 +200,6 @@ $(function(){
 			console.log('xhr.status:', xhr.status);
 		}
 	});//end $.ajax()...
-
-	/* 주석처리
-		//날짜 선택을 오늘로 변경
-		var now = new Date();
-		now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); //한국시간으로 변경
-		document.getElementById('datePicker').value = now.toISOString().slice(0, -14); //자릿수짜르기
-	*/
-	
 });
 //end onload
 
@@ -249,69 +207,58 @@ function addWish(user_id,act_id,index){
 	let param_user_id=user_id;
 	let param_act_id=act_id;
 	console.log("insertWishListOk로 넘겨줄 파라미터",param_user_id,param_act_id);
-	$.ajax({
-		url : "insertWishListOK.do",
-		data:{
-			act_id:param_act_id,
-			user_id:param_user_id
-		},
-		method:'POST',
-		dataType:'json',
-		success : function(response) {
-			console.log(response);
-			if(response.result==='OK'){
-				alert("위시리스트에 추가했습니다");
-				$('#wish'+index).text('♥');
-			}else{
-				alert("위시리스트에 제거했습니다");
-				$('#wish'+index).text('♡');
-			}
-		},
-		error:function(xhr,status,error){
-			console.log('xhr.status:', xhr.status);
-		}
-	});//end $.ajax()...
-}
-
-/*  주석처리
-	// Increment quantity
-	$(document).on('click', '.qtyplus', function() {
-		var act_id = $(this).data('act-id');
-		var quantityInput = $('#quantityContainer').find(`#${act_id1} input[name=quantity]`);
-		var currentQuantity = parseInt(quantityInput.val());
-		quantityInput.val(currentQuantity + 1);
-	});
 	
-	// Decrement quantity
-	$(document).on('click', '.qtyminus', function() {
-		var act_id = $(this).data('act-id');
-		var quantityInput = $('#quantityContainer').find(`#${act_id1} input[name=quantity]`);
-		var currentQuantity = parseInt(quantityInput.val());
-		if (currentQuantity > 0) {
-			quantityInput.val(currentQuantity - 1);
-		}
-	});
-*/
+	if(isLoggedIn()){
+		$.ajax({
+			url : "insertWishListOK.do",
+			data:{
+				act_id:param_act_id,
+				user_id:param_user_id
+			},
+			method:'POST',
+			dataType:'json',
+			success : function(response) {
+				console.log(response);
+				if(response.result==='OK'){
+					alert("위시리스트에 추가했습니다");
+					$('#wish'+index).text('♥');
+				}else{
+					alert("위시리스트에 제거했습니다");
+					$('#wish'+index).text('♡');
+				}
+			},
+			error:function(xhr,status,error){
+				console.log('xhr.status:', xhr.status);
+			}
+		});//end $.ajax()...
+	}else{
+		$('#staticBackdrop').modal('show');
+	}
+}
 
 function likeUpRoute(value){
 	console.log(value);
-	$.ajax({
-	    url: "likeUpRoute.do",
-	    data: {id: value},
-		method:'GET',
-	    dataType:'json',
-	    success: function(response) {
-	        console.log("ajax success",response,response.result);
-	        if(response.result=="NotOK"){
-	        	alert("추천은 10초에 한번만 가능합니다");
-	        }else if(response.result=="OK"){
-	        	alert("루트를 추천했습니다");
-	        }
-	    },
-	 	error:function(xhr,status,error){
-			console.log('xhr.status:',xhr.status);
-	 	}
-	});//end ajax
+	if(isLoggedIn()){
+		$.ajax({
+		    url: "likeUpRoute.do",
+		    data: {id: value},
+			method:'GET',
+		    dataType:'json',
+		    success: function(response) {
+		        console.log("ajax success",response,response.result);
+		        if(response.result=="NotOK"){
+		        	alert("추천은 10초에 한번만 가능합니다");
+		        }else if(response.result=="OK"){
+		        	alert("루트를 추천했습니다");
+		        }
+		    },
+		 	error:function(xhr,status,error){
+				console.log('xhr.status:',xhr.status);
+		 	}
+		});//end ajax
+	}else{
+		$('#staticBackdrop').modal('show');
+	}
 }
 
 //도로경로 표시용 함수
@@ -347,4 +294,12 @@ function hideRoadRoute(){
 	polyline.setPath(newArray);
 	
 	//polyline.setPath(arrayOfCoords);
+}
+
+// 참조한 사이트:
+//	https://stackoverflow.com/questions/11404711/how-can-i-trigger-a-bootstrap-modal-programmatically
+//	https://getbootstrap.com/docs/4.6/components/modal/
+// 로그인되어있으면 true를 리턴
+function isLoggedIn() {
+	return user_id===''?false:true;
 }

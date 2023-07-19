@@ -22,7 +22,8 @@
 
 <title>루트 정보</title>
 <script type="text/javascript">
-	let user_id = '${user.user_id}'; 
+	const user_id = '${user.user_id}'; 
+	console.log("로그인?",user_id);
 </script>
 
 </head>
@@ -31,26 +32,11 @@
 <section style="padding-left: 2rem; padding-right: 2rem;">
 	<div class="jumbotron" style="background-color:inherit; padding:2rem 0rem 0rem 0rem; margin-bottom: 0px;">
 	  <p id="추천수" style="float:right">
-	  추천수
-	  <button class="myButton" onclick="likeUpRoute(${param.id})">추천하기!</button>
 	  </p>
 	  <h1 class="display-4"></h1>
-	  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+	  <p class="lead"></p>
 	  <hr class="my-2">
 	</div>
-<!-- 	<table> -->
-<!-- 		<thead> -->
-<!-- 			<tr> -->
-<!-- 				<th>id</th> -->
-<!-- 				<th>route_name</th> -->
-<!-- 				<th>루트</th> -->
-<!-- 				<th>vcount</th> -->
-<%-- 				<th>추천수<button class="myButton" onclick="likeUpRoute(${param.id})">추천하기!</button></th> --%>
-<!-- 			</tr> -->
-<!-- 		</thead> -->
-<!-- 		<tbody id="vos"> -->
-<!-- 		</tbody> -->
-<!-- 	</table> -->
 	
 	<div id="act_container" class="card-group" style="margin: 0rem -1rem;">
 	</div>
@@ -68,8 +54,26 @@
 	
 </section>
 
-
 <jsp:include page="../footer.jsp"></jsp:include>
+<!-- 로그인 안할시 띄울 모달창 -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">경고!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        로그인 해주세요
+      </div>
+      <div class="modal-footer">
+        <a href="login.do" type="button" class="btn btn-primary">로그인하러가기</a>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- 지도 구현 js -->
 <script type="text/javascript" src="resources/js/Maps.js?ver=4"></script>
 <!-- BootStrap JS -->

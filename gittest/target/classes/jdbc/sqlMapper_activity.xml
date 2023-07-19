@@ -36,31 +36,10 @@
 		<![CDATA[
 		  SELECT *
 		  FROM (
-		    SELECT DISTINCT
-		      a.id,
-		      a.act_name,
-		      a.rate,
-		      a.vcount,
-		      a.price,
-		      i.name
-		    FROM activity a
-		    INNER JOIN image i ON a.id = i.act_id
-		    WHERE i.name LIKE '%1.jpg'
+		    SELECT *
+		    FROM activity
 		    ORDER BY vcount DESC
 		  ) WHERE ROWNUM <= 10
-		]]>
-	</select>
-	
-	<select id="ACT_SELECT_ALL_IMG" 
-	resultMap="ActivityVOResultMap"
-	resultType="balgil.com.trip.activity.model.ActivityVO">
-		<![CDATA[
-		    SELECT DISTINCT
-		      a.*,
-		      i.name
-		    FROM activity a
-		    INNER JOIN image i ON a.id = i.act_id
-		    WHERE i.name LIKE '%1.jpg'
 		]]>
 	</select>
 	
@@ -68,12 +47,9 @@
 	resultMap="ActivityVOResultMap"
 	resultType="balgil.com.trip.activity.model.ActivityVO">
 		<![CDATA[
-		    SELECT DISTINCT
-		      a.*,
-		      i.name
-		    FROM activity a
-		    INNER JOIN image i ON a.id = i.act_id
-		    WHERE i.name LIKE '%1.jpg' and tag = '추천'
+		    SELECT *
+		    FROM activity
+		    WHERE tag = '추천'
 		]]>
 	</select>
 	
@@ -98,11 +74,8 @@
 	resultMap="ActivityVOResultMap"
 	resultType="balgil.com.trip.activity.model.ActivityVO">
 		<![CDATA[
-		    SELECT DISTINCT
-		      a.*,
-		      i.name
-		    FROM activity a
-		    INNER JOIN image i ON a.id = i.act_id
+		    SELECT *
+		    FROM activity 
 		    WHERE ${searchKey} like #{searchWord}
 		]]>
 	</select>

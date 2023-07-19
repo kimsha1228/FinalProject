@@ -35,7 +35,7 @@ $(document).ready(function(){
 	    size: 5,
 	
 	    // Save pager page & size if the storage script is loaded (requires $.tablesorter.storage in jquery.tablesorter.widgets.js)
-	    savePages : true,
+	    savePages : false,
 	
 	    // Saves tablesorter paging to custom key if defined.
 	    // Key parameter name used by the $.tablesorter.storage function.
@@ -127,29 +127,32 @@ $(document).ready(function(){
 	  let $wishelement = $(this);
 	
 	  console.log("insertWishListOk로 넘겨줄 파라미터", param_user_id, param_act_id);
-	
-	  $.ajax({
-	    url: "insertWishListOK.do",
-	    data: {
-	      act_id: param_act_id,
-	      user_id: param_user_id
-	    },
-	    method: 'POST',
-	    dataType: 'json',
-	    success: function(response) {
-	      console.log(response);
-	      if (response.result === 'OK') {
-	        alert("위시리스트에 추가했습니다");
-	        $wishelement.text('♥');
-	      } else {
-	        alert("위시리스트에 제거했습니다");
-	        $wishelement.text('♡');
-	      }
-	    },
-	    error: function(xhr, status, error) {
-	      console.log('xhr.status:', xhr.status);
-	    }
-	  });
+	  if(isLoggedIn()){
+		  $.ajax({
+		    url: "insertWishListOK.do",
+		    data: {
+		      act_id: param_act_id,
+		      user_id: param_user_id
+		    },
+		    method: 'POST',
+		    dataType: 'json',
+		    success: function(response) {
+		      console.log(response);
+		      if (response.result === 'OK') {
+		        alert("위시리스트에 추가했습니다");
+		        $wishelement.text('♥');
+		      } else {
+		        alert("위시리스트에 제거했습니다");
+		        $wishelement.text('♡');
+		      }
+		    },
+		    error: function(xhr, status, error) {
+		      console.log('xhr.status:', xhr.status);
+		    }
+		  });//end ajax
+		}else{
+			$('#staticBackdrop').modal('show');
+		}
 	});
 	$('.reset').trigger('click');
 	$('#tableContainer').trigger('filterReset');
@@ -184,7 +187,7 @@ function searchList(searchWord){
 		                	<h4><a href="selectOneUserAct.do?id=${vo.id}">${vo.act_name}</a></h4>
 		                	<p>${vo.content}</p>
 		                	<span class="stars">${vo.rate}</span>
-		                	${vo.price}원 <button class="wish" data-act_id="${vo.id}" data-arg1='${user_id}' data-arg2= '${vo.id}' data-arg3='${status.count}'>♡</button>
+		                	${vo.price}원 <button class="wish btn btn-outline-danger btn-sm" data-act_id="${vo.id}" data-arg1='${user_id}' data-arg2= '${vo.id}' data-arg3='${status.count}'>♡</button>
 		                </td>
 		                <td style="vertical-align: middle;">
 		                	<p style="width: 200px;">태그: ${vo.tag}</p>
@@ -285,4 +288,12 @@ $.fn.stars = function() {
         // Replace the numerical value with stars
         $(this).html($span);
     });
+}
+
+// 참조한 사이트:
+//	https://stackoverflow.com/questions/11404711/how-can-i-trigger-a-bootstrap-modal-programmatically
+//	https://getbootstrap.com/docs/4.6/components/modal/
+// 로그인되어있으면 true를 리턴
+function isLoggedIn() {
+	return user_id===''?false:true;
 }
