@@ -84,7 +84,7 @@
 			<input type='hidden' name='price' id='price' value='${vo2.price}'/>
 			<input type='hidden' name='user_id' value='${user.user_id}'/>
 			<input class="btn btn-primary" type="submit" form="Reservation" formaction="insertOneReservation.do" value="바로구매">
-			<button class="btn btn-primary" type="submit" onclick="insertOneCart()">장바구니</button>
+			<button class="btn btn-primary" type="button" onclick="insertOneCart()">장바구니</button>
 		</form>
 	</div>
 	<div
