@@ -26,7 +26,7 @@
    height:360px;
  }
  .carousel > .carousel-inner > .carousel-item > img{
-    width:600px; /* Yeap you can change the width and height*/
+    width:600px;
     height:360px;
 }
 </style>
@@ -35,7 +35,7 @@
 <!-- 네이버 지도 API JS -->
 <script type="text/javascript">
 	let result = '${vo2.add}';
-	let user_id = '${user.user_id}';
+	const user_id = '${user.user_id}';
 </script>
 </head>
 <body>
@@ -44,20 +44,8 @@
 	<h1>상품 정보</h1>
     <div id="carouselControls" class="carousel slide" data-ride="carousel">
 	  <ol class="carousel-indicators">
-<!-- 	    <li data-target="#carouselControls" data-slide-to="0" class="active"></li> -->
-<!-- 	    <li data-target="#carouselControls" data-slide-to="1"></li> -->
-<!-- 	    <li data-target="#carouselControls" data-slide-to="2"></li> -->
  	  </ol>	
 	  <div class="carousel-inner">
-<!-- 	    <div class="carousel-item active"> -->
-<!-- 	      <img src="resources/uploadimg/1-1.jpg" class="d-block w-100" alt="이미지1"> -->
-<!-- 	    </div> -->
-<!-- 	    <div class="carousel-item"> -->
-<!-- 	      <img src="resources/uploadimg/1-2.jpg" class="d-block w-100" alt="이미지2"> -->
-<!-- 	    </div> -->
-<!-- 	    <div class="carousel-item"> -->
-<!-- 	      <img src="resources/uploadimg/1-3.jpg" class="d-block w-100" alt="이미지3"> -->
-<!-- 	    </div> -->
 	  </div>
 	 <button class="carousel-control-prev" type="button" data-target="#carouselControls" data-slide="prev">
 	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -113,11 +101,31 @@
 		<div id="map" style="width:600px;height:400px;"></div>
 	</div>
 	<button class="myButton" onclick="window.location.href='selectFaq.do'">고객센터</button><!-- selectAllFaq.do 연결 -->
-	<button class="myButton" onclick="window.location.href='insertContact.do?act_id=${vo2.id}&seller_id=${vo2.seller_id}'">문의하기</button>
+	<button class="myButton loginCheckContact" data-act_id="${vo2.id}" data-seller_id="${vo2.seller_id}">문의하기</button>
 </section>
 
 
 <jsp:include page="../footer.jsp"></jsp:include>
+<!-- 로그인 안할시 띄울 모달창 -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">경고!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        로그인 해주세요
+      </div>
+      <div class="modal-footer">
+        <a href="login.do" type="button" class="btn btn-primary">로그인하러가기</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- 지도 구현 js -->
 <script type="text/javascript" src="resources/js/Maps.js"></script>
 <!-- BootStrap JS -->
@@ -127,7 +135,7 @@
 var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
 $.fn.bootstrapBtn = bootstrapButton   
 </script>
-<script src="https://kit.fontawesome.com/0007d685f8.js" crossorigin="anonymous"></script>
 <!-- https://fontawesome.com/search 아이콘들 주소 -->
+<script src="https://kit.fontawesome.com/0007d685f8.js" crossorigin="anonymous"></script>
 </body>
 </html>

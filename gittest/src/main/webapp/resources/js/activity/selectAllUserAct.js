@@ -26,7 +26,7 @@ $(function(){
 						</a>
 							<div class="card-act-name" style="align-self: normal;"><a href="selectOneUserAct.do?id=${vo.id}">${vo.act_name}</a></div>
 							<span class="stars">${vo.rate}</span>
-						<div>${vo.price}원 <button class="wish" data-act_id="${vo.id}" data-arg1='${user_id}' data-arg2= '${vo.id}' data-arg3=${i})>♡</button></div>
+						<div>${vo.price}원 <button class="wish btn btn-outline-danger btn-sm" data-act_id="${vo.id}" data-arg1='${user_id}' data-arg2= '${vo.id}' data-arg3=${i})>♡</button></div>
 					</div>
 				</div>
 				`;
@@ -87,29 +87,32 @@ $(function(){
 	  let $wishelement = $(this);
 	
 	  console.log("insertWishListOk로 넘겨줄 파라미터", param_user_id, param_act_id);
-	
-	  $.ajax({
-	    url: "insertWishListOK.do",
-	    data: {
-	      act_id: param_act_id,
-	      user_id: param_user_id
-	    },
-	    method: 'POST',
-	    dataType: 'json',
-	    success: function(response) {
-	      console.log(response);
-	      if (response.result === 'OK') {
-	        alert("위시리스트에 추가했습니다");
-	        $wishelement.text('♥');
-	      } else {
-	        alert("위시리스트에 제거했습니다");
-	        $wishelement.text('♡');
-	      }
-	    },
-	    error: function(xhr, status, error) {
-	      console.log('xhr.status:', xhr.status);
-	    }
-	  });
+	  if(isLoggedIn()){
+		  $.ajax({
+		    url: "insertWishListOK.do",
+		    data: {
+		      act_id: param_act_id,
+		      user_id: param_user_id
+		    },
+		    method: 'POST',
+		    dataType: 'json',
+		    success: function(response) {
+		      console.log(response);
+		      if (response.result === 'OK') {
+		        alert("위시리스트에 추가했습니다");
+		        $wishelement.text('♥');
+		      } else {
+		        alert("위시리스트에 제거했습니다");
+		        $wishelement.text('♡');
+		      }
+		    },
+		    error: function(xhr, status, error) {
+		      console.log('xhr.status:', xhr.status);
+		    }
+		  });//end ajax
+		}else{
+			$('#staticBackdrop').modal('show');
+		}
 	});
 });
 //end onload
@@ -176,7 +179,7 @@ function callTableSorter(){
 	    size: 5,
 	
 	    // Save pager page & size if the storage script is loaded (requires $.tablesorter.storage in jquery.tablesorter.widgets.js)
-	    savePages : true,
+	    savePages : false,
 	
 	    // Saves tablesorter paging to custom key if defined.
 	    // Key parameter name used by the $.tablesorter.storage function.
@@ -273,4 +276,12 @@ $.fn.stars = function() {
         // Replace the numerical value with stars
         $(this).html($span);
     });
+}
+
+// 참조한 사이트:
+//	https://stackoverflow.com/questions/11404711/how-can-i-trigger-a-bootstrap-modal-programmatically
+//	https://getbootstrap.com/docs/4.6/components/modal/
+// 로그인되어있으면 true를 리턴
+function isLoggedIn() {
+	return user_id===''?false:true;
 }

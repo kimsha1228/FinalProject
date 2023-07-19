@@ -20,7 +20,7 @@
 
 <title>루트목록</title>
 <script>
-	let user_id = '${user.user_id}';
+	const user_id = '${user.user_id}';
 	let dest_id = ${param.dest_id};
 </script>
 </head>
