@@ -135,12 +135,18 @@ public class CommentsController {
 
 	@RequestMapping(value = "/selectMyOneComments.do", method = RequestMethod.GET)
 	public String selectMyOneComments(CommentsVO vo, Model model) {
-		log.info("/selectMyOneComments.do...{}", vo);
+		log.info("/selectMyOneComments.do...vo:{}", vo);
 
 		CommentsVO vo2 = service.selectOneComments(vo);
-
+		log.info("/selectMyOneComments.do...vo2:{}",vo2);
 		model.addAttribute("vo2", vo2);
-
+		
+		ImageVO vo1 = new ImageVO();
+		vo1.setComment_id(vo2.getId());
+		List<ImageVO> vos = imgService.selectAll(vo1);
+		log.info("vos:{}", vos);
+		model.addAttribute("vos", vos);
+		
 		return "comments/selectOneMyComments";
 	}
 	

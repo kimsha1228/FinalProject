@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,10 +29,19 @@
                 <td>${vo2.content}</td>
                 <td><fmt:formatDate value="${vo2.com_date}" pattern="yyyy년 MM월 dd일"/></td>
                 <td>${vo2.likes}</td>
-                
             </tr>
         </tbody>
     </table>
+    
+    <!-- 업로드된 이미지 표시 -->
+    <tr>
+        <!-- <td>후기 이미지:</td> -->
+        <td colspan="4">
+            <c:forEach var="img" items="${vos}">
+                <img src="resources/uploadimg/${img.name}" width="200px" alt="이미지">
+            </c:forEach>
+        </td>
+    </tr>
     
     <div>
       <button class="update_comm" data-id="${vo2.id}" data-res_id="${vo2.res_id}" data-user_id="${user.user_id}">후기수정</button>

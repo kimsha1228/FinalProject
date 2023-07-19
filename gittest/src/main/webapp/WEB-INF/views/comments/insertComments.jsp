@@ -41,7 +41,7 @@
             <tr>
                 <td colspan="2"><br><br></td>
             </tr>
-            <!-- Display uploaded images -->
+            <!-- 이미지 업로드 -->
             <tr id="uploadedImages">
                 <td colspan="2">
                     <c:forEach var="vo" items="${uploadedImages}">
