@@ -435,7 +435,7 @@
     width:1000px;
     height:98%;
     margin: 150px auto;
-    border: 1px solid blue;
+/*     border: 1px solid blue; */
     overflow: hidden;
     text-align: left;
 }
@@ -475,7 +475,7 @@
     width:350px;
     height:98%;
     margin: 50px auto;
-    border: 3px solid gray;
+    border: 2px solid gray;
     overflow: hidden;
     text-align: left;
 }
@@ -483,6 +483,13 @@
 	text-align: center;
 }
 
+#faqtable{
+    width: 500px;
+    margin: 30px 300px;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: left;
+}
 
 
 
