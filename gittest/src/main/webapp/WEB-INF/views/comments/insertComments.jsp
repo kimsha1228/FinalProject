@@ -76,7 +76,7 @@
 		           	</td>
             </tr>
         </table>
-        <input type="submit" value="제출" class="myButton">
+        <input type="submit" value="제출" class="myButton" value="작성완료">
     </form>
     </div>
     <jsp:include page="../footer.jsp"></jsp:include>
