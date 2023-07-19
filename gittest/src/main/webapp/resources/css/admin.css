@@ -1,13 +1,13 @@
 @charset "UTF-8";
 
-#list1{
+#adminmenu{
     width:1000px;
     margin: auto;
     overflow: hidden;
     text-align: center;
 }
 
-#list1 a{
+#adminmenu a{
 	border: solid 10px white;
 	border-radius:10px;
 	cursor:pointer;
@@ -22,7 +22,7 @@
 }
 
 
-#list1 a:hover {
+#adminmenu a:hover {
 	border:solid 10px #0000c9;
 	background-color:#0000c9;
 	color:white;
