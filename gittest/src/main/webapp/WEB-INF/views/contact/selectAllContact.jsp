@@ -9,8 +9,8 @@
 <jsp:include page="../css.jsp"></jsp:include>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="text/javascript"
-	src="resources/js/contact/selectAllcontact.js"></script>
+<script type="text/javascript" src="resources/js/contact/selectAllcontact.js"></script>
+<jsp:include page="../css.jsp"></jsp:include>
 <script>
 	let user_id = '${user.user_id}';
 	console.log("현재 로그인 되어있는 아이디:", user_id);
@@ -25,6 +25,7 @@
         text-align: center;
     }
 </style>
+
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -47,9 +48,6 @@
 
 		</tbody>
 		<tfoot>
-			<tr>
-				<td colspan="5">1 2 3 4 5</td>
-			</tr>
 		</tfoot>
 	</table>
 	<br>
