@@ -43,6 +43,8 @@
 				<tr>
 					<th>상품명</th>
 					<td><a href="selectOneUserAct.do?id=${vo.act_id}">${vo.act_name}</a></td>
+					<img src="${pageContext.request.contextPath}/resources/uploadimg/thumb_${vo.img_name}"/>
+
 				</tr>
 				<tr>
 					<td colspan="2">
@@ -71,6 +73,7 @@
 				<tr>
 					<th>상품명</th>
 					<td><a href="selectOneUserAct.do?id=${vo1.act_id}">${vo1.act_name}</a></td>
+					<img src="resources/uploadimg/thumb_${vo1.img_name}"/>
 				</tr>
 				<tr>
 					<td colspan="2">
