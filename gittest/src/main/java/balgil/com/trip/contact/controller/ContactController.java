@@ -83,32 +83,35 @@ public class ContactController {
 	public String insertContactOK(ContactVO vo) throws IllegalStateException, IOException {
 		log.info("/insertContactOK.do....{}", vo);
 
-
 		// 로컬 이미지 생성
 		String getOriginalFilename = vo.getFile().getOriginalFilename();
 		int fileNameLength = vo.getFile().getOriginalFilename().length();
 		log.info("getOriginalFilename:{}", getOriginalFilename);
 		log.info("fileNameLength:{}", fileNameLength);
 
-		vo.setAttach_img(getOriginalFilename);
-		// 웹 어플리케이션이 갖는 실제 경로: 이미지를 업로드할 대상 경로를 찾아서 파일저장.
-		String realPath = sContext.getRealPath("resources/uploadimg");
-		log.info("realPath : {}", realPath);
-
-		File f = new File(realPath + File.separator + vo.getAttach_img());
-		vo.getFile().transferTo(f);
-
-		//// create thumbnail image/////////
-		BufferedImage original_buffer_img = ImageIO.read(f);
-		BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
-		Graphics2D graphic = thumb_buffer_img.createGraphics();
-		graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
-
-		File thumb_file = new File(realPath + "/thumb_" + vo.getAttach_img());
-		String formatName = vo.getAttach_img().substring(vo.getAttach_img().lastIndexOf(".") + 1);
-		log.info("formatName : {}", formatName);
-		ImageIO.write(thumb_buffer_img, formatName, thumb_file);
-
+		if (getOriginalFilename.length() != 0) {
+			vo.setAttach_img(getOriginalFilename);
+			// 웹 어플리케이션이 갖는 실제 경로: 이미지를 업로드할 대상 경로를 찾아서 파일저장.
+			String realPath = sContext.getRealPath("resources/uploadimg");
+			log.info("realPath : {}", realPath);
+	
+			File f = new File(realPath + File.separator + vo.getAttach_img());
+			vo.getFile().transferTo(f);
+	
+			//// create thumbnail image/////////
+			BufferedImage original_buffer_img = ImageIO.read(f);
+			BufferedImage thumb_buffer_img = new BufferedImage(50, 50, BufferedImage.TYPE_3BYTE_BGR);
+			Graphics2D graphic = thumb_buffer_img.createGraphics();
+			graphic.drawImage(original_buffer_img, 0, 0, 50, 50, null);
+	
+			File thumb_file = new File(realPath + "/thumb_" + vo.getAttach_img());
+			String formatName = vo.getAttach_img().substring(vo.getAttach_img().lastIndexOf(".") + 1);
+			log.info("formatName : {}", formatName);
+			ImageIO.write(thumb_buffer_img, formatName, thumb_file);
+		} else {
+			vo.setAttach_img("");
+		}
+		
 		int result = service.insert(vo);
 		log.info("result:{}", result);
 		if (result == 1) {

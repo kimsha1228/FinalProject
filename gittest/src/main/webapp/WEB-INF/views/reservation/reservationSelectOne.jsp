@@ -81,7 +81,7 @@ function paymentSelectOne(){
 				<td>${vo1.id}</td>
 			</tr>
 			<tr>
-				<td>상품명</td>
+				<td style="width:100px">상품명</td>
 				<td><a href="selectOneAct.do?id=${vo1.act_id}">${vo1.act_name}</a></td>
 			</tr>
 			<tr>
@@ -98,16 +98,16 @@ function paymentSelectOne(){
 				<td>가격</td>
 				<td><fmt:formatNumber value="${vo1.price}" pattern="#,### 원" /></td>
 			</tr>
+			<tr>
+				<th colspan="2">
+				<a href="cancelReservation.do?id=${vo1.id}&user_id=${user.user_id}" class="myButton">예약취소</a>
+				</th>
+			</tr>
 		</tbody>
 	</table>
 	<table id="pay_info">
 		<tbody>
 		</tbody>
-		<tr>
-			<td colspan="2">
-			<a href="cancelReservation.do?id=${vo1.id}&user_id=${user.user_id}">예약취소</a>
-			</td>
-		</tr>
 	</table>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
