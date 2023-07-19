@@ -42,9 +42,15 @@
         padding: 20px;
         box-sizing: border-box;
     }
-      .inputtable h1 {
-        text-align: center;
-        margin-bottom: 20px;
+  #faqtable1 {
+        width: 600px;
+        margin-top: 50px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+      .inputtable a {
+        text-decoration: none;
+        color:black;
     }
 
 </style>
@@ -52,11 +58,10 @@
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<div class="inputtable">
-		<h3 style="margin-bottom:20px">자주 묻는 질문</h3>
+		<h3 style="margin-bottom:20px"><a href="selectAllFaq.do">자주 묻는 질문</a></h3>
 		<form id="faq_form" action="insertFaqOK.do" method="get">
 			<table id="">
 				<tr>
-<!-- 					<td><label for="title">제목</label></td> -->
 					<td><input type="text" id="title" name="title" value=""  size="89" placeholder="제목을 입력해주세요.">
 					</td>
 				</tr>
@@ -69,31 +74,33 @@
 				</tr>
 			</table>
 		</form>
+		
+	<div style="padding:5px">
+		<form action="searchFaq.do">
+			<select name="searchKey" id="searchKey">
+				<option value="title">제목</option>
+				<option value="content">내용</option>
+			</select>
+			<input type="text" name="searchWord" id="searchWord" value="" placeholder="제목 또는 내용을 입력하세요">
+			<input type="submit" value="검색" class="myButton">
+		</form>
+	</div>
 
-	<table style="margin-top:50px">
+	<table id="faqtable1">
 		<thead>
 			<tr>
-<!-- 				<th>문의번호</th> -->
-				<th>제목</th>
-<!-- 				<th>내용</th> -->
-				<th>작성시간</th>
+				<th style="width:500px">제목</th>
+				<th style="width:100px">작성시간</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="vo" items="${vos}">
 				<tr>
-<%-- 					<td>${vo.id}</a></td> --%>
 					<td><a href="selectOneFaq.do?id=${vo.id}">${vo.title}</a></td>
-<%-- 					<td>${vo.content}</td> --%>
-					<td><fmt:formatDate value="${vo.faq_date}" pattern="yyyy-MM-dd"/></td>
+					<td style="text-align:center"><fmt:formatDate value="${vo.faq_date}" pattern="yyyy-MM-dd"/></td>
 				</tr>
 			</c:forEach>
 		</tbody>
-<!-- 		<tfoot> -->
-<!-- 			<tr> -->
-<!-- 				<td colspan="5">1 2 3 4 5</td> -->
-<!-- 			</tr> -->
-<!-- 		</tfoot> -->
 	</table>
 
 	</div>	

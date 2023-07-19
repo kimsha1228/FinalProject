@@ -31,6 +31,17 @@ public class FaqController {
 		return "faq/selectAllFaq";
 	}
 	
+	@RequestMapping(value = "/searchFaq.do", method = RequestMethod.GET)
+	public String searchFaq(String searchKey, String searchWord, Model model) {
+		log.info("/searchFaq.do...{},{}", searchKey, searchWord);
+		
+		List<FaqVO> vos = service.searchFaq(searchKey, searchWord);
+		
+		model.addAttribute("vos", vos);
+		
+		return "faq/selectAllFaq";
+	}
+	
 	@RequestMapping(value = "/selectOneFaq.do", method = RequestMethod.GET)
 	public String selectOneFaq(FaqVO vo, Model model) {
 		log.info("/selectOneFaq.do...{}", vo);

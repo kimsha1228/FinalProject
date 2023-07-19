@@ -12,5 +12,7 @@ public interface FaqDAO {
 	public List<FaqVO> selectAll();
 	
 	public FaqVO selectOne(FaqVO vo);
+
+	public List<FaqVO> searchFaq(String searchKey, String searchWord);
 	
 }
