@@ -16,6 +16,7 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
+	<div id="selectAllRoute">
 	<h1>루트목록</h1>
 	
 	<label for="searchWord">루트 이름</label>
@@ -23,7 +24,7 @@
 	<input type="text" name="searchWord" id="searchWord">
 	<button class="myButton" onclick="searchRoute()" >검색</button>
 
-	<table id="routeList">
+	<table id="routetable">
 	<thead>
 		<tr>
 			<th>id</th>
@@ -42,5 +43,7 @@
 		</tr>
 	</tfoot>
 	</table>
+	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

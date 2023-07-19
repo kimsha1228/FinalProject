@@ -19,11 +19,11 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
+	<div id="insertRoute">
 	<h1>루트 작성</h1>
 
-	<form action="insertRouteOk.do" method="POST"
-		enctype="multipart/form-data">
-		<table id="routeList">
+	<form action="insertRouteOk.do" method="POST" enctype="multipart/form-data">
+		<table id="routetable">
 			<tr>
 				<td><label for="route_name">루트 이름:</label></td>
 				<td><input type="text" id="route_name" name="route_name"
@@ -63,5 +63,7 @@
 			</tr>
 		</table>
 	</form>
+	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

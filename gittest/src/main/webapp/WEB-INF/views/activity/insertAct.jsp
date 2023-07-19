@@ -12,10 +12,10 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
+	<div id="insertAct">
 	<h1>상품 작성</h1>
-
 	<form action="insertActOk.do" method="post" enctype="multipart/form-data">
-		<table id="activityList">
+	<table id="activitytable">
 			<tr>
 				<td>
 					<label for="dest_id">여행지명:</label>
@@ -67,6 +67,8 @@
 			</tr>
 		</table>
 	</form>
+	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
       <script>
 			$(function(){
 	    	   $("input[type='file']").change(function(event){

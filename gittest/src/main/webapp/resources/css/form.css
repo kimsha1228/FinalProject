@@ -161,6 +161,48 @@
     margin: 5px 0px 0px 8px;
 }
 
+#insertAct{
+    width:1000px;
+    height:98%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#selectAllAct{
+    width:1000px;
+    height:98%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#activitytable{
+    width:1000px;
+    height:98%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#insertRoute{
+    width:1000px;
+    height:98%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#selectAllRoute{
+    width:1000px;
+    height:98%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#routetable{
+    width:1000px;
+    height:98%;
+    margin: 50px auto;
+    text-align: center;
+}
+
 #mypage, #myinfo {
     width:1000px;
     height:98%;

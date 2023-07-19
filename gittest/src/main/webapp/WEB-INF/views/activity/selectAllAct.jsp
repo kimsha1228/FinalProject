@@ -16,6 +16,7 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
+	<div id="selectAllAct">
 	<h1>상품목록</h1>
 	
 	<label for="searchWord">상품 이름</label>
@@ -23,7 +24,7 @@
 	<input type="text" name="searchWord" id="searchWord">
 	<button class="myButton" onclick="searchList()" >검색</button>
 
-	<table id="activityList">
+	<table id="activityTable">
 	<thead>
 		<tr>
 			<th>id</th>
@@ -48,5 +49,7 @@
 		</tr>
 	</tfoot>
 	</table>
+	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
