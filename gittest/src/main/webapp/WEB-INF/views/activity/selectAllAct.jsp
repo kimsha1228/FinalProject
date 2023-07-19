@@ -34,7 +34,7 @@
 <section style="display: flex;
     			flex-direction: column;
 			    align-items: center;">
-	<h1>상품목록</h1>
+	<h5 style="font-weight:bold; margin-top:30px; margin-bottom:30px">상품목록</h5>
 	
 	<p style="text-align: right;margin: 10px 10px 0px 0px;">상품 이름 <input class="search" type="search" data-column="2"><button type="button" class="reset">검색 초기화</button></p>
 

@@ -15,7 +15,7 @@
 <script type="text/javascript" src="resources/js/route/tablesorter/jquery.tablesorter.min.js"></script>
 <script src="https://mottie.github.io/tablesorter/js/jquery.tablesorter.widgets.js"></script>
 <script src="https://mottie.github.io/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
-<title>상품목록</title>
+<title>루트목록</title>
 <script>
 	const user_id = '${user.user_id}';
 </script>
@@ -34,7 +34,7 @@
 <section style="display: flex;
     			flex-direction: column;
 			    align-items: center;">
-	<h1>루트목록</h1>
+	<h5 style="font-weight:bold; margin-top:30px; margin-bottom:30px">루트목록</h5>
 	
 	<p style="text-align: right;margin: 10px 10px 0px 0px;">루트 이름 <input class="search" type="search" data-column="1"><button type="button" class="reset">검색 초기화</button></p>
 

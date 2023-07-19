@@ -10,10 +10,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>회원정보</h1>
+	<jsp:include page="../admin_top.jsp"></jsp:include>
+	<div id="adminform">
+	<h3>회원정보</h3>
 
-	<table border="1">
+	<table id="adminlisttable">
 		<thead>
 			<tr>
 				<th>회원번호</th>
@@ -23,7 +24,7 @@
 				<th>영문이름</th>
 				<th>전화번호</th>
 				<th>이메일</th>
-				<td>포인트</td>
+				<th>포인트</th>
 				<th>프로필</th>
 			</tr>
 		</thead>
@@ -42,25 +43,27 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<th colspan="9"><a href="u_update.do?user_id=${vo2.user_id}">회원수정</a>
-					<a href="u_deleteOK.do?user_id=${vo2.user_id}">회원삭제</a></th>
+				<th colspan="9"><a href="u_update.do?user_id=${vo2.user_id}" class="myButton">회원수정</a>
+					<a href="u_deleteOK.do?user_id=${vo2.user_id}" class="myButton">회원삭제</a></th>
 			</tr>
 		</tfoot>
 	</table>
 	<c:if test="${vo2.type==3}">
 	<form action="pointPlus.do">
-		<table>
+		<table style="margin-top:30px; margin-left:60px">
 			<tr>
-				<td>포인트</td>
+				<th>포인트</th>
 				<td>
 					<input type="hidden" name="user_id" value="${vo2.user_id}">
-					<input type="text" name="history" value="" placeholder="적립내역">
-					<input type="number" name="point" value="" placeholder="포인트">
-					<input type="submit" value="완료">
+					<input type="text" name="history" value="" placeholder="적립내역" style="width:70px">
+					<input type="number" name="point" value="" placeholder="포인트" style="width:70px">
+					<input type="submit" value="적립" class="myButton">
 				</td>
 			</tr>
 		</table>
 	</form>
 	</c:if>
+	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

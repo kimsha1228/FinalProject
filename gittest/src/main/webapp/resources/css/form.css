@@ -549,6 +549,39 @@
     text-align: left;
 }
 
+#adminform {
+    width:1000px;
+    height:98%;
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#adminlisttable {
+    width:900px;
+    margin: 50px auto;
+    border: 1px solid gray;
+    border-collapse: collapse;
+    overflow: hidden;
+    text-align: center;
+}
+#adminlisttable th {
+    border-bottom: 2px solid gray;
+}
+#adminlisttable td {
+    border-bottom: 1px solid lightgray;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

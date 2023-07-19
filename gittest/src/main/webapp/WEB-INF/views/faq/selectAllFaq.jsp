@@ -81,7 +81,7 @@
 				<option value="title">제목</option>
 				<option value="content">내용</option>
 			</select>
-			<input type="text" name="searchWord" id="searchWord" value="" placeholder="제목 또는 내용을 입력하세요">
+			<input type="text" name="searchWord" id="searchWord" value="" placeholder="제목 또는 내용을 입력하세요" size="40">
 			<input type="submit" value="검색" class="myButton">
 		</form>
 	</div>
@@ -89,8 +89,8 @@
 	<table id="faqtable1">
 		<thead>
 			<tr>
-				<th style="width:500px">제목</th>
-				<th style="width:100px">작성시간</th>
+				<th style="width:500px; border-bottom:2px solid gray">제목</th>
+				<th style="width:100px; border-bottom:2px solid gray">작성일자</th>
 			</tr>
 		</thead>
 		<tbody>
