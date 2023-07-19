@@ -67,7 +67,7 @@
                     <input style="border-color: blue;"type="file" name="file" multiple>
                 </td>
             </tr>
-            <!-- Display uploaded images -->
+            <!-- 이미지 업로드 -->
             <tr id="uploadedImages">
 		           	<td>
 			            <c:forEach var="vo" items="${uploadedImages}">
