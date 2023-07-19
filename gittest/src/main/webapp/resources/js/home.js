@@ -72,7 +72,16 @@ $(function(){
 			console.log('xhr.status:',xhr.status);
 	 	}
 	});//end ajax
-		
+	
+	//엔터키만 눌러도 submit이 작동함
+    $('#searchWord').on('keydown', function(e) {
+        var keyCode = e.which;
+
+        if (keyCode === 13) { // Enter Key
+        	searchAct();
+        }
+    });
+	
 });
 //end onload
 
