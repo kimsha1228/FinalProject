@@ -46,22 +46,39 @@
                     </c:forEach>
                 </td>
             </tr>
+
             <tr>
-                <td><input type="file" name="file" multiple></td>
+                <td>
+                    <input type="file" name="file" multiple>
+                </td>
             </tr>
         </table>
         <input type="submit" value="Submit">
     </form>
+
     <script>
-            $(function(){
-               $("input[type='file']").change(function(event){
-                  var $fileUpload = $("input[type='file']");
-                  if (parseInt($fileUpload.get(0).files.length) > 5){ //5개이상이면
-                     $fileUpload.val('');// 파일선택을 초기화
-                     alert("이미지는 최대 5장까지만 삽입 가능합니다.");
-                  }
-               });
+        $(function(){
+            $("input[type='file']").change(function(event){
+                var $fileUpload = $("input[type='file']");
+                var files = event.target.files;
+                var $uploadedImages = $("#uploadedImages");
+
+                $uploadedImages.empty();
+
+                if (files.length > 5){
+                    $fileUpload.val('');
+                    alert("이미지는 최대 5장까지만 삽입 가능합니다.");
+                } else {
+                    for (var i = 0; i < files.length; i++) {
+                        var reader = new FileReader();
+                        reader.onload = function(e){
+                            $uploadedImages.append('<img width="100px" src="' + e.target.result + '">');
+                        };
+                        reader.readAsDataURL(files[i]);
+                    }
+                }
             });
-      </script>
+        });
+    </script>
 </body>
 </html>
