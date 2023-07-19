@@ -44,7 +44,7 @@ public class ImageDAOimpl implements ImageDAO {
 
 	@Override
 	public List<ImageVO> selectAll(ImageVO vo) {
-		log.info("select image for com_id:{} or act_id:{}",vo.getComment_id(),vo.getAct_id());
+		log.info("selectAll...{}",vo);
 		
 		//comment_id가 0이 아니면 상품사진선택이고 아니면 후기사진 선택임
 		if(vo.getComment_id()==0) {
