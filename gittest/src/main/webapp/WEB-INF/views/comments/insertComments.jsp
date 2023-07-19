@@ -22,7 +22,9 @@
                 <td><label for="act_id">상품번호:</label></td>
                 <td><input type="text" id="act_id" name="act_id" value="${param.act_id}" required></td>
             </tr>
-            <tr>
+
+
+			<tr>
                 <td><label for="content">내용:</label></td>
                 <td><textarea id="content" name="content" rows="5" cols="50" required></textarea></td>
             </tr>
@@ -47,23 +49,39 @@
                     </c:forEach>
                 </td>
             </tr>
+
             <tr>
-                <td><input type="file" name="file" multiple></td>
+                <td>
+                    <input type="file" name="file" multiple>
+                </td>
             </tr>
         </table>
-        <input type="submit" value="Submit">
+        <input type="submit" value="제출">
     </form>
     <jsp:include page="../footer.jsp"></jsp:include>
     <script>
-            $(function(){
-               $("input[type='file']").change(function(event){
-                  var $fileUpload = $("input[type='file']");
-                  if (parseInt($fileUpload.get(0).files.length) > 5){ //5개이상이면
-                     $fileUpload.val('');// 파일선택을 초기화
-                     alert("이미지는 최대 5장까지만 삽입 가능합니다.");
-                  }
-               });
+        $(function(){
+            $("input[type='file']").change(function(event){
+                var $fileUpload = $("input[type='file']");
+                var files = event.target.files;
+                var $uploadedImages = $("#uploadedImages");
+
+                $uploadedImages.empty();
+
+                if (files.length > 5){
+                    $fileUpload.val('');
+                    alert("이미지는 최대 5장까지만 삽입 가능합니다.");
+                } else {
+                    for (var i = 0; i < files.length; i++) {
+                        var reader = new FileReader();
+                        reader.onload = function(e){
+                            $uploadedImages.append('<img width="100px" src="' + e.target.result + '">');
+                        };
+                        reader.readAsDataURL(files[i]);
+                    }
+                }
             });
-      </script>
+        });
+    </script>
 </body>
 </html>
