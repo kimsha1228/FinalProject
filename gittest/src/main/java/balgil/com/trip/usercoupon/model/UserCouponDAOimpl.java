@@ -21,7 +21,7 @@ public class UserCouponDAOimpl implements UserCouponDAO {
 
 	@Override
 	public List<UserCouponVO> selectAll(UserCouponVO vo) {
-		log.info("selectOne()...{}", vo);
+		log.info("selectAll()...{}", vo);
 
 		List<UserCouponVO> vos = sqlSession.selectList("USERCOUPON_SELECTALL", vo);
 
@@ -52,6 +52,15 @@ public class UserCouponDAOimpl implements UserCouponDAO {
 	@Override
 	public int insert(UserCouponVO vo) {
 		return sqlSession.insert("USERCOUPON_INSERT", vo);
+	}
+
+	@Override
+	public UserCouponVO selectUsed(UserCouponVO vo) {
+		log.info("selectOne()...{}", vo);
+
+		UserCouponVO vo3 = sqlSession.selectOne("USERCOUPON_IF_USED", vo);
+
+		return vo3;
 	}
 
 }

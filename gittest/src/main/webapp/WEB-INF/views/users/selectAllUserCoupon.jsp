@@ -9,6 +9,39 @@
 <title>selectAll</title>
 <jsp:include page="../css.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+	function insertUserCoupon(){
+		console.log("insertUserCoupon....",$('#user_id').val(), $('#couponcode').val());
+		
+		$.ajax({
+			url : "userCoupon_insertOK.do",
+			data:{
+				user_id:$('#user_id').val(),
+				couponcode:$('#couponcode').val()
+			},
+			method:'GET',
+			dataType:'json',
+			success : function(obj) {
+				console.log('ajax...success:', obj);
+				console.log('ajax...success:', obj.result);
+				let msg = '';
+				if(obj.result==='OK'){
+					alert("쿠폰이 등록되었습니다!");
+					location.href='selectAllUserCoupon.do?user_id=${user.user_id}';
+				}else{
+					alert("유효하지 않은 쿠폰입니다.");
+				}
+			},
+			error:function(xhr,status,error){
+				console.log('xhr.status:', xhr.status);
+			}
+		});//end $.ajax()...
+		
+	}//end insertUserCoupon()...
+
+
+</script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -18,9 +51,9 @@
 	<table id="usercoupontable1">
 		<tr>
 <!-- 			<th>쿠폰코드</th> -->
-			<td><input type="hidden" name="user_id" value="${user.user_id}">
-				<input type="text" name="couponcode" value="" placeholder="coupooncode" size="30"></td>
-	      	<td><input type="submit" value="쿠폰등록" class="myButton"></td>
+			<td><input type="hidden" name="user_id" id="user_id" value="${user.user_id}">
+				<input type="text" name="couponcode" id="couponcode" value="" placeholder="coupooncode" size="30"></td>
+	      	<td><button type="button" onclick="insertUserCoupon()" class="myButton">쿠폰등록</button></td>
 		</tr>
 	</table>	
 	</form>
