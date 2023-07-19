@@ -185,11 +185,11 @@ public class CommentsController {
 	        if (vo.getFile().get(0).getSize() == 0) {
 	            log.info("파일이 비어있어서 null");
 	            // 이미지를 서버에 저장
-	            ImageVO imageVO = new ImageVO();
-	            imageVO.setName(null);
-	            imageVO.setComment_id(vo2.getId());
+//	            ImageVO imageVO = new ImageVO();
+//	            imageVO.setName("");
+//	            imageVO.setComment_id(vo2.getId());
 
-	            imgService.insert(imageVO);
+//	            imgService.insert(imageVO);
 	        } else {
 	            // 파일의 갯수만큼 반복!
 	            for (MultipartFile vos : vo.getFile()) {

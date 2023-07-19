@@ -41,7 +41,8 @@
     <c:if test="${vos.size()!=0}"></c:if>
     <tr>
         <!-- <td>후기 이미지:</td> -->
-        <td colspan="5">
+        <th>후기 사진</th>
+        <td colspan="4">
             <c:forEach var="img" items="${vos}">
                 <img width="100px" height="100px" src="resources/uploadimg/${img.name}" width="200px" alt="이미지">
             </c:forEach>
