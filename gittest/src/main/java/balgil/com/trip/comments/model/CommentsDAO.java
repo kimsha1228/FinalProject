@@ -28,4 +28,6 @@ public interface CommentsDAO {
 
 	int updateLikes(CommentsVO vo);
 
+	CommentsVO selectCommentOne(CommentsVO vo);
+
 }

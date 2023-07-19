@@ -13,6 +13,7 @@
 	console.log("현재 로그인 되어있는 아이디:", user_id);
 </script>
 <script type="text/javascript" src="resources/js/activity/updateAct.js?ver=4"></script>
+<jsp:include page="../css.jsp"></jsp:include>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -21,7 +22,7 @@
 	</span>
 	<form action="updateActOk.do" method="POST"
 		enctype="multipart/form-data">
-		<table>
+		<table id="activityList">
 			<tr>
 				<td><label for="dest_id">여행지명:</label></td>
 				<td><select id="dest_id" name="dest_id">

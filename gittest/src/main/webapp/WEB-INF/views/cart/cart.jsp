@@ -11,18 +11,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1>장바구니</h1>
+<jsp:include page="../top_menu.jsp"></jsp:include>
 		
-
+<div id="cartform">
+	<h3>장바구니</h3>
 	<c:if test="${not empty cartList}">
-		<div class="all_check_input_div">
+		<div class="all_check_input_div" id="selectform">
 			<input type="checkbox" class="allSelectedActivity" checked="checked"><span>전체선택</span>
 		</div>
 		<table>
 			<tbody>
 				<c:forEach items="${cartList}" var="cart">
-						<table style="margin-top: 10px">
+						<table id="carttable">
 							<tr>
 								<td class="cart_one_info">
 									<input type="checkbox" name="selectedActivity" class="selectedActivity" checked="checked">
@@ -42,40 +42,47 @@
 								</td>
 							</tr>
 							<tr>
-								<th>상품명</th>
-								<td>
-									<a href="selectOneUserAct.do?id=${cart.act_id}">${cart.act_name}</a>
-									<img src="resources/uploadimg/thumb_${cart.img_name }"/>
+								<td rowspan="2">
+									<table id="carttable1">
+										<tr>
+											<td><img width=50px height=50px src="resources/uploadimg/thumb_${cart.img_name}"/></td>
+										</tr>
+										<tr>
+											<td>
+												<button class="minus_btn">-</button>
+												<input type="text" value="${cart.quantity}" class="quantity_input" size="1">	
+												<button class="plus_btn">+</button>
+												<button class="quantity_modify_btn" data-id="${cart.id}" data-user_id="${user.user_id}">변경</button>
+											</td>
+										</tr>
+									</table>
 								</td>
 							</tr>
 							<tr>
-								<th>예약예정일</th>
-								<td><fmt:parseDate value="${cart.res_date}" var="res_date" pattern="yyyy-MM-dd"/>
-									<fmt:formatDate value="${res_date}" pattern="yyyy년 MM월 dd일"/></td>
-							</tr>
-							<tr>
-								<th>수량</th>
 								<td>
-									<input type="number" value="${cart.quantity}" class="quantity_input">	
-									<button class="plus_btn">+</button>
-									<button class="minus_btn">-</button>
-									<button class="quantity_modify_btn" data-id="${cart.id}" data-user_id="${user.user_id}">변경</button>
+								<table id="carttable2">
+									<tr>
+										<td>
+										<a href="selectOneUserAct.do?id=${cart.act_id}">${cart.act_name}</a>
+										</td>
+									</tr>
+									<tr>
+										<td><fmt:parseDate value="${cart.res_date}" var="res_date" pattern="yyyy-MM-dd"/>
+										<fmt:formatDate value="${res_date}" pattern="yyyy년 MM월 dd일"/>
+										</td>
+									</tr>	
+									<tr>
+										<td><fmt:formatNumber value="${cart.price*cart.quantity}" pattern="#,### 원" /></td>
+									</tr>
+								</table>
 								</td>
-							</tr>
-							<tr>
-								<th>가격</th>
-								<td><fmt:formatNumber value="${cart.price}" pattern="#,### 원" /></td>
-							</tr>
-							<tr>
-								<th>총 금액</th>
-								<td><fmt:formatNumber value="${cart.price*cart.quantity}" pattern="#,### 원" /></td>
 							</tr>
 						</table>
 				</c:forEach>
 			</tbody>
 		</table>
 		<hr>
-		<table style="margin-top:20px">
+		<table style="margin:20px 0px 0px 670px">
 			<tr>
 				<td><strong>총 상품 가격</strong></td>
 				<td>
@@ -83,9 +90,6 @@
 				</td>
 			</tr>
 		</table>
-<!-- 		<div class="order_btn_section"> -->
-<!-- 			<a class="order_many_btn">주문하기</a> -->
-<!-- 		</div> -->
 		
 		<!-- 수량 조정 form -->
 		<form action="updateOneCart.do" method="get" class="quantity_update_form">
@@ -118,15 +122,16 @@
 	</c:if>
 
 	<c:if test="${empty cartList}">
-		<table>
+		<table id="emptycart">
 			<tr>
 				<td>장바구니에 담긴 상품이 없습니다</td>
 			</tr>
 			<tr>
-				<td><a href="home.do">예약하러 가기</a></td>
+				<td><a href="home.do" id="homebtn" class="myButton">상품 보러가기</a></td>
 			</tr>
 		</table>
 	</c:if>
+	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 	<script>
 	

@@ -94,8 +94,17 @@
 		select * from ACTIVITY where seller_id = #{seller_id} and ${searchKey} like #{searchWord}
 	</select>
 	
-	<select id="ACT_SEARCH_LIST_USER" resultType="balgil.com.trip.activity.model.ActivityVO">
-		select * from ACTIVITY where ${searchKey} like #{searchWord}
+	<select id="ACT_SEARCH_LIST_USER" 
+	resultMap="ActivityVOResultMap"
+	resultType="balgil.com.trip.activity.model.ActivityVO">
+		<![CDATA[
+		    SELECT DISTINCT
+		      a.*,
+		      i.name
+		    FROM activity a
+		    INNER JOIN image i ON a.id = i.act_id
+		    WHERE ${searchKey} like #{searchWord}
+		]]>
 	</select>
 	
 	<insert id="ACT_INSERT" parameterType="balgil.com.trip.activity.model.ActivityVO">
