@@ -183,10 +183,10 @@ public class CommentsController {
 
 	        // 파일이 없으면 default.png를 대신 image테이블에 넣을 예정
 	        if (vo.getFile().get(0).getSize() == 0) {
-	            log.info("파일이 비어있어서 default.png 삽입");
+	            log.info("파일이 비어있어서 null");
 	            // 이미지를 서버에 저장
 	            ImageVO imageVO = new ImageVO();
-	            imageVO.setName("default.png");
+	            imageVO.setName(null);
 	            imageVO.setComment_id(vo2.getId());
 
 	            imgService.insert(imageVO);

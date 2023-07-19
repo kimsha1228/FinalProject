@@ -61,21 +61,22 @@
                         <option value="5">5</option>
                 </select></td>
             </tr>
-            <tr>
-            	<td>후기 사진</td>
-                <td>
-                    <input style="border-color: blue;"type="file" name="file" multiple>
-                </td>
-            </tr>
-            <!-- 이미지 업로드 -->
-            <tr id="uploadedImages">
-		           	<td>
-			            <c:forEach var="vo" items="${uploadedImages}">
-		     	    		<img width="100px" height="100px" src="resources/uploadimg/${vo.name}">
-			            </c:forEach>
-		           	</td>
-            </tr>
-        </table>
+				<tr>
+					<td>후기 사진</td>
+					<td><input style="border-color: blue;" type="file" name="file"
+						multiple></td>
+				</tr>
+				<!-- 이미지 업로드 -->
+				<tr id="uploadedImages">
+					<td><c:if test="${not empty uploadedImages}">
+							<c:forEach var="vo" items="${uploadedImages}">
+								<img width="100px" height="100px"
+									src="resources/uploadimg/${vo.name}">
+							</c:forEach>
+						</c:if></td>
+				</tr>
+
+			</table>
         <input type="submit" value="제출" class="myButton">
     </form>
     </div>
