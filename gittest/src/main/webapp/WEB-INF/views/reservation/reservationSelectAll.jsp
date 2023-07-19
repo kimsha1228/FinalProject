@@ -50,8 +50,8 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<a href="selectOneReservation.do?id=${vo.id}&user_id=${user.user_id}">예약상세</a>
-						<a href="cancelReservation.do?id=${vo.id}&user_id=${user.user_id}">예약 취소</a>
+						<a href="selectOneReservation.do?id=${vo.id}&user_id=${user.user_id}" class="myButton" style="margin:0px 0px 0px -2px">예약상세</a>
+<%-- 						<a href="cancelReservation.do?id=${vo.id}&user_id=${user.user_id}" class="myButton" style="margin:0px 0px 0px -2px">예약 취소</a> --%>
 					</td>
 				</tr>
 			</table>
@@ -84,7 +84,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<a href="selectOneExpiredReservation.do?id=${vo3.id}&user_id=${user.user_id}">예약상세</a>
+						<a href="selectOneExpiredReservation.do?id=${vo3.id}&user_id=${user.user_id}" class="myButton" style="margin:0px 0px 0px -2px">예약상세</a>
 					</td>
 				</tr>
 				</table>
@@ -96,7 +96,7 @@
 				<td>사용한 상품이 없습니다</td>
 			</tr>
 			<tr>
-				<td><a href="selectAllReservation.do?user_id=${user.user_id}" class="myButton">예약내역 보기</a></td>
+				<td><a href="selectAllReservation.do?user_id=${user.user_id}" class="myButton" class="myButton">예약내역 보기</a></td>
 			</tr>
 			</table>
 		</c:if>
@@ -117,7 +117,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<a href="selectOneCancelReservation.do?id=${vo2.id}&user_id=${user.user_id}">취소상세</a>
+						<a href="selectOneCancelReservation.do?id=${vo2.id}&user_id=${user.user_id}" class="myButton" style="margin:0px 0px 0px -2px">취소상세</a>
 					</td>
 				</tr>
 				</table>

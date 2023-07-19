@@ -81,7 +81,7 @@ function paymentSelectOne(){
 				<td>${vo1.id}</td>
 			</tr>
 			<tr>
-				<td>상품명</td>
+				<td style="width:100px">상품명</td>
 				<td><a href="selectOneAct.do?id=${vo1.act_id}">${vo1.act_name}</a></td>
 			</tr>
 			<tr>
