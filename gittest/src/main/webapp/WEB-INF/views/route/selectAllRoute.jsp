@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상품목록</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
@@ -16,10 +15,19 @@
 <script type="text/javascript" src="resources/js/route/tablesorter/jquery.tablesorter.min.js"></script>
 <script src="https://mottie.github.io/tablesorter/js/jquery.tablesorter.widgets.js"></script>
 <script src="https://mottie.github.io/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
+<title>상품목록</title>
 <script>
 	const user_id = '${user.user_id}';
 </script>
 <script type="text/javascript" src="resources/js/route/selectAllRoute.js?ver=1"></script>
+<style>
+	section a{
+	  color: red;
+	}
+	section a:visited { color: red; }
+	section a:hover { color: red; }
+	section a:active { color: red; }
+</style>
 </head>
 <body>
 <jsp:include page="../top_menu.jsp"></jsp:include>
@@ -33,11 +41,11 @@
 	<table id="routeList">
 	<thead>
 		<tr>
-			<th>id</th>
-			<th>route_name</th>
-			<th>summary</th>
-			<th>routes</th>
-			<th>seller_id</th>
+			<th>루트번호</th>
+			<th>루트이름</th>
+			<th>요약</th>
+			<th>루트상세</th>
+			<th>판매자아이디</th>
 		</tr>
 	</thead>
 	<tbody id="vos">

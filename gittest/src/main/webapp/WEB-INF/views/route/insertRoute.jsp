@@ -13,8 +13,7 @@
 <link rel="stylesheet" href="resources/css/home.css?ver=1">
 <link rel="stylesheet" href="resources/css/cardAndStar.css">
 <link rel="stylesheet" href="resources/css/multi-select2.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/route/multi-select2.js?ver=1"></script>
 <script>
 	const user_id = '${user.user_id}';
@@ -73,6 +72,9 @@
 </section>
 
 <jsp:include page="../footer.jsp"></jsp:include>
-
+<!-- BootStrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" ></script>
+<script src="https://kit.fontawesome.com/0007d685f8.js" crossorigin="anonymous"></script>
 </body>
 </html>

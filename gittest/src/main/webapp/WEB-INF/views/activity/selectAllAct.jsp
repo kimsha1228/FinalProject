@@ -20,6 +20,14 @@
 <script>
 	const user_id = '${user.user_id}';
 </script>
+<style>
+	section a{
+	  color: red;
+	}
+	section a:visited { color: red; }
+	section a:hover { color: red; }
+	section a:active { color: red; }
+</style>
 </head>
 <body>
 <jsp:include page="../top_menu.jsp"></jsp:include>
@@ -33,16 +41,16 @@
 	<table id="activityList">
 	<thead>
 		<tr>
-			<th>id</th>
-			<th>act_name</th>
-			<th>content</th>
-			<th>rate</th>
-			<th>vcount</th>
-			<th>tag</th>
-			<th>add</th>
-			<th>price</th>
-			<th>act_date</th>
-			<th>seller_id</th>
+			<th>번호</th>
+			<th>상품이름</th>
+			<th>내용</th>
+			<th>평점</th>
+			<th>조회수</th>
+			<th>태그</th>
+			<th>주소</th>
+			<th>가격</th>
+			<th>등록일</th>
+			<th>판매자</th>
 			<th>dest_id</th>
 		</tr>
 	</thead>
