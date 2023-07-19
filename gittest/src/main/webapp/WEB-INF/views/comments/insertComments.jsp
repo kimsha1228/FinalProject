@@ -21,7 +21,9 @@
                 <td><label for="act_id">상품번호:</label></td>
                 <td><input type="text" id="act_id" name="act_id" value="${param.act_id}" required></td>
             </tr>
-            <tr>
+
+
+			<tr>
                 <td><label for="content">내용:</label></td>
                 <td><textarea id="content" name="content" rows="5" cols="50" required></textarea></td>
             </tr>
@@ -53,7 +55,7 @@
                 </td>
             </tr>
         </table>
-        <input type="submit" value="Submit">
+        <input type="submit" value="제출">
     </form>
 
     <script>
