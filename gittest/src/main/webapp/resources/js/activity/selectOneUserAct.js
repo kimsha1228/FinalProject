@@ -141,6 +141,27 @@ $(function(){
 	var timeOff = new Date().getTimezoneOffset()*60000; //분단위를 밀리초로 변환
 	var today = new Date(now_utc-timeOff).toISOString().split("T")[0]; //오늘 날짜를 구함
 	document.getElementById("datePicker").setAttribute("min", today); //date의 min 속성을 이용해 오늘 이전은 선택 불가능하게 설정
+
+
+	//바로구매 로그인 체크
+	$('.btn-primary[type="submit"]').click(function(event) {
+	  if (!isLoggedIn()) {
+	    event.preventDefault(); //폼 제출이벤트를 취소
+		$('#staticBackdrop').modal('show');
+	  }
+	});
+	
+	//문의하기 로그인체크
+	$('.loginCheckContact').click(function(event) {
+	  if (!isLoggedIn()) {
+		$('#staticBackdrop').modal('show');
+		return false;
+	  }else{
+	  	const act_id = $(this).data('act_id');
+    	const seller_id = $(this).data('seller_id');
+    	window.location.href = `insertContact.do?act_id=${act_id}&seller_id=${seller_id}`;
+	  }
+	});
 });
 //end onload
 
@@ -166,6 +187,8 @@ function addWish(user_id,act_id){
 	let param_user_id=user_id;
 	let param_act_id=act_id;
 	console.log("insertWishListOk로 넘겨줄 파라미터",param_user_id,param_act_id);
+	
+	if(isLoggedIn()){
 	$.ajax({
 		url : "insertWishListOK.do",
 		data:{
@@ -188,6 +211,9 @@ function addWish(user_id,act_id){
 			console.log('xhr.status:', xhr.status);
 		}
 	});//end $.ajax()...
+	}else{
+		$('#staticBackdrop').modal('show');
+	}
 }
 
 function incrementQuantity() {
@@ -208,27 +234,31 @@ function insertOneCart(e) {
 	var form = document.getElementById("Reservation");
 	var formData = new FormData(form);
 	
-	//ajax로 폼을 보냄
-	$.ajax({
-	  url: "insertOneCart.do",
-	  data: formData,
-	  dataType: 'json',
-	  method: 'POST',
-	  processData: false,
-	  contentType: false,
-	  success: function(response) {
-	    console.log(response);
-	    if(response.result=='OK'){
-	    	alert("장바구니에 추가했습니다");
-	    }else{
-	    	alert("장바구니 넣는데 실패했습니다");
-	    }
-	  },
-	  error: function(xhr, status, error) {
-	    console.log('xhr.status:', xhr.status);
-	    alert("장바구니 넣는데 실패했습니다");
-	  }
-	});
+	if(isLoggedIn()){
+		//ajax로 폼을 보냄
+		$.ajax({
+		  url: "insertOneCart.do",
+		  data: formData,
+		  dataType: 'json',
+		  method: 'POST',
+		  processData: false,
+		  contentType: false,
+		  success: function(response) {
+		    console.log(response);
+		    if(response.result=='OK'){
+		    	alert("장바구니에 추가했습니다");
+		    }else{
+		    	alert("장바구니 넣는데 실패했습니다");
+		    }
+		  },
+		  error: function(xhr, status, error) {
+		    console.log('xhr.status:', xhr.status);
+		    alert("장바구니 넣는데 실패했습니다");
+		  }
+		});//end Ajax
+	}else{
+		$('#staticBackdrop').modal('show');
+	}
 
 }
 
@@ -244,4 +274,12 @@ $.fn.stars = function() {
         // Replace the numerical value with stars
         $(this).html($span);
     });
+}
+
+// 참조한 사이트:
+//	https://stackoverflow.com/questions/11404711/how-can-i-trigger-a-bootstrap-modal-programmatically
+//	https://getbootstrap.com/docs/4.6/components/modal/
+// 로그인되어있으면 true를 리턴
+function isLoggedIn() {
+	return user_id===''?false:true;
 }

@@ -5,19 +5,26 @@
 <head>
 <meta charset="UTF-8">
 <title>루트 수정</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
+<link rel="stylesheet" href="resources/css/tablesorter/theme.default.min.css?ver=2">
+<jsp:include page="../css.jsp"></jsp:include>
+<link rel="stylesheet" href="resources/css/home.css?ver=1">
+<link rel="stylesheet" href="resources/css/cardAndStar.css">
 <link rel="stylesheet" href="resources/css/multi-select2.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/route/multi-select2.js"></script>
 <script>
-	let user_id = '${user.user_id}';
-	let dest_id = ${vo2.dest_id};
-	console.log("현재 로그인 되어있는 아이디:",user_id);
+	const user_id = '${user.user_id}';
+	const dest_id = ${vo2.dest_id};
 </script>
 <script type="text/javascript" src="resources/js/route/updateRoute.js?ver=2"></script>
 <jsp:include page="../css.jsp"></jsp:include>
 </head>
 <body>
+<section style="display: flex;
+    			flex-direction: column;
+			    align-items: center;">
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h1>루트 수정</h1>
 
@@ -57,4 +64,9 @@
 		</table>
 	</form>
 </body>
+<jsp:include page="../footer.jsp"></jsp:include>
+<!-- BootStrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" ></script>
+<script src="https://kit.fontawesome.com/0007d685f8.js" crossorigin="anonymous"></script>
 </html>

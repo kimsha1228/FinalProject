@@ -36,31 +36,10 @@
 		<![CDATA[
 		  SELECT *
 		  FROM (
-		    SELECT DISTINCT
-		      a.id,
-		      a.act_name,
-		      a.rate,
-		      a.vcount,
-		      a.price,
-		      i.name
-		    FROM activity a
-		    INNER JOIN image i ON a.id = i.act_id
-		    WHERE i.name LIKE '%1.jpg'
+		    SELECT *
+		    FROM activity
 		    ORDER BY vcount DESC
 		  ) WHERE ROWNUM <= 10
-		]]>
-	</select>
-	
-	<select id="ACT_SELECT_ALL_IMG" 
-	resultMap="ActivityVOResultMap"
-	resultType="balgil.com.trip.activity.model.ActivityVO">
-		<![CDATA[
-		    SELECT DISTINCT
-		      a.*,
-		      i.name
-		    FROM activity a
-		    INNER JOIN image i ON a.id = i.act_id
-		    WHERE i.name LIKE '%1.jpg'
 		]]>
 	</select>
 	
@@ -68,12 +47,9 @@
 	resultMap="ActivityVOResultMap"
 	resultType="balgil.com.trip.activity.model.ActivityVO">
 		<![CDATA[
-		    SELECT DISTINCT
-		      a.*,
-		      i.name
-		    FROM activity a
-		    INNER JOIN image i ON a.id = i.act_id
-		    WHERE i.name LIKE '%1.jpg' and tag = '추천'
+		    SELECT *
+		    FROM activity
+		    WHERE tag = '추천'
 		]]>
 	</select>
 	
@@ -98,24 +74,24 @@
 	resultMap="ActivityVOResultMap"
 	resultType="balgil.com.trip.activity.model.ActivityVO">
 		<![CDATA[
-		    SELECT DISTINCT
-		      a.*,
-		      i.name
-		    FROM activity a
-		    INNER JOIN image i ON a.id = i.act_id
+		    SELECT *
+		    FROM activity 
 		    WHERE ${searchKey} like #{searchWord}
 		]]>
 	</select>
 	
 	<insert id="ACT_INSERT" parameterType="balgil.com.trip.activity.model.ActivityVO">
-		INSERT INTO ACTIVITY ("ID", "ACT_NAME", "CONTENT", "RATE", "VCOUNT", "TAG", "ADD", "PRICE", "SELLER_ID", "DEST_ID")
-		VALUES (SEQ_ACTIVITY.nextval, #{act_name}, #{content}, 0, 0, #{tag}, #{add}, #{price}, #{seller_id}, #{dest_id})
+		INSERT INTO ACTIVITY ("ID", "ACT_NAME", "CONTENT", "RATE", "VCOUNT", "TAG", "ADD", "PRICE", "SELLER_ID", "DEST_ID","ENG_NAME")
+		VALUES (SEQ_ACTIVITY.nextval, #{act_name}, #{content}, 0, 0, #{tag}, #{add}, #{price}, #{seller_id}, #{dest_id}, #{eng_name})
 	</insert>
 	
 	<update id="ACT_UPDATE" parameterType="balgil.com.trip.activity.model.ActivityVO">
 		update ACTIVITY set ACT_NAME=#{act_name} , CONTENT=#{content} , 
 				TAG=#{tag} , "ADD"=#{add}, DEST_ID=#{dest_id},
 				PRICE=#{price}, ACT_DATE=SYSDATE
+				<if test="eng_name!=null">
+					, ENG_NAME=#{eng_name}
+				</if>
 		where ID = #{id}
 	</update>
 	

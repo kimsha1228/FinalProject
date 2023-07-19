@@ -5,13 +5,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
+<link rel="stylesheet" href="resources/css/tablesorter/theme.default.min.css?ver=2">
+<jsp:include page="../css.jsp"></jsp:include>
+<link rel="stylesheet" href="resources/css/home.css?ver=1">
+<link rel="stylesheet" href="resources/css/cardAndStar.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <title>상품 작성</title>
 <jsp:include page="../css.jsp"></jsp:include>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
+<section style="display: flex;
+    			flex-direction: column;
+			    align-items: center;">
 	<h1>상품 작성</h1>
 
 	<form action="insertActOk.do" method="post" enctype="multipart/form-data">
@@ -67,7 +76,9 @@
 			</tr>
 		</table>
 	</form>
-      <script>
+</section>
+<jsp:include page="../footer.jsp"></jsp:include>
+<script>
 			$(function(){
 	    	   $("input[type='file']").change(function(event){
 	    	      var $fileUpload = $("input[type='file']");
@@ -77,6 +88,6 @@
 	    	      }
 	    	   });
 			});
-      </script>
+</script>
 </body>
 </html>

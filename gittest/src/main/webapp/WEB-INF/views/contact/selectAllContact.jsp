@@ -9,8 +9,8 @@
 <jsp:include page="../css.jsp"></jsp:include>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/contact/selectAllcontact.js"></script>
-<jsp:include page="../css.jsp"></jsp:include>
+<script type="text/javascript"
+	src="resources/js/contact/selectAllcontact.js"></script>
 <script>
 	let user_id = '${user.user_id}';
 	console.log("현재 로그인 되어있는 아이디:", user_id);
@@ -25,32 +25,31 @@
         text-align: center;
     }
 </style>
-
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	
-	<h1>문의 내역</h1>
+	<div id="qnaform">
+	<h3>문의 내역</h3>
 	<table>
 		<thead>
 			<tr>
-				<th>번호</th>
-				<th>제목</th>
+				<td>번호</td>
+				<td style="width:350px">제목</td>
+				<td>작성자</td>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="vo" items="${vos}">
+			<c:forEach var="vo" items="${vos}" begin="0" step="1" varStatus="i">
 				<tr>
-					<td><a href="selectOneContact.do?id=${vo.id}">${vo.id}</a></td>
-					<td>${vo.title}</td>
+					<td><a href="selectOneContact.do?id=${vo.id}">${i.count}</a></td>
+					<td><a href="selectOneContact.do?id=${vo.id}">${vo.title}</a></td>
+					<td>${vo.user_id}</td>
 				</tr>
 			</c:forEach>
-
 		</tbody>
-		<tfoot>
-		</tfoot>
 	</table>
 	<br>
+	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
