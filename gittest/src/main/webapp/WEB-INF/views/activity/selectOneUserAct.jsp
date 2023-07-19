@@ -26,7 +26,7 @@
    height:360px;
  }
  .carousel > .carousel-inner > .carousel-item > img{
-    width:600px; /* Yeap you can change the width and height*/
+    width:600px;
     height:360px;
 }
 </style>
@@ -44,20 +44,8 @@
 	<h1>상품 정보</h1>
     <div id="carouselControls" class="carousel slide" data-ride="carousel">
 	  <ol class="carousel-indicators">
-<!-- 	    <li data-target="#carouselControls" data-slide-to="0" class="active"></li> -->
-<!-- 	    <li data-target="#carouselControls" data-slide-to="1"></li> -->
-<!-- 	    <li data-target="#carouselControls" data-slide-to="2"></li> -->
  	  </ol>	
 	  <div class="carousel-inner">
-<!-- 	    <div class="carousel-item active"> -->
-<!-- 	      <img src="resources/uploadimg/1-1.jpg" class="d-block w-100" alt="이미지1"> -->
-<!-- 	    </div> -->
-<!-- 	    <div class="carousel-item"> -->
-<!-- 	      <img src="resources/uploadimg/1-2.jpg" class="d-block w-100" alt="이미지2"> -->
-<!-- 	    </div> -->
-<!-- 	    <div class="carousel-item"> -->
-<!-- 	      <img src="resources/uploadimg/1-3.jpg" class="d-block w-100" alt="이미지3"> -->
-<!-- 	    </div> -->
 	  </div>
 	 <button class="carousel-control-prev" type="button" data-target="#carouselControls" data-slide="prev">
 	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -127,7 +115,7 @@
 var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
 $.fn.bootstrapBtn = bootstrapButton   
 </script>
-<script src="https://kit.fontawesome.com/0007d685f8.js" crossorigin="anonymous"></script>
 <!-- https://fontawesome.com/search 아이콘들 주소 -->
+<script src="https://kit.fontawesome.com/0007d685f8.js" crossorigin="anonymous"></script>
 </body>
 </html>

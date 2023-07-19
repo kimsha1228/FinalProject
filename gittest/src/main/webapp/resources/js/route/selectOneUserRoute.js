@@ -23,13 +23,12 @@ $(function(){
 			result=response;
 			let vo = ``;
 			
-			vo += `
-				<tr>
-					<td>${response.id}</td>
-					<td>${response.route_name}</td>
-					<td>
-			`;
+			vo += `${response.route_name} 추천루트`;
 			
+			$('.display-4').text(vo);
+			
+			vo=``;
+		 	//루트 표시용
 			response.actVos.forEach(function(e){
 			   if (e.act_name != null) 
 				 vo += `${e.act_name} → `;
@@ -37,14 +36,18 @@ $(function(){
 			
 			// 마지막 화살표 날리기
  			vo = vo.substring(0, vo.length - 3);
-			
-			vo+= `</td>
-					<td>${response.vcount}</td>
-					<td>${response.likes}</td>
-				</tr>
-			`;
-			
-			$('#vos').html(vo); //테이블 띄우기
+	 		$('.lead').text(vo);
+	 			
+	 			/*
+				vo+= `</td>
+						<td>${response.vcount}</td>
+						<td>${response.likes}</td>
+					</tr>
+				`;
+				$('#vos').html(vo); //테이블 띄우기
+			*/
+			vo=`♥: ${response.likes} <button class="myButton" onclick="likeUpRoute(${response.id})">추천하기!</button>`;
+			$('#추천수').html(vo);
 			
 			//초기화
 			vo=``;
@@ -56,7 +59,11 @@ $(function(){
 					vo += `
 						<div>
 							<a href='selectOneUserAct.do?id=${e.id}' style="text-decoration:none">${e.act_name}</a>
-							<input type="checkbox" id="act${index}" name="${index}" checked>
+							<!-- 부트스트랩 체크박스 -->
+							<span class="custom-control custom-checkbox" style="display: inline-block;">
+							  <input type="checkbox" class="custom-control-input" id="act${index}" name="${index}" checked>
+							  <label class="custom-control-label" for="act${index}"></label>
+							</span>
 							<button id="wish${index}" class="${e.id}" onclick="addWish('${user_id}',${e.id},${index})">♡</button>
 						</div>
 					`;
@@ -64,7 +71,11 @@ $(function(){
 					vo += `
 						<div>
 							<a href='selectOneUserAct.do?id=${e.id}' style="text-decoration:none">${e.act_name}</a>
-							<input type="checkbox" id="act${index}" name="${index}">
+							<!-- 부트스트랩 체크박스 -->
+							<span class="custom-control custom-checkbox" style="display: inline-block;">
+							  <input type="checkbox" class="custom-control-input" id="act${index}" name="${index}">
+							  <label class="custom-control-label" for="act${index}"></label>
+							</span>
 							<button id="wish${index}" class="${e.id}" onclick="addWish('${user_id}',${e.id},${index})">♡</button>
 						</div>
 					`;

@@ -108,8 +108,8 @@
 	</select>
 	
 	<insert id="ACT_INSERT" parameterType="balgil.com.trip.activity.model.ActivityVO">
-		INSERT INTO ACTIVITY ("ID", "ACT_NAME", "CONTENT", "RATE", "VCOUNT", "TAG", "ADD", "PRICE", "SELLER_ID", "DEST_ID")
-		VALUES (SEQ_ACTIVITY.nextval, #{act_name}, #{content}, 0, 0, #{tag}, #{add}, #{price}, #{seller_id}, #{dest_id})
+		INSERT INTO ACTIVITY ("ID", "ACT_NAME", "CONTENT", "RATE", "VCOUNT", "TAG", "ADD", "PRICE", "SELLER_ID", "DEST_ID","ENG_NAME")
+		VALUES (SEQ_ACTIVITY.nextval, #{act_name}, #{content}, 0, 0, #{tag}, #{add}, #{price}, #{seller_id}, #{dest_id}, #{eng_name})
 	</insert>
 	
 	<update id="ACT_UPDATE" parameterType="balgil.com.trip.activity.model.ActivityVO">
