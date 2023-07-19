@@ -72,7 +72,7 @@
 						width:350px;
 						align-items: center;
 						margin: 10px;">
-		<form action='#' id='Reservation' method='POST' style="text-align-last: center; margin:20px">
+		<form action='#' id='Reservation' method='GET' style="text-align-last: center; margin:20px">
 			<p>예약 날짜 선택</p>
 			<input type="date" name="res_date" id="datePicker" min="" style="margin-bottom: 25px;">
 			<p>수량 선택</p>
