@@ -72,7 +72,7 @@
 						width:350px;
 						align-items: center;
 						margin: 10px;">
-		<form action='#' id='Reservation' method='GET' style="text-align-last: center; margin:20px">
+		<form action='#' id='Reservation' method='POST' style="text-align-last: center; margin:20px">
 			<p>예약 날짜 선택</p>
 			<input type="date" name="res_date" id="datePicker" min="" style="margin-bottom: 25px;">
 			<p>수량 선택</p>
@@ -84,7 +84,7 @@
 			<input type='hidden' name='price' id='price' value='${vo2.price}'/>
 			<input type='hidden' name='user_id' value='${user.user_id}'/>
 			<input class="btn btn-primary" type="submit" form="Reservation" formaction="insertOneReservation.do" value="바로구매">
-			<button class="btn btn-primary" type="submit" onclick="insertOneCart()">장바구니</button>
+			<button class="btn btn-primary" type="button" onclick="insertOneCart()">장바구니</button>
 		</form>
 	</div>
 	<div
