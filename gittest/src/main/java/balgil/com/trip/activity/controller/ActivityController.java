@@ -164,6 +164,11 @@ public class ActivityController {
 	public String updateActOk(ActivityVO vo) throws IllegalStateException, IOException {
 		log.info("/updateActOk.do...{}", vo);
 
+		//대표 이미지파일 설정용
+		if(vo.getFile().get(0).getSize() != 0) {
+			vo.setEng_name(vo.getFile().get(0).getOriginalFilename());
+		}
+
 		int result = service.update(vo);
 		
 		//TODO: 추후 로컬 파일도 삭제하게 해야함

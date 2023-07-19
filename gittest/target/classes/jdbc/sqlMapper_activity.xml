@@ -116,6 +116,9 @@
 		update ACTIVITY set ACT_NAME=#{act_name} , CONTENT=#{content} , 
 				TAG=#{tag} , "ADD"=#{add}, DEST_ID=#{dest_id},
 				PRICE=#{price}, ACT_DATE=SYSDATE
+				<if test="eng_name!=null">
+					, ENG_NAME=#{eng_name}
+				</if>
 		where ID = #{id}
 	</update>
 	
