@@ -27,7 +27,7 @@
 <body>
 <jsp:include page="../top_menu.jsp"></jsp:include>
 <section>
-	<h1 id="chosenDest">여행지: 미선택 </h1>
+	<h3 id="chosenDest" style="margin-top:30px; margin-left:20px; font-weight:bold">여행지: 미선택 </h3>
 	<div class="dropdown" style="text-align: right;margin-right: 10px;">
 	  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	    정렬
