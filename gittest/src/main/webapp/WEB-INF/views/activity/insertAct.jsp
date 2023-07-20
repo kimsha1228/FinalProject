@@ -1,3 +1,5 @@
+<%@page import="org.springframework.web.context.request.RequestAttributes"%>
+<%@page import="org.springframework.web.servlet.ModelAndView"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -80,15 +82,23 @@
 </section>
 <jsp:include page="../footer.jsp"></jsp:include>
 <script>
-			$(function(){
-	    	   $("input[type='file']").change(function(event){
-	    	      var $fileUpload = $("input[type='file']");
-	    	      if (parseInt($fileUpload.get(0).files.length) > 5){ //5개이상이면
-	    	         $fileUpload.val('');// 파일선택을 초기화
-	    	         alert("이미지는 최대 5장까지만 삽입 가능합니다.");
-	    	      }
-	    	   });
-			});
+	$(function(){
+   	   $("input[type='file']").change(function(event){
+   	      var $fileUpload = $("input[type='file']");
+   	      if (parseInt($fileUpload.get(0).files.length) > 5){ //5개이상이면
+   	         $fileUpload.val('');// 파일선택을 초기화
+   	         alert("이미지는 최대 5장까지만 삽입 가능합니다.");
+   	      }
+   	   });
+	});
+	//컨트롤러에서 온 메시지를 받아서 처리
+	var msg = '${alertMsg}';
+	if(msg===''){
+		
+	}else if(msg!==''){
+		alert(msg);
+		<% request.setAttribute("alertMsg", ""); %>
+	}
 </script>
 </body>
 </html>

@@ -33,7 +33,7 @@
 	<table>
 		<thead>
 			<tr>
-				<td>번호</td>
+				<td style="text-align:center">번호</td>
 				<td style="width:350px">제목</td>
 				<td>작성자</td>
 			</tr>
@@ -41,7 +41,7 @@
 		<tbody>
 			<c:forEach var="vo" items="${vos}" begin="0" step="1" varStatus="i">
 				<tr>
-					<td><a href="selectOneContact.do?id=${vo.id}">${i.count}</a></td>
+					<td style="text-align:center"><a href="selectOneContact.do?id=${vo.id}">${i.count}</a></td>
 					<td><a href="selectOneContact.do?id=${vo.id}">${vo.title}</a></td>
 					<td>${vo.user_id}</td>
 				</tr>
