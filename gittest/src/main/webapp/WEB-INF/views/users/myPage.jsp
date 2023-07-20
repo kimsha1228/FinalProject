@@ -35,10 +35,10 @@
 			<td><a href="selectAllCart.do?user_id=${user.user_id}">장바구니</a></td>
 		</tr>
 		<tr>
-			<td><a href="selectMyComments.do?user_id=${user.user_id}">이용 후기</a></td>
+			<td><a href="selectMyComments.do?user_id=${user.user_id}">이용후기</a></td>
 		</tr>
 		<tr>
-			<td><a href="selectAllReservation.do?user_id=${user.user_id}">예약 내역</a></td>
+			<td><a href="selectAllReservation.do?user_id=${user.user_id}">예약내역</a></td>
 		</tr>
 		<tr>
 			<td><a href="selectAllContact.do?user_id=${user.user_id}">문의내역</a></td>

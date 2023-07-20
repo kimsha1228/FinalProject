@@ -42,13 +42,13 @@
 					</td>
 				</tr>
 				<tr>
-					<th style="width:100px;">상품명</th>
+					<th style="width:100px; vertical-align:top;">상품명</th>
 					<td style="width:300px;"><a href="selectOneUserAct.do?id=${vo.act_id}">${vo.act_name}</a></td>
 
 				</tr>
 				<tr>
 					<td colspan="2">
-						<a href="insertComments.do?act_id=${vo.act_id}&user_id=${user.user_id}&res_id=${vo.id}" id="cibtn" class="myButton">후기 작성</a>
+						<a href="insertComments.do?act_id=${vo.act_id}&user_id=${user.user_id}&res_id=${vo.id}" id="cibtn" class="myButton">후기작성</a>
 					</td>
 				</tr>
 			</table>
@@ -78,12 +78,12 @@
 				</tr>
 			
 				<tr>
-					<th style="width:100px;">상품명</th>
+					<th style="width:100px; vertical-align:top;">상품명</th>
 					<td style="width:300px;"><a href="selectOneUserAct.do?id=${vo1.act_id}">${vo1.act_name}</a></td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<a href="selectMyOneComments.do?res_id=${vo1.res_id}&user_id=${user.user_id}" id="cibtn" class="myButton">후기 상세</a>
+						<a href="selectMyOneComments.do?res_id=${vo1.res_id}&user_id=${user.user_id}" id="cibtn" class="myButton">후기상세</a>
 					</td>
 				</tr>
 			</table>
