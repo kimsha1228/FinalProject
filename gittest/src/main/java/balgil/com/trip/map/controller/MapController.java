@@ -50,11 +50,11 @@ public class MapController {
 		ObjectMapper om = new ObjectMapper();
 		List<LatLngVO> newVos= om.convertValue(vo, new TypeReference<List<LatLngVO>>() {});
 		
-		log.info(newVos.toString());
-		log.info("{}",newVos.get(0));
-		log.info("{}",newVos.get(vo.size()-1));																			
-		log.info("{}",newVos.get(0).get_lat());
-		log.info("{}",newVos.get(0).getX());
+//		log.info(newVos.toString());
+//		log.info("{}",newVos.get(0));
+//		log.info("{}",newVos.get(vo.size()-1));																			
+//		log.info("{}",newVos.get(0).get_lat());
+//		log.info("{}",newVos.get(0).getX());
 		//127.1058342,37.359708
 		
 		//원하는 uri: 
@@ -70,7 +70,7 @@ public class MapController {
 				String.valueOf(newVos.get(newVos.size()-1).getY())+
 				"&option=trafast"
 				);
-		log.info("{}",stringBuffer.toString());
+//		log.info("{}",stringBuffer.toString());
 		
 		//경유지가 있나 체크
 		if(newVos.size()>=3) {
@@ -124,58 +124,5 @@ public class MapController {
 		}
 		
 		return "home";
-	}
-	
-	@RequestMapping(value = "/map_test01.do", method = RequestMethod.GET)
-	public String map_test() {
-		return "test/map_test/01";
-	}
-	@RequestMapping(value = "/map_test02.do", method = RequestMethod.GET)
-	public String map_test2() {
-		return "test/map_test/02";
-	}
-	@RequestMapping(value = "/map_test03.do", method = RequestMethod.GET)
-	public String map_test3() {
-		return "test/map_test/03";
-	}
-	@RequestMapping(value = "/map_test04.do", method = RequestMethod.GET)
-	public String map_test4() {
-		return "test/map_test/04";
-	}
-	@RequestMapping(value = "/map_test05.do", method = RequestMethod.GET)
-	public String map_test5() {
-		return "test/map_test/05";
-	}
-	@RequestMapping(value = "/map_test06.do", method = RequestMethod.GET)
-	public String map_test6() {
-		return "test/map_test/06";
-	}
-	@RequestMapping(value = "/map_test07.do", method = RequestMethod.GET)
-	public String map_test7() {
-		return "test/map_test/07";
-	}
-	@RequestMapping(value = "/map_test08.do", method = RequestMethod.GET)
-	public String map_test8() {
-		return "test/map_test/08";
-	}
-	@RequestMapping(value = "/map_test09.do", method = RequestMethod.GET)
-	public String map_test9() {
-		return "test/map_test/09";
-	}
-	@RequestMapping(value = "/map_test10.do", method = RequestMethod.GET)
-	public String map_test10() {
-		return "test/map_test/10";
-	}
-	@RequestMapping(value = "/map_test11.do", method = RequestMethod.GET)
-	public String map_test11() {
-		return "test/map_test/11";
-	}
-	@RequestMapping(value = "/map_test12.do", method = RequestMethod.GET)
-	public String map_test12() {
-		return "test/map_test/12";
-	}
-	@RequestMapping(value = "/map_test13.do", method = RequestMethod.GET)
-	public String map_test13() {
-		return "test/map_test/13";
 	}
 }

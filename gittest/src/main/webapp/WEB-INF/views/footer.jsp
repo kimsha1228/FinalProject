@@ -8,8 +8,8 @@
 		
 		<div id="page">
 			<ul>
-				<li><a href="admin.do"><p>관리자 페이지로</p></a></li>
-				<li><a href="seller.do"><p>판매자 페이지로</p></a></li>
+				<li class="adminPage"><a href="admin.do"><p>관리자 페이지로</p></a></li>
+				<li class="sellerPage"><a href="seller.do"><p>판매자 페이지로</p></a></li>
 			</ul>
 		</div>
 	</div>
@@ -27,3 +27,12 @@
 	</div>
 
 </footer>
+<script type="text/javascript">
+	$('.adminPage').hide();
+	$('.sellerPage').hide();
+	if('${user.type}'==='0'){ //관리자
+		$('.adminPage').show();
+	}else if ('${user.type}'==='1' || '${user.type}'==='2'){ //승인 셀러
+		$('.sellerPage').show();
+	}
+</script>

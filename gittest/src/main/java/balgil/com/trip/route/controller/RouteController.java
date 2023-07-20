@@ -69,7 +69,7 @@ public class RouteController {
 			String realPath = sContext.getRealPath("resources/uploadimg");
 			log.info("realPath : {}", realPath);
 
-			File f = new File(realPath + "\\" + vo.getImg());
+			File f = new File(realPath + File.separator + vo.getImg());
 			vo.getFile().transferTo(f);
 
 			//// create thumbnail image/////////
@@ -124,7 +124,7 @@ public class RouteController {
 			String realPath = sContext.getRealPath("resources/uploadimg");
 			log.info("realPath : {}", realPath);
 
-			File f = new File(realPath + "\\" + vo.getImg());
+			File f = new File(realPath + File.separator + vo.getImg());
 			vo.getFile().transferTo(f);
 
 			//// create thumbnail image/////////

@@ -22,6 +22,7 @@
 	<li class="u_insert"><a href="u_insert.do">회원가입</a></li>
 	
 	<!-- 로그인 후 로그인 안보이게 하고 하단 링크들 출력 -->
+	<li class="showUserName">${user.user_id}님</li>
 	<li class="wishlist"><a href="selectAllWishList.do?user_id=${user.user_id}">위시리스트</a></li>
 	<li class="cart"><a href="selectAllCart.do?user_id=${user.user_id}">장바구니</a></li>
 	<li class="myPage"><a href="myPage.do?user_id=${user.user_id}">마이페이지</a></li>
@@ -33,6 +34,7 @@
 	if('${user.user_id}'===''){
 		$('.login').show();
 		$('.u_insert').show();
+		$('.showUserName').hide();
 		$('.wishlist').hide();
 		$('.cart').hide();
 		$('.myPage').hide();
@@ -40,9 +42,18 @@
 	}else{
 		$('.login').hide();
 		$('.u_insert').hide();
+		$('.wishlist').hide();
+		$('.cart').hide();
+		$('.myPage').hide();
 		$('.logout').show();
-		$('.wishlist').show();
-		$('.cart').show();
-		$('.myPage').show();
+		if('${user.type}'==='3'){
+			$('.login').hide();
+			$('.u_insert').hide();
+			$('.showUserName').show();
+			$('.wishlist').show();
+			$('.cart').show();
+			$('.myPage').show();
+			$('.logout').show();
+		}
 	}
 </script>

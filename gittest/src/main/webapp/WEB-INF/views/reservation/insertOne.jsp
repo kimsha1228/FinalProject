@@ -27,7 +27,7 @@ $(function(){
 	 		method:'GET',
 	 		dataType:'json', 
 	 		success : function(vo2) {
-				console.log(vo2);
+				//console.log(vo2);
 				
 	  			let tag_vo2 =  `
 	  				<tr>
@@ -70,10 +70,9 @@ $(function(){
 						$(this).val(0);
 					} else if(inputValue > maxPrice){
 						$(this).val(maxPrice);
-						if(inputValue > maxPoint){
+					} else if(inputValue > maxPoint){
 							$(this).val(maxPoint);
-						}
-					}else if(inputValue = ""){
+					} else if(inputValue = ""){
 						$(this).val(0);
 					}
 					setFinalPriceInfo();

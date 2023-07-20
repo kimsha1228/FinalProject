@@ -20,10 +20,10 @@
 
 <section>
 	<section>
-		<h2>환영합니다!</h2>
-		<label for="searchWord">상품을 검색해보세요!</label>
+		<h2 style="margin-bottom:40px">환영합니다!</h2>
+		<label for="searchWord"></label>
 		<input type="hidden" name="searchKey" id="searchKey" value="act_name">
-		<input type="text" name="searchWord" id="searchWord">
+		<input style="margin-bottom:40px" type="text" name="searchWord" id="searchWord"  placeholder="상품을 검색해보세요!">
 		<button class="myButton" onclick="searchAct()" >검색</button>
 	</section>
 

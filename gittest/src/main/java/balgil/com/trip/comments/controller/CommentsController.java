@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import balgil.com.trip.activity.model.ActivityVO;
+import balgil.com.trip.activity.service.ActivityService;
 import balgil.com.trip.comments.model.CommentsVO;
 import balgil.com.trip.comments.service.CommentsService;
 import balgil.com.trip.image.model.ImageVO;
@@ -32,6 +34,9 @@ import lombok.extern.slf4j.Slf4j;
 public class CommentsController {
 	@Autowired
 	CommentsService service;
+
+	@Autowired
+	ActivityService aservice;
 
 	@Autowired
 	ReservationService rservice;
@@ -152,14 +157,18 @@ public class CommentsController {
 	    // 상품 입력에 성공하면 이미지를 삽입하기
 	    if (result == 1) {
 	        log.info("Insert쿼리 성공!");
-
 	        // reservation iscommented 1로 바꿔주기
 	        int res_result = rservice.updatedComments(vo.getRes_id());
 	        log.info("res_result:{}", res_result);
 
 	        CommentsVO vo2 = service.selectPrevious(vo);
 	        log.info("삽입한 결과 가져오기(act_id가 필요해서):{}", vo2.getId());
-
+	        
+	        //평점 업데이트
+	        ActivityVO tempVo = new ActivityVO();
+	        tempVo.setId(vo2.getAct_id());
+	        aservice.updateRate(tempVo);
+	        
 	        // 파일이 없으면 default.png를 대신 image테이블에 넣을 예정
 	        if (vo.getFile().get(0).getSize() == 0) {
 	            log.info("파일이 비어있어서 null");
@@ -181,7 +190,7 @@ public class CommentsController {
 	                String realPath = sContext.getRealPath("resources/uploadimg");
 	                log.info("realPath : {}", realPath);
 
-	                File f = new File(realPath + "\\" + getOriginalFilename);
+					File f = new File(realPath + File.separator + getOriginalFilename);
 	                vos.transferTo(f);
 
 	                // 이미지를 서버에 저장
@@ -261,7 +270,7 @@ public class CommentsController {
 				String realPath = sContext.getRealPath("resources/uploadimg");
 				log.info("realPath : {}", realPath);
 
-				File f = new File(realPath + "\\" + getOriginalFilename);
+				File f = new File(realPath + File.separator + getOriginalFilename);
 				vos.transferTo(f);
 
 				// 이미지를 서버에 저장

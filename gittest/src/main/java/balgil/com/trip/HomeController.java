@@ -34,41 +34,6 @@ public class HomeController {
 		
 		return "home";
 	}
-	
-	@RequestMapping(value = "/Activity_test.do", method = RequestMethod.GET)
-	public String Activity_test(Locale locale, Model model) {
-		log.info("Activity 테스트용 jsp로 이동");
-		
-		return "test/Activity_test";
-	}
-	
-	@RequestMapping(value = "/Route_test.do", method = RequestMethod.GET)
-	public String Route_test(Locale locale, Model model) {
-		log.info("Route 테스트용 jsp로 이동");
-		
-		return "test/Route_test";
-	}
-	
-	@RequestMapping(value = "/map_test.do", method = RequestMethod.GET)
-	public String map_test(Locale locale, Model model) {
-		log.info("map 테스트용 jsp로 이동");
-		
-		return "test/map_test";
-	}
-	
-	@RequestMapping(value = "/Faq_test.do", method = RequestMethod.GET)
-	public String Faq_test(Locale locale, Model model) {
-		log.info("Faq 테스트용 jsp로 이동");
-		
-		return "test/Faq_test";
-	}
-	
-	@RequestMapping(value = "/Contact_test.do", method = RequestMethod.GET)
-	public String Contact_test(Locale locale, Model model) {
-		log.info("Contact 테스트용 jsp로 이동");
-		
-		return "test/Contact_test";
-	}
 
 	@RequestMapping(value = "/admin.do", method = RequestMethod.GET)
 	public String admin() {
