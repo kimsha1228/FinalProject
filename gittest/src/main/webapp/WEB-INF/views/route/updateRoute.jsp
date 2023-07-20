@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>루트 수정</title>
+<title>루트 업데이트</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
 <link rel="stylesheet" href="resources/css/tablesorter/theme.default.min.css?ver=2">

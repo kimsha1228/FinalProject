@@ -15,7 +15,7 @@
 <script type="text/javascript" src="resources/js/route/tablesorter/jquery.tablesorter.min.js"></script>
 <script src="https://mottie.github.io/tablesorter/js/jquery.tablesorter.widgets.js"></script>
 <script src="https://mottie.github.io/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
-<title>루트목록</title>
+<title>루트 목록</title>
 <script>
 	const user_id = '${user.user_id}';
 </script>
