@@ -40,6 +40,12 @@ public class ActivityDAOimpl implements ActivityDAO {
 	}
 
 	@Override
+	public void updateRate(ActivityVO vo) {
+		sqlSession.update("ACT_UPDATE_RATE",vo);
+
+	}
+	
+	@Override
 	public int delete(ActivityVO vo) {
 		log.info("delete! {}",vo);
 
@@ -102,6 +108,7 @@ public class ActivityDAOimpl implements ActivityDAO {
 			return sqlSession.selectList("ACT_SEARCH_LIST_USER", map);
 		}
 	}
+
 
 
 }
