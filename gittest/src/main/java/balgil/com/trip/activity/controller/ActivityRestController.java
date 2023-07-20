@@ -30,7 +30,7 @@ public class ActivityRestController {
 	@RequestMapping(value = "/jsonSelectAllUserActImg.do", method = RequestMethod.GET)
 	public List<ActivityVO> jsonSelectAllUserActImg() {
 		log.info("jsonSelectAllUserActImg.do..{}");
-		return service.selectAllImg();
+		return service.selectAll();
 	}
 	
 	@ResponseBody

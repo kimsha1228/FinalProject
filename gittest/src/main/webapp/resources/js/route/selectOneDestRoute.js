@@ -40,9 +40,9 @@ window.onload = function(){
  						<p style="width: 200px;">조회수:${vo.vcount}</p>
  						<p style="width: 200px;">좋아요:${vo.likes}</p>
  					</td>
- 					<td style="display: none;">${vo.likes}</td>
- 					<td style="display: none;">${vo.vcount}</td>
  					<td style="display: none;">${vo.date}</td>
+ 					<td style="display: none;">${vo.vcount}</td>
+ 					<td style="display: none;">${vo.likes}</td>
  				</tr>
 				`;
 			}
@@ -67,22 +67,22 @@ function sortFunction(value){
 	switch (value) {
 		//최근 등록
 		case 1:
- 			$("#tableContainer").trigger("sorton", [ [[5,1]] ]);
+ 			$("#tableContainer").trigger("sorton", [ [[3,1]] ]);
 			break;
 			
 		//오래된 순
 		case 2:	
- 			$("#tableContainer").trigger("sorton", [ [[5,0]] ]);
+ 			$("#tableContainer").trigger("sorton", [ [[3,0]] ]);
 			break;
 
 		//조회순
 		case 3:
-			$("#tableContainer").trigger("sorton", [ [[3,0]] ]);
+			$("#tableContainer").trigger("sorton", [ [[4,1]] ]);
 			break;
 		
 		//좋아요순
 		case 4:
- 			$("#tableContainer").trigger("sorton", [ [[2,0]] ]);
+ 			$("#tableContainer").trigger("sorton", [ [[5,1]] ]);
  			break;
  			
  		//정렬 초기화

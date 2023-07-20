@@ -55,7 +55,4 @@ public class ActivityService {
 		return dao.selectPopular();
 	}
 
-	public List<ActivityVO> selectAllImg() {
-		return dao.selectAllImg();
-	}
 }
