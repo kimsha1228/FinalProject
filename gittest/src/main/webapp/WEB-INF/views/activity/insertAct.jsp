@@ -17,9 +17,6 @@
 <jsp:include page="../css.jsp"></jsp:include>
 </head>
 <body>
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<div id="insertAct">
-	<h1>상품 작성</h1>
 <jsp:include page="../top_menu.jsp"></jsp:include>
 <section style="display: flex;
     			flex-direction: column;
@@ -27,7 +24,7 @@
 	<h5 style="font-weight:bold; margin-top:30px; margin-bottom:30px">상품 등록</h5>
 
 	<form action="insertActOk.do" method="post" enctype="multipart/form-data">
-	<table id="activitytable">
+		<table id="activityList">
 			<tr>
 				<td style="width: 90px">
 					<label for="dest_id">여행지명</label>
@@ -80,9 +77,6 @@
 			</tr>
 		</table>
 	</form>
-	</div>
-	<jsp:include page="../footer.jsp"></jsp:include>
-      <script>
 </section>
 <jsp:include page="../footer.jsp"></jsp:include>
 <script>

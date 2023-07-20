@@ -30,21 +30,15 @@
 </style>
 </head>
 <body>
-
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<div id="selectAllRoute">
-	<h1>루트목록</h1>
-	
 <jsp:include page="../top_menu.jsp"></jsp:include>
 <section style="display: flex;
     			flex-direction: column;
 			    align-items: center;">
 	<h5 style="font-weight:bold; margin-top:30px; margin-bottom:30px">루트목록</h5>
 	
-	
 	<p style="text-align: right;margin: 10px 10px 0px 0px;">루트 이름 <input class="search" type="search" data-column="1"><button type="button" class="reset">검색 초기화</button></p>
 
-	<table id="routetable">
+	<table id="routeList">
 	<thead>
 		<tr>
 			<th>루트번호</th>
@@ -60,10 +54,6 @@
 	<tfoot>
 	</tfoot>
 	</table>
-	
-	</div>
-	<jsp:include page="../footer.jsp"></jsp:include>
-	
 	<!-- 페이징 요소-->
 	<div class="routeList" style="text-align: center;">
 		<form>
@@ -81,6 +71,5 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" ></script>
 <script src="https://kit.fontawesome.com/0007d685f8.js" crossorigin="anonymous"></script>
-
 </body>
 </html>

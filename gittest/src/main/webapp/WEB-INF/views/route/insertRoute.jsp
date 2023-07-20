@@ -21,19 +21,15 @@
 <script type="text/javascript" src="resources/js/route/insertRoute.js?ver=7"></script>
 </head>
 <body>
-
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<div id="insertRoute">
-	<h1>루트 작성</h1>
-	
 <jsp:include page="../top_menu.jsp"></jsp:include>
 <section style="display: flex;
     			flex-direction: column;
 			    align-items: center;">
 	<h5 style="font-weight:bold; margin-top:30px; margin-bottom:30px">루트 등록</h5>
 
-	<form action="insertRouteOk.do" method="POST" enctype="multipart/form-data">
-		<table id="routetable">
+	<form action="insertRouteOk.do" method="POST"
+		enctype="multipart/form-data">
+		<table id="routeList">
 			<tr>
 				<td><label for="dest_id">여행지명</label></td>
 				<td><select id="dest_id" name="dest_id" onchange="selectDest(value)">
@@ -77,10 +73,6 @@
 			</tr>
 		</table>
 	</form>
-	
-	</div>
-	<jsp:include page="../footer.jsp"></jsp:include>
-	
 </section>
 
 <jsp:include page="../footer.jsp"></jsp:include>
@@ -88,6 +80,5 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" ></script>
 <script src="https://kit.fontawesome.com/0007d685f8.js" crossorigin="anonymous"></script>
-
 </body>
 </html>
