@@ -6,14 +6,14 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>reservationComplete</title>
+	<title>내 이용 후기</title>
 	<jsp:include page="../css.jsp"></jsp:include>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<div id="commentsform">
-	<h3>이용후기</h3>
+	<h3>내 이용 후기</h3>
 
 	<table id="selectmenu">
 		<tr>

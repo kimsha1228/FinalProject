@@ -24,7 +24,7 @@ $(function(){
 			
 			vo += `${response.route_name} 추천루트`;
 			
-			$('.display-4').text(vo);
+			$('.display-5').text(vo);
 			
 			vo=``;
 		 	//루트 표시용
