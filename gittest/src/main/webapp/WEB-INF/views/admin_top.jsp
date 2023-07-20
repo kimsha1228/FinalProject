@@ -3,7 +3,7 @@
 <!-- 좌측 상단 출력 -->
 <header>
 <div id="logo">
-	<a href="home.do"><img width="130px" src="resources/uploadimg/logo.png"></a>
+	<a href="balgil.com"><img width="130px" src="resources/uploadimg/logo.png"></a>
 </div>	
 
 <div id="content">
