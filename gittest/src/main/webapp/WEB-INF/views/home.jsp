@@ -21,7 +21,7 @@
 <section>
 	<section>
 <!-- 		<h4 style="margin-bottom:40px; font-weight:bold; font-size:25px; color:#0000c8">발길7ㅏ는대로</h4> -->
-		<img src="resources/uploadimg/main.png" width="400px" style="margin-bottom:40px;">
+		<div><img src="resources/uploadimg/main.png" width="400px" style="margin-bottom:40px;"></div>
 		<label for="searchWord"></label>
 		<input type="hidden" name="searchKey" id="searchKey" value="act_name">
 		<div style="width:350px; height:60px; border:5px solid #0000c8; border-radius:30px; padding-top:5px; padding-left: 8px; margin-bottom:50px; margin-left:320px;">

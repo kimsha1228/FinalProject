@@ -65,7 +65,7 @@
 
 <div id="content">
 <ul>
-	<li><a href="selectAllDestination.do?category=City">여행지 루트 선택</a></li>
+	<li style="margin-left:10px;"><a href="selectAllDestination.do?category=City">여행지 루트 선택</a></li>
 	<li><a href="selectAllUserAct.do">여행지 상품 선택</a></li>
 </ul>	
 </div>

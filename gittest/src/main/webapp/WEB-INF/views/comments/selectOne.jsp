@@ -10,7 +10,7 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/tablesorter/theme.default.min.css?ver=2">
-<link rel="stylesheet" href="resources/css/home.css?ver=1">
+<link rel="stylesheet" href="resources/css/home.css?after">
 <link rel="stylesheet" href="resources/css/cardAndStar.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -23,6 +23,7 @@
 <script type="text/javascript">
 $(function(){
 	actSelectOne();
+	commImgSelectAll();
 	$('span.stars').stars();
 });//end onload...
 
@@ -41,6 +42,47 @@ function actSelectOne(){
  		}
  	});//end $.ajax()...
 }//end actSelectOne
+
+
+function commImgSelectAll(){
+$.ajax({
+	url:"jsonSelectCommImage.do",
+	data:{act_id:${param.act_id}},
+	method:'GET',
+	dataType:'json',
+	success:function(response){
+		console.log(response);
+		let tag_vos='';
+		tag_vos+=`
+				<h3 style="font-size:16px; font-weight:bold;">전체 후기 사진</h3>
+				<div class="scrolling-wrapper row flex-row mt-4 pb-4 pt-2" 
+					 style="max-height: 170px; overflow-y: scroll;"
+				>
+		`;
+		for(let i in response){
+			let vo = response[i];
+			tag_vos+=`
+				<a>
+					<div style="align-items: center;">
+						<div class="card-act-name" style="align-self: normal;">${vo.user_id}</div>
+						<img class="card-img-top" width='150px' height='150px' src="resources/uploadimg/${vo.name}">
+					</div>
+				</a>
+			`;
+		}
+		
+		tag_vos+=`
+		</div>
+		`;
+		$("#allCommImg").html(tag_vos);
+		
+	},
+ 	error:function(xhr,status,error){
+		console.log('xhr.status:',xhr.status);
+ 	}
+});//end ajax
+}
+
 
 //별점 관련 함수 추후 	$('span.stars').stars(); 를 써줘야함
 $.fn.stars = function() {
@@ -68,13 +110,16 @@ $.fn.stars = function() {
     			flex-direction: column;
 			    align-items: center;">
 	<h5 style="font-weight:bold; margin-top:30px; margin-bottom:30px"> <span id="act_name"></span><span> 상품 후기</span></h5>
-
+	
+	<section id="allCommImg" style="width:500px; margin-top:30px;">
+	</section>
+	
 	<table id="commentsList">
 		<tbody>
 			<c:forEach var="vo" items="${vos}">
 				<tr style="border-top: 2px solid gray; margin-top: 10px">
 					<td style="text-align:left"><p style="margin:5px 0px 5px 5px;">${vo.user_id}</p></td>
-					<td style="font-size:13px; color:gray; text-align:right"><p style="margin:5px 0px 5px 5px;"><fmt:formatDate value="${vo.com_date}" pattern="yyyy년 MM월 dd일"/></p></td>
+					<td style="font-size:13px; color:gray; text-align:right"><p style="margin:5px 0px 5px 5px;"><fmt:formatDate value="${vo.com_date}" pattern="작성일 yyyy년 MM월 dd일"/></p></td>
 				</tr>
 				<tr style="border-top: 1px solid gray;">
 					<td colspan="2">
@@ -82,16 +127,18 @@ $.fn.stars = function() {
 					</td>
 				</tr>
 				<tr>
-					<td style="width:500px; height:100px; vertical-align : top;"><p style="margin:5px 0px 5px 5px;" >${vo.content}</p></td>
+					<td style="width:500px; height:100px; vertical-align : top;"><p style="margin:5px 0px 5px 5px;">${vo.content}</p></td>
 				</tr>
 				<tr>
 					<td><a href="updateLikes.do?id=${vo.id}&act_id=${vo.act_id}" style="margin:5px 0px 10px 5px;"> 좋아요👍🏻 ${vo.likes}</a></td>
 				</tr>
-			</c:forEach>
+				</c:forEach>
 		</tbody>
 
 	</table>
 </section>
 <jsp:include page="../footer.jsp"></jsp:include>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" ></script>
 </body>
 </html>
