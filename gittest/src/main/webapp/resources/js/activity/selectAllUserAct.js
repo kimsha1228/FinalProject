@@ -12,7 +12,7 @@ $(function(){
 			console.log('ajax...success:',response);
 			let tag_vos='';
 			tag_vos+=`
-					<h3>추천 상품</h3>
+					<h6 style="margin-top: 30px; font-size:18px;">추천 상품</h6>
 					<div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
 			`;
 			for(let i in response){

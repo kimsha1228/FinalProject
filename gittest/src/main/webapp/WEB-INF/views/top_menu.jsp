@@ -54,7 +54,6 @@
                 link.classList.add("active");
             }
         });
-        });
     });
 </script>
 </head>
