@@ -7,7 +7,7 @@ $(function(){
 		success:function(response){
 			let tag_vos='';
 			tag_vos+=`
-					<h3>인기 액티비티(조회수순)</h3>
+					<h3 style="font-size:22px; font-weight:bold;">인기 액티비티</h3>
 					<div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
 			`;
 			for(let i in response){
@@ -41,7 +41,7 @@ $(function(){
 		success:function(response){
 			let tag_vos='';
 			tag_vos+=`
-					<h3>모든 상품입니다</h3>
+					<h3 style="font-size:22px; font-weight:bold;">전체 상품</h3>
 					<div class="scrolling-wrapper row flex-row mt-4 pb-4 pt-2" 
 						 style="max-height: 500px; overflow-y: scroll;"
 					>			

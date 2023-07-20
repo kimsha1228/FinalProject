@@ -19,7 +19,7 @@
     text-decoration: none; 
     text-align: center;
     color:#888888;
-    font-size:12px;
+    font-size:14px;
 }
 
 li{list-style-type:none;}
@@ -33,13 +33,13 @@ header{width:1000px;  margin:0px auto; overflow: hidden;}
 #content li{
     float: left;
     margin-top: 65px;
-    margin-left:25px;
+    margin-left:20px;
 }
 
 #login li{
     float: left;
     margin-top: 65px;
-    margin-left:25px;
+    margin-left:15px;
 }
 
 #logo {

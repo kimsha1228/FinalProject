@@ -22,31 +22,31 @@
 				<a class="col-3" href="selectOneDestRoute.do?dest_id=1">
 					<span class="card card-block" style="margin-bottom:30px">
 						<img class="card-img-top" width='150px' height='200px' style="border-radius:15px;" src="https://youimg1.tripcdn.com/target/0101c12000adm19trE691_C_670_770_R5.jpg_.webp">
-						<span class="card-act-name">서울</span>
+						<span class="card-act-name" style="font-weight:bold; font-size:17px;">서울</span>
 					</span>
 				</a>
 				<a class="col-3" href="selectOneDestRoute.do?dest_id=2" style="margin-bottom:30px">
 					<span class="card card-block">
-						<img class="card-img-top" width='150px' height='200px' style="border-radius:15px;" src="https://youimg1.tripcdn.com/target/0104h1200083vnxttED9A_C_670_770_R5.jpg_.webp">
-						<span class="card-act-name">경기도</span>
+						<img class="card-img-top" width='150px' height='200px' style="border-radius:10px;" src="https://youimg1.tripcdn.com/target/0104h1200083vnxttED9A_C_670_770_R5.jpg_.webp">
+						<span class="card-act-name" style="font-weight:bold; font-size:17px;">경기도</span>
 					</span>
 				</a>
 				<a class="col-3" href="selectOneDestRoute.do?dest_id=3" style="margin-bottom:30px">
 					<span class="card card-block">
-						<img class="card-img-top" width='150px' height='200px' style="border-radius:15px;" src="https://youimg1.tripcdn.com/target/fd/tg/g3/M0A/46/03/CggYG1XK_vuAAbdvAAqr2aJOX-s018_C_670_770_R5.jpg_.webp">
-						<span class="card-act-name">부산</span>
+						<img class="card-img-top" width='100px' height='200px' style="border-radius:10px;" src="https://youimg1.tripcdn.com/target/fd/tg/g3/M0A/46/03/CggYG1XK_vuAAbdvAAqr2aJOX-s018_C_670_770_R5.jpg_.webp">
+						<span class="card-act-name" style="font-weight:bold; font-size:17px;">부산</span>
 					</span>
 				</a>
 				<a class="col-3" href="selectOneDestRoute.do?dest_id=4" style="margin-bottom:30px">
 					<span class="card card-block">
-						<img class="card-img-top" width='150px' height='200px' style="border-radius:15px;" src="https://youimg1.tripcdn.com/target/0103e120008x0rxdo2CDA_C_670_770_R5.jpg_.webp">
-						<span class="card-act-name">인천</span>
+						<img class="card-img-top" width='150px' height='200px' style="border-radius:10px;" src="https://youimg1.tripcdn.com/target/0103e120008x0rxdo2CDA_C_670_770_R5.jpg_.webp">
+						<span class="card-act-name" style="font-weight:bold; font-size:17px;">인천</span>
 					</span>
 				</a>
 				<a class="col-3" href="selectOneDestRoute.do?dest_id=5" style="margin-bottom:30px">
 					<span class="card card-block">
-						<img class="card-img-top" width='150px' height='200px' style="border-radius:15px;" src="https://youimg1.tripcdn.com/target/0105a12000adm6wre0977_C_670_770_R5.jpg_.webp">
-						<span class="card-act-name">제주도</span>
+						<img class="card-img-top" width='150px' height='200px' style="border-radius:10px;" src="https://youimg1.tripcdn.com/target/0105a12000adm6wre0977_C_670_770_R5.jpg_.webp">
+						<span class="card-act-name" style="font-weight:bold; font-size:17px;">제주도</span>
 					</span>
 				</a>
 				<a class="col-3" style="align-self: center;" style="margin-bottom:30px">

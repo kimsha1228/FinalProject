@@ -41,7 +41,7 @@
 <body>
 <jsp:include page="../top_menu.jsp"></jsp:include>
 <section>
-<!-- 	<h1>상품 정보</h1> -->
+	<h1 style="margin-top:40px;">  </h1>
     <div id="carouselControls" class="carousel slide" data-ride="carousel">
 	  <ol class="carousel-indicators">
  	  </ol>	
@@ -78,11 +78,12 @@
 	<div
 	style="background-color:inherit;
 			padding:1rem 1rem;
-			width:600px">
+			width:600px;
+			margin-top:30px;">
 		<div>
 	  	<h2 style="display: inline-flex; width: 440px;">${vo2.act_name}</h2>
 	  	<button class="myButton" onclick="copyLink()"  style="font-size: medium;">공유</button>
-		<button id="wish" class="${vo2.id} btn btn-outline-danger" onclick="addWish('${user.user_id}','${vo2.id}')" style="font-size: large; padding: 3px 7px 5px 7px; margin-top:-2px; margin-left:-2px">♡</button>
+		<button id="wish" class="${vo2.id} btn btn-outline-danger" onclick="addWish('${user.user_id}','${vo2.id}')" style="font-size: large; padding: 2.5px 7px 4.5px 6px; margin-top:-2px; margin-left:-2px">♡</button>
 		</div>
 	  <p class="lead">${vo2.content}</p>
 	</div>
