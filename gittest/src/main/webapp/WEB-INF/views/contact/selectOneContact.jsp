@@ -64,7 +64,7 @@
 						<input type="hidden" name="seller_id" value="${vo2.seller_id}">						
 						<input type="hidden" name="contact_id" value="${vo2.id}">
 						<textarea name="content" id="content" rows="20" cols="55" placeholder="답변을 입력하세요"></textarea>
-						<input style="margin-top:165px; margin-left:50px" type="submit" value="답변입력" class="myButton">
+						<input style="margin-top:165px; margin-left:30px" type="submit" value="답변입력" class="myButton">
 					</form>
 				</td>
 			</tr>
@@ -78,7 +78,7 @@
 							<input type="hidden" name="contact_id" value="${com.contact_id}">
 							<input type="hidden" name="id" value="${com.id}">
 							<textarea name="content" id="content" rows="20" cols="55">${com.content}</textarea>
-							<input style="margin-top:165px; margin-left:50px;" type="submit" value="답변수정" class="myButton">
+							<input style="margin-top:165px; margin-left:30px;" type="submit" value="답변수정" class="myButton">
 						</form>
 					</td>
 					<td>
