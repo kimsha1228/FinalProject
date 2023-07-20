@@ -71,8 +71,8 @@
 		<tfoot id="faq_form">
 			<tr>
 				<th colspan="5">
-					<a href="updateFaq.do?id=${param.id}" class="myButton" style="margin-left:250px">문의수정</a>
-					<a href="deleteFaqOK.do?id=${param.id}" class="myButton">문의삭제</a>
+					<a href="updateFaq.do?id=${param.id}" class="myButton" style="margin-left:250px">FAQ수정</a>
+					<a href="deleteFaqOK.do?id=${param.id}" class="myButton">FAQ삭제</a>
 				</th>
 			</tr>
 		</tfoot>

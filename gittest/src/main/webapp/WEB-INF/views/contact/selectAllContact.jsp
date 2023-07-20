@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의내용</title>
+<title>문의내역</title>
 <jsp:include page="../css.jsp"></jsp:include>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

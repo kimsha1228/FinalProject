@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Home</title>
+<title>발길7ㅏ는대로 ~P를 위한 여행~</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" >
 <jsp:include page="./css.jsp"></jsp:include>
@@ -20,7 +20,7 @@
 
 <section>
 	<section>
-		<h1>환영합니다! ${user_id}</h1>
+		<h2>환영합니다!</h2>
 		<label for="searchWord">상품을 검색해보세요!</label>
 		<input type="hidden" name="searchKey" id="searchKey" value="act_name">
 		<input type="text" name="searchWord" id="searchWord">

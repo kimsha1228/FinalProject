@@ -33,7 +33,7 @@
 	<div class="jumbotron" style="background-color:inherit; padding:2rem 0rem 0rem 0rem; margin-bottom: 0px;">
 	  <p id="추천수" style="float:right">
 	  </p>
-	  <h1 class="display-4"></h1>
+	  <h2 class="display-5"></h2>
 	  <p class="lead"></p>
 	  <hr class="my-2">
 	</div>

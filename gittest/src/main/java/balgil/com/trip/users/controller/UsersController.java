@@ -162,7 +162,7 @@ public class UsersController {
 			int his_result = his_service.saveInsert(vo.getUser_id(), "회원가입", "3000");
 			log.info("his_result: {}", his_result);
 			
-			return "redirect:home.do";
+			return "redirect:balgil.com";
 		} else {
 			return "redirect:u_insert.do";
 		}
@@ -279,7 +279,7 @@ public class UsersController {
 
 		if (result == 1) {
 			session.invalidate();
-			return "redirect:home.do";
+			return "redirect:balgilcom";
 		} else {
 			return "redirect:myInfo.do?user_id=" + vo.getUser_id();
 		}
@@ -313,7 +313,7 @@ public class UsersController {
 				int his_result = his_service.saveInsert(vo2.getUser_id(), "로그인", "100");
 				log.info("result:{},{}", result, his_result);
 			}
-			return "redirect:home.do";
+			return "redirect:balgil.com";
 		}
 	}
 
@@ -323,7 +323,7 @@ public class UsersController {
 		
 		session.invalidate();
 
-		return "redirect:home.do";
+		return "redirect:balgil.com";
 	}
 	
 	//마이페이지, 마이인포 다 세션 연결하면 세션으로 아이디 넘겨받기
