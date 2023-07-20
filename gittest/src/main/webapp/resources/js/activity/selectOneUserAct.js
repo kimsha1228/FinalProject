@@ -91,7 +91,7 @@ $(function(){
 				//객체에 삽입
 				vos += `	
 					<p style="float:right;">${formattedDate}</p>
-					<h5 class="card-title">추천 댓글</h5>
+					<h6 class="card-title">추천 후기</h6>
 					<p style="float:right;clear: right;">♥:${arr.likes}</p>
 					<p>${arr.user_id}님: ${arr.content}</p>
 				`;

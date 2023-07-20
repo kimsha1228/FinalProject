@@ -71,8 +71,8 @@
 			<input type='hidden' name='act_id' value='${vo2.id}'/>
 			<input type='hidden' name='price' id='price' value='${vo2.price}'/>
 			<input type='hidden' name='user_id' value='${user.user_id}'/>
-			<input class="btn btn-primary" type="submit" form="Reservation" formaction="insertOneReservation.do" value="바로구매">
-			<button class="btn btn-primary" type="button" onclick="insertOneCart()">장바구니</button>
+			<input class="btn btn-primary" type="submit" form="Reservation" formaction="insertOneReservation.do" value="바로구매"  style="background-color: #0000c9; color: white; font-weight:bold;">
+			<button class="btn btn-primary" type="button" onclick="insertOneCart()"  style="background-color: #0000c9; color: white; font-weight:bold;">장바구니</button>
 		</form>
 	</div>
 	<div
@@ -82,16 +82,18 @@
 		<div>
 	  	<h2 style="display: inline-flex; width: 440px;">${vo2.act_name}</h2>
 	  	<button class="myButton" onclick="copyLink()"  style="font-size: medium;">공유</button>
-		<button id="wish" class="${vo2.id} btn btn-outline-danger" onclick="addWish('${user.user_id}','${vo2.id}')" style="font-size: large;">♡</button>
+		<button id="wish" class="${vo2.id} btn btn-outline-danger" onclick="addWish('${user.user_id}','${vo2.id}')" style="font-size: large; padding: 3px 4px 5px 4px; margin-top:-2px;">♡</button>
 		</div>
 	  <p class="lead">${vo2.content}</p>
 	</div>
-	<div class="card" style="width: 300px; margin-left: 10px;">
+	<div class="card-body">
+		<div class="isCommented">평균별점</div><div><span class="stars" style="float:left; margin-top:-20px; margin-left:70px;"> ${vo2.rate}</span></div>
+		<a href="selectOneComments.do?act_id=${vo2.id}" class="btn btn-primary isCommented" style="background-color: #0000c9; color: white; margin-top:-30px; float:right; margin-right:380px; font-size:15px; font-weight:bold;">모든 이용후기</a>
+	</div>
+	<div class="card" style="width: 600px; margin-left: 10px;">
 		<div class="card-body">
 			<div id="OneComment" class="card-text">
 			</div>
-			<a href="selectOneComments.do?act_id=${vo2.id}" class="btn btn-primary isCommented" style="color: white;">모든 이용후기</a>
-			<div class="isCommented" style="float: right;">평균 별점: <span class="stars">${vo2.rate}</span></div>
 		</div>
 	</div>
 	<br>
@@ -100,7 +102,7 @@
 		<p>주소: ${vo2.add}</p>
 		<div id="map" style="width:600px;height:400px;"></div>
 	</div>
-	<button class="myButton" onclick="window.location.href='selectAllFaq.do'">고객센터</button><!-- selectAllFaq.do 연결 -->
+<!-- 	<button class="myButton" onclick="window.location.href='selectAllFaq.do'">고객센터</button> -->
 	<button class="myButton loginCheckContact" data-act_id="${vo2.id}" data-seller_id="${vo2.seller_id}">문의하기</button>
 </section>
 
