@@ -18,7 +18,7 @@
 <script src="https://mottie.github.io/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
 <script type="text/javascript" src="resources/js/activity/selectAllUserAct.js?ver=10"></script>
 
-<title>상품</title>
+<title>모든 상품 목록</title>
 <script>
 	const user_id = '${user.user_id}';
 </script>
