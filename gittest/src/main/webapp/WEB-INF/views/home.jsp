@@ -16,7 +16,7 @@
 <script type="text/javascript" src="resources/js/home.js?ver=2"></script>
 </head>
 <body>
-<jsp:include page="./top_menu.jsp"></jsp:include>
+<%@include file="top_menu.jsp" %>
 
 <section>
 	<section>

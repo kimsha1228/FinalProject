@@ -62,10 +62,10 @@
 						margin: 10px;">
 		<form action='#' id='Reservation' method='POST' style="text-align-last: center; margin:20px">
 			<p>예약 날짜 선택</p>
-			<input type="date" name="res_date" id="datePicker" min="" style="margin-bottom: 25px;">
+			<input type="date" name="res_date" id="datePicker" min="" style="margin-bottom: 25px;" required>
 			<p>수량 선택</p>
 			<input type='button' value='-' class='qtyminus minus' onclick='decrementQuantity()' />
-			<input type='text' name='quantity' value='1' id='quantity' class='qty' />
+			<input type='text' name='quantity' value='1' id='quantity' class='qty' required/>
 			<input type='button' value='+' class='qtyplus plus' onclick='incrementQuantity()' />
 			<br><br>
 			<input type='hidden' name='act_id' value='${vo2.id}'/>
@@ -82,13 +82,13 @@
 		<div>
 	  	<h2 style="display: inline-flex; width: 440px;">${vo2.act_name}</h2>
 	  	<button class="myButton" onclick="copyLink()"  style="font-size: medium;">공유</button>
-		<button id="wish" class="${vo2.id} btn btn-outline-danger" onclick="addWish('${user.user_id}','${vo2.id}')" style="font-size: large; padding: 3px 4px 5px 4px; margin-top:-2px;">♡</button>
+		<button id="wish" class="${vo2.id} btn btn-outline-danger" onclick="addWish('${user.user_id}','${vo2.id}')" style="font-size: large; padding: 3px 7px 5px 7px; margin-top:-2px; margin-left:-2px">♡</button>
 		</div>
 	  <p class="lead">${vo2.content}</p>
 	</div>
 	<div class="card-body">
-		<div class="isCommented">평균별점</div><div><span class="stars" style="float:left; margin-top:-20px; margin-left:70px;"> ${vo2.rate}</span></div>
-		<a href="selectOneComments.do?act_id=${vo2.id}" class="btn btn-primary isCommented" style="background-color: #0000c9; color: white; margin-top:-30px; float:right; margin-right:380px; font-size:15px; font-weight:bold;">모든 이용후기</a>
+		<div class="isCommented" style="font-size:19px;">평균별점</div><div><span class="stars" style="float:left; margin-top:-20px; margin-left:90px;"> ${vo2.rate}</span></div>
+		<a href="selectOneComments.do?act_id=${vo2.id}" class="btn btn-primary isCommented" style="background-color: #0000c9; color: white; margin-top:-30px; float:right; margin-right:375px; font-size:15px; font-weight:bold;">모든 이용후기</a>
 	</div>
 	<div class="card" style="width: 600px; margin-left: 10px;">
 		<div class="card-body">
