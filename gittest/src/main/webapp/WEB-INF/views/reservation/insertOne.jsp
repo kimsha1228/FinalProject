@@ -198,7 +198,7 @@ $(function(){
 				$(".coupon").val(couponPrice);
 				$(".code").val(couponCode);
 			}else {
-			 	let discountRate = $("#coupon-select option:selected").text().slice(0,1).trim();
+			 	let discountRate = $("#coupon-select option:selected").text().slice(0,2).trim();
 				let couponPrice = Math.floor(originalPrice*(discountRate/100));
 				let finalPrice = originalPrice-couponPrice;
 				let couponCode = $("select").val();

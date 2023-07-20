@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import balgil.com.trip.activity.model.ActivityVO;
 import balgil.com.trip.activity.service.ActivityService;
@@ -30,12 +31,29 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class ActivityController {
-
+	
 	@ExceptionHandler(DuplicateKeyException.class)
-	public String insertActOK_exception() {
+	public ModelAndView insertActOK_exception() {
 		log.info("제목이 중복된다 DuplicateKeyException");
-		return "activity/insertAct";
+		
+		ModelAndView model = new ModelAndView();
+		List<DestinationVO> vos = destService.selectAll();
+		log.info("destination 조회결과:{}",vos);
+		
+		model.addObject("vos",vos);
+		model.addObject("alertMsg", "상품 이름이 중복됩니다!");
+		model.setViewName("activity/insertAct");
+		return model;
 	}
+//	@ExceptionHandler(Exception.class)
+//	public ModelAndView Exception_exception() {
+//		log.info("아무튼 에러다 Exception");
+//		
+//		ModelAndView model = new ModelAndView();
+//		model.addObject("alertMsg", "뭔가 에러임");
+//		model.setViewName("activity/insertAct");
+//		return model;
+//	}
 
 	@Autowired
 	ActivityService service;
@@ -73,6 +91,13 @@ public class ActivityController {
 			log.info("이미지가 5장 이상입니다.");
 			return "redirect:insertAct.do";
 		};
+		
+		//대표 이미지파일 설정용
+		if(vo.getFile().get(0).getSize() == 0) {
+			vo.setEng_name("default.png");
+		}else {
+			vo.setEng_name(vo.getFile().get(0).getOriginalFilename());
+		}
 		
 		int result = service.insert(vo);
 
@@ -157,9 +182,12 @@ public class ActivityController {
 	public String updateActOk(ActivityVO vo) throws IllegalStateException, IOException {
 		log.info("/updateActOk.do...{}", vo);
 
+		//대표 이미지파일 설정용
+		if(vo.getFile().get(0).getSize() != 0) {
+			vo.setEng_name(vo.getFile().get(0).getOriginalFilename());
+		}
+
 		int result = service.update(vo);
-		
-		//TODO: 추후 로컬 파일도 삭제하게 해야함
 		
 		//업로드 한 파일이 없으면 사진에 변경은 없음
 		if (vo.getFile().get(0).getSize() == 0) {

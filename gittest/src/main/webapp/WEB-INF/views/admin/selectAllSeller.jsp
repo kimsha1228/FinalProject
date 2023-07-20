@@ -10,8 +10,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <body>
-	<jsp:include page="../top_menu.jsp"></jsp:include>
-	<h1><a href="selectAllSeller.do">판매자목록</a></h1>
+	<jsp:include page="../admin_top.jsp"></jsp:include>
+	<div id="adminform">
+	<h3><a href="selectAllSeller.do">판매자목록</a></h3>
 	
 	<div style="padding:5px">
 		<form action="searchSellerList.do">  
@@ -20,11 +21,11 @@
 				<option value="name">이름</option>
 			</select>
 			<input type="text" name="searchWord" id="searchWord" value="" placeholder="검색어 입력">
-			<input type="submit" value="검색">
+			<input type="submit" value="검색" class="myButton">
 		</form>
 	</div>
 
-	<table border="1">
+	<table id="adminlisttable">
 	<thead>
 		<tr>
 			<th>회원번호</th>
@@ -38,20 +39,17 @@
 	<tbody>
 		<c:forEach var="vo" items="${vos}">
 			<tr>
-				<td><a href="selectOneSeller.do?user_id=${vo.user_id}">${vo.id}</a></td>
+				<td style="text-align:center"><a href="selectOneSeller.do?user_id=${vo.user_id}">${vo.id}</a></td>
 				<td>${vo.user_id}</td>
 				<td>${vo.name}</td>
 				<td>${vo.tel}</td>
 				<td>${vo.email}</td>
-				<td>${vo.type}</td>
+				<td style="text-align:center">${vo.type}</td>
 			</tr>
 		</c:forEach>
 	</tbody>
-<!-- 	<tfoot> -->
-<!-- 		<tr> -->
-<!-- 			<td colspan="5">1 2 3 4 5</td> -->
-<!-- 		</tr> -->
-<!-- 	</tfoot> -->
 	</table>
+	</div>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

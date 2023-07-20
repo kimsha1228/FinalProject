@@ -35,4 +35,8 @@ public class UserCouponService {
 	public int insert(UserCouponVO vo) {
 		return dao.insert(vo);
 	}
+
+	public UserCouponVO selectUsed(UserCouponVO vo) {
+		return dao.selectUsed(vo);
+	}
 }

@@ -7,11 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import balgil.com.trip.coupon.model.CouponVO;
 import balgil.com.trip.coupon.service.CouponService;
 import balgil.com.trip.usercoupon.model.UserCouponVO;
 import balgil.com.trip.usercoupon.service.UserCouponService;
+import balgil.com.trip.users.model.UsersVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -35,6 +37,7 @@ public class UserCouponController {
 		return "users/selectAllUserCoupon";
 	}
 	
+	@ResponseBody
 	@RequestMapping(value = "/userCoupon_insertOK.do", method = RequestMethod.GET)
 	public String userCoupon_insertOK(UserCouponVO vo) {
 		log.info("/userCoupon_insertOK.do...{}", vo);
@@ -43,12 +46,22 @@ public class UserCouponController {
 		vo1.setCode(vo.getCouponcode());
 		CouponVO vo2 = c_service.selectOne(vo1);
 		log.info("vo2:{}", vo2);
-		if(vo2!=null) {
+		
+		UserCouponVO vo3 = service.selectUsed(vo);
+		log.info("{}", vo3);
+		
+		if(vo2!=null && vo3==null) {
 			int result = service.insert(vo);
 			log.info("result:{}", result);
-		}
+			
+			if(result==1) {
+				return "{\"result\":\"OK\"}";
+			} else {
+				return "{\"result\":\"NotOK\"}";
+			}
+			
+		} else return "{\"result\":\"NotOK\"}";
 
-		return "redirect:selectAllUserCoupon.do?user_id="+vo.getUser_id();
 	}
 	
 }

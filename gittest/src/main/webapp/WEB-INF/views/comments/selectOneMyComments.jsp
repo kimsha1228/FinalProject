@@ -41,7 +41,7 @@
         <!-- 업로드된 이미지 표시 -->
         <div class="uploaded-images">
             <c:forEach var="img" items="${vos}">
-                <img src="resources/uploadimg/${img.name}" width="200px" alt="이미지">
+                <img width="100px" height="100px" src="resources/uploadimg/${img.name}" width="200px" alt="이미지">
             </c:forEach>
         </div>
         
@@ -71,7 +71,7 @@
                 likeComment(id);
             });
 
-            $(".update_comm").on("click", function(e){
+            $("#update_comm").on("click", function(e){
                 e.preventDefault();
                 const id = $(this).data("id");
                 let res_id = $(this).data("res_id");
@@ -82,7 +82,7 @@
                 $(".update_comm_form").submit();
             });
 
-            $(".delete_comm").on("click", function(e){
+            $("#delete_comm").on("click", function(e){
                 e.preventDefault();
                 const id = $(this).data("id");
                 let res_id = $(this).data("res_id");
