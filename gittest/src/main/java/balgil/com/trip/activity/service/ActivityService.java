@@ -46,6 +46,10 @@ public class ActivityService {
 	public void vcountUp(ActivityVO vo) {
 		dao.updateVcount(vo);
 	}
+	
+	public void updateRate(ActivityVO vo) {
+		dao.updateRate(vo);
+	}
 
 	public List<ActivityVO> selectRecommended() {
 		return dao.selectRecommended();
