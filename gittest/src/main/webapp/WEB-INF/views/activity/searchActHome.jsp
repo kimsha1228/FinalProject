@@ -26,7 +26,7 @@
 <jsp:include page="../top_menu.jsp"></jsp:include>
 <section>
 	
-	<h1 id="searchresult"></h1>
+	<h3 id="searchresult" style="margin-top:20px"></h3>
 
 	<p style="text-align: right;margin: 10px 10px 0px 0px;">상품 이름 <input class="search" type="search" data-column="1"><button type="button" class="reset">검색 초기화</button></p>
 	<table id="tableContainer">
