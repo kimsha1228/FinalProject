@@ -130,6 +130,9 @@ public class ActivityController {
 					String realPath = sContext.getRealPath("resources/uploadimg");
 					log.info("realPath : {}", realPath);
 
+					//윈도우 환경
+//					File f = new File(realPath + "\\" + getOriginalFilename);
+					//리눅스 환경
 					File f = new File(realPath + "/" + getOriginalFilename);
 					vos.transferTo(f);
 
