@@ -21,7 +21,7 @@ public class HomeController {
 	@Autowired
 	HttpSession session;
 	
-	@RequestMapping(value = {"/","/home.do"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/","/balgil.com"}, method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		log.info("hello{}.", locale);
 		

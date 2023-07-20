@@ -52,22 +52,22 @@ function idCheck(){
 		<table id="userinserttable">
 			<tr>
 				<td><label for="name">이름</label></td>
-				<td><input type="text" id="name" name="name" value="" autofocus></td>
+				<td><input type="text" id="name" name="name" value="" autofocus required></td>
 			</tr>
 			<tr>
 				<td><label for="user_id">아이디</label></td>
-				<td><input type="text" id="user_id" name="user_id" value="">
+				<td><input type="text" id="user_id" name="user_id" value="" required>
 					<button type="button" onclick="idCheck()">ID중복체크</button>
 					<span id="idCheck"></span>
 				</td>
 			</tr>
 			<tr>
 				<td><label for="pw">비밀번호</label></td>
-				<td><input type="password" id="pw1" name="pw" class="pw" value=""></td>
+				<td><input type="password" id="pw1" name="pw" class="pw" value="" required></td>
 			</tr>
 			<tr>
 				<td><label for="pw">비밀번호 확인</label></td>
-				<td><input type="password" id="pw2" class="pw" value="">
+				<td><input type="password" id="pw2" class="pw" value="" required>
 					<span id="alert-success" style="display: none;">✅</span>
     				<span id="alert-danger" style="display: none; color: #d92742;">❎</span>
     			</td>
@@ -76,23 +76,23 @@ function idCheck(){
 			<tr>
 				<td><label for="name">영문명</label></td>
 				<td>
-					<input type="text" id="first_name" name="first_name" value="" placeholder="영문 이름" size="10.5">
-					<input type="text" id="last_name" name="last_name" value="" placeholder="영문 성" size="10.5">
+					<input type="text" id="first_name" name="first_name" value="" placeholder="영문 이름" size="10.5" required>
+					<input type="text" id="last_name" name="last_name" value="" placeholder="영문 성" size="10.5" required>
 				</td>
 			</tr>
 			<tr>
 				<td><label for="tel">전화번호</label></td>
 				<td>
-					<input type="text" id="tel1" name="tel1" value="010" size="5">
-					<input type="text" id="tel2" name="tel2" value="" size="5">
-					<input type="text" id="tel3" name="tel3" value="" size="5">
+					<input type="text" id="tel1" name="tel1" value="010" size="5" required>
+					<input type="text" id="tel2" name="tel2" value="" size="5" required>
+					<input type="text" id="tel3" name="tel3" value="" size="5" required>
 				</td>
 			</tr>
 			<tr>
 				<td><label for="email">이메일</label></td>
 				<td>
-					<input type="text" id="email1" name="email1" placeholder="email" value="" size="10"><b>@</b>
-					<input type="text" id="email2" name="email2" placeholder="naver.com" value="" size="10">
+					<input type="text" id="email1" name="email1" placeholder="email" value="" size="10" required><b>@</b>
+					<input type="text" id="email2" name="email2" placeholder="naver.com" value="" size="10" required>
 				</td>
 			</tr>
 				
