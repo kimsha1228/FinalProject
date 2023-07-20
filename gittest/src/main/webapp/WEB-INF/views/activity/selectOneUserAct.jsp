@@ -59,7 +59,7 @@
 	<div class="card" style="float:right;
 						width:350px;
 						align-items: center;
-						margin: 10px;">
+						margin-top: 50px;">
 		<form action='#' id='Reservation' method='POST' style="text-align-last: center; margin:20px">
 			<p>예약 날짜 선택</p>
 			<input type="date" name="res_date" id="datePicker" min="" style="margin-bottom: 25px;" required>
@@ -81,7 +81,7 @@
 			width:600px;
 			margin-top:30px;">
 		<div>
-	  	<h2 style="display: inline-flex; width: 440px;">${vo2.act_name}</h2>
+	  	<h2 style="display: inline-flex; width: 440px; font-size:20px;">${vo2.act_name}</h2>
 	  	<button class="myButton" onclick="copyLink()"  style="font-size: medium;">공유</button>
 		<button id="wish" class="${vo2.id} btn btn-outline-danger" onclick="addWish('${user.user_id}','${vo2.id}')" style="font-size: large; padding: 2.5px 7px 4.5px 6px; margin-top:-2px; margin-left:-2px">♡</button>
 		</div>

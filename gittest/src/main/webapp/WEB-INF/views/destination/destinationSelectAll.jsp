@@ -17,7 +17,7 @@
 <%@include file="../top_menu.jsp" %>
 <section>
 	<section id="destinations">
-		<h3 style="font-weight:bold; font-size:20px;">현재 이용 가능한 여행지</h3>
+		<h3 style="font-weight:bold; font-size:19px; margin-top:30px;">현재 이용 가능한 여행지</h3>
 		<div class="scrolling-wrapper row flex-row mt-4 pb-4 pt-2">
 				<a class="col-3" href="selectOneDestRoute.do?dest_id=1">
 					<span class="card card-block" style="margin-bottom:30px">

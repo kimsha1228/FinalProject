@@ -17,7 +17,7 @@ window.onload = function(){
 						</a> 
  					</td>
  					<td>
- 						<h5><a href="selectOneUserRoute.do?id=${vo.id}">${vo.route_name}</a></h5>
+ 						<h5><a href="selectOneUserRoute.do?id=${vo.id}" style="font-size:18px; font-weight:bold">${vo.route_name}</a></h5>
  						<p style="font-size:15px;">${vo.summary}</p>
  						<p>추천 루트<br>
  				`;

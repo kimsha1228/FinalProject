@@ -43,13 +43,13 @@
 		  </div>
 		    <a class="btn btn-outline-danger" href="javascript:sortFunction(5);" role="button">초기화</a>
 		</div>
-	<p style="text-align: right;margin: 10px 10px 0px 0px;">상품 이름 <input class="search" type="search" data-column="1"><button type="button" class="reset">검색 초기화</button></p>
-	<table id="tableContainer">
+	<p style="text-align: right; margin: 10px 10px 0px 0px;"><input class="search" type="search" data-column="1" placeholder="상품 이름"><button type="button" class="reset">검색 초기화</button></p>
+	<table id="tableContainer" style="margin-top:30px">
 	    <thead>
 	        <tr>
-	            <th class="sorter-false">상품 사진</th>
-	            <th class="sorter-false">상품 요약</th>
-	            <th class="sorter-false">기타정보</th>
+	            <th class="sorter-false"> </th>
+	            <th class="sorter-false" style="font-size:17px;">상품 소개</th>
+	            <th class="sorter-false" style="font-size:17px;">기타정보</th>
 	            <th style="display: none;">price</th>
 	            <th style="display: none;">vcount</th>
 	            <th class="sorter-false" style="display: none;">act_date</th>
@@ -64,19 +64,19 @@
 						</a> 
 					</td>
 	                <td>
-	                	<h4><a href="selectOneUserAct.do?id=${vo.id}">${vo.act_name}</a></h4>
-	                	<p>${vo.content}</p>
+	                	<h5><a href="selectOneUserAct.do?id=${vo.id}" style="font-size:18px; font-weight:bold">${vo.act_name}</a></h5>
+	                	<p style="font-size:14px">${vo.content}</p>
 	                	<span class="stars">${vo.rate}</span>
 	                	${vo.price}원 <button class="wish btn btn-outline-danger btn-sm" data-act_id="${vo.id}" data-arg1='${user.user_id}' data-arg2= '${vo.id}' data-arg3='${status.count}'>♡</button>
 	                </td>
 	                <td style="vertical-align: middle;">
-	                	<p style="width: 200px;">태그: ${vo.tag}</p>
-	                	<p style="width: 200px;">조회수: ${vo.vcount}</p>
-	                	<p style="width: 200px;">주소: ${vo.add}</p>
+	                	<p style="width: 200px; font-size:13px;">태그: ${vo.tag}</p>
+	                	<p style="width: 200px; font-size:13px;">조회수: ${vo.vcount}</p>
+	                	<p style="width: 200px; font-size:13px;">주소: ${vo.add}</p>
 	                </td>
-	                <td style="display: none;">${vo.price}</td>
-	                <td style="display: none;">${vo.vcount}</td>
-	                <td style="display: none;">${vo.act_date}</td>
+	                <td style="display: none; font-size:13px;">${vo.price}</td>
+	                <td style="display: none; font-size:13px;">${vo.vcount}</td>
+	                <td style="display: none; font-size:13px;">${vo.act_date}</td>
 	            </tr>
 	        </c:forEach>
 	    </tbody>
