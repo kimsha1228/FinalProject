@@ -18,7 +18,7 @@
 <script src="https://mottie.github.io/tablesorter/addons/pager/jquery.tablesorter.pager.js"></script>
 <script type="text/javascript" src="resources/js/route/selectOneDestRoute.js?ver=2"></script>
 
-<title>루트목록</title>
+<title>여행지 루트</title>
 <script>
 	const user_id = '${user.user_id}';
 	let dest_id = ${param.dest_id};

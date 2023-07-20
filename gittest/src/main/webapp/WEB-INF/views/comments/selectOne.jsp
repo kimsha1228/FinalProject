@@ -42,7 +42,7 @@ function actSelectOne(){
 }//end actSelectOne
 
 </script>
-<title>후기</title>
+<title>상품 후기</title>
 <jsp:include page="../css.jsp"></jsp:include>
 
 </head>
@@ -54,15 +54,6 @@ function actSelectOne(){
 	<h5 style="font-weight:bold; margin-top:30px; margin-bottom:30px"> <span id="act_name"></span><span> 상품 후기</span></h5>
 
 	<table id="commentsList">
-<!-- 		<thead> -->
-<!-- 			<tr> -->
-<!-- 				<th>평점</th> -->
-<!-- 				<th>후기 내용</th> -->
-<!-- 				<th>작성일자</th> -->
-<!-- 				<th>작성자</th> -->
-<!-- 				<th>좋아요</th> -->
-<!-- 			</tr> -->
-<!-- 		</thead> -->
 		<tbody>
 			<c:forEach var="vo" items="${vos}">
 				<tr style="border-top: 2px solid gray; margin-top: 10px">
