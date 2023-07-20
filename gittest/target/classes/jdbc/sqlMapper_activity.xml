@@ -95,6 +95,16 @@
 		where ID = #{id}
 	</update>
 	
+	<update id="ACT_UPDATE_RATE" parameterType="balgil.com.trip.activity.model.ActivityVO">
+		UPDATE activity
+		SET rate = (
+		  SELECT AVG(c.rate)
+		  FROM comments c
+		  WHERE c.ACT_ID = activity.ID
+		)
+		WHERE ID = #{id}
+	</update>
+	
 	<update id="ACT_VCOUNTUP" parameterType="balgil.com.trip.activity.model.ActivityVO">
 		update ACTIVITY set vcount=vcount+1
 		where ID = #{id}
