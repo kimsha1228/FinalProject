@@ -101,7 +101,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 				|| sPath.equals("/deleteRouteOk.do") 
 				|| sPath.equals("/selectAllRoute.do") 
 				|| sPath.equals("/selectOneRoute.do") 
-				|| sPath.equals("/jsonSelectAllRoute.do") 
 				|| sPath.equals("/deleteAnswerOK.do") 
 				|| sPath.equals("/insertAnswerOK.do") 
 				|| sPath.equals("/updateAnswerOK.do")) {
