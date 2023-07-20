@@ -398,7 +398,7 @@
 
 #commentstable {
     width: 450px;
-    margin: 30px 350px;
+    margin: 30px 0px 0px 275px;
 /*     border: 1px solid blue; */
     overflow: hidden;
     text-align: left;
@@ -427,7 +427,7 @@
 }
 
 #cibtn{
-	margin: 0px 0px 0px -2px;
+	margin: 0px 0px 0px 2px;
 }
 
 #resform {
@@ -477,7 +477,7 @@
     width:1000px;
     height:98%;
     margin: 150px auto;
-    border: 1px solid blue;
+/*     border: 1px solid blue; */
     overflow: hidden;
     text-align: left;
 }
@@ -517,12 +517,102 @@
     width:350px;
     height:98%;
     margin: 50px auto;
-    border: 3px solid gray;
+    border: 2px solid gray;
     overflow: hidden;
     text-align: left;
 }
 #res_info th, #pay_info th{
 	text-align: center;
+}
+
+#faqtable{
+    width: 500px;
+    margin: 30px 300px;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: left;
+}
+
+#commentstable1 {
+    width: 500px;
+    margin: 30px 0px 0px 250px;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: left;
+}
+
+#qnaform {
+    width:1000px;
+    height:98%;
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#qnaform h3{
+    margin-bottom: 30px;
+}
+
+#qnaform table{
+    width:600px;
+    height:98%;
+    margin: 50px 0px 50px 200px;
+    overflow: hidden;
+    text-align: left;
+}
+
+#qnaform tr{
+    margin-bottom: 30px;
+}
+
+#qnatable {
+    width: 500px;
+    margin: 30px 0px 0px 50px;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: left;
+}
+
+#qform {
+    width:1000px;
+    height:98%;
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#qform table{
+    width:670px;
+    height:98%;
+    margin: 50px 0px 50px 170px;
+    overflow: hidden;
+    text-align: left;
+}
+
+#adminform {
+    width:1000px;
+    height:98%;
+    margin: 50px auto;
+/*     border: 1px solid blue; */
+    overflow: hidden;
+    text-align: center;
+}
+
+#adminlisttable {
+    width:900px;
+    margin: 50px auto;
+    border: 1px solid gray;
+    border-collapse: collapse;
+    overflow: hidden;
+    text-align: center;
+}
+#adminlisttable th {
+    border-bottom: 2px solid gray;
+}
+#adminlisttable td {
+    border-bottom: 1px solid lightgray;
 }
 
 

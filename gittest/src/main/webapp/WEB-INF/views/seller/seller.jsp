@@ -11,13 +11,13 @@
 </head>
 <body>
 	<jsp:include page="../seller_top.jsp"></jsp:include>
-	<div id="list1">
+	<div id="adminmenu1">
 		<ul>
-			<li><a href="insertAct.do">상품등록</a></li>
-			<li><a href="selectAllAct.do">상품목록</a></li>
-			<li><a href="insertRoute.do">루트등록</a></li>
-			<li><a href="selectAllRoute.do">루트목록</a></li>
-			<li><a href="selectAllContact.do?seller_id=${user.user_id}">문의글목록</a></li>
+			<li><a href="insertAct.do"><img width="110px" height="110px" src="resources/uploadimg/IMG_1604.png"></a></li>
+			<li><a href="selectAllAct.do"><img width="110px" height="110px" src="resources/uploadimg/IMG_1605.png"></a></li>
+			<li><a href="insertRoute.do"><img width="110px" height="110px" src="resources/uploadimg/IMG_1606.png"></a></li>
+			<li><a href="selectAllRoute.do"><img width="110px" height="110px" src="resources/uploadimg/IMG_1607.png"></a></li>
+			<li><a href="selectAllContact.do?seller_id=${user.user_id}"><img width="110px" height="110px" src="resources/uploadimg/IMG_1608.png"></a></li>
 		</ul>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>

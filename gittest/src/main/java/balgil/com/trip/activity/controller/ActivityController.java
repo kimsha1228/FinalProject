@@ -74,6 +74,13 @@ public class ActivityController {
 			return "redirect:insertAct.do";
 		};
 		
+		//대표 이미지파일 설정용
+		if(vo.getFile().get(0).getSize() == 0) {
+			vo.setEng_name("default.png");
+		}else {
+			vo.setEng_name(vo.getFile().get(0).getOriginalFilename());
+		}
+		
 		int result = service.insert(vo);
 
 		// 상품 입력에 성공하면 이미지를 삽입하기
@@ -156,6 +163,11 @@ public class ActivityController {
 	@RequestMapping(value = "/updateActOk.do", method = RequestMethod.POST)
 	public String updateActOk(ActivityVO vo) throws IllegalStateException, IOException {
 		log.info("/updateActOk.do...{}", vo);
+
+		//대표 이미지파일 설정용
+		if(vo.getFile().get(0).getSize() != 0) {
+			vo.setEng_name(vo.getFile().get(0).getOriginalFilename());
+		}
 
 		int result = service.update(vo);
 		

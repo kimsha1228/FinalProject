@@ -135,12 +135,18 @@ public class CommentsController {
 
 	@RequestMapping(value = "/selectMyOneComments.do", method = RequestMethod.GET)
 	public String selectMyOneComments(CommentsVO vo, Model model) {
-		log.info("/selectMyOneComments.do...{}", vo);
+		log.info("/selectMyOneComments.do...vo:{}", vo);
 
 		CommentsVO vo2 = service.selectOneComments(vo);
-
+		log.info("/selectMyOneComments.do...vo2:{}",vo2);
 		model.addAttribute("vo2", vo2);
-
+		
+		ImageVO vo1 = new ImageVO();
+		vo1.setComment_id(vo2.getId());
+		List<ImageVO> vos = imgService.selectAll(vo1);
+		log.info("vos:{}", vos);
+		model.addAttribute("vos", vos);
+		
 		return "comments/selectOneMyComments";
 	}
 	
@@ -177,13 +183,13 @@ public class CommentsController {
 
 	        // 파일이 없으면 default.png를 대신 image테이블에 넣을 예정
 	        if (vo.getFile().get(0).getSize() == 0) {
-	            log.info("파일이 비어있어서 default.png 삽입");
+	            log.info("파일이 비어있어서 null");
 	            // 이미지를 서버에 저장
-	            ImageVO imageVO = new ImageVO();
-	            imageVO.setName("default.png");
-	            imageVO.setComment_id(vo2.getId());
+//	            ImageVO imageVO = new ImageVO();
+//	            imageVO.setName("");
+//	            imageVO.setComment_id(vo2.getId());
 
-	            imgService.insert(imageVO);
+//	            imgService.insert(imageVO);
 	        } else {
 	            // 파일의 갯수만큼 반복!
 	            for (MultipartFile vos : vo.getFile()) {
@@ -223,7 +229,7 @@ public class CommentsController {
 	    } // end if
 
 	    if (result == 1) {
-	        return "redirect:comments.do";
+	        return "redirect:selectMyComments.do?user_id=" + vo.getUser_id();
 	    } else {
 	        return "redirect:insertComments.do";
 	    }

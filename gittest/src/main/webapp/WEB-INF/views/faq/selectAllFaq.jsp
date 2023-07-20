@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,10 +17,10 @@
 	
 	$(document).ready(function() {
 		if (user_id === "admin01") {
-			$("#faq_menu").find("li").show();
+// 			$("#faq_menu").find("li").show();
             $("#faq_form").show();
 		} else {
-			$("#faq_menu").find("li").hide();
+// 			$("#faq_menu").find("li").hide();
             $("#faq_form").hide();
 		}
 	});
@@ -29,7 +30,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 100vh;
+/*         min-height: 100vh; */
+		margin-top:50px;
         flex-direction: column; 
     }}
 
@@ -40,9 +42,15 @@
         padding: 20px;
         box-sizing: border-box;
     }
-      .inputtable h1 {
-        text-align: center;
-        margin-bottom: 20px;
+  #faqtable1 {
+        width: 600px;
+        margin-top: 50px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+      .inputtable a {
+        text-decoration: none;
+        color:black;
     }
 
 </style>
@@ -50,53 +58,52 @@
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<div class="inputtable">
-		<h1>자주 묻는 질문</h1>
+		<h3 style="margin-bottom:20px"><a href="selectAllFaq.do">자주 묻는 질문</a></h3>
 		<form id="faq_form" action="insertFaqOK.do" method="get">
-			<table id="boardList">
+			<table id="">
 				<tr>
-					<td><label for="title">제목</label></td>
-					<td><input type="text" id="title" name="title" value="faq 제목">
+					<td><input type="text" id="title" name="title" value=""  size="89" placeholder="제목을 입력해주세요.">
 					</td>
 				</tr>
 				<tr>
-					<td><label for="content">내용</label></td>
-					<td><textarea rows="10" cols="20" name="content" value="content">faq 내용</textarea></td>
+<!-- 					<td><label for="content">내용</label></td> -->
+					<td><textarea rows="15" cols="90" name="content" placeholder="내용을 입력해주세요."></textarea></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" class="myButton" value="작성완료"></td>
+					<td colspan="2"><input type="submit" class="myButton" value="작성완료" style="margin-left:270px"></td>
 				</tr>
-	
 			</table>
 		</form>
-	</div>	
+		
+	<div style="padding:5px">
+		<form action="searchFaq.do">
+			<select name="searchKey" id="searchKey">
+				<option value="title">제목</option>
+				<option value="content">내용</option>
+			</select>
+			<input type="text" name="searchWord" id="searchWord" value="" placeholder="제목 또는 내용을 입력하세요" size="40">
+			<input type="submit" value="검색" class="myButton">
+		</form>
+	</div>
 
-	<table>
+	<table id="faqtable1">
 		<thead>
 			<tr>
-				<th>문의번호</th>
-				<th>제목</th>
-				<th>내용</th>
-				<th>작성시간</th>
+				<th style="width:500px; border-bottom:2px solid gray">제목</th>
+				<th style="width:100px; border-bottom:2px solid gray">작성일자</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="vo" items="${vos}">
 				<tr>
-					<td><a href="selectOneFaq.do?id=${vo.id}">${vo.id}</a></td>
-					<td>${vo.title}</td>
-					<td>${vo.content}</td>
-					<td>${vo.faq_date}</td>
+					<td><a href="selectOneFaq.do?id=${vo.id}">${vo.title}</a></td>
+					<td style="text-align:center"><fmt:formatDate value="${vo.faq_date}" pattern="yyyy-MM-dd"/></td>
 				</tr>
 			</c:forEach>
-
 		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="5">1 2 3 4 5</td>
-			</tr>
-		</tfoot>
 	</table>
 
+	</div>	
 	<br>
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>

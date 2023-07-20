@@ -85,7 +85,7 @@ function paymentSelectOne(){
 				<td><a href="selectOneAct.do?id=${vo1.act_id}">${vo1.act_name}</a></td>
 			</tr>
 			<tr>
-				<td>예약일</td>
+				<td style="width:100px">예약일</td>
 				<td><fmt:parseDate value="${vo1.res_date}" var="res_date" pattern="yyyy-MM-dd"/>
 					<fmt:formatDate value="${res_date}" pattern="yyyy년 MM월 dd일"/>
 				</td>
@@ -98,16 +98,13 @@ function paymentSelectOne(){
 				<td>가격</td>
 				<td>${vo1.price}원</td>
 			</tr>
+			<tr>
+				<th colspan="2"><a href="deleteOneCancelReservation.do?id=${vo1.id}&user_id=${user.user_id}" class="myButton">내역 삭제하기</a></th>
+			</tr>
 		</tbody>
 	</table>
 	<table id="pay_info">
 		<tbody>
-		</tbody>
-		<tbody>
-		
-		<tr>
-			<th colspan="2"><a href="deleteOneCancelReservation.do?id=${vo1.id}&user_id=${user.user_id}">내역 삭제하기</a></th>
-		</tr>
 		</tbody>
 	</table>
 	</div>

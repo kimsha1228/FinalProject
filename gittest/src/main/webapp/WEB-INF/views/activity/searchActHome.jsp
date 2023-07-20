@@ -19,7 +19,7 @@
 
 <title>홈 상품 검색</title>
 <script>
-	let user_id = '${user.user_id}';
+	const user_id = '${user.user_id}';
 </script>
 </head>
 <body>
@@ -60,7 +60,25 @@
 </section>
 
 <jsp:include page="../footer.jsp"></jsp:include>
-
+<!-- 로그인 안할시 띄울 모달창 -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">경고!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        로그인 해주세요
+      </div>
+      <div class="modal-footer">
+        <a href="login.do" type="button" class="btn btn-primary">로그인하러가기</a>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- BootStrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" ></script>

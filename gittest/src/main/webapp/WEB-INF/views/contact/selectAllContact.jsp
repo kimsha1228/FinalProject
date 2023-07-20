@@ -28,31 +28,28 @@
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
-	
-	<h1>문의 내역</h1>
+	<div id="qnaform">
+	<h3>문의 내역</h3>
 	<table>
 		<thead>
 			<tr>
-				<th>번호</th>
-				<th>제목</th>
+				<td>번호</td>
+				<td style="width:350px">제목</td>
+				<td>작성자</td>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="vo" items="${vos}">
+			<c:forEach var="vo" items="${vos}" begin="0" step="1" varStatus="i">
 				<tr>
-					<td><a href="selectOneContact.do?id=${vo.id}">${vo.id}</a></td>
-					<td>${vo.title}</td>
+					<td><a href="selectOneContact.do?id=${vo.id}">${i.count}</a></td>
+					<td><a href="selectOneContact.do?id=${vo.id}">${vo.title}</a></td>
+					<td>${vo.user_id}</td>
 				</tr>
 			</c:forEach>
-
 		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="5">1 2 3 4 5</td>
-			</tr>
-		</tfoot>
 	</table>
 	<br>
+	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
