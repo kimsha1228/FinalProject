@@ -102,10 +102,6 @@
 		<p>주소: ${vo2.add}</p>
 		<div id="map" style="width:600px;height:400px;"></div>
 	</div>
-<<<<<<< HEAD
-<!-- 	<button class="myButton" onclick="window.location.href='selectAllFaq.do'">고객센터</button> -->
-=======
->>>>>>> refs/heads/Gunho
 	<button class="myButton loginCheckContact" data-act_id="${vo2.id}" data-seller_id="${vo2.seller_id}">문의하기</button>
 </section>
 
