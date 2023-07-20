@@ -190,7 +190,7 @@ public class CommentsController {
 	                String realPath = sContext.getRealPath("resources/uploadimg");
 	                log.info("realPath : {}", realPath);
 
-	                File f = new File(realPath + "\\" + getOriginalFilename);
+					File f = new File(realPath + File.separator + getOriginalFilename);
 	                vos.transferTo(f);
 
 	                // 이미지를 서버에 저장
@@ -270,7 +270,7 @@ public class CommentsController {
 				String realPath = sContext.getRealPath("resources/uploadimg");
 				log.info("realPath : {}", realPath);
 
-				File f = new File(realPath + "\\" + getOriginalFilename);
+				File f = new File(realPath + File.separator + getOriginalFilename);
 				vos.transferTo(f);
 
 				// 이미지를 서버에 저장
