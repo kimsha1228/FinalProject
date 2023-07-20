@@ -15,6 +15,32 @@
 <link rel="stylesheet" href="resources/css/home.css?ver=1">
 <link rel="stylesheet" href="resources/css/cardAndStar.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+const user_id = '${user.user_id}';
+$(function(){
+	$.ajax({
+		url : "jsonUsersSelectOne.do",
+		data:{user_id:user_id},
+		method:'GET',
+		dataType:'json',
+		success : function(arr) {
+			//유저의 타입이 0일때만 관리자다
+			if(arr.type!==0){
+				//태그를 수정 불가로 바꿈
+				console.log('aass');
+				$('#tag').attr('readonly',true); //수정불가
+				$('#tag').attr('onFocus',"this.blur();");//포커싱불가
+				$('#tag').after(' 관리자만 입력 가능합니다.'); //바로 뒤에 글자 추가
+			}
+		},
+		error:function(xhr,status,error){
+			console.log('xhr.status:', xhr.status);
+		}
+	});//end $.ajax()...
+	
+});
+
+</script>
 <title>상품 등록</title>
 <jsp:include page="../css.jsp"></jsp:include>
 </head>
@@ -60,7 +86,7 @@
 			</tr>
 			<tr>
 				<td><label for="tag">태그</label></td>
-				<td><input type="text" id="tag" name="tag" value="추천" style="width: 90px">
+				<td><input type="text" id="tag" name="tag" value="신규" style="width: 90px">
 				</td>
 			</tr>
 			<tr>
