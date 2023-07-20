@@ -23,6 +23,7 @@
 <script type="text/javascript">
 $(function(){
 	actSelectOne();
+	$('span.stars').stars();
 });//end onload...
 
 function actSelectOne(){
@@ -40,6 +41,21 @@ function actSelectOne(){
  		}
  	});//end $.ajax()...
 }//end actSelectOne
+
+//별점 관련 함수 추후 	$('span.stars').stars(); 를 써줘야함
+$.fn.stars = function() {
+    return $(this).each(function() {
+        // Get the value
+        var val = parseFloat($(this).html());
+        // Make sure that the value is in 0 - 5 range, multiply to get width
+        var size = Math.max(0, (Math.min(5, val))) * 16;
+        // Create stars holder
+        var $span = $('<span />').width(size);
+        // Replace the numerical value with stars
+        $(this).html($span);
+    });
+}
+
 
 </script>
 <title>상품 후기</title>
@@ -61,7 +77,9 @@ function actSelectOne(){
 					<td style="font-size:13px; color:gray; text-align:right"><p style="margin:5px 0px 5px 5px;"><fmt:formatDate value="${vo.com_date}" pattern="yyyy년 MM월 dd일"/></p></td>
 				</tr>
 				<tr style="border-top: 1px solid gray;">
-					<td colspan="2"><p style="margin:5px 0px 5px 5px;">${vo.rate}점</p></td>
+					<td colspan="2">
+						<span style="margin:5px 0px 5px 5px;" class="stars">${vo.rate}</span>
+					</td>
 				</tr>
 				<tr>
 					<td style="width:500px; height:100px; vertical-align : top;"><p style="margin:5px 0px 5px 5px;" >${vo.content}</p></td>
@@ -73,6 +91,7 @@ function actSelectOne(){
 		</tbody>
 
 	</table>
-    <jsp:include page="../footer.jsp"></jsp:include>
+</section>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
