@@ -26,7 +26,7 @@
 <body>
 <jsp:include page="../top_menu.jsp"></jsp:include>
 <section>
-	<h1>상품</h1>
+<!-- 	<h1>상품</h1> -->
 	<section id="vos">
 	</section>
 	

@@ -127,7 +127,7 @@
 				<td>장바구니에 담긴 상품이 없습니다</td>
 			</tr>
 			<tr>
-				<td><a href="home.do" id="homebtn" class="myButton">상품 보러가기</a></td>
+				<td><a href="balgil.com" id="homebtn" class="myButton">상품 보러가기</a></td>
 			</tr>
 		</table>
 	</c:if>

@@ -41,7 +41,7 @@
 <body>
 <jsp:include page="../top_menu.jsp"></jsp:include>
 <section>
-	<h1>상품 정보</h1>
+<!-- 	<h1>상품 정보</h1> -->
     <div id="carouselControls" class="carousel slide" data-ride="carousel">
 	  <ol class="carousel-indicators">
  	  </ol>	
