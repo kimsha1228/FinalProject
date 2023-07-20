@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="resources/css/home.css?ver=1">
 <link rel="stylesheet" href="resources/css/cardAndStar.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<title>상품 작성</title>
+<title>상품 등록</title>
 <jsp:include page="../css.jsp"></jsp:include>
 </head>
 <body>
