@@ -224,7 +224,7 @@ function incrementQuantity() {
 function decrementQuantity() {
 	var quantityInput = document.getElementById('quantity');
 	var currentQuantity = parseInt(quantityInput.value);
-	if (currentQuantity > 0) {
+	if (currentQuantity > 1) {
 		quantityInput.value = currentQuantity - 1;
 	}
 }
