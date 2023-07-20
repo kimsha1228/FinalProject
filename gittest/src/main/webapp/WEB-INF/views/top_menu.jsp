@@ -42,10 +42,18 @@
 	}else{
 		$('.login').hide();
 		$('.u_insert').hide();
-		$('.showUserName').show();
-		$('.wishlist').show();
-		$('.cart').show();
-		$('.myPage').show();
+		$('.wishlist').hide();
+		$('.cart').hide();
+		$('.myPage').hide();
 		$('.logout').show();
+		if('${user.type}'==='3'){
+			$('.login').hide();
+			$('.u_insert').hide();
+			$('.showUserName').show();
+			$('.wishlist').show();
+			$('.cart').show();
+			$('.myPage').show();
+			$('.logout').show();
+		}
 	}
 </script>
