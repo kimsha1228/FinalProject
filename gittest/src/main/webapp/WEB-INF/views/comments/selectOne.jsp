@@ -111,10 +111,10 @@ $.fn.stars = function() {
 			    align-items: center;">
 	<h5 style="font-weight:bold; margin-top:30px; margin-bottom:30px"> <span id="act_name"></span><span> 상품 후기</span></h5>
 	
-	<section id="allCommImg" style="width:500px; margin-top:30px;">
+	<section id="allCommImg" style="width:650px; margin-top:30px;">
 	</section>
 	
-	<table id="commentsList">
+	<table id="commentsList" style="margin-top:30px;">
 		<tbody>
 			<c:forEach var="vo" items="${vos}">
 				<tr style="border-top: 2px solid gray; margin-top: 10px">
