@@ -25,16 +25,16 @@
 <body>
 <jsp:include page="../top_menu.jsp"></jsp:include>
 <section>
-	
-	<h3 id="searchresult" style="margin-top:20px"></h3>
 
-	<p style="text-align: right;margin: 10px 10px 0px 0px;">상품 이름 <input class="search" type="search" data-column="1"><button type="button" class="reset">검색 초기화</button></p>
-	<table id="tableContainer">
+	<h5 id="searchresult" style="margin-top:50px; margin-bottom:20px; margin-left:445px; font-size:19px; font-weight:bold"></h5>
+
+	<p style="text-align: right;margin: 10px 10px 0px 0px;"><input class="search" type="search" data-column="1" placeholder="상품이름"><button type="button" class="reset">검색 초기화</button></p>
+	<table id="tableContainer" style="margin-top:30px">
 		<thead>
 	        <tr>
-	            <th class="sorter-false">상품 사진</th>
-	            <th class="sorter-false" data-value="${param.searchWord}">상품 요약</th>
-	            <th class="sorter-false">기타정보</th>
+	            <th class="sorter-false"> </th>
+	            <th class="sorter-false" data-value="${param.searchWord}" style="font-size:17px;">상품 설명</th>
+	            <th class="sorter-false" style="font-size:17px;">기타정보</th>
 	            <th style="display: none;">price</th>
 	            <th style="display: none;">vcount</th>
 	            <th class="sorter-false" style="display: none;">act_date</th>

@@ -184,15 +184,15 @@ function searchList(searchWord){
 							</a> 
 						</td>
 		                <td>
-		                	<h4><a href="selectOneUserAct.do?id=${vo.id}">${vo.act_name}</a></h4>
-		                	<p>${vo.content}</p>
+		                	<h4><a href="selectOneUserAct.do?id=${vo.id}" style="font-size:18px; font-weight:bold">${vo.act_name}</a></h4>
+		                	<p style="font-size:15px;">${vo.content}</p>
 		                	<span class="stars">${vo.rate}</span>
 		                	${vo.price}원 <button class="wish btn btn-outline-danger btn-sm" data-act_id="${vo.id}" data-arg1='${user_id}' data-arg2= '${vo.id}' data-arg3='${status.count}'>♡</button>
 		                </td>
 		                <td style="vertical-align: middle;">
-		                	<p style="width: 200px;">태그: ${vo.tag}</p>
-		                	<p style="width: 200px;">조회수: ${vo.vcount}</p>
-		                	<p style="width: 200px;">주소: ${vo.add}</p>
+		                	<p style="width: 200px; font-size:13px;">태그: ${vo.tag}</p>
+		                	<p style="width: 200px; font-size:13px;">조회수: ${vo.vcount}</p>
+		                	<p style="width: 200px; font-size:13px;">주소: ${vo.add}</p>
 		                </td>
 		                <td style="display: none;">${vo.price}</td>
 		                <td style="display: none;">${vo.vcount}</td>
@@ -204,7 +204,7 @@ function searchList(searchWord){
 			$("#vos").html(tag_vos);
 			$('span.stars').stars();
 			//검색결과 삽입
-			let result="검색결과:";
+			let result="검색결과";
 			$("#searchresult").text(result);
 		},
 	 	error:function(xhr,status,error){

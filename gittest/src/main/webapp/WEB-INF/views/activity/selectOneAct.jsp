@@ -16,11 +16,11 @@
 <script type="text/javascript" src="resources/js/activity/selectOneAct.js"></script>
 <style>
 	section a{
-	  color: red;
+	  color: white;
 	}
-	section a:visited { color: red; }
-	section a:hover { color: red; }
-	section a:active { color: red; }
+	section a:visited { color: white; }
+	section a:hover { color: white; }
+	section a:active { color: white; }
 </style>
 </head>
 <body>
@@ -62,8 +62,8 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="11"><a href="updateAct.do?id=${param.id}">상품수정</a>
-					<a href="deleteActOk.do?id=${param.id}">상품삭제</a></td>
+				<td colspan="11"><a href="updateAct.do?id=${param.id}" class="myButton">상품수정</a>
+					<a href="deleteActOk.do?id=${param.id}" class="myButton">상품삭제</a></td>
 			</tr>
 		</tfoot>
 	</table>
