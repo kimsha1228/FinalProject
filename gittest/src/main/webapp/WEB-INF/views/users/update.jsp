@@ -14,7 +14,7 @@
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<div id="uupdate">
 	<h3>내 정보 수정</h3>
-	<form action="u_updateOK.do" method="post" enctype="multipart/form-data">
+	<form action="u_updateOK.do" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
 		<table id="uupdatetable">
 			<tr>
 				<td><label for="img">프로필 사진</label></td>
@@ -30,7 +30,7 @@
 				<td><input type="password" id="pw1" name="pw" class="pw" value="${users.pw}"></td>
 			</tr>
 			<tr>
-				<td><label for="pw">비밀번호</label></td>
+				<td><label for="pw">비밀번호 확인</label></td>
 				<td><input type="password" id="pw2" value="${users.pw}">
 					<span id="alert-success" style="display: none;">✅</span>
     				<span id="alert-danger" style="display: none; color: #d92742;">❎</span>
@@ -69,29 +69,69 @@
 			</tr>
 		</table>
 	</form>
-<%-- 	<a href="u_deleteOK.do?user_id=${user.user_id}">회원탈퇴</a> --%>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 	<script>
-	$('.pw').focusout(function () {
-        var pwd1 = $("#pw1").val();
-        var pwd2 = $("#pw2").val();
-  
-        if ( pwd1 != '' && pwd2 == '' ) {
-            null;
-        } else if (pwd1 != "" || pwd2 != "") {
-            if (pwd1 == pwd2) {
-                // 비밀번호 일치 이벤트 실행
-            	$("#alert-success").css('display', 'inline-block');
-                $("#alert-danger").css('display', 'none');
-            } else {
-                // 비밀번호 불일치 이벤트 실행
-            	  $("#alert-success").css('display', 'none');
-                  $("#alert-danger").css('display', 'inline-block');
+	$(document).ready(function() {
+        // 비밀번호 확인 시 실시간으로 체크
+        $("#pw2").on("input", function() {
+            var pwd1 = $("#pw1").val();
+            var pwd2 = $("#pw2").val();
+
+            if (pwd1 !== '' || pwd2 !== '') {
+                if (pwd1 === pwd2) {
+                    $("#alert-success").css('display', 'inline-block');
+                    $("#alert-danger").css('display', 'none');
+                } else {
+                    $("#alert-success").css('display', 'none');
+                    $("#alert-danger").css('display', 'inline-block');
+                }
             }
-        }
+        });
     });
-	
-	</script>
+
+        function validateForm() {
+            // 비밀번호 확인
+            var pwd1 = $("#pw1").val();
+            var pwd2 = $("#pw2").val();
+
+            if (pwd1 !== pwd2) {
+                alert("비밀번호가 일치하지 않습니다.");
+                return false;
+            }
+
+            // 영문명 검증
+            var firstName = $("#first_name").val();
+            var lastName = $("#last_name").val();
+            var nameRegex = /^[A-Za-z]+$/;
+
+            if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
+                alert("영문명은 영어만 포함해야 합니다.");
+                return false;
+            }
+
+            // 전화번호 검증
+            var tel1 = $("#tel1").val();
+            var tel2 = $("#tel2").val();
+            var tel3 = $("#tel3").val();
+            var telRegex = /^\d+$/;
+
+            if (!telRegex.test(tel1) || !telRegex.test(tel2) || !telRegex.test(tel3)) {
+                alert("전화번호는 숫자만 입력해야 합니다.");
+                return false;
+            }
+
+            // 이메일 도메인 형식 검증
+            var email2 = $("#email2").val();
+            var domainRegex = /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (!domainRegex.test(email2)) {
+                alert("올바른 이메일 도메인 형식으로 입력해야 합니다.");
+                return false;
+            }
+
+            return true; // 모든 검증 조건을 만족하면 폼 제출 허용
+        }
+    </script>
 </body>
 </html>

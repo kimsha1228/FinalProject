@@ -36,7 +36,7 @@
 			    align-items: center;">
 	<h5 style="font-weight:bold; margin-top:30px; margin-bottom:30px">상품목록</h5>
 	
-	<p style="text-align: right;margin: 10px 10px 0px 0px;">상품 이름 <input class="search" type="search" data-column="2"><button type="button" class="reset">검색 초기화</button></p>
+	<p style="text-align: right;margin: 10px 10px 0px 0px;"><input class="search" type="search" data-column="2" placeholder="상품 이름"><button type="button" class="reset">검색 초기화</button></p>
 
 	<table id="activityList">
 	<thead>

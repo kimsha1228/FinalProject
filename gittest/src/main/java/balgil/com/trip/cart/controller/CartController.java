@@ -1,11 +1,6 @@
 package balgil.com.trip.cart.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import balgil.com.trip.activity.model.ActivityVO;
 import balgil.com.trip.activity.service.ActivityService;
 import balgil.com.trip.cart.model.CartVO;
 import balgil.com.trip.cart.service.CartService;
@@ -100,6 +94,5 @@ public class CartController {
     	log.info("result: {}", result_delete);
     	return "redirect:selectAllCart.do?user_id="+vo.getUser_id(); // 삭제 후 장바구니 페이지로 리다이렉트
     }
-
     
 }

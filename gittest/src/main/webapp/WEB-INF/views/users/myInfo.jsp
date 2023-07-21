@@ -47,7 +47,7 @@
 			</tr>
 		</table>
 		<a href="u_update.do?user_id=${user.user_id}"><span>정보수정</span></a>
-		<a href="u_deleteOK.do?user_id=${user.user_id}"><span>회원탈퇴</span></a>
+		<a class="deleteUserButton" href="u_deleteOK.do?user_id=${user.user_id}" onclick="return confirm('정말로 탈퇴 하시겠습니까?')"><span>회원탈퇴</span></a>
 		</div>
 		<jsp:include page="../footer.jsp"></jsp:include>
 </body>

@@ -81,19 +81,25 @@
 		FROM
 			route r
 			INNER JOIN destination d ON d.id = r.dest_id
-		WHERE
-		<!-- seller_id냐 dest_id냐 취사선택 -->
-		<choose>
-			<!-- selectAllRoute에서 쓰임 -->
-			<when test="seller_id != null">
-				r.seller_id = #{seller_id}
-			</when>
-			
-			<!-- selectOneDestRoute에서 쓰임 -->
-			<otherwise>
-				r.dest_id = #{dest_id}
-			</otherwise>
-		</choose>
+		<where>
+			<!-- seller_id냐 dest_id냐 취사선택 -->
+			<choose>
+				<!-- selectAllRoute에서 쓰임(관리자)-->
+				<when test="seller_id == 'admin01'">
+					
+				</when>
+				
+				<!-- selectAllRoute에서 쓰임 -->
+				<when test="seller_id != null">
+					r.seller_id = #{seller_id}
+				</when>
+				
+				<!-- selectOneDestRoute에서 쓰임 -->
+				<otherwise>
+					r.dest_id = #{dest_id}
+				</otherwise>
+			</choose>
+		</where>
 		ORDER BY r.id
 	</select>
 	
