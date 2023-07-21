@@ -16,34 +16,6 @@
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script type="text/javascript">
-// function idCheck(){
-// 	console.log("idCheck....",$('#id').val());
-	
-// 	$.ajax({
-// 		url : "json_u_idCheck.do",
-// 		data:{user_id:$('#user_id').val()},
-// 		method:'GET',
-// 		dataType:'json',
-// 		success : function(obj) {
-// 			console.log('ajax...success:', obj);
-// 			console.log('ajax...success:', obj.result);
-// 			let msg = '';
-// 			if(obj.result==='OK'){
-// 				alert("사용가능한 아이디입니다.");
-// 			 	submitForm();
-// 			}else{
-// 				alert("사용중인 아이디입니다.");
-// 			}
-// 		},
-// 		error:function(xhr,status,error){
-// 			console.log('xhr.status:', xhr.status);
-// 		}
-// 	});//end $.ajax()...
-	
-// }//end idCheck()...
-
-</script>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
