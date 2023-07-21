@@ -268,10 +268,12 @@ public class UsersController {
 	public String u_deleteOK(UsersVO vo) {
 		log.info("/u_deleteOK.do...{}", vo);
 		
-		UsersVO users = service.selectUsersRecord(vo); //cascade..?
+		List<UsersVO> users = service.selectUsersRecord(vo); //cascade..?
 		
 		int result = 0;
-		if(users!=null) {
+		
+		//users가 널이 아니면 = users가 있으면
+		if(!(users.isEmpty())) {
 			result = service.typeUpdate(vo);
 		} else {
 			result = service.delete(vo);

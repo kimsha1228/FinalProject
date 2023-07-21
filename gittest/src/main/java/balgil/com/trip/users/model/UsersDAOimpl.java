@@ -82,10 +82,10 @@ public class UsersDAOimpl implements UsersDAO {
 	}
 
 	@Override
-	public UsersVO selectUsersRecord(UsersVO vo) {
+	public List<UsersVO> selectUsersRecord(UsersVO vo) {
 		log.info("selectUsersRecord()...{}", vo);
 
-		return sqlSession.selectOne("USER_RECORD", vo);
+		return sqlSession.selectList("USER_RECORD", vo);
 	}
 
 	@Override
