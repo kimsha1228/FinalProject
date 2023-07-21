@@ -53,4 +53,11 @@ public class ImageDAOimpl implements ImageDAO {
 			return sqlSession.selectList("IMAGE_SELECT_ALL_COM",vo);
 		}
 	}
+
+	@Override
+	public List<ImageVO> selectComm(ImageVO vo) {
+		log.info("selectAll...{}",vo);
+		
+		return sqlSession.selectList("IMAGE_SELECT_ACT_COMM",vo);
+	}
 }

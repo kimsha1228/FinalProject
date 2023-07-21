@@ -3,7 +3,7 @@
 <footer>
 	<div id="line1">
 		<ul>
-			<li><a href="selectAllFaq.do"><p>고객센터</p></a></li>
+			<li><a href="selectAllFaq.do"><p style="font-size:17px; margin-bottom:0px">고객센터</p></a></li>
 		</ul>
 		
 		<div id="page">

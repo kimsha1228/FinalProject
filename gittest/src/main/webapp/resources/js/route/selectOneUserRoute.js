@@ -22,7 +22,7 @@ $(function(){
 			result=response;
 			let vo = ``;
 			
-			vo += `${response.route_name} 추천루트`;
+			vo += `${response.route_name} 추천 루트`;
 			
 			$('.display-5').text(vo);
 			
@@ -100,7 +100,7 @@ $(function(){
 			//초기화
 			vo=`
 				<p>
-				  <button style="font-size:x-large;" class="myButton" type="button" data-toggle="collapse" data-target="#collapseTarget" aria-expanded="false" aria-controls="collapseTarget">
+				  <button style="font-size:18px; margin-left:-2px" class="myButton" type="button" data-toggle="collapse" data-target="#collapseTarget" aria-expanded="false" aria-controls="collapseTarget">
 				    루트소개(클릭!)
 				  </button>
 				</p>

@@ -17,7 +17,7 @@
 	<h3>장바구니</h3>
 	<c:if test="${not empty cartList}">
 		<div class="all_check_input_div" id="selectform">
-			<input type="checkbox" class="allSelectedActivity" checked="checked"><span>전체선택</span>
+			<input type="checkbox" class="allSelectedActivity" checked="checked"><span>    전체선택</span>
 		</div>
 		<table>
 			<tbody>
@@ -25,7 +25,7 @@
 						<table id="carttable">
 							<tr>
 								<td class="cart_one_info">
-									<input type="checkbox" name="selectedActivity" class="selectedActivity" checked="checked">
+									<input type="checkbox" name="selectedActivity" class="selectedActivity" checked="checked" >
 									<input type="hidden" name="id" class="id" value="${cart.id}">
 									<input type="hidden" name="user_id" class="user_id" value="${user.user_id}">
 									<input type="hidden" name="act_id" class="act_id" value="${cart.act_id}">
@@ -37,8 +37,8 @@
 								<td></td>
 								<td>
 								<button class="order_btn" data-id="${cart.id}" data-user_id="${user.user_id}" data-act_id="${cart.act_id}"
-								data-price="${cart.price}" data-quantity="${cart.quantity}"  data-res_date="${cart.res_date}">단일 구매</button>
-								<button class="delete_btn" data-id="${cart.id}" data-user_id="${user.user_id}">삭제</button>
+								data-price="${cart.price}" data-quantity="${cart.quantity}"  data-res_date="${cart.res_date}" style="border:#0000c8; background-color: #0000c8; color: white; font-weight:bold; border-radius:5px; padding:3px">단일 구매</button>
+								<button class="delete_btn" data-id="${cart.id}" data-user_id="${user.user_id}" style="border:#0000c8; background-color: #0000c8; color: white; font-weight:bold; border-radius:5px; padding:3px">삭제</button>
 								</td>
 							</tr>
 							<tr>
@@ -50,7 +50,7 @@
 										<tr>
 											<td>
 												<button class="minus_btn">-</button>
-												<input type="text" value="${cart.quantity}" class="quantity_input" size="1">	
+												<input type="text" value="${cart.quantity}" class="quantity_input" size="1" style="text-align:center;">	
 												<button class="plus_btn">+</button>
 												<button class="quantity_modify_btn" data-id="${cart.id}" data-user_id="${user.user_id}">변경</button>
 											</td>
@@ -63,7 +63,7 @@
 								<table id="carttable2">
 									<tr>
 										<td>
-										<a href="selectOneUserAct.do?id=${cart.act_id}">${cart.act_name}</a>
+										<a href="selectOneUserAct.do?id=${cart.act_id}" style="font-weight:bold; text-decoration:none; color:black">${cart.act_name}</a>
 										</td>
 									</tr>
 									<tr>

@@ -27,8 +27,8 @@
 <body>
 <jsp:include page="../top_menu.jsp"></jsp:include>
 <section>
-	<h3 id="chosenDest" style="margin-top:30px; margin-left:20px; font-weight:bold">여행지: 미선택 </h3>
-	<div class="dropdown" style="text-align: right;margin-right: 10px;">
+	<h3 id="chosenDest" style="margin-top:50px; margin-bottom:20px; margin-left:445px; font-size:19px; font-weight:bold">미선택 </h3>
+	<div class="dropdown" style="text-align: right; margin-right: 10px;">
 	  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	    정렬
 	  </button>
@@ -41,12 +41,12 @@
 	  <a class="btn btn-outline-danger" href="javascript:sortFunction(5);" role="button">초기화</a>
 	</div>
 	
-	<table id="tableContainer">
+	<table id="tableContainer" style="margin-top:30px">
 		<thead>
 			<tr>
-				<th class="sorter-false">루트 사진</th>
-				<th class="sorter-false">루트 간단 소개</th>
-				<th class="sorter-false">기타정보</th>
+				<th class="sorter-false" style="font-size:20px;"> </th>
+				<th class="sorter-false" style="font-size:17px;">루트 소개</th>
+				<th class="sorter-false" style="font-size:17px;">기타정보</th>
 				<th class="sorter-false" style="display: none;">date</th>
 				<th style="display: none;">vcount</th>
 				<th class="sorter-false" style="display: none;">likes</th>

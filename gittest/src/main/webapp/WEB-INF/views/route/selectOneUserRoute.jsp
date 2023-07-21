@@ -30,11 +30,11 @@
 <body>
 <jsp:include page="../top_menu.jsp"></jsp:include>
 <section style="padding-left: 2rem; padding-right: 2rem;">
-	<div class="jumbotron" style="background-color:inherit; padding:2rem 0rem 0rem 0rem; margin-bottom: 0px;">
+	<div class="jumbotron" style="background-color:inherit; padding:2rem 0rem 0rem 0rem; margin-top:30px; margin-bottom: 0px;">
 	  <p id="추천수" style="float:right">
 	  </p>
-	  <h2 class="display-5"></h2>
-	  <p class="lead"></p>
+	  <h4 class="display-5" style="font-size:20px; font-weight:bold;"></h4>
+	  <p class="lead" style="font-size:16px"></p>
 	  <hr class="my-2">
 	</div>
 	
