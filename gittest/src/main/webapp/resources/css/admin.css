@@ -18,6 +18,17 @@
 	float:left;
 }
 
+<<<<<<< HEAD
+
+#list1 a:hover {
+	border:solid 10px #0000c9;
+	background-color:#0000c9;
+	color:white;
+}
+
+
+=======
 #adminmenu1 img:hover {
 	border:solid 10px #BBBBBB;
 }
+>>>>>>> branch 'seoha' of https://github.com/kimsha1228/FinalProject.git
