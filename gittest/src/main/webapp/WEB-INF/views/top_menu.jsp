@@ -79,7 +79,7 @@
 	
 	<!-- 로그인 후 로그인 안보이게 하고 하단 링크들 출력 -->
 	<li class="showUserName">${user.name}님</li>
-	<li class="info"><a href="myInfo.do">판매자 정보</a></li>
+	<li class="info"><a href="myInfo.do?user_id=${user.user_id}">판매자 정보</a></li>
 	<li class="wishlist"><a href="selectAllWishList.do?user_id=${user.user_id}">위시리스트</a></li>
 	<li class="cart"><a href="selectAllCart.do?user_id=${user.user_id}">장바구니</a></li>
 	<li class="myPage"><a href="myPage.do?user_id=${user.user_id}">마이페이지</a></li>
