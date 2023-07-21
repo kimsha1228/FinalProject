@@ -13,7 +13,7 @@ window.onload = function(){
 				<tr>
  					<td>				
  						<a href="selectOneUserRoute.do?id=${vo.id}">
-							<img style="margin: 2px; width:150px; height:150px"  src="resources/uploadimg/thumb_${vo.img}">	
+							<img style="margin: 2px; width:150px; height:150px"  src="resources/uploadimg/${vo.img}">	
 						</a> 
  					</td>
  					<td>
