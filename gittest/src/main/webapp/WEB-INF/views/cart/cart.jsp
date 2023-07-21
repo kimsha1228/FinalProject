@@ -17,7 +17,7 @@
 	<h3>장바구니</h3>
 	<c:if test="${not empty cartList}">
 		<div class="all_check_input_div" id="selectform">
-			<input type="checkbox" class="allSelectedActivity" checked="checked"><span>    전체선택</span>
+			<input type="checkbox" class="allSelectedActivity" checked><span>    전체선택</span>
 		</div>
 		<table>
 			<tbody>
@@ -25,7 +25,7 @@
 						<table id="carttable">
 							<tr>
 								<td class="cart_one_info">
-									<input type="checkbox" name="selectedActivity" class="selectedActivity" checked="checked" >
+									<input type="checkbox" name="selectedActivity" class="selectedActivity" checked>
 									<input type="hidden" name="id" class="id" value="${cart.id}">
 									<input type="hidden" name="user_id" class="user_id" value="${user.user_id}">
 									<input type="hidden" name="act_id" class="act_id" value="${cart.act_id}">
@@ -142,6 +142,9 @@
 
 	/* 체크여부에 따른 총 가격 변화*/
 	$(".selectedActivity").on("change", function(){
+	    var allChecked = $(".selectedActivity:checked").length === $(".selectedActivity").length;
+	    $(".allSelectedActivity").prop("checked", allChecked);
+		
 		setTotalPrice($(".cart_one_info"));
 	});
 
@@ -150,14 +153,15 @@
 
 		/* 체크박스 체크/해제 */
 		if($(".allSelectedActivity").prop("checked")){
-			$(".selectedActivity").attr("checked", true);
+			$(".selectedActivity").prop("checked",true);
 		} else{
-			$(".selectedActivity").attr("checked", false);
+			$(".selectedActivity").prop("checked",false);
 		}
 		
 		setTotalPrice($(".cart_one_info"));	
 		
 	});
+	
 	
 	/* 총 상품 가격 */
 	function setTotalPrice(){
