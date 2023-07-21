@@ -12,15 +12,24 @@
         /* 나머지 CSS 스타일들 */
         #content ul li a:hover,
         #content ul li a.active {
+<<<<<<< HEAD
+/*             color: #0000c8; */
+            border-bottom: 3px solid #C8C8C8;
+=======
             color: #000;
             border-bottom: 3px solid #aaaac8;
+>>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
             text-decoration: none;
         }
 
         #login ul li a:hover,
         #login ul li a.active {
             color: #333;
+<<<<<<< HEAD
+            border-bottom: 2px solid #C8C8C8;
+=======
             border-bottom: 2px solid #c8c8c8;
+>>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
             text-decoration: none;
         }
     </style>
