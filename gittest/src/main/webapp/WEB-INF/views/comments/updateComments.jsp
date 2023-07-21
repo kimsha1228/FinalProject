@@ -11,7 +11,6 @@
 <body>
     <jsp:include page="../top_menu.jsp"></jsp:include>
     <div id="commentsform">
-<<<<<<< HEAD
     <h3>후기 수정</h3>
     <form action="updateCommentsOK.do" method="post" enctype="multipart/form-data">
         <table id="commentstable">
@@ -43,7 +42,6 @@
             </tr>
         </table>
         <input type="submit" value="수정" class="myButton">
-=======
     <h1>후기 수정</h1>
     
     <form action="updateCommentsOK.do" method="post" enctype="multipart/form-data">
@@ -79,13 +77,9 @@
 				</tr>
 			</table>
         <input type="submit" value="수정완료" class="myButton">
->>>>>>> origin/master
     </form>
     </div>
     <jsp:include page="../footer.jsp"></jsp:include>
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> origin/master
+

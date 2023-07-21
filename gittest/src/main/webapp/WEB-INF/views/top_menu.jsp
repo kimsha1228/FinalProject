@@ -13,14 +13,14 @@
         #content ul li a:hover,
         #content ul li a.active {
 /*             color: #0000c8; */
-            border-bottom: 3px solid #0000c8;
+            border-bottom: 3px solid #C8C8C8;
             text-decoration: none;
         }
 
         #login ul li a:hover,
         #login ul li a.active {
             color: #333;
-            border-bottom: 2px solid #0000c8;
+            border-bottom: 2px solid #C8C8C8;
             text-decoration: none;
         }
     </style>
