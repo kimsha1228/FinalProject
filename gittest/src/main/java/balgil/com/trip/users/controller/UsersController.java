@@ -279,7 +279,7 @@ public class UsersController {
 
 		if (result == 1) {
 			session.invalidate();
-			return "redirect:balgilcom";
+			return "redirect:balgil.com";
 		} else {
 			return "redirect:myInfo.do?user_id=" + vo.getUser_id();
 		}
