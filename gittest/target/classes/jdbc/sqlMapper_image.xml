@@ -12,6 +12,10 @@
 		select * from image where act_id = #{act_id} order by id
 	</select>
 	
+	<select id="IMAGE_SELECT_ACT_COMM" resultType="balgil.com.trip.image.model.ImageVO">
+		select i.name, c.user_id from image i join comments c on (i.comment_id=c.id) where c.act_id=#{act_id} order by c.com_date
+	</select>
+	
 	<insert id="IMAGE_INSERT_COM" parameterType="balgil.com.trip.image.model.ImageVO">
 		INSERT INTO image ("ID", "NAME", "COMMENT_ID")
 		VALUES (SEQ_IMAGE.nextval, #{name}, #{comment_id})

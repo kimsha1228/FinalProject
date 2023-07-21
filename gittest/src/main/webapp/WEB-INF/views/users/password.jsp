@@ -47,7 +47,7 @@ function findPassword(){
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<div id="loginform">
-	<h3>비밀번호찾기</h3>
+	<h3 style="margin-top:30px;">비밀번호찾기</h3>
 	
 <!-- 	<form action="findPasswordOK.do" method="post"> -->
 		<table id="fpwtable">

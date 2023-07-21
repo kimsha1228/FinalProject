@@ -12,7 +12,7 @@
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	
 	<div id="loginform">
-	<h3>로그인</h3>
+	<h3 style="margin-top:30px;">로그인</h3>
 	
 	<form action="loginOK.do" method="post">
 		<table id="logintable">

@@ -27,7 +27,7 @@ $(function(){
 	 		method:'GET',
 	 		dataType:'json', 
 	 		success : function(vo2) {
-				console.log(vo2);
+				//console.log(vo2);
 				
 	  			let tag_vo2 =  `
 	  				<tr>

@@ -41,7 +41,7 @@
 <body>
 <jsp:include page="../top_menu.jsp"></jsp:include>
 <section>
-<!-- 	<h1>상품 정보</h1> -->
+	<h1 style="margin-top:40px;">  </h1>
     <div id="carouselControls" class="carousel slide" data-ride="carousel">
 	  <ol class="carousel-indicators">
  	  </ol>	
@@ -59,13 +59,13 @@
 	<div class="card" style="float:right;
 						width:350px;
 						align-items: center;
-						margin: 10px;">
+						margin-top: 50px;">
 		<form action='#' id='Reservation' method='POST' style="text-align-last: center; margin:20px">
 			<p>예약 날짜 선택</p>
-			<input type="date" name="res_date" id="datePicker" min="" style="margin-bottom: 25px;">
+			<input type="date" name="res_date" id="datePicker" min="" style="margin-bottom: 25px;" required>
 			<p>수량 선택</p>
 			<input type='button' value='-' class='qtyminus minus' onclick='decrementQuantity()' />
-			<input type='text' name='quantity' value='1' id='quantity' class='qty' />
+			<input type='text' name='quantity' value='1' id='quantity' class='qty' required/>
 			<input type='button' value='+' class='qtyplus plus' onclick='incrementQuantity()' />
 			<br><br>
 			<input type='hidden' name='act_id' value='${vo2.id}'/>
@@ -78,17 +78,18 @@
 	<div
 	style="background-color:inherit;
 			padding:1rem 1rem;
-			width:600px">
+			width:600px;
+			margin-top:30px;">
 		<div>
-	  	<h2 style="display: inline-flex; width: 440px;">${vo2.act_name}</h2>
+	  	<h2 style="display: inline-flex; width: 440px; font-size:20px;">${vo2.act_name}</h2>
 	  	<button class="myButton" onclick="copyLink()"  style="font-size: medium;">공유</button>
-		<button id="wish" class="${vo2.id} btn btn-outline-danger" onclick="addWish('${user.user_id}','${vo2.id}')" style="font-size: large; padding: 3px 4px 5px 4px; margin-top:-2px;">♡</button>
+		<button id="wish" class="${vo2.id} btn btn-outline-danger" onclick="addWish('${user.user_id}','${vo2.id}')" style="font-size: large; padding: 2.5px 7px 4.5px 6px; margin-top:-2px; margin-left:-2px">♡</button>
 		</div>
 	  <p class="lead">${vo2.content}</p>
 	</div>
 	<div class="card-body">
-		<div class="isCommented">평균별점</div><div><span class="stars" style="float:left; margin-top:-20px; margin-left:70px;"> ${vo2.rate}</span></div>
-		<a href="selectOneComments.do?act_id=${vo2.id}" class="btn btn-primary isCommented" style="background-color: #0000c9; color: white; margin-top:-30px; float:right; margin-right:380px; font-size:15px; font-weight:bold;">모든 이용후기</a>
+		<div class="isCommented" style="font-size:19px;">평균별점</div><div><span class="stars" style="float:left; margin-top:-20px; margin-left:90px;"> ${vo2.rate}</span></div>
+		<a href="selectOneComments.do?act_id=${vo2.id}" class="btn btn-primary isCommented" style="background-color: #0000c9; color: white; margin-top:-30px; float:right; margin-right:375px; font-size:15px; font-weight:bold;">모든 이용후기</a>
 	</div>
 	<div class="card" style="width: 600px; margin-left: 10px;">
 		<div class="card-body">
@@ -102,7 +103,6 @@
 		<p>주소: ${vo2.add}</p>
 		<div id="map" style="width:600px;height:400px;"></div>
 	</div>
-<!-- 	<button class="myButton" onclick="window.location.href='selectAllFaq.do'">고객센터</button> -->
 	<button class="myButton loginCheckContact" data-act_id="${vo2.id}" data-seller_id="${vo2.seller_id}">문의하기</button>
 </section>
 
