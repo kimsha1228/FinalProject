@@ -21,7 +21,7 @@
 		insert into user_coupon (user_id, couponcode) values (#{user_id}, #{couponcode})
 	</insert>
 		
-	<select id="USERCOUPON_IF_USED" resultType="balgil.com.trip.coupon.model.CouponVO">
+	<select id="USERCOUPON_IF_USED" resultType="balgil.com.trip.usercoupon.model.UserCouponVO">
 		select * from user_coupon where user_id = #{user_id} and couponcode = #{couponcode}
 	</select>
 	

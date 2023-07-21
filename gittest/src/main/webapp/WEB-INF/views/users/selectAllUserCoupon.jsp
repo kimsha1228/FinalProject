@@ -30,6 +30,7 @@
 					location.href='selectAllUserCoupon.do?user_id=${user.user_id}';
 					alert("쿠폰이 등록되었습니다!");
 				}else{
+					location.href='selectAllUserCoupon.do?user_id=${user.user_id}';
 					alert("유효하지 않은 쿠폰입니다.");
 				}
 			},
@@ -39,8 +40,7 @@
 		});//end $.ajax()...
 		
 	}//end insertUserCoupon()...
-
-
+	
 </script>
 </head>
 <body>
@@ -74,5 +74,17 @@
 	</table>
 	</div>
 	<jsp:include page="../footer.jsp"></jsp:include>
+	
+<script>
+
+$('#couponcode').on('keydown', function(e) {
+    var keyCode = e.which;
+
+    if (keyCode === 13) { // Enter Key
+    	insertUserCoupon();
+    }
+});
+
+</script>
 </body>
 </html>
