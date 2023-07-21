@@ -7,6 +7,14 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <jsp:include page="../css.jsp"></jsp:include>
+<style>
+	/* number type input에 화살표를 없애는 역할 */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+	  -webkit-appearance: none;
+	  margin: 0;
+	}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript">
 // function idCheck(){
@@ -77,9 +85,9 @@
 			<tr>
 				<td><label for="tel">전화번호</label></td>
 				<td>
-					<input type="text" id="tel1" name="tel1" value="010" size="5" required>
-					<input type="text" id="tel2" name="tel2" value="" size="5" required>
-					<input type="text" id="tel3" name="tel3" value="" size="5" required>
+					<input type="number" id="tel1" name="tel1" value="010" min="0" max="999" required>
+					<input type="number" id="tel2" name="tel2" value="" min="0" max="99999" required>
+					<input type="number" id="tel3" name="tel3" value="" min="0" max="99999" required>
 				</td>
 			</tr>
 			<tr>
