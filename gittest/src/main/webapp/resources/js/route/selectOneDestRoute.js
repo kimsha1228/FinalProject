@@ -17,9 +17,9 @@ window.onload = function(){
 						</a> 
  					</td>
  					<td>
- 						<h4><a href="selectOneUserRoute.do?id=${vo.id}">${vo.route_name}</a></h4>
- 						<p>${vo.summary}</p>
- 						<p>추천 루트:<br>
+ 						<h5><a href="selectOneUserRoute.do?id=${vo.id}" style="font-size:18px; font-weight:bold">${vo.route_name}</a></h5>
+ 						<p style="font-size:15px;">${vo.summary}</p>
+ 						<p>추천 루트<br>
  				`;
  				
  				//루트들 삽입하는 부분
@@ -36,9 +36,9 @@ window.onload = function(){
  					</p>
  					</td>
  					<td style="vertical-align: middle;">
- 						<p style="width: 200px;">여행지:${vo.dest_name}</p>
- 						<p style="width: 200px;">조회수:${vo.vcount}</p>
- 						<p style="width: 200px;">좋아요:${vo.likes}</p>
+ 						<p style="width: 200px; font-size:13px;">여행지:${vo.dest_name}</p>
+ 						<p style="width: 200px; font-size:13px;">조회수:${vo.vcount}</p>
+ 						<p style="width: 200px; font-size:13px;">좋아요:${vo.likes}</p>
  					</td>
  					<td style="display: none;">${vo.date}</td>
  					<td style="display: none;">${vo.vcount}</td>
@@ -50,7 +50,7 @@ window.onload = function(){
 			$("#vos").html(tag_vos);
 			$("#tableContainer").tablesorter({
 		 	})
-		 	let temp = `여행지: ${response[0].dest_name}`;
+		 	let temp = `${response[0].dest_name} 추천 루트`;
 		 	$("#chosenDest").text(temp);
 		},
 	 	error:function(xhr,status,error){

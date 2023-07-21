@@ -25,4 +25,8 @@ public class ImageService {
 	public List<ImageVO> selectAll(ImageVO vo) {
 		return dao.selectAll(vo);
 	}
+
+	public List<ImageVO> selectComm(ImageVO vo) {
+		return dao.selectComm(vo);
+	}
 }

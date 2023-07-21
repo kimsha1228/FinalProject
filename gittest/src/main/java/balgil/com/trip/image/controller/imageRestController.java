@@ -26,4 +26,11 @@ public class imageRestController {
 		return service.selectAll(vo);
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/jsonSelectCommImage.do", method = RequestMethod.GET)
+	public List<ImageVO> jsonSelectCommImage(ImageVO vo) {
+		log.info("jsonSelectCommImage.do..{}",vo);
+		return service.selectComm(vo);
+	}
+	
 }

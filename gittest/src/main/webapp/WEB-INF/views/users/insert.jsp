@@ -46,8 +46,9 @@ function idCheck(){
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
+	
 	<div id="loginform">
-	<h3>회원가입</h3>
+	<h3 style="margin-top:30px;">회원가입</h3>
 	<form action="u_insertOK.do" method="post">
 		<table id="userinserttable">
 			<tr>
