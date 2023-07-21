@@ -232,6 +232,7 @@ $(function(){
 </script>
 </head>
 <body>
+	<jsp:include page="../top_menu.jsp"></jsp:include>
 <div id="insertres">
 	<table id="userinfo">
 		<tbody id="vo2"></tbody> <!-- 이 부분에 유저 정보 얻어오기 -->
@@ -299,6 +300,6 @@ $(function(){
 	</table>
 </form>
 </div>
-
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
