@@ -103,7 +103,7 @@
 		<form action="deleteOneCart.do" method="get" class="quantity_delete_form">
 			<input type="hidden" name="id" class="delete_id">
 			<input type="hidden" name="user_id" class="delete_user_id">
-		</form>		
+		</form>	
 		
 		<!-- 주문 form -->
 		<form action="insertOneReservation.do" method="POST" class="order_form">
