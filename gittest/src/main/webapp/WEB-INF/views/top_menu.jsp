@@ -12,15 +12,24 @@
         /* 나머지 CSS 스타일들 */
         #content ul li a:hover,
         #content ul li a.active {
+<<<<<<< HEAD
 /*             color: #0000c8; */
             border-bottom: 3px solid #C8C8C8;
+=======
+            color: #000;
+            border-bottom: 3px solid #aaaac8;
+>>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
             text-decoration: none;
         }
 
         #login ul li a:hover,
         #login ul li a.active {
             color: #333;
+<<<<<<< HEAD
             border-bottom: 2px solid #C8C8C8;
+=======
+            border-bottom: 2px solid #c8c8c8;
+>>>>>>> branch 'master' of https://github.com/kimsha1228/FinalProject.git
             text-decoration: none;
         }
     </style>
@@ -78,7 +87,8 @@
 	<li class="u_insert"><a href="u_insert.do">회원가입</a></li>
 	
 	<!-- 로그인 후 로그인 안보이게 하고 하단 링크들 출력 -->
-	<li class="showUserName">${user.user_id}님</li>
+	<li class="showUserName">${user.name}님</li>
+	<li class="info"><a href="myInfo.do?user_id=${user.user_id}">판매자 정보</a></li>
 	<li class="wishlist"><a href="selectAllWishList.do?user_id=${user.user_id}">위시리스트</a></li>
 	<li class="cart"><a href="selectAllCart.do?user_id=${user.user_id}">장바구니</a></li>
 	<li class="myPage"><a href="myPage.do?user_id=${user.user_id}">마이페이지</a></li>
@@ -96,6 +106,7 @@
 		$('.cart').hide();
 		$('.myPage').hide();
 		$('.logout').hide();
+		$('.info').hide();
 	}else{
 		$('.login').hide();
 		$('.u_insert').hide();
@@ -103,6 +114,7 @@
 		$('.cart').hide();
 		$('.myPage').hide();
 		$('.logout').show();
+		$('.info').show();
 		if('${user.type}'==='3'){
 			$('.login').hide();
 			$('.u_insert').hide();
@@ -111,6 +123,17 @@
 			$('.cart').show();
 			$('.myPage').show();
 			$('.logout').show();
+			$('.info').hide();
+		} else if('${user.type}'==='0'){
+			$('.login').hide();
+			$('.u_insert').hide();
+			$('.showUserName').show();
+			$('.wishlist').hide();
+			$('.cart').hide();
+			$('.myPage').hide();
+			$('.info').hide();
+			$('.logout').show();
+			
 		}
 	}
 </script>

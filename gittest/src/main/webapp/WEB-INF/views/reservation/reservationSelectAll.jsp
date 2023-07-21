@@ -10,7 +10,27 @@
 <jsp:include page="../css.jsp"></jsp:include>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<style>
+#res_btn a {
+	text-decoration: none;
+	text-align: center;
+	color: #666666;
+	font-size: 15px;
+	font-weight: bold;
+}
+/* 나머지 CSS 스타일들 */
+#res_btn a:hover, #res_btn a.active {
+	/*             color: #0000c8; */
+	border-bottom: 3px solid #0000c8;
+	text-decoration: none;
+}
 
+#res_btn a:hover, #res_btn a.active {
+	color: #333;
+	border-bottom: 2px solid #0000c8;
+	text-decoration: none;
+}
+</style>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -19,7 +39,7 @@
 
 	<table id="selectmenu">
 	<tr>
-		<th colspan="2">
+		<th colspan="2" id="res_btn">
 			<a href="selectAllReservation.do?user_id=${user.user_id}">예약내역</a>
 			<a href="selectExpiredReservation.do?user_id=${user.user_id}">사용내역</a>
 			<a href="selectCancelReservation.do?user_id=${user.user_id}">취소내역</a>

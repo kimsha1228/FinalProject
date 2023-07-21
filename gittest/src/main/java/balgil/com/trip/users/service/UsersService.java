@@ -52,7 +52,7 @@ public class UsersService {
 		return dao.pointInsert(user_id, point);
 	}
 
-	public UsersVO selectUsersRecord(UsersVO vo) {
+	public List<UsersVO> selectUsersRecord(UsersVO vo) {
 		return dao.selectUsersRecord(vo);
 	}
 

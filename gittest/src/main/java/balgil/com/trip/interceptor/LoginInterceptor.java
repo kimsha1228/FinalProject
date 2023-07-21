@@ -44,7 +44,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 				|| sPath.equals("/selectAllUserCoupon.do") 
 				|| sPath.equals("/userCoupon_insertOK.do") 
 				|| sPath.equals("/myPage.do") 
-				|| sPath.equals("/myInfo.do") 
+//				|| sPath.equals("/myInfo.do") 
 				|| sPath.equals("/selectMyComments.do") 
 				|| sPath.equals("/selectMyWrittenComments.do") 
 				|| sPath.equals("/selectMyOneComments.do") 

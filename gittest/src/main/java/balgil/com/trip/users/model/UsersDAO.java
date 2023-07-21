@@ -22,7 +22,7 @@ public interface UsersDAO {
 
 	int pointInsert(String user_id, String point);
 
-	UsersVO selectUsersRecord(UsersVO vo);
+	List<UsersVO> selectUsersRecord(UsersVO vo);
 
 	int typeUpdate(UsersVO vo);
 
