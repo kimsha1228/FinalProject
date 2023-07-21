@@ -64,8 +64,7 @@ $.ajax({
 			tag_vos+=`
 				<a>
 					<div style="align-items: center;">
-						<div class="card-act-name" style="align-self: normal;">${vo.user_id}</div>
-						<img class="card-img-top" width='150px' height='150px' src="resources/uploadimg/${vo.name}">
+						<img class="" width="150px" height="150px" style="margin-right:7px; margin-bottom:7px" src="resources/uploadimg/\${vo.name}">
 					</div>
 				</a>
 			`;
@@ -111,31 +110,30 @@ $.fn.stars = function() {
 			    align-items: center;">
 	<h5 style="font-weight:bold; margin-top:30px; margin-bottom:30px"> <span id="act_name"></span><span> 상품 후기</span></h5>
 	
-	<section id="allCommImg" style="width:650px; margin-top:30px;">
+	<section id="allCommImg" style="width:650px; margin-top:30px; margin-bottom:30px;">
 	</section>
 	
-	<table id="commentsList" style="margin-top:30px;">
-		<tbody>
-			<c:forEach var="vo" items="${vos}">
-				<tr style="border-top: 2px solid gray; margin-top: 10px">
-					<td style="text-align:left"><p style="margin:5px 0px 5px 5px;">${vo.user_id}</p></td>
-					<td style="font-size:13px; color:gray; text-align:right"><p style="margin:5px 0px 5px 5px;"><fmt:formatDate value="${vo.com_date}" pattern="작성일 yyyy년 MM월 dd일"/></p></td>
-				</tr>
-				<tr style="border-top: 1px solid gray;">
-					<td colspan="2">
-						<span style="margin:5px 0px 5px 5px;" class="stars">${vo.rate}</span>
-					</td>
-				</tr>
-				<tr>
-					<td style="width:500px; height:100px; vertical-align : top;"><p style="margin:5px 0px 5px 5px;">${vo.content}</p></td>
-				</tr>
-				<tr>
-					<td><a href="updateLikes.do?id=${vo.id}&act_id=${vo.act_id}" style="margin:5px 0px 10px 5px;"> 좋아요👍🏻 ${vo.likes}</a></td>
-				</tr>
-				</c:forEach>
-		</tbody>
-
-	</table>
+	<c:forEach var="vo" items="${vos}">
+		<table id="commentsList" style="margin-top:20px;">
+			<tbody>
+					<tr style="border-top: 2px solid gray;">
+						<td style="text-align:left"><p style="margin:5px 0px 5px 5px;">${vo.user_id}</p></td>
+						<td style="font-size:13px; color:gray; text-align:right"><p style="margin:5px 0px 5px 5px;"><fmt:formatDate value="${vo.com_date}" pattern="작성일 yyyy년 MM월 dd일"/></p></td>
+					</tr>
+					<tr style="border-top: 1px solid gray;">
+						<td colspan="2">
+							<span style="margin:5px 0px 5px 5px;" class="stars">${vo.rate}</span>
+						</td>
+					</tr>
+					<tr>
+						<td style="width:500px; height:100px; vertical-align : top;"><p style="margin:5px 0px 5px 5px;">${vo.content}</p></td>
+					</tr>
+					<tr>
+						<td><a href="updateLikes.do?id=${vo.id}&act_id=${vo.act_id}" style="margin:5px 0px 25px 5px;"> 좋아요👍🏻 ${vo.likes}</a></td>
+					</tr>
+			</tbody>
+		</table>
+	</c:forEach>
 </section>
 <jsp:include page="../footer.jsp"></jsp:include>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>

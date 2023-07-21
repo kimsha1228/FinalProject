@@ -8,6 +8,20 @@
 <title>마이페이지</title>
 <jsp:include page="../css.jsp"></jsp:include>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<style>
+#mypage a {
+	text-decoration: none;
+	text-align: center;
+	color: #666666;
+	font-size: 15px;
+	font-weight: bold;
+}
+#mypage a:hover,
+#mypage a.active {
+    color: #000;
+    text-decoration: none;
+}
+</style>
 </head>
 <body>
 	<jsp:include page="../top_menu.jsp"></jsp:include>
@@ -32,13 +46,13 @@
 	
 	<table id="mypagetable2">
 		<tr>
-			<td><a href="selectAllCart.do?user_id=${user.user_id}">장바구니</a></td>
+			<td><p style="margin-bottom:10px;"><a href="selectAllCart.do?user_id=${user.user_id}">장바구니</a></p></td>
 		</tr>
 		<tr>
-			<td><a href="selectMyComments.do?user_id=${user.user_id}">이용후기</a></td>
+			<td><p style="margin-bottom:10px;"><a href="selectMyComments.do?user_id=${user.user_id}">이용후기</a></p></td>
 		</tr>
 		<tr>
-			<td><a href="selectAllReservation.do?user_id=${user.user_id}">예약내역</a></td>
+			<td><p style="margin-bottom:10px;"><a href="selectAllReservation.do?user_id=${user.user_id}">예약내역</a></p></td>
 		</tr>
 		<tr>
 			<td><a href="selectAllContact.do?user_id=${user.user_id}">문의내역</a></td>

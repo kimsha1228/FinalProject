@@ -12,15 +12,15 @@
         /* 나머지 CSS 스타일들 */
         #content ul li a:hover,
         #content ul li a.active {
-/*             color: #0000c8; */
-            border-bottom: 3px solid #0000c8;
+            color: #000;
+            border-bottom: 3px solid #aaaac8;
             text-decoration: none;
         }
 
         #login ul li a:hover,
         #login ul li a.active {
             color: #333;
-            border-bottom: 2px solid #0000c8;
+            border-bottom: 2px solid #c8c8c8;
             text-decoration: none;
         }
     </style>
