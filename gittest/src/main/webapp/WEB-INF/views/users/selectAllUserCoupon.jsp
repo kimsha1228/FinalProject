@@ -27,8 +27,8 @@
 				console.log('ajax...success:', obj.result);
 				let msg = '';
 				if(obj.result==='OK'){
-					alert("쿠폰이 등록되었습니다!");
 					location.href='selectAllUserCoupon.do?user_id=${user.user_id}';
+					alert("쿠폰이 등록되었습니다!");
 				}else{
 					alert("유효하지 않은 쿠폰입니다.");
 				}
