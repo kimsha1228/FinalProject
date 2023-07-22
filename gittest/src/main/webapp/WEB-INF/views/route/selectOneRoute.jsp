@@ -58,7 +58,7 @@
 		</tfoot>
 	</table>
 
-	<button type="button" onclick="location.href='selectAllAct.do'" class="myButton" style="color:white; margin-top:20px">루트목록</button>
+	<button type="button" onclick="location.href='selectAllRoute.do'" class="myButton" style="color:white; margin-top:20px">루트목록</button>
 </section>
 <jsp:include page="../footer.jsp"></jsp:include>
 <!-- BootStrap JS -->
