@@ -533,7 +533,7 @@
     dblClick : false,
     keepOrder: false,
     cssClass: '',
-    limit: NULL
+    limit: null
   };
 
   $.fn.multiSelect.Constructor = MultiSelect;
