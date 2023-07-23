@@ -24,7 +24,7 @@
 				<td>${vo2.rate}</td>
 			</tr>
 			<tr>
-				<td><label for="content">후기작성</label></td>
+				<td><label for="content">내용</label></td>
 				<td><textarea id="content" name="content" rows="15" cols="50" required>${vo2.content}</textarea>
 					<input type="hidden" id="user_id" name="user_id" value="${user.user_id}" required>
 					<input type="hidden" id="res_id" name="res_id" value="${vo2.res_id}" required>
