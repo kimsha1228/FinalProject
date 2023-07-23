@@ -30,12 +30,12 @@
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<div id="qnaform">
 	<h3>문의 내역</h3>
-	<table>
+	<table id="adminlisttable">
 		<thead>
 			<tr>
-				<td style="text-align:center">번호</td>
-				<td style="width:350px">제목</td>
-				<td>작성자</td>
+				<th style="text-align:center">번호</th>
+				<th style="width:350px">제목</th>
+				<th>작성자</th>
 			</tr>
 		</thead>
 		<tbody>
