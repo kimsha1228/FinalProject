@@ -31,7 +31,7 @@ function selectDest(value){
 			//만약 추후 jquery multiselect 플러그인을 바꿀거면 여기를 바꾸면 됨
 	    	$('#multiselect').multiSelect({
 	    		keepOrder: true,
-	    		
+	    		limit:5,
 	    		//역시 스택오버플로우입니다 
 	    		// https://stackoverflow.com/questions/13243417/jquery-multiselect-selected-data-order
 	    		afterSelect: function(value){

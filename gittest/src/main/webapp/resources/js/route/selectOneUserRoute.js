@@ -105,7 +105,7 @@ $(function(){
 				  </button>
 				</p>
 				<div class="collapse" id="collapseTarget">
-				  <div class="card card-body">
+				  <div class="card card-body" style=" white-space: pre-line;">
 				  	${response.content}
 				  </div>
 				</div>
