@@ -48,7 +48,7 @@ $(function(){
 				if(index==0){
 					//<label for="act${index}">${e.act_name}</label>
 					vo += `
-						<div class="card border-primary mb-3" >
+						<div class="card mb-3" >
 						
 							<a href='selectOneUserAct.do?id=${e.id}'>
 								<img src="resources/uploadimg/${e.eng_name}" class="card-img-top" alt="이미지">
@@ -71,7 +71,7 @@ $(function(){
 					`;
 				}else{
 					vo += `
-						<div class="card border-primary mb-3">
+						<div class="card mb-3">
 						
 							<a href='selectOneUserAct.do?id=${e.id}'>
 								<img src="resources/uploadimg/${e.eng_name}" class="card-img-top" alt="이미지">
