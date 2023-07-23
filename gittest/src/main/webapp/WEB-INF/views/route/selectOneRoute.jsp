@@ -14,6 +14,28 @@
 <link rel="stylesheet" href="resources/css/home.css?ver=1">
 <link rel="stylesheet" href="resources/css/cardAndStar.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<style>
+.수평테이블{
+    width:900px;
+    margin: 50px auto;
+    border: 1px solid gray;
+    border-collapse: collapse;
+    overflow: hidden;
+    text-align: center;
+}
+.수평테이블 th{
+    border-right: 2px solid lightgray;
+}
+.수평테이블 td {
+    border-right: 1px solid gray;
+}
+.수평테이블 tfoot tr td {
+    border-top: 2px solid lightgray;
+}
+
+
+</style>
+
 </head>
 <body>
 <section style="display: flex;
@@ -22,7 +44,7 @@
 	<jsp:include page="../top_menu.jsp"></jsp:include>
 	<h5 style="font-weight:bold; margin-top:30px; margin-bottom:30px">루트정보</h5>
 	<img width="300px" src="resources/uploadimg/${vo2.img}" />
-	<table id="routeList" style="width:800px">
+	<table id="routeList" class="수평테이블">
 		<thead>
 			<tr>
 				<th style="width:150px">루트이름</th>
@@ -52,13 +74,13 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="5"><a href="updateRoute.do?id=${param.id}" class="myButton" style="color:white; margin-left:320px">루트수정</a>
+				<td colspan="5"><a href="updateRoute.do?id=${param.id}" class="myButton" style="color:white;">루트수정</a>
 					<a href="deleteRouteOk.do?id=${param.id}" class="myButton" style="color:white">루트삭제</a></td>
 			</tr>
 		</tfoot>
 	</table>
 
-	<button type="button" onclick="location.href='selectAllAct.do'" class="myButton" style="color:white; margin-top:20px">루트목록</button>
+	<button type="button" onclick="location.href='selectAllRoute.do'" class="myButton" style="color:white; margin-top:20px">루트목록</button>
 </section>
 <jsp:include page="../footer.jsp"></jsp:include>
 <!-- BootStrap JS -->

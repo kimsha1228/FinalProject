@@ -31,7 +31,7 @@
 	<h5 style="font-weight:bold; margin-top:30px; margin-bottom:30px">상품정보</h5>
 	<ul id="imageList" style="display: inline-flex; max-width: 1000px;">
     </ul>
-	<table id="activityList" style="text-align: center;">
+	<table id="adminlisttable" style="text-align: center;">
 		<thead>
 			<tr>
 				<th>번호</th>
