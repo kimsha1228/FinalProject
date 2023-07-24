@@ -89,7 +89,7 @@
 	</div>
 	<div class="card-body">
 		<div class="isCommented" style="font-size:19px;">평균별점</div><div><span class="stars" style="float:left; margin-top:-20px; margin-left:90px;"> ${vo2.rate}</span></div>
-		<a href="selectOneComments.do?act_id=${vo2.id}" class="btn btn-primary isCommented" style="background-color: #0000c9; color: white; margin-top:-30px; float:right; margin-right:375px; font-size:15px; font-weight:bold;">모든 이용후기</a>
+		<a href="selectOneComments.do?act_id=${vo2.id}" class="btn btn-primary isCommented" style="background-color: #0000c9; color: white; margin-top: -30px; float: left; margin-left: 469px; font-size: 15px; font-weight: bold;">모든 이용후기</a>
 	</div>
 	<div class="card" style="width: 600px; margin-left: 10px;">
 		<div class="card-body">
