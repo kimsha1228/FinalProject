@@ -169,6 +169,8 @@ $(function(){
 //클릭시 현재 주소를 복사 
 //https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/write 참조함
 function copyLink() {
+	//서버 배포하니 오류뜨네 으아아
+/*
   const type = "text/plain";
   const blob = new Blob([window.location.href], { type });
   const data = [new ClipboardItem({ [type]: blob })];
@@ -181,6 +183,32 @@ function copyLink() {
       window.alert('클립보드 복사 실패');
     }
   );
+  */
+ //도와줘요 챗봇
+  const textToCopy = window.location.href;
+
+  // Create a temporary input element
+  const tempInput = document.createElement("input");
+  tempInput.value = textToCopy;
+  document.body.appendChild(tempInput);
+
+  // Select and copy the text
+  tempInput.select();
+  tempInput.setSelectionRange(0, 99999); // For mobile devices
+
+  try {
+    const success = document.execCommand("copy");
+    if (success) {
+      window.alert('클립보드에 복사되었습니다.');
+    } else {
+      window.alert('클립보드 복사 실패');
+    }
+  } catch (err) {
+    window.alert('클립보드 복사 실패');
+  }
+
+  // Remove the temporary input
+  document.body.removeChild(tempInput);
 }
 
 function addWish(user_id,act_id){
